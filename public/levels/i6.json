@@ -1,0 +1,90 @@
+{
+  "ref": "I6",
+  "title": "SUMAPRODUCTO",
+  "titleByLocale": {
+    "es": "SUMAPRODUCTO",
+    "en": "SUMPRODUCT",
+    "de": "SUMMENPRODUKT",
+    "fr": "SOMMEPROD",
+    "ja": "SUMPRODUCT",
+    "pt": "SOMARPRODUTO"
+  },
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Si en A1:A2 tienes Cantidad (2, 3) y en B1:B2 tienes Precio (10, 20), ¿qué valor devuelve =SUMAPRODUCTO(A1:A2, B1:B2)?",
+      "promptByLocale": {
+        "es": "Si en A1:A2 tienes Cantidad (2, 3) y en B1:B2 tienes Precio (10, 20), ¿qué valor devuelve =SUMAPRODUCTO(A1:A2, B1:B2)?",
+        "en": "If A1:A2 contains Quantities (2, 3) and B1:B2 contains Prices (10, 20), what does =SUMPRODUCT(A1:A2, B1:B2) evaluate to?",
+        "de": "Wenn A1:A2 Menge (2, 3) und B1:B2 Preis (10, 20) enthält, was liefert =SUMMENPRODUKT(A1:A2; B1:B2)?",
+        "fr": "Si A1:A2 contient Quantités (2, 3) et B1:B2 Prix (10, 20), que renvoie =SOMMEPROD(A1:A2; B1:B2) ?",
+        "ja": "A1:A2に数量(2, 3)、B1:B2に単価(10, 20)がある場合、=SUMPRODUCT(A1:A2, B1:B2) は何を返しますか？",
+        "pt": "Se A1:A2 contém Quantidades (2, 3) e B1:B2 contém Preços (10, 20), o que retorna =SOMARPRODUTO(A1:A2; B1:B2)?"
+      },
+      "options": [
+        "80 (2×10 + 3×20)",
+        "35",
+        "50",
+        "600"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "80 (2×10 + 3×20)",
+          "35",
+          "50",
+          "600"
+        ],
+        "en": [
+          "80 (2×10 + 3×20)",
+          "35",
+          "50",
+          "600"
+        ],
+        "de": [
+          "80 (2×10 + 3×20)",
+          "35",
+          "50",
+          "600"
+        ],
+        "fr": [
+          "80 (2×10 + 3×20)",
+          "35",
+          "50",
+          "600"
+        ],
+        "ja": [
+          "80（2×10 + 3×20）",
+          "35",
+          "50",
+          "600"
+        ],
+        "pt": [
+          "80 (2×10 + 3×20)",
+          "35",
+          "50",
+          "600"
+        ]
+      },
+      "correct": "80 (2×10 + 3×20)",
+      "correctByLocale": {
+        "es": "80 (2×10 + 3×20)",
+        "en": "80 (2×10 + 3×20)",
+        "de": "80 (2×10 + 3×20)",
+        "fr": "80 (2×10 + 3×20)",
+        "ja": "80（2×10 + 3×20）",
+        "pt": "80 (2×10 + 3×20)"
+      },
+      "explanation": "SUMAPRODUCTO multiplica elemento por elemento correspondiente de cada matriz y luego suma todos los productos resultantes en una sola fórmula.",
+      "explanationByLocale": {
+        "es": "SUMAPRODUCTO multiplica elemento por elemento correspondiente de cada matriz y luego suma todos los productos resultantes en una sola fórmula.",
+        "en": "SUMPRODUCT multiplies matching items across arrays and returns the sum of those products in one step.",
+        "de": "SUMMENPRODUKT multipliziert korrespondierende Matrixelemente und summiert die Produkte in einem Schritt.",
+        "fr": "SOMMEPROD multiplie les éléments correspondants des matrices puis additionne tous les produits.",
+        "ja": "SUMPRODUCTは対応する配列要素同士を掛け合わせ、その積の合計を1つの数式で一度に算出します。",
+        "pt": "SOMARPRODUTO multiplica elementos correspondentes das matrizes e soma todos os produtos em uma única etapa."
+      }
+    }
+  ]
+}

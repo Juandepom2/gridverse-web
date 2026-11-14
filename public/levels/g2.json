@@ -1,0 +1,164 @@
+{
+  "ref": "G2",
+  "title": "Formato condicional: Barras y escalas",
+  "titleByLocale": {
+    "es": "Formato condicional: Barras y escalas",
+    "en": "Conditional Formatting: Data Bars & Color Scales",
+    "de": "Bedingte Formatierung: Datenbalken & Farbskalen",
+    "fr": "Mise en forme conditionnelle : Barres et nuances",
+    "ja": "条件付き書式：データバーとカラースケール",
+    "pt": "Formatação condicional: Barras e escalas de cor"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué visualización añade mini gráficos de barra horizontales dentro del fondo de cada celda?",
+      "promptByLocale": {
+        "es": "¿Qué visualización añade mini gráficos de barra horizontales dentro del fondo de cada celda?",
+        "en": "Which visual style inserts horizontal mini-bars directly inside the background of each cell?",
+        "de": "Welche Darstellung fügt kleine horizontale Balken in den Hintergrund jeder Zelle ein?",
+        "fr": "Quel type de mise en forme insère des mini-barres horizontales dans le fond de chaque cellule ?",
+        "ja": "各セルの背景に直接、値の大きさに応じた横棒グラフを描画する機能はどれですか？",
+        "pt": "Qual estilo insere minigráficos de barra horizontais diretamente no fundo de cada célula?"
+      },
+      "options": [
+        "Barras de datos",
+        "Escalas de color",
+        "Conjuntos de iconos",
+        "Minigráficos de línea"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Barras de datos",
+          "Escalas de color",
+          "Conjuntos de iconos",
+          "Minigráficos de línea"
+        ],
+        "en": [
+          "Data Bars",
+          "Color Scales",
+          "Icon Sets",
+          "Line Sparklines"
+        ],
+        "de": [
+          "Datenbalken",
+          "Farbskalen",
+          "Symbolsätze",
+          "Linien-Sparklines"
+        ],
+        "fr": [
+          "Barres de données",
+          "Nuances de couleurs",
+          "Jeux d'icônes",
+          "Graphiques Sparkline"
+        ],
+        "ja": [
+          "データバー",
+          "カラースケール",
+          "アイコンセット",
+          "スパークライン"
+        ],
+        "pt": [
+          "Barras de dados",
+          "Escalas de cor",
+          "Conjuntos de ícones",
+          "Minigráficos de linha"
+        ]
+      },
+      "correct": "Barras de datos",
+      "correctByLocale": {
+        "es": "Barras de datos",
+        "en": "Data Bars",
+        "de": "Datenbalken",
+        "fr": "Barres de données",
+        "ja": "データバー",
+        "pt": "Barras de dados"
+      },
+      "explanation": "Las Barras de datos rellenan la celda proporcionalmente al valor en comparación con el rango.",
+      "explanationByLocale": {
+        "es": "Las Barras de datos rellenan la celda proporcionalmente al valor en comparación con el rango.",
+        "en": "Data Bars fill cells proportionally based on how each value ranks within the selected range.",
+        "de": "Datenbalken füllen Zellen proportional zum Maximal- und Minimalwert des Bereichs.",
+        "fr": "Les barres de données remplissent la cellule proportionnellement à la valeur de la plage.",
+        "ja": "データバーは選択範囲内の最大値・最小値に合わせて、セル内に比例した長さのバーを表示します。",
+        "pt": "As Barras de dados preenchem a célula proporcionalmente ao valor no intervalo."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "En una Escala de Color Verde-Amarillo-Rojo típica para rendimiento financiero, ¿qué color representa usualmente los valores más altos?",
+      "promptByLocale": {
+        "es": "En una Escala de Color Verde-Amarillo-Rojo típica para rendimiento financiero, ¿qué color representa usualmente los valores más altos?",
+        "en": "In a classic Green-Yellow-Red color scale for financial performance, which color highlights the highest values?",
+        "de": "Welche Farbe stellt in einer typischen Grün-Gelb-Rot-Farbskala die höchsten Werte dar?",
+        "fr": "Dans une nuance classique Vert-Jaune-Rouge de rentabilité, quelle couleur marque les valeurs les plus élevées ?",
+        "ja": "財務データで一般的な「緑-黄-赤」のカラースケールにおいて、通常最も高い数値を表す色はどれですか？",
+        "pt": "Em uma escala clássica Verde-Amarelo-Vermelho de desempenho, qual cor indica os maiores valores?"
+      },
+      "options": [
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Azul"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Verde",
+          "Rojo",
+          "Amarillo",
+          "Azul"
+        ],
+        "en": [
+          "Green",
+          "Red",
+          "Yellow",
+          "Blue"
+        ],
+        "de": [
+          "Grün",
+          "Rot",
+          "Gelb",
+          "Blau"
+        ],
+        "fr": [
+          "Vert",
+          "Rouge",
+          "Jaune",
+          "Bleu"
+        ],
+        "ja": [
+          "緑（Green）",
+          "赤（Red）",
+          "黄（Yellow）",
+          "青（Blue）"
+        ],
+        "pt": [
+          "Verde",
+          "Vermelho",
+          "Amarelo",
+          "Azul"
+        ]
+      },
+      "correct": "Verde",
+      "correctByLocale": {
+        "es": "Verde",
+        "en": "Green",
+        "de": "Grün",
+        "fr": "Vert",
+        "ja": "緑（Green）",
+        "pt": "Verde"
+      },
+      "explanation": "El degradado de color asigna verde al percentil más alto, amarillo a la media y rojo a los valores bajos.",
+      "explanationByLocale": {
+        "es": "El degradado de color asigna verde al percentil más alto, amarillo a la media y rojo a los valores bajos.",
+        "en": "The gradient assigns green to the top percentile, yellow to median values, and red to low results.",
+        "de": "Der Farbverlauf weist Grün den Spitzenwerten, Gelb dem Median und Rot den Tiefstwerten zu.",
+        "fr": "Le dégradé attribue le vert aux meilleures performances, le jaune à la médiane et le rouge aux bas résultats.",
+        "ja": "グラデーションにより最上位に緑、中央値に黄、下位に赤が滑らかに割り当てられます。",
+        "pt": "O gradiente atribui verde aos maiores valores, amarelo à mediana e vermelho aos menores."
+      }
+    }
+  ]
+}

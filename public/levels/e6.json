@@ -1,0 +1,251 @@
+{
+  "ref": "E6",
+  "title": "Jefe: Dato no disponible",
+  "version": 1,
+  "rewardXp": 40,
+  "exercises": [
+    {
+      "type": "find_error",
+      "prompt": "F2 muestra #N/D. Toca la celda con el error de búsqueda.",
+      "correct": "F2",
+      "errorCell": "F2",
+      "data": {
+        "A1": "Código",
+        "B1": "Nombre",
+        "E1": "Buscando",
+        "F1": "Resultado",
+        "A2": "A01",
+        "B2": "Laptop",
+        "E2": "Z99",
+        "F2": "#N/D"
+      },
+      "displayValues": {
+        "E2": "Z99",
+        "F2": "#N/D"
+      },
+      "promptByLocale": {
+        "es": "F2 muestra #N/D. Toca la celda con el error de búsqueda.",
+        "en": "F2 shows #N/A. Tap the cell with the lookup error.",
+        "de": "F2 zeigt #NV. Tippe auf die Zelle mit dem Suchfehler.",
+        "fr": "F2 affiche #N/A. Touche la cellule avec l'erreur de recherche.",
+        "ja": "F2が #N/A となっています。検索エラーが発生しているセルをタップしてください。",
+        "pt": "F2 mostra #N/D. Toque na célula com o erro de busca."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Código",
+          "B1": "Nombre",
+          "E1": "Buscando",
+          "F1": "Resultado",
+          "A2": "A01",
+          "B2": "Laptop",
+          "E2": "Z99",
+          "F2": "#N/D"
+        },
+        "en": {
+          "A1": "Code",
+          "B1": "Name",
+          "E1": "Searching",
+          "F1": "Result",
+          "A2": "A01",
+          "B2": "Laptop",
+          "E2": "Z99",
+          "F2": "#N/A"
+        },
+        "de": {
+          "A1": "Code",
+          "B1": "Name",
+          "E1": "Suchwert",
+          "F1": "Ergebnis",
+          "A2": "A01",
+          "B2": "Laptop",
+          "E2": "Z99",
+          "F2": "#NV"
+        },
+        "fr": {
+          "A1": "Code",
+          "B1": "Nom",
+          "E1": "Recherche",
+          "F1": "Résultat",
+          "A2": "A01",
+          "B2": "Laptop",
+          "E2": "Z99",
+          "F2": "#N/A"
+        },
+        "ja": {
+          "A1": "コード",
+          "B1": "品名",
+          "E1": "検索値",
+          "F1": "検索結果",
+          "A2": "A01",
+          "B2": "ノートPC",
+          "E2": "Z99",
+          "F2": "#N/A"
+        },
+        "pt": {
+          "A1": "Código",
+          "B1": "Nome",
+          "E1": "Buscando",
+          "F1": "Resultado",
+          "A2": "A01",
+          "B2": "Laptop",
+          "E2": "Z99",
+          "F2": "#N/D"
+        }
+      },
+      "displayValuesByLocale": {
+        "es": {
+          "E2": "Z99",
+          "F2": "#N/D"
+        },
+        "en": {
+          "E2": "Z99",
+          "F2": "#N/A"
+        },
+        "de": {
+          "E2": "Z99",
+          "F2": "#NV"
+        },
+        "fr": {
+          "E2": "Z99",
+          "F2": "#N/A"
+        },
+        "ja": {
+          "E2": "Z99",
+          "F2": "#N/A"
+        },
+        "pt": {
+          "E2": "Z99",
+          "F2": "#N/D"
+        }
+      },
+      "explanationByLocale": {
+        "es": "La fórmula en F2 busca 'Z99', un código que no existe en el catálogo maestro.",
+        "en": "The formula in F2 looks up 'Z99', a key that does not exist in the master table.",
+        "de": "Die Formel in F2 sucht 'Z99', einen Schlüssel, der in der Haupttabelle nicht existiert.",
+        "fr": "La formule en F2 cherche 'Z99', une valeur inexistante dans la table de base.",
+        "ja": "F2セルの数式が検索している「Z99」はマスタテーブルに存在しないためエラーになります。",
+        "pt": "A fórmula em F2 busca 'Z99', um código que não existe no catálogo mestre."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Por qué aparece el error #N/D en una función BUSCARV?",
+      "formula": "#N/D",
+      "correct": "El valor buscado (Z99) no existe en la primera columna de la tabla",
+      "data": {},
+      "options": [
+        "El valor buscado (Z99) no existe en la primera columna de la tabla",
+        "Se agotó el espacio en el disco duro",
+        "La celda tiene un formato de fecha",
+        "Falta el signo de suma"
+      ],
+      "promptByLocale": {
+        "es": "¿Por qué aparece el error #N/D en una función BUSCARV?",
+        "en": "Why does the #N/A error appear in a VLOOKUP function?",
+        "de": "Warum erscheint der Fehler #NV bei einer SVERWEIS-Funktion?",
+        "fr": "Pourquoi l'erreur #N/A apparaît-elle dans une fonction RECHERCHEV ?",
+        "ja": "VLOOKUP関数で #N/A エラーが表示される理由は何ですか？",
+        "pt": "Por que aparece o erro #N/D em uma função PROCV?"
+      },
+      "formulaByLocale": {
+        "es": "#N/D",
+        "en": "#N/A",
+        "de": "#NV",
+        "fr": "#N/A",
+        "ja": "#N/A",
+        "pt": "#N/D"
+      },
+      "correctByLocale": {
+        "es": "El valor buscado (Z99) no existe en la primera columna de la tabla",
+        "en": "The lookup value (Z99) does not exist in the table's first column",
+        "de": "Der Suchwert (Z99) existiert nicht in der ersten Spalte der Tabelle",
+        "fr": "La valeur cherchée (Z99) n'existe pas dans la première colonne",
+        "ja": "検索値（Z99）が対象テーブルの先頭列に存在しないため",
+        "pt": "O valor buscado (Z99) não existe na primeira coluna da tabela"
+      },
+      "optionsByLocale": {
+        "es": [
+          "El valor buscado (Z99) no existe en la primera columna de la tabla",
+          "Se agotó el espacio en el disco duro",
+          "La celda tiene un formato de fecha",
+          "Falta el signo de suma"
+        ],
+        "en": [
+          "The lookup value (Z99) does not exist in the table's first column",
+          "Disk space is exhausted",
+          "The cell has a date format",
+          "A plus sign is missing"
+        ],
+        "de": [
+          "Der Suchwert (Z99) existiert nicht in der ersten Spalte der Tabelle",
+          "Festplattenspeicher ist voll",
+          "Die Zelle hat ein Datumsformat",
+          "Ein Pluszeichen fehlt"
+        ],
+        "fr": [
+          "La valeur cherchée (Z99) n'existe pas dans la première colonne",
+          "Disque dur saturé",
+          "La cellule est au format date",
+          "Il manque un signe plus"
+        ],
+        "ja": [
+          "検索値（Z99）が対象テーブルの先頭列に存在しないため",
+          "ハードディスクの空き容量が不足したため",
+          "セルが日付形式になっているため",
+          "プラス記号（+）が抜けているため"
+        ],
+        "pt": [
+          "O valor buscado (Z99) não existe na primeira coluna da tabela",
+          "Esgotou o espaço em disco",
+          "A célula tem formato de data",
+          "Falta o sinal de mais"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "#N/D significa 'No Disponible': la sintaxis es correcta, pero el dato no fue encontrado.",
+        "en": "#N/A means 'Not Available': the formula is valid, but the search term was not found.",
+        "de": "#NV bedeutet 'Nicht Verfügbar': Die Syntax stimmt, aber der Datensatz fehlt.",
+        "fr": "#N/A signifie 'Non Applicable' : la formule est bonne, mais l'élément est introuvable.",
+        "ja": "#N/A（Not Available）は構文エラーではなく「該当するデータが見つからない」ことを示します。",
+        "pt": "#N/D significa 'Não Disponível': a fórmula está correta, mas o registro não foi localizado."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Protege la búsqueda: si no encuentra el código, que muestre \"No existe\".",
+      "correct": "=SI.ERROR(BUSCARV(E2,A2:B2,2,FALSO),\"No existe\")",
+      "blocks": [
+        "=",
+        "SI.ERROR(",
+        "BUSCARV(E2,A2:B2,2,FALSO)",
+        ",\"No existe\"",
+        ")"
+      ],
+      "promptByLocale": {
+        "es": "Protege la búsqueda: si no encuentra el código, que muestre \"No existe\".",
+        "en": "Protect the lookup: if the code is not found, display \"No existe\".",
+        "de": "Schütze die Suche: wenn der Code fehlt, zeige \"No existe\".",
+        "fr": "Protège la recherche : si le code est introuvable, afficher \"No existe\".",
+        "ja": "該当コードが見つからない場合に「No existe」と表示するよう検索式を保護してください。",
+        "pt": "Proteja a busca: se não encontrar o código, exiba \"No existe\"."
+      },
+      "explanationByLocale": {
+        "es": "Envolver con =SI.ERROR() oculta el error técnico y entrega un mensaje claro al usuario.",
+        "en": "Wrapping with =IFERROR() conceals technical errors and displays an intuitive fallback message.",
+        "de": "Das Einbetten in =WENNFEHLER() maskiert den Fehler und zeigt einen klaren Hinweistext.",
+        "fr": "Envelopper dans =SIERREUR() masque le message d'erreur pour afficher un texte lisible.",
+        "ja": "=SI.ERROR() で囲むことで、未登録コードでもエラーを出さず親切なメッセージを返せます。",
+        "pt": "Envolver com =SEERRO() oculta o erro técnico e exibe uma mensagem amigável."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Jefe: Dato no disponible",
+    "en": "Boss: Not Available (#N/A)",
+    "de": "Boss: Nicht verfügbar (#NV)",
+    "fr": "Boss : Valeur non disponible (#N/A)",
+    "ja": "ボス：該当なしエラー (#N/A)",
+    "pt": "Chefe: Dado não disponível (#N/D)"
+  }
+}

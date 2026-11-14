@@ -1,0 +1,166 @@
+{
+  "ref": "H3",
+  "title": "BUSCARV + SI.ERROR",
+  "titleByLocale": {
+    "es": "BUSCARV + SI.ERROR",
+    "en": "VLOOKUP + IFERROR",
+    "de": "SVERWEIS + WENNFEHLER",
+    "fr": "RECHERCHEV + SIERREUR",
+    "ja": "VLOOKUP + IFERROR",
+    "pt": "PROCV + SEERRO"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Cuando BUSCARV no encuentra el código buscado en la primera columna, ¿qué error genera por defecto?",
+      "promptByLocale": {
+        "es": "Cuando BUSCARV no encuentra el código buscado en la primera columna, ¿qué error genera por defecto?",
+        "en": "When VLOOKUP cannot locate the search key in the 1st column, what error does it produce?",
+        "de": "Welchen Fehler gibt SVERWEIS standardmäßig aus, wenn der Suchbegriff nicht existiert?",
+        "fr": "Quand RECHERCHEV ne trouve pas le code cherché, quelle erreur génère-t-il ?",
+        "ja": "VLOOKUPで指定した検索値が表に見つからない場合、デフォルトでどのエラーが発生しますか？",
+        "pt": "Quando o PROCV não encontra o código procurado na primeira coluna, qual erro gera por padrão?"
+      },
+      "options": [
+        "#N/D (#N/A)",
+        "#¡VALOR!",
+        "#¡REF!",
+        "#¡DIV/0!"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "#N/D (#N/A)",
+          "#¡VALOR!",
+          "#¡REF!",
+          "#¡DIV/0!"
+        ],
+        "en": [
+          "#N/A",
+          "#VALUE!",
+          "#REF!",
+          "#DIV/0!"
+        ],
+        "de": [
+          "#NV",
+          "#WERT!",
+          "#BEZUG!",
+          "#DIV/0!"
+        ],
+        "fr": [
+          "#N/A",
+          "#VALEUR!",
+          "#REF!",
+          "#DIV/0!"
+        ],
+        "ja": [
+          "#N/A",
+          "#VALUE!",
+          "#REF!",
+          "#DIV/0!"
+        ],
+        "pt": [
+          "#N/D",
+          "#VALOR!",
+          "#REF!",
+          "#DIV/0!"
+        ]
+      },
+      "correct": "#N/D (#N/A)",
+      "correctByLocale": {
+        "es": "#N/D (#N/A)",
+        "en": "#N/A",
+        "de": "#NV",
+        "fr": "#N/A",
+        "ja": "#N/A",
+        "pt": "#N/D"
+      },
+      "explanation": "#N/D significa 'No Disponible' (Not Available) e indica que el elemento no existe en la tabla.",
+      "explanationByLocale": {
+        "es": "#N/D significa 'No Disponible' (Not Available) e indica que el elemento no existe en la tabla.",
+        "en": "#N/A means 'Not Available' and signifies the search key was not found.",
+        "de": "#NV steht für 'Nicht Verfügbar' und bedeutet, dass der Wert in der Suchspalte fehlt.",
+        "fr": "#N/A signifie 'Non Applicable/Non Disponible' et indique l'absence du code dans la table.",
+        "ja": "#N/A（該当なし）は検索した値がテーブルの先頭列に存在しないことを意味します。",
+        "pt": "#N/D significa 'Não Disponível' e indica que o valor não foi encontrado na tabela."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para envolver =BUSCARV(A2,B:C,2,0) y mostrar \"No encontrado\" si hay error:",
+      "promptByLocale": {
+        "es": "Arma la fórmula para envolver =BUSCARV(A2,B:C,2,0) y mostrar \"No encontrado\" si hay error:",
+        "en": "Build formula wrapping =VLOOKUP(A2,B:C,2,0) with IFERROR to show \"No encontrado\" on error:",
+        "de": "Baue die Formel, um =SVERWEIS(A2,B:C,2,0) mit WENNFEHLER zu schützen (\"No encontrado\"): ",
+        "fr": "Construisez la formule pour encapsuler =RECHERCHEV(A2,B:C,2,0) avec SIERREUR (\"No encontrado\") :",
+        "ja": "=VLOOKUP(A2,B:C,2,0) をIFERRORで囲み、エラー時に「No encontrado」と表示する数式を構築してください：",
+        "pt": "Monte a fórmula envolvendo =PROCV(A2,B:C,2,0) com SEERRO para exibir \"No encontrado\":"
+      },
+      "formula": "=SI.ERROR(BUSCARV(A2,B:C,2,0),\"No encontrado\")",
+      "formulaByLocale": {
+        "es": "=SI.ERROR(BUSCARV(A2,B:C,2,0),\"No encontrado\")",
+        "en": "=IFERROR(VLOOKUP(A2,B:C,2,0),\"No encontrado\")",
+        "de": "=WENNFEHLER(SVERWEIS(A2,B:C,2,0),\"No encontrado\")",
+        "fr": "=SIERREUR(RECHERCHEV(A2,B:C,2,0),\"No encontrado\")",
+        "ja": "=IFERROR(VLOOKUP(A2,B:C,2,0),\"No encontrado\")",
+        "pt": "=SEERRO(PROCV(A2,B:C,2,0),\"No encontrado\")"
+      },
+      "correct": "=SI.ERROR(BUSCARV(A2,B:C,2,0),\"No encontrado\")",
+      "correctByLocale": {
+        "es": "=SI.ERROR(BUSCARV(A2,B:C,2,0),\"No encontrado\")",
+        "en": "=IFERROR(VLOOKUP(A2,B:C,2,0),\"No encontrado\")",
+        "de": "=WENNFEHLER(SVERWEIS(A2,B:C,2,0),\"No encontrado\")",
+        "fr": "=SIERREUR(RECHERCHEV(A2,B:C,2,0),\"No encontrado\")",
+        "ja": "=IFERROR(VLOOKUP(A2,B:C,2,0),\"No encontrado\")",
+        "pt": "=SEERRO(PROCV(A2,B:C,2,0),\"No encontrado\")"
+      },
+      "blocks": [
+        "=SI.ERROR(",
+        "BUSCARV(A2,B:C,2,0),",
+        "\"No encontrado\")"
+      ],
+      "blocksByLocale": {
+        "es": [
+          "=SI.ERROR(",
+          "BUSCARV(A2,B:C,2,0),",
+          "\"No encontrado\")"
+        ],
+        "en": [
+          "=IFERROR(",
+          "VLOOKUP(A2,B:C,2,0),",
+          "\"No encontrado\")"
+        ],
+        "de": [
+          "=WENNFEHLER(",
+          "SVERWEIS(A2,B:C,2,0),",
+          "\"No encontrado\")"
+        ],
+        "fr": [
+          "=SIERREUR(",
+          "RECHERCHEV(A2,B:C,2,0),",
+          "\"No encontrado\")"
+        ],
+        "ja": [
+          "=IFERROR(",
+          "VLOOKUP(A2,B:C,2,0),",
+          "\"No encontrado\")"
+        ],
+        "pt": [
+          "=SEERRO(",
+          "PROCV(A2,B:C,2,0),",
+          "\"No encontrado\")"
+        ]
+      },
+      "explanation": "Combinar SI.ERROR con BUSCARV evita mostrar códigos rotos y presenta reportes profesionales.",
+      "explanationByLocale": {
+        "es": "Combinar SI.ERROR con BUSCARV evita mostrar códigos rotos y presenta reportes profesionales.",
+        "en": "Pairing IFERROR with VLOOKUP cleans up reports and avoids unsightly error tags.",
+        "de": "WENNFEHLER fängt #NV sauber ab und stellt ansprechende Berichte sicher.",
+        "fr": "Combiner SIERREUR avec RECHERCHEV évite les affichages d'erreur disgracieux.",
+        "ja": "IFERRORと組み合わせることで #N/A の露出を防ぎ、ユーザーに優しい表示になります。",
+        "pt": "Combinar SEERRO com PROCV evita erros visíveis e mantém os relatórios elegantes."
+      }
+    }
+  ]
+}

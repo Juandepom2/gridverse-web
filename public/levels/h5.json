@@ -1,0 +1,90 @@
+{
+  "ref": "H5",
+  "title": "INDICE",
+  "titleByLocale": {
+    "es": "INDICE",
+    "en": "INDEX",
+    "de": "INDEX",
+    "fr": "INDEX",
+    "ja": "INDEX",
+    "pt": "ÍNDICE"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Si tienes una matriz en A1:B3, ¿qué hace la función =INDICE(A1:B3, 2, 1)?",
+      "promptByLocale": {
+        "es": "Si tienes una matriz en A1:B3, ¿qué hace la función =INDICE(A1:B3, 2, 1)?",
+        "en": "Given range A1:B3, what does =INDEX(A1:B3, 2, 1) return?",
+        "de": "Was liefert die Funktion =INDEX(A1:B3; 2; 1) für die Matrix A1:B3?",
+        "fr": "Étant donnée la plage A1:B3, que renvoie =INDEX(A1:B3; 2; 1) ?",
+        "ja": "A1:B3の範囲に対して、数式 =INDEX(A1:B3, 2, 1) は何を返しますか？",
+        "pt": "Dada a matriz em A1:B3, o que retorna a função =ÍNDICE(A1:B3; 2; 1)?"
+      },
+      "options": [
+        "El valor ubicado en la fila 2 y columna 1 (celda A2)",
+        "La suma de toda la fila 2",
+        "El número de celdas en el rango",
+        "Un valor aleatorio"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "El valor ubicado en la fila 2 y columna 1 (celda A2)",
+          "La suma de toda la fila 2",
+          "El número de celdas en el rango",
+          "Un valor aleatorio"
+        ],
+        "en": [
+          "The value at row 2, column 1 (cell A2)",
+          "The sum of all row 2 numbers",
+          "The total count of cells",
+          "A random value"
+        ],
+        "de": [
+          "Den Wert in Zeile 2, Spalte 1 (Zelle A2)",
+          "Die Summe der Zeile 2",
+          "Die Gesamtzahl der Zellen",
+          "Einen Zufallswert"
+        ],
+        "fr": [
+          "La valeur située à la ligne 2, colonne 1 (cellule A2)",
+          "La somme de la ligne 2",
+          "Le nombre total de cellules",
+          "Une valeur aléatoire"
+        ],
+        "ja": [
+          "指定範囲の「2行目・1列目」にある値（セルA2の値）",
+          "2行目の全数値の合計",
+          "範囲内のセル総数",
+          "ランダムな乱数"
+        ],
+        "pt": [
+          "O valor localizado na linha 2 e coluna 1 (célula A2)",
+          "A soma de toda a linha 2",
+          "O total de células no intervalo",
+          "Um valor aleatório"
+        ]
+      },
+      "correct": "El valor ubicado en la fila 2 y columna 1 (celda A2)",
+      "correctByLocale": {
+        "es": "El valor ubicado en la fila 2 y columna 1 (celda A2)",
+        "en": "The value at row 2, column 1 (cell A2)",
+        "de": "Den Wert in Zeile 2, Spalte 1 (Zelle A2)",
+        "fr": "La valeur située à la ligne 2, colonne 1 (cellule A2)",
+        "ja": "指定範囲の「2行目・1列目」にある値（セルA2の値）",
+        "pt": "O valor localizado na linha 2 e coluna 1 (célula A2)"
+      },
+      "explanation": "INDICE funciona como coordenadas GPS (matriz, núm_fila, núm_columna) para extraer cualquier celda.",
+      "explanationByLocale": {
+        "es": "INDICE funciona como coordenadas GPS (matriz, núm_fila, núm_columna) para extraer cualquier celda.",
+        "en": "INDEX works like GPS coordinates (array, row_num, col_num) to pinpoint any cell value.",
+        "de": "INDEX fungiert wie ein GPS-Koordinator (Matrix, Zeile, Spalte), um Werte punktgenau abzurufen.",
+        "fr": "INDEX agit comme des coordonnées GPS (plage, no_ligne, no_colonne) pour extraire une cellule.",
+        "ja": "INDEX関数はGPS座標のように（範囲, 行番号, 列番号）を指定して、目的のセルの値をピンポイントで取得します。",
+        "pt": "ÍNDICE funciona como coordenadas GPS (matriz, núm_linha, núm_coluna) para obter qualquer dado."
+      }
+    }
+  ]
+}

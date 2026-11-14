@@ -1,0 +1,384 @@
+{
+  "ref": "B9",
+  "title": "Referencias absolutas $A$1",
+  "titleByLocale": {
+    "es": "Referencias absolutas $A$1",
+    "en": "Absolute References $A$1",
+    "de": "Absolute Bezüge $A$1",
+    "fr": "Références absolues $A$1",
+    "ja": "絶対参照 $A$1",
+    "pt": "Referências absolutas $A$1"
+  },
+  "version": 1,
+  "rewardXp": 25,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué función tiene el signo de dólar ($) en una referencia como $A$1?",
+      "promptByLocale": {
+        "es": "¿Qué función tiene el signo de dólar ($) en una referencia como $A$1?",
+        "en": "What is the purpose of the dollar sign ($) in a reference like $A$1?",
+        "de": "Welche Funktion hat das Dollarzeichen ($) in einem Bezug wie $A$1?",
+        "fr": "À quoi sert le signe dollar ($) dans une référence comme $A$1 ?",
+        "ja": "参照「$A$1」においてドル記号（$）にはどんな役割がありますか？",
+        "pt": "Qual é a função do cifrão ($) em uma referência como $A$1?"
+      },
+      "formula": "$A$1",
+      "formulaByLocale": {
+        "es": "$A$1",
+        "en": "$A$1",
+        "de": "$A$1",
+        "fr": "$A$1",
+        "ja": "$A$1",
+        "pt": "$A$1"
+      },
+      "correct": "Fija la celda para que no cambie al arrastrar la fórmula",
+      "correctByLocale": {
+        "es": "Fija la celda para que no cambie al arrastrar la fórmula",
+        "en": "Locks the cell so it doesn't change when dragging the formula",
+        "de": "Fixiert die Zelle, damit sie sich beim Ziehen der Formel nicht ändert",
+        "fr": "Verrouille la cellule pour qu'elle ne change pas lors de l'étirement",
+        "ja": "数式をコピー・オートフィルしてもセル参照が変わらないよう固定する",
+        "pt": "Fixa a célula para que não mude ao arrastar a fórmula"
+      },
+      "data": {},
+      "options": [
+        "Fija la celda para que no cambie al arrastrar la fórmula",
+        "Convierte el valor a formato moneda",
+        "Calcula el porcentaje de la celda",
+        "Protege la celda con contraseña"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Fija la celda para que no cambie al arrastrar la fórmula",
+          "Convierte el valor a formato moneda",
+          "Calcula el porcentaje de la celda",
+          "Protege la celda con contraseña"
+        ],
+        "en": [
+          "Locks the cell so it doesn't change when dragging the formula",
+          "Converts the value to currency format",
+          "Calculates the percentage of the cell",
+          "Protects the cell with a password"
+        ],
+        "de": [
+          "Fixiert die Zelle, damit sie sich beim Ziehen der Formel nicht ändert",
+          "Formatiert den Wert als Währung",
+          "Berechnet den Prozentsatz der Zelle",
+          "Schützt die Zelle mit einem Passwort"
+        ],
+        "fr": [
+          "Verrouille la cellule pour qu'elle ne change pas lors de l'étirement",
+          "Convertit la valeur au format monétaire",
+          "Calcule le pourcentage de la cellule",
+          "Protège la cellule par un mot de passe"
+        ],
+        "ja": [
+          "数式をコピー・オートフィルしてもセル参照が変わらないよう固定する",
+          "値を通過表示形式に変換する",
+          "セルのパーセンテージを計算する",
+          "セルをパスワードで保護する"
+        ],
+        "pt": [
+          "Fixa a célula para que não mude ao arrastar a fórmula",
+          "Converte o valor para formato de moeda",
+          "Calcula a porcentagem da célula",
+          "Protege a célula com senha"
+        ]
+      },
+      "explanation": "El signo $ antepuesto a la columna y fila congela la referencia al copiar o arrastrar.",
+      "explanationByLocale": {
+        "es": "El signo $ antepuesto a la columna y fila congela la referencia al copiar o arrastrar.",
+        "en": "Placing $ before the column and row locks the reference when copying or autofilling.",
+        "de": "Ein $ vor Spalte und Zeile fixiert den Bezug beim Kopieren oder Ausfüllen.",
+        "fr": "Le signe $ placé devant la colonne et la ligne fige la référence lors de la copie ou de l'étirement.",
+        "ja": "列と行の前に「$」を付けることで、数式をコピーやオートフィルしても参照位置が固定されます。",
+        "pt": "O sinal $ antes da coluna e da linha congela a referência ao copiar ou arrastar."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Toca la celda D1 donde está guardado el porcentaje de impuesto (16%).",
+      "promptByLocale": {
+        "es": "Toca la celda D1 donde está guardado el porcentaje de impuesto (16%).",
+        "en": "Tap cell D1 where the tax rate (16%) is stored.",
+        "de": "Tippe auf Zelle D1, in der der Steuersatz (16%) gespeichert ist.",
+        "fr": "Touche la cellule D1 où le taux de taxe (16%) est enregistré.",
+        "ja": "税率（16%）が入力されているセル D1 をタップしてください。",
+        "pt": "Toque na célula D1 onde a taxa de imposto (16%) está armazenada."
+      },
+      "correct": "D1",
+      "data": {
+        "A1": "Prod",
+        "B1": "Precio",
+        "C1": "IVA",
+        "D1": "16%",
+        "A2": "Mouse",
+        "B2": "20",
+        "C2": "=B2*$D$1"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Prod",
+          "B1": "Precio",
+          "C1": "IVA",
+          "D1": "16%",
+          "A2": "Mouse",
+          "B2": "20",
+          "C2": "=B2*$D$1"
+        },
+        "en": {
+          "A1": "Item",
+          "B1": "Price",
+          "C1": "Tax",
+          "D1": "16%",
+          "A2": "Mouse",
+          "B2": "20",
+          "C2": "=B2*$D$1"
+        },
+        "de": {
+          "A1": "Prod",
+          "B1": "Preis",
+          "C1": "MwSt.",
+          "D1": "16%",
+          "A2": "Maus",
+          "B2": "20",
+          "C2": "=B2*$D$1"
+        },
+        "fr": {
+          "A1": "Prod",
+          "B1": "Prix",
+          "C1": "TVA",
+          "D1": "16%",
+          "A2": "Souris",
+          "B2": "20",
+          "C2": "=B2*$D$1"
+        },
+        "ja": {
+          "A1": "商品",
+          "B1": "単価",
+          "C1": "税額",
+          "D1": "16%",
+          "A2": "マウス",
+          "B2": "20",
+          "C2": "=B2*$D$1"
+        },
+        "pt": {
+          "A1": "Prod",
+          "B1": "Preço",
+          "C1": "Imposto",
+          "D1": "16%",
+          "A2": "Mouse",
+          "B2": "20",
+          "C2": "=B2*$D$1"
+        }
+      },
+      "explanation": "La celda D1 actúa como parámetro fijo para toda la tabla de precios.",
+      "explanationByLocale": {
+        "es": "La celda D1 actúa como parámetro fijo para toda la tabla de precios.",
+        "en": "Cell D1 acts as a fixed parameter for the entire price table.",
+        "de": "Zelle D1 dient als fester Parameter für die gesamte Preistabelle.",
+        "fr": "La cellule D1 sert de paramètre fixe pour tout le tableau des prix.",
+        "ja": "セル D1 は価格表全体で共通して使われる固定パラメータとして機能します。",
+        "pt": "A célula D1 atua como um parâmetro fixo para toda a tabela de preços."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para multiplicar el precio (B2) por el IVA fijo ($D$1).",
+      "promptByLocale": {
+        "es": "Arma la fórmula para multiplicar el precio (B2) por el IVA fijo ($D$1).",
+        "en": "Build the formula to multiply the price (B2) by the fixed tax rate ($D$1).",
+        "de": "Erstelle die Formel, um den Preis (B2) mit dem festen Steuersatz ($D$1) zu multiplizieren.",
+        "fr": "Construis la formule pour multiplier le prix (B2) par la TVA fixe ($D$1).",
+        "ja": "単価（B2）に固定の税率（$D$1）を掛ける数式を組み立ててください。",
+        "pt": "Monte a fórmula para multiplicar o preço (B2) pelo imposto fixo ($D$1)."
+      },
+      "correct": "=B2*$D$1",
+      "blocks": [
+        "=",
+        "B2",
+        "*",
+        "$D$1",
+        "D1"
+      ],
+      "explanation": "Mantener $D$1 congelado permite calcular el impuesto de cada fila sin que la referencia baje.",
+      "explanationByLocale": {
+        "es": "Mantener $D$1 congelado permite calcular el impuesto de cada fila sin que la referencia baje.",
+        "en": "Keeping $D$1 locked allows calculating tax for each row without shifting the reference down.",
+        "de": "Durch das Fixieren von $D$1 wird die Steuer jeder Zeile berechnet, ohne dass der Bezug nach unten rutscht.",
+        "fr": "Garder $D$1 figé permet de calculer la taxe de chaque ligne sans que la référence ne glisse vers le bas.",
+        "ja": "「$D$1」と固定しておくことで、数式を下の行にコピーしても参照先がズレずに税額を計算できます。",
+        "pt": "Manter $D$1 congelado permite calcular o imposto de cada linha sem que a referência desça."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si arrastras =B2*$D$1 hacia abajo a la fila 3, ¿cómo queda la fórmula?",
+      "promptByLocale": {
+        "es": "Si arrastras =B2*$D$1 hacia abajo a la fila 3, ¿cómo queda la fórmula?",
+        "en": "If you drag =B2*$D$1 down to row 3, what does the formula become?",
+        "de": "Wenn du =B2*$D$1 nach unten in Zeile 3 ziehst, wie lautet die Formel dann?",
+        "fr": "Si tu étires =B2*$D$1 vers le bas jusqu'à la ligne 3, que devient la formule ?",
+        "ja": "「=B2*$D$1」を下の行（3行目）へオートフィルした場合、数式はどう変化しますか？",
+        "pt": "Se você arrastar =B2*$D$1 para baixo até a linha 3, como a fórmula fica?"
+      },
+      "formula": "Arrastre hacia abajo",
+      "formulaByLocale": {
+        "es": "Arrastre hacia abajo",
+        "en": "Drag down",
+        "de": "Nach unten ziehen",
+        "fr": "Étirement vers le bas",
+        "ja": "下方向へオートフィル",
+        "pt": "Arrastar para baixo"
+      },
+      "correct": "=B3*$D$1",
+      "data": {},
+      "options": [
+        "=B3*$D$1",
+        "=B3*$D$2",
+        "=B2*$D$1",
+        "=B3*D1"
+      ],
+      "explanation": "B2 avanza a B3 por ser relativa, mientras que $D$1 permanece inmóvil por ser absoluta.",
+      "explanationByLocale": {
+        "es": "B2 avanza a B3 por ser relativa, mientras que $D$1 permanece inmóvil por ser absoluta.",
+        "en": "B2 advances to B3 because it is relative, while $D$1 stays fixed because it is absolute.",
+        "de": "B2 wird zu B3, da es relativ ist, während $D$1 als absoluter Bezug unverändert bleibt.",
+        "fr": "B2 devient B3 car elle est relative, tandis que $D$1 reste immobile car elle est absolue.",
+        "ja": "相対参照の B2 は B3 に移動しますが、絶対参照の $D$1 は固定されているため変化しません。",
+        "pt": "B2 avança para B3 por ser relativa, enquanto $D$1 permanece imóvel por ser absoluta."
+      },
+      "optionsByLocale": {
+        "es": [
+          "=B3*$D$1",
+          "=B3*$D$2",
+          "=B2*$D$1",
+          "=B3*D1"
+        ],
+        "en": [
+          "=B3*$D$1",
+          "=B3*$D$2",
+          "=B2*$D$1",
+          "=B3*D1"
+        ],
+        "de": [
+          "=B3*$D$1",
+          "=B3*$D$2",
+          "=B2*$D$1",
+          "=B3*D1"
+        ],
+        "fr": [
+          "=B3*$D$1",
+          "=B3*$D$2",
+          "=B2*$D$1",
+          "=B3*D1"
+        ],
+        "ja": [
+          "=B3*$D$1",
+          "=B3*$D$2",
+          "=B2*$D$1",
+          "=B3*D1"
+        ],
+        "pt": [
+          "=B3*$D$1",
+          "=B3*$D$2",
+          "=B2*$D$1",
+          "=B3*D1"
+        ]
+      },
+      "correctByLocale": {
+        "es": "=B3*$D$1",
+        "en": "=B3*$D$1",
+        "de": "=B3*$D$1",
+        "fr": "=B3*$D$1",
+        "ja": "=B3*$D$1",
+        "pt": "=B3*$D$1"
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué tecla rápida en Excel alterna los signos de dólar ($A$1, A$1, $A1, A1)?",
+      "promptByLocale": {
+        "es": "¿Qué tecla rápida en Excel alterna los signos de dólar ($A$1, A$1, $A1, A1)?",
+        "en": "Which shortcut key in Excel toggles dollar signs ($A$1, A$1, $A1, A1)?",
+        "de": "Mit welcher Taste wechselt man in Excel zwischen Dollarzeichen ($A$1, A$1, $A1, A1)?",
+        "fr": "Quelle touche de raccourci dans Excel permet de basculer les signes dollar ($A$1, A$1, $A1, A1) ?",
+        "ja": "Excelで参照のドル記号を切り替える（$A$1、A$1、$A1、A1）ショートカットキーは何ですか？",
+        "pt": "Qual tecla de atalho no Excel alterna os sinais de cifrão ($A$1, A$1, $A1, A1)?"
+      },
+      "formula": "Atajo de fijación",
+      "formulaByLocale": {
+        "es": "Atajo de fijación",
+        "en": "Locking shortcut",
+        "de": "Tastenkürzel Bezugsart",
+        "fr": "Raccourci de verrouillage",
+        "ja": "絶対参照の切替キー",
+        "pt": "Atalho de fixação"
+      },
+      "correct": "F4 (o Fn + F4 en laptop)",
+      "correctByLocale": {
+        "es": "F4 (o Fn + F4 en laptop)",
+        "en": "F4 (or Fn + F4 on laptop)",
+        "de": "F4 (oder Fn + F4 auf dem Laptop)",
+        "fr": "F4 (ou Fn + F4 sur ordinateur portable)",
+        "ja": "F4（ノートPCでは Fn + F4）",
+        "pt": "F4 (ou Fn + F4 no notebook)"
+      },
+      "data": {},
+      "options": [
+        "F4 (o Fn + F4 en laptop)",
+        "F2",
+        "Ctrl + D",
+        "Alt + F1"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "F4 (o Fn + F4 en laptop)",
+          "F2",
+          "Ctrl + D",
+          "Alt + F1"
+        ],
+        "en": [
+          "F4 (or Fn + F4 on laptop)",
+          "F2",
+          "Ctrl + D",
+          "Alt + F1"
+        ],
+        "de": [
+          "F4 (oder Fn + F4 auf dem Laptop)",
+          "F2",
+          "Strg + D",
+          "Alt + F1"
+        ],
+        "fr": [
+          "F4 (ou Fn + F4 sur ordinateur portable)",
+          "F2",
+          "Ctrl + D",
+          "Alt + F1"
+        ],
+        "ja": [
+          "F4（ノートPCでは Fn + F4）",
+          "F2",
+          "Ctrl + D",
+          "Alt + F1"
+        ],
+        "pt": [
+          "F4 (ou Fn + F4 no notebook)",
+          "F2",
+          "Ctrl + D",
+          "Alt + F1"
+        ]
+      },
+      "explanation": "F4 cicla sucesivamente entre los 4 estados de referencias relativas, mixtas y absolutas.",
+      "explanationByLocale": {
+        "es": "F4 cicla sucesivamente entre los 4 estados de referencias relativas, mixtas y absolutas.",
+        "en": "F4 cycles sequentially through the 4 states: relative, mixed, and absolute references.",
+        "de": "F4 wechselt nacheinander durch die 4 Zustände: relative, gemischte und absolute Bezüge.",
+        "fr": "F4 fait défiler successivement les 4 états de références : relatives, mixtes et absolues.",
+        "ja": "F4キーを押すたびに、相対参照・複合参照・絶対参照の4つの状態が順番に切り替わります。",
+        "pt": "F4 alterna sucessivamente entre os 4 estados de referências relativas, mistas e absolutas."
+      }
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "ref": "E5",
+  "title": "EXTRAE",
+  "titleByLocale": {
+    "es": "EXTRAE",
+    "en": "MID",
+    "de": "TEIL",
+    "fr": "STXT",
+    "ja": "MID",
+    "pt": "EXT.TEXTO"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cuáles son los 3 argumentos obligatorios de la función =EXTRAE?",
+      "promptByLocale": {
+        "es": "¿Cuáles son los 3 argumentos obligatorios de la función =EXTRAE?",
+        "en": "What are the 3 mandatory arguments of the =MID function?",
+        "de": "Welche 3 Argumente erwartet die Funktion =TEIL zwingend?",
+        "fr": "Quels sont les 3 arguments obligatoires de la fonction =STXT ?",
+        "ja": "=MID 関数の3つの必須引数は何ですか？",
+        "pt": "Quais são os 3 argumentos obrigatórios da função =EXT.TEXTO?"
+      },
+      "options": [
+        "texto, posición_inicial, núm_caracteres",
+        "texto, buscar, reemplazar",
+        "rango, fila, columna",
+        "número, decimales, formato"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "texto, posición_inicial, núm_caracteres",
+          "texto, buscar, reemplazar",
+          "rango, fila, columna",
+          "número, decimales, formato"
+        ],
+        "en": [
+          "text, start_num, num_chars",
+          "text, find, replace",
+          "range, row, column",
+          "number, decimals, format"
+        ],
+        "de": [
+          "Text, Erstes_Zeichen, Anzahl_Zeichen",
+          "Text, Suchen, Ersetzen",
+          "Bereich, Zeile, Spalte",
+          "Zahl, Dezimalstellen, Format"
+        ],
+        "fr": [
+          "texte, no_départ, nb_caractères",
+          "texte, chercher, remplacer",
+          "plage, ligne, colonne",
+          "nombre, décimales, format"
+        ],
+        "ja": [
+          "文字列, 開始位置, 文字数",
+          "文字列, 検索文字, 置換文字",
+          "範囲, 行番号, 列番号",
+          "数値, 桁数, 表示形式"
+        ],
+        "pt": [
+          "texto, número_inicial, núm_caract",
+          "texto, localizar, substituir",
+          "intervalo, linha, coluna",
+          "número, decimais, formato"
+        ]
+      },
+      "correct": "texto, posición_inicial, núm_caracteres",
+      "correctByLocale": {
+        "es": "texto, posición_inicial, núm_caracteres",
+        "en": "text, start_num, num_chars",
+        "de": "Text, Erstes_Zeichen, Anzahl_Zeichen",
+        "fr": "texte, no_départ, nb_caractères",
+        "ja": "文字列, 開始位置, 文字数",
+        "pt": "texto, número_inicial, núm_caract"
+      },
+      "explanation": "EXTRAE (MID) permite recortar una subcadena desde el medio de un texto indicando dónde arrancar y cuántas letras tomar.",
+      "explanationByLocale": {
+        "es": "EXTRAE (MID) permite recortar una subcadena desde el medio de un texto indicando dónde arrancar y cuántas letras tomar.",
+        "en": "MID extracts characters from the middle of a string given a starting position and length.",
+        "de": "TEIL extrahiert Zeichen aus der Mitte einer Zeichenfolge basierend auf Startposition und Länge.",
+        "fr": "STXT extrait des caractères du milieu d'un texte à partir d'une position de départ et d'une longueur.",
+        "ja": "MID関数は指定した開始位置から指定した文字数分だけ、文字列の途中を抜き出します。",
+        "pt": "EXT.TEXTO extrai caracteres do meio de um texto a partir de uma posição inicial e quantidade de letras."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si en A1 tienes el código \"PROD-8821-X\", ¿qué devuelve =EXTRAE(A1, 6, 4)?",
+      "promptByLocale": {
+        "es": "Si en A1 tienes el código \"PROD-8821-X\", ¿qué devuelve =EXTRAE(A1, 6, 4)?",
+        "en": "If A1 contains \"PROD-8821-X\", what does =MID(A1, 6, 4) return?",
+        "de": "Wenn A1 \"PROD-8821-X\" enthält, was liefert =TEIL(A1; 6; 4)?",
+        "fr": "Si A1 contient \"PROD-8821-X\", que renvoie =STXT(A1; 6; 4) ?",
+        "ja": "A1に「PROD-8821-X」がある場合、=MID(A1, 6, 4) は何を返しますか？",
+        "pt": "Se em A1 você tem \"PROD-8821-X\", o que retorna =EXT.TEXTO(A1; 6; 4)?"
+      },
+      "options": ["8821", "-882", "8821-", "PROD"],
+      "optionsByLocale": {
+        "es": ["8821", "-882", "8821-", "PROD"],
+        "en": ["8821", "-882", "8821-", "PROD"],
+        "de": ["8821", "-882", "8821-", "PROD"],
+        "fr": ["8821", "-882", "8821-", "PROD"],
+        "ja": ["8821", "-882", "8821-", "PROD"],
+        "pt": ["8821", "-882", "8821-", "PROD"]
+      },
+      "correct": "8821",
+      "correctByLocale": {
+        "es": "8821",
+        "en": "8821",
+        "de": "8821",
+        "fr": "8821",
+        "ja": "8821",
+        "pt": "8821"
+      },
+      "explanation": "En \"PROD-8821-X\", la posición 6 es el primer '8', y tomando 4 caracteres extrae exactamente '8821'.",
+      "explanationByLocale": {
+        "es": "En \"PROD-8821-X\", la posición 6 es el primer '8', y tomando 4 caracteres extrae exactamente '8821'.",
+        "en": "In \"PROD-8821-X\", character 6 is the first '8', and taking 4 characters yields '8821'.",
+        "de": "Bei \"PROD-8821-X\" ist Position 6 die erste '8', 4 Zeichen ergeben exakt '8821'.",
+        "fr": "Dans \"PROD-8821-X\", la position 6 est le premier '8', et 4 caractères donnent '8821'.",
+        "ja": "「PROD-8821-X」の6文字目は最初の「8」で、そこから4文字取り出すと「8821」になります。",
+        "pt": "Em \"PROD-8821-X\", a posição 6 é o primeiro '8', e pegando 4 caracteres resulta em '8821'."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para extraer 3 caracteres de A2 a partir de la posición 2:",
+      "promptByLocale": {
+        "es": "Arma la fórmula para extraer 3 caracteres de A2 a partir de la posición 2:",
+        "en": "Build formula to extract 3 characters from A2 starting at position 2:",
+        "de": "Baue die Formel, um 3 Zeichen aus A2 ab Position 2 zu extrahieren:",
+        "fr": "Construisez la formule pour extraire 3 caractères de A2 à partir de la position 2 :",
+        "ja": "A2の2文字目から3文字分を抽出する数式を構築してください：",
+        "pt": "Monte a fórmula para extrair 3 caracteres de A2 a partir da posição 2:"
+      },
+      "formula": "=EXTRAE(A2,2,3)",
+      "formulaByLocale": {
+        "es": "=EXTRAE(A2,2,3)",
+        "en": "=MID(A2,2,3)",
+        "de": "=TEIL(A2,2,3)",
+        "fr": "=STXT(A2,2,3)",
+        "ja": "=MID(A2,2,3)",
+        "pt": "=EXT.TEXTO(A2,2,3)"
+      },
+      "correct": "=EXTRAE(A2,2,3)",
+      "correctByLocale": {
+        "es": "=EXTRAE(A2,2,3)",
+        "en": "=MID(A2,2,3)",
+        "de": "=TEIL(A2,2,3)",
+        "fr": "=STXT(A2,2,3)",
+        "ja": "=MID(A2,2,3)",
+        "pt": "=EXT.TEXTO(A2,2,3)"
+      },
+      "blocks": ["=EXTRAE(", "A2,", "2,", "3)"],
+      "blocksByLocale": {
+        "es": ["=EXTRAE(", "A2,", "2,", "3)"],
+        "en": ["=MID(", "A2,", "2,", "3)"],
+        "de": ["=TEIL(", "A2,", "2,", "3)"],
+        "fr": ["=STXT(", "A2,", "2,", "3)"],
+        "ja": ["=MID(", "A2,", "2,", "3)"],
+        "pt": ["=EXT.TEXTO(", "A2,", "2,", "3)"]
+      },
+      "explanation": "=EXTRAE(A2, 2, 3) salta el primer carácter y extrae los 3 siguientes.",
+      "explanationByLocale": {
+        "es": "=EXTRAE(A2, 2, 3) salta el primer carácter y extrae los 3 siguientes.",
+        "en": "=MID(A2, 2, 3) skips the first character and extracts the next 3 characters.",
+        "de": "=TEIL(A2, 2, 3) überspringt das erste Zeichen und nimmt die folgenden 3.",
+        "fr": "=STXT(A2, 2, 3) saute le premier caractère et extrait les 3 suivants.",
+        "ja": "=MID(A2, 2, 3) で先頭1文字を飛ばし、続く3文字を正確に抜き出せます。",
+        "pt": "=EXT.TEXTO(A2, 2, 3) pula o primeiro caractere e extrai os 3 seguintes."
+      }
+    }
+  ]
+}
+

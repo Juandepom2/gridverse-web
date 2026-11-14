@@ -1,0 +1,173 @@
+{
+  "ref": "I1",
+  "title": "SUMAR.SI",
+  "titleByLocale": {
+    "es": "SUMAR.SI",
+    "en": "SUMIF",
+    "de": "SUMMEWENN",
+    "fr": "SOMME.SI",
+    "ja": "SUMIF",
+    "pt": "SOMASE"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cuál es la sintaxis y orden correcto de argumentos de la función =SUMAR.SI?",
+      "promptByLocale": {
+        "es": "¿Cuál es la sintaxis y orden correcto de argumentos de la función =SUMAR.SI?",
+        "en": "What is the correct syntax and argument order for the =SUMIF function?",
+        "de": "Wie lautet die korrekte Reihenfolge der Argumente bei =SUMMEWENN?",
+        "fr": "Quel est l'ordre correct des arguments dans la fonction =SOMME.SI ?",
+        "ja": "=SUMIF 関数の正しい引数の順序はどれですか？",
+        "pt": "Qual é a ordem correta dos argumentos na função =SOMASE?"
+      },
+      "options": [
+        "rango, criterio, [rango_suma]",
+        "rango_suma, rango, criterio",
+        "criterio, rango, rango_suma",
+        "rango, número, condición"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "rango, criterio, [rango_suma]",
+          "rango_suma, rango, criterio",
+          "criterio, rango, rango_suma",
+          "rango, número, condición"
+        ],
+        "en": [
+          "range, criteria, [sum_range]",
+          "sum_range, range, criteria",
+          "criteria, range, sum_range",
+          "range, number, condition"
+        ],
+        "de": [
+          "Bereich, Suchkriterien, [Summe_Bereich]",
+          "Summe_Bereich, Bereich, Suchkriterien",
+          "Suchkriterien, Bereich, Summe_Bereich",
+          "Bereich, Zahl, Bedingung"
+        ],
+        "fr": [
+          "plage, critère, [somme_plage]",
+          "somme_plage, plage, critère",
+          "critère, plage, somme_plage",
+          "plage, nombre, condition"
+        ],
+        "ja": [
+          "範囲, 検索条件, [合計範囲]",
+          "合計範囲, 範囲, 検索条件",
+          "検索条件, 範囲, 合計範囲",
+          "範囲, 数値, 条件"
+        ],
+        "pt": [
+          "intervalo, critérios, [intervalo_soma]",
+          "intervalo_soma, intervalo, critérios",
+          "critérios, intervalo, intervalo_soma",
+          "intervalo, número, condição"
+        ]
+      },
+      "correct": "rango, criterio, [rango_suma]",
+      "correctByLocale": {
+        "es": "rango, criterio, [rango_suma]",
+        "en": "range, criteria, [sum_range]",
+        "de": "Bereich, Suchkriterien, [Summe_Bereich]",
+        "fr": "plage, critère, [somme_plage]",
+        "ja": "範囲, 検索条件, [合計範囲]",
+        "pt": "intervalo, critérios, [intervalo_soma]"
+      },
+      "explanation": "SUMAR.SI evalúa primero el rango con el criterio y suma las celdas correspondientes de rango_suma.",
+      "explanationByLocale": {
+        "es": "SUMAR.SI evalúa primero el rango con el criterio y suma las celdas correspondientes de rango_suma.",
+        "en": "SUMIF tests the range against criteria and adds matching rows from sum_range.",
+        "de": "SUMMEWENN prüft den Bereich auf das Kriterium und addiert die passenden Werte aus Summe_Bereich.",
+        "fr": "SOMME.SI teste la plage avec le critère et additionne les cellules correspondantes de somme_plage.",
+        "ja": "SUMIFは第1引数の範囲で条件を判定し、一致した行の合計範囲の数値を合算します。",
+        "pt": "SOMASE avalia o intervalo pelo critério e soma as células correspondentes de intervalo_soma."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para sumar las ventas en B2:B5 solo donde la categoría en A2:A5 sea \"Norte\":",
+      "promptByLocale": {
+        "es": "Arma la fórmula para sumar las ventas en B2:B5 solo donde la categoría en A2:A5 sea \"Norte\":",
+        "en": "Build formula to sum sales in B2:B5 only where region in A2:A5 equals \"Norte\":",
+        "de": "Baue die Formel, um Verkäufe in B2:B5 nur für Region \"Norte\" in A2:A5 zu summieren:",
+        "fr": "Construisez la formule pour sommer B2:B5 uniquement si la région en A2:A5 est \"Norte\" :",
+        "ja": "A2:A5が「Norte」である行のみ、B2:B5の売上を合計する数式を構築してください：",
+        "pt": "Monte a fórmula para somar B2:B5 apenas onde a região em A2:A5 for \"Norte\":"
+      },
+      "formula": "=SUMAR.SI(A2:A5,\"Norte\",B2:B5)",
+      "formulaByLocale": {
+        "es": "=SUMAR.SI(A2:A5,\"Norte\",B2:B5)",
+        "en": "=SUMIF(A2:A5,\"Norte\",B2:B5)",
+        "de": "=SUMMEWENN(A2:A5,\"Norte\",B2:B5)",
+        "fr": "=SOMME.SI(A2:A5,\"Norte\",B2:B5)",
+        "ja": "=SUMIF(A2:A5,\"Norte\",B2:B5)",
+        "pt": "=SOMASE(A2:A5,\"Norte\",B2:B5)"
+      },
+      "correct": "=SUMAR.SI(A2:A5,\"Norte\",B2:B5)",
+      "correctByLocale": {
+        "es": "=SUMAR.SI(A2:A5,\"Norte\",B2:B5)",
+        "en": "=SUMIF(A2:A5,\"Norte\",B2:B5)",
+        "de": "=SUMMEWENN(A2:A5,\"Norte\",B2:B5)",
+        "fr": "=SOMME.SI(A2:A5,\"Norte\",B2:B5)",
+        "ja": "=SUMIF(A2:A5,\"Norte\",B2:B5)",
+        "pt": "=SOMASE(A2:A5,\"Norte\",B2:B5)"
+      },
+      "blocks": [
+        "=SUMAR.SI(",
+        "A2:A5,",
+        "\"Norte\",",
+        "B2:B5)"
+      ],
+      "blocksByLocale": {
+        "es": [
+          "=SUMAR.SI(",
+          "A2:A5,",
+          "\"Norte\",",
+          "B2:B5)"
+        ],
+        "en": [
+          "=SUMIF(",
+          "A2:A5,",
+          "\"Norte\",",
+          "B2:B5)"
+        ],
+        "de": [
+          "=SUMMEWENN(",
+          "A2:A5,",
+          "\"Norte\",",
+          "B2:B5)"
+        ],
+        "fr": [
+          "=SOMME.SI(",
+          "A2:A5,",
+          "\"Norte\",",
+          "B2:B5)"
+        ],
+        "ja": [
+          "=SUMIF(",
+          "A2:A5,",
+          "\"Norte\",",
+          "B2:B5)"
+        ],
+        "pt": [
+          "=SOMASE(",
+          "A2:A5,",
+          "\"Norte\",",
+          "B2:B5)"
+        ]
+      },
+      "explanation": "Permite totalizar subconjuntos específicos sin tener que filtrar o copiar datos a otra hoja.",
+      "explanationByLocale": {
+        "es": "Permite totalizar subconjuntos específicos sin tener que filtrar o copiar datos a otra hoja.",
+        "en": "Allows totaling specific subsets directly without filtering or duplicating data.",
+        "de": "Ermöglicht Teilergebnisse für Untergruppen ohne manuelles Filtern.",
+        "fr": "Permet de totaliser des sous-ensembles spécifiques sans filtrer manuellement.",
+        "ja": "手動でフィルターをかけたり別シートにコピーすることなく、条件に合う行だけを集計できます。",
+        "pt": "Permite totalizar subconjuntos específicos sem necessidade de filtrar manualmente."
+      }
+    }
+  ]
+}

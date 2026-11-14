@@ -1,0 +1,90 @@
+{
+  "ref": "G8",
+  "title": "Gráfico circular (y riesgos)",
+  "titleByLocale": {
+    "es": "Gráfico circular (y riesgos)",
+    "en": "Pie Charts (and Pitfalls)",
+    "de": "Kreisdiagramme (und Fallstricke)",
+    "fr": "Graphiques à secteurs (et pièges)",
+    "ja": "円グラフ（とその注意点）",
+    "pt": "Gráfico de pizza (e armadilhas)"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cuál es la regla de oro al usar gráficos circulares (de pastel / pizza)?",
+      "promptByLocale": {
+        "es": "¿Cuál es la regla de oro al usar gráficos circulares (de pastel / pizza)?",
+        "en": "What is the golden rule when using pie charts?",
+        "de": "Was ist die goldene Regel beim Einsatz von Kreisdiagrammen (Tortendiagrammen)?",
+        "fr": "Quelle est la règle d'or lors de l'utilisation de graphiques à secteurs (camembert) ?",
+        "ja": "円グラフを使用する際の鉄則（最大の注意点）は何ですか？",
+        "pt": "Qual é a regra de ouro ao usar gráficos de pizza (circulares)?"
+      },
+      "options": [
+        "Usar máximo 5 a 7 rebanadas y sumar obligatoriamente el 100% de un total",
+        "Tener al menos 25 sectores para que se vea detallado",
+        "Usar siempre efectos 3D inclinados con sombras pesadas",
+        "Incluir números negativos para dar variedad"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Usar máximo 5 a 7 rebanadas y sumar obligatoriamente el 100% de un total",
+          "Tener al menos 25 sectores para que se vea detallado",
+          "Usar siempre efectos 3D inclinados con sombras pesadas",
+          "Incluir números negativos para dar variedad"
+        ],
+        "en": [
+          "Limit to 5-7 slices maximum, representing parts of a single 100% whole",
+          "Include at least 25 slices for maximum granularity",
+          "Always apply tilted 3D extrusion and heavy drop shadows",
+          "Use negative numbers to enhance visual contrast"
+        ],
+        "de": [
+          "Maximal 5-7 Segmente nutzen, die zusammen 100 % eines Ganzen ergeben",
+          "Mindestens 25 Teile darstellen",
+          "Stets 3D-Effekte und Schatten verwenden",
+          "Negative Zahlen für Abwechslung nutzen"
+        ],
+        "fr": [
+          "Limiter à 5-7 secteurs maximum représentant 100 % d'un ensemble",
+          "Afficher au moins 25 secteurs détaillés",
+          "Toujours utiliser des effets 3D inclinés",
+          "Mélanger des nombres négatifs"
+        ],
+        "ja": [
+          "項目（扇形）は最大5〜7個程度に抑え、全体で必ず合計100%になること",
+          "詳細に見せるため少なくとも25以上の扇形に細分化する",
+          "常に立体的な3D効果や影を付ける",
+          "負の数値を含めてバリエーションを出す"
+        ],
+        "pt": [
+          "Usar no máximo 5 a 7 fatias e somar obrigatoriamente 100% de um todo",
+          "Incluir no mínimo 25 fatias para mais detalhes",
+          "Usar sempre efeitos 3D inclinados com sombras pesadas",
+          "Incluir números negativos para dar contraste"
+        ]
+      },
+      "correct": "Usar máximo 5 a 7 rebanadas y sumar obligatoriamente el 100% de un total",
+      "correctByLocale": {
+        "es": "Usar máximo 5 a 7 rebanadas y sumar obligatoriamente el 100% de un total",
+        "en": "Limit to 5-7 slices maximum, representing parts of a single 100% whole",
+        "de": "Maximal 5-7 Segmente nutzen, die zusammen 100 % eines Ganzen ergeben",
+        "fr": "Limiter à 5-7 secteurs maximum représentant 100 % d'un ensemble",
+        "ja": "項目（扇形）は最大5〜7個程度に抑え、全体で必ず合計100%になること",
+        "pt": "Usar no máximo 5 a 7 fatias e somar obrigatoriamente 100% de um todo"
+      },
+      "explanation": "Demasiadas rebanadas o el uso de 3D distorsionan las proporciones y hacen el gráfico ilegible.",
+      "explanationByLocale": {
+        "es": "Demasiadas rebanadas o el uso de 3D distorsionan las proporciones y hacen el gráfico ilegible.",
+        "en": "Too many slices or 3D angles deceive the eye and ruin readability. Stick to simple bars if categories exceed 7.",
+        "de": "Zu viele Segmente oder 3D-Perspektiven verzerren die Größenwahrnehmung dramatisch.",
+        "fr": "Trop de tranches ou la 3D faussent la lecture des proportions.",
+        "ja": "扇形が多すぎたり3D効果を適用すると比率の把握が困難になります。項目が多い場合は横棒グラフが適しています。",
+        "pt": "Muitas fatias ou perspectiva 3D distorcem as proporções e tornam a leitura confusa."
+      }
+    }
+  ]
+}

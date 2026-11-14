@@ -1,0 +1,338 @@
+{
+  "ref": "H9",
+  "title": "Jefe: Dato no disponible",
+  "version": 1,
+  "rewardXp": 40,
+  "exercises": [
+    {
+      "type": "find_error",
+      "prompt": "F2 muestra #N/D. Toca la celda con el error de búsqueda no encontrada:",
+      "correct": "F2",
+      "errorCell": "F2",
+      "data": {
+        "A1": "Código",
+        "B1": "Nombre",
+        "E1": "Buscando",
+        "F1": "Resultado",
+        "A2": "A01",
+        "B2": "Laptop",
+        "E2": "Z99",
+        "F2": "#N/D"
+      },
+      "displayValues": {
+        "E2": "Z99",
+        "F2": "#N/D"
+      },
+      "explanation": "El valor 'Z99' no existe en la primera columna de la tabla maestra, por lo que BUSCARV arroja #N/D (No Disponible).",
+      "promptByLocale": {
+        "es": "F2 muestra #N/D. Toca la celda con el error de búsqueda no encontrada:",
+        "en": "F2 displays #N/A. Tap the cell with the missing lookup error:",
+        "de": "F2 zeigt #NV. Tippe auf die Zelle mit dem Fehler für den nicht gefundenen Suchwert:",
+        "fr": "F2 affiche #N/A. Touche la cellule avec l'erreur de recherche introuvable :",
+        "ja": "F2が #N/A となっています。検索不一致エラーのセルをタップしてください：",
+        "pt": "F2 mostra #N/D. Toque na célula com o erro de busca não encontrada:"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Código",
+          "B1": "Nombre",
+          "E1": "Buscando",
+          "F1": "Resultado",
+          "A2": "A01",
+          "B2": "Laptop",
+          "E2": "Z99",
+          "F2": "#N/D"
+        },
+        "en": {
+          "A1": "Code",
+          "B1": "Name",
+          "E1": "Searching",
+          "F1": "Result",
+          "A2": "A01",
+          "B2": "Laptop",
+          "E2": "Z99",
+          "F2": "#N/A"
+        },
+        "de": {
+          "A1": "Code",
+          "B1": "Name",
+          "E1": "Suchwert",
+          "F1": "Ergebnis",
+          "A2": "A01",
+          "B2": "Laptop",
+          "E2": "Z99",
+          "F2": "#NV"
+        },
+        "fr": {
+          "A1": "Code",
+          "B1": "Nom",
+          "E1": "Recherche",
+          "F1": "Résultat",
+          "A2": "A01",
+          "B2": "Laptop",
+          "E2": "Z99",
+          "F2": "#N/A"
+        },
+        "ja": {
+          "A1": "コード",
+          "B1": "品名",
+          "E1": "検索値",
+          "F1": "検索結果",
+          "A2": "A01",
+          "B2": "ノートPC",
+          "E2": "Z99",
+          "F2": "#N/A"
+        },
+        "pt": {
+          "A1": "Código",
+          "B1": "Nome",
+          "E1": "Buscando",
+          "F1": "Resultado",
+          "A2": "A01",
+          "B2": "Laptop",
+          "E2": "Z99",
+          "F2": "#N/D"
+        }
+      },
+      "displayValuesByLocale": {
+        "es": {
+          "E2": "Z99",
+          "F2": "#N/D"
+        },
+        "en": {
+          "E2": "Z99",
+          "F2": "#N/A"
+        },
+        "de": {
+          "E2": "Z99",
+          "F2": "#NV"
+        },
+        "fr": {
+          "E2": "Z99",
+          "F2": "#N/A"
+        },
+        "ja": {
+          "E2": "Z99",
+          "F2": "#N/A"
+        },
+        "pt": {
+          "E2": "Z99",
+          "F2": "#N/D"
+        }
+      },
+      "explanationByLocale": {
+        "es": "El valor 'Z99' no existe en la primera columna de la tabla maestra, por lo que BUSCARV arroja #N/D.",
+        "en": "The value 'Z99' does not exist in the master table's first column, so VLOOKUP throws #N/A.",
+        "de": "Der Wert 'Z99' ist in der ersten Spalte nicht vorhanden, weshalb SVERWEIS #NV ausgibt.",
+        "fr": "La valeur 'Z99' n'existe pas dans la première colonne, RECHERCHEV renvoie #N/A.",
+        "ja": "値「Z99」がマスタテーブルの先頭列に存在しないため、BUSCARVは #N/A を返します。",
+        "pt": "O valor 'Z99' não existe na primeira coluna da tabela mestre, então o PROCV gera #N/D."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Por qué aparece el error #N/D en una función BUSCARV o BUSCARX?",
+      "formula": "#N/D",
+      "correct": "El valor buscado (Z99) no existe en la primera columna de la tabla",
+      "data": {},
+      "options": [
+        "El valor buscado (Z99) no existe en la primera columna de la tabla",
+        "Se agotó el espacio en el disco duro",
+        "La celda tiene un formato de fecha",
+        "Falta el signo de suma"
+      ],
+      "explanation": "#N/D (Not Available) significa que la búsqueda fue completada sin errores de sintaxis, pero el elemento no está en la base de datos.",
+      "promptByLocale": {
+        "es": "¿Por qué aparece el error #N/D en una función BUSCARV o BUSCARX?",
+        "en": "Why does the #N/A error appear in a VLOOKUP or XLOOKUP function?",
+        "de": "Warum tritt der Fehler #NV in einer SVERWEIS- oder XVERWEIS-Funktion auf?",
+        "fr": "Pourquoi l'erreur #N/A apparaît-elle dans une fonction RECHERCHEV ou RECHERCHEX ?",
+        "ja": "VLOOKUPやXLOOKUP関数で #N/A エラーが表示される理由は何ですか？",
+        "pt": "Por que o erro #N/D aparece em uma função PROCV ou PROCX?"
+      },
+      "formulaByLocale": {
+        "es": "#N/D",
+        "en": "#N/A",
+        "de": "#NV",
+        "fr": "#N/A",
+        "ja": "#N/A",
+        "pt": "#N/D"
+      },
+      "correctByLocale": {
+        "es": "El valor buscado (Z99) no existe en la primera columna de la tabla",
+        "en": "The lookup value (Z99) does not exist in the table's first column",
+        "de": "Der Suchwert (Z99) existiert nicht in der ersten Spalte der Tabelle",
+        "fr": "La valeur cherchée (Z99) n'existe pas dans la première colonne",
+        "ja": "検索値（Z99）が対象テーブルの先頭列に存在しないため",
+        "pt": "O valor buscado (Z99) não existe na primeira coluna da tabela"
+      },
+      "optionsByLocale": {
+        "es": [
+          "El valor buscado (Z99) no existe en la primera columna de la tabla",
+          "Se agotó el espacio en el disco duro",
+          "La celda tiene un formato de fecha",
+          "Falta el signo de suma"
+        ],
+        "en": [
+          "The lookup value (Z99) does not exist in the table's first column",
+          "Disk space is exhausted",
+          "The cell has a date format",
+          "A plus sign is missing"
+        ],
+        "de": [
+          "Der Suchwert (Z99) existiert nicht in der ersten Spalte der Tabelle",
+          "Festplattenspeicher ist voll",
+          "Die Zelle hat ein Datumsformat",
+          "Ein Pluszeichen fehlt"
+        ],
+        "fr": [
+          "La valeur cherchée (Z99) n'existe pas dans la première colonne",
+          "Disque dur saturé",
+          "La cellule est au format date",
+          "Il manque un signe plus"
+        ],
+        "ja": [
+          "検索値（Z99）が対象テーブルの先頭列に存在しないため",
+          "ハードディスクの空き容量が不足したため",
+          "セルが日付形式になっているため",
+          "プラス記号（+）が抜けているため"
+        ],
+        "pt": [
+          "O valor buscado (Z99) não existe na primeira coluna da tabela",
+          "Esgotou o espaço em disco",
+          "A célula tem formato de data",
+          "Falta o sinal de mais"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "#N/D (Not Available) significa que la búsqueda se completó sin errores de sintaxis, pero el elemento no está.",
+        "en": "#N/A means the formula executed properly, but the requested lookup item was not found.",
+        "de": "#NV bedeutet, dass die Syntax korrekt ausgeführt wurde, das gesuchte Element aber fehlt.",
+        "fr": "#N/A signifie que la formule est juste, mais que l'élément n'existe pas dans la table.",
+        "ja": "#N/A（Not Available）は数式自体は正しいものの、指定した要素が見つからないことを示します。",
+        "pt": "#N/D significa que a busca ocorreu normalmente, mas o item não foi localizado."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Protege la búsqueda: si no encuentra el código, que muestre \"No existe\".",
+      "correct": "=SI.ERROR(BUSCARV(E2,A2:B2,2,FALSO),\"No existe\")",
+      "blocks": [
+        "=",
+        "SI.ERROR(",
+        "BUSCARV(E2,A2:B2,2,FALSO)",
+        ",\"No existe\"",
+        ")"
+      ],
+      "explanation": "Envolver la búsqueda con =SI.ERROR() oculta el error y entrega un mensaje amigable al usuario.",
+      "promptByLocale": {
+        "es": "Protege la búsqueda: si no encuentra el código, que muestre \"No existe\".",
+        "en": "Protect the lookup: if the code is not found, display \"No existe\".",
+        "de": "Schütze die Suche: wenn der Code fehlt, zeige \"No existe\".",
+        "fr": "Protège la recherche : si le code est introuvable, afficher \"No existe\".",
+        "ja": "該当コードが見つからない場合に「No existe」と表示するよう検索式を保護してください。",
+        "pt": "Proteja a busca: se não encontrar o código, exiba \"No existe\"."
+      },
+      "explanationByLocale": {
+        "es": "Envolver la búsqueda con =SI.ERROR() oculta el error y entrega un mensaje amigable al usuario.",
+        "en": "Wrapping with =IFERROR() conceals errors and presents a clean, user-friendly fallback.",
+        "de": "Das Umschließen mit =WENNFEHLER() fängt den Fehler ab und liefert eine saubere Benachrichtigung.",
+        "fr": "Envelopper dans =SIERREUR() masque l'erreur technique pour un affichage soigné.",
+        "ja": "=SI.ERROR() で囲むことでエラー表示を防ぎ、分かりやすいメッセージを表示します。",
+        "pt": "Envolver com =SEERRO() oculta o erro e apresenta uma mensagem amigável ao usuário."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "En BUSCARX, ¿cómo se evita el error #N/D sin usar SI.ERROR?",
+      "formula": "=BUSCARX(..., [si_no_se_encuentra])",
+      "correct": "Completando el 4º argumento opcional [si_no_se_encuentra]",
+      "data": {},
+      "options": [
+        "Completando el 4º argumento opcional [si_no_se_encuentra]",
+        "No se puede evitar",
+        "Poniendo comillas en toda la fórmula",
+        "Cambiando el color de la fuente a blanco"
+      ],
+      "explanation": "BUSCARX incluye de fábrica el argumento [si_no_se_encuentra], eliminando la necesidad de anidar con SI.ERROR.",
+      "promptByLocale": {
+        "es": "En BUSCARX, ¿cómo se evita el error #N/D sin usar SI.ERROR?",
+        "en": "In XLOOKUP, how do you prevent the #N/A error without using IFERROR?",
+        "de": "Wie verhindert man in XVERWEIS den Fehler #NV, ohne WENNFEHLER zu nutzen?",
+        "fr": "Dans RECHERCHEX, comment évite-t-on l'erreur #N/A sans utiliser SIERREUR ?",
+        "ja": "XLOOKUP関数では、IFERRORを使わずに #N/A エラーを回避するにはどうしますか？",
+        "pt": "No PROCX, como se evita o erro #N/D sem usar SEERRO?"
+      },
+      "formulaByLocale": {
+        "es": "=BUSCARX(..., [si_no_se_encuentra])",
+        "en": "=XLOOKUP(..., [if_not_found])",
+        "de": "=XVERWEIS(..., [wenn_nicht_gefunden])",
+        "fr": "=RECHERCHEX(..., [si_non_trouvé])",
+        "ja": "=XLOOKUP(..., [見つからない場合])",
+        "pt": "=PROCX(..., [se_não_encontrado])"
+      },
+      "correctByLocale": {
+        "es": "Completando el 4º argumento opcional [si_no_se_encuentra]",
+        "en": "By completing the optional 4th argument [if_not_found]",
+        "de": "Durch Ausfüllen des 4. optionalen Arguments [wenn_nicht_gefunden]",
+        "fr": "En renseignant le 4e argument optionnel [si_non_trouvé]",
+        "ja": "第4引数（省略可能）の [見つからない場合] を設定する",
+        "pt": "Preenchendo o 4º argumento opcional [se_não_encontrado]"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Completando el 4º argumento opcional [si_no_se_encuentra]",
+          "No se puede evitar",
+          "Poniendo comillas en toda la fórmula",
+          "Cambiando el color de la fuente a blanco"
+        ],
+        "en": [
+          "By completing the optional 4th argument [if_not_found]",
+          "It cannot be prevented",
+          "Putting quotes around the entire formula",
+          "Changing font color to white"
+        ],
+        "de": [
+          "Durch Ausfüllen des 4. optionalen Arguments [wenn_nicht_gefunden]",
+          "Kann nicht vermieden werden",
+          "Die gesamte Formel in Anführungszeichen setzen",
+          "Die Schriftfarbe auf Weiß ändern"
+        ],
+        "fr": [
+          "En renseignant le 4e argument optionnel [si_non_trouvé]",
+          "On ne peut pas l'éviter",
+          "Mettre des guillemets autour de toute la formule",
+          "Changer la couleur de police en blanc"
+        ],
+        "ja": [
+          "第4引数（省略可能）の [見つからない場合] を設定する",
+          "エラーを防ぐ方法はない",
+          "数式全体を引用符で囲む",
+          "フォントの色を白に変更する"
+        ],
+        "pt": [
+          "Preenchendo o 4º argumento opcional [se_não_encontrado]",
+          "Não é possível evitar",
+          "Colocando aspas em toda a fórmula",
+          "Alterando a cor da fonte para branco"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "BUSCARX incluye de fábrica el argumento [si_no_se_encuentra], eliminando la necesidad de anidar con SI.ERROR.",
+        "en": "XLOOKUP features the built-in [if_not_found] argument, removing the need for nesting with IFERROR.",
+        "de": "XVERWEIS besitzt das integrierte Argument [wenn_nicht_gefunden], wodurch WENNFEHLER überflüssig wird.",
+        "fr": "RECHERCHEX intègre nativement l'argument [si_non_trouvé], évitant d'imbriquer avec SIERREUR.",
+        "ja": "XLOOKUPには組み込みの第4引数 [見つからない場合] が備わっており、IFERRORによるネストが不要になりました。",
+        "pt": "O PROCX inclui de fábrica o argumento [se_não_encontrado], dispensando o aninhamento com SEERRO."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Jefe: Búsqueda no encontrada",
+    "en": "Boss: Lookup Not Found",
+    "de": "Boss: Suchwert nicht gefunden",
+    "fr": "Boss : Recherche introuvable",
+    "ja": "ボス：検索不一致エラー",
+    "pt": "Chefe: Busca não encontrada"
+  }
+}

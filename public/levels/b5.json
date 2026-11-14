@@ -1,0 +1,379 @@
+{
+  "ref": "B5",
+  "title": "REDONDEAR y ENTERO",
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué devuelve la fórmula =REDONDEAR(15.674, 2)?",
+      "formula": "=REDONDEAR(15.674, 2)",
+      "correct": "15.67",
+      "data": {},
+      "options": [
+        "15.67",
+        "15.68",
+        "15.7",
+        "16"
+      ],
+      "explanation": "Al redondear a 2 decimales, como el tercer decimal es 4 (menor a 5), se redondea hacia abajo a 15.67.",
+      "promptByLocale": {
+        "es": "¿Qué devuelve la fórmula =REDONDEAR(15.674, 2)?",
+        "en": "What does the formula =ROUND(15.674, 2) return?",
+        "de": "Was liefert die Formel =RUNDEN(15.674; 2)?",
+        "fr": "Que renvoie la formule =ARRONDI(15,674; 2) ?",
+        "ja": "数式「=ROUND(15.674, 2)」の結果は何になりますか？",
+        "pt": "O que retorna a fórmula =ARRED(15,674; 2)?"
+      },
+      "formulaByLocale": {
+        "es": "=REDONDEAR(15.674, 2)",
+        "en": "=ROUND(15.674, 2)",
+        "de": "=RUNDEN(15.674, 2)",
+        "fr": "=ARRONDI(15.674, 2)",
+        "ja": "=ROUND(15.674, 2)",
+        "pt": "=ARRED(15.674, 2)"
+      },
+      "explanationByLocale": {
+        "es": "Como el 3er decimal es 4 (menor a 5), se redondea hacia abajo a 15.67.",
+        "en": "Since the 3rd decimal is 4 (less than 5), it rounds down to 15.67.",
+        "de": "Da die 3. Dezimalstelle 4 ist (kleiner als 5), wird auf 15.67 abgerundet.",
+        "fr": "La 3e décimale étant 4 (inférieure à 5), on arrondit vers le bas à 15,67.",
+        "ja": "小数第3位が4（5未満）のため、切り捨てられて 15.67 になります。",
+        "pt": "Como a 3ª casa decimal é 4 (menor que 5), arredonda-se para baixo para 15.67."
+      },
+      "optionsByLocale": {
+        "es": [
+          "15.67",
+          "15.68",
+          "15.7",
+          "16"
+        ],
+        "en": [
+          "15.67",
+          "15.68",
+          "15.7",
+          "16"
+        ],
+        "de": [
+          "15.67",
+          "15.68",
+          "15.7",
+          "16"
+        ],
+        "fr": [
+          "15.67",
+          "15.68",
+          "15.7",
+          "16"
+        ],
+        "ja": [
+          "15.67",
+          "15.68",
+          "15.7",
+          "16"
+        ],
+        "pt": [
+          "15.67",
+          "15.68",
+          "15.7",
+          "16"
+        ]
+      },
+      "correctByLocale": {
+        "es": "15.67",
+        "en": "15.67",
+        "de": "15.67",
+        "fr": "15.67",
+        "ja": "15.67",
+        "pt": "15.67"
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué devuelve la fórmula =REDONDEAR(15.675, 2)?",
+      "formula": "=REDONDEAR(15.675, 2)",
+      "correct": "15.68",
+      "data": {},
+      "options": [
+        "15.68",
+        "15.67",
+        "15.70",
+        "15"
+      ],
+      "explanation": "A partir de 5 en adelante, el valor sube al decimal superior (15.68).",
+      "promptByLocale": {
+        "es": "¿Qué devuelve la fórmula =REDONDEAR(15.675, 2)?",
+        "en": "What does the formula =ROUND(15.675, 2) return?",
+        "de": "Was liefert die Formel =RUNDEN(15.675; 2)?",
+        "fr": "Que renvoie la formule =ARRONDI(15,675; 2) ?",
+        "ja": "数式「=ROUND(15.675, 2)」の結果は何になりますか？",
+        "pt": "O que retorna a fórmula =ARRED(15,675; 2)?"
+      },
+      "formulaByLocale": {
+        "es": "=REDONDEAR(15.675, 2)",
+        "en": "=ROUND(15.675, 2)",
+        "de": "=RUNDEN(15.675, 2)",
+        "fr": "=ARRONDI(15.675, 2)",
+        "ja": "=ROUND(15.675, 2)",
+        "pt": "=ARRED(15.675, 2)"
+      },
+      "explanationByLocale": {
+        "es": "A partir de 5 en adelante, el valor sube al decimal superior (15.68).",
+        "en": "From 5 upwards, the value rounds up to the next decimal (15.68).",
+        "de": "Ab 5 wird zur nächsthöheren Dezimalstelle aufgerundet (15.68).",
+        "fr": "À partir de 5, la valeur est arrondie à la décimale supérieure (15,68).",
+        "ja": "小数第3位が5以上のため、切り上げられて 15.68 になります。",
+        "pt": "A partir de 5, o valor sobe para o decimal superior (15.68)."
+      },
+      "optionsByLocale": {
+        "es": [
+          "15.68",
+          "15.67",
+          "15.70",
+          "15"
+        ],
+        "en": [
+          "15.68",
+          "15.67",
+          "15.70",
+          "15"
+        ],
+        "de": [
+          "15.68",
+          "15.67",
+          "15.70",
+          "15"
+        ],
+        "fr": [
+          "15.68",
+          "15.67",
+          "15.70",
+          "15"
+        ],
+        "ja": [
+          "15.68",
+          "15.67",
+          "15.70",
+          "15"
+        ],
+        "pt": [
+          "15.68",
+          "15.67",
+          "15.70",
+          "15"
+        ]
+      },
+      "correctByLocale": {
+        "es": "15.68",
+        "en": "15.68",
+        "de": "15.68",
+        "fr": "15.68",
+        "ja": "15.68",
+        "pt": "15.68"
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué resultado arroja =ENTERO(29.99)?",
+      "formula": "=ENTERO(29.99)",
+      "correct": "29",
+      "data": {},
+      "options": [
+        "29",
+        "30",
+        "29.9",
+        "0"
+      ],
+      "explanation": "La función =ENTERO() trunca siempre hacia abajo al número entero más próximo, ignorando todos los decimales.",
+      "promptByLocale": {
+        "es": "¿Qué resultado arroja =ENTERO(29.99)?",
+        "en": "What result does =INT(29.99) produce?",
+        "de": "Welches Ergebnis liefert =GANZZAHL(29.99)?",
+        "fr": "Quel résultat donne =ENT(29,99) ?",
+        "ja": "数式「=INT(29.99)」の結果はいくつになりますか？",
+        "pt": "Qual resultado =INT(29,99) produz?"
+      },
+      "formulaByLocale": {
+        "es": "=ENTERO(29.99)",
+        "en": "=INT(29.99)",
+        "de": "=GANZZAHL(29.99)",
+        "fr": "=ENT(29.99)",
+        "ja": "=INT(29.99)",
+        "pt": "=INT(29.99)"
+      },
+      "explanationByLocale": {
+        "es": "ENTERO trunca siempre hacia abajo al entero inferior, dando 29.",
+        "en": "INT always rounds down to the nearest integer, returning 29.",
+        "de": "GANZZAHL rundet immer zur nächsten Ganzzahl nach unten ab (29).",
+        "fr": "ENT arrondit toujours à l'entier inférieur le plus proche, donnant 29.",
+        "ja": "INT関数は小数点以下を切り捨てて直近の整数を返すため 29 になります。",
+        "pt": "A função INT sempre arredonda para baixo até o inteiro mais próximo (29)."
+      },
+      "optionsByLocale": {
+        "es": [
+          "29",
+          "30",
+          "29.9",
+          "0"
+        ],
+        "en": [
+          "29",
+          "30",
+          "29.9",
+          "0"
+        ],
+        "de": [
+          "29",
+          "30",
+          "29.9",
+          "0"
+        ],
+        "fr": [
+          "29",
+          "30",
+          "29.9",
+          "0"
+        ],
+        "ja": [
+          "29",
+          "30",
+          "29.9",
+          "0"
+        ],
+        "pt": [
+          "29",
+          "30",
+          "29.9",
+          "0"
+        ]
+      },
+      "correctByLocale": {
+        "es": "29",
+        "en": "29",
+        "de": "29",
+        "fr": "29",
+        "ja": "29",
+        "pt": "29"
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para redondear el promedio en B6 a 1 decimal.",
+      "correct": "=REDONDEAR(B6,1)",
+      "blocks": [
+        "=",
+        "REDONDEAR(",
+        "B6",
+        ",",
+        "1",
+        ")"
+      ],
+      "explanation": "=REDONDEAR(celda, num_decimales) asegura precisión matemática exacta en reportes contables.",
+      "promptByLocale": {
+        "es": "Arma la fórmula para redondear el promedio en B6 a 1 decimal.",
+        "en": "Build the formula to round the average in B6 to 1 decimal place.",
+        "de": "Erstelle die Formel, um den Mittelwert in B6 auf 1 Dezimalstelle zu runden.",
+        "fr": "Construis la formule pour arrondir la moyenne en B6 à 1 décimale.",
+        "ja": "B6の平均値を小数点以下1桁に四捨五入する数式を組み立ててください。",
+        "pt": "Monte a fórmula para arredondar a média em B6 para 1 casa decimal."
+      },
+      "explanationByLocale": {
+        "es": "=REDONDEAR(celda, num_decimales) asegura precisión matemática exacta en reportes.",
+        "en": "=ROUND(cell, num_decimals) ensures exact mathematical precision in reports.",
+        "de": "=RUNDEN(Zelle; Nachkommastellen) sorgt für genaue mathematische Präzision.",
+        "fr": "=ARRONDI(cellule; décimales) garantit une précision mathématique rigoureuse.",
+        "ja": "=ROUND(セル, 桁数) を使うことで、レポートの数値を指定桁数に正確に丸めます。",
+        "pt": "=ARRED(célula; num_decimais) assegura precisão matemática exata nos relatórios."
+      }
+    },
+    {
+      "type": "write_formula",
+      "prompt": "En C2, escribe la fórmula para obtener solo la parte entera del precio en B2.",
+      "correct": "=ENTERO(B2)",
+      "targetCell": "C2",
+      "data": {
+        "A1": "Item",
+        "B1": "Precio",
+        "C1": "Entero",
+        "A2": "Café",
+        "B2": "4.85"
+      },
+      "suggestions": [
+        "=",
+        "ENTERO(",
+        "REDONDEAR(",
+        "B2",
+        ")"
+      ],
+      "explanation": "ENTERO extrae de inmediato la cifra sin fracciones.",
+      "promptByLocale": {
+        "es": "En C2, escribe la fórmula para obtener solo la parte entera del precio en B2.",
+        "en": "In C2, write the formula to get only the integer part of the price in B2.",
+        "de": "Schreibe in C2 die Formel, um nur den ganzzahligen Teil des Preises in B2 zu erhalten.",
+        "fr": "En C2, écris la formule pour obtenir uniquement la partie entière du prix en B2.",
+        "ja": "C2セルで、B2 の価格の整数部分のみを取り出す数式を入力してください。",
+        "pt": "Em C2, escreva a fórmula para obter apenas a parte inteira do preço em B2."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Item",
+          "B1": "Precio",
+          "C1": "Entero",
+          "A2": "Café",
+          "B2": "4.85"
+        },
+        "en": {
+          "A1": "Item",
+          "B1": "Price",
+          "C1": "Integer",
+          "A2": "Coffee",
+          "B2": "4.85"
+        },
+        "de": {
+          "A1": "Artikel",
+          "B1": "Preis",
+          "C1": "Ganzzahl",
+          "A2": "Kaffee",
+          "B2": "4.85"
+        },
+        "fr": {
+          "A1": "Article",
+          "B1": "Prix",
+          "C1": "Entier",
+          "A2": "Café",
+          "B2": "4.85"
+        },
+        "ja": {
+          "A1": "品目",
+          "B1": "価格",
+          "C1": "整数部",
+          "A2": "コーヒー",
+          "B2": "4.85"
+        },
+        "pt": {
+          "A1": "Item",
+          "B1": "Preço",
+          "C1": "Inteiro",
+          "A2": "Café",
+          "B2": "4.85"
+        }
+      },
+      "explanationByLocale": {
+        "es": "ENTERO extrae de inmediato la cifra sin decimales.",
+        "en": "INT extracts the whole number part immediately without decimals.",
+        "de": "GANZZAHL extrahiert sofort den ganzzahligen Wert ohne Nachkommastellen.",
+        "fr": "ENT extrait immédiatement le nombre entier sans les décimales.",
+        "ja": "INT関数は小数点以下を切り捨てて整数値を取り出します。",
+        "pt": "INT extrai imediatamente a parte inteira sem decimais."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "REDONDEAR y ENTERO",
+    "en": "ROUND and INT",
+    "de": "RUNDEN und GANZZAHL",
+    "fr": "ARRONDI et ENT",
+    "ja": "ROUND と INT",
+    "pt": "ARRED e INT"
+  }
+}

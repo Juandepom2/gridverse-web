@@ -1,0 +1,90 @@
+{
+  "ref": "G9",
+  "title": "Elegir el gráfico correcto",
+  "titleByLocale": {
+    "es": "Elegir el gráfico correcto",
+    "en": "Choosing the Right Chart",
+    "de": "Das richtige Diagramm wählen",
+    "fr": "Choisir le bon graphique",
+    "ja": "最適なグラフの選び方",
+    "pt": "Escolher o gráfico certo"
+  },
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Tienes 12 meses de ventas históricas de 3 sucursales. ¿Qué gráfico es el más profesional y legible para comparar su evolución?",
+      "promptByLocale": {
+        "es": "Tienes 12 meses de ventas históricas de 3 sucursales. ¿Qué gráfico es el más profesional y legible para comparar su evolución?",
+        "en": "You have 12 months of sales across 3 store branches. Which chart provides the cleanest comparison of their progression?",
+        "de": "Du hast 12 Monate Umsatzhistorie für 3 Filialen. Welches Diagramm vergleicht die Entwicklung am besten?",
+        "fr": "Vous avez 12 mois de ventes pour 3 agences. Quel graphique offre la comparaison la plus lisible ?",
+        "ja": "3店舗の過去12ヶ月間の売上推移を比較・報告する際、最も適切で見やすいグラフはどれですか？",
+        "pt": "Você tem 12 meses de vendas de 3 filiais. Qual gráfico oferece a comparação mais clara da evolução?"
+      },
+      "options": [
+        "Gráfico de líneas con 3 series",
+        "Gráfico circular (pastel) con 36 rebanadas",
+        "Gráfico de dispersión sin líneas",
+        "Gráfico de radar"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Gráfico de líneas con 3 series",
+          "Gráfico circular (pastel) con 36 rebanadas",
+          "Gráfico de dispersión sin líneas",
+          "Gráfico de radar"
+        ],
+        "en": [
+          "Line chart with 3 series lines",
+          "Pie chart with 36 slices",
+          "Scatter plot without trendlines",
+          "Radar chart"
+        ],
+        "de": [
+          "Liniendiagramm mit 3 Datenreihen",
+          "Kreisdiagramm mit 36 Segmenten",
+          "Punktdiagramm ohne Verbindungslinien",
+          "Netzdiagramm"
+        ],
+        "fr": [
+          "Graphique en courbes avec 3 séries",
+          "Camembert avec 36 secteurs",
+          "Nuage de points sans courbe",
+          "Graphique en radar"
+        ],
+        "ja": [
+          "3本のデータ系列を持つ折れ線グラフ",
+          "36個の扇形を持つ円グラフ",
+          "線のない散布図",
+          "レーダーチャート"
+        ],
+        "pt": [
+          "Gráfico de linhas com 3 séries",
+          "Gráfico de pizza com 36 fatias",
+          "Dispersão sem linhas",
+          "Gráfico de radar"
+        ]
+      },
+      "correct": "Gráfico de líneas con 3 series",
+      "correctByLocale": {
+        "es": "Gráfico de líneas con 3 series",
+        "en": "Line chart with 3 series lines",
+        "de": "Liniendiagramm mit 3 Datenreihen",
+        "fr": "Graphique en courbes avec 3 séries",
+        "ja": "3本のデータ系列を持つ折れ線グラフ",
+        "pt": "Gráfico de linhas com 3 séries"
+      },
+      "explanation": "El gráfico de líneas permite cotejar la trayectoria de las 3 tiendas mes a mes sin saturar visualmente.",
+      "explanationByLocale": {
+        "es": "El gráfico de líneas permite cotejar la trayectoria de las 3 tiendas mes a mes sin saturar visualmente.",
+        "en": "A multi-line chart enables direct month-over-month trajectory comparison without clutter.",
+        "de": "Ein Mehrlinien-Diagramm erlaubt den monatlichen Direktvergleich aller Filialen auf einen Blick.",
+        "fr": "La courbe permet de comparer la trajectoire des 3 agences mois par mois avec clarté.",
+        "ja": "複数系列の折れ線グラフなら、各店舗の好不調や季節要因の差をスマートに比較できます。",
+        "pt": "O gráfico de linhas permite comparar a trajetória das 3 lojas mês a mês com total clareza."
+      }
+    }
+  ]
+}

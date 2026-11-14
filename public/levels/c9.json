@@ -1,0 +1,163 @@
+{
+  "ref": "C9",
+  "title": "Jefe: Ordenamiento roto",
+  "titleByLocale": {
+    "es": "Jefe: Ordenamiento roto",
+    "en": "Boss: Broken Sorting",
+    "de": "Boss: Sortierchaos",
+    "fr": "Boss : Tri corrompu",
+    "ja": "ボス：並べ替え不整合",
+    "pt": "Chefe: Classificação desordenada"
+  },
+  "version": 1,
+  "rewardXp": 25,
+  "exercises": [
+    {
+      "type": "find_error",
+      "prompt": "Al ordenar los datos se ordenó únicamente una columna sin expandir la selección, desfasando las calificaciones. Toca la celda desalineada en B2:",
+      "promptByLocale": {
+        "es": "Al ordenar los datos se ordenó únicamente una columna sin expandir la selección, desfasando las calificaciones. Toca la celda desalineada en B2:",
+        "en": "Sorting only a single column without expanding the selection mismatched the scores. Tap the misaligned cell B2:",
+        "de": "Beim Sortieren wurde nur eine Spalte ohne Bereichserweiterung sortiert, was die Noten verschob. Tippe auf B2:",
+        "fr": "En triant une seule colonne sans étendre la sélection, les notes ont été décalées. Touchez la cellule désalignée en B2 :",
+        "ja": "選択範囲を拡張せずに1列だけ並べ替えたため、点数と名前がズレてしまいました。不整合の起きたB2セルをタップしてください：",
+        "pt": "Ao classificar apenas uma coluna sem expandir a seleção, as notas foram desassociadas. Toque na célula desalinhada em B2:"
+      },
+      "correct": "B2",
+      "errorCell": "B2",
+      "data": {
+        "A1": "Alumno",
+        "B1": "Calificación",
+        "A2": "Ana",
+        "B2": "50",
+        "A3": "Beto",
+        "B3": "95",
+        "A4": "Carlos",
+        "B4": "70"
+      },
+      "explanation": "Ordenar una sola columna rompe la relación fila por fila con los nombres adyacentes.",
+      "explanationByLocale": {
+        "es": "Ordenar una sola columna rompe la relación fila por fila con los nombres adyacentes.",
+        "en": "Sorting only one column detaches row records from their neighboring columns, corrupting data.",
+        "de": "Das Sortieren einer einzelnen Spalte trennt Zeilenbezüge und zerstört die Datenintegrität.",
+        "fr": "Trier une seule colonne sépare les lignes des données voisines et fausse la table.",
+        "ja": "「選択範囲を拡張」せずに単一列のみ並べ替えると、行同士の対応関係が崩壊します。",
+        "pt": "Classificar apenas uma coluna quebra a associação linha por linha com as colunas adjacentes."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Cuando Excel muestra la advertencia: '¿Desea expandir la selección o continuar con la selección actual?', ¿cuál es casi siempre la opción correcta?",
+      "promptByLocale": {
+        "es": "Cuando Excel muestra la advertencia: '¿Desea expandir la selección o continuar con la selección actual?', ¿cuál es casi siempre la opción correcta?",
+        "en": "When Excel warns 'Expand the selection or Continue with current selection?', what is almost always the right choice?",
+        "de": "Wenn Excel warnt 'Markierung erweitern oder mit bestehender Markierung fortfahren?', was ist fast immer die richtige Wahl?",
+        "fr": "Quand Excel demande 'Étendre la sélection ou Continuer avec la sélection en cours ?', quel est le choix sûr ?",
+        "ja": "並べ替え時に「選択範囲を拡張しますか？」と警告が出た場合、通常どちらを選ぶべきですか？",
+        "pt": "Quando o Excel avisa 'Deseja expandir a seleção ou continuar com a seleção atual?', qual é a opção recomendada?"
+      },
+      "options": [
+        "Ampliar la selección (Expand the selection)",
+        "Continuar con la selección actual",
+        "Cancelar la operación",
+        "Borrar los encabezados"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Ampliar la selección (Expand the selection)",
+          "Continuar con la selección actual",
+          "Cancelar la operación",
+          "Borrar los encabezados"
+        ],
+        "en": [
+          "Expand the selection",
+          "Continue with the current selection",
+          "Cancel operation",
+          "Delete column headers"
+        ],
+        "de": [
+          "Markierung erweitern",
+          "Mit bestehender Markierung fortfahren",
+          "Vorgang abbrechen",
+          "Spaltenüberschriften löschen"
+        ],
+        "fr": [
+          "Étendre la sélection",
+          "Continuer avec la sélection en cours",
+          "Annuler l'opération",
+          "Supprimer les en-têtes"
+        ],
+        "ja": [
+          "選択範囲を拡張する（全列を連動）",
+          "現在の選択範囲のまま並べ替える",
+          "操作をキャンセルする",
+          "ヘッダー行を削除する"
+        ],
+        "pt": [
+          "Expandir a seleção",
+          "Continuar com a seleção atual",
+          "Cancelar operação",
+          "Excluir cabeçalhos"
+        ]
+      },
+      "correct": "Ampliar la selección (Expand the selection)",
+      "correctByLocale": {
+        "es": "Ampliar la selección (Expand the selection)",
+        "en": "Expand the selection",
+        "de": "Markierung erweitern",
+        "fr": "Étendre la sélection",
+        "ja": "選択範囲を拡張する（全列を連動）",
+        "pt": "Expandir a seleção"
+      },
+      "explanation": "Expandir la selección garantiza que toda la fila (nombre, nota, fecha) se mueva unida de manera coherente.",
+      "explanationByLocale": {
+        "es": "Expandir la selección garantiza que toda la fila (nombre, nota, fecha) se mueva unida de manera coherente.",
+        "en": "Expanding the selection moves entire records together, preserving table integrity.",
+        "de": "Das Erweitern der Auswahl sorgt dafür, dass alle zusammengehörigen Spalten als Einheit bewegt werden.",
+        "fr": "Étendre la sélection garantit que les lignes entières restent cohérentes lors du tri.",
+        "ja": "選択範囲を拡張することで、行全体のデータが連動して移動しデータ不整合を防ぎます。",
+        "pt": "Expandir a seleção garante que cada linha permaneça unida e coerente."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué función moderna de Excel permite ordenar un rango de forma dinámica mediante una fórmula sin alterar la tabla original?",
+      "promptByLocale": {
+        "es": "¿Qué función moderna de Excel permite ordenar un rango de forma dinámica mediante una fórmula sin alterar la tabla original?",
+        "en": "Which modern Excel formula sorts a range dynamically without modifying the original data table?",
+        "de": "Welche moderne Excel-Funktion sortiert einen Bereich dynamisch per Formel, ohne die Originaltabelle zu verändern?",
+        "fr": "Quelle fonction moderne trie dynamiquement une plage par formule sans modifier les données d'origine ?",
+        "ja": "元のデータを直接変更せずに、数式によって動的に並べ替え結果を出力する最新関数はどれですか？",
+        "pt": "Qual função moderna do Excel classifica um intervalo dinamicamente via fórmula sem alterar a tabela original?"
+      },
+      "options": ["=ORDENAR(rango)", "=FILTRAR(rango)", "=BUSCARV(rango)", "=SI(rango)"],
+      "optionsByLocale": {
+        "es": ["=ORDENAR(rango)", "=FILTRAR(rango)", "=BUSCARV(rango)", "=SI(rango)"],
+        "en": ["=SORT(range)", "=FILTER(range)", "=VLOOKUP(range)", "=IF(range)"],
+        "de": ["=SORTIEREN(Bereich)", "=FILTER(Bereich)", "=SVERWEIS(Bereich)", "=WENN(Bereich)"],
+        "fr": ["=TRIER(plage)", "=FILTRER(plage)", "=RECHERCHEV(plage)", "=SI(plage)"],
+        "ja": ["=SORT(範囲)", "=FILTER(範囲)", "=VLOOKUP(範囲)", "=IF(範囲)"],
+        "pt": ["=CLASSIFICAR(intervalo)", "=FILTRO(intervalo)", "=PROCV(intervalo)", "=SE(intervalo)"]
+      },
+      "correct": "=ORDENAR(rango)",
+      "correctByLocale": {
+        "es": "=ORDENAR(rango)",
+        "en": "=SORT(range)",
+        "de": "=SORTIEREN(Bereich)",
+        "fr": "=TRIER(plage)",
+        "ja": "=SORT(範囲)",
+        "pt": "=CLASSIFICAR(intervalo)"
+      },
+      "explanation": "La función =ORDENAR (SORT) crea una matriz desbordada ordenada en tiempo real sin peligro de desfasar columnas.",
+      "explanationByLocale": {
+        "es": "La función =ORDENAR (SORT) crea una matriz desbordada ordenada en tiempo real sin peligro de desfasar columnas.",
+        "en": "The =SORT function generates a live sorted array spill without risking manual misalignment.",
+        "de": "Die Funktion =SORTIEREN erzeugt eine dynamische sortierte Matrix ohne Risiko von Zeilenversatz.",
+        "fr": "La fonction =TRIER génère une matrice triée dynamique en temps réel sans risque de décalage.",
+        "ja": "=SORT関数を使用すると、スピル機能によって元の表を崩さずにリアルタイムで並べ替えた表を作成できます。",
+        "pt": "A função =CLASSIFICAR gera uma matriz despejada em tempo real sem risco de desalinhar colunas."
+      }
+    }
+  ]
+}
+

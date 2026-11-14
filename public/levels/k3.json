@@ -1,0 +1,90 @@
+{
+  "ref": "K3",
+  "title": "UNICOS",
+  "titleByLocale": {
+    "es": "UNICOS",
+    "en": "UNIQUE",
+    "de": "EINDEUTIG",
+    "fr": "UNIQUE",
+    "ja": "UNIQUE",
+    "pt": "ÚNICO"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Si en A1:A5 tienes los valores [\"Manzana\", \"Pera\", \"Manzana\", \"Uva\", \"Pera\"], ¿cuántos elementos desborda =UNICOS(A1:A5)?",
+      "promptByLocale": {
+        "es": "Si en A1:A5 tienes los valores [\"Manzana\", \"Pera\", \"Manzana\", \"Uva\", \"Pera\"], ¿cuántos elementos desborda =UNICOS(A1:A5)?",
+        "en": "If A1:A5 contains [\"Apple\", \"Pear\", \"Apple\", \"Grape\", \"Pear\"], how many items does =UNIQUE(A1:A5) spill?",
+        "de": "Wenn A1:A5 [\"Apfel\", \"Birne\", \"Apfel\", \"Traube\", \"Birne\"] enthält, wie viele Zeilen gibt =EINDEUTIG(A1:A5) aus?",
+        "fr": "Si A1:A5 contient [\"Pomme\", \"Poire\", \"Pomme\", \"Raisin\", \"Poire\"], combien d'éléments renvoie =UNIQUE(A1:A5) ?",
+        "ja": "A1:A5に［りんご, なし, りんご, ぶどう, なし］がある場合、=UNIQUE(A1:A5) はいくつの要素を出力しますか？",
+        "pt": "Se A1:A5 contém [\"Maçã\", \"Pera\", \"Maçã\", \"Uva\", \"Pera\"], quantos itens =ÚNICO(A1:A5) despeja?"
+      },
+      "options": [
+        "3 (Manzana, Pera, Uva)",
+        "5",
+        "2",
+        "1"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "3 (Manzana, Pera, Uva)",
+          "5",
+          "2",
+          "1"
+        ],
+        "en": [
+          "3 (Apple, Pear, Grape)",
+          "5",
+          "2",
+          "1"
+        ],
+        "de": [
+          "3 (Apfel, Birne, Traube)",
+          "5",
+          "2",
+          "1"
+        ],
+        "fr": [
+          "3 (Pomme, Poire, Raisin)",
+          "5",
+          "2",
+          "1"
+        ],
+        "ja": [
+          "3（りんご, なし, ぶどう）",
+          "5",
+          "2",
+          "1"
+        ],
+        "pt": [
+          "3 (Maçã, Pera, Uva)",
+          "5",
+          "2",
+          "1"
+        ]
+      },
+      "correct": "3 (Manzana, Pera, Uva)",
+      "correctByLocale": {
+        "es": "3 (Manzana, Pera, Uva)",
+        "en": "3 (Apple, Pear, Grape)",
+        "de": "3 (Apfel, Birne, Traube)",
+        "fr": "3 (Pomme, Poire, Raisin)",
+        "ja": "3（りんご, なし, ぶどう）",
+        "pt": "3 (Maçã, Pera, Uva)"
+      },
+      "explanation": "UNICOS extrae la lista depurada sin repeticiones de forma 100% reactiva y en tiempo real.",
+      "explanationByLocale": {
+        "es": "UNICOS extrae la lista depurada sin repeticiones de forma 100% reactiva y en tiempo real.",
+        "en": "UNIQUE extracts deduplicated entries automatically and reacts instantly to changes.",
+        "de": "EINDEUTIG liefert eine deduplizierte Liste ohne manuelle Befehle.",
+        "fr": "UNIQUE extrait les valeurs distinctes sans doublon de façon dynamique.",
+        "ja": "UNIQUE関数は重複を自動排除した一意の値のリストをリアルタイムに生成します。",
+        "pt": "ÚNICO extrai a lista sem repetições de forma reativa e instantânea."
+      }
+    }
+  ]
+}

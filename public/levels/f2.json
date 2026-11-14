@@ -1,0 +1,120 @@
+{
+  "ref": "F2",
+  "title": "HOY y AHORA",
+  "titleByLocale": {
+    "es": "HOY y AHORA",
+    "en": "TODAY and NOW",
+    "de": "HEUTE und JETZT",
+    "fr": "AUJOURDHUI et MAINTENANT",
+    "ja": "TODAY と NOW",
+    "pt": "HOJE e AGORA"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cuál es la diferencia principal entre la función HOY() [TODAY()] y AHORA() [NOW()]?",
+      "promptByLocale": {
+        "es": "¿Cuál es la diferencia principal entre la función HOY() [TODAY()] y AHORA() [NOW()]?",
+        "en": "What is the main difference between TODAY() and NOW()?",
+        "de": "Was ist der Hauptunterschied zwischen HEUTE() [TODAY()] und JETZT() [NOW()]?",
+        "fr": "Quelle est la principale différence entre AUJOURDHUI() [TODAY()] et MAINTENANT() [NOW()] ?",
+        "ja": "TODAY関数とNOW関数の主な違いは何ですか？",
+        "pt": "Qual é a principal diferença entre a função HOJE() [TODAY()] e AGORA() [NOW()]?"
+      },
+      "options": [
+        "HOY solo devuelve la fecha; AHORA devuelve fecha y hora",
+        "HOY no se actualiza nunca; AHORA sí",
+        "AHORA solo devuelve los minutos",
+        "Son exactamente idénticas sin ninguna diferencia"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "HOY solo devuelve la fecha; AHORA devuelve fecha y hora",
+          "HOY no se actualiza nunca; AHORA sí",
+          "AHORA solo devuelve los minutos",
+          "Son exactamente idénticas sin ninguna diferencia"
+        ],
+        "en": [
+          "TODAY returns only the date; NOW returns date and time",
+          "TODAY never updates; NOW does",
+          "NOW returns only minutes",
+          "They are completely identical with no differences"
+        ],
+        "de": [
+          "HEUTE liefert nur das Datum; JETZT liefert Datum und Uhrzeit",
+          "HEUTE aktualisiert sich nie; JETZT schon",
+          "JETZT liefert nur die Minuten",
+          "Sie sind vollkommen identisch ohne Unterschied"
+        ],
+        "fr": [
+          "AUJOURDHUI renvoie la date seule ; MAINTENANT renvoie date et heure",
+          "AUJOURDHUI ne s'actualise jamais ; MAINTENANT oui",
+          "MAINTENANT ne renvoie que les minutes",
+          "Elles sont absolument identiques"
+        ],
+        "ja": [
+          "TODAYは日付のみ、NOWは日付と現在時刻の両方を返す",
+          "TODAYは更新されないがNOWは更新される",
+          "NOWは分単位のみを返す",
+          "まったく同じ機能で違いはない"
+        ],
+        "pt": [
+          "HOJE retorna apenas a data; AGORA retorna data e hora",
+          "HOJE nunca se atualiza; AGORA sim",
+          "AGORA retorna apenas os minutos",
+          "São idênticas sem nenhuma diferença"
+        ]
+      },
+      "correct": "HOY solo devuelve la fecha; AHORA devuelve fecha y hora",
+      "correctByLocale": {
+        "es": "HOY solo devuelve la fecha; AHORA devuelve fecha y hora",
+        "en": "TODAY returns only the date; NOW returns date and time",
+        "de": "HEUTE liefert nur das Datum; JETZT liefert Datum und Uhrzeit",
+        "fr": "AUJOURDHUI renvoie la date seule ; MAINTENANT renvoie date et heure",
+        "ja": "TODAYは日付のみ、NOWは日付と現在時刻の両方を返す",
+        "pt": "HOJE retorna apenas a data; AGORA retorna data e hora"
+      },
+      "explanation": "HOY genera un número de serie entero (fecha), mientras que AHORA incluye decimales para representar la fracción del día (hora, minutos y segundos).",
+      "explanationByLocale": {
+        "es": "HOY genera un número de serie entero (fecha), mientras que AHORA incluye decimales para representar la fracción del día (hora, minutos y segundos).",
+        "en": "TODAY produces an integer serial (date), while NOW adds decimals representing the fraction of the day (hours, minutes, seconds).",
+        "de": "HEUTE erzeugt eine ganzzahlige Seriennummer (Datum), während JETZT Dezimalstellen für die Uhrzeit enthält.",
+        "fr": "AUJOURDHUI produit un entier (date), tandis que MAINTENANT ajoute des décimales représentant l'heure.",
+        "ja": "TODAYは整数のシリアル値（日付）、NOWは時刻を表す小数部分も含んだ数値を返します。",
+        "pt": "HOJE gera um inteiro (data), enquanto AGORA inclui casas decimais para representar a fração do dia (hora e minuto)."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Construye la fórmula dinámica para insertar la fecha actual en la celda activa:",
+      "promptByLocale": {
+        "es": "Construye la fórmula dinámica para insertar la fecha actual en la celda activa:",
+        "en": "Build the dynamic formula to insert today's current date:",
+        "de": "Baue die dynamische Formel, um das aktuelle Tagesdatum einzufügen:",
+        "fr": "Construisez la formule dynamique pour insérer la date du jour :",
+        "ja": "本日の日付を動的に挿入する数式を組み立ててください：",
+        "pt": "Construa a fórmula dinâmica para inserir a data atual:"
+      },
+      "correct": "=HOY()",
+      "blocks": [
+        "=HOY",
+        "(",
+        ")",
+        "=AHORA",
+        "DIA",
+        "1"
+      ],
+      "explanation": "Tanto HOY() como TODAY() no reciben argumentos dentro de los paréntesis.",
+      "explanationByLocale": {
+        "es": "Tanto HOY() como TODAY() no reciben argumentos dentro de los paréntesis.",
+        "en": "Neither TODAY() nor HOY() take any arguments inside their parentheses.",
+        "de": "Weder HEUTE() noch TODAY() benötigen Parameter in den Klammern.",
+        "fr": "AUJOURDHUI() et TODAY() ne prennent aucun argument entre leurs parenthèses.",
+        "ja": "TODAY関数は引数を持たないため、() の中は空にします。",
+        "pt": "Tanto HOJE() quanto TODAY() não recebem argumentos dentro dos parênteses."
+      }
+    }
+  ]
+}

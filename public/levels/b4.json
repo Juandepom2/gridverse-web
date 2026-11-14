@@ -1,0 +1,405 @@
+{
+  "ref": "B4",
+  "title": "CONTAR y CONTARA",
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "La función =CONTAR(rango) solo cuenta celdas que contienen:",
+      "formula": "=CONTAR",
+      "correct": "Números",
+      "data": {},
+      "options": [
+        "Números",
+        "Texto",
+        "Celdas vacías",
+        "Cualquier dato"
+      ],
+      "promptByLocale": {
+        "es": "La función =CONTAR(rango) solo cuenta celdas que contienen:",
+        "en": "The =COUNT(range) function only counts cells containing:",
+        "de": "Die Funktion =ANZAHL(Bereich) zählt ausschließlich Zellen mit:",
+        "fr": "La fonction =NB(plage) compte uniquement les cellules contenant :",
+        "ja": "=COUNT(範囲) 関数がカウントする対象はどれですか？",
+        "pt": "A função =CONT.NÚM(intervalo) conta apenas células que contêm:"
+      },
+      "formulaByLocale": {
+        "es": "=CONTAR",
+        "en": "=COUNT",
+        "de": "=ANZAHL",
+        "fr": "=NB",
+        "ja": "=COUNT",
+        "pt": "=CONT.NÚM"
+      },
+      "correctByLocale": {
+        "es": "Números",
+        "en": "Numbers",
+        "de": "Zahlen",
+        "fr": "Nombres",
+        "ja": "数値",
+        "pt": "Números"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Números",
+          "Texto",
+          "Celdas vacías",
+          "Cualquier dato"
+        ],
+        "en": [
+          "Numbers",
+          "Text",
+          "Empty cells",
+          "Any data"
+        ],
+        "de": [
+          "Zahlen",
+          "Text",
+          "Leere Zellen",
+          "Beliebige Daten"
+        ],
+        "fr": [
+          "Nombres",
+          "Texte",
+          "Cellules vides",
+          "Toute donnée"
+        ],
+        "ja": [
+          "数値",
+          "文字列",
+          "空白セル",
+          "すべてのデータ"
+        ],
+        "pt": [
+          "Números",
+          "Texto",
+          "Células vazias",
+          "Qualquer dado"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "=CONTAR() ignora por completo celdas con texto o vacías y solo contabiliza valores numéricos.",
+        "en": "=COUNT() ignores empty cells and text completely, counting only numeric values.",
+        "de": "=ANZAHL() ignoriert Text und Leerzellen vollständig und zählt nur Zahlenwerte.",
+        "fr": "=NB() ignore totalement le texte et les cellules vides pour ne compter que les nombres.",
+        "ja": "=COUNT() は文字列や空白セルを完全に除外して数値のみをカウントします。",
+        "pt": "=CONT.NÚM() ignora texto e células vazias, contando apenas valores numéricos."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "La función =CONTARA(rango) cuenta celdas que:",
+      "formula": "=CONTARA",
+      "correct": "No están vacías (números o texto)",
+      "data": {},
+      "options": [
+        "No están vacías (números o texto)",
+        "Solo tienen números",
+        "Solo tienen texto",
+        "Están vacías"
+      ],
+      "promptByLocale": {
+        "es": "La función =CONTARA(rango) cuenta celdas que:",
+        "en": "The =COUNTA(range) function counts cells that:",
+        "de": "Die Funktion =ANZAHL2(Bereich) zählt Zellen, die:",
+        "fr": "La fonction =NBVAL(plage) compte les cellules qui :",
+        "ja": "=COUNTA(範囲) 関数がカウントする対象はどれですか？",
+        "pt": "A função =CONT.VALORES(intervalo) conta células que:"
+      },
+      "formulaByLocale": {
+        "es": "=CONTARA",
+        "en": "=COUNTA",
+        "de": "=ANZAHL2",
+        "fr": "=NBVAL",
+        "ja": "=COUNTA",
+        "pt": "=CONT.VALORES"
+      },
+      "correctByLocale": {
+        "es": "No están vacías (números o texto)",
+        "en": "Are not empty (numbers or text)",
+        "de": "Nicht leer sind (Zahlen oder Text)",
+        "fr": "Ne sont pas vides (nombres ou texte)",
+        "ja": "空白ではないセル（数値または文字列）",
+        "pt": "Não estão vazias (números ou texto)"
+      },
+      "optionsByLocale": {
+        "es": [
+          "No están vacías (números o texto)",
+          "Solo tienen números",
+          "Solo tienen texto",
+          "Están vacías"
+        ],
+        "en": [
+          "Are not empty (numbers or text)",
+          "Only contain numbers",
+          "Only contain text",
+          "Are empty"
+        ],
+        "de": [
+          "Nicht leer sind (Zahlen oder Text)",
+          "Nur Zahlen enthalten",
+          "Nur Text enthalten",
+          "Leer sind"
+        ],
+        "fr": [
+          "Ne sont pas vides (nombres ou texte)",
+          "Contiennent uniquement des nombres",
+          "Contiennent uniquement du texte",
+          "Sont vides"
+        ],
+        "ja": [
+          "空白ではないセル（数値または文字列）",
+          "数値のみを含むセル",
+          "文字列のみを含むセル",
+          "空白のセル"
+        ],
+        "pt": [
+          "Não estão vazias (números ou texto)",
+          "Contêm apenas números",
+          "Contêm apenas texto",
+          "Estão vazias"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "CONTARA contabiliza todo contenido no vacío, sea palabra, número o símbolo.",
+        "en": "COUNTA counts all non-empty content: words, numbers, or symbols.",
+        "de": "ANZAHL2 zählt alle nicht-leeren Zellen, egal ob Text, Zahl oder Symbol.",
+        "fr": "NBVAL compte toute cellule non vide : texte, nombre ou symbole.",
+        "ja": "COUNTA は文字・数字・記号を問わず、空白でないすべてのセルを数えます。",
+        "pt": "CONT.VALORES conta qualquer conteúdo não vazio: texto, número ou símbolo."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la lista de participantes en A2:A5.",
+      "correct": "A2:A5",
+      "data": {
+        "A1": "Nombre",
+        "B1": "Edad",
+        "A2": "Pedro",
+        "B2": "28",
+        "A3": "Ana",
+        "B3": "Pendiente",
+        "A4": "Juan",
+        "B4": "35",
+        "A5": "Elena",
+        "B5": "22"
+      },
+      "promptByLocale": {
+        "es": "Selecciona la lista de participantes en A2:A5.",
+        "en": "Select the list of participants in A2:A5.",
+        "de": "Wähle die Teilnehmerliste in A2:A5 aus.",
+        "fr": "Sélectionne la liste des participants dans A2:A5.",
+        "ja": "参加者リストのセル範囲（A2:A5）を選択してください。",
+        "pt": "Selecione a lista de participantes em A2:A5."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Nombre",
+          "B1": "Edad",
+          "A2": "Pedro",
+          "B2": "28",
+          "A3": "Ana",
+          "B3": "Pendiente",
+          "A4": "Juan",
+          "B4": "35",
+          "A5": "Elena",
+          "B5": "22"
+        },
+        "en": {
+          "A1": "Name",
+          "B1": "Age",
+          "A2": "Peter",
+          "B2": "28",
+          "A3": "Anna",
+          "B3": "Pending",
+          "A4": "John",
+          "B4": "35",
+          "A5": "Helen",
+          "B5": "22"
+        },
+        "de": {
+          "A1": "Name",
+          "B1": "Alter",
+          "A2": "Peter",
+          "B2": "28",
+          "A3": "Anna",
+          "B3": "Ausstehend",
+          "A4": "Johannes",
+          "B4": "35",
+          "A5": "Elena",
+          "B5": "22"
+        },
+        "fr": {
+          "A1": "Nom",
+          "B1": "Âge",
+          "A2": "Pierre",
+          "B2": "28",
+          "A3": "Anne",
+          "B3": "En attente",
+          "A4": "Jean",
+          "B4": "35",
+          "A5": "Hélène",
+          "B5": "22"
+        },
+        "ja": {
+          "A1": "氏名",
+          "B1": "年齢",
+          "A2": "Pedro",
+          "B2": "28",
+          "A3": "Ana",
+          "B3": "未定",
+          "A4": "Juan",
+          "B4": "35",
+          "A5": "Elena",
+          "B5": "22"
+        },
+        "pt": {
+          "A1": "Nome",
+          "B1": "Idade",
+          "A2": "Pedro",
+          "B2": "28",
+          "A3": "Ana",
+          "B3": "Pendente",
+          "A4": "João",
+          "B4": "35",
+          "A5": "Elena",
+          "B5": "22"
+        }
+      },
+      "explanationByLocale": {
+        "es": "A2:A5 contiene los 4 nombres registrados en la columna A.",
+        "en": "A2:A5 contains the 4 registered names in column A.",
+        "de": "A2:A5 enthält die 4 registrierten Namen in Spalte A.",
+        "fr": "A2:A5 contient les 4 noms enregistrés dans la colonne A.",
+        "ja": "A2:A5 に登録済みの4名分の名前が入っています。",
+        "pt": "A2:A5 contém os 4 nomes registrados na coluna A."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "En la columna Edad (28, 'Pendiente', 35, 22), ¿qué devuelve =CONTAR(B2:B5)?",
+      "formula": "=CONTAR(B2:B5)",
+      "correct": "3",
+      "data": {
+        "B2": "28",
+        "B3": "Pendiente",
+        "B4": "35",
+        "B5": "22"
+      },
+      "options": [
+        "3",
+        "4",
+        "2",
+        "ERROR"
+      ],
+      "promptByLocale": {
+        "es": "En la columna Edad (28, 'Pendiente', 35, 22), ¿qué devuelve =CONTAR(B2:B5)?",
+        "en": "In the Age column (28, 'Pending', 35, 22), what does =COUNT(B2:B5) return?",
+        "de": "In der Spalte Alter (28, 'Ausstehend', 35, 22), was liefert =ANZAHL(B2:B5)?",
+        "fr": "Dans la colonne Âge (28, 'En attente', 35, 22), que renvoie =NB(B2:B5) ?",
+        "ja": "年齢列（28, '未定', 35, 22）で =COUNT(B2:B5) を実行するといくつになりますか？",
+        "pt": "Na coluna Idade (28, 'Pendente', 35, 22), o que retorna =CONT.NÚM(B2:B5)?"
+      },
+      "formulaByLocale": {
+        "es": "=CONTAR(B2:B5)",
+        "en": "=COUNT(B2:B5)",
+        "de": "=ANZAHL(B2:B5)",
+        "fr": "=NB(B2:B5)",
+        "ja": "=COUNT(B2:B5)",
+        "pt": "=CONT.NÚM(B2:B5)"
+      },
+      "explanationByLocale": {
+        "es": "Hay 3 números (28, 35, 22); la celda con texto 'Pendiente' se omite.",
+        "en": "There are 3 numbers (28, 35, 22); the text cell 'Pending' is omitted.",
+        "de": "Es gibt 3 Zahlen (28, 35, 22); die Textzelle 'Ausstehend' wird ignoriert.",
+        "fr": "Il y a 3 nombres (28, 35, 22) ; la cellule texte 'En attente' est omise.",
+        "ja": "数値は3つ（28, 35, 22）で、文字列の「未定」は除外されるため「3」になります。",
+        "pt": "Há 3 números (28, 35, 22); a célula de texto 'Pendente' é ignorada."
+      },
+      "optionsByLocale": {
+        "es": [
+          "3",
+          "4",
+          "2",
+          "ERROR"
+        ],
+        "en": [
+          "3",
+          "4",
+          "2",
+          "ERROR"
+        ],
+        "de": [
+          "3",
+          "4",
+          "2",
+          "ERROR"
+        ],
+        "fr": [
+          "3",
+          "4",
+          "2",
+          "ERROR"
+        ],
+        "ja": [
+          "3",
+          "4",
+          "2",
+          "ERROR"
+        ],
+        "pt": [
+          "3",
+          "4",
+          "2",
+          "ERROR"
+        ]
+      },
+      "correctByLocale": {
+        "es": "3",
+        "en": "3",
+        "de": "3",
+        "fr": "3",
+        "ja": "3",
+        "pt": "3"
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para contar cuántos participantes asistieron (celdas no vacías).",
+      "correct": "=CONTARA(A2:A5)",
+      "blocks": [
+        "=",
+        "CONTARA(",
+        "A2:A5",
+        ")",
+        "CONTAR("
+      ],
+      "promptByLocale": {
+        "es": "Arma la fórmula para contar cuántos participantes asistieron (celdas no vacías).",
+        "en": "Build the formula to count how many participants attended (non-empty cells).",
+        "de": "Erstelle die Formel, um anwesende Teilnehmer zu zählen (nicht-leere Zellen).",
+        "fr": "Construis la formule pour compter les participants présents (cellules non vides).",
+        "ja": "出席した参加者の人数（空白ではないセル）を数える数式を組み立ててください。",
+        "pt": "Monte a fórmula para contar quantos participantes compareceram (células não vazias)."
+      },
+      "explanationByLocale": {
+        "es": "=CONTARA(A2:A5) evalúa celdas de texto para determinar asistencia.",
+        "en": "=COUNTA(A2:A5) evaluates text cells to determine attendance.",
+        "de": "=ANZAHL2(A2:A5) zählt Textzellen zur Erfassung der Teilnehmerzahl.",
+        "fr": "=NBVAL(A2:A5) évalue les cellules textuelles pour mesurer la présence.",
+        "ja": "=COUNTA(A2:A5) は文字列のセルをカウントして参加人数を求めます。",
+        "pt": "=CONT.VALORES(A2:A5) avalia células de texto para medir o comparecimento."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "CONTAR y CONTARA",
+    "en": "COUNT and COUNTA",
+    "de": "ANZAHL und ANZAHL2",
+    "fr": "NB et NBVAL",
+    "ja": "COUNT と COUNTA",
+    "pt": "CONT.NÚM e CONT.VALORES"
+  }
+}

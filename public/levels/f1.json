@@ -1,0 +1,193 @@
+{
+  "ref": "F1",
+  "title": "Cómo guarda Excel las fechas",
+  "titleByLocale": {
+    "es": "Cómo guarda Excel las fechas",
+    "en": "How Excel Stores Dates",
+    "de": "Wie Excel Datumsangaben speichert",
+    "fr": "Comment Excel stocke les dates",
+    "ja": "Excelの日付シリアル値の仕組み",
+    "pt": "Como o Excel armazena datas"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Excel almacena las fechas como números enteros continuos (números de serie) iniciando el 1 de enero de 1900 como el número 1. ¿Qué valor numérico real tiene una fecha en Excel?",
+      "promptByLocale": {
+        "es": "Excel almacena las fechas como números enteros continuos (números de serie) iniciando el 1 de enero de 1900 como el número 1. ¿Qué valor numérico real tiene una fecha en Excel?",
+        "en": "Excel stores dates as sequential serial integers starting on January 1, 1900 as number 1. What true underlying value does a date have in Excel?",
+        "de": "Excel speichert Daten als fortlaufende Ganzzahlen (Seriennummern), beginnend am 1. Januar 1900 mit der Zahl 1. Welchen reellen Wert hat ein Datum in Excel?",
+        "fr": "Excel stocke les dates sous forme de nombres entiers continus (numéros de série) à partir du 1er janvier 1900 (numéro 1). Quelle valeur réelle possède une date dans Excel ?",
+        "ja": "Excelでは日付を1900年1月1日を「1」とする連続した整数（シリアル値）として保持しています。Excelの日付の本質的な値は何でしょうか？",
+        "pt": "O Excel armazena datas como números inteiros sequenciais (números de série) iniciando em 1 de janeiro de 1900 como número 1. Que valor real uma data possui no Excel?"
+      },
+      "options": [
+        "Un número de serie",
+        "Solo una cadena de texto",
+        "Una imagen formateada",
+        "Un código binario secreto"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Un número de serie",
+          "Solo una cadena de texto",
+          "Una imagen formateada",
+          "Un código binario secreto"
+        ],
+        "en": [
+          "A serial number",
+          "Just a text string",
+          "A formatted picture",
+          "A secret binary code"
+        ],
+        "de": [
+          "Eine Seriennummer",
+          "Nur eine Textzeichenfolge",
+          "Ein formatiertes Bild",
+          "Ein geheimer Binärcode"
+        ],
+        "fr": [
+          "Un numéro de série",
+          "Juste une chaîne de texte",
+          "Une image formatée",
+          "Un code binaire secret"
+        ],
+        "ja": [
+          "シリアル値（数値）",
+          "ただの文字列",
+          "画像データ",
+          "秘密のバイナリコード"
+        ],
+        "pt": [
+          "Um número de série",
+          "Apenas um texto",
+          "Uma imagem formatada",
+          "Um código binário secreto"
+        ]
+      },
+      "correct": "Un número de serie",
+      "correctByLocale": {
+        "es": "Un número de serie",
+        "en": "A serial number",
+        "de": "Eine Seriennummer",
+        "fr": "Un numéro de série",
+        "ja": "シリアル値（数値）",
+        "pt": "Um número de série"
+      },
+      "explanation": "Para Excel, cada día transcurrido desde el 1 de enero de 1900 suma 1 al número de serie. El formato de celda solo cambia cómo lo vemos.",
+      "explanationByLocale": {
+        "es": "Para Excel, cada día transcurrido desde el 1 de enero de 1900 suma 1 al número de serie. El formato de celda solo cambia cómo lo vemos.",
+        "en": "In Excel, every day elapsed since January 1, 1900 adds 1 to the serial number. Cell formatting only changes how it displays.",
+        "de": "Für Excel addiert jeder Tag seit dem 1. Januar 1900 1 zur Seriennummer. Das Zellenformat ändert lediglich die Anzeige.",
+        "fr": "Dans Excel, chaque jour écoulé depuis le 1er janvier 1900 ajoute 1 au numéro de série. Le format de cellule change seulement l'affichage.",
+        "ja": "Excelでは1900年1月1日以降1日経過するごとにシリアル値が1増加します。表示形式が見た目を変えているだけです。",
+        "pt": "Para o Excel, cada dia após 1º de janeiro de 1900 adiciona 1 ao número de série. A formatação só altera a exibição visual."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si en la celda A1 tienes la fecha formateada y cambias el formato a 'General' o 'Número', ¿qué observarás?",
+      "promptByLocale": {
+        "es": "Si en la celda A1 tienes la fecha formateada y cambias el formato a 'General' o 'Número', ¿qué observarás?",
+        "en": "If cell A1 has a formatted date and you change its format to 'General' or 'Number', what will you see?",
+        "de": "Wenn in Zelle A1 ein formatiertes Datum steht und du das Format auf 'Standard' oder 'Zahl' änderst, was siehst du?",
+        "fr": "Si la cellule A1 contient une date formatée et que vous changez le format en 'Standard' ou 'Nombre', que verrez-vous ?",
+        "ja": "セルA1に日付が入っている状態で、表示形式を「標準」または「数値」に変更するとどう表示されますか？",
+        "pt": "Se na célula A1 houver uma data formatada e você mudar o formato para 'Geral' ou 'Número', o que verá?"
+      },
+      "options": [
+        "Un número entero (ej. 45300)",
+        "Un error #¡VALOR!",
+        "La celda quedará vacía",
+        "El texto sin cambios"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Un número entero (ej. 45300)",
+          "Un error #¡VALOR!",
+          "La celda quedará vacía",
+          "El texto sin cambios"
+        ],
+        "en": [
+          "An integer serial number (e.g. 45300)",
+          "A #VALUE! error",
+          "An empty blank cell",
+          "The text unchanged"
+        ],
+        "de": [
+          "Eine Ganzzahl (z.B. 45300)",
+          "Einen #WERT!-Fehler",
+          "Eine leere Zelle",
+          "Den unveränderten Text"
+        ],
+        "fr": [
+          "Un nombre entier (ex. 45300)",
+          "Une erreur #VALEUR!",
+          "Une cellule vide",
+          "Le texte inchangé"
+        ],
+        "ja": [
+          "整数（例：45300など）",
+          "#VALUE! エラー",
+          "空白セル",
+          "何も変化しない文字列"
+        ],
+        "pt": [
+          "Um número inteiro (ex. 45300)",
+          "Um erro #VALOR!",
+          "A célula ficará vazia",
+          "O texto inalterado"
+        ]
+      },
+      "correct": "Un número entero (ej. 45300)",
+      "correctByLocale": {
+        "es": "Un número entero (ej. 45300)",
+        "en": "An integer serial number (e.g. 45300)",
+        "de": "Eine Ganzzahl (z.B. 45300)",
+        "fr": "Un nombre entier (ex. 45300)",
+        "ja": "整数（例：45300など）",
+        "pt": "Um número inteiro (ex. 45300)"
+      },
+      "explanation": "Al quitar el formato de fecha, descubres el número de serie subyacente que representa los días transcurridos.",
+      "explanationByLocale": {
+        "es": "Al quitar el formato de fecha, descubres el número de serie subyacente que representa los días transcurridos.",
+        "en": "Removing the date format reveals the underlying serial number representing elapsed days.",
+        "de": "Das Entfernen des Datumsformats legt die zugrundeliegende Seriennummer der vergangenen Tage offen.",
+        "fr": "Supprimer le format date révèle le numéro de série sous-jacent représentant les jours écoulés.",
+        "ja": "日付の表示形式を解除すると、経過日数を表すシリアル値の数値がそのまま現れます。",
+        "pt": "Ao remover a formatação de data, você revela o número de série subjacente que representa os dias decorridos."
+      }
+    },
+    {
+      "type": "write_formula",
+      "prompt": "Sabiendo que las fechas son números, escribe una fórmula en B2 para sumar 1 día a la fecha que está en B1:",
+      "promptByLocale": {
+        "es": "Sabiendo que las fechas son números, escribe una fórmula en B2 para sumar 1 día a la fecha que está en B1:",
+        "en": "Knowing dates are numbers, write a formula in B2 to add 1 day to the date in B1:",
+        "de": "Da Daten Zahlen sind, schreibe in B2 eine Formel, um 1 Tag zum Datum in B1 zu addieren:",
+        "fr": "Sachant que les dates sont des nombres, écrivez une formule en B2 pour ajouter 1 jour à la date en B1 :",
+        "ja": "日付が数値であることを踏まえ、B1の日付に1日加算する数式をB2に入力してください：",
+        "pt": "Sabendo que datas são números, escreva uma fórmula em B2 para somar 1 dia à data de B1:"
+      },
+      "correct": "=B1+1",
+      "targetCell": "B2",
+      "data": {
+        "A1": "Fecha",
+        "B1": "2024-01-15",
+        "A2": "Siguiente",
+        "B2": ""
+      },
+      "explanation": "Sumar un número entero a una fecha incrementa exactamente esa cantidad de días.",
+      "explanationByLocale": {
+        "es": "Sumar un número entero a una fecha incrementa exactamente esa cantidad de días.",
+        "en": "Adding an integer to a date increases it by exactly that number of days.",
+        "de": "Das Addieren einer Ganzzahl zu einem Datum erhöht dieses genau um diese Tagesanzahl.",
+        "fr": "Ajouter un entier à une date augmente exactement celle-ci de ce nombre de jours.",
+        "ja": "日付に整数を加算すると、その数値分だけ日数が進みます。",
+        "pt": "Adicionar um número inteiro a uma data incrementa exatamente essa quantidade de dias."
+      }
+    }
+  ]
+}

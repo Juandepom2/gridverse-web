@@ -1,0 +1,90 @@
+{
+  "ref": "L2",
+  "title": "Evaluar fórmula paso a paso",
+  "titleByLocale": {
+    "es": "Evaluar fórmula paso a paso",
+    "en": "Evaluate Formula Step-by-Step",
+    "de": "Formel Schritt für Schritt auswerten",
+    "fr": "Évaluer la formule pas à pas",
+    "ja": "数式の検証（ステップイン評価）",
+    "pt": "Avaliar fórmula passo a passo"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué ventana de auditoría permite desglosar una fórmula compleja paso por paso sustituyendo cada parte subrayada por su resultado intermedio?",
+      "promptByLocale": {
+        "es": "¿Qué ventana de auditoría permite desglosar una fórmula compleja paso por paso sustituyendo cada parte subrayada por su resultado intermedio?",
+        "en": "Which auditing dialog lets you debug a complex formula step-by-step, replacing each underlined expression with its intermediate value?",
+        "de": "Welches Dialogfeld ermöglicht das schrittweise Debuggen einer Formel, indem unterstrichene Teile durch Zwischenwerte ersetzt werden?",
+        "fr": "Quelle boîte de dialogue permet de déboguer une formule pas à pas en remplaçant chaque expression soulignée par son résultat ?",
+        "ja": "下線が引かれたパーツごとに段階的に途中計算を実行し、複雑な数式をデバッグできる監査機能は何ですか？",
+        "pt": "Qual ferramenta permite depurar uma fórmula complexa passo a passo, substituindo termos sublinhados pelo valor intermediário?"
+      },
+      "options": [
+        "Evaluar fórmula (Evaluate Formula)",
+        "Ventana de inspección",
+        "Administrador de nombres",
+        "Buscar y seleccionar"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Evaluar fórmula (Evaluate Formula)",
+          "Ventana de inspección",
+          "Administrador de nombres",
+          "Buscar y seleccionar"
+        ],
+        "en": [
+          "Evaluate Formula",
+          "Watch Window",
+          "Name Manager",
+          "Find & Select"
+        ],
+        "de": [
+          "Formel auswerten (Evaluate Formula)",
+          "Überwachungsfenster",
+          "Namens-Manager",
+          "Suchen und Auswählen"
+        ],
+        "fr": [
+          "Évaluer la formule (Evaluate Formula)",
+          "Fenêtre Espion",
+          "Gestionnaire de noms",
+          "Rechercher et sélectionner"
+        ],
+        "ja": [
+          "数式の検証 (Evaluate Formula)",
+          "ウォッチ ウィンドウ",
+          "名前の管理",
+          "検索と選択"
+        ],
+        "pt": [
+          "Avaliar fórmula (Evaluate Formula)",
+          "Janela de Inspeção",
+          "Gerenciador de nomes",
+          "Localizar e selecionar"
+        ]
+      },
+      "correct": "Evaluar fórmula (Evaluate Formula)",
+      "correctByLocale": {
+        "es": "Evaluar fórmula (Evaluate Formula)",
+        "en": "Evaluate Formula",
+        "de": "Formel auswerten (Evaluate Formula)",
+        "fr": "Évaluer la formule (Evaluate Formula)",
+        "ja": "数式の検証 (Evaluate Formula)",
+        "pt": "Avaliar fórmula (Evaluate Formula)"
+      },
+      "explanation": "'Evaluar fórmula' actúa como un microscopio que resuelve cada subexpresión paso a paso para hallar exactamente dónde falló el cálculo.",
+      "explanationByLocale": {
+        "es": "'Evaluar fórmula' actúa como un microscopio que resuelve cada subexpresión paso a paso para hallar exactamente dónde falló el cálculo.",
+        "en": "'Evaluate Formula' acts like a debugger microscope, expanding nested steps to identify exact failure points.",
+        "de": "'Formel auswerten' löst Teilausdrücke schrittweise auf und deckt versteckte Berechnungsfehler auf.",
+        "fr": "'Évaluer la formule' agit comme un microscope résolvant chaque étape pour localiser l'erreur.",
+        "ja": "「数式の検証」はデバッガーのように数式を内側から順に展開し、どこでエラーが発生したかを特定できます。",
+        "pt": "'Avaliar fórmula' funciona como um microscópio resolvendo cada etapa para encontrar exatamente onde o erro ocorreu."
+      }
+    }
+  ]
+}

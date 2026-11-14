@@ -1,0 +1,122 @@
+{
+  "ref": "F5",
+  "title": "SIFECHA (edad y antigüedad)",
+  "titleByLocale": {
+    "es": "SIFECHA (edad y antigüedad)",
+    "en": "DATEDIF (Age and Tenure)",
+    "de": "DATEDIF (Alter und Betriebszugehörigkeit)",
+    "fr": "DATEDIF (Âge et ancienneté)",
+    "ja": "DATEDIF（年齢や勤続年数）",
+    "pt": "DATADIF (Idade e tempo de casa)"
+  },
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "En la función SIFECHA(fecha_inicial, fecha_final, unidad) [DATEDIF], ¿qué código de unidad se usa para obtener los años completos cumplidos?",
+      "promptByLocale": {
+        "es": "En la función SIFECHA(fecha_inicial, fecha_final, unidad) [DATEDIF], ¿qué código de unidad se usa para obtener los años completos cumplidos?",
+        "en": "In DATEDIF(start_date, end_date, unit), which unit argument returns full completed years?",
+        "de": "Welches Einheitsargument wird in DATEDIF(start_datum, end_datum, einheit) verwendet, um volle vollendete Jahre zu berechnen?",
+        "fr": "Dans DATEDIF(date_début, date_fin, unité), quelle unité renvoie le nombre d'années complètes révolues ?",
+        "ja": "DATEDIF(開始日, 終了日, 単位) 関数で、満年数（年齢など）を求めるための単位パラメータはどれですか？",
+        "pt": "Na função DATADIF(data_inicial, data_final, unidade), qual argumento de unidade é usado para obter os anos completos?"
+      },
+      "options": [
+        "\"Y\"",
+        "\"M\"",
+        "\"D\"",
+        "\"YEAR\""
+      ],
+      "optionsByLocale": {
+        "es": [
+          "\"Y\"",
+          "\"M\"",
+          "\"D\"",
+          "\"YEAR\""
+        ],
+        "en": [
+          "\"Y\"",
+          "\"M\"",
+          "\"D\"",
+          "\"YEAR\""
+        ],
+        "de": [
+          "\"Y\"",
+          "\"M\"",
+          "\"D\"",
+          "\"YEAR\""
+        ],
+        "fr": [
+          "\"Y\"",
+          "\"M\"",
+          "\"D\"",
+          "\"YEAR\""
+        ],
+        "ja": [
+          "\"Y\"",
+          "\"M\"",
+          "\"D\"",
+          "\"YEAR\""
+        ],
+        "pt": [
+          "\"Y\"",
+          "\"M\"",
+          "\"D\"",
+          "\"YEAR\""
+        ]
+      },
+      "correct": "\"Y\"",
+      "correctByLocale": {
+        "es": "\"Y\"",
+        "en": "\"Y\"",
+        "de": "\"Y\"",
+        "fr": "\"Y\"",
+        "ja": "\"Y\"",
+        "pt": "\"Y\""
+      },
+      "explanation": "\"Y\" (Years) calcula los años completos; \"M\" calcula meses y \"D\" calcula días.",
+      "explanationByLocale": {
+        "es": "\"Y\" (Years) calcula los años completos; \"M\" calcula meses y \"D\" calcula días.",
+        "en": "\"Y\" calculates complete years, \"M\" months, and \"D\" days.",
+        "de": "\"Y\" berechnet volle Jahre, \"M\" Monate und \"D\" Tage.",
+        "fr": "\"Y\" calcule les années complètes, \"M\" les mois et \"D\" les jours.",
+        "ja": "\"Y\" は満年数、\"M\" は満月数、\"D\" は日数を計算します。",
+        "pt": "\"Y\" calcula anos completos, \"M\" meses e \"D\" dias."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Construye la fórmula en C2 para calcular los años cumplidos entre la fecha de nacimiento (A2) y hoy (B2):",
+      "promptByLocale": {
+        "es": "Construye la fórmula en C2 para calcular los años cumplidos entre la fecha de nacimiento (A2) y hoy (B2):",
+        "en": "Build the formula in C2 to calculate completed years between birth date (A2) and today (B2):",
+        "de": "Baue die Formel in C2, um volle Jahre zwischen Geburtsdatum (A2) und heute (B2) zu berechnen:",
+        "fr": "Construisez la formule en C2 pour calculer les années révolues entre date de naissance (A2) et aujourd'hui (B2) :",
+        "ja": "生年月日(A2)と現在(B2)の間の満年齢を計算する数式を組み立ててください：",
+        "pt": "Construa a fórmula em C2 para calcular os anos completos entre a data de nascimento (A2) e hoje (B2):"
+      },
+      "correct": "=SIFECHA(A2,B2,\"Y\")",
+      "blocks": [
+        "=SIFECHA",
+        "(",
+        "A2",
+        ",",
+        "B2",
+        ",",
+        "\"Y\"",
+        ")"
+      ],
+      "explanation": "SIFECHA siempre requiere fecha inicial primero, fecha final después y el parámetro entre comillas.",
+      "explanationByLocale": {
+        "es": "SIFECHA siempre requiere fecha inicial primero, fecha final después y el parámetro entre comillas.",
+        "en": "DATEDIF requires start date first, end date second, and quoted unit parameter.",
+        "de": "DATEDIF erfordert Startdatum zuerst, Enddatum danach und Einheitsparameter in Anführungszeichen.",
+        "fr": "DATEDIF exige date de début, date de fin, puis l'unité entre guillemets.",
+        "ja": "DATEDIFは (開始日, 終了日, \"単位\") の順序で指定します。",
+        "pt": "DATADIF exige data inicial, data final e unidade entre aspas."
+      }
+    }
+  ]
+}

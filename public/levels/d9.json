@@ -1,0 +1,332 @@
+{
+  "ref": "D9",
+  "title": "Jefe: Valor inválido",
+  "version": 1,
+  "rewardXp": 35,
+  "exercises": [
+    {
+      "type": "find_error",
+      "prompt": "C2 muestra #¡VALOR!. Toca la celda que está causando el error aritmético al contener texto en lugar de número:",
+      "correct": "B2",
+      "errorCell": "C2",
+      "data": {
+        "A1": "Precio",
+        "B1": "Descuento",
+        "C1": "Total",
+        "A2": "100",
+        "B2": "N/A",
+        "C2": "=A2-B2"
+      },
+      "displayValues": {
+        "A2": "100",
+        "B2": "N/A",
+        "C2": "#¡VALOR!"
+      },
+      "explanation": "La celda B2 contiene el texto 'N/A'. El operador de resta (-) exige números en ambos lados, disparando #¡VALOR!.",
+      "promptByLocale": {
+        "es": "C2 muestra #¡VALOR!. Toca la celda que está causando el error aritmético al contener texto en lugar de número:",
+        "en": "C2 shows #VALUE!. Tap the cell causing the arithmetic error by holding text instead of a number:",
+        "de": "C2 zeigt #WERT!. Tippe auf die Zelle, die den Fehler verursacht, da sie Text statt einer Zahl enthält:",
+        "fr": "C2 affiche #VALEUR!. Touche la cellule qui cause l'erreur en contenant du texte au lieu d'un nombre :",
+        "ja": "C2が #VALUE! となっています。数値ではなく文字列が入っているセルをタップしてください：",
+        "pt": "C2 mostra #VALOR!. Toque na célula que está causando o erro por conter texto em vez de número:"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Precio",
+          "B1": "Descuento",
+          "C1": "Total",
+          "A2": "100",
+          "B2": "N/A",
+          "C2": "=A2-B2"
+        },
+        "en": {
+          "A1": "Price",
+          "B1": "Discount",
+          "C1": "Total",
+          "A2": "100",
+          "B2": "N/A",
+          "C2": "=A2-B2"
+        },
+        "de": {
+          "A1": "Preis",
+          "B1": "Rabatt",
+          "C1": "Gesamt",
+          "A2": "100",
+          "B2": "N/A",
+          "C2": "=A2-B2"
+        },
+        "fr": {
+          "A1": "Prix",
+          "B1": "Remise",
+          "C1": "Total",
+          "A2": "100",
+          "B2": "N/A",
+          "C2": "=A2-B2"
+        },
+        "ja": {
+          "A1": "価格",
+          "B1": "値引き",
+          "C1": "合計",
+          "A2": "100",
+          "B2": "N/A",
+          "C2": "=A2-B2"
+        },
+        "pt": {
+          "A1": "Preço",
+          "B1": "Desconto",
+          "C1": "Total",
+          "A2": "100",
+          "B2": "N/A",
+          "C2": "=A2-B2"
+        }
+      },
+      "displayValuesByLocale": {
+        "es": {
+          "A2": "100",
+          "B2": "N/A",
+          "C2": "#¡VALOR!"
+        },
+        "en": {
+          "A2": "100",
+          "B2": "N/A",
+          "C2": "#VALUE!"
+        },
+        "de": {
+          "A2": "100",
+          "B2": "N/A",
+          "C2": "#WERT!"
+        },
+        "fr": {
+          "A2": "100",
+          "B2": "N/A",
+          "C2": "#VALEUR!"
+        },
+        "ja": {
+          "A2": "100",
+          "B2": "N/A",
+          "C2": "#VALUE!"
+        },
+        "pt": {
+          "A2": "100",
+          "B2": "N/A",
+          "C2": "#VALOR!"
+        }
+      },
+      "explanationByLocale": {
+        "es": "La celda B2 contiene el texto 'N/A'. El operador de resta (-) exige números en ambos lados, disparando #¡VALOR!.",
+        "en": "Cell B2 contains 'N/A'. Subtraction (-) strictly requires numbers on both sides, triggering #VALUE!.",
+        "de": "Zelle B2 enthält 'N/A'. Die Subtraktion (-) erfordert beidseitig Zahlen, was #WERT! auslöst.",
+        "fr": "La cellule B2 contient 'N/A'. La soustraction (-) exige des nombres, déclenchant #VALEUR!.",
+        "ja": "B2に「N/A」が入っており、引き算（-）が両辺に数値を要求するため #VALUE! が発生します。",
+        "pt": "A célula B2 contém 'N/A'. A subtração (-) exige números em ambos os lados, gerando #VALOR!."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Por qué la operación =A2-B2 provocó #¡VALOR! cuando B2 contenía 'N/A'?",
+      "formula": "#¡VALOR!",
+      "correct": "Los operadores matemáticos directos (+, -) no pueden operar texto como número",
+      "data": {},
+      "options": [
+        "Los operadores matemáticos directos (+, -) no pueden operar texto como número",
+        "La celda A2 era un número negativo",
+        "Falta un signo igual",
+        "El archivo está dañado"
+      ],
+      "explanation": "Excel no puede restar letras de números usando operadores directos (+, -, *, /).",
+      "promptByLocale": {
+        "es": "¿Por qué la operación =A2-B2 provocó #¡VALOR! cuando B2 contenía 'N/A'?",
+        "en": "Why did =A2-B2 cause #VALUE! when B2 contained 'N/A'?",
+        "de": "Warum verursachte =A2-B2 den Fehler #WERT!, als B2 'N/A' enthielt?",
+        "fr": "Pourquoi l'opération =A2-B2 a-t-elle provoqué #VALEUR! quand B2 contenait 'N/A' ?",
+        "ja": "B2に「N/A」が入っているとき、なぜ =A2-B2 は #VALUE! エラーになったのですか？",
+        "pt": "Por que a operação =A2-B2 provocou #VALOR! quando B2 continha 'N/A'?"
+      },
+      "formulaByLocale": {
+        "es": "#¡VALOR!",
+        "en": "#VALUE!",
+        "de": "#WERT!",
+        "fr": "#VALEUR!",
+        "ja": "#VALUE!",
+        "pt": "#VALOR!"
+      },
+      "correctByLocale": {
+        "es": "Los operadores matemáticos directos (+, -) no pueden operar texto como número",
+        "en": "Direct mathematical operators (+, -) cannot operate on text as numbers",
+        "de": "Mathematische Operatoren (+, -) können Text nicht als Zahl verrechnen",
+        "fr": "Les opérateurs mathématiques (+, -) ne peuvent pas calculer du texte",
+        "ja": "四則演算子（+、-）は文字列を数値として直接計算できないため",
+        "pt": "Os operadores matemáticos diretos (+, -) não podem operar texto como número"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Los operadores matemáticos directos (+, -) no pueden operar texto como número",
+          "La celda A2 era un número negativo",
+          "Falta un signo igual",
+          "El archivo está dañado"
+        ],
+        "en": [
+          "Direct mathematical operators (+, -) cannot operate on text as numbers",
+          "Cell A2 was a negative number",
+          "An equal sign is missing",
+          "The workbook file is corrupt"
+        ],
+        "de": [
+          "Mathematische Operatoren (+, -) können Text nicht als Zahl verrechnen",
+          "Zelle A2 war eine negative Zahl",
+          "Ein Gleichheitszeichen fehlt",
+          "Die Datei ist beschädigt"
+        ],
+        "fr": [
+          "Les opérateurs mathématiques (+, -) ne peuvent pas calculer du texte",
+          "La cellule A2 était un nombre négatif",
+          "Il manque un signe égal",
+          "Le fichier est corrompu"
+        ],
+        "ja": [
+          "四則演算子（+、-）は文字列を数値として直接計算できないため",
+          "セル A2 が負の数値だったため",
+          "先頭の等号（=）が抜けているため",
+          "ファイルデータが破損しているため"
+        ],
+        "pt": [
+          "Os operadores matemáticos diretos (+, -) não podem operar texto como número",
+          "A célula A2 era um número negativo",
+          "Falta um sinal de igual",
+          "O arquivo está corrompido"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Excel no puede restar letras de números usando operadores directos (+, -, *, /).",
+        "en": "Excel cannot subtract text letters from numbers using direct operators (+, -, *, /).",
+        "de": "Excel kann Buchstaben nicht mit Standard-Rechenoperatoren von Zahlen abziehen.",
+        "fr": "Excel ne peut pas soustraire des lettres à des nombres avec les opérateurs arithmétiques directs.",
+        "ja": "Excelは四則演算子（+、-、*、/）を使って文字列を計算処理することができません。",
+        "pt": "O Excel não pode subtrair letras de números usando operadores aritméticos diretos."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si en vez de =A1+B1 hubieras usado =SUMA(A1, B1), ¿qué habría hecho Excel?",
+      "formula": "=SUMA(100, \"texto\")",
+      "correct": "SUMA ignora el texto y da 100 sin arrojar error",
+      "data": {},
+      "options": [
+        "SUMA ignora el texto y da 100 sin arrojar error",
+        "También arroja #¡VALOR!",
+        "Arroja #¡DIV/0!",
+        "Borra la celda"
+      ],
+      "explanation": "La función =SUMA() está programada para ignorar celdas de texto automáticamente, a diferencia del operador +.",
+      "promptByLocale": {
+        "es": "Si en vez de =A1+B1 hubieras usado =SUMA(A1, B1), ¿qué habría hecho Excel?",
+        "en": "If you had used =SUM(A1, B1) instead of =A1+B1, what would Excel have done?",
+        "de": "Was hätte Excel getan, wenn du statt =A1+B1 die Formel =SUMME(A1; B1) genutzt hättest?",
+        "fr": "Si au lieu de =A1+B1 tu avais utilisé =SOMME(A1; B1), qu'aurait fait Excel ?",
+        "ja": "=A1+B1 の代わりに =SUM(A1, B1) を使用していたら、Excelはどう動作していましたか？",
+        "pt": "Se em vez de =A1+B1 você tivesse usado =SOMA(A1; B1), o que o Excel teria feito?"
+      },
+      "formulaByLocale": {
+        "es": "=SUMA(100, \"texto\")",
+        "en": "=SUM(100, \"text\")",
+        "de": "=SUMME(100; \"text\")",
+        "fr": "=SOMME(100; \"texte\")",
+        "ja": "=SUM(100, \"文字列\")",
+        "pt": "=SOMA(100; \"texto\")"
+      },
+      "correctByLocale": {
+        "es": "SUMA ignora el texto y da 100 sin arrojar error",
+        "en": "SUM ignores text and returns 100 without throwing an error",
+        "de": "SUMME ignoriert Text und liefert 100 ohne Fehler",
+        "fr": "SOMME ignore le texte et renvoie 100 sans erreur",
+        "ja": "SUM関数は文字列を無視し、エラーを出さずに100を返す",
+        "pt": "SOMA ignora o texto e dá 100 sem gerar erro"
+      },
+      "optionsByLocale": {
+        "es": [
+          "SUMA ignora el texto y da 100 sin arrojar error",
+          "También arroja #¡VALOR!",
+          "Arroja #¡DIV/0!",
+          "Borra la celda"
+        ],
+        "en": [
+          "SUM ignores text and returns 100 without throwing an error",
+          "It also throws #VALUE!",
+          "It throws #DIV/0!",
+          "Clears the cell"
+        ],
+        "de": [
+          "SUMME ignoriert Text und liefert 100 ohne Fehler",
+          "Gibt ebenfalls #WERT! aus",
+          "Gibt #DIV/0! aus",
+          "Löscht die Zelle"
+        ],
+        "fr": [
+          "SOMME ignore le texte et renvoie 100 sans erreur",
+          "Renvoie également #VALEUR!",
+          "Renvoie #DIV/0!",
+          "Efface la cellule"
+        ],
+        "ja": [
+          "SUM関数は文字列を無視し、エラーを出さずに100を返す",
+          "同様に #VALUE! エラーを出す",
+          "#DIV/0! エラーを出す",
+          "セルを空にする"
+        ],
+        "pt": [
+          "SOMA ignora o texto e dá 100 sem gerar erro",
+          "Também gera #VALOR!",
+          "Gera #DIV/0!",
+          "Limpa a célula"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "La función =SUMA() está programada para ignorar celdas de texto automáticamente, a diferencia del operador +.",
+        "en": "The =SUM() function is designed to ignore text cells automatically, unlike the + operator.",
+        "de": "Die Funktion =SUMME() ist so aufgebaut, dass sie Textzellen im Gegensatz zu '+' ignoriert.",
+        "fr": "La fonction =SOMME() ignore automatiquement les cellules de texte, contrairement à l'opérateur +.",
+        "ja": "四則演算子(+)と異なり、SUM関数は文字列セルを自動で無視して計算するように作られています。",
+        "pt": "A função =SOMA() foi projetada para ignorar células de texto automaticamente, ao contrário de '+'."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma una fórmula segura usando SI.ERROR para devolver 0 si A2-B2 falla.",
+      "correct": "=SI.ERROR(A2-B2,0)",
+      "blocks": [
+        "=",
+        "SI.ERROR(",
+        "A2-B2",
+        ",",
+        "0",
+        ")"
+      ],
+      "explanation": "=SI.ERROR intercepta cualquier fallo matemático y lo reemplaza limpiamente con el valor indicado.",
+      "promptByLocale": {
+        "es": "Arma una fórmula segura usando SI.ERROR para devolver 0 si A2-B2 falla.",
+        "en": "Build a safe formula using IFERROR to return 0 if A2-B2 fails.",
+        "de": "Erstelle eine sichere Formel mit WENNFEHLER, um 0 zurückzugeben, falls A2-B2 fehlschlägt.",
+        "fr": "Construis une formule sécurisée avec SIERREUR pour renvoyer 0 si A2-B2 échoue.",
+        "ja": "A2-B2 がエラーになったときに 0 を返すよう、IFERRORを使った安全な数式を組み立ててください。",
+        "pt": "Monte uma fórmula segura usando SEERRO para retornar 0 se A2-B2 falhar."
+      },
+      "explanationByLocale": {
+        "es": "=SI.ERROR intercepta cualquier fallo matemático y lo reemplaza limpiamente con el valor indicado.",
+        "en": "=IFERROR intercepts any calculation error and replaces it cleanly with the designated fallback.",
+        "de": "=WENNFEHLER fängt jeden Rechenfehler ab und ersetzt ihn sauber durch den angegebenen Wert.",
+        "fr": "=SIERREUR intercepte toute défaillance de calcul pour la remplacer par la valeur indiquée.",
+        "ja": "=IFERROR は計算エラーを検知し、指定された代替値へとスマートに置き換えます。",
+        "pt": "=SEERRO intercepta qualquer falha matemática substituindo-a pelo valor indicado."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Jefe: Valor inválido",
+    "en": "Boss: Invalid Value",
+    "de": "Boss: Ungültiger Wert",
+    "fr": "Boss : Valeur invalide",
+    "ja": "ボス：無効な値エラー",
+    "pt": "Chefe: Valor inválido"
+  }
+}

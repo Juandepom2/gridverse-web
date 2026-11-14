@@ -1,0 +1,370 @@
+{
+  "ref": "A6",
+  "title": "Autorrelleno y arrastre",
+  "titleByLocale": {
+    "es": "Autorrelleno y arrastre",
+    "en": "Autofill and Flash Fill",
+    "de": "AutoAusfüllen und Ziehen",
+    "fr": "Remplissage automatique",
+    "ja": "オートフィルと連続データ",
+    "pt": "Preenchimento automático"
+  },
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Si escribes 'Enero' en A1 y arrastras hacia abajo desde la esquina verde (controlador de relleno), ¿qué aparece en A2?",
+      "promptByLocale": {
+        "es": "Si escribes 'Enero' en A1 y arrastras hacia abajo desde la esquina verde (controlador de relleno), ¿qué aparece en A2?",
+        "en": "If you type 'January' in A1 and drag down from the green fill handle, what appears in A2?",
+        "de": "Wenn du 'Januar' in A1 schreibst und am Ausfüllkästchen nach unten ziehst, was erscheint in A2?",
+        "fr": "Si tu écris 'Janvier' en A1 et étires vers le bas depuis la poignée de recopie, qu'apparaît-il en A2 ?",
+        "ja": "A1セルに「1月」と入力し、右下のフィルハンドルを下方向にドラッグすると、A2には何が表示されますか？",
+        "pt": "Se você digitar 'Janeiro' em A1 e arrastar para baixo a partir da alça de preenchimento, o que aparece em A2?"
+      },
+      "formula": "Controlador de relleno",
+      "formulaByLocale": {
+        "es": "Controlador de relleno",
+        "en": "Fill Handle",
+        "de": "Ausfüllkästchen",
+        "fr": "Poignée de recopie",
+        "ja": "フィルハンドル",
+        "pt": "Alça de preenchimento"
+      },
+      "correct": "Febrero",
+      "correctByLocale": {
+        "es": "Febrero",
+        "en": "February",
+        "de": "Februar",
+        "fr": "Février",
+        "ja": "2月",
+        "pt": "Fevereiro"
+      },
+      "data": {},
+      "options": [
+        "Febrero",
+        "Enero",
+        "Enero 2",
+        "Ene"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Febrero",
+          "Enero",
+          "Enero 2",
+          "Ene"
+        ],
+        "en": [
+          "February",
+          "January",
+          "January 2",
+          "Jan"
+        ],
+        "de": [
+          "Februar",
+          "Januar",
+          "Januar 2",
+          "Jan"
+        ],
+        "fr": [
+          "Février",
+          "Janvier",
+          "Janvier 2",
+          "Janv"
+        ],
+        "ja": [
+          "2月",
+          "1月",
+          "1月 2",
+          "1月度"
+        ],
+        "pt": [
+          "Fevereiro",
+          "Janeiro",
+          "Janeiro 2",
+          "Jan"
+        ]
+      },
+      "explanation": "Excel reconoce automáticamente las series cronológicas (meses, días) y continúa la secuencia al arrastrar.",
+      "explanationByLocale": {
+        "es": "Excel reconoce automáticamente las series cronológicas (meses, días) y continúa la secuencia al arrastrar.",
+        "en": "Excel automatically recognizes chronological sequences (months, days) and continues the series when dragged.",
+        "de": "Excel erkennt chronologische Reihen (Monate, Tage) automatisch und führt die Sequenz fort.",
+        "fr": "Excel reconnaît automatiquement les séries chronologiques (mois, jours) et poursuit la séquence.",
+        "ja": "Excelは月や曜日などの連続データを自動認識し、ドラッグすると次の順番の値を自動入力します。",
+        "pt": "O Excel reconhece automaticamente séries cronológicas (meses, dias) e dá continuidade à sequência ao arrastar."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona el rango de la serie de días de la semana completa generada con autorrelleno (A1:A5).",
+      "promptByLocale": {
+        "es": "Selecciona el rango de la serie de días de la semana completa generada con autorrelleno (A1:A5).",
+        "en": "Select the range of the complete weekday series generated with autofill (A1:A5).",
+        "de": "Wähle den Bereich der Wochentagsreihe aus, die durch AutoAusfüllen erzeugt wurde (A1:A5).",
+        "fr": "Sélectionne la plage de la série des jours ouvrés générée par recopie automatique (A1:A5).",
+        "ja": "オートフィルで生成された平日5日間のセル範囲（A1:A5）を選択してください。",
+        "pt": "Selecione o intervalo da série de dias úteis gerada com preenchimento automático (A1:A5)."
+      },
+      "correct": "A1:A5",
+      "data": {
+        "A1": "Lunes",
+        "A2": "Martes",
+        "A3": "Miércoles",
+        "A4": "Jueves",
+        "A5": "Viernes"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Lunes",
+          "A2": "Martes",
+          "A3": "Miércoles",
+          "A4": "Jueves",
+          "A5": "Viernes"
+        },
+        "en": {
+          "A1": "Monday",
+          "A2": "Tuesday",
+          "A3": "Wednesday",
+          "A4": "Thursday",
+          "A5": "Friday"
+        },
+        "de": {
+          "A1": "Montag",
+          "A2": "Dienstag",
+          "A3": "Mittwoch",
+          "A4": "Donnerstag",
+          "A5": "Freitag"
+        },
+        "fr": {
+          "A1": "Lundi",
+          "A2": "Mardi",
+          "A3": "Mercredi",
+          "A4": "Jeudi",
+          "A5": "Vendredi"
+        },
+        "ja": {
+          "A1": "月曜日",
+          "A2": "火曜日",
+          "A3": "水曜日",
+          "A4": "木曜日",
+          "A5": "金曜日"
+        },
+        "pt": {
+          "A1": "Segunda",
+          "A2": "Terça",
+          "A3": "Quarta",
+          "A4": "Quinta",
+          "A5": "Sexta"
+        }
+      },
+      "explanation": "El rango A1:A5 abarca la secuencia laboral de lunes a viernes.",
+      "explanationByLocale": {
+        "es": "El rango A1:A5 abarca la secuencia laboral de lunes a viernes.",
+        "en": "The range A1:A5 spans the Monday-to-Friday workweek sequence.",
+        "de": "Der Bereich A1:A5 deckt die Arbeitswoche von Montag bis Freitag ab.",
+        "fr": "La plage A1:A5 couvre la séquence de travail du lundi au vendredi.",
+        "ja": "範囲 A1:A5 は月曜日から金曜日までの連続した平日の系列を網羅しています。",
+        "pt": "O intervalo A1:A5 abrange a sequência de dias úteis de segunda a sexta-feira."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si en C2 tienes la fórmula '=A2*B2' y la arrastras hacia abajo a la fila C3, ¿en qué fórmula se convierte automáticamente?",
+      "promptByLocale": {
+        "es": "Si en C2 tienes la fórmula '=A2*B2' y la arrastras hacia abajo a la fila C3, ¿en qué fórmula se convierte automáticamente?",
+        "en": "If cell C2 contains the formula '=A2*B2' and you drag it down to row C3, what does it automatically become?",
+        "de": "Wenn in C2 die Formel '=A2*B2' steht und du sie nach unten in Zeile C3 ziehst, wie lautet sie automatisch?",
+        "fr": "Si la cellule C2 contient '=A2*B2' et que tu l'étires vers le bas en C3, que devient automatiquement la formule ?",
+        "ja": "C2セルに「=A2*B2」が入っており、下の行C3へドラッグしたとき、数式は自動的にどう変化しますか？",
+        "pt": "Se em C2 você tem a fórmula '=A2*B2' e a arrasta para baixo para a linha C3, em qual fórmula ela se transforma automaticamente?"
+      },
+      "formula": "Arrastrar =A2*B2 a la fila 3",
+      "formulaByLocale": {
+        "es": "Arrastrar =A2*B2 a la fila 3",
+        "en": "Drag =A2*B2 to row 3",
+        "de": "Ziehe =A2*B2 in Zeile 3",
+        "fr": "Étirer =A2*B2 vers la ligne 3",
+        "ja": "=A2*B2 を3行目へドラッグ",
+        "pt": "Arrastar =A2*B2 para a linha 3"
+      },
+      "correct": "=A3*B3",
+      "data": {},
+      "options": [
+        "=A3*B3",
+        "=A2*B2",
+        "=A2*B3",
+        "=B3*C3"
+      ],
+      "explanation": "Al usar referencias relativas, al bajar una fila los índices numéricos de fila se incrementan automáticamente en 1.",
+      "explanationByLocale": {
+        "es": "Al usar referencias relativas, al bajar una fila los índices numéricos de fila se incrementan automáticamente en 1.",
+        "en": "Using relative references, moving down one row increments row numbers by 1 automatically.",
+        "de": "Durch relative Bezüge erhöht sich beim Bewegen um eine Zeile nach unten jede Zeilenzahl automatisch um 1.",
+        "fr": "Avec des références relatives, descendre d'une ligne incrémente automatiquement les numéros de ligne de 1.",
+        "ja": "相対参照のため、1行下に移動すると行番号が自動的に「+1」されて「=A3*B3」になります。",
+        "pt": "Por serem referências relativas, ao descer uma linha os números de linha aumentam automaticamente em 1."
+      },
+      "optionsByLocale": {
+        "es": [
+          "=A3*B3",
+          "=A2*B2",
+          "=A2*B3",
+          "=B3*C3"
+        ],
+        "en": [
+          "=A3*B3",
+          "=A2*B2",
+          "=A2*B3",
+          "=B3*C3"
+        ],
+        "de": [
+          "=A3*B3",
+          "=A2*B2",
+          "=A2*B3",
+          "=B3*C3"
+        ],
+        "fr": [
+          "=A3*B3",
+          "=A2*B2",
+          "=A2*B3",
+          "=B3*C3"
+        ],
+        "ja": [
+          "=A3*B3",
+          "=A2*B2",
+          "=A2*B3",
+          "=B3*C3"
+        ],
+        "pt": [
+          "=A3*B3",
+          "=A2*B2",
+          "=A2*B3",
+          "=B3*C3"
+        ]
+      },
+      "correctByLocale": {
+        "es": "=A3*B3",
+        "en": "=A3*B3",
+        "de": "=A3*B3",
+        "fr": "=A3*B3",
+        "ja": "=A3*B3",
+        "pt": "=A3*B3"
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para calcular el Subtotal en C2 multiplicando Cantidad (A2) por Precio (B2).",
+      "promptByLocale": {
+        "es": "Arma la fórmula para calcular el Subtotal en C2 multiplicando Cantidad (A2) por Precio (B2).",
+        "en": "Build the formula to calculate Subtotal in C2 by multiplying Quantity (A2) by Price (B2).",
+        "de": "Erstelle die Formel für den Zwischenwert in C2: multipliziere Menge (A2) mit Preis (B2).",
+        "fr": "Construis la formule pour calculer le sous-total en C2 en multipliant Quantité (A2) par Prix (B2).",
+        "ja": "C2セルで、数量（A2）と単価（B2）を掛けて小計を計算する数式を組み立ててください。",
+        "pt": "Monte a fórmula para calcular o Subtotal em C2 multiplicando Quantidade (A2) por Preço (B2)."
+      },
+      "correct": "=A2*B2",
+      "blocks": [
+        "=",
+        "A2",
+        "*",
+        "B2",
+        "+"
+      ],
+      "explanation": "La multiplicación con asterisco (*) permite calcular el total antes de propagar la fórmula con doble clic.",
+      "explanationByLocale": {
+        "es": "La multiplicación con asterisco (*) permite calcular el total antes de propagar la fórmula con doble clic.",
+        "en": "Multiplying with an asterisk (*) computes the total before propagating the formula with double-click.",
+        "de": "Die Multiplikation mit Stern (*) berechnet das Ergebnis vor dem Weiterkopieren per Doppelklick.",
+        "fr": "La multiplication avec l'astérisque (*) calcule le total avant de propager la formule par double-clic.",
+        "ja": "アスタリスク（*）による掛け算で1行目の小計を求め、その後ダブルクリック等で一括反映できます。",
+        "pt": "A multiplicação com asterisco (*) calcula o total antes de propagar a fórmula com clique duplo."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué atajo de teclado rellena instantáneamente una fórmula hacia abajo en la selección?",
+      "promptByLocale": {
+        "es": "¿Qué atajo de teclado rellena instantáneamente una fórmula hacia abajo en la selección?",
+        "en": "Which keyboard shortcut instantly fills a formula down across the selection?",
+        "de": "Welche Tastenkombination füllt eine Formel in der Auswahl sofort nach unten aus?",
+        "fr": "Quel raccourci clavier recopie instantanément une formule vers le bas dans la sélection ?",
+        "ja": "選択範囲内で上部の数式を一瞬で下方向にオートフィルするショートカットキーは何ですか？",
+        "pt": "Qual atalho de teclado preenche instantaneamente uma fórmula para baixo na seleção?"
+      },
+      "formula": "Atajo de autorrelleno",
+      "formulaByLocale": {
+        "es": "Atajo de autorrelleno",
+        "en": "Fill Down Shortcut",
+        "de": "Tastenkürzel Ausfüllen",
+        "fr": "Raccourci Recopie vers le bas",
+        "ja": "下方向へコピーのショートカット",
+        "pt": "Atalho Preencher para baixo"
+      },
+      "correct": "Ctrl + J (Ctrl + D en inglés)",
+      "correctByLocale": {
+        "es": "Ctrl + J (Ctrl + D en inglés)",
+        "en": "Ctrl + D",
+        "de": "Strg + U (Ctrl + D in EN)",
+        "fr": "Ctrl + B (Ctrl + D en EN)",
+        "ja": "Ctrl + D",
+        "pt": "Ctrl + D"
+      },
+      "data": {},
+      "options": [
+        "Ctrl + J (Ctrl + D en inglés)",
+        "Ctrl + R",
+        "Alt + F4",
+        "Ctrl + Z"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Ctrl + J (Ctrl + D en inglés)",
+          "Ctrl + R",
+          "Alt + F4",
+          "Ctrl + Z"
+        ],
+        "en": [
+          "Ctrl + D",
+          "Ctrl + R",
+          "Alt + F4",
+          "Ctrl + Z"
+        ],
+        "de": [
+          "Strg + U (Ctrl + D in EN)",
+          "Strg + R",
+          "Alt + F4",
+          "Strg + Z"
+        ],
+        "fr": [
+          "Ctrl + B (Ctrl + D en EN)",
+          "Ctrl + R",
+          "Alt + F4",
+          "Ctrl + Z"
+        ],
+        "ja": [
+          "Ctrl + D",
+          "Ctrl + R",
+          "Alt + F4",
+          "Ctrl + Z"
+        ],
+        "pt": [
+          "Ctrl + D",
+          "Ctrl + R",
+          "Alt + F4",
+          "Ctrl + Z"
+        ]
+      },
+      "explanation": "Ctrl + J (en Excel en español) o Ctrl + D (Fill Down en inglés) copia la celda superior hacia abajo en todas las seleccionadas.",
+      "explanationByLocale": {
+        "es": "Ctrl + J (en Excel en español) o Ctrl + D (Fill Down en inglés) copia la celda superior hacia abajo en todas las seleccionadas.",
+        "en": "Ctrl + D (Fill Down) instantly duplicates the top cell formula down through the entire selection.",
+        "de": "Strg + U (oder Ctrl + D im englischen Excel) füllt die Formel der obersten Zelle nach unten aus.",
+        "fr": "Ctrl + B (ou Ctrl + D en anglais) recopie la formule de la cellule du haut vers le bas dans la sélection.",
+        "ja": "Ctrl + D（Fill Down）を押すと、選択範囲の最上部にあるセルの数式が一瞬で下方向へ反映されます。",
+        "pt": "Ctrl + D (Fill Down) duplica instantaneamente a fórmula da célula superior por toda a seleção."
+      }
+    }
+  ]
+}

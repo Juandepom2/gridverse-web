@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gv-bg: #0A0F0C;
+  --color-gv-surface: #111915;
+  --color-gv-surface-high: #18221D;
+  --color-gv-surface-higher: #202C26;
+  --color-gv-border: #243029;
+  --color-gv-grid: #16201B;
+  --color-gv-primary: #21C26B;
+  --color-gv-primary-dark: #13804A;
+  --color-gv-primary-soft: #12301F;
+  --color-gv-accent: #7CFFB2;
+  --color-gv-text: #E6EFE9;
+  --color-gv-muted: #8B9C92;
+  --color-gv-faint: #55655B;
+  --color-gv-error: #FF5D5D;
+  --color-gv-warning: #FFC53D;
+  --color-gv-info: #4DA3FF;
+  --color-gv-boss: #B18CFF;
+  --color-gv-streak: #FF8A3D;
+  --color-gv-bytes: #4DE1FF;
+  --color-gv-integrity: #FF5D8F;
+}
+
+@layer base {
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    background-color: #0A0F0C;
+    color: #E6EFE9;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* Spreadsheet Grid Pattern */
+  .spreadsheet-grid-bg {
+    background-size: 36px 36px;
+    background-image: 
+      linear-gradient(to right, rgba(36, 48, 41, 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(36, 48, 41, 0.4) 1px, transparent 1px);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.03); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2.5s infinite ease-in-out;
+}

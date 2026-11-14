@@ -1,0 +1,530 @@
+{
+  "ref": "B2",
+  "title": "PROMEDIO, MIN y MAX",
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "select_range",
+      "prompt": "Selecciona todas las ventas de enero a abril (B2:B5).",
+      "correct": "B2:B5",
+      "data": {
+        "A1": "Mes",
+        "B1": "Ventas",
+        "A2": "Ene",
+        "B2": "120",
+        "A3": "Feb",
+        "B3": "95",
+        "A4": "Mar",
+        "B4": "140",
+        "A5": "Abr",
+        "B5": "110",
+        "A6": "Promedio"
+      },
+      "promptByLocale": {
+        "es": "Selecciona todas las ventas de enero a abril (B2:B5).",
+        "en": "Select all sales from January to April (B2:B5).",
+        "de": "Wähle alle Verkäufe von Januar bis April aus (B2:B5).",
+        "fr": "Sélectionne toutes les ventes de janvier à avril (B2:B5).",
+        "ja": "1月から4月までのすべての売上（B2:B5）を選択してください。",
+        "pt": "Selecione todas as vendas de janeiro a abril (B2:B5)."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Mes",
+          "B1": "Ventas",
+          "A2": "Ene",
+          "B2": "120",
+          "A3": "Feb",
+          "B3": "95",
+          "A4": "Mar",
+          "B4": "140",
+          "A5": "Abr",
+          "B5": "110",
+          "A6": "Promedio"
+        },
+        "en": {
+          "A1": "Month",
+          "B1": "Sales",
+          "A2": "Jan",
+          "B2": "120",
+          "A3": "Feb",
+          "B3": "95",
+          "A4": "Mar",
+          "B4": "140",
+          "A5": "Apr",
+          "B5": "110",
+          "A6": "Average"
+        },
+        "de": {
+          "A1": "Monat",
+          "B1": "Umsatz",
+          "A2": "Jan",
+          "B2": "120",
+          "A3": "Feb",
+          "B3": "95",
+          "A4": "Mär",
+          "B4": "140",
+          "A5": "Apr",
+          "B5": "110",
+          "A6": "Mittelwert"
+        },
+        "fr": {
+          "A1": "Mois",
+          "B1": "Ventes",
+          "A2": "Jan",
+          "B2": "120",
+          "A3": "Fév",
+          "B3": "95",
+          "A4": "Mar",
+          "B4": "140",
+          "A5": "Avr",
+          "B5": "110",
+          "A6": "Moyenne"
+        },
+        "ja": {
+          "A1": "月",
+          "B1": "売上",
+          "A2": "1月",
+          "B2": "120",
+          "A3": "2月",
+          "B3": "95",
+          "A4": "3月",
+          "B4": "140",
+          "A5": "4月",
+          "B5": "110",
+          "A6": "平均"
+        },
+        "pt": {
+          "A1": "Mês",
+          "B1": "Vendas",
+          "A2": "Jan",
+          "B2": "120",
+          "A3": "Fev",
+          "B3": "95",
+          "A4": "Mar",
+          "B4": "140",
+          "A5": "Abr",
+          "B5": "110",
+          "A6": "Média"
+        }
+      },
+      "explanationByLocale": {
+        "es": "El rango B2:B5 agrupa los 4 registros numéricos del cuatrimestre.",
+        "en": "The range B2:B5 groups the 4 numeric entries for the four-month period.",
+        "de": "Der Bereich B2:B5 fasst die 4 Zahlenwerte der vier Monate zusammen.",
+        "fr": "La plage B2:B5 regroupe les 4 entrées numériques du quadrimestre.",
+        "ja": "範囲 B2:B5 に4か月分の売上データが格納されています。",
+        "pt": "O intervalo B2:B5 agrupa os 4 valores numéricos do quadrimestre."
+      }
+    },
+    {
+      "type": "write_formula",
+      "prompt": "Calcula el promedio de ventas en la celda B6.",
+      "correct": "=PROMEDIO(B2:B5)",
+      "data": {
+        "A1": "Mes",
+        "B1": "Ventas",
+        "A2": "Ene",
+        "B2": "120",
+        "A3": "Feb",
+        "B3": "95",
+        "A4": "Mar",
+        "B4": "140",
+        "A5": "Abr",
+        "B5": "110",
+        "A6": "Promedio"
+      },
+      "targetCell": "B6",
+      "suggestions": [
+        "=",
+        "PROMEDIO(",
+        "SUMA(",
+        "B2:B5",
+        ")"
+      ],
+      "promptByLocale": {
+        "es": "Calcula el promedio de ventas en la celda B6.",
+        "en": "Calculate the average sales in cell B6.",
+        "de": "Berechne den durchschnittlichen Umsatz in Zelle B6.",
+        "fr": "Calcule la moyenne des ventes dans la cellule B6.",
+        "ja": "B6セルで、売上の平均値を計算してください。",
+        "pt": "Calcule a média de vendas na célula B6."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Mes",
+          "B1": "Ventas",
+          "A2": "Ene",
+          "B2": "120",
+          "A3": "Feb",
+          "B3": "95",
+          "A4": "Mar",
+          "B4": "140",
+          "A5": "Abr",
+          "B5": "110",
+          "A6": "Promedio"
+        },
+        "en": {
+          "A1": "Month",
+          "B1": "Sales",
+          "A2": "Jan",
+          "B2": "120",
+          "A3": "Feb",
+          "B3": "95",
+          "A4": "Mar",
+          "B4": "140",
+          "A5": "Apr",
+          "B5": "110",
+          "A6": "Average"
+        },
+        "de": {
+          "A1": "Monat",
+          "B1": "Umsatz",
+          "A2": "Jan",
+          "B2": "120",
+          "A3": "Feb",
+          "B3": "95",
+          "A4": "Mär",
+          "B4": "140",
+          "A5": "Apr",
+          "B5": "110",
+          "A6": "Mittelwert"
+        },
+        "fr": {
+          "A1": "Mois",
+          "B1": "Ventes",
+          "A2": "Jan",
+          "B2": "120",
+          "A3": "Fév",
+          "B3": "95",
+          "A4": "Mar",
+          "B4": "140",
+          "A5": "Avr",
+          "B5": "110",
+          "A6": "Moyenne"
+        },
+        "ja": {
+          "A1": "月",
+          "B1": "売上",
+          "A2": "1月",
+          "B2": "120",
+          "A3": "2月",
+          "B3": "95",
+          "A4": "3月",
+          "B4": "140",
+          "A5": "4月",
+          "B5": "110",
+          "A6": "平均"
+        },
+        "pt": {
+          "A1": "Mês",
+          "B1": "Vendas",
+          "A2": "Jan",
+          "B2": "120",
+          "A3": "Fev",
+          "B3": "95",
+          "A4": "Mar",
+          "B4": "140",
+          "A5": "Abr",
+          "B5": "110",
+          "A6": "Média"
+        }
+      },
+      "explanationByLocale": {
+        "es": "La función PROMEDIO divide la suma total entre la cantidad de elementos automáticamente.",
+        "en": "The AVERAGE function automatically divides the total sum by the count of elements.",
+        "de": "Die Funktion MITTELWERT teilt die Gesamtsumme automatisch durch die Anzahl der Werte.",
+        "fr": "La fonction MOYENNE divise automatiquement la somme par le nombre d'éléments.",
+        "ja": "PROMEDIO / AVERAGE 関数は合計値を要素数で自動的に割り算して平均を算出します。",
+        "pt": "A função MÉDIA divide a soma total pela quantidade de elementos automaticamente."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué valor devuelve esta fórmula?",
+      "formula": "=MAX(B2:B5)",
+      "correct": "140",
+      "data": {
+        "A1": "Mes",
+        "B1": "Ventas",
+        "A2": "Ene",
+        "B2": "120",
+        "A3": "Feb",
+        "B3": "95",
+        "A4": "Mar",
+        "B4": "140",
+        "A5": "Abr",
+        "B5": "110"
+      },
+      "options": [
+        "95",
+        "140",
+        "465",
+        "116.25"
+      ],
+      "promptByLocale": {
+        "es": "¿Qué valor devuelve esta fórmula?",
+        "en": "What value does this formula return?",
+        "de": "Welchen Wert liefert diese Formel zurück?",
+        "fr": "Quelle valeur renvoie cette formule ?",
+        "ja": "この数式が返す値は何ですか？",
+        "pt": "Qual valor esta fórmula retorna?"
+      },
+      "formulaByLocale": {
+        "es": "=MAX(B2:B5)",
+        "en": "=MAX(B2:B5)",
+        "de": "=MAX(B2:B5)",
+        "fr": "=MAX(B2:B5)",
+        "ja": "=MAX(B2:B5)",
+        "pt": "=MÁX(B2:B5)"
+      },
+      "explanationByLocale": {
+        "es": "Entre 120, 95, 140 y 110, el valor máximo es 140.",
+        "en": "Among 120, 95, 140, and 110, the maximum value is 140.",
+        "de": "Unter den Werten 120, 95, 140 und 110 ist der Maximalwert 140.",
+        "fr": "Parmi 120, 95, 140 et 110, la valeur maximale est 140.",
+        "ja": "120, 95, 140, 110 の中で最も大きい値は 140 です。",
+        "pt": "Entre 120, 95, 140 e 110, o valor máximo é 140."
+      },
+      "optionsByLocale": {
+        "es": [
+          "95",
+          "140",
+          "465",
+          "116.25"
+        ],
+        "en": [
+          "95",
+          "140",
+          "465",
+          "116.25"
+        ],
+        "de": [
+          "95",
+          "140",
+          "465",
+          "116.25"
+        ],
+        "fr": [
+          "95",
+          "140",
+          "465",
+          "116.25"
+        ],
+        "ja": [
+          "95",
+          "140",
+          "465",
+          "116.25"
+        ],
+        "pt": [
+          "95",
+          "140",
+          "465",
+          "116.25"
+        ]
+      },
+      "correctByLocale": {
+        "es": "140",
+        "en": "140",
+        "de": "140",
+        "fr": "140",
+        "ja": "140",
+        "pt": "140"
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma una fórmula que obtenga la venta más baja.",
+      "correct": "=MIN(B2:B5)",
+      "blocks": [
+        "B2:B5",
+        "MAX(",
+        "=",
+        ")",
+        "MIN(",
+        "B6"
+      ],
+      "promptByLocale": {
+        "es": "Arma una fórmula que obtenga la venta más baja.",
+        "en": "Build a formula to get the lowest sale.",
+        "de": "Erstelle eine Formel, die den niedrigsten Verkaufswert ermittelt.",
+        "fr": "Construis une formule qui obtient la vente la plus basse.",
+        "ja": "最も低い売上を取得する数式を組み立ててください。",
+        "pt": "Monte uma fórmula que obtenha a menor venda."
+      },
+      "explanationByLocale": {
+        "es": "La función MIN() busca y extrae el valor numérico menor del rango especificado.",
+        "en": "The MIN() function finds and retrieves the lowest numerical value in the range.",
+        "de": "Die Funktion MIN() ermittelt den kleinsten Zahlenwert im angegebenen Bereich.",
+        "fr": "La fonction MIN() trouve et extrait la plus petite valeur numérique de la plage.",
+        "ja": "MIN関数は指定されたセル範囲の中から最小の数値を抽出します。",
+        "pt": "A função MÍN() localiza e extrai o menor valor numérico do intervalo."
+      }
+    },
+    {
+      "type": "find_error",
+      "prompt": "D3 muestra #¡DIV/0!. Toca la celda que provoca el error.",
+      "correct": "C3",
+      "errorCell": "D3",
+      "data": {
+        "A1": "Producto",
+        "B1": "Total",
+        "C1": "Unidades",
+        "D1": "Precio",
+        "A2": "Café",
+        "B2": "300",
+        "C2": "10",
+        "D2": "=B2/C2",
+        "A3": "Té",
+        "B3": "150",
+        "C3": "0",
+        "D3": "=B3/C3",
+        "A4": "Pan",
+        "B4": "200",
+        "C4": "40",
+        "D4": "=B4/C4"
+      },
+      "displayValues": {
+        "D2": "30",
+        "D3": "#¡DIV/0!",
+        "D4": "5"
+      },
+      "promptByLocale": {
+        "es": "D3 muestra #¡DIV/0!. Toca la celda que provoca el error.",
+        "en": "D3 shows #DIV/0!. Tap the cell causing the error.",
+        "de": "D3 zeigt #DIV/0!. Tippe auf die fehlerverursachende Zelle.",
+        "fr": "D3 affiche #DIV/0!. Touche la cellule qui provoque l'erreur.",
+        "ja": "D3に #DIV/0! が表示されています。エラーを引き起こしているセルをタップしてください。",
+        "pt": "D3 mostra #DIV/0!. Toque na célula que provoca o erro."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Producto",
+          "B1": "Total",
+          "C1": "Unidades",
+          "D1": "Precio",
+          "A2": "Café",
+          "B2": "300",
+          "C2": "10",
+          "D2": "=B2/C2",
+          "A3": "Té",
+          "B3": "150",
+          "C3": "0",
+          "D3": "=B3/C3",
+          "A4": "Pan",
+          "B4": "200",
+          "C4": "40",
+          "D4": "=B4/C4"
+        },
+        "en": {
+          "A1": "Product",
+          "B1": "Total",
+          "C1": "Units",
+          "D1": "Price",
+          "A2": "Coffee",
+          "B2": "300",
+          "C2": "10",
+          "D2": "=B2/C2",
+          "A3": "Tea",
+          "B3": "150",
+          "C3": "0",
+          "D3": "=B3/C3",
+          "A4": "Bread",
+          "B4": "200",
+          "C4": "40",
+          "D4": "=B4/C4"
+        },
+        "de": {
+          "A1": "Produkt",
+          "B1": "Gesamt",
+          "C1": "Einheiten",
+          "D1": "Preis",
+          "A2": "Kaffee",
+          "B2": "300",
+          "C2": "10",
+          "D2": "=B2/C2",
+          "A3": "Tee",
+          "B3": "150",
+          "C3": "0",
+          "D3": "=B3/C3",
+          "A4": "Brot",
+          "B4": "200",
+          "C4": "40",
+          "D4": "=B4/C4"
+        },
+        "fr": {
+          "A1": "Produit",
+          "B1": "Total",
+          "C1": "Unités",
+          "D1": "Prix",
+          "A2": "Café",
+          "B2": "300",
+          "C2": "10",
+          "D2": "=B2/C2",
+          "A3": "Thé",
+          "B3": "150",
+          "C3": "0",
+          "D3": "=B3/C3",
+          "A4": "Pain",
+          "B4": "200",
+          "C4": "40",
+          "D4": "=B4/C4"
+        },
+        "ja": {
+          "A1": "商品",
+          "B1": "合計",
+          "C1": "数量",
+          "D1": "価格",
+          "A2": "コーヒー",
+          "B2": "300",
+          "C2": "10",
+          "D2": "=B2/C2",
+          "A3": "お茶",
+          "B3": "150",
+          "C3": "0",
+          "D3": "=B3/C3",
+          "A4": "パン",
+          "B4": "200",
+          "C4": "40",
+          "D4": "=B4/C4"
+        },
+        "pt": {
+          "A1": "Produto",
+          "B1": "Total",
+          "C1": "Unidades",
+          "D1": "Preço",
+          "A2": "Café",
+          "B2": "300",
+          "C2": "10",
+          "D2": "=B2/C2",
+          "A3": "Chá",
+          "B3": "150",
+          "C3": "0",
+          "D3": "=B3/C3",
+          "A4": "Pão",
+          "B4": "200",
+          "C4": "40",
+          "D4": "=B4/C4"
+        }
+      },
+      "explanationByLocale": {
+        "es": "C3 vale 0, lo que imposibilita la división =B3/C3.",
+        "en": "C3 equals 0, making the division =B3/C3 impossible.",
+        "de": "C3 ist 0, wodurch die Division =B3/C3 unmöglich wird.",
+        "fr": "C3 vaut 0, ce qui rend impossible la division =B3/C3.",
+        "ja": "C3の値が0であるため、=B3/C3 の除算が成立しません。",
+        "pt": "C3 vale 0, impossibilitando a divisão =B3/C3."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "PROMEDIO",
+    "en": "AVERAGE",
+    "de": "MITTELWERT",
+    "fr": "MOYENNE",
+    "ja": "AVERAGE",
+    "pt": "MÉDIA"
+  }
+}

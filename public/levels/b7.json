@@ -1,0 +1,308 @@
+{
+  "ref": "B7",
+  "title": "Variación porcentual",
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cuál es la fórmula financiera estándar para calcular el crecimiento o variación porcentual entre dos periodos?",
+      "formula": "Crecimiento %",
+      "correct": "=(Nuevo - Viejo) / Viejo",
+      "data": {},
+      "options": [
+        "=(Nuevo - Viejo) / Viejo",
+        "=Nuevo - Viejo",
+        "=(Viejo - Nuevo) / Nuevo",
+        "=Nuevo / Viejo"
+      ],
+      "explanation": "La variación relativa se obtiene restando el periodo base del actual y dividiendo entre el periodo base.",
+      "promptByLocale": {
+        "es": "¿Cuál es la fórmula financiera estándar para calcular el crecimiento o variación porcentual entre dos periodos?",
+        "en": "What is the standard financial formula to calculate percentage change or growth between two periods?",
+        "de": "Wie lautet die Standardformel zur Berechnung des prozentualen Wachstums zwischen zwei Perioden?",
+        "fr": "Quelle est la formule financière standard pour calculer la variation en pourcentage entre deux périodes ?",
+        "ja": "2つの期間における成長率（変化率）を計算する標準的な数式はどれですか？",
+        "pt": "Qual é a fórmula financeira padrão para calcular o crescimento ou variação percentual entre dois períodos?"
+      },
+      "formulaByLocale": {
+        "es": "Crecimiento %",
+        "en": "Growth %",
+        "de": "Wachstum %",
+        "fr": "Croissance %",
+        "ja": "成長率 %",
+        "pt": "Crescimento %"
+      },
+      "correctByLocale": {
+        "es": "=(Nuevo - Viejo) / Viejo",
+        "en": "=(New - Old) / Old",
+        "de": "=(Neu - Alt) / Alt",
+        "fr": "=(Nouveau - Ancien) / Ancien",
+        "ja": "=(新しい値 - 古い値) / 古い値",
+        "pt": "=(Novo - Antigo) / Antigo"
+      },
+      "optionsByLocale": {
+        "es": [
+          "=(Nuevo - Viejo) / Viejo",
+          "=Nuevo - Viejo",
+          "=(Viejo - Nuevo) / Nuevo",
+          "=Nuevo / Viejo"
+        ],
+        "en": [
+          "=(New - Old) / Old",
+          "=New - Old",
+          "=(Old - New) / New",
+          "=New / Old"
+        ],
+        "de": [
+          "=(Neu - Alt) / Alt",
+          "=Neu - Alt",
+          "=(Alt - Neu) / Neu",
+          "=Neu / Alt"
+        ],
+        "fr": [
+          "=(Nouveau - Ancien) / Ancien",
+          "=Nouveau - Ancien",
+          "=(Ancien - Nouveau) / Nouveau",
+          "=Nouveau / Ancien"
+        ],
+        "ja": [
+          "=(新しい値 - 古い値) / 古い値",
+          "=新しい値 - 古い値",
+          "=(古い値 - 新しい値) / 新しい値",
+          "=新しい値 / 古い値"
+        ],
+        "pt": [
+          "=(Novo - Antigo) / Antigo",
+          "=Novo - Antigo",
+          "=(Antigo - Novo) / Novo",
+          "=Novo / Antigo"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "La variación relativa se obtiene restando el periodo base del actual y dividiendo entre el periodo base.",
+        "en": "Percentage change is found by subtracting the base period from the current period and dividing by the base period.",
+        "de": "Die prozentuale Veränderung berechnet sich aus (Neu - Alt) geteilt durch Alt.",
+        "fr": "La variation en pourcentage s'obtient en soustrayant la base de la valeur actuelle et en divisant par la base.",
+        "ja": "変化率は「（当期値 - 前期値）÷ 前期値」で計算するのが標準ルールです。",
+        "pt": "A variação percentual é obtida subtraindo o período base do atual e dividindo pelo período base."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si las ventas fueron 100 en enero (B2) y 150 en febrero (C2), ¿cuál fue el porcentaje de crecimiento?",
+      "formula": "=(150 - 100) / 100",
+      "correct": "50%",
+      "data": {},
+      "options": [
+        "50%",
+        "150%",
+        "25%",
+        "-50%"
+      ],
+      "explanation": "(150 - 100) / 100 = 50 / 100 = 0.50, que en formato porcentaje equivale a 50%.",
+      "promptByLocale": {
+        "es": "Si las ventas fueron 100 en enero (B2) y 150 en febrero (C2), ¿cuál fue el porcentaje de crecimiento?",
+        "en": "If sales were 100 in January (B2) and 150 in February (C2), what was the percentage growth?",
+        "de": "Wenn die Verkäufe im Januar 100 (B2) und im Februar 150 (C2) betrugen, wie hoch war das Wachstum?",
+        "fr": "Si les ventes étaient de 100 en janvier (B2) et 150 en février (C2), quel a été le pourcentage de croissance ?",
+        "ja": "1月の売上が100（B2）、2月の売上が150（C2）だった場合、成長率は何パーセントですか？",
+        "pt": "Se as vendas foram 100 em janeiro (B2) e 150 em fevereiro (C2), qual foi a porcentagem de crescimento?"
+      },
+      "formulaByLocale": {
+        "es": "=(150 - 100) / 100",
+        "en": "=(150 - 100) / 100",
+        "de": "=(150 - 100) / 100",
+        "fr": "=(150 - 100) / 100",
+        "ja": "=(150 - 100) / 100",
+        "pt": "=(150 - 100) / 100"
+      },
+      "explanationByLocale": {
+        "es": "(150 - 100) / 100 = 50 / 100 = 0.50, que en formato porcentaje equivale a 50%.",
+        "en": "(150 - 100) / 100 = 50 / 100 = 0.50, which in percentage format equals 50%.",
+        "de": "(150 - 100) / 100 = 50 / 100 = 0.50, was im Prozentformat 50 % entspricht.",
+        "fr": "(150 - 100) / 100 = 50 / 100 = 0,50, ce qui équivaut à 50 % au format pourcentage.",
+        "ja": "(150 - 100) / 100 = 50 / 100 = 0.50 となり、パーセント表示で 50% です。",
+        "pt": "(150 - 100) / 100 = 50 / 100 = 0.50, que no formato de porcentagem equivale a 50%."
+      },
+      "optionsByLocale": {
+        "es": [
+          "50%",
+          "150%",
+          "25%",
+          "-50%"
+        ],
+        "en": [
+          "50%",
+          "150%",
+          "25%",
+          "-50%"
+        ],
+        "de": [
+          "50%",
+          "150%",
+          "25%",
+          "-50%"
+        ],
+        "fr": [
+          "50%",
+          "150%",
+          "25%",
+          "-50%"
+        ],
+        "ja": [
+          "50%",
+          "150%",
+          "25%",
+          "-50%"
+        ],
+        "pt": [
+          "50%",
+          "150%",
+          "25%",
+          "-50%"
+        ]
+      },
+      "correctByLocale": {
+        "es": "50%",
+        "en": "50%",
+        "de": "50%",
+        "fr": "50%",
+        "ja": "50%",
+        "pt": "50%"
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para calcular el cambio porcentual entre Año Actual (C2) y Año Anterior (B2).",
+      "correct": "=(C2-B2)/B2",
+      "blocks": [
+        "=",
+        "(C2-B2)",
+        "/",
+        "B2",
+        "*"
+      ],
+      "explanation": "Los paréntesis son obligatorios para que la resta se ejecute antes de la división (PEMDAS).",
+      "promptByLocale": {
+        "es": "Arma la fórmula para calcular el cambio porcentual entre Año Actual (C2) y Año Anterior (B2).",
+        "en": "Build the formula to calculate percentage change between Current Year (C2) and Prior Year (B2).",
+        "de": "Erstelle die Formel für die prozentuale Veränderung zwischen aktuellem Jahr (C2) und Vorjahr (B2).",
+        "fr": "Construis la formule pour calculer la variation entre l'Année en cours (C2) et l'Année précédente (B2).",
+        "ja": "当年（C2）と前年（B2）の間の変化率を計算する数式を組み立ててください。",
+        "pt": "Monte a fórmula para calcular a variação percentual entre Ano Atual (C2) e Ano Anterior (B2)."
+      },
+      "explanationByLocale": {
+        "es": "Los paréntesis son obligatorios para que la resta se ejecute antes de la división (PEMDAS).",
+        "en": "Parentheses are mandatory so that subtraction executes before division (PEMDAS).",
+        "de": "Klammern sind zwingend erforderlich, damit die Subtraktion vor der Division erfolgt.",
+        "fr": "Les parenthèses sont obligatoires pour exécuter la soustraction avant la division.",
+        "ja": "割り算より先に引き算を実行させるため、カッコ () で囲む必要があります。",
+        "pt": "Os parênteses são obrigatórios para que a subtração seja feita antes da divisão."
+      }
+    },
+    {
+      "type": "write_formula",
+      "prompt": "En D2, escribe la fórmula para calcular la variación porcentual entre Ventas 2 (C2) y Ventas 1 (B2).",
+      "correct": "=(C2-B2)/B2",
+      "targetCell": "D2",
+      "data": {
+        "A1": "Sede",
+        "B1": "Ventas 1",
+        "C1": "Ventas 2",
+        "D1": "Var %",
+        "A2": "Norte",
+        "B2": "200",
+        "C2": "260"
+      },
+      "suggestions": [
+        "=",
+        "(C2-B2)",
+        "/",
+        "B2",
+        "+"
+      ],
+      "explanation": "La variación en la sede norte refleja un incremento del 30%.",
+      "promptByLocale": {
+        "es": "En D2, escribe la fórmula para calcular la variación porcentual entre Ventas 2 (C2) y Ventas 1 (B2).",
+        "en": "In D2, write the formula to calculate percentage change between Sales 2 (C2) and Sales 1 (B2).",
+        "de": "Schreibe in D2 die Formel für die prozentuale Veränderung zwischen Umsatz 2 (C2) und Umsatz 1 (B2).",
+        "fr": "En D2, écris la formule pour calculer la variation entre Ventes 2 (C2) et Ventes 1 (B2).",
+        "ja": "D2セルで、売上2（C2）と売上1（B2）の間の変化率を計算する数式を入力してください。",
+        "pt": "Em D2, escreva a fórmula para calcular a variação percentual entre Vendas 2 (C2) e Vendas 1 (B2)."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Sede",
+          "B1": "Ventas 1",
+          "C1": "Ventas 2",
+          "D1": "Var %",
+          "A2": "Norte",
+          "B2": "200",
+          "C2": "260"
+        },
+        "en": {
+          "A1": "Branch",
+          "B1": "Sales 1",
+          "C1": "Sales 2",
+          "D1": "Change %",
+          "A2": "North",
+          "B2": "200",
+          "C2": "260"
+        },
+        "de": {
+          "A1": "Filiale",
+          "B1": "Umsatz 1",
+          "C1": "Umsatz 2",
+          "D1": "Veränd. %",
+          "A2": "Nord",
+          "B2": "200",
+          "C2": "260"
+        },
+        "fr": {
+          "A1": "Site",
+          "B1": "Ventes 1",
+          "C1": "Ventes 2",
+          "D1": "Var %",
+          "A2": "Nord",
+          "B2": "200",
+          "C2": "260"
+        },
+        "ja": {
+          "A1": "支店",
+          "B1": "売上1",
+          "C1": "売上2",
+          "D1": "変化率",
+          "A2": "北支店",
+          "B2": "200",
+          "C2": "260"
+        },
+        "pt": {
+          "A1": "Filial",
+          "B1": "Vendas 1",
+          "C1": "Vendas 2",
+          "D1": "Var %",
+          "A2": "Norte",
+          "B2": "200",
+          "C2": "260"
+        }
+      },
+      "explanationByLocale": {
+        "es": "La variación en la sede norte refleja un incremento del 30%.",
+        "en": "The change in the north branch reflects a 30% increase.",
+        "de": "Die Veränderung in der Filiale Nord entspricht einem Anstieg von 30 %.",
+        "fr": "La variation du site nord reflète une augmentation de 30 %.",
+        "ja": "北支店の売上は30%の増加を示しています。",
+        "pt": "A variação na filial norte reflete um aumento de 30%."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Variación porcentual",
+    "en": "Percentage Change",
+    "de": "Prozentuale Veränderung",
+    "fr": "Variation en pourcentage",
+    "ja": "変化率（％）",
+    "pt": "Variação percentual"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "ref": "J3",
+  "title": "Filas, columnas y valores",
+  "titleByLocale": {
+    "es": "Filas, columnas y valores",
+    "en": "Rows, Columns, and Values",
+    "de": "Zeilen, Spalten und Werte",
+    "fr": "Lignes, colonnes et valeurs",
+    "ja": "行・列・値・フィルターの配置",
+    "pt": "Linhas, colunas e valores"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Al configurar los 4 cuadrantes de una Tabla Dinámica, ¿a qué cuadrante debes arrastrar el campo numérico que deseas sumar (ej. 'Ventas')?",
+      "promptByLocale": {
+        "es": "Al configurar los 4 cuadrantes de una Tabla Dinámica, ¿a qué cuadrante debes arrastrar el campo numérico que deseas sumar (ej. 'Ventas')?",
+        "en": "In a PivotTable's 4 field areas, into which area do you drag numeric metric fields (e.g. 'Sales') to sum them?",
+        "de": "In welchen der 4 Bereiche zieht man Zahlenfelder (wie 'Umsatz'), um sie zu summieren?",
+        "fr": "Dans quelle zone du TCD dépose-t-on les montants chiffrés (ex. 'Ventes') pour les totaliser ?",
+        "ja": "ピボットテーブルの4つの領域のうち、売上などの数値を合計集計するにはどの領域にフィールドをドラッグしますか？",
+        "pt": "Nos 4 quadrantes da Tabela Dinâmica, para onde arrastar os campos numéricos (ex: 'Vendas') para somar?"
+      },
+      "options": [
+        "Valores (Values / Σ)",
+        "Filas (Rows)",
+        "Columnas (Columns)",
+        "Filtros (Filters)"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Valores (Values / Σ)",
+          "Filas (Rows)",
+          "Columnas (Columns)",
+          "Filtros (Filters)"
+        ],
+        "en": [
+          "Values (Σ)",
+          "Rows",
+          "Columns",
+          "Filters"
+        ],
+        "de": [
+          "Werte (Values / Σ)",
+          "Zeilen (Rows)",
+          "Spalten (Columns)",
+          "Filter"
+        ],
+        "fr": [
+          "Valeurs (Values / Σ)",
+          "Lignes (Rows)",
+          "Colonnes (Columns)",
+          "Filtres"
+        ],
+        "ja": [
+          "値 (Values / Σ)",
+          "行 (Rows)",
+          "列 (Columns)",
+          "フィルター (Filters)"
+        ],
+        "pt": [
+          "Valores (Values / Σ)",
+          "Linhas (Rows)",
+          "Colunas (Columns)",
+          "Filtros"
+        ]
+      },
+      "correct": "Valores (Values / Σ)",
+      "correctByLocale": {
+        "es": "Valores (Values / Σ)",
+        "en": "Values (Σ)",
+        "de": "Werte (Values / Σ)",
+        "fr": "Valeurs (Values / Σ)",
+        "ja": "値 (Values / Σ)",
+        "pt": "Valores (Values / Σ)"
+      },
+      "explanation": "El área de Valores calcula métricas numéricas agregadas (suma, conteo, promedio, etc.).",
+      "explanationByLocale": {
+        "es": "El área de Valores calcula métricas numéricas agregadas (suma, conteo, promedio, etc.).",
+        "en": "The Values quadrant aggregates metric data via sum, average, count, etc.",
+        "de": "Der Wertebereich berechnet aggregierte Summen, Mittelwerte oder Anzahlen.",
+        "fr": "La zone Valeurs calcule les agrégats numériques (somme, moyenne, nombre).",
+        "ja": "「値」領域に配置されたフィールドは、合計、平均、データの個数などの集計計算が行われます。",
+        "pt": "A área de Valores calcula métricas numéricas agregadas (soma, contagem, média, etc.)."
+      }
+    }
+  ]
+}

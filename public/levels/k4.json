@@ -1,0 +1,90 @@
+{
+  "ref": "K4",
+  "title": "SECUENCIA y TRANSPONER",
+  "titleByLocale": {
+    "es": "SECUENCIA y TRANSPONER",
+    "en": "SEQUENCE and TRANSPOSE",
+    "de": "SEQUENZ und MTRANS",
+    "fr": "SEQUENCE et TRANSPOSER",
+    "ja": "SEQUENCE と TRANSPOSE",
+    "pt": "SEQUÊNCIA e TRANSPOR"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué genera en la hoja la fórmula =SECUENCIA(5)?",
+      "promptByLocale": {
+        "es": "¿Qué genera en la hoja la fórmula =SECUENCIA(5)?",
+        "en": "What does the formula =SEQUENCE(5) generate on the sheet?",
+        "de": "Was erzeugt die Formel =SEQUENZ(5) im Arbeitsblatt?",
+        "fr": "Que génère sur la feuille la formule =SEQUENCE(5) ?",
+        "ja": "数式 =SEQUENCE(5) はシート上に何を生成しますか？",
+        "pt": "O que a fórmula =SEQUÊNCIA(5) gera na planilha?"
+      },
+      "options": [
+        "Una columna vertical con los números consecutivos del 1 al 5",
+        "Cinco celdas con la palabra 'SECUENCIA'",
+        "El número 5 repetido 5 veces en la misma celda",
+        "La suma de 1 a 5 (15)"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Una columna vertical con los números consecutivos del 1 al 5",
+          "Cinco celdas con la palabra 'SECUENCIA'",
+          "El número 5 repetido 5 veces en la misma celda",
+          "La suma de 1 a 5 (15)"
+        ],
+        "en": [
+          "A vertical column of consecutive numbers from 1 to 5",
+          "Five cells containing the text 'SEQUENCE'",
+          "The number 5 repeated five times in one cell",
+          "The sum of 1 through 5 (15)"
+        ],
+        "de": [
+          "Eine Spalte mit fortlaufenden Zahlen von 1 bis 5",
+          "Fünf Zellen mit dem Wort 'SEQUENZ'",
+          "Die Zahl 5 fünfmal in derselben Zelle",
+          "Die Summe 15"
+        ],
+        "fr": [
+          "Une colonne verticale de nombres consécutifs de 1 à 5",
+          "Cinq cellules contenant le mot 'SEQUENCE'",
+          "Le chiffre 5 répété 5 fois dans une cellule",
+          "La somme de 1 à 5 (15)"
+        ],
+        "ja": [
+          "1から5までの連続した数値が縦方向に並んだ列",
+          "「SEQUENCE」と書かれた5つのセル",
+          "1つのセルに「5」が5回繰り返された文字列",
+          "1から5までの合計値（15）"
+        ],
+        "pt": [
+          "Uma coluna vertical com números consecutivos de 1 a 5",
+          "Cinco células com o texto 'SEQUÊNCIA'",
+          "O número 5 repetido cinco vezes na mesma célula",
+          "A soma de 1 a 5 (15)"
+        ]
+      },
+      "correct": "Una columna vertical con los números consecutivos del 1 al 5",
+      "correctByLocale": {
+        "es": "Una columna vertical con los números consecutivos del 1 al 5",
+        "en": "A vertical column of consecutive numbers from 1 to 5",
+        "de": "Eine Spalte mit fortlaufenden Zahlen von 1 bis 5",
+        "fr": "Une colonne verticale de nombres consécutifs de 1 à 5",
+        "ja": "1から5までの連続した数値が縦方向に並んだ列",
+        "pt": "Uma coluna vertical com números consecutivos de 1 a 5"
+      },
+      "explanation": "SECUENCIA crea series numéricas instantáneas sin arrastrar el ratón.",
+      "explanationByLocale": {
+        "es": "SECUENCIA crea series numéricas instantáneas sin arrastrar el ratón.",
+        "en": "SEQUENCE generates sequential integer arrays without needing manual fill drags.",
+        "de": "SEQUENZ erstellt Nummernserien ohne manuelles Ausfüllen.",
+        "fr": "SEQUENCE produit des listes numériques instantanément sans poignée de recopie.",
+        "ja": "SEQUENCE関数を使うと、オートフィルでドラッグしなくても連番が一瞬で生成されます。",
+        "pt": "SEQUÊNCIA gera séries numéricas instantâneas sem necessidade de arrastar."
+      }
+    }
+  ]
+}

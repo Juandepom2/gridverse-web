@@ -1,0 +1,178 @@
+{
+  "ref": "D4",
+  "title": "SI.ERROR",
+  "titleByLocale": {
+    "es": "SI.ERROR",
+    "en": "IFERROR",
+    "de": "WENNFEHLER",
+    "fr": "SIERREUR",
+    "ja": "IFERROR",
+    "pt": "SEERRO"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cuáles son los 2 únicos argumentos que recibe la función =SI.ERROR?",
+      "promptByLocale": {
+        "es": "¿Cuáles son los 2 únicos argumentos que recibe la función =SI.ERROR?",
+        "en": "What are the only 2 arguments accepted by the =IFERROR function?",
+        "de": "Welche 2 Argumente erwartet die Funktion =WENNFEHLER?",
+        "fr": "Quels sont les 2 seuls arguments acceptés par la fonction =SIERREUR ?",
+        "ja": "=IFERROR 関数が受け取る2つの必須引数は何ですか？",
+        "pt": "Quais são os 2 únicos argumentos que a função =SEERRO recebe?"
+      },
+      "options": [
+        "valor, valor_si_error",
+        "prueba_lógica, si_verdadero, si_falso",
+        "rango, criterio",
+        "número, decimales"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "valor, valor_si_error",
+          "prueba_lógica, si_verdadero, si_falso",
+          "rango, criterio",
+          "número, decimales"
+        ],
+        "en": [
+          "value, value_if_error",
+          "logical_test, if_true, if_false",
+          "range, criteria",
+          "number, num_digits"
+        ],
+        "de": [
+          "Wert, Wert_wenn_Fehler",
+          "Prüfung, Dann_Wert, Sonst_Wert",
+          "Bereich, Suchkriterien",
+          "Zahl, Anzahl_Stellen"
+        ],
+        "fr": [
+          "valeur, valeur_si_erreur",
+          "test_logique, valeur_si_vrai, valeur_si_faux",
+          "plage, critère",
+          "nombre, no_chiffres"
+        ],
+        "ja": [
+          "値, エラーの場合の値",
+          "論理式, 真の場合, 偽の場合",
+          "範囲, 検索条件",
+          "数値, 桁数"
+        ],
+        "pt": [
+          "valor, valor_se_erro",
+          "teste_lógico, se_verdadeiro, se_falso",
+          "intervalo, critérios",
+          "número, num_dígitos"
+        ]
+      },
+      "correct": "valor, valor_si_error",
+      "correctByLocale": {
+        "es": "valor, valor_si_error",
+        "en": "value, value_if_error",
+        "de": "Wert, Wert_wenn_Fehler",
+        "fr": "valeur, valeur_si_erreur",
+        "ja": "値, エラーの場合の値",
+        "pt": "valor, valor_se_erro"
+      },
+      "explanation": "SI.ERROR evalúa una fórmula (valor) y si falla con cualquier error (#¡DIV/0!, #N/A, #¡VALOR!), devuelve valor_si_error.",
+      "explanationByLocale": {
+        "es": "SI.ERROR evalúa una fórmula (valor) y si falla con cualquier error (#¡DIV/0!, #N/A, #¡VALOR!), devuelve valor_si_error.",
+        "en": "IFERROR evaluates a value, and if it resolves to any Excel error (#DIV/0!, #N/A, #VALUE!), it outputs value_if_error.",
+        "de": "WENNFEHLER fängt jeden Fehler (#DIV/0!, #NV, #WERT!) ab und gibt den Ausweichwert zurück.",
+        "fr": "SIERREUR intercepte toute erreur (#DIV/0!, #N/A, #VALEUR!) et renvoie la valeur de remplacement.",
+        "ja": "IFERRORは数式を評価し、エラー（#DIV/0!、#N/A、#VALUE!等）が発生した場合に指定した代替値を返します。",
+        "pt": "SEERRO avalia uma fórmula e, caso resulte em qualquer erro (#DIV/0!, #N/D, #VALOR!), retorna o valor_se_erro."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué devuelve la fórmula =SI.ERROR(10/2, \"Error\")?",
+      "promptByLocale": {
+        "es": "¿Qué devuelve la fórmula =SI.ERROR(10/2, \"Error\")?",
+        "en": "What does the formula =IFERROR(10/2, \"Error\") return?",
+        "de": "Was liefert die Formel =WENNFEHLER(10/2; \"Fehler\")?",
+        "fr": "Que renvoie la formule =SIERREUR(10/2; \"Erreur\") ?",
+        "ja": "数式 =IFERROR(10/2, \"Error\") は何を返しますか？",
+        "pt": "O que a fórmula =SEERRO(10/2; \"Erro\") retorna?"
+      },
+      "options": ["5", "Error", "0", "#¡DIV/0!"],
+      "optionsByLocale": {
+        "es": ["5", "Error", "0", "#¡DIV/0!"],
+        "en": ["5", "Error", "0", "#DIV/0!"],
+        "de": ["5", "Fehler", "0", "#DIV/0!"],
+        "fr": ["5", "Erreur", "0", "#DIV/0!"],
+        "ja": ["5", "Error", "0", "#DIV/0!"],
+        "pt": ["5", "Erro", "0", "#DIV/0!"]
+      },
+      "correct": "5",
+      "correctByLocale": {
+        "es": "5",
+        "en": "5",
+        "de": "5",
+        "fr": "5",
+        "ja": "5",
+        "pt": "5"
+      },
+      "explanation": "Como 10/2 no produce ningún error, SI.ERROR devuelve el resultado normal del cálculo (5).",
+      "explanationByLocale": {
+        "es": "Como 10/2 no produce ningún error, SI.ERROR devuelve el resultado normal del cálculo (5).",
+        "en": "Since 10/2 executes cleanly without errors, IFERROR returns the normal calculated result (5).",
+        "de": "Da 10/2 keinen Fehler erzeugt, liefert WENNFEHLER das normale Ergebnis (5).",
+        "fr": "Comme 10/2 ne produit aucune erreur, SIERREUR renvoie le résultat normal du calcul (5).",
+        "ja": "10/2はエラーにならないため、通常通りの計算結果「5」が返されます。",
+        "pt": "Como 10/2 não gera nenhum erro, SEERRO retorna o resultado normal do cálculo (5)."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para calcular A2/B2 protegida con SI.ERROR, devolviendo 0 si hay error:",
+      "promptByLocale": {
+        "es": "Arma la fórmula para calcular A2/B2 protegida con SI.ERROR, devolviendo 0 si hay error:",
+        "en": "Build formula to divide A2 by B2 protected with IFERROR, returning 0 on error:",
+        "de": "Baue die Formel für A2/B2 geschützt mit WENNFEHLER, die bei Fehler 0 zurückgibt:",
+        "fr": "Construisez la formule pour diviser A2 par B2 avec SIERREUR, renvoyant 0 en cas d'erreur :",
+        "ja": "A2/B2の割り算をIFERRORで保護し、エラー時は0を返す数式を構築してください：",
+        "pt": "Monte a fórmula para calcular A2/B2 protegida com SEERRO, retornando 0 se houver erro:"
+      },
+      "formula": "=SI.ERROR(A2/B2,0)",
+      "formulaByLocale": {
+        "es": "=SI.ERROR(A2/B2,0)",
+        "en": "=IFERROR(A2/B2,0)",
+        "de": "=WENNFEHLER(A2/B2,0)",
+        "fr": "=SIERREUR(A2/B2,0)",
+        "ja": "=IFERROR(A2/B2,0)",
+        "pt": "=SEERRO(A2/B2,0)"
+      },
+      "correct": "=SI.ERROR(A2/B2,0)",
+      "correctByLocale": {
+        "es": "=SI.ERROR(A2/B2,0)",
+        "en": "=IFERROR(A2/B2,0)",
+        "de": "=WENNFEHLER(A2/B2,0)",
+        "fr": "=SIERREUR(A2/B2,0)",
+        "ja": "=IFERROR(A2/B2,0)",
+        "pt": "=SEERRO(A2/B2,0)"
+      },
+      "blocks": ["=SI.ERROR(", "A2/B2,", "0)"],
+      "blocksByLocale": {
+        "es": ["=SI.ERROR(", "A2/B2,", "0)"],
+        "en": ["=IFERROR(", "A2/B2,", "0)"],
+        "de": ["=WENNFEHLER(", "A2/B2,", "0)"],
+        "fr": ["=SIERREUR(", "A2/B2,", "0)"],
+        "ja": ["=IFERROR(", "A2/B2,", "0)"],
+        "pt": ["=SEERRO(", "A2/B2,", "0)"]
+      },
+      "explanation": "Envolver operaciones con SI.ERROR(..., 0) mantiene limpias las tablas financieras.",
+      "explanationByLocale": {
+        "es": "Envolver operaciones con SI.ERROR(..., 0) mantiene limpias las tablas financieras.",
+        "en": "Wrapping calculations in IFERROR(..., 0) keeps financial models tidy and prevents broken totals.",
+        "de": "Berechnungen in WENNFEHLER(..., 0) zu fassen, hält Berichte sauber und summierbar.",
+        "fr": "Envelopper les calculs avec SIERREUR(..., 0) évite les erreurs dans les bilans financiers.",
+        "ja": "IFERROR(..., 0)で囲むことで、表の合計計算がエラーで中断されるのを防げます。",
+        "pt": "Envolver cálculos com SEERRO(..., 0) mantém relatórios financeiros limpos e calculáveis."
+      }
+    }
+  ]
+}
+

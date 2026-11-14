@@ -1,0 +1,90 @@
+{
+  "ref": "L5",
+  "title": "Revisar una hoja ajena",
+  "titleByLocale": {
+    "es": "Revisar una hoja ajena",
+    "en": "Reviewing Someone Else's Sheet",
+    "de": "Fremde Tabellen prüfen",
+    "fr": "Auditer une feuille inconnue",
+    "ja": "他人が作ったシートの検証実践",
+    "pt": "Revisar planilha de terceiros"
+  },
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Al recibir un modelo financiero creado por otra persona, ¿cuál es el atajo de teclado para alternar y MOSTRAR TODAS las fórmulas de la hoja a la vez?",
+      "promptByLocale": {
+        "es": "Al recibir un modelo financiero creado por otra persona, ¿cuál es el atajo de teclado para alternar y MOSTRAR TODAS las fórmulas de la hoja a la vez?",
+        "en": "When auditing an unfamiliar financial model, which shortcut toggles SHOW ALL FORMULAS across the entire worksheet?",
+        "de": "Mit welchem Kurzbefehl schaltet man in fremden Arbeitsblättern die Ansicht 'ALLE FORMELN ANZEIGEN' ein?",
+        "fr": "Quel raccourci clavier bascule l'affichage pour VOIR TOUTES LES FORMULES d'une feuille d'un coup ?",
+        "ja": "他人が作成したシートを監査・点検する際、シート内の「すべての数式を一括表示」する切り替えショートカットはどれですか？",
+        "pt": "Ao auditar uma planilha de terceiros, qual atalho alterna para EXIBIR TODAS AS FÓRMULAS de uma só vez?"
+      },
+      "options": [
+        "Ctrl + ` (o Ctrl + ~ en teclados internacionales)",
+        "Alt + F4",
+        "Ctrl + Z",
+        "Shift + F12"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Ctrl + ` (o Ctrl + ~ en teclados internacionales)",
+          "Alt + F4",
+          "Ctrl + Z",
+          "Shift + F12"
+        ],
+        "en": [
+          "Ctrl + ` (or Ctrl + ~ on international keyboards)",
+          "Alt + F4",
+          "Ctrl + Z",
+          "Shift + F12"
+        ],
+        "de": [
+          "Strg + ` (oder Strg + #)",
+          "Alt + F4",
+          "Strg + Z",
+          "Umschalt + F12"
+        ],
+        "fr": [
+          "Ctrl + ` (ou Ctrl + guillemet)",
+          "Alt + F4",
+          "Ctrl + Z",
+          "Maj + F12"
+        ],
+        "ja": [
+          "Ctrl + `（または Ctrl + Shift + @）",
+          "Alt + F4",
+          "Ctrl + Z",
+          "Shift + F12"
+        ],
+        "pt": [
+          "Ctrl + ` (ou Ctrl + ~ em teclados ABNT)",
+          "Alt + F4",
+          "Ctrl + Z",
+          "Shift + F12"
+        ]
+      },
+      "correct": "Ctrl + ` (o Ctrl + ~ en teclados internacionales)",
+      "correctByLocale": {
+        "es": "Ctrl + ` (o Ctrl + ~ en teclados internacionales)",
+        "en": "Ctrl + ` (or Ctrl + ~ on international keyboards)",
+        "de": "Strg + ` (oder Strg + #)",
+        "fr": "Ctrl + ` (ou Ctrl + guillemet)",
+        "ja": "Ctrl + `（または Ctrl + Shift + @）",
+        "pt": "Ctrl + ` (ou Ctrl + ~ em teclados ABNT)"
+      },
+      "explanation": "Mostrar fórmulas (Ctrl+`) revela al instante celdas con valores fijos escritos a mano disfrazados de cálculos.",
+      "explanationByLocale": {
+        "es": "Mostrar fórmulas (Ctrl+`) revela al instante celdas con valores fijos escritos a mano disfrazados de cálculos.",
+        "en": "Show Formulas (Ctrl+`) immediately exposes hardcoded numbers masquerading as calculated cells.",
+        "de": "Formeln anzeigen (Strg+`) entlarvt sofort hartcodierte Werte, die als Formeln getarnt sind.",
+        "fr": "Afficher les formules (Ctrl+`) révèle immédiatement les valeurs saisies en dur au lieu de formules.",
+        "ja": "「数式の表示（Ctrl+`）」を実行すると、計算式に見せかけて手入力（ハードコード）された数値を一発で看破できます。",
+        "pt": "Exibir fórmulas (Ctrl+`) expõe imediatamente números fixos digitados manualmente disfarçados de cálculos."
+      }
+    }
+  ]
+}

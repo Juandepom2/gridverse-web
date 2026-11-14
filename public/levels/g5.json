@@ -1,0 +1,164 @@
+{
+  "ref": "G5",
+  "title": "Listas desplegables",
+  "titleByLocale": {
+    "es": "Listas desplegables",
+    "en": "Dropdown Lists",
+    "de": "Dropdown-Listen",
+    "fr": "Listes déroulantes",
+    "ja": "ドロップダウンリスト",
+    "pt": "Listas suspensas"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "En el cuadro de Validación de datos, ¿qué criterio de validación debes elegir en el menú 'Permitir' para crear un desplegable?",
+      "promptByLocale": {
+        "es": "En el cuadro de Validación de datos, ¿qué criterio de validación debes elegir en el menú 'Permitir' para crear un desplegable?",
+        "en": "In the Data Validation dialog, which allow setting creates an in-cell dropdown picker?",
+        "de": "Welche Gültigkeitsregel unter 'Zulassen' erstellt ein Dropdown-Auswahlfeld?",
+        "fr": "Dans la boîte de validation, quelle règle choisir sous 'Autoriser' pour créer une liste déroulante ?",
+        "ja": "データの入力規則ダイアログの「許可」メニューで、ドロップダウンを作成するには何を選びますか？",
+        "pt": "Na caixa de Validação de dados, qual critério em 'Permitir' cria uma lista suspensa na célula?"
+      },
+      "options": [
+        "Lista (List)",
+        "Cualquier valor",
+        "Longitud de texto",
+        "Número entero"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Lista (List)",
+          "Cualquier valor",
+          "Longitud de texto",
+          "Número entero"
+        ],
+        "en": [
+          "List",
+          "Any value",
+          "Text length",
+          "Whole number"
+        ],
+        "de": [
+          "Liste (List)",
+          "Jeden Wert",
+          "Textlänge",
+          "Ganze Zahl"
+        ],
+        "fr": [
+          "Liste (List)",
+          "Tout",
+          "Longueur du texte",
+          "Nombre entier"
+        ],
+        "ja": [
+          "リスト (List)",
+          "すべての値",
+          "文字列の長さ",
+          "整数"
+        ],
+        "pt": [
+          "Lista (List)",
+          "Qualquer valor",
+          "Comprimento do texto",
+          "Número inteiro"
+        ]
+      },
+      "correct": "Lista (List)",
+      "correctByLocale": {
+        "es": "Lista (List)",
+        "en": "List",
+        "de": "Liste (List)",
+        "fr": "Liste (List)",
+        "ja": "リスト (List)",
+        "pt": "Lista (List)"
+      },
+      "explanation": "Elegir 'Lista' activa la flecha desplegable en la celda y valida las opciones autorizadas.",
+      "explanationByLocale": {
+        "es": "Elegir 'Lista' activa la flecha desplegable en la celda y valida las opciones autorizadas.",
+        "en": "Selecting 'List' shows an in-cell dropdown arrow and confines entries strictly to allowed options.",
+        "de": "Das Auswählen von 'Liste' aktiviert den Dropdown-Pfeil und lässt nur die definierten Optionen zu.",
+        "fr": "Choisir 'Liste' affiche la flèche déroulante et valide strictement les choix proposés.",
+        "ja": "「リスト」を選択すると、セルにドロップダウン矢印が現れ、選択肢以外の入力を制限できます。",
+        "pt": "Selecionar 'Lista' ativa a seta suspensa na célula e limita as entradas às opções permitidas."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Al configurar el origen de la lista, si las opciones están escritas en las celdas F1:F4, ¿cómo se referencia el origen?",
+      "promptByLocale": {
+        "es": "Al configurar el origen de la lista, si las opciones están escritas en las celdas F1:F4, ¿cómo se referencia el origen?",
+        "en": "When configuring the dropdown source located in cells F1:F4, how do you type the source input?",
+        "de": "Wie referenziert man die Quelle im Eingabefeld, wenn die Optionen in F1:F4 stehen?",
+        "fr": "Si les options se trouvent dans les cellules F1:F4, comment renseigner la source ?",
+        "ja": "ドロップダウンの選択肢がF1:F4にある場合、「元の値」ボックスにはどう入力しますか？",
+        "pt": "Ao configurar a fonte da lista situada nas células F1:F4, como referenciar a origem?"
+      },
+      "options": [
+        "=$F$1:$F$4",
+        "F1:F4 sin signo igual",
+        "[F1..F4]",
+        "LISTA(F1:F4)"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "=$F$1:$F$4",
+          "F1:F4 sin signo igual",
+          "[F1..F4]",
+          "LISTA(F1:F4)"
+        ],
+        "en": [
+          "=$F$1:$F$4",
+          "F1:F4 without equals",
+          "[F1..F4]",
+          "LIST(F1:F4)"
+        ],
+        "de": [
+          "=$F$1:$F$4",
+          "F1:F4 ohne Gleichheitszeichen",
+          "[F1..F4]",
+          "LISTE(F1:F4)"
+        ],
+        "fr": [
+          "=$F$1:$F$4",
+          "F1:F4 sans signe égal",
+          "[F1..F4]",
+          "LISTE(F1:F4)"
+        ],
+        "ja": [
+          "=$F$1:$F$4（イコール付き絶対参照）",
+          "イコールなしの F1:F4",
+          "[F1..F4]",
+          "LIST(F1:F4)"
+        ],
+        "pt": [
+          "=$F$1:$F$4",
+          "F1:F4 sem sinal de igual",
+          "[F1..F4]",
+          "LISTA(F1:F4)"
+        ]
+      },
+      "correct": "=$F$1:$F$4",
+      "correctByLocale": {
+        "es": "=$F$1:$F$4",
+        "en": "=$F$1:$F$4",
+        "de": "=$F$1:$F$4",
+        "fr": "=$F$1:$F$4",
+        "ja": "=$F$1:$F$4（イコール付き絶対参照）",
+        "pt": "=$F$1:$F$4"
+      },
+      "explanation": "El signo igual (=) es imprescindible para que Excel interprete el rango como una fórmula de origen.",
+      "explanationByLocale": {
+        "es": "El signo igual (=) es imprescindible para que Excel interprete el rango como una fórmula de origen.",
+        "en": "The equals sign (=) is essential for Excel to evaluate the range reference rather than treating it as literal text.",
+        "de": "Das Gleichheitszeichen (=) ist zwingend nötig, damit Excel den Bereich als Bezug interpretiert.",
+        "fr": "Le signe égal (=) est indispensable pour qu'Excel reconnaisse la référence de plage.",
+        "ja": "先頭の「=」を付けることで、単なる文字列ではなくセル範囲への参照として解釈されます。",
+        "pt": "O sinal de igual (=) é obrigatório para que o Excel interprete o intervalo como referência válida."
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "ref": "I7",
+  "title": "SUBTOTALES (con filtros)",
+  "titleByLocale": {
+    "es": "SUBTOTALES (con filtros)",
+    "en": "SUBTOTAL (With Filters)",
+    "de": "TEILERGEBNIS (mit Filtern)",
+    "fr": "SOUS.TOTAL (avec filtres)",
+    "ja": "SUBTOTAL（フィルター連動集計）",
+    "pt": "SUBTOTAL (com filtros)"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Por qué es crucial usar =SUBTOTALES en lugar de =SUMA en tablas filtradas?",
+      "promptByLocale": {
+        "es": "¿Por qué es crucial usar =SUBTOTALES en lugar de =SUMA en tablas filtradas?",
+        "en": "Why is =SUBTOTAL preferred over =SUM on filtered tables?",
+        "de": "Warum ist =TEILERGEBNIS gegenüber =SUMME in gefilterten Tabellen überlegen?",
+        "fr": "Pourquoi est-il crucial d'utiliser =SOUS.TOTAL au lieu de =SOMME sur des tables filtrées ?",
+        "ja": "フィルターを適用した表で、=SUM ではなく =SUBTOTAL を使用する決定的な理由は何ですか？",
+        "pt": "Por que é fundamental usar =SUBTOTAL em vez de =SOMA em tabelas filtradas?"
+      },
+      "options": [
+        "SUBTOTALES ignora las filas ocultas por el filtro y suma solo lo visible",
+        "SUMA borra las celdas ocultas",
+        "SUBTOTALES duplica los montos",
+        "SUMA solo funciona con números pares"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "SUBTOTALES ignora las filas ocultas por el filtro y suma solo lo visible",
+          "SUMA borra las celdas ocultas",
+          "SUBTOTALES duplica los montos",
+          "SUMA solo funciona con números pares"
+        ],
+        "en": [
+          "SUBTOTAL ignores filtered hidden rows and sums only visible data",
+          "SUM permanently deletes hidden rows",
+          "SUBTOTAL doubles calculations",
+          "SUM only computes even numbers"
+        ],
+        "de": [
+          "TEILERGEBNIS ignoriert ausgeblendete Filterzeilen und berechnet nur Sichtbares",
+          "SUMME löscht ausgeblendete Zeilen",
+          "TEILERGEBNIS verdoppelt Zahlen",
+          "SUMME rechnet nur mit geraden Zahlen"
+        ],
+        "fr": [
+          "SOUS.TOTAL ignore les lignes masquées par le filtre et somme uniquement le visible",
+          "SOMME supprime les lignes masquées",
+          "SOUS.TOTAL double les montants",
+          "SOMME ne fonctionne qu'avec les pairs"
+        ],
+        "ja": [
+          "SUBTOTALはフィルターで非表示になった行を除外し、現在画面に見えている行だけを集計する",
+          "SUMは隠れた行のデータを消去してしまう",
+          "SUBTOTALは計算結果を2倍にする",
+          "SUMは偶数しか計算できない"
+        ],
+        "pt": [
+          "SUBTOTAL ignora as linhas ocultas pelo filtro e soma apenas os dados visíveis",
+          "SOMA apaga as linhas ocultas",
+          "SUBTOTAL duplica os valores",
+          "SOMA só funciona com números pares"
+        ]
+      },
+      "correct": "SUBTOTALES ignora las filas ocultas por el filtro y suma solo lo visible",
+      "correctByLocale": {
+        "es": "SUBTOTALES ignora las filas ocultas por el filtro y suma solo lo visible",
+        "en": "SUBTOTAL ignores filtered hidden rows and sums only visible data",
+        "de": "TEILERGEBNIS ignoriert ausgeblendete Filterzeilen und berechnet nur Sichtbares",
+        "fr": "SOUS.TOTAL ignore les lignes masquées par le filtre et somme uniquement le visible",
+        "ja": "SUBTOTALはフィルターで非表示になった行を除外し、現在画面に見えている行だけを集計する",
+        "pt": "SUBTOTAL ignora as linhas ocultas pelo filtro e soma apenas os dados visíveis"
+      },
+      "explanation": "La función 109 o 9 en SUBTOTALES calcula exclusivamente los registros visibles al filtrar.",
+      "explanationByLocale": {
+        "es": "La función 109 o 9 en SUBTOTALES calcula exclusivamente los registros visibles al filtrar.",
+        "en": "Function code 109 or 9 in SUBTOTAL sums only the records visible after filtering.",
+        "de": "Funktionsnummer 109 oder 9 in TEILERGEBNIS summiert ausschließlich gefilterte, sichtbare Zeilen.",
+        "fr": "Le code fonction 109 ou 9 dans SOUS.TOTAL additionne uniquement les lignes visibles.",
+        "ja": "SUBTOTALの第1引数に「9」または「109」を指定すると、フィルター後の可視セルのみが合算されます。",
+        "pt": "O código de função 109 ou 9 no SUBTOTAL calcula exclusivamente os dados visíveis."
+      }
+    }
+  ]
+}

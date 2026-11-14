@@ -1,0 +1,373 @@
+{
+  "ref": "A8",
+  "title": "Jefe: División por cero",
+  "version": 1,
+  "rewardXp": 30,
+  "exercises": [
+    {
+      "type": "find_error",
+      "prompt": "D3 muestra #¡DIV/0!. Toca la celda que provoca la división por cero para diagnosticarla:",
+      "correct": "C3",
+      "errorCell": "D3",
+      "data": {
+        "A1": "Producto",
+        "B1": "Total",
+        "C1": "Unidades",
+        "D1": "Precio Unit.",
+        "A2": "Café",
+        "B2": "300",
+        "C2": "10",
+        "D2": "=B2/C2",
+        "A3": "Té",
+        "B3": "150",
+        "C3": "0",
+        "D3": "=B3/C3",
+        "A4": "Pan",
+        "B4": "200",
+        "C4": "40",
+        "D4": "=B4/C4"
+      },
+      "displayValues": {
+        "D2": "30",
+        "D3": "#¡DIV/0!",
+        "D4": "5"
+      },
+      "explanation": "La celda C3 contiene el valor 0 en el divisor (denominador), lo que genera matemáticamente el error #¡DIV/0!.",
+      "promptByLocale": {
+        "es": "D3 muestra #¡DIV/0!. Toca la celda que provoca la división por cero para diagnosticarla:",
+        "en": "D3 shows #DIV/0!. Tap the cell causing division by zero to diagnose it:",
+        "de": "D3 zeigt #DIV/0!. Tippe auf die Zelle, die die Division durch Null verursacht:",
+        "fr": "D3 affiche #DIV/0!. Touche la cellule provoquant la division par zéro :",
+        "ja": "D3が #DIV/0! となっています。ゼロ除算の原因となっているセルをタップしてください：",
+        "pt": "D3 mostra #DIV/0!. Toque na célula que provoca a divisão por zero para diagnosticá-la:"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Producto",
+          "B1": "Total",
+          "C1": "Unidades",
+          "D1": "Precio Unit.",
+          "A2": "Café",
+          "B2": "300",
+          "C2": "10",
+          "D2": "=B2/C2",
+          "A3": "Té",
+          "B3": "150",
+          "C3": "0",
+          "D3": "=B3/C3",
+          "A4": "Pan",
+          "B4": "200",
+          "C4": "40",
+          "D4": "=B4/C4"
+        },
+        "en": {
+          "A1": "Product",
+          "B1": "Total",
+          "C1": "Units",
+          "D1": "Unit Price",
+          "A2": "Coffee",
+          "B2": "300",
+          "C2": "10",
+          "D2": "=B2/C2",
+          "A3": "Tea",
+          "B3": "150",
+          "C3": "0",
+          "D3": "=B3/C3",
+          "A4": "Bread",
+          "B4": "200",
+          "C4": "40",
+          "D4": "=B4/C4"
+        },
+        "de": {
+          "A1": "Produkt",
+          "B1": "Gesamt",
+          "C1": "Einheiten",
+          "D1": "Stückpreis",
+          "A2": "Kaffee",
+          "B2": "300",
+          "C2": "10",
+          "D2": "=B2/C2",
+          "A3": "Tee",
+          "B3": "150",
+          "C3": "0",
+          "D3": "=B3/C3",
+          "A4": "Brot",
+          "B4": "200",
+          "C4": "40",
+          "D4": "=B4/C4"
+        },
+        "fr": {
+          "A1": "Produit",
+          "B1": "Total",
+          "C1": "Unités",
+          "D1": "Prix Unit.",
+          "A2": "Café",
+          "B2": "300",
+          "C2": "10",
+          "D2": "=B2/C2",
+          "A3": "Thé",
+          "B3": "150",
+          "C3": "0",
+          "D3": "=B3/C3",
+          "A4": "Pain",
+          "B4": "200",
+          "C4": "40",
+          "D4": "=B4/C4"
+        },
+        "ja": {
+          "A1": "商品",
+          "B1": "合計",
+          "C1": "数量",
+          "D1": "単価",
+          "A2": "コーヒー",
+          "B2": "300",
+          "C2": "10",
+          "D2": "=B2/C2",
+          "A3": "お茶",
+          "B3": "150",
+          "C3": "0",
+          "D3": "=B3/C3",
+          "A4": "パン",
+          "B4": "200",
+          "C4": "40",
+          "D4": "=B4/C4"
+        },
+        "pt": {
+          "A1": "Produto",
+          "B1": "Total",
+          "C1": "Unidades",
+          "D1": "Preço Unit.",
+          "A2": "Café",
+          "B2": "300",
+          "C2": "10",
+          "D2": "=B2/C2",
+          "A3": "Chá",
+          "B3": "150",
+          "C3": "0",
+          "D3": "=B3/C3",
+          "A4": "Pão",
+          "B4": "200",
+          "C4": "40",
+          "D4": "=B4/C4"
+        }
+      },
+      "explanationByLocale": {
+        "es": "La celda C3 contiene el valor 0 en el divisor, lo que genera el error #¡DIV/0!.",
+        "en": "Cell C3 contains 0 in the denominator, causing the #DIV/0! error.",
+        "de": "Zelle C3 enthält den Wert 0 im Nenner, was den Fehler #DIV/0! auslöst.",
+        "fr": "La cellule C3 contient 0 comme diviseur, ce qui génère l'erreur #DIV/0!.",
+        "ja": "セル C3 は除数（分母）に0が入っているため、#DIV/0! エラーが発生しています。",
+        "pt": "A célula C3 contém 0 no denominador, provocando o erro #DIV/0!."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Por qué ocurre el error #¡DIV/0! en Excel?",
+      "formula": "#¡DIV/0!",
+      "correct": "Se intenta dividir entre 0 o entre una celda vacía",
+      "data": {},
+      "options": [
+        "Se intenta dividir entre 0 o entre una celda vacía",
+        "El nombre de la función está mal escrito",
+        "La columna es demasiado estrecha para mostrar el número",
+        "El rango de celdas fue eliminado"
+      ],
+      "explanation": "Cualquier fórmula aritmética que tenga 0 o una referencia a una celda en blanco en el denominador disparará #¡DIV/0!.",
+      "promptByLocale": {
+        "es": "¿Por qué ocurre el error #¡DIV/0! en Excel?",
+        "en": "Why does the #DIV/0! error occur in Excel?",
+        "de": "Warum tritt der Fehler #DIV/0! in Excel auf?",
+        "fr": "Pourquoi l'erreur #DIV/0! se produit-elle dans Excel ?",
+        "ja": "Excelで #DIV/0! エラーが発生する理由は何ですか？",
+        "pt": "Por que ocorre o erro #DIV/0! no Excel?"
+      },
+      "formulaByLocale": {
+        "es": "#¡DIV/0!",
+        "en": "#DIV/0!",
+        "de": "#DIV/0!",
+        "fr": "#DIV/0!",
+        "ja": "#DIV/0!",
+        "pt": "#DIV/0!"
+      },
+      "correctByLocale": {
+        "es": "Se intenta dividir entre 0 o entre una celda vacía",
+        "en": "An attempt is made to divide by 0 or an empty cell",
+        "de": "Es wird versucht, durch 0 oder eine leere Zelle zu teilen",
+        "fr": "On tente de diviser par 0 ou par une cellule vide",
+        "ja": "0または空白セルで割り算を行おうとしたため",
+        "pt": "Tenta-se dividir por 0 ou por uma célula vazia"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Se intenta dividir entre 0 o entre una celda vacía",
+          "El nombre de la función está mal escrito",
+          "La columna es demasiado estrecha para mostrar el número",
+          "El rango de celdas fue eliminado"
+        ],
+        "en": [
+          "An attempt is made to divide by 0 or an empty cell",
+          "The function name is misspelled",
+          "The column is too narrow to display the number",
+          "The cell range was deleted"
+        ],
+        "de": [
+          "Es wird versucht, durch 0 oder eine leere Zelle zu teilen",
+          "Der Funktionsname ist falsch geschrieben",
+          "Die Spalte ist zu schmal für die Zahl",
+          "Der Zellbereich wurde gelöscht"
+        ],
+        "fr": [
+          "On tente de diviser par 0 ou par une cellule vide",
+          "Le nom de la fonction est mal orthographié",
+          "La colonne est trop étroite pour afficher le nombre",
+          "La plage de cellules a été supprimée"
+        ],
+        "ja": [
+          "0または空白セルで割り算を行おうとしたため",
+          "関数名のスペルが間違っているため",
+          "列幅が狭くて数値を表示できないため",
+          "参照先のセル範囲が削除されたため"
+        ],
+        "pt": [
+          "Tenta-se dividir por 0 ou por uma célula vazia",
+          "O nome da função está escrito errado",
+          "A coluna é muito estreita para exibir o número",
+          "O intervalo de células foi excluído"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Dividir entre cero no está definido matemáticamente, por lo que Excel arroja #¡DIV/0!.",
+        "en": "Division by zero is undefined mathematically, so Excel displays #DIV/0!.",
+        "de": "Division durch Null ist mathematisch nicht definiert, daher meldet Excel #DIV/0!.",
+        "fr": "La division par zéro est indéfinie, Excel affiche donc #DIV/0!.",
+        "ja": "ゼロでの除算は数学的に定義できないため、Excelは #DIV/0! エラーを出力します。",
+        "pt": "A divisão por zero é indefinida matematicamente, logo o Excel exibe #DIV/0!."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula que divide correctamente el Total de Pan (B4) entre Unidades (C4).",
+      "correct": "=B4/C4",
+      "blocks": [
+        "=",
+        "B4",
+        "/",
+        "C4",
+        "*"
+      ],
+      "explanation": "Dividir números mayores a cero entrega el valor exacto sin errores.",
+      "promptByLocale": {
+        "es": "Arma la fórmula que divide correctamente el Total de Pan (B4) entre Unidades (C4).",
+        "en": "Build the formula that correctly divides Bread Total (B4) by Units (C4).",
+        "de": "Erstelle die Formel, die den Brot-Gesamtwert (B4) durch die Einheiten (C4) teilt.",
+        "fr": "Construis la formule qui divise correctement le Total Pain (B4) par les Unités (C4).",
+        "ja": "パンの合計金額（B4）を数量（C4）で正しく割り算する数式を組み立ててください。",
+        "pt": "Monte a fórmula que divide corretamente o Total de Pão (B4) por Unidades (C4)."
+      },
+      "explanationByLocale": {
+        "es": "Dividir números mayores a cero entrega el valor exacto sin errores.",
+        "en": "Dividing numbers greater than zero gives the exact value without errors.",
+        "de": "Das Teilen von Zahlen größer als Null liefert das genaue Ergebnis ohne Fehler.",
+        "fr": "Diviser par des nombres supérieurs à zéro renvoie la valeur exacte sans erreur.",
+        "ja": "ゼロより大きい数値で割ることで、エラーなく正確な単価が計算されます。",
+        "pt": "Dividir números maiores que zero produz o valor exato sem erros."
+      }
+    },
+    {
+      "type": "write_formula",
+      "prompt": "Calcula el precio unitario en D2 dividiendo B2 entre C2.",
+      "correct": "=B2/C2",
+      "targetCell": "D2",
+      "data": {
+        "A1": "Producto",
+        "B1": "Total",
+        "C1": "Unidades",
+        "A2": "Café",
+        "B2": "300",
+        "C2": "10"
+      },
+      "suggestions": [
+        "=",
+        "B2",
+        "/",
+        "C2",
+        "+"
+      ],
+      "explanation": "La barra inclinada (/) es el operador de división nativo en Excel y hojas de cálculo.",
+      "promptByLocale": {
+        "es": "Calcula el precio unitario en D2 dividiendo B2 entre C2.",
+        "en": "Calculate the unit price in D2 by dividing B2 by C2.",
+        "de": "Berechne den Stückpreis in D2, indem du B2 durch C2 teilst.",
+        "fr": "Calcule le prix unitaire en D2 en divisant B2 par C2.",
+        "ja": "D2セルで、B2 を C2 で割って単価を計算してください。",
+        "pt": "Calcule o preço unitário em D2 dividindo B2 por C2."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Producto",
+          "B1": "Total",
+          "C1": "Unidades",
+          "A2": "Café",
+          "B2": "300",
+          "C2": "10"
+        },
+        "en": {
+          "A1": "Product",
+          "B1": "Total",
+          "C1": "Units",
+          "A2": "Coffee",
+          "B2": "300",
+          "C2": "10"
+        },
+        "de": {
+          "A1": "Produkt",
+          "B1": "Gesamt",
+          "C1": "Einheiten",
+          "A2": "Kaffee",
+          "B2": "300",
+          "C2": "10"
+        },
+        "fr": {
+          "A1": "Produit",
+          "B1": "Total",
+          "C1": "Unités",
+          "A2": "Café",
+          "B2": "300",
+          "C2": "10"
+        },
+        "ja": {
+          "A1": "商品",
+          "B1": "合計",
+          "C1": "数量",
+          "A2": "コーヒー",
+          "B2": "300",
+          "C2": "10"
+        },
+        "pt": {
+          "A1": "Produto",
+          "B1": "Total",
+          "C1": "Unidades",
+          "A2": "Café",
+          "B2": "300",
+          "C2": "10"
+        }
+      },
+      "explanationByLocale": {
+        "es": "La barra inclinada (/) es el operador nativo de división en hojas de cálculo.",
+        "en": "The slash (/) is the native division operator in spreadsheets.",
+        "de": "Der Schrägstrich (/) ist der native Divisionsoperator in Tabellenkalkulationen.",
+        "fr": "Le slash (/) est l'opérateur de division natif des tableurs.",
+        "ja": "スラッシュ（/）は表計算ソフトにおける除算の標準演算子です。",
+        "pt": "A barra (/) é o operador nativo de divisão em planilhas."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Jefe: División por cero",
+    "en": "Boss: Division by Zero",
+    "de": "Boss: Division durch Null",
+    "fr": "Boss : Division par zéro",
+    "ja": "ボス：ゼロ除算エラー",
+    "pt": "Chefe: Divisão por zero"
+  }
+}

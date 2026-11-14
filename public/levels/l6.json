@@ -1,0 +1,122 @@
+{
+  "ref": "L6",
+  "title": "Jefe Final: La hoja rota",
+  "titleByLocale": {
+    "es": "Jefe Final: La hoja rota",
+    "en": "Final Boss: The Broken Workbook",
+    "de": "Endboss: Das zerstörte Arbeitsblatt",
+    "fr": "Boss Final : La feuille corrompue",
+    "ja": "最終ボス：崩壊したスプレッドシート",
+    "pt": "Chefe Final: A planilha corrompida"
+  },
+  "version": 1,
+  "rewardXp": 50,
+  "exercises": [
+    {
+      "type": "find_error",
+      "prompt": "¡Batalla Final de GridVerse! En la celda C4 hay un error de referencia circular porque el total se incluye a sí mismo en la suma. Toca la celda corrupta C4:",
+      "promptByLocale": {
+        "es": "¡Batalla Final de GridVerse! En la celda C4 hay un error de referencia circular porque el total se incluye a sí mismo en la suma. Toca la celda corrupta C4:",
+        "en": "Final GridVerse Boss Battle! Cell C4 has a circular reference error because the total formula includes itself in the sum. Tap corrupted cell C4:",
+        "de": "GridVerse Endboss-Schlacht! Zelle C4 enthält einen Zirkelbezug, weil die Summe sich selbst einschließt. Tippe auf Zelle C4:",
+        "fr": "Bataille finale de GridVerse ! La cellule C4 a une référence circulaire car la somme s'inclut elle-même. Touchez la cellule C4 :",
+        "ja": "GridVerse最終決戦！C4セルには、合計式が自分自身のセルを含んでしまっている循環参照エラーがあります。問題のC4セルをタップしてください：",
+        "pt": "Batalha Final de GridVerse! A célula C4 possui erro de referência circular incluindo a si mesma na soma. Toque na célula corrompida C4:"
+      },
+      "correct": "C4",
+      "errorCell": "C4",
+      "data": {
+        "A1": "Concepto",
+        "B1": "Presupuesto",
+        "C1": "Real",
+        "A2": "Marketing",
+        "B2": "5000",
+        "C2": "4800",
+        "A3": "Desarrollo",
+        "B3": "12000",
+        "C3": "11500",
+        "A4": "Total",
+        "B4": "17000",
+        "C4": "0"
+      },
+      "explanation": "En C4 la fórmula era =SUMA(C2:C4). Al sumarse a sí misma, provocaba referencia circular y colapsaba a 0.",
+      "explanationByLocale": {
+        "es": "En C4 la fórmula era =SUMA(C2:C4). Al sumarse a sí misma, provocaba referencia circular y colapsaba a 0.",
+        "en": "In C4 the formula was =SUM(C2:C4). Referencing its own row triggered a circular loop, resetting the total to 0.",
+        "de": "In C4 lautete die Formel =SUMME(C2:C4), was einen Zirkelbezug auslöste und auf 0 kollabierte.",
+        "fr": "En C4 la formule était =SOMME(C2:C4), créant une référence circulaire qui bloquait le total à 0.",
+        "ja": "C4に入力されていた数式は =SUM(C2:C4) でした。自身を含めたことで循環参照となり、結果が0に化けていました。",
+        "pt": "Em C4 a fórmula era =SOMA(C2:C4). Ao referenciar a si mesma, gerava referência circular e zerava o total."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "¡Salva la hoja maestra! Corrige la suma del total real en C4 sumando únicamente el rango correcto de C2 a C3:",
+      "promptByLocale": {
+        "es": "¡Salva la hoja maestra! Corrige la suma del total real en C4 sumando únicamente el rango correcto de C2 a C3:",
+        "en": "Save the master workbook! Fix the actual total formula in C4 by summing strictly the clean range C2:C3:",
+        "de": "Rette das Meister-Arbeitsblatt! Korrigiere die Summe in C4, indem du exakt den Bereich C2:C3 summierst:",
+        "fr": "Sauvez le classeur maître ! Corrigez la somme en C4 en additionnant strictement la plage C2:C3 :",
+        "ja": "マスターシートを救出せよ！C4セルの数式を修正し、正しい範囲 C2:C3 だけを合算する数式を構築してください：",
+        "pt": "Salve a planilha mestre! Corrija a soma em C4 somando estritamente o intervalo correto de C2 a C3:"
+      },
+      "formula": "=SUMA(C2:C3)",
+      "formulaByLocale": {
+        "es": "=SUMA(C2:C3)",
+        "en": "=SUM(C2:C3)",
+        "de": "=SUMME(C2:C3)",
+        "fr": "=SOMME(C2:C3)",
+        "ja": "=SUM(C2:C3)",
+        "pt": "=SOMA(C2:C3)"
+      },
+      "correct": "=SUMA(C2:C3)",
+      "correctByLocale": {
+        "es": "=SUMA(C2:C3)",
+        "en": "=SUM(C2:C3)",
+        "de": "=SUMME(C2:C3)",
+        "fr": "=SOMME(C2:C3)",
+        "ja": "=SUM(C2:C3)",
+        "pt": "=SOMA(C2:C3)"
+      },
+      "blocks": [
+        "=SUMA(",
+        "C2:C3)"
+      ],
+      "blocksByLocale": {
+        "es": [
+          "=SUMA(",
+          "C2:C3)"
+        ],
+        "en": [
+          "=SUM(",
+          "C2:C3)"
+        ],
+        "de": [
+          "=SUMME(",
+          "C2:C3)"
+        ],
+        "fr": [
+          "=SOMME(",
+          "C2:C3)"
+        ],
+        "ja": [
+          "=SUM(",
+          "C2:C3)"
+        ],
+        "pt": [
+          "=SOMA(",
+          "C2:C3)"
+        ]
+      },
+      "explanation": "¡Has vencido al Jefe Final de GridVerse! Tu dominio de fórmulas, rangos, lógica y auditoría es total.",
+      "explanationByLocale": {
+        "es": "¡Has vencido al Jefe Final de GridVerse! Tu dominio de fórmulas, rangos, lógica y auditoría es total.",
+        "en": "You defeated the GridVerse Final Boss! You have completely mastered Excel formulas, arrays, logic, and auditing.",
+        "de": "Du hast den GridVerse-Endboss besiegt! Du beherrschst Formeln, Matrizen, Logik und Auditierung meisterhaft.",
+        "fr": "Vous avez vaincu le Boss Final de GridVerse ! Vous maîtrisez formules, matrices, logique et audit à la perfection.",
+        "ja": "GridVerseの最終ボスを撃破しました！数式、動的配列、論理判定、そして数式監査の全スキルをマスターしました。",
+        "pt": "Você derrotou o Chefe Final do GridVerse! Seu domínio sobre fórmulas, matrizes, lógica e auditoria é absoluto."
+      }
+    }
+  ]
+}

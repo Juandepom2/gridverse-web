@@ -1,0 +1,180 @@
+{
+  "ref": "H1",
+  "title": "BUSCARV coincidencia exacta",
+  "titleByLocale": {
+    "es": "BUSCARV coincidencia exacta",
+    "en": "VLOOKUP Exact Match",
+    "de": "SVERWEIS Genaue Übereinstimmung",
+    "fr": "RECHERCHEV correspondance exacte",
+    "ja": "VLOOKUP 完全一致",
+    "pt": "PROCV Correspondência exata"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Para que =BUSCARV realice una búsqueda de coincidencia EXACTA sin aproximar, ¿qué debe ser su 4º argumento?",
+      "promptByLocale": {
+        "es": "Para que =BUSCARV realice una búsqueda de coincidencia EXACTA sin aproximar, ¿qué debe ser su 4º argumento?",
+        "en": "For =VLOOKUP to perform an EXACT match without approximating, what must its 4th argument be?",
+        "de": "Welcher 4. Parameter erzwingt beim =SVERWEIS eine GENAUE Übereinstimmung?",
+        "fr": "Pour que =RECHERCHEV effectue une correspondance EXACTE sans approximer, quel doit être son 4e argument ?",
+        "ja": "VLOOKUP関数で近似値ではなく「完全一致」検索を行うには、第4引数に何を指定しますか？",
+        "pt": "Para que o =PROCV execute uma busca de correspondência EXATA sem aproximar, qual deve ser o 4º argumento?"
+      },
+      "options": [
+        "FALSO o 0",
+        "VERDADERO o 1",
+        "\"EXACTO\"",
+        "Dejarlo vacío"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "FALSO o 0",
+          "VERDADERO o 1",
+          "\"EXACTO\"",
+          "Dejarlo vacío"
+        ],
+        "en": [
+          "FALSE or 0",
+          "TRUE or 1",
+          "\"EXACT\"",
+          "Leave it empty"
+        ],
+        "de": [
+          "FALSCH oder 0",
+          "WAHR oder 1",
+          "\"EXAKT\"",
+          "Leer lassen"
+        ],
+        "fr": [
+          "FAUX ou 0",
+          "VRAI ou 1",
+          "\"EXACT\"",
+          "Laisser vide"
+        ],
+        "ja": [
+          "FALSE または 0",
+          "TRUE または 1",
+          "\"EXACT\"",
+          "省略（空欄）"
+        ],
+        "pt": [
+          "FALSO ou 0",
+          "VERDADEIRO ou 1",
+          "\"EXATO\"",
+          "Deixar vazio"
+        ]
+      },
+      "correct": "FALSO o 0",
+      "correctByLocale": {
+        "es": "FALSO o 0",
+        "en": "FALSE or 0",
+        "de": "FALSCH oder 0",
+        "fr": "FAUX ou 0",
+        "ja": "FALSE または 0",
+        "pt": "FALSO ou 0"
+      },
+      "explanation": "El 4º argumento FALSO (o 0) exige que el código coincida al 100% o devuelve el error #N/D.",
+      "explanationByLocale": {
+        "es": "El 4º argumento FALSO (o 0) exige que el código coincida al 100% o devuelve el error #N/D.",
+        "en": "Passing FALSE (or 0) as the 4th argument requires an exact match, otherwise #N/A is thrown.",
+        "de": "FALSCH (oder 0) erzwingt eine 100 % exakte Übereinstimmung, andernfalls wird #NV ausgegeben.",
+        "fr": "FAUX (ou 0) impose une correspondance à 100 %, sinon l'erreur #N/A est renvoyée.",
+        "ja": "第4引数にFALSE（または0）を指定すると、完全に一致するデータのみを検索し、なければ #N/A エラーを返します。",
+        "pt": "O 4º argumento FALSO (ou 0) exige que a busca seja 100% exata, caso contrário retorna #N/D."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para buscar el precio del código en D2 dentro de la tabla A2:B5 (columna 2, exacta):",
+      "promptByLocale": {
+        "es": "Arma la fórmula para buscar el precio del código en D2 dentro de la tabla A2:B5 (columna 2, exacta):",
+        "en": "Build formula to look up price of code in D2 within table A2:B5 (col 2, exact match):",
+        "de": "Baue die Formel, um den Preis für Code D2 in Tabelle A2:B5 zu suchen (Spalte 2, genau):",
+        "fr": "Construisez la formule pour chercher le prix du code en D2 dans la table A2:B5 (col 2, exacte) :",
+        "ja": "D2のコードの価格をA2:B5の表から検索する数式を構築してください（第2列、完全一致）：",
+        "pt": "Monte a fórmula para buscar o preço do código em D2 na tabela A2:B5 (coluna 2, exata):"
+      },
+      "formula": "=BUSCARV(D2,A2:B5,2,FALSO)",
+      "formulaByLocale": {
+        "es": "=BUSCARV(D2,A2:B5,2,FALSO)",
+        "en": "=VLOOKUP(D2,A2:B5,2,FALSE)",
+        "de": "=SVERWEIS(D2,A2:B5,2,FALSCH)",
+        "fr": "=RECHERCHEV(D2,A2:B5,2,FAUX)",
+        "ja": "=VLOOKUP(D2,A2:B5,2,FALSE)",
+        "pt": "=PROCV(D2,A2:B5,2,FALSO)"
+      },
+      "correct": "=BUSCARV(D2,A2:B5,2,FALSO)",
+      "correctByLocale": {
+        "es": "=BUSCARV(D2,A2:B5,2,FALSO)",
+        "en": "=VLOOKUP(D2,A2:B5,2,FALSE)",
+        "de": "=SVERWEIS(D2,A2:B5,2,FALSCH)",
+        "fr": "=RECHERCHEV(D2,A2:B5,2,FAUX)",
+        "ja": "=VLOOKUP(D2,A2:B5,2,FALSE)",
+        "pt": "=PROCV(D2,A2:B5,2,FALSO)"
+      },
+      "blocks": [
+        "=BUSCARV(",
+        "D2,",
+        "A2:B5,",
+        "2,",
+        "FALSO)"
+      ],
+      "blocksByLocale": {
+        "es": [
+          "=BUSCARV(",
+          "D2,",
+          "A2:B5,",
+          "2,",
+          "FALSO)"
+        ],
+        "en": [
+          "=VLOOKUP(",
+          "D2,",
+          "A2:B5,",
+          "2,",
+          "FALSE)"
+        ],
+        "de": [
+          "=SVERWEIS(",
+          "D2,",
+          "A2:B5,",
+          "2,",
+          "FALSCH)"
+        ],
+        "fr": [
+          "=RECHERCHEV(",
+          "D2,",
+          "A2:B5,",
+          "2,",
+          "FAUX)"
+        ],
+        "ja": [
+          "=VLOOKUP(",
+          "D2,",
+          "A2:B5,",
+          "2,",
+          "FALSE)"
+        ],
+        "pt": [
+          "=PROCV(",
+          "D2,",
+          "A2:B5,",
+          "2,",
+          "FALSO)"
+        ]
+      },
+      "explanation": "La búsqueda ubica D2 en la columna A y trae el valor correspondiente de la columna 2 (B).",
+      "explanationByLocale": {
+        "es": "La búsqueda ubica D2 en la columna A y trae el valor correspondiente de la columna 2 (B).",
+        "en": "VLOOKUP finds D2 in column A and retrieves the paired value from column 2 (B).",
+        "de": "SVERWEIS sucht D2 in Spalte A und liefert den zugehörigen Wert aus Spalte 2 (B).",
+        "fr": "RECHERCHEV trouve D2 dans la colonne A et renvoie la valeur de la colonne 2 (B).",
+        "ja": "VLOOKUPはA列でD2を探し出し、同じ行の2列目（B列）の値を返します。",
+        "pt": "O PROCV localiza D2 na coluna A e retorna o valor correspondente da coluna 2 (B)."
+      }
+    }
+  ]
+}

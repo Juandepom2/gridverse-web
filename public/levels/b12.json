@@ -1,0 +1,331 @@
+{
+  "ref": "B12",
+  "title": "Jefe: Referencia rota",
+  "version": 1,
+  "rewardXp": 35,
+  "exercises": [
+    {
+      "type": "find_error",
+      "prompt": "C2 muestra #¡REF!. Toca la celda con el error de referencia eliminada:",
+      "correct": "C2",
+      "errorCell": "C2",
+      "data": {
+        "A1": "Subtotal",
+        "B1": "Descuento",
+        "C1": "Total",
+        "A2": "500",
+        "B2": "0",
+        "C2": "#¡REF!"
+      },
+      "displayValues": {
+        "A2": "500",
+        "B2": "0",
+        "C2": "#¡REF!"
+      },
+      "explanation": "La celda C2 apuntaba a una fila o columna que fue suprimida del libro, rompiendo el enlace.",
+      "promptByLocale": {
+        "es": "C2 muestra #¡REF!. Toca la celda con el error de referencia eliminada:",
+        "en": "C2 shows #REF!. Tap the cell with the broken deleted reference error:",
+        "de": "C2 zeigt #BEZUG!. Tippe auf die Zelle mit dem gelöschten Bezugsfehler:",
+        "fr": "C2 affiche #REF!. Touche la cellule avec l'erreur de référence supprimée :",
+        "ja": "C2が #REF! となっています。参照先が削除されたエラーセルをタップしてください：",
+        "pt": "C2 mostra #REF!. Toque na célula com o erro de referência excluída:"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Subtotal",
+          "B1": "Descuento",
+          "C1": "Total",
+          "A2": "500",
+          "B2": "0",
+          "C2": "#¡REF!"
+        },
+        "en": {
+          "A1": "Subtotal",
+          "B1": "Discount",
+          "C1": "Total",
+          "A2": "500",
+          "B2": "0",
+          "C2": "#REF!"
+        },
+        "de": {
+          "A1": "Zwischensumme",
+          "B1": "Rabatt",
+          "C1": "Gesamt",
+          "A2": "500",
+          "B2": "0",
+          "C2": "#BEZUG!"
+        },
+        "fr": {
+          "A1": "Sous-total",
+          "B1": "Remise",
+          "C1": "Total",
+          "A2": "500",
+          "B2": "0",
+          "C2": "#REF!"
+        },
+        "ja": {
+          "A1": "小計",
+          "B1": "割引",
+          "C1": "合計",
+          "A2": "500",
+          "B2": "0",
+          "C2": "#REF!"
+        },
+        "pt": {
+          "A1": "Subtotal",
+          "B1": "Desconto",
+          "C1": "Total",
+          "A2": "500",
+          "B2": "0",
+          "C2": "#REF!"
+        }
+      },
+      "displayValuesByLocale": {
+        "es": {
+          "A2": "500",
+          "B2": "0",
+          "C2": "#¡REF!"
+        },
+        "en": {
+          "A2": "500",
+          "B2": "0",
+          "C2": "#REF!"
+        },
+        "de": {
+          "A2": "500",
+          "B2": "0",
+          "C2": "#BEZUG!"
+        },
+        "fr": {
+          "A2": "500",
+          "B2": "0",
+          "C2": "#REF!"
+        },
+        "ja": {
+          "A2": "500",
+          "B2": "0",
+          "C2": "#REF!"
+        },
+        "pt": {
+          "A2": "500",
+          "B2": "0",
+          "C2": "#REF!"
+        }
+      },
+      "explanationByLocale": {
+        "es": "La celda C2 apuntaba a una fila o columna que fue suprimida del libro, rompiendo el enlace.",
+        "en": "Cell C2 pointed to a row or column that was deleted, breaking the formula link.",
+        "de": "Zelle C2 verwies auf eine gelöschte Zeile oder Spalte, was den Bezug zerstört hat.",
+        "fr": "La cellule C2 pointait vers une ligne ou colonne supprimée, rompant le lien.",
+        "ja": "C2セルが参照していた行または列が削除されたため、参照が無効になりました。",
+        "pt": "A célula C2 apontava para uma linha ou coluna excluída, quebrando a fórmula."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Por qué aparece el error #¡REF! en Excel?",
+      "formula": "#¡REF!",
+      "correct": "Una celda referenciada fue eliminada o borrada",
+      "data": {},
+      "options": [
+        "Una celda referenciada fue eliminada o borrada",
+        "El número es demasiado largo para la columna",
+        "Falta el signo igual al inicio",
+        "Se dividió entre cero"
+      ],
+      "explanation": "#¡REF! significa 'Invalid Reference': la coordenada espacial ya no existe en la hoja.",
+      "promptByLocale": {
+        "es": "¿Por qué aparece el error #¡REF! en Excel?",
+        "en": "Why does the #REF! error appear in Excel?",
+        "de": "Warum tritt der Fehler #BEZUG! in Excel auf?",
+        "fr": "Pourquoi l'erreur #REF! apparaît-elle dans Excel ?",
+        "ja": "Excelで #REF! エラーが発生する原因は何ですか？",
+        "pt": "Por que o erro #REF! aparece no Excel?"
+      },
+      "formulaByLocale": {
+        "es": "#¡REF!",
+        "en": "#REF!",
+        "de": "#BEZUG!",
+        "fr": "#REF!",
+        "ja": "#REF!",
+        "pt": "#REF!"
+      },
+      "correctByLocale": {
+        "es": "Una celda referenciada fue eliminada o borrada",
+        "en": "A referenced cell was deleted or removed",
+        "de": "Eine referenzierte Zelle wurde gelöscht",
+        "fr": "Une cellule référencée a été supprimée",
+        "ja": "参照されていたセルが削除されたため",
+        "pt": "Uma célula referenciada foi excluída ou apagada"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Una celda referenciada fue eliminada o borrada",
+          "El número es demasiado largo para la columna",
+          "Falta el signo igual al inicio",
+          "Se dividió entre cero"
+        ],
+        "en": [
+          "A referenced cell was deleted or removed",
+          "The number is too wide for the column",
+          "The equal sign is missing at the start",
+          "Division by zero occurred"
+        ],
+        "de": [
+          "Eine referenzierte Zelle wurde gelöscht",
+          "Die Zahl ist zu breit für die Spalte",
+          "Das Gleichheitszeichen am Anfang fehlt",
+          "Es wurde durch Null geteilt"
+        ],
+        "fr": [
+          "Une cellule référencée a été supprimée",
+          "Le nombre est trop long pour la colonne",
+          "Il manque le signe égal au début",
+          "Division par zéro"
+        ],
+        "ja": [
+          "参照されていたセルが削除されたため",
+          "列幅が足りず数値を表示できないため",
+          "先頭の等号（=）が抜けているため",
+          "ゼロ除算が発生したため"
+        ],
+        "pt": [
+          "Uma célula referenciada foi excluída ou apagada",
+          "O número é muito longo para a coluna",
+          "Falta o sinal de igual no início",
+          "Houve divisão por zero"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "#¡REF! significa 'Invalid Reference': la coordenada espacial ya no existe en la hoja.",
+        "en": "#REF! indicates an invalid reference where the target cell coordinate no longer exists.",
+        "de": "#BEZUG! signalisiert, dass die Zielkoordinate im Blatt nicht mehr existiert.",
+        "fr": "#REF! indique une référence invalide dont la coordonnée n'existe plus.",
+        "ja": "#REF! は無効な参照を意味し、参照先セルがシート上から存在しなくなったことを示します。",
+        "pt": "#REF! indica referência inválida, pois a célula apontada não existe mais."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si una fórmula era '=A1+B1' y eliminas por completo la Columna B, ¿qué ocurre?",
+      "formula": "=A1+#¡REF!",
+      "correct": "La fórmula se convierte en =A1+#¡REF! y muestra error",
+      "data": {},
+      "options": [
+        "La fórmula se convierte en =A1+#¡REF! y muestra error",
+        "Excel toma B1 como cero automáticamente",
+        "La fórmula se elimina sola",
+        "Excel inventa un nuevo número"
+      ],
+      "explanation": "Al destruir el origen de datos, Excel inserta #¡REF! directamente en la sintaxis de la fórmula.",
+      "promptByLocale": {
+        "es": "Si una fórmula era '=A1+B1' y eliminas por completo la Columna B, ¿qué ocurre?",
+        "en": "If a formula was '=A1+B1' and you completely delete Column B, what happens?",
+        "de": "Wenn eine Formel '=A1+B1' lautete und Spalte B komplett gelöscht wird, was passiert?",
+        "fr": "Si une formule était '=A1+B1' et que tu supprimes totalement la colonne B, qu'arrive-t-il ?",
+        "ja": "数式が「=A1+B1」の状態でB列を丸ごと削除した場合、どうなりますか？",
+        "pt": "Se uma fórmula era '=A1+B1' e você exclui totalmente a Coluna B, o que acontece?"
+      },
+      "formulaByLocale": {
+        "es": "=A1+#¡REF!",
+        "en": "=A1+#REF!",
+        "de": "=A1+#BEZUG!",
+        "fr": "=A1+#REF!",
+        "ja": "=A1+#REF!",
+        "pt": "=A1+#REF!"
+      },
+      "correctByLocale": {
+        "es": "La fórmula se convierte en =A1+#¡REF! y muestra error",
+        "en": "The formula becomes =A1+#REF! and shows an error",
+        "de": "Die Formel wird zu =A1+#BEZUG! und zeigt einen Fehler an",
+        "fr": "La formule devient =A1+#REF! et affiche une erreur",
+        "ja": "数式が =A1+#REF! に変化しエラーが表示される",
+        "pt": "A fórmula vira =A1+#REF! e exibe erro"
+      },
+      "optionsByLocale": {
+        "es": [
+          "La fórmula se convierte en =A1+#¡REF! y muestra error",
+          "Excel toma B1 como cero automáticamente",
+          "La fórmula se elimina sola",
+          "Excel inventa un nuevo número"
+        ],
+        "en": [
+          "The formula becomes =A1+#REF! and shows an error",
+          "Excel treats B1 as zero automatically",
+          "The formula deletes itself",
+          "Excel invents a new number"
+        ],
+        "de": [
+          "Die Formel wird zu =A1+#BEZUG! und zeigt einen Fehler an",
+          "Excel nimmt B1 automatisch als 0 an",
+          "Die Formel löscht sich von selbst",
+          "Excel erfindet eine neue Zahl"
+        ],
+        "fr": [
+          "La formule devient =A1+#REF! et affiche une erreur",
+          "Excel remplace B1 par zéro automatiquement",
+          "La formule s'efface toute seule",
+          "Excel invente un nouveau nombre"
+        ],
+        "ja": [
+          "数式が =A1+#REF! に変化しエラーが表示される",
+          "ExcelがB1を自動的に0として処理する",
+          "数式が自動的に消去される",
+          "Excelが架空の数値を補完する"
+        ],
+        "pt": [
+          "A fórmula vira =A1+#REF! e exibe erro",
+          "O Excel assume B1 como zero automaticamente",
+          "A fórmula se apaga sozinha",
+          "O Excel inventa um novo número"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Al destruir el origen de datos, Excel inserta #¡REF! directamente en la sintaxis de la fórmula.",
+        "en": "When destroying a referenced cell, Excel embeds #REF! directly into the formula syntax.",
+        "de": "Wird der Bezug gelöscht, setzt Excel den Fehlertext direkt in die Formelsyntax ein.",
+        "fr": "En détruisant la cellule source, Excel insère directement #REF! dans la formule.",
+        "ja": "参照元を削除すると、Excelはその部分を #REF! に置き換えて警告します。",
+        "pt": "Ao excluir a origem dos dados, o Excel insere #REF! diretamente na sintaxe da fórmula."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Repara la fórmula en C2 restando Descuento (B2) de Subtotal (A2).",
+      "correct": "=A2-B2",
+      "blocks": [
+        "=",
+        "A2",
+        "-",
+        "B2",
+        "+"
+      ],
+      "explanation": "Reescribir la fórmula con las celdas vivas repara de inmediato el cálculo.",
+      "promptByLocale": {
+        "es": "Repara la fórmula en C2 restando Descuento (B2) de Subtotal (A2).",
+        "en": "Fix the formula in C2 by subtracting Discount (B2) from Subtotal (A2).",
+        "de": "Repariere die Formel in C2: ziehe den Rabatt (B2) von der Zwischensumme (A2) ab.",
+        "fr": "Répare la formule en C2 en soustrayant la Remise (B2) du Sous-total (A2).",
+        "ja": "小計（A2）から割引（B2）を引いてC2の数式を修復してください。",
+        "pt": "Repare a fórmula em C2 subtraindo o Desconto (B2) do Subtotal (A2)."
+      },
+      "explanationByLocale": {
+        "es": "Reescribir la fórmula con las celdas vivas repara de inmediato el cálculo.",
+        "en": "Rewriting the formula using active cells immediately restores the calculation.",
+        "de": "Das Neuerstellen der Formel mit bestehenden Zellen behebt den Fehler sofort.",
+        "fr": "Réécrire la formule avec les cellules valides répare aussitôt le calcul.",
+        "ja": "有効なセル参照を指定し直すことで、計算式が正常に修復されます。",
+        "pt": "Reescrever a fórmula com as células ativas repara imediatamente o cálculo."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Jefe: Referencia rota",
+    "en": "Boss: Broken Reference",
+    "de": "Boss: Ungültiger Bezug",
+    "fr": "Boss : Référence rompue",
+    "ja": "ボス：参照エラー",
+    "pt": "Chefe: Referência corrompida"
+  }
+}

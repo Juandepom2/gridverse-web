@@ -1,0 +1,90 @@
+{
+  "ref": "I3",
+  "title": "PROMEDIO.SI",
+  "titleByLocale": {
+    "es": "PROMEDIO.SI",
+    "en": "AVERAGEIF",
+    "de": "MITTELWERTWENN",
+    "fr": "MOYENNE.SI",
+    "ja": "AVERAGEIF",
+    "pt": "MÉDIA.SE"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué hace =PROMEDIO.SI(A1:A10, \">0\") al calcular el promedio?",
+      "promptByLocale": {
+        "es": "¿Qué hace =PROMEDIO.SI(A1:A10, \">0\") al calcular el promedio?",
+        "en": "What does =AVERAGEIF(A1:A10, \">0\") do when computing the average?",
+        "de": "Was bewirkt =MITTELWERTWENN(A1:A10; \">0\") bei der Durchschnittsberechnung?",
+        "fr": "Que fait =MOYENNE.SI(A1:A10; \">0\") lors du calcul ?",
+        "ja": "数式 =AVERAGEIF(A1:A10, \">0\") は平均計算において何をしますか？",
+        "pt": "O que =MÉDIA.SE(A1:A10; \">0\") faz ao calcular a média?"
+      },
+      "options": [
+        "Calcula el promedio excluyendo ceros y números negativos",
+        "Suma todos los ceros",
+        "Multiplica las celdas por cero",
+        "Devuelve siempre 0"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Calcula el promedio excluyendo ceros y números negativos",
+          "Suma todos los ceros",
+          "Multiplica las celdas por cero",
+          "Devuelve siempre 0"
+        ],
+        "en": [
+          "Averages strictly positive numbers, ignoring zeros and negative values",
+          "Sums all zeros",
+          "Multiplies cells by zero",
+          "Always outputs 0"
+        ],
+        "de": [
+          "Berechnet den Durchschnitt nur für positive Zahlen (ignoriert Nullen und Minuswerte)",
+          "Addiert alle Nullen",
+          "Multipliziert mit Null",
+          "Liefert immer 0"
+        ],
+        "fr": [
+          "Calcule la moyenne en ignorant les zéros et les valeurs négatives",
+          "Additionne les zéros",
+          "Multiplie par zéro",
+          "Renvoie toujours 0"
+        ],
+        "ja": [
+          "ゼロや負の数値を完全に除外し、正の数値（0より大きい値）だけで平均を計算する",
+          "すべてのゼロを合計する",
+          "セルをゼロで乗算する",
+          "常に0を返す"
+        ],
+        "pt": [
+          "Calcula a média ignorando zeros e números negativos",
+          "Soma todos os zeros",
+          "Multiplica as células por zero",
+          "Retorna sempre 0"
+        ]
+      },
+      "correct": "Calcula el promedio excluyendo ceros y números negativos",
+      "correctByLocale": {
+        "es": "Calcula el promedio excluyendo ceros y números negativos",
+        "en": "Averages strictly positive numbers, ignoring zeros and negative values",
+        "de": "Berechnet den Durchschnitt nur für positive Zahlen (ignoriert Nullen und Minuswerte)",
+        "fr": "Calcule la moyenne en ignorant les zéros et les valeurs négatives",
+        "ja": "ゼロや負の数値を完全に除外し、正の数値（0より大きい値）だけで平均を計算する",
+        "pt": "Calcula a média ignorando zeros e números negativos"
+      },
+      "explanation": "Ignorar ceros con PROMEDIO.SI(\">0\") evita que ventas no realizadas distorsionen el ticket promedio.",
+      "explanationByLocale": {
+        "es": "Ignorar ceros con PROMEDIO.SI(\">0\") evita que ventas no realizadas distorsionen el ticket promedio.",
+        "en": "Omitting zeros with AVERAGEIF(\">0\") prevents unmade sales from dragging down average ticket size.",
+        "de": "Das Ausschließen von Nullen verhindert eine Verfälschung des Mittelwerts durch Leerverkäufe.",
+        "fr": "Ignorer les zéros évite de fausser le panier moyen avec des lignes inactives.",
+        "ja": "ゼロを除外することで、未達成や未発生のデータによる平均値の歪みを防げます。",
+        "pt": "Ignorar zeros com MÉDIA.SE(\">0\") evita distorções causadas por dias sem vendas."
+      }
+    }
+  ]
+}

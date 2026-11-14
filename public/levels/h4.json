@@ -1,0 +1,90 @@
+{
+  "ref": "H4",
+  "title": "BUSCARX (El rey moderno)",
+  "titleByLocale": {
+    "es": "BUSCARX (El rey moderno)",
+    "en": "XLOOKUP (The Modern King)",
+    "de": "XVERWEIS (Der moderne Champion)",
+    "fr": "RECHERCHEX (Le roi moderne)",
+    "ja": "XLOOKUP（最新最強の検索関数）",
+    "pt": "PROCX (O novo padrão)"
+  },
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué gran limitación clásica de BUSCARV resuelve por completo la función moderna =BUSCARX?",
+      "promptByLocale": {
+        "es": "¿Qué gran limitación clásica de BUSCARV resuelve por completo la función moderna =BUSCARX?",
+        "en": "Which major classic limitation of VLOOKUP does the modern =XLOOKUP function eliminate entirely?",
+        "de": "Welche wesentliche klassische Schwachstelle von SVERWEIS beseitigt =XVERWEIS vollständig?",
+        "fr": "Quelle limitation historique majeure de RECHERCHEV la fonction moderne =RECHERCHEX élimine-t-elle ?",
+        "ja": "従来のVLOOKUPにあった最大の制約のうち、最新の =XLOOKUP で完全に克服された点はどれですか？",
+        "pt": "Qual grande limitação histórica do PROCV a função moderna =PROCX elimina por completo?"
+      },
+      "options": [
+        "Puede buscar hacia la izquierda y no se rompe si insertas o borras columnas",
+        "Solo funciona los fines de semana",
+        "No admite números superiores a 100",
+        "Requiere conexión a internet activa"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Puede buscar hacia la izquierda y no se rompe si insertas o borras columnas",
+          "Solo funciona los fines de semana",
+          "No admite números superiores a 100",
+          "Requiere conexión a internet activa"
+        ],
+        "en": [
+          "It can look to the left and does not break when inserting or deleting columns",
+          "It only works on weekends",
+          "It cannot process numbers above 100",
+          "It requires an active internet connection"
+        ],
+        "de": [
+          "Kann nach links suchen und bricht nicht ab, wenn Spalten eingefügt/gelöscht werden",
+          "Funktioniert nur am Wochenende",
+          "Kann keine Zahlen über 100 verarbeiten",
+          "Erfordert Internetverbindung"
+        ],
+        "fr": [
+          "Recherche vers la gauche et ne se casse pas lors de l'insertion de colonnes",
+          "Fonctionne uniquement le week-end",
+          "Ne gère pas les nombres supérieurs à 100",
+          "Nécessite une connexion internet"
+        ],
+        "ja": [
+          "左方向への逆引き検索が可能で、列の挿入や削除があっても数式が壊れない",
+          "週末にしか動作しない",
+          "100以上の数値を扱えない",
+          "常にインターネット接続が必要"
+        ],
+        "pt": [
+          "Pode buscar para a esquerda e não quebra se colunas forem inseridas ou excluídas",
+          "Só funciona nos finais de semana",
+          "Não suporta números maiores que 100",
+          "Requer conexão com a internet ativa"
+        ]
+      },
+      "correct": "Puede buscar hacia la izquierda y no se rompe si insertas o borras columnas",
+      "correctByLocale": {
+        "es": "Puede buscar hacia la izquierda y no se rompe si insertas o borras columnas",
+        "en": "It can look to the left and does not break when inserting or deleting columns",
+        "de": "Kann nach links suchen und bricht nicht ab, wenn Spalten eingefügt/gelöscht werden",
+        "fr": "Recherche vers la gauche et ne se casse pas lors de l'insertion de colonnes",
+        "ja": "左方向への逆引き検索が可能で、列の挿入や削除があっても数式が壊れない",
+        "pt": "Pode buscar para a esquerda e não quebra se colunas forem inseridas ou excluídas"
+      },
+      "explanation": "BUSCARX recibe matriz_buscada y matriz_devuelta por separado y busca por defecto con coincidencia exacta.",
+      "explanationByLocale": {
+        "es": "BUSCARX recibe matriz_buscada y matriz_devuelta por separado y busca por defecto con coincidencia exacta.",
+        "en": "XLOOKUP separates lookup_array from return_array and defaults directly to exact match.",
+        "de": "XVERWEIS trennt Suchmatrix und Rückgabematrix und sucht standardmäßig exakt.",
+        "fr": "RECHERCHEX sépare le tableau de recherche et de retour, avec correspondance exacte par défaut.",
+        "ja": "XLOOKUPは検索範囲と戻り値範囲を個別に指定でき、デフォルトで完全一致検索を行います。",
+        "pt": "PROCX separa a pesquisa_matriz da matriz_retorno e busca por padrão com correspondência exata."
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "ref": "H8",
+  "title": "Búsqueda con dos criterios",
+  "titleByLocale": {
+    "es": "Búsqueda con dos criterios",
+    "en": "Two-Way Lookup",
+    "de": "Zwei-Wege-Suche (2 Kriterien)",
+    "fr": "Recherche à deux critères",
+    "ja": "2軸（縦横）クロス検索",
+    "pt": "Busca com dois critérios"
+  },
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cómo se realiza una búsqueda matricial de dos vías (cruce de fila y columna como Producto × Mes)?",
+      "promptByLocale": {
+        "es": "¿Cómo se realiza una búsqueda matricial de dos vías (cruce de fila y columna como Producto × Mes)?",
+        "en": "How do you achieve a 2-way matrix lookup intersecting a specific row and column (e.g. Product × Month)?",
+        "de": "Wie realisiert man eine 2-Wege-Kreuztabelle (Schnittpunkt aus Zeile und Spalte wie Produkt × Monat)?",
+        "fr": "Comment réaliser une recherche matricielle croisée à deux dimensions (ex. Produit × Mois) ?",
+        "ja": "「商品名（行）」と「対象月（列）」が交差する位置の数値を検索する（2軸クロス検索）にはどう組み合わせますか？",
+        "pt": "Como realizar uma busca de duas vias cruzando linha e coluna (ex: Produto × Mês)?"
+      },
+      "options": [
+        "=INDICE(rango_datos, COINCIDIR_fila, COINCIDIR_columna)",
+        "=BUSCARV(fila) * BUSCARV(columna)",
+        "=SUMA(fila:columna)",
+        "=FILTRAR(2)"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "=INDICE(rango_datos, COINCIDIR_fila, COINCIDIR_columna)",
+          "=BUSCARV(fila) * BUSCARV(columna)",
+          "=SUMA(fila:columna)",
+          "=FILTRAR(2)"
+        ],
+        "en": [
+          "=INDEX(data_range, MATCH_row, MATCH_col)",
+          "=VLOOKUP(row) * VLOOKUP(col)",
+          "=SUM(row:col)",
+          "=FILTER(2)"
+        ],
+        "de": [
+          "=INDEX(Datenbereich; VERGLEICH_Zeile; VERGLEICH_Spalte)",
+          "=SVERWEIS(Zeile) * SVERWEIS(Spalte)",
+          "=SUMME(Zeile:Spalte)",
+          "=FILTER(2)"
+        ],
+        "fr": [
+          "=INDEX(plage_données; EQUIV_ligne; EQUIV_colonne)",
+          "=RECHERCHEV(ligne) * RECHERCHEV(colonne)",
+          "=SOMME(ligne:colonne)",
+          "=FILTRER(2)"
+        ],
+        "ja": [
+          "=INDEX(データ範囲, MATCH(行), MATCH(列))",
+          "=VLOOKUP(行) * VLOOKUP(列)",
+          "=SUM(行:列)",
+          "=FILTER(2)"
+        ],
+        "pt": [
+          "=ÍNDICE(intervalo_dados; CORRESP_linha; CORRESP_coluna)",
+          "=PROCV(linha) * PROCV(coluna)",
+          "=SOMA(linha:coluna)",
+          "=FILTRO(2)"
+        ]
+      },
+      "correct": "=INDICE(rango_datos, COINCIDIR_fila, COINCIDIR_columna)",
+      "correctByLocale": {
+        "es": "=INDICE(rango_datos, COINCIDIR_fila, COINCIDIR_columna)",
+        "en": "=INDEX(data_range, MATCH_row, MATCH_col)",
+        "de": "=INDEX(Datenbereich; VERGLEICH_Zeile; VERGLEICH_Spalte)",
+        "fr": "=INDEX(plage_données; EQUIV_ligne; EQUIV_colonne)",
+        "ja": "=INDEX(データ範囲, MATCH(行), MATCH(列))",
+        "pt": "=ÍNDICE(intervalo_dados; CORRESP_linha; CORRESP_coluna)"
+      },
+      "explanation": "El primer COINCIDIR halla la fila y el segundo halla la columna, cruzando exactamente en la celda deseada.",
+      "explanationByLocale": {
+        "es": "El primer COINCIDIR halla la fila y el segundo halla la columna, cruzando exactamente en la celda deseada.",
+        "en": "The first MATCH discovers the row and the second discovers the column, intersecting at the exact target cell.",
+        "de": "Der 1. VERGLEICH findet die Zeile, der 2. die Spalte – der Schnittpunkt liefert den Wert.",
+        "fr": "Le premier EQUIV trouve la ligne, le second trouve la colonne pour cibler l'intersection.",
+        "ja": "1つ目のMATCHで行を特定し、2つ目のMATCHで列を特定して、交差するセルを正確に取り出します。",
+        "pt": "O primeiro CORRESP localiza a linha e o segundo a coluna, cruzando exatamente na célula desejada."
+      }
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "ref": "C6",
+  "title": "Rangos con nombre",
+  "titleByLocale": {
+    "es": "Rangos con nombre",
+    "en": "Named Ranges",
+    "de": "Benannte Bereiche",
+    "fr": "Plages nommées",
+    "ja": "名前の定義と名前の管理",
+    "pt": "Intervalos nomeados"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Dónde se define rápidamente un nombre para una celda seleccionada sin abrir menús?",
+      "promptByLocale": {
+        "es": "¿Dónde se define rápidamente un nombre para una celda seleccionada sin abrir menús?",
+        "en": "Where can you quickly define a name for a selected cell without opening menus?",
+        "de": "Wo kann man schnell einen Namen für eine ausgewählte Zelle definieren, ohne Menüs zu öffnen?",
+        "fr": "Où peut-on définir rapidement un nom pour une cellule sans ouvrir de menu ?",
+        "ja": "メニューを開かずに、選択したセルに素早く名前を付けるにはどこを使いますか？",
+        "pt": "Onde se define rapidamente um nome para uma célula selecionada sem abrir menus?"
+      },
+      "options": [
+        "En el Cuadro de Nombres (a la izquierda de la barra de fórmulas)",
+        "En la barra de estado inferior",
+        "En el menú Archivo",
+        "En la pestaña Vista"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "En el Cuadro de Nombres (a la izquierda de la barra de fórmulas)",
+          "En la barra de estado inferior",
+          "En el menú Archivo",
+          "En la pestaña Vista"
+        ],
+        "en": [
+          "In the Name Box (left of the formula bar)",
+          "In the bottom status bar",
+          "In the File menu",
+          "In the View tab"
+        ],
+        "de": [
+          "Im Namenfeld (links neben der Bearbeitungsleiste)",
+          "In der unteren Statusleiste",
+          "Im Datei-Menü",
+          "Auf der Registerkarte Ansicht"
+        ],
+        "fr": [
+          "Dans la zone Nom (à gauche de la barre de formule)",
+          "Dans la barre d'état inférieure",
+          "Dans le menu Fichier",
+          "Dans l'onglet Affichage"
+        ],
+        "ja": [
+          "名前ボックス（数式バーの左側）",
+          "下部のステータスバー",
+          "ファイルメニュー",
+          "表示タブ"
+        ],
+        "pt": [
+          "Na Caixa de Nome (à esquerda da barra de fórmulas)",
+          "Na barra de status inferior",
+          "No menu Arquivo",
+          "Na guia Exibir"
+        ]
+      },
+      "correct": "En el Cuadro de Nombres (a la izquierda de la barra de fórmulas)",
+      "correctByLocale": {
+        "es": "En el Cuadro de Nombres (a la izquierda de la barra de fórmulas)",
+        "en": "In the Name Box (left of the formula bar)",
+        "de": "Im Namenfeld (links neben der Bearbeitungsleiste)",
+        "fr": "Dans la zone Nom (à gauche de la barre de formule)",
+        "ja": "名前ボックス（数式バーの左側）",
+        "pt": "Na Caixa de Nome (à esquerda da barra de fórmulas)"
+      },
+      "explanation": "El Cuadro de Nombres muestra la celda activa y permite escribir un nuevo nombre presionando Enter para guardarlo.",
+      "explanationByLocale": {
+        "es": "El Cuadro de Nombres muestra la celda activa y permite escribir un nuevo nombre presionando Enter para guardarlo.",
+        "en": "The Name Box displays the active cell and lets you type any identifier and press Enter to name it.",
+        "de": "Das Namenfeld zeigt die aktive Zelle an; man kann direkt einen Namen eingeben und mit Enter bestätigen.",
+        "fr": "La zone Nom affiche la cellule active et permet de taper un nom suivi de Entrée pour le créer.",
+        "ja": "数式バー左側の名前ボックスに任意の名前を入力してEnterキーを押すだけで定義できます。",
+        "pt": "A Caixa de Nome exibe a célula ativa e permite digitar um novo nome pressionando Enter para salvar."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si a la celda B1 le asignas el nombre 'IVA', ¿cómo se escribe la fórmula para calcular el iva de A2?",
+      "promptByLocale": {
+        "es": "Si a la celda B1 le asignas el nombre 'IVA', ¿cómo se escribe la fórmula para calcular el iva de A2?",
+        "en": "If cell B1 is named 'IVA', how do you write the formula to calculate the tax on A2?",
+        "de": "Wenn Zelle B1 'MwSt' heißt, wie lautet die Formel zur Steuerberechnung von A2?",
+        "fr": "Si la cellule B1 est nommée 'TVA', comment écrit-on la formule pour calculer la taxe de A2 ?",
+        "ja": "セルB1に「TAX」と名前を付けた場合、A2に対する税額を計算する数式はどれですか？",
+        "pt": "Se a célula B1 foi nomeada como 'IVA', como fica a fórmula para calcular o imposto de A2?"
+      },
+      "options": ["=A2*IVA", "=A2*#IVA", "=A2*(B1:IVA)", "=IVA(A2)"],
+      "optionsByLocale": {
+        "es": ["=A2*IVA", "=A2*#IVA", "=A2*(B1:IVA)", "=IVA(A2)"],
+        "en": ["=A2*IVA", "=A2*#IVA", "=A2*(B1:IVA)", "=IVA(A2)"],
+        "de": ["=A2*MwSt", "=A2*#MwSt", "=A2*(B1:MwSt)", "=MwSt(A2)"],
+        "fr": ["=A2*TVA", "=A2*#TVA", "=A2*(B1:TVA)", "=TVA(A2)"],
+        "ja": ["=A2*TAX", "=A2*#TAX", "=A2*(B1:TAX)", "=TAX(A2)"],
+        "pt": ["=A2*IVA", "=A2*#IVA", "=A2*(B1:IVA)", "=IVA(A2)"]
+      },
+      "correct": "=A2*IVA",
+      "correctByLocale": {
+        "es": "=A2*IVA",
+        "en": "=A2*IVA",
+        "de": "=A2*MwSt",
+        "fr": "=A2*TVA",
+        "ja": "=A2*TAX",
+        "pt": "=A2*IVA"
+      },
+      "explanation": "Los nombres actúan como referencias absolutas ($B$1) automáticas y comprensibles.",
+      "explanationByLocale": {
+        "es": "Los nombres actúan como referencias absolutas ($B$1) automáticas y comprensibles.",
+        "en": "Named ranges act like automatic absolute references ($B$1) that are easy to read and copy.",
+        "de": "Benannte Bereiche verhalten sich wie automatische absolute Bezüge ($B$1) und sind lesbar.",
+        "fr": "Les plages nommées agissent comme des références absolues ($B$1) automatiques et lisibles.",
+        "ja": "定義された名前は自動的に絶対参照($B$1)として扱われ、数式が明快になります。",
+        "pt": "Os intervalos nomeados agem como referências absolutas ($B$1) automáticas e fáceis de ler."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la celda del factor de descuento (D1) que suele definirse como rango con nombre:",
+      "promptByLocale": {
+        "es": "Selecciona la celda del factor de descuento (D1) que suele definirse como rango con nombre:",
+        "en": "Select the discount rate cell (D1) typically defined as a named range:",
+        "de": "Wähle die Rabattsatzzelle (D1) aus, die typischerweise als benannter Bereich definiert wird:",
+        "fr": "Sélectionnez la cellule du taux de remise (D1) couramment définie comme plage nommée :",
+        "ja": "名前付き範囲としてよく定義される割引率のセル(D1)を選択してください：",
+        "pt": "Selecione a célula da taxa de desconto (D1) frequentemente definida com nome:"
+      },
+      "correct": "D1",
+      "data": {
+        "A1": "Producto",
+        "B1": "Precio",
+        "C1": "Desc.",
+        "D1": "0.15",
+        "A2": "Monitor",
+        "B2": "200",
+        "C2": "30",
+        "A3": "CPU",
+        "B3": "800",
+        "C3": "120"
+      },
+      "explanation": "Nombrar constantes como D1 evita errores al copiar fórmulas en la hoja.",
+      "explanationByLocale": {
+        "es": "Nombrar constantes como D1 evita errores al copiar fórmulas en la hoja.",
+        "en": "Naming constants like D1 prevents referencing errors when copying formulas.",
+        "de": "Das Benennen von Konstanten wie D1 verhindert Bezugsfehler beim Kopieren.",
+        "fr": "Nommer des constantes comme D1 évite les erreurs lors de la copie de formules.",
+        "ja": "D1のような定数セルに名前を付けると、数式を下にコピーしても参照がズレません。",
+        "pt": "Nomear constantes como D1 evita erros ao arrastar fórmulas pela planilha."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Cuál es una regla obligatoria al nombrar celdas o rangos en Excel?",
+      "promptByLocale": {
+        "es": "¿Cuál es una regla obligatoria al nombrar celdas o rangos en Excel?",
+        "en": "Which of these is a mandatory rule when naming cells or ranges in Excel?",
+        "de": "Welche Regel ist beim Benennen von Bereichen in Excel zwingend vorgeschrieben?",
+        "fr": "Quelle est une règle obligatoire pour nommer des plages dans Excel ?",
+        "ja": "Excelでセルや範囲に名前を付ける際の必須ルールはどれですか？",
+        "pt": "Qual é uma regra obrigatória ao nomear células ou intervalos no Excel?"
+      },
+      "options": [
+        "No pueden contener espacios ni comenzar con un número",
+        "Deben estar escritos siempre en mayúsculas",
+        "No pueden tener más de 5 letras",
+        "Deben terminar obligatoriamente con el signo $"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "No pueden contener espacios ni comenzar con un número",
+          "Deben estar escritos siempre en mayúsculas",
+          "No pueden tener más de 5 letras",
+          "Deben terminar obligatoriamente con el signo $"
+        ],
+        "en": [
+          "They cannot contain spaces or start with a number",
+          "They must always be in ALL CAPS",
+          "They cannot exceed 5 characters",
+          "They must end with a $ symbol"
+        ],
+        "de": [
+          "Sie dürfen keine Leerzeichen enthalten und nicht mit einer Zahl beginnen",
+          "Sie müssen immer in Großbuchstaben geschrieben sein",
+          "Sie dürfen maximal 5 Zeichen lang sein",
+          "Sie müssen zwingend mit einem $-Zeichen enden"
+        ],
+        "fr": [
+          "Ils ne peuvent pas contenir d'espaces ni commencer par un chiffre",
+          "Ils doivent obligatoirement être en majuscules",
+          "Ils ne peuvent pas dépasser 5 caractères",
+          "Ils doivent obligatoirement se terminer par $"
+        ],
+        "ja": [
+          "スペースを含めず、数字から始めることはできない",
+          "必ずすべて大文字で入力しなければならない",
+          "文字数は最大5文字まで",
+          "必ず末尾に「$」を付けなければならない"
+        ],
+        "pt": [
+          "Não podem conter espaços nem começar com um número",
+          "Devem estar sempre em letras maiúsculas",
+          "Não podem ultrapassar 5 caracteres",
+          "Devem terminar obrigatoriamente com o símbolo $"
+        ]
+      },
+      "correct": "No pueden contener espacios ni comenzar con un número",
+      "correctByLocale": {
+        "es": "No pueden contener espacios ni comenzar con un número",
+        "en": "They cannot contain spaces or start with a number",
+        "de": "Sie dürfen keine Leerzeichen enthalten und nicht mit einer Zahl beginnen",
+        "fr": "Ils ne peuvent pas contenir d'espaces ni commencer par un chiffre",
+        "ja": "スペースを含めず、数字から始めることはできない",
+        "pt": "Não podem conter espaços nem começar com um número"
+      },
+      "explanation": "Los nombres deben empezar con letra o guion bajo (_) y usar guiones bajos en lugar de espacios (ej. Tasa_IVA).",
+      "explanationByLocale": {
+        "es": "Los nombres deben empezar con letra o guion bajo (_) y usar guiones bajos en lugar de espacios (ej. Tasa_IVA).",
+        "en": "Names must begin with a letter or underscore and cannot contain spaces (e.g. Tax_Rate).",
+        "de": "Namen müssen mit einem Buchstaben oder Unterstrich beginnen und dürfen keine Leerzeichen haben.",
+        "fr": "Les noms doivent commencer par une lettre ou un tiret bas et ne pas contenir d'espaces.",
+        "ja": "先頭は文字またはアンダースコア(_)で始める必要があり、空白スペースは使用できません。",
+        "pt": "Os nomes devem iniciar com letra ou sublinhado (_) e usar sublinhados no lugar de espaços."
+      }
+    }
+  ]
+}
+

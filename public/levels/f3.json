@@ -1,0 +1,119 @@
+{
+  "ref": "F3",
+  "title": "DÍA, MES y AÑO",
+  "titleByLocale": {
+    "es": "DÍA, MES y AÑO",
+    "en": "DAY, MONTH, and YEAR",
+    "de": "TAG, MONAT und JAHR",
+    "fr": "JOUR, MOIS et ANNEE",
+    "ja": "DAY、MONTH、YEAR",
+    "pt": "DIA, MÊS e ANO"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "write_formula",
+      "prompt": "Escribe una fórmula en B2 para extraer solo el mes de la fecha registrada en A2:",
+      "promptByLocale": {
+        "es": "Escribe una fórmula en B2 para extraer solo el mes de la fecha registrada en A2:",
+        "en": "Write a formula in B2 to extract only the month from the date in A2:",
+        "de": "Schreibe in B2 eine Formel, um nur den Monat aus dem Datum in A2 zu extrahieren:",
+        "fr": "Écrivez une formule en B2 pour extraire uniquement le mois de la date en A2 :",
+        "ja": "A2の日付から月のみを抽出する数式をB2に入力してください：",
+        "pt": "Escreva uma fórmula em B2 para extrair apenas o mês da data em A2:"
+      },
+      "correct": "=MES(A2)",
+      "targetCell": "B2",
+      "data": {
+        "A1": "Fecha",
+        "B1": "Mes",
+        "A2": "2024-08-25",
+        "B2": ""
+      },
+      "explanation": "La función MES(celda) o MONTH(cell) extrae el número del mes (del 1 al 12).",
+      "explanationByLocale": {
+        "es": "La función MES(celda) o MONTH(cell) extrae el número del mes (del 1 al 12).",
+        "en": "The MONTH(cell) function returns the month number from 1 to 12.",
+        "de": "Die Funktion MONAT(Zelle) gibt die Monatszahl von 1 bis 12 zurück.",
+        "fr": "La fonction MOIS(cellule) renvoie le numéro du mois de 1 à 12.",
+        "ja": "MONTH(セル)関数は日付から1〜12の月数値を返します。",
+        "pt": "A função MÊS(célula) retorna o número do mês de 1 a 12."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si en la celda A2 tienes '2025-12-31' y aplicas la fórmula =AÑO(A2) [=YEAR(A2)], ¿qué resultado obtendrás?",
+      "promptByLocale": {
+        "es": "Si en la celda A2 tienes '2025-12-31' y aplicas la fórmula =AÑO(A2) [=YEAR(A2)], ¿qué resultado obtendrás?",
+        "en": "If cell A2 contains '2025-12-31' and you use =YEAR(A2), what result will you get?",
+        "de": "Wenn Zelle A2 '2025-12-31' enthält und du =JAHR(A2) [=YEAR(A2)] anwendest, welches Ergebnis erhältst du?",
+        "fr": "Si la cellule A2 contient '2025-12-31' et que vous appliquez =ANNEE(A2), quel sera le résultat ?",
+        "ja": "セルA2に「2025-12-31」があるとき、=YEAR(A2) の結果は何になりますか？",
+        "pt": "Se a célula A2 tiver '2025-12-31' e você usar =ANO(A2), qual resultado obterá?"
+      },
+      "options": [
+        "2025",
+        "12",
+        "31",
+        "25"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "2025",
+          "12",
+          "31",
+          "25"
+        ],
+        "en": [
+          "2025",
+          "12",
+          "31",
+          "25"
+        ],
+        "de": [
+          "2025",
+          "12",
+          "31",
+          "25"
+        ],
+        "fr": [
+          "2025",
+          "12",
+          "31",
+          "25"
+        ],
+        "ja": [
+          "2025",
+          "12",
+          "31",
+          "25"
+        ],
+        "pt": [
+          "2025",
+          "12",
+          "31",
+          "25"
+        ]
+      },
+      "correct": "2025",
+      "correctByLocale": {
+        "es": "2025",
+        "en": "2025",
+        "de": "2025",
+        "fr": "2025",
+        "ja": "2025",
+        "pt": "2025"
+      },
+      "explanation": "AÑO() / YEAR() devuelve el año como número entero de cuatro dígitos.",
+      "explanationByLocale": {
+        "es": "AÑO() / YEAR() devuelve el año como número entero de cuatro dígitos.",
+        "en": "YEAR() returns the 4-digit integer year.",
+        "de": "JAHR() liefert die 4-stellige Jahreszahl als Ganzzahl.",
+        "fr": "ANNEE() renvoie l'année sous forme d'entier à 4 chiffres.",
+        "ja": "YEAR関数は4桁の西暦年を返します。",
+        "pt": "ANO() retorna o ano com 4 dígitos."
+      }
+    }
+  ]
+}

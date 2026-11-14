@@ -1,0 +1,239 @@
+{
+  "ref": "E9",
+  "title": "Texto en columnas",
+  "titleByLocale": {
+    "es": "Texto en columnas",
+    "en": "Text to Columns",
+    "de": "Text in Spalten",
+    "fr": "Texte en colonnes",
+    "ja": "区切り位置（テキストを列に分割）",
+    "pt": "Texto para colunas"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿En qué pestaña de la cinta de opciones de Excel se encuentra la herramienta 'Texto en columnas'?",
+      "promptByLocale": {
+        "es": "¿En qué pestaña de la cinta de opciones de Excel se encuentra la herramienta 'Texto en columnas'?",
+        "en": "In which Excel ribbon tab can you find the 'Text to Columns' tool?",
+        "de": "Auf welcher Registerkarte des Menübands befindet sich das Werkzeug 'Text in Spalten'?",
+        "fr": "Dans quel onglet du ruban Excel se trouve l'outil 'Texte en colonnes' ?",
+        "ja": "Excelのリボンメニューで「区切り位置」ツールはどのタブにありますか？",
+        "pt": "Em qual guia da faixa de opções do Excel fica a ferramenta 'Texto para colunas'?"
+      },
+      "options": [
+        "Pestaña Datos",
+        "Pestaña Inicio",
+        "Pestaña Fórmulas",
+        "Pestaña Insertar"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Pestaña Datos",
+          "Pestaña Inicio",
+          "Pestaña Fórmulas",
+          "Pestaña Insertar"
+        ],
+        "en": [
+          "Data tab",
+          "Home tab",
+          "Formulas tab",
+          "Insert tab"
+        ],
+        "de": [
+          "Registerkarte Daten",
+          "Registerkarte Start",
+          "Registerkarte Formeln",
+          "Registerkarte Einfügen"
+        ],
+        "fr": [
+          "Onglet Données",
+          "Onglet Accueil",
+          "Onglet Formules",
+          "Onglet Insertion"
+        ],
+        "ja": [
+          "データ タブ",
+          "ホーム タブ",
+          "数式 タブ",
+          "挿入 タブ"
+        ],
+        "pt": [
+          "Guia Dados",
+          "Guia Página Inicial",
+          "Guia Fórmulas",
+          "Guia Inserir"
+        ]
+      },
+      "correct": "Pestaña Datos",
+      "correctByLocale": {
+        "es": "Pestaña Datos",
+        "en": "Data tab",
+        "de": "Registerkarte Daten",
+        "fr": "Onglet Données",
+        "ja": "データ タブ",
+        "pt": "Guia Dados"
+      },
+      "explanation": "'Texto en columnas' está ubicado en la pestaña Datos (grupo Herramientas de datos).",
+      "explanationByLocale": {
+        "es": "'Texto en columnas' está ubicado en la pestaña Datos (grupo Herramientas de datos).",
+        "en": "'Text to Columns' is located on the Data tab under the Data Tools section.",
+        "de": "'Text in Spalten' befindet sich auf der Registerkarte Daten in der Gruppe Datentools.",
+        "fr": "'Texte en colonnes' se situe dans l'onglet Données (groupe Outils de données).",
+        "ja": "「区切り位置」は「データ」タブのデータツールグループに配置されています。",
+        "pt": "'Texto para colunas' localiza-se na guia Dados (grupo Ferramentas de Dados)."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Tienes una columna con datos separados por comas como \"Juan,Pérez,30\". ¿Qué tipo de separación debes elegir en el asistente?",
+      "promptByLocale": {
+        "es": "Tienes una columna con datos separados por comas como \"Juan,Pérez,30\". ¿Qué tipo de separación debes elegir en el asistente?",
+        "en": "You have a column with comma-separated values like \"Juan,Pérez,30\". What file type do you select in the wizard?",
+        "de": "Du hast kommagetrennte Werte wie \"Juan,Pérez,30\". Welchen Trenntyp wählst du im Assistenten?",
+        "fr": "Vous avez des données séparées par des virgules comme \"Juan,Pérez,30\". Quel type choisir dans l'assistant ?",
+        "ja": "「Juan,Pérez,30」のようにカンマで区切られたデータがあります。ウィザードで何を選択しますか？",
+        "pt": "Você tem dados separados por vírgula como \"Juan,Pérez,30\". Que tipo de separação escolher no assistente?"
+      },
+      "options": [
+        "Delimitados (por coma)",
+        "De ancho fijo",
+        "Texto sin formato",
+        "Código binario"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Delimitados (por coma)",
+          "De ancho fijo",
+          "Texto sin formato",
+          "Código binario"
+        ],
+        "en": [
+          "Delimited (by comma)",
+          "Fixed width",
+          "Plain text",
+          "Binary code"
+        ],
+        "de": [
+          "Getrennt (durch Komma)",
+          "Feste Breite",
+          "Reiner Text",
+          "Binärcode"
+        ],
+        "fr": [
+          "Délimité (par virgule)",
+          "Largeur fixe",
+          "Texte brut",
+          "Code binaire"
+        ],
+        "ja": [
+          "カンマやタブなどの区切り文字（カンマ指定）",
+          "スペースによって右または左に揃えられた固定長",
+          "プレーンテキスト",
+          "バイナリ形式"
+        ],
+        "pt": [
+          "Delimitado (por vírgula)",
+          "Largura fixa",
+          "Texto sem formatação",
+          "Código binário"
+        ]
+      },
+      "correct": "Delimitados (por coma)",
+      "correctByLocale": {
+        "es": "Delimitados (por coma)",
+        "en": "Delimited (by comma)",
+        "de": "Getrennt (durch Komma)",
+        "fr": "Délimité (par virgule)",
+        "ja": "カンマやタブなどの区切り文字（カンマ指定）",
+        "pt": "Delimitado (por vírgula)"
+      },
+      "explanation": "La opción 'Delimitados' divide el texto cada vez que encuentra el carácter separador indicado (coma, punto y coma, tabulación).",
+      "explanationByLocale": {
+        "es": "La opción 'Delimitados' divide el texto cada vez que encuentra el carácter separador indicado (coma, punto y coma, tabulación).",
+        "en": "'Delimited' splits data wherever the designated separator character appears (comma, semicolon, tab).",
+        "de": "'Getrennt' teilt Daten an jedem Vorkommen des festgelegten Trennzeichens (Komma, Semikolon, Tab).",
+        "fr": "'Délimité' sépare le texte à chaque présence du séparateur (virgule, point-virgule, tabulation).",
+        "ja": "「カンマやタブなどの区切り文字」を選ぶと、指定した文字（カンマ等）の位置で列が自動分割されます。",
+        "pt": "'Delimitado' separa o texto sempre que encontra o caractere divisor (vírgula, ponto e vírgula, tabulação)."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué función moderna de Excel 365 reemplaza la necesidad de usar 'Texto en columnas' mediante una fórmula dinámica?",
+      "promptByLocale": {
+        "es": "¿Qué función moderna de Excel 365 reemplaza la necesidad de usar 'Texto en columnas' mediante una fórmula dinámica?",
+        "en": "Which modern Excel 365 function replaces the need for 'Text to Columns' using a dynamic formula?",
+        "de": "Welche moderne Excel 365-Funktion ersetzt 'Text in Spalten' durch eine dynamische Formel?",
+        "fr": "Quelle fonction moderne d'Excel 365 remplace 'Texte en colonnes' via une formule dynamique ?",
+        "ja": "Excel 365で「区切り位置」の作業を数式だけで動的に実行できる最新関数はどれですか？",
+        "pt": "Qual função moderna do Excel 365 substitui o 'Texto para colunas' através de fórmula dinâmica?"
+      },
+      "options": [
+        "=DIVIDIRTEXTO (TEXTSPLIT)",
+        "=UNIRCADENAS (TEXTJOIN)",
+        "=CONCAT",
+        "=EXTRAE (MID)"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "=DIVIDIRTEXTO (TEXTSPLIT)",
+          "=UNIRCADENAS (TEXTJOIN)",
+          "=CONCAT",
+          "=EXTRAE (MID)"
+        ],
+        "en": [
+          "=TEXTSPLIT",
+          "=TEXTJOIN",
+          "=CONCAT",
+          "=MID"
+        ],
+        "de": [
+          "=TEXTTEILEN (TEXTSPLIT)",
+          "=TEXTVERKETTEN (TEXTJOIN)",
+          "=CONCAT",
+          "=TEIL (MID)"
+        ],
+        "fr": [
+          "=FRACTIONNER.TEXTE (TEXTSPLIT)",
+          "=JOINDRE.TEXTE (TEXTJOIN)",
+          "=CONCAT",
+          "=STXT (MID)"
+        ],
+        "ja": [
+          "=TEXTSPLIT",
+          "=TEXTJOIN",
+          "=CONCAT",
+          "=MID"
+        ],
+        "pt": [
+          "=DIVIDIRTEXTO (TEXTSPLIT)",
+          "=UNIRTEXTO (TEXTJOIN)",
+          "=CONCAT",
+          "=EXT.TEXTO (MID)"
+        ]
+      },
+      "correct": "=DIVIDIRTEXTO (TEXTSPLIT)",
+      "correctByLocale": {
+        "es": "=DIVIDIRTEXTO (TEXTSPLIT)",
+        "en": "=TEXTSPLIT",
+        "de": "=TEXTTEILEN (TEXTSPLIT)",
+        "fr": "=FRACTIONNER.TEXTE (TEXTSPLIT)",
+        "ja": "=TEXTSPLIT",
+        "pt": "=DIVIDIRTEXTO (TEXTSPLIT)"
+      },
+      "explanation": "=DIVIDIRTEXTO separa texto en filas o columnas mediante delimitadores directamente en la cuadrícula.",
+      "explanationByLocale": {
+        "es": "=DIVIDIRTEXTO separa texto en filas o columnas mediante delimitadores directamente en la cuadrícula.",
+        "en": "=TEXTSPLIT splits strings across rows or columns dynamically based on specified delimiters.",
+        "de": "=TEXTTEILEN teilt Zeichenketten dynamisch auf Spalten oder Zeilen auf.",
+        "fr": "=FRACTIONNER.TEXTE découpe le texte sur des colonnes ou lignes selon des délimiteurs.",
+        "ja": "=TEXTSPLIT 関数は指定した区切り文字に基づいて、複数列または複数行に文字列をスピル展開します。",
+        "pt": "=DIVIDIRTEXTO divide texto em linhas ou colunas através de delimitadores dinamicamente."
+      }
+    }
+  ]
+}
+

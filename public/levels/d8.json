@@ -1,0 +1,172 @@
+{
+  "ref": "D8",
+  "title": "Proyecto: Boleta de calificaciones",
+  "titleByLocale": {
+    "es": "Proyecto: Boleta de calificaciones",
+    "en": "Project: Report Card",
+    "de": "Projekt: Notenübersicht",
+    "fr": "Projet : Bulletin de notes",
+    "ja": "プロジェクト：成績評価シート",
+    "pt": "Projeto: Boletim escolar"
+  },
+  "version": 1,
+  "rewardXp": 25,
+  "exercises": [
+    {
+      "type": "write_formula",
+      "prompt": "En C2 calcula el promedio de las tres notas (Parcial 1 en A2, Parcial 2 en B2):",
+      "promptByLocale": {
+        "es": "En C2 calcula el promedio de las dos notas (Parcial 1 en A2, Parcial 2 en B2):",
+        "en": "In C2 calculate the average score of Exam 1 (A2) and Exam 2 (B2):",
+        "de": "Berechne in C2 den Notendurchschnitt von Prüfung 1 (A2) und Prüfung 2 (B2):",
+        "fr": "En C2 calculez la moyenne des deux notes (Examen 1 en A2, Examen 2 en B2) :",
+        "ja": "C2に第1回試験(A2)と第2回試験(B2)の平均点を計算してください：",
+        "pt": "Em C2 calcule a média das duas notas (Prova 1 em A2, Prova 2 em B2):"
+      },
+      "correct": "=PROMEDIO(A2:B2)",
+      "targetCell": "C2",
+      "data": {
+        "A1": "Parcial 1",
+        "B1": "Parcial 2",
+        "C1": "Promedio",
+        "D1": "Estado",
+        "A2": "80",
+        "B2": "90",
+        "C2": "",
+        "D2": ""
+      },
+      "explanation": "La función =PROMEDIO(A2:B2) calcula la media aritmética de los dos exámenes.",
+      "explanationByLocale": {
+        "es": "La función =PROMEDIO(A2:B2) calcula la media aritmética de los dos exámenes.",
+        "en": "The =AVERAGE(A2:B2) formula determines the arithmetic mean of both exams.",
+        "de": "Die Funktion =MITTELWERT(A2:B2) berechnet das arithmetische Mittel beider Noten.",
+        "fr": "La fonction =MOYENNE(A2:B2) calcule la moyenne arithmétique des deux examens.",
+        "ja": "=AVERAGE(A2:B2) 関数で2回の試験の算術平均を算出します。",
+        "pt": "A função =MÉDIA(A2:B2) calcula a média aritmética das duas provas."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para D2: si el promedio en C2 es mayor o igual a 70 escribe \"Aprobado\", de lo contrario \"Reprobado\":",
+      "promptByLocale": {
+        "es": "Arma la fórmula para D2: si el promedio en C2 es mayor o igual a 70 escribe \"Aprobado\", de lo contrario \"Reprobado\":",
+        "en": "Build formula for D2: if average in C2 is greater than or equal to 70 return \"Aprobado\", else \"Reprobado\":",
+        "de": "Baue die Formel für D2: wenn Durchschnitt C2>=70 dann \"Aprobado\", sonst \"Reprobado\":",
+        "fr": "Construisez la formule pour D2 : si la moyenne C2>=70 renvoie \"Aprobado\", sinon \"Reprobado\" :",
+        "ja": "D2用の数式を構築：もしC2の平均が70以上なら「Aprobado」、そうでなければ「Reprobado」：",
+        "pt": "Monte a fórmula para D2: se a média em C2 for maior ou igual a 70 retorna \"Aprobado\", senão \"Reprobado\":"
+      },
+      "formula": "=SI(C2>=70,\"Aprobado\",\"Reprobado\")",
+      "formulaByLocale": {
+        "es": "=SI(C2>=70,\"Aprobado\",\"Reprobado\")",
+        "en": "=IF(C2>=70,\"Aprobado\",\"Reprobado\")",
+        "de": "=WENN(C2>=70,\"Aprobado\",\"Reprobado\")",
+        "fr": "=SI(C2>=70,\"Aprobado\",\"Reprobado\")",
+        "ja": "=IF(C2>=70,\"Aprobado\",\"Reprobado\")",
+        "pt": "=SE(C2>=70,\"Aprobado\",\"Reprobado\")"
+      },
+      "correct": "=SI(C2>=70,\"Aprobado\",\"Reprobado\")",
+      "correctByLocale": {
+        "es": "=SI(C2>=70,\"Aprobado\",\"Reprobado\")",
+        "en": "=IF(C2>=70,\"Aprobado\",\"Reprobado\")",
+        "de": "=WENN(C2>=70,\"Aprobado\",\"Reprobado\")",
+        "fr": "=SI(C2>=70,\"Aprobado\",\"Reprobado\")",
+        "ja": "=IF(C2>=70,\"Aprobado\",\"Reprobado\")",
+        "pt": "=SE(C2>=70,\"Aprobado\",\"Reprobado\")"
+      },
+      "blocks": ["=SI(", "C2>=70,", "\"Aprobado\",", "\"Reprobado\")"],
+      "blocksByLocale": {
+        "es": ["=SI(", "C2>=70,", "\"Aprobado\",", "\"Reprobado\")"],
+        "en": ["=IF(", "C2>=70,", "\"Aprobado\",", "\"Reprobado\")"],
+        "de": ["=WENN(", "C2>=70,", "\"Aprobado\",", "\"Reprobado\")"],
+        "fr": ["=SI(", "C2>=70,", "\"Aprobado\",", "\"Reprobado\")"],
+        "ja": ["=IF(", "C2>=70,", "\"Aprobado\",", "\"Reprobado\")"],
+        "pt": ["=SE(", "C2>=70,", "\"Aprobado\",", "\"Reprobado\")"]
+      },
+      "explanation": "La condición C2>=70 evalúa la nota de corte y automatiza el estado académico.",
+      "explanationByLocale": {
+        "es": "La condición C2>=70 evalúa la nota de corte y automatiza el estado académico.",
+        "en": "The C2>=70 comparison tests the passing threshold and automates grade status.",
+        "de": "Die Prüfung C2>=70 ermittelt die Bestehensgrenze und automatisiert den Notenstatus.",
+        "fr": "La condition C2>=70 teste le seuil d'admission et automatise le statut.",
+        "ja": "C2>=70の条件により合格ラインを判定し、合否ステータスを自動化します。",
+        "pt": "A condição C2>=70 avalia a nota de corte e automatiza o status acadêmico."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si un estudiante no presentó el examen y C2 tiene #¡DIV/0!, ¿cómo proteges la fórmula en D2 para mostrar \"Sin evaluar\"?",
+      "promptByLocale": {
+        "es": "Si un estudiante no presentó el examen y C2 tiene #¡DIV/0!, ¿cómo proteges la fórmula en D2 para mostrar \"Sin evaluar\"?",
+        "en": "If a student missed the exams and C2 evaluates to #DIV/0!, how do you protect the formula in D2 to show \"Sin evaluar\"?",
+        "de": "Wenn Prüfungen fehlen und C2 #DIV/0! anzeigt, wie schützt man D2, um \"Sin evaluar\" anzuzeigen?",
+        "fr": "Si un étudiant était absent et que C2 affiche #DIV/0!, comment protéger D2 pour afficher \"Sin evaluar\" ?",
+        "ja": "試験欠席によりC2が #DIV/0! エラーの時、D2で「Sin evaluar」と表示して保護する数式はどれですか？",
+        "pt": "Se um aluno faltou às provas e C2 resulta em #DIV/0!, como proteger D2 para exibir \"Sin evaluar\"?"
+      },
+      "options": [
+        "=SI.ERROR(SI(C2>=70, \"Aprobado\", \"Reprobado\"), \"Sin evaluar\")",
+        "=SUMA(C2, \"Sin evaluar\")",
+        "=NO.ERROR(C2)",
+        "=BORRAR.ERROR(C2)"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "=SI.ERROR(SI(C2>=70, \"Aprobado\", \"Reprobado\"), \"Sin evaluar\")",
+          "=SUMA(C2, \"Sin evaluar\")",
+          "=NO.ERROR(C2)",
+          "=BORRAR.ERROR(C2)"
+        ],
+        "en": [
+          "=IFERROR(IF(C2>=70, \"Aprobado\", \"Reprobado\"), \"Sin evaluar\")",
+          "=SUM(C2, \"Sin evaluar\")",
+          "=NO.ERROR(C2)",
+          "=CLEAR.ERROR(C2)"
+        ],
+        "de": [
+          "=WENNFEHLER(WENN(C2>=70; \"Aprobado\"; \"Reprobado\"); \"Sin evaluar\")",
+          "=SUMME(C2; \"Sin evaluar\")",
+          "=KEINFEHLER(C2)",
+          "=FEHLERLÖSCHEN(C2)"
+        ],
+        "fr": [
+          "=SIERREUR(SI(C2>=70; \"Aprobado\"; \"Reprobado\"); \"Sin evaluar\")",
+          "=SOMME(C2; \"Sin evaluar\")",
+          "=NON.ERREUR(C2)",
+          "=EFFACER.ERREUR(C2)"
+        ],
+        "ja": [
+          "=IFERROR(IF(C2>=70, \"Aprobado\", \"Reprobado\"), \"Sin evaluar\")",
+          "=SUM(C2, \"Sin evaluar\")",
+          "=NO.ERROR(C2)",
+          "=CLEAR.ERROR(C2)"
+        ],
+        "pt": [
+          "=SEERRO(SE(C2>=70; \"Aprobado\"; \"Reprobado\"); \"Sin evaluar\")",
+          "=SOMA(C2; \"Sin evaluar\")",
+          "=NÃO.ERRO(C2)",
+          "=LIMPAR.ERRO(C2)"
+        ]
+      },
+      "correct": "=SI.ERROR(SI(C2>=70, \"Aprobado\", \"Reprobado\"), \"Sin evaluar\")",
+      "correctByLocale": {
+        "es": "=SI.ERROR(SI(C2>=70, \"Aprobado\", \"Reprobado\"), \"Sin evaluar\")",
+        "en": "=IFERROR(IF(C2>=70, \"Aprobado\", \"Reprobado\"), \"Sin evaluar\")",
+        "de": "=WENNFEHLER(WENN(C2>=70; \"Aprobado\"; \"Reprobado\"); \"Sin evaluar\")",
+        "fr": "=SIERREUR(SI(C2>=70; \"Aprobado\"; \"Reprobado\"); \"Sin evaluar\")",
+        "ja": "=IFERROR(IF(C2>=70, \"Aprobado\", \"Reprobado\"), \"Sin evaluar\")",
+        "pt": "=SEERRO(SE(C2>=70; \"Aprobado\"; \"Reprobado\"); \"Sin evaluar\")"
+      },
+      "explanation": "SI.ERROR intercepta la propagación del error y genera un mensaje limpio para el usuario final.",
+      "explanationByLocale": {
+        "es": "SI.ERROR intercepta la propagación del error y genera un mensaje limpio para el usuario final.",
+        "en": "IFERROR traps upstream calculation errors and displays an informative status instead.",
+        "de": "WENNFEHLER fängt Fehler aus vorherigen Schritten ab und zeigt eine saubere Rückmeldung.",
+        "fr": "SIERREUR intercepte la propagation d'erreur et affiche un message clair pour l'utilisateur.",
+        "ja": "IFERRORがエラーの連鎖をブロックし、ユーザーに分かりやすい状態メッセージを出力します。",
+        "pt": "SEERRO intercepta a propagação do erro e gera uma mensagem clara para o usuário final."
+      }
+    }
+  ]
+}
+

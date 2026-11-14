@@ -1,0 +1,317 @@
+{
+  "ref": "A2",
+  "title": "Filas y columnas",
+  "titleByLocale": {
+    "es": "Filas y columnas",
+    "en": "Rows and Columns",
+    "de": "Zeilen und Spalten",
+    "fr": "Lignes et colonnes",
+    "ja": "行と列",
+    "pt": "Linhas e colunas"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "select_range",
+      "prompt": "Selecciona toda la fila 1 (A1:C1).",
+      "promptByLocale": {
+        "es": "Selecciona toda la fila 1 (A1:C1).",
+        "en": "Select the entire row 1 (A1:C1).",
+        "de": "Wähle die gesamte Zeile 1 aus (A1:C1).",
+        "fr": "Sélectionne toute la ligne 1 (A1:C1).",
+        "ja": "1行目全体（A1:C1）を選択してください。",
+        "pt": "Selecione toda a linha 1 (A1:C1)."
+      },
+      "correct": "A1:C1",
+      "data": {
+        "A1": "Id",
+        "B1": "Nombre",
+        "C1": "Edad",
+        "A2": "1",
+        "B2": "Ana",
+        "C2": "25"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Id",
+          "B1": "Nombre",
+          "C1": "Edad",
+          "A2": "1",
+          "B2": "Ana",
+          "C2": "25"
+        },
+        "en": {
+          "A1": "Id",
+          "B1": "Name",
+          "C1": "Age",
+          "A2": "1",
+          "B2": "Ana",
+          "C2": "25"
+        },
+        "de": {
+          "A1": "Id",
+          "B1": "Name",
+          "C1": "Alter",
+          "A2": "1",
+          "B2": "Ana",
+          "C2": "25"
+        },
+        "fr": {
+          "A1": "Id",
+          "B1": "Nom",
+          "C1": "Âge",
+          "A2": "1",
+          "B2": "Ana",
+          "C2": "25"
+        },
+        "ja": {
+          "A1": "ID",
+          "B1": "氏名",
+          "C1": "年齢",
+          "A2": "1",
+          "B2": "Ana",
+          "C2": "25"
+        },
+        "pt": {
+          "A1": "Id",
+          "B1": "Nome",
+          "C1": "Idade",
+          "A2": "1",
+          "B2": "Ana",
+          "C2": "25"
+        }
+      },
+      "explanation": "El rango A1:C1 abarca horizontalmente todas las celdas de la fila 1 desde la columna A hasta la C.",
+      "explanationByLocale": {
+        "es": "El rango A1:C1 abarca horizontalmente todas las celdas de la fila 1 desde la columna A hasta la C.",
+        "en": "The range A1:C1 horizontally spans all cells in row 1 from column A to C.",
+        "de": "Der Bereich A1:C1 umfasst horizontal alle Zellen der Zeile 1 von Spalte A bis C.",
+        "fr": "La plage A1:C1 couvre horizontalement toutes les cellules de la ligne 1 de la colonne A à C.",
+        "ja": "範囲 A1:C1 は、1行目の列Aから列Cまでのすべてのセルを横方向に含みます。",
+        "pt": "O intervalo A1:C1 abrange horizontalmente todas as células da linha 1 da coluna A até a C."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "En Excel, las letras superiores (A, B, C...) representan:",
+      "promptByLocale": {
+        "es": "En Excel, las letras superiores (A, B, C...) representan:",
+        "en": "In Excel, the top letters (A, B, C...) represent:",
+        "de": "In Excel stehen die oberen Buchstaben (A, B, C...) für:",
+        "fr": "Dans Excel, les lettres supérieures (A, B, C...) représentent :",
+        "ja": "Excelの上部に並ぶアルファベット（A, B, C...）は何を表していますか？",
+        "pt": "No Excel, as letras superiores (A, B, C...) representam:"
+      },
+      "formula": "Estructura",
+      "formulaByLocale": {
+        "es": "Estructura",
+        "en": "Structure",
+        "de": "Struktur",
+        "fr": "Structure",
+        "ja": "シート構造",
+        "pt": "Estrutura"
+      },
+      "correct": "Columnas",
+      "correctByLocale": {
+        "es": "Columnas",
+        "en": "Columns",
+        "de": "Spalten",
+        "fr": "Colonnes",
+        "ja": "列",
+        "pt": "Colunas"
+      },
+      "data": {
+        "A1": "Col A",
+        "B1": "Col B"
+      },
+      "options": ["Columnas", "Filas", "Hojas", "Libros"],
+      "optionsByLocale": {
+        "es": ["Columnas", "Filas", "Hojas", "Libros"],
+        "en": ["Columns", "Rows", "Sheets", "Workbooks"],
+        "de": ["Spalten", "Zeilen", "Blätter", "Arbeitsmappen"],
+        "fr": ["Colonnes", "Lignes", "Feuilles", "Classeurs"],
+        "ja": ["列", "行", "シート", "ブック"],
+        "pt": ["Colunas", "Linhas", "Planilhas", "Pastas"]
+      },
+      "explanation": "Las columnas se extienden verticalmente y se identifican con letras del abecedario.",
+      "explanationByLocale": {
+        "es": "Las columnas se extienden verticalmente y se identifican con letras del abecedario.",
+        "en": "Columns run vertically and are identified by letters of the alphabet.",
+        "de": "Spalten verlaufen vertikal und werden durch Buchstaben des Alphabets gekennzeichnet.",
+        "fr": "Les colonnes s'étendent verticalement et sont identifiées par des lettres de l'alphabet.",
+        "ja": "列は縦方向に延びており、アルファベット記号で識別されます。",
+        "pt": "As colunas se estendem verticalmente e são identificadas por letras do alfabeto."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la columna de ventas de enero a marzo (B2:B4).",
+      "promptByLocale": {
+        "es": "Selecciona la columna de ventas de enero a marzo (B2:B4).",
+        "en": "Select the sales column from January to March (B2:B4).",
+        "de": "Wähle die Verkaufsspalte von Januar bis März aus (B2:B4).",
+        "fr": "Sélectionne la colonne des ventes de janvier à mars (B2:B4).",
+        "ja": "1月から3月までの売上列（B2:B4）を選択してください。",
+        "pt": "Selecione a coluna de vendas de janeiro a março (B2:B4)."
+      },
+      "correct": "B2:B4",
+      "data": {
+        "A1": "Mes",
+        "B1": "Ventas",
+        "A2": "Ene",
+        "B2": "50",
+        "A3": "Feb",
+        "B3": "70",
+        "A4": "Mar",
+        "B4": "90"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Mes",
+          "B1": "Ventas",
+          "A2": "Ene",
+          "B2": "50",
+          "A3": "Feb",
+          "B3": "70",
+          "A4": "Mar",
+          "B4": "90"
+        },
+        "en": {
+          "A1": "Month",
+          "B1": "Sales",
+          "A2": "Jan",
+          "B2": "50",
+          "A3": "Feb",
+          "B3": "70",
+          "A4": "Mar",
+          "B4": "90"
+        },
+        "de": {
+          "A1": "Monat",
+          "B1": "Umsatz",
+          "A2": "Jan",
+          "B2": "50",
+          "A3": "Feb",
+          "B3": "70",
+          "A4": "Mär",
+          "B4": "90"
+        },
+        "fr": {
+          "A1": "Mois",
+          "B1": "Ventes",
+          "A2": "Jan",
+          "B2": "50",
+          "A3": "Fév",
+          "B3": "70",
+          "A4": "Mar",
+          "B4": "90"
+        },
+        "ja": {
+          "A1": "月",
+          "B1": "売上",
+          "A2": "1月",
+          "B2": "50",
+          "A3": "2月",
+          "B3": "70",
+          "A4": "3月",
+          "B4": "90"
+        },
+        "pt": {
+          "A1": "Mês",
+          "B1": "Vendas",
+          "A2": "Jan",
+          "B2": "50",
+          "A3": "Fev",
+          "B3": "70",
+          "A4": "Mar",
+          "B4": "90"
+        }
+      },
+      "explanation": "El rango B2:B4 es una selección vertical que contiene los datos numéricos de los 3 meses.",
+      "explanationByLocale": {
+        "es": "El rango B2:B4 es una selección vertical que contiene los datos numéricos de los 3 meses.",
+        "en": "The range B2:B4 is a vertical selection containing the numeric data for the 3 months.",
+        "de": "Der Bereich B2:B4 ist eine vertikale Auswahl, die die numerischen Daten der 3 Monate enthält.",
+        "fr": "La plage B2:B4 est une sélection verticale contenant les données numériques des 3 mois.",
+        "ja": "範囲 B2:B4 は、3か月分の数値データが含まれる垂直方向のセル選択です。",
+        "pt": "O intervalo B2:B4 é uma seleção vertical contendo os dados numéricos dos 3 meses."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la referencia del rango vertical desde A1 hasta A3.",
+      "promptByLocale": {
+        "es": "Arma la referencia del rango vertical desde A1 hasta A3.",
+        "en": "Build the reference for the vertical range from A1 to A3.",
+        "de": "Baue den Bezug für den vertikalen Bereich von A1 bis A3.",
+        "fr": "Construis la référence de la plage verticale de A1 à A3.",
+        "ja": "A1からA3までの垂直範囲の参照を組み立ててください。",
+        "pt": "Monte a referência do intervalo vertical de A1 até A3."
+      },
+      "correct": "A1:A3",
+      "blocks": ["A1", ":", "A3", "B1"],
+      "explanation": "Los dos puntos (:) representan el operador de rango en Excel que conecta la celda inicial con la final.",
+      "explanationByLocale": {
+        "es": "Los dos puntos (:) representan el operador de rango en Excel que conecta la celda inicial con la final.",
+        "en": "The colon (:) represents the range operator in Excel, connecting the start cell with the end cell.",
+        "de": "Der Doppelpunkt (:) ist der Bereichsoperator in Excel, der Anfangs- und Endzelle verbindet.",
+        "fr": "Les deux-points (:) représentent l'opérateur de plage dans Excel reliant la cellule de départ à la cellule d'arrivée.",
+        "ja": "コロン（:）はExcelの範囲演算子で、開始セルと終了セルを接続します。",
+        "pt": "Os dois pontos (:) representam o operador de intervalo no Excel, ligando a célula inicial à final."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Los números (1, 2, 3...) en el borde izquierdo representan:",
+      "promptByLocale": {
+        "es": "Los números (1, 2, 3...) en el borde izquierdo representan:",
+        "en": "The numbers (1, 2, 3...) along the left edge represent:",
+        "de": "Die Zahlen (1, 2, 3...) am linken Rand stehen für:",
+        "fr": "Les numéros (1, 2, 3...) sur le bord gauche représentent :",
+        "ja": "左端に並ぶ数字（1, 2, 3...）は何を表していますか？",
+        "pt": "Os números (1, 2, 3...) na borda esquerda representam:"
+      },
+      "formula": "Estructura",
+      "formulaByLocale": {
+        "es": "Estructura",
+        "en": "Structure",
+        "de": "Struktur",
+        "fr": "Structure",
+        "ja": "シート構造",
+        "pt": "Estrutura"
+      },
+      "correct": "Filas",
+      "correctByLocale": {
+        "es": "Filas",
+        "en": "Rows",
+        "de": "Zeilen",
+        "fr": "Lignes",
+        "ja": "行",
+        "pt": "Linhas"
+      },
+      "data": {
+        "A1": "Fila 1",
+        "A2": "Fila 2"
+      },
+      "options": ["Filas", "Columnas", "Celdas", "Fórmulas"],
+      "optionsByLocale": {
+        "es": ["Filas", "Columnas", "Celdas", "Fórmulas"],
+        "en": ["Rows", "Columns", "Cells", "Formulas"],
+        "de": ["Zeilen", "Spalten", "Zellen", "Formeln"],
+        "fr": ["Lignes", "Colonnes", "Cellules", "Formules"],
+        "ja": ["行", "列", "セル", "数式"],
+        "pt": ["Linhas", "Colunas", "Células", "Fórmulas"]
+      },
+      "explanation": "Las filas van en sentido horizontal y están numeradas de 1 en adelante.",
+      "explanationByLocale": {
+        "es": "Las filas van en sentido horizontal y están numeradas de 1 en adelante.",
+        "en": "Rows run horizontally and are numbered starting from 1.",
+        "de": "Zeilen verlaufen horizontal und sind ab 1 fortlaufend nummeriert.",
+        "fr": "Les lignes s'étendent horizontalement et sont numérotées à partir de 1.",
+        "ja": "行は横方向に延びており、1から始まる連番で識別されます。",
+        "pt": "As linhas vão no sentido horizontal e são numeradas a partir de 1."
+      }
+    }
+  ]
+}

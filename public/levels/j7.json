@@ -1,0 +1,90 @@
+{
+  "ref": "J7",
+  "title": "Proyecto: Reporte de ventas",
+  "titleByLocale": {
+    "es": "Proyecto: Reporte de ventas",
+    "en": "Project: Sales Report",
+    "de": "Projekt: Verkaufsbericht",
+    "fr": "Projet : Rapport des ventes",
+    "ja": "プロジェクト：売上分析ダッシュボード",
+    "pt": "Projeto: Relatório de vendas"
+  },
+  "version": 1,
+  "rewardXp": 25,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Si actualizas la base de datos con nuevas filas de ventas, ¿qué acción debes realizar para que la Tabla Dinámica las incorpore?",
+      "promptByLocale": {
+        "es": "Si actualizas la base de datos con nuevas filas de ventas, ¿qué acción debes realizar para que la Tabla Dinámica las incorpore?",
+        "en": "If you append new sales rows to your source data, what action updates the PivotTable with those new figures?",
+        "de": "Welche Aktion muss ausgeführt werden, damit eine Pivot-Tabelle neu hinzugefügte Verkaufszeilen übernimmt?",
+        "fr": "Si vous ajoutez de nouvelles ventes, quelle action intègre ces chiffres dans le TCD ?",
+        "ja": "元データに新しい売上データを追加した場合、ピボットテーブルに最新データを反映させるにはどうしますか？",
+        "pt": "Se você adicionar novas vendas à base, que ação deve realizar para que a Tabela Dinâmica as incorpore?"
+      },
+      "options": [
+        "Hacer clic derecho y elegir 'Actualizar' (Refresh o Alt+F5)",
+        "Reiniciar la computadora",
+        "Volver a escribir todas las fórmulas",
+        "Guardar el archivo con otro nombre"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Hacer clic derecho y elegir 'Actualizar' (Refresh o Alt+F5)",
+          "Reiniciar la computadora",
+          "Volver a escribir todas las fórmulas",
+          "Guardar el archivo con otro nombre"
+        ],
+        "en": [
+          "Right-click and select 'Refresh' (or press Alt+F5)",
+          "Reboot the computer",
+          "Rewrite all formulas from scratch",
+          "Save the file with a different name"
+        ],
+        "de": [
+          "Rechtsklick und 'Aktualisieren' wählen (oder Alt+F5)",
+          "Computer neu starten",
+          "Formeln neu schreiben",
+          "Unter neuem Namen speichern"
+        ],
+        "fr": [
+          "Faire un clic droit et choisir 'Actualiser' (ou Alt+F5)",
+          "Redémarrer l'ordinateur",
+          "Réécrire toutes les formules",
+          "Enregistrer sous un autre nom"
+        ],
+        "ja": [
+          "右クリックして「更新（Refresh）」を選択する（または Alt+F5）",
+          "パソコンを再起動する",
+          "最初からすべての数式を書き直す",
+          "ファイルを別名で保存し直す"
+        ],
+        "pt": [
+          "Clicar com o botão direito e escolher 'Atualizar' (ou Alt+F5)",
+          "Reiniciar o computador",
+          "Reescrever todas as fórmulas",
+          "Salvar o arquivo com outro nome"
+        ]
+      },
+      "correct": "Hacer clic derecho y elegir 'Actualizar' (Refresh o Alt+F5)",
+      "correctByLocale": {
+        "es": "Hacer clic derecho y elegir 'Actualizar' (Refresh o Alt+F5)",
+        "en": "Right-click and select 'Refresh' (or press Alt+F5)",
+        "de": "Rechtsklick und 'Aktualisieren' wählen (oder Alt+F5)",
+        "fr": "Faire un clic droit et choisir 'Actualiser' (ou Alt+F5)",
+        "ja": "右クリックして「更新（Refresh）」を選択する（または Alt+F5）",
+        "pt": "Clicar com o botão direito e escolher 'Atualizar' (ou Alt+F5)"
+      },
+      "explanation": "Las tablas dinámicas guardan una instantánea en caché y requieren 'Actualizar' para releer los cambios de la fuente.",
+      "explanationByLocale": {
+        "es": "Las tablas dinámicas guardan una instantánea en caché y requieren 'Actualizar' para releer los cambios de la fuente.",
+        "en": "Pivot tables operate off a data cache, requiring 'Refresh' to ingest recent modifications.",
+        "de": "Pivot-Tabellen nutzen einen Zwischenspeicher (Cache) und müssen 'Aktualisiert' werden.",
+        "fr": "Les TCD stockent les données en cache et nécessitent d'être 'Actualisés'.",
+        "ja": "ピボットテーブルは「ピボットキャッシュ」を保持しているため、元データの変更時は「更新」操作が必要です。",
+        "pt": "As tabelas dinâmicas utilizam cache e exigem 'Atualizar' para recarregar as modificações."
+      }
+    }
+  ]
+}

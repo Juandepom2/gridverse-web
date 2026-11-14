@@ -1,0 +1,213 @@
+{
+  "ref": "E8",
+  "title": "TEXTO (formato en fórmula)",
+  "titleByLocale": {
+    "es": "TEXTO (formato en fórmula)",
+    "en": "TEXT (Format inside formula)",
+    "de": "TEXT (Format in Formeln)",
+    "fr": "TEXTE (Format en formule)",
+    "ja": "TEXT（数式内での表示形式）",
+    "pt": "TEXTO (formatação na fórmula)"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Al concatenar \"Total: \" & A1 (donde A1=1500 con formato moneda $1,500), ¿qué muestra Excel por defecto?",
+      "promptByLocale": {
+        "es": "Al concatenar \"Total: \" & A1 (donde A1=1500 con formato moneda $1,500), ¿qué muestra Excel por defecto?",
+        "en": "When concatenating \"Total: \" & A1 (where A1=1500 is formatted as currency $1,500), what does Excel show by default?",
+        "de": "Wenn man \"Total: \" & A1 verknüpft (A1=1500 formatiert als 1.500 €), was zeigt Excel standardmäßig?",
+        "fr": "Lors de la concaténation \"Total : \" & A1 (où A1=1500 est formaté en 1 500 €), qu'affiche Excel par défaut ?",
+        "ja": "通貨書式「$1,500」が設定されたA1（数値1500）を \"Total: \" & A1 で結合すると、どう表示されますか？",
+        "pt": "Ao concatenar \"Total: \" & A1 (onde A1=1500 com formato moeda R$ 1.500), o que o Excel exibe por padrão?"
+      },
+      "options": [
+        "\"Total: 1500\" (pierde el signo de moneda y comas)",
+        "\"Total: $1,500\"",
+        "#¡VALOR!",
+        "\"Total: 0\""
+      ],
+      "optionsByLocale": {
+        "es": [
+          "\"Total: 1500\" (pierde el signo de moneda y comas)",
+          "\"Total: $1,500\"",
+          "#¡VALOR!",
+          "\"Total: 0\""
+        ],
+        "en": [
+          "\"Total: 1500\" (strips currency symbol and comma format)",
+          "\"Total: $1,500\"",
+          "#VALUE!",
+          "\"Total: 0\""
+        ],
+        "de": [
+          "\"Total: 1500\" (verliert Währungssymbol und Tausendertrennzeichen)",
+          "\"Total: 1.500 €\"",
+          "#WERT!",
+          "\"Total: 0\""
+        ],
+        "fr": [
+          "\"Total : 1500\" (perd le symbole monétaire et les séparateurs)",
+          "\"Total : 1 500 €\"",
+          "#VALEUR!",
+          "\"Total : 0\""
+        ],
+        "ja": [
+          "\"Total: 1500\"（通貨記号やカンマ書式が消える）",
+          "\"Total: $1,500\"",
+          "#VALUE!",
+          "\"Total: 0\""
+        ],
+        "pt": [
+          "\"Total: 1500\" (perde o símbolo de moeda e separadores)",
+          "\"Total: R$ 1.500\"",
+          "#VALOR!",
+          "\"Total: 0\""
+        ]
+      },
+      "correct": "\"Total: 1500\" (pierde el signo de moneda y comas)",
+      "correctByLocale": {
+        "es": "\"Total: 1500\" (pierde el signo de moneda y comas)",
+        "en": "\"Total: 1500\" (strips currency symbol and comma format)",
+        "de": "\"Total: 1500\" (verliert Währungssymbol und Tausendertrennzeichen)",
+        "fr": "\"Total : 1500\" (perd le symbole monétaire et les séparateurs)",
+        "ja": "\"Total: 1500\"（通貨記号やカンマ書式が消える）",
+        "pt": "\"Total: 1500\" (perde o símbolo de moeda e separadores)"
+      },
+      "explanation": "La concatenación siempre toma el valor numérico puro. Para conservar el formato se debe usar la función TEXTO.",
+      "explanationByLocale": {
+        "es": "La concatenación siempre toma el valor numérico puro. Para conservar el formato se debe usar la función TEXTO.",
+        "en": "Concatenation reads raw unformatted numbers. Use the TEXT function to preserve formatting inside formulas.",
+        "de": "Verkettung liest rohe Zahlenwerte. Um Formate beizubehalten, verwendet man die Funktion TEXT.",
+        "fr": "La concaténation utilise la valeur brute. Pour conserver le format, il faut employer la fonction TEXTE.",
+        "ja": "文字列結合(&)はセルの素の数値を参照するため、書式を保つにはTEXT関数を併用する必要があります。",
+        "pt": "A concatenação lê o valor bruto. Para manter a formatação, deve-se usar a função TEXTO."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué fórmula mantiene el formato de moneda al concatenar?",
+      "promptByLocale": {
+        "es": "¿Qué fórmula mantiene el formato de moneda al concatenar?",
+        "en": "Which formula preserves the currency format when concatenating?",
+        "de": "Welche Formel behält die Währungsformatierung beim Verketten bei?",
+        "fr": "Quelle formule conserve le format monétaire lors de la concaténation ?",
+        "ja": "文字列結合時に通貨書式を維持できる数式はどれですか？",
+        "pt": "Qual fórmula mantém o formato de moeda ao concatenar?"
+      },
+      "options": [
+        "=\"Total: \" & TEXTO(A1, \"$#,##0.00\")",
+        "=\"Total: \" & MONEDA(A1)",
+        "=\"Total: \" & FORMATO(A1)",
+        "=\"Total: \" & A1:MONEDA"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "=\"Total: \" & TEXTO(A1, \"$#,##0.00\")",
+          "=\"Total: \" & MONEDA(A1)",
+          "=\"Total: \" & FORMATO(A1)",
+          "=\"Total: \" & A1:MONEDA"
+        ],
+        "en": [
+          "=\"Total: \" & TEXT(A1, \"$#,##0.00\")",
+          "=\"Total: \" & CURRENCY(A1)",
+          "=\"Total: \" & FORMAT(A1)",
+          "=\"Total: \" & A1:CURRENCY"
+        ],
+        "de": [
+          "=\"Total: \" & TEXT(A1; \"$#,##0.00\")",
+          "=\"Total: \" & WÄHRUNG(A1)",
+          "=\"Total: \" & FORMAT(A1)",
+          "=\"Total: \" & A1:WÄHRUNG"
+        ],
+        "fr": [
+          "=\"Total : \" & TEXTE(A1; \"$#,##0.00\")",
+          "=\"Total : \" & MONNAIE(A1)",
+          "=\"Total : \" & FORMAT(A1)",
+          "=\"Total : \" & A1:MONNAIE"
+        ],
+        "ja": [
+          "=\"Total: \" & TEXT(A1, \"$#,##0.00\")",
+          "=\"Total: \" & CURRENCY(A1)",
+          "=\"Total: \" & FORMAT(A1)",
+          "=\"Total: \" & A1:CURRENCY"
+        ],
+        "pt": [
+          "=\"Total: \" & TEXTO(A1; \"$#,##0.00\")",
+          "=\"Total: \" & MOEDA(A1)",
+          "=\"Total: \" & FORMATO(A1)",
+          "=\"Total: \" & A1:MOEDA"
+        ]
+      },
+      "correct": "=\"Total: \" & TEXTO(A1, \"$#,##0.00\")",
+      "correctByLocale": {
+        "es": "=\"Total: \" & TEXTO(A1, \"$#,##0.00\")",
+        "en": "=\"Total: \" & TEXT(A1, \"$#,##0.00\")",
+        "de": "=\"Total: \" & TEXT(A1; \"$#,##0.00\")",
+        "fr": "=\"Total : \" & TEXTE(A1; \"$#,##0.00\")",
+        "ja": "=\"Total: \" & TEXT(A1, \"$#,##0.00\")",
+        "pt": "=\"Total: \" & TEXTO(A1; \"$#,##0.00\")"
+      },
+      "explanation": "La función TEXTO(valor, \"formato\") aplica cualquier formato personalizado dentro de una cadena.",
+      "explanationByLocale": {
+        "es": "La función TEXTO(valor, \"formato\") aplica cualquier formato personalizado dentro de una cadena.",
+        "en": "The TEXT(value, \"format\") function applies any custom number format string directly inside formulas.",
+        "de": "Die Funktion TEXT(Wert; \"Format\") wendet benutzerdefinierte Zahlenformate in Formeln an.",
+        "fr": "La fonction TEXTE(valeur; \"format\") applique n'importe quel masque de format dans une formule.",
+        "ja": "TEXT(値, \"表示形式\") 関数を使うと、数式の中でも自在に任意の表示形式を適用できます。",
+        "pt": "A função TEXTO(valor; \"formato\") aplica qualquer formato personalizado dentro de fórmulas."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para convertir la fecha en A2 al formato de texto año-mes-día (\"aaaa-mm-dd\"):",
+      "promptByLocale": {
+        "es": "Arma la fórmula para convertir la fecha en A2 al formato de texto año-mes-día (\"aaaa-mm-dd\"):",
+        "en": "Build formula to convert date in A2 into year-month-day text format (\"yyyy-mm-dd\"):",
+        "de": "Baue die Formel, um das Datum in A2 in das Textformat Jahr-Monat-Tag (\"JJJJ-MM-TT\") umzuwandeln:",
+        "fr": "Construisez la formule pour convertir la date en A2 au format texte (\"aaaa-mm-jj\") :",
+        "ja": "A2の日付を「yyyy-mm-dd」のテキスト形式に変換する数式を構築してください：",
+        "pt": "Monte a fórmula para converter a data em A2 para o formato de texto (\"aaaa-mm-dd\"):"
+      },
+      "formula": "=TEXTO(A2,\"aaaa-mm-dd\")",
+      "formulaByLocale": {
+        "es": "=TEXTO(A2,\"aaaa-mm-dd\")",
+        "en": "=TEXT(A2,\"yyyy-mm-dd\")",
+        "de": "=TEXT(A2,\"JJJJ-MM-TT\")",
+        "fr": "=TEXTE(A2,\"aaaa-mm-jj\")",
+        "ja": "=TEXT(A2,\"yyyy-mm-dd\")",
+        "pt": "=TEXTO(A2,\"aaaa-mm-dd\")"
+      },
+      "correct": "=TEXTO(A2,\"aaaa-mm-dd\")",
+      "correctByLocale": {
+        "es": "=TEXTO(A2,\"aaaa-mm-dd\")",
+        "en": "=TEXT(A2,\"yyyy-mm-dd\")",
+        "de": "=TEXT(A2,\"JJJJ-MM-TT\")",
+        "fr": "=TEXTE(A2,\"aaaa-mm-jj\")",
+        "ja": "=TEXT(A2,\"yyyy-mm-dd\")",
+        "pt": "=TEXTO(A2,\"aaaa-mm-dd\")"
+      },
+      "blocks": ["=TEXTO(", "A2,", "\"aaaa-mm-dd\")"],
+      "blocksByLocale": {
+        "es": ["=TEXTO(", "A2,", "\"aaaa-mm-dd\")"],
+        "en": ["=TEXT(", "A2,", "\"yyyy-mm-dd\")"],
+        "de": ["=TEXT(", "A2,", "\"JJJJ-MM-TT\")"],
+        "fr": ["=TEXTE(", "A2,", "\"aaaa-mm-jj\")"],
+        "ja": ["=TEXT(", "A2,", "\"yyyy-mm-dd\")"],
+        "pt": ["=TEXTO(", "A2,", "\"aaaa-mm-dd\")"]
+      },
+      "explanation": "TEXTO permite estandarizar fechas para generar nombres de archivo o reportes automáticos.",
+      "explanationByLocale": {
+        "es": "TEXTO permite estandarizar fechas para generar nombres de archivo o reportes automáticos.",
+        "en": "TEXT standardizes dates for automated reporting, labels, and file naming.",
+        "de": "TEXT standardisiert Datumsangaben für Berichte und Dateibenennungen.",
+        "fr": "TEXTE standardise les dates pour les rapports et dénominations de fichiers.",
+        "ja": "TEXT関数で日付表記を標準化すると、レポートや動的なタイトル作成が容易になります。",
+        "pt": "TEXTO padroniza datas para geração de relatórios e títulos dinâmicos."
+      }
+    }
+  ]
+}
+

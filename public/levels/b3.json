@@ -1,0 +1,370 @@
+{
+  "ref": "B3",
+  "title": "Práctica rápida de fórmulas",
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "select_range",
+      "prompt": "Selecciona las calificaciones de los estudiantes (B2:B5).",
+      "correct": "B2:B5",
+      "data": {
+        "A1": "Alumno",
+        "B1": "Nota",
+        "A2": "Carlos",
+        "B2": "85",
+        "A3": "Sofía",
+        "B3": "98",
+        "A4": "Mateo",
+        "B4": "72",
+        "A5": "Lucía",
+        "B5": "90"
+      },
+      "promptByLocale": {
+        "es": "Selecciona las calificaciones de los estudiantes (B2:B5).",
+        "en": "Select the students' grades (B2:B5).",
+        "de": "Wähle die Noten der Schüler aus (B2:B5).",
+        "fr": "Sélectionne les notes des élèves (B2:B5).",
+        "ja": "生徒の成績データ（B2:B5）を選択してください。",
+        "pt": "Selecione as notas dos alunos (B2:B5)."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Alumno",
+          "B1": "Nota",
+          "A2": "Carlos",
+          "B2": "85",
+          "A3": "Sofía",
+          "B3": "98",
+          "A4": "Mateo",
+          "B4": "72",
+          "A5": "Lucía",
+          "B5": "90"
+        },
+        "en": {
+          "A1": "Student",
+          "B1": "Grade",
+          "A2": "Carlos",
+          "B2": "85",
+          "A3": "Sophia",
+          "B3": "98",
+          "A4": "Matthew",
+          "B4": "72",
+          "A5": "Lucy",
+          "B5": "90"
+        },
+        "de": {
+          "A1": "Schüler",
+          "B1": "Note",
+          "A2": "Carlos",
+          "B2": "85",
+          "A3": "Sofía",
+          "B3": "98",
+          "A4": "Mateo",
+          "B4": "72",
+          "A5": "Lucía",
+          "B5": "90"
+        },
+        "fr": {
+          "A1": "Élève",
+          "B1": "Note",
+          "A2": "Carlos",
+          "B2": "85",
+          "A3": "Sophie",
+          "B3": "98",
+          "A4": "Mathieu",
+          "B4": "72",
+          "A5": "Lucie",
+          "B5": "90"
+        },
+        "ja": {
+          "A1": "生徒名",
+          "B1": "点数",
+          "A2": "Carlos",
+          "B2": "85",
+          "A3": "Sofía",
+          "B3": "98",
+          "A4": "Mateo",
+          "B4": "72",
+          "A5": "Lucía",
+          "B5": "90"
+        },
+        "pt": {
+          "A1": "Aluno",
+          "B1": "Nota",
+          "A2": "Carlos",
+          "B2": "85",
+          "A3": "Sofia",
+          "B3": "98",
+          "A4": "Mateus",
+          "B4": "72",
+          "A5": "Lúcia",
+          "B5": "90"
+        }
+      },
+      "explanationByLocale": {
+        "es": "El rango B2:B5 reúne las cuatro calificaciones del grupo.",
+        "en": "The range B2:B5 contains the four student grades for the group.",
+        "de": "Der Bereich B2:B5 enthält die vier Noten der Schülergruppe.",
+        "fr": "La plage B2:B5 regroupe les quatre notes du groupe.",
+        "ja": "範囲 B2:B5 に4名分の成績データが入っています。",
+        "pt": "O intervalo B2:B5 reúne as quatro notas da turma."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué fórmula devuelve la calificación más alta del grupo?",
+      "formula": "=MAX(B2:B5)",
+      "correct": "=MAX(B2:B5)",
+      "data": {
+        "A1": "Alumno",
+        "B1": "Nota",
+        "A2": "Carlos",
+        "B2": "85",
+        "A3": "Sofía",
+        "B3": "98",
+        "A4": "Mateo",
+        "B4": "72",
+        "A5": "Lucía",
+        "B5": "90"
+      },
+      "options": [
+        "=MAX(B2:B5)",
+        "=MIN(B2:B5)",
+        "=SUMA(B2:B5)",
+        "=ALTO(B2:B5)"
+      ],
+      "promptByLocale": {
+        "es": "¿Qué fórmula devuelve la calificación más alta del grupo?",
+        "en": "Which formula returns the highest grade in the group?",
+        "de": "Welche Formel liefert die höchste Note der Gruppe?",
+        "fr": "Quelle formule renvoie la meilleure note du groupe ?",
+        "ja": "グループ内の最高得点を返す数式はどれですか？",
+        "pt": "Qual fórmula retorna a maior nota da turma?"
+      },
+      "formulaByLocale": {
+        "es": "=MAX(B2:B5)",
+        "en": "=MAX(B2:B5)",
+        "de": "=MAX(B2:B5)",
+        "fr": "=MAX(B2:B5)",
+        "ja": "=MAX(B2:B5)",
+        "pt": "=MAX(B2:B5)"
+      },
+      "explanationByLocale": {
+        "es": "MAX() identifica de forma inmediata el valor pico de la lista (98).",
+        "en": "MAX() instantly identifies the peak value in the list (98).",
+        "de": "MAX() ermittelt sofort den Spitzenwert der Liste (98).",
+        "fr": "MAX() identifie immédiatement la valeur maximale de la liste (98).",
+        "ja": "MAX() 関数はリストの中から最高得点（98点）を即座に特定します。",
+        "pt": "A função MAX() identifica de imediato a pontuação mais alta (98)."
+      },
+      "optionsByLocale": {
+        "es": [
+          "=MAX(B2:B5)",
+          "=MIN(B2:B5)",
+          "=SUMA(B2:B5)",
+          "=ALTO(B2:B5)"
+        ],
+        "en": [
+          "=MAX(B2:B5)",
+          "=MIN(B2:B5)",
+          "=SUMA(B2:B5)",
+          "=ALTO(B2:B5)"
+        ],
+        "de": [
+          "=MAX(B2:B5)",
+          "=MIN(B2:B5)",
+          "=SUMA(B2:B5)",
+          "=ALTO(B2:B5)"
+        ],
+        "fr": [
+          "=MAX(B2:B5)",
+          "=MIN(B2:B5)",
+          "=SUMA(B2:B5)",
+          "=ALTO(B2:B5)"
+        ],
+        "ja": [
+          "=MAX(B2:B5)",
+          "=MIN(B2:B5)",
+          "=SUMA(B2:B5)",
+          "=ALTO(B2:B5)"
+        ],
+        "pt": [
+          "=MAX(B2:B5)",
+          "=MIN(B2:B5)",
+          "=SUMA(B2:B5)",
+          "=ALTO(B2:B5)"
+        ]
+      },
+      "correctByLocale": {
+        "es": "=MAX(B2:B5)",
+        "en": "=MAX(B2:B5)",
+        "de": "=MAX(B2:B5)",
+        "fr": "=MAX(B2:B5)",
+        "ja": "=MAX(B2:B5)",
+        "pt": "=MAX(B2:B5)"
+      }
+    },
+    {
+      "type": "write_formula",
+      "prompt": "Calcula el promedio del grupo en la celda B6.",
+      "correct": "=PROMEDIO(B2:B5)",
+      "data": {
+        "A1": "Alumno",
+        "B1": "Nota",
+        "A2": "Carlos",
+        "B2": "85",
+        "A3": "Sofía",
+        "B3": "98",
+        "A4": "Mateo",
+        "B4": "72",
+        "A5": "Lucía",
+        "B5": "90",
+        "A6": "Media"
+      },
+      "targetCell": "B6",
+      "suggestions": [
+        "=",
+        "PROMEDIO(",
+        "SUMA(",
+        "B2:B5",
+        ")"
+      ],
+      "promptByLocale": {
+        "es": "Calcula el promedio del grupo en la celda B6.",
+        "en": "Calculate the group average in cell B6.",
+        "de": "Berechne den Gruppendurchschnitt in Zelle B6.",
+        "fr": "Calcule la moyenne du groupe dans la cellule B6.",
+        "ja": "B6セルで、グループの平均点を計算してください。",
+        "pt": "Calcule a média da turma na célula B6."
+      },
+      "explanationByLocale": {
+        "es": "=PROMEDIO(B2:B5) calcula la media aritmética de las notas.",
+        "en": "=AVERAGE(B2:B5) calculates the arithmetic mean of the grades.",
+        "de": "=MITTELWERT(B2:B5) berechnet den arithmetischen Notendurchschnitt.",
+        "fr": "=MOYENNE(B2:B5) calcule la moyenne arithmétique des notes.",
+        "ja": "=AVERAGE(B2:B5) で成績の算術平均を算出します。",
+        "pt": "=PROMEDIO(B2:B5) calcula a média aritmética das notas."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para encontrar la nota más baja.",
+      "correct": "=MIN(B2:B5)",
+      "blocks": [
+        "=",
+        "MIN(",
+        "B2:B5",
+        ")",
+        "MAX("
+      ],
+      "promptByLocale": {
+        "es": "Arma la fórmula para encontrar la nota más baja.",
+        "en": "Build the formula to find the lowest grade.",
+        "de": "Erstelle die Formel, um die niedrigste Note zu finden.",
+        "fr": "Construis la formule pour trouver la note la plus basse.",
+        "ja": "最も低い点数を求める数式を組み立ててください。",
+        "pt": "Monte a fórmula para encontrar a menor nota."
+      },
+      "explanationByLocale": {
+        "es": "=MIN(B2:B5) devuelve 72, la calificación menor del grupo.",
+        "en": "=MIN(B2:B5) returns 72, the lowest grade in the group.",
+        "de": "=MIN(B2:B5) liefert 72, die niedrigste Note der Gruppe.",
+        "fr": "=MIN(B2:B5) renvoie 72, la note la plus basse du groupe.",
+        "ja": "=MIN(B2:B5) はグループの最低得点である 72 を返します。",
+        "pt": "=MIN(B2:B5) retorna 72, a menor nota da turma."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si sumamos las notas 85 + 98 + 72 + 90 = 345, ¿cuál es el promedio entre 4?",
+      "formula": "=PROMEDIO(B2:B5)",
+      "correct": "86.25",
+      "data": {},
+      "options": [
+        "86.25",
+        "90",
+        "85",
+        "345"
+      ],
+      "promptByLocale": {
+        "es": "Si sumamos las notas 85 + 98 + 72 + 90 = 345, ¿cuál es el promedio entre 4?",
+        "en": "If we add grades 85 + 98 + 72 + 90 = 345, what is the average divided by 4?",
+        "de": "Wenn wir 85 + 98 + 72 + 90 = 345 addieren, was ist der Durchschnitt geteilt durch 4?",
+        "fr": "Si on additionne les notes 85 + 98 + 72 + 90 = 345, quelle est la moyenne divisée par 4 ?",
+        "ja": "合計点 85 + 98 + 72 + 90 = 345 のとき、4で割った平均点はいくつになりますか？",
+        "pt": "Se somarmos as notas 85 + 98 + 72 + 90 = 345, qual é a média dividida por 4?"
+      },
+      "formulaByLocale": {
+        "es": "=PROMEDIO(B2:B5)",
+        "en": "=AVERAGE(B2:B5)",
+        "de": "=MITTELWERT(B2:B5)",
+        "fr": "=MOYENNE(B2:B5)",
+        "ja": "=AVERAGE(B2:B5)",
+        "pt": "=MÉDIA(B2:B5)"
+      },
+      "explanationByLocale": {
+        "es": "345 dividido entre 4 participantes da exactamente 86.25.",
+        "en": "345 divided by 4 students yields exactly 86.25.",
+        "de": "345 geteilt durch 4 Teilnehmer ergibt genau 86.25.",
+        "fr": "345 divisé par 4 participants donne exactement 86,25.",
+        "ja": "345 を 4 で割ると正確に 86.25 になります。",
+        "pt": "345 dividido por 4 alunos resulta exatamente em 86.25."
+      },
+      "optionsByLocale": {
+        "es": [
+          "86.25",
+          "90",
+          "85",
+          "345"
+        ],
+        "en": [
+          "86.25",
+          "90",
+          "85",
+          "345"
+        ],
+        "de": [
+          "86.25",
+          "90",
+          "85",
+          "345"
+        ],
+        "fr": [
+          "86.25",
+          "90",
+          "85",
+          "345"
+        ],
+        "ja": [
+          "86.25",
+          "90",
+          "85",
+          "345"
+        ],
+        "pt": [
+          "86.25",
+          "90",
+          "85",
+          "345"
+        ]
+      },
+      "correctByLocale": {
+        "es": "86.25",
+        "en": "86.25",
+        "de": "86.25",
+        "fr": "86.25",
+        "ja": "86.25",
+        "pt": "86.25"
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "MIN y MAX",
+    "en": "MIN and MAX",
+    "de": "MIN und MAX",
+    "fr": "MIN et MAX",
+    "ja": "MIN と MAX",
+    "pt": "MÍN e MÁX"
+  }
+}

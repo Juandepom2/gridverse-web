@@ -1,0 +1,90 @@
+{
+  "ref": "L1",
+  "title": "Rastrear precedentes y dependientes",
+  "titleByLocale": {
+    "es": "Rastrear precedentes y dependientes",
+    "en": "Trace Precedents and Dependents",
+    "de": "Spur zum Vorgänger / Nachfolger",
+    "fr": "Repérer les antécédents et dépendants",
+    "ja": "参照元・参照先のトレース",
+    "pt": "Rastrear precedentes e dependentes"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué herramienta gráfica de la pestaña Fórmulas dibuja flechas azules sobre la hoja para mostrar qué celdas alimentan el cálculo actual?",
+      "promptByLocale": {
+        "es": "¿Qué herramienta gráfica de la pestaña Fórmulas dibuja flechas azules sobre la hoja para mostrar qué celdas alimentan el cálculo actual?",
+        "en": "Which graphical tool on the Formulas tab draws blue arrows on the sheet showing which cells feed into the active formula?",
+        "de": "Welches grafische Werkzeug unter Formeln zeichnet blaue Pfeile zu den Zellen, die die aktuelle Formel speisen?",
+        "fr": "Quel outil graphique de l'onglet Formules dessine des flèches bleues montrant les cellules alimentant la formule active ?",
+        "ja": "数式タブにある機能で、アクティブセルの計算元となっているセルへ青い矢印を描画するツールは何ですか？",
+        "pt": "Qual ferramenta gráfica da guia Fórmulas desenha setas azuis na planilha indicando quais células alimentam o cálculo ativo?"
+      },
+      "options": [
+        "Rastrear precedentes (Trace Precedents)",
+        "Rastrear dependientes",
+        "Comprobar errores",
+        "Ventana de inspección"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Rastrear precedentes (Trace Precedents)",
+          "Rastrear dependientes",
+          "Comprobar errores",
+          "Ventana de inspección"
+        ],
+        "en": [
+          "Trace Precedents",
+          "Trace Dependents",
+          "Error Checking",
+          "Watch Window"
+        ],
+        "de": [
+          "Spur zum Vorgänger (Trace Precedents)",
+          "Spur zum Nachfolger",
+          "Fehlerüberprüfung",
+          "Überwachungsfenster"
+        ],
+        "fr": [
+          "Repérer les antécédents (Trace Precedents)",
+          "Repérer les dépendants",
+          "Vérification des erreurs",
+          "Fenêtre Espion"
+        ],
+        "ja": [
+          "参照元のトレース (Trace Precedents)",
+          "参照先のトレース",
+          "エラーチェック",
+          "ウォッチ ウィンドウ"
+        ],
+        "pt": [
+          "Rastrear precedentes (Trace Precedents)",
+          "Rastrear dependentes",
+          "Verificação de erros",
+          "Janela de Inspeção"
+        ]
+      },
+      "correct": "Rastrear precedentes (Trace Precedents)",
+      "correctByLocale": {
+        "es": "Rastrear precedentes (Trace Precedents)",
+        "en": "Trace Precedents",
+        "de": "Spur zum Vorgänger (Trace Precedents)",
+        "fr": "Repérer les antécédents (Trace Precedents)",
+        "ja": "参照元のトレース (Trace Precedents)",
+        "pt": "Rastrear precedentes (Trace Precedents)"
+      },
+      "explanation": "Rastrear precedentes dibuja flechas desde los datos de origen hacia la fórmula para auditar su lógica.",
+      "explanationByLocale": {
+        "es": "Rastrear precedentes dibuja flechas desde los datos de origen hacia la fórmula para auditar su lógica.",
+        "en": "Trace Precedents points arrows from source input cells to the formula, verifying calculation logic.",
+        "de": "Spur zum Vorgänger zeichnet Pfeile von den Eingabezellen zur berechnenden Zelle.",
+        "fr": "Repérer les antécédents trace des flèches depuis les données sources vers la cellule active.",
+        "ja": "「参照元のトレース」は計算に使われている元の入力セルから数式セルへと青い矢印を伸ばして関係を可視化します。",
+        "pt": "Rastrear precedentes aponta setas das células de origem para a fórmula ativa para validar o cálculo."
+      }
+    }
+  ]
+}

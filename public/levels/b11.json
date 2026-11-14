@@ -1,0 +1,388 @@
+{
+  "ref": "B11",
+  "title": "Proyecto: Presupuesto mensual",
+  "version": 1,
+  "rewardXp": 30,
+  "exercises": [
+    {
+      "type": "select_range",
+      "prompt": "Selecciona el rango de todos los gastos fijos del mes (B3:B6).",
+      "correct": "B3:B6",
+      "data": {
+        "A1": "Categoría",
+        "B1": "Monto",
+        "A2": "Ingreso Total",
+        "B2": "2500",
+        "A3": "Renta",
+        "B3": "900",
+        "A4": "Comida",
+        "B4": "450",
+        "A5": "Servicios",
+        "B5": "200",
+        "A6": "Transporte",
+        "B6": "150",
+        "A7": "Total Gastos",
+        "A8": "Ahorro Neto"
+      },
+      "explanation": "El rango B3:B6 reúne todos los egresos del presupuesto mensual.",
+      "promptByLocale": {
+        "es": "Selecciona el rango de todos los gastos fijos del mes (B3:B6).",
+        "en": "Select the range of all fixed monthly expenses (B3:B6).",
+        "de": "Wähle den Bereich aller monatlichen Fixausgaben aus (B3:B6).",
+        "fr": "Sélectionne la plage de toutes les dépenses fixes du mois (B3:B6).",
+        "ja": "今月の固定支出のセル範囲（B3:B6）を選択してください。",
+        "pt": "Selecione o intervalo de todos os gastos fixos do mês (B3:B6)."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Categoría",
+          "B1": "Monto",
+          "A2": "Ingreso Total",
+          "B2": "2500",
+          "A3": "Renta",
+          "B3": "900",
+          "A4": "Comida",
+          "B4": "450",
+          "A5": "Servicios",
+          "B5": "200",
+          "A6": "Transporte",
+          "B6": "150",
+          "A7": "Total Gastos",
+          "A8": "Ahorro Neto"
+        },
+        "en": {
+          "A1": "Category",
+          "B1": "Amount",
+          "A2": "Total Income",
+          "B2": "2500",
+          "A3": "Rent",
+          "B3": "900",
+          "A4": "Food",
+          "B4": "450",
+          "A5": "Utilities",
+          "B5": "200",
+          "A6": "Transport",
+          "B6": "150",
+          "A7": "Total Expenses",
+          "A8": "Net Savings"
+        },
+        "de": {
+          "A1": "Kategorie",
+          "B1": "Betrag",
+          "A2": "Gesamteinkommen",
+          "B2": "2500",
+          "A3": "Miete",
+          "B3": "900",
+          "A4": "Lebensmittel",
+          "B4": "450",
+          "A5": "Nebenkosten",
+          "B5": "200",
+          "A6": "Fahrtkosten",
+          "B6": "150",
+          "A7": "Gesamtausgaben",
+          "A8": "Nettoersparnis"
+        },
+        "fr": {
+          "A1": "Catégorie",
+          "B1": "Montant",
+          "A2": "Revenu Total",
+          "B2": "2500",
+          "A3": "Loyer",
+          "B3": "900",
+          "A4": "Nourriture",
+          "B4": "450",
+          "A5": "Services",
+          "B5": "200",
+          "A6": "Transport",
+          "B6": "150",
+          "A7": "Total Dépenses",
+          "A8": "Épargne Nette"
+        },
+        "ja": {
+          "A1": "項目",
+          "B1": "金額",
+          "A2": "総収入",
+          "B2": "2500",
+          "A3": "家賃",
+          "B3": "900",
+          "A4": "食費",
+          "B4": "450",
+          "A5": "光熱費",
+          "B5": "200",
+          "A6": "交通費",
+          "B6": "150",
+          "A7": "支出合計",
+          "A8": "純貯蓄額"
+        },
+        "pt": {
+          "A1": "Categoria",
+          "B1": "Valor",
+          "A2": "Renda Total",
+          "B2": "2500",
+          "A3": "Aluguel",
+          "B3": "900",
+          "A4": "Alimentação",
+          "B4": "450",
+          "A5": "Contas",
+          "B5": "200",
+          "A6": "Transporte",
+          "B6": "150",
+          "A7": "Total Despesas",
+          "A8": "Poupança Líquida"
+        }
+      },
+      "explanationByLocale": {
+        "es": "El rango B3:B6 reúne todos los egresos del presupuesto mensual.",
+        "en": "The range B3:B6 gathers all monthly budget expenses.",
+        "de": "Der Bereich B3:B6 umfasst alle Monatsausgaben.",
+        "fr": "La plage B3:B6 regroupe toutes les dépenses mensuelles.",
+        "ja": "範囲 B3:B6 に月々の支出項目がすべて含まれています。",
+        "pt": "O intervalo B3:B6 reúne todas as despesas mensais."
+      }
+    },
+    {
+      "type": "write_formula",
+      "prompt": "En B7, calcula la suma de todos los gastos (B3:B6).",
+      "correct": "=SUMA(B3:B6)",
+      "targetCell": "B7",
+      "data": {
+        "A1": "Categoría",
+        "B1": "Monto",
+        "A3": "Renta",
+        "B3": "900",
+        "A4": "Comida",
+        "B4": "450",
+        "A5": "Servicios",
+        "B5": "200",
+        "A6": "Transporte",
+        "B6": "150",
+        "A7": "Total Gastos"
+      },
+      "suggestions": [
+        "=",
+        "SUMA(",
+        "B3:B6",
+        ")",
+        "-"
+      ],
+      "explanation": "=SUMA(B3:B6) entrega el total de egresos ($1,700).",
+      "promptByLocale": {
+        "es": "En B7, calcula la suma de todos los gastos (B3:B6).",
+        "en": "In B7, calculate the sum of all expenses (B3:B6).",
+        "de": "Berechne in B7 die Summe aller Ausgaben (B3:B6).",
+        "fr": "En B7, calcule la somme de toutes les dépenses (B3:B6).",
+        "ja": "B7セルで、すべての支出（B3:B6）の合計を計算してください。",
+        "pt": "Em B7, calcule a soma de todas as despesas (B3:B6)."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Categoría",
+          "B1": "Monto",
+          "A3": "Renta",
+          "B3": "900",
+          "A4": "Comida",
+          "B4": "450",
+          "A5": "Servicios",
+          "B5": "200",
+          "A6": "Transporte",
+          "B6": "150",
+          "A7": "Total Gastos"
+        },
+        "en": {
+          "A1": "Category",
+          "B1": "Amount",
+          "A3": "Rent",
+          "B3": "900",
+          "A4": "Food",
+          "B4": "450",
+          "A5": "Utilities",
+          "B5": "200",
+          "A6": "Transport",
+          "B6": "150",
+          "A7": "Total Expenses"
+        },
+        "de": {
+          "A1": "Kategorie",
+          "B1": "Betrag",
+          "A3": "Miete",
+          "B3": "900",
+          "A4": "Lebensmittel",
+          "B4": "450",
+          "A5": "Nebenkosten",
+          "B5": "200",
+          "A6": "Fahrtkosten",
+          "B6": "150",
+          "A7": "Gesamtausgaben"
+        },
+        "fr": {
+          "A1": "Catégorie",
+          "B1": "Montant",
+          "A3": "Loyer",
+          "B3": "900",
+          "A4": "Nourriture",
+          "B4": "450",
+          "A5": "Services",
+          "B5": "200",
+          "A6": "Transport",
+          "B6": "150",
+          "A7": "Total Dépenses"
+        },
+        "ja": {
+          "A1": "項目",
+          "B1": "金額",
+          "A3": "家賃",
+          "B3": "900",
+          "A4": "食費",
+          "B4": "450",
+          "A5": "光熱費",
+          "B5": "200",
+          "A6": "交通費",
+          "B6": "150",
+          "A7": "支出合計"
+        },
+        "pt": {
+          "A1": "Categoria",
+          "B1": "Valor",
+          "A3": "Aluguel",
+          "B3": "900",
+          "A4": "Alimentação",
+          "B4": "450",
+          "A5": "Contas",
+          "B5": "200",
+          "A6": "Transporte",
+          "B6": "150",
+          "A7": "Total Despesas"
+        }
+      },
+      "explanationByLocale": {
+        "es": "=SUMA(B3:B6) entrega el total de egresos ($1,700).",
+        "en": "=SUM(B3:B6) gives total expenses ($1,700).",
+        "de": "=SUMME(B3:B6) ergibt die Gesamtausgaben (1.700 $).",
+        "fr": "=SOMME(B3:B6) donne le total des dépenses (1 700 $).",
+        "ja": "=SUM(B3:B6) で支出合計（1,700ドル）が算出されます。",
+        "pt": "=SOMA(B3:B6) entrega o total de despesas ($1.700)."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para calcular el Ahorro Neto restando Total Gastos (B7) del Ingreso Total (B2).",
+      "correct": "=B2-B7",
+      "blocks": [
+        "=",
+        "B2",
+        "-",
+        "B7",
+        "+"
+      ],
+      "explanation": "Ingresos menos egresos da como resultado el flujo de caja positivo ($800 de ahorro).",
+      "promptByLocale": {
+        "es": "Arma la fórmula para calcular el Ahorro Neto restando Total Gastos (B7) del Ingreso Total (B2).",
+        "en": "Build the formula to calculate Net Savings by subtracting Total Expenses (B7) from Total Income (B2).",
+        "de": "Erstelle die Formel für die Nettoersparnis: Gesamtausgaben (B7) vom Einkommen (B2) abziehen.",
+        "fr": "Construis la formule pour calculer l'Épargne Nette en soustrayant les Dépenses (B7) du Revenu (B2).",
+        "ja": "総収入（B2）から支出合計（B7）を引いて純貯蓄額を求める数式を組み立ててください。",
+        "pt": "Monte a fórmula para calcular a Poupança Líquida subtraindo as Despesas (B7) da Renda (B2)."
+      },
+      "explanationByLocale": {
+        "es": "Ingresos menos egresos da como resultado el flujo de caja positivo ($800 de ahorro).",
+        "en": "Income minus expenses yields positive cash flow ($800 saved).",
+        "de": "Einnahmen minus Ausgaben ergeben den Nettoüberschuss (800 $ Ersparnis).",
+        "fr": "Revenus moins dépenses donne un flux de trésorerie positif (800 $ d'épargne).",
+        "ja": "収入から支出を引くことで、手元に残る黒字額（800ドルの貯蓄）が分かります。",
+        "pt": "Receitas menos despesas geram o fluxo de caixa positivo ($800 de poupança)."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si el Ingreso es 2500 y el Ahorro es 800, ¿qué porcentaje de sus ingresos ahorra? (=800/2500)",
+      "formula": "=800/2500",
+      "correct": "32%",
+      "data": {},
+      "options": [
+        "32%",
+        "25%",
+        "80%",
+        "3.2%"
+      ],
+      "explanation": "800 / 2500 = 0.32, lo que representa una excelente tasa de ahorro del 32% (por encima de la regla 50/30/20).",
+      "promptByLocale": {
+        "es": "Si el Ingreso es 2500 y el Ahorro es 800, ¿qué porcentaje de sus ingresos ahorra? (=800/2500)",
+        "en": "If Income is 2500 and Savings is 800, what percentage of income is saved? (=800/2500)",
+        "de": "Wenn das Einkommen 2500 und die Ersparnis 800 beträgt, wie viel Prozent werden gespart? (=800/2500)",
+        "fr": "Si le Revenu est 2500 et l'Épargne 800, quel pourcentage du revenu est épargné ? (=800/2500)",
+        "ja": "収入が2500で貯蓄が800のとき、貯蓄率は何パーセントですか？（=800/2500）",
+        "pt": "Se a Renda é 2500 e a Poupança é 800, qual porcentagem de sua renda é poupada? (=800/2500)"
+      },
+      "formulaByLocale": {
+        "es": "=800/2500",
+        "en": "=800/2500",
+        "de": "=800/2500",
+        "fr": "=800/2500",
+        "ja": "=800/2500",
+        "pt": "=800/2500"
+      },
+      "explanationByLocale": {
+        "es": "800 / 2500 = 0.32, lo que representa una excelente tasa de ahorro del 32%.",
+        "en": "800 / 2500 = 0.32, representing an excellent savings rate of 32%.",
+        "de": "800 / 2500 = 0.32, was einer starken Sparquote von 32 % entspricht.",
+        "fr": "800 / 2500 = 0,32, ce qui représente un excellent taux d'épargne de 32 %.",
+        "ja": "800 / 2500 = 0.32 となり、非常に優秀な貯蓄率32%となります。",
+        "pt": "800 / 2500 = 0.32, representando uma excelente taxa de poupança de 32%."
+      },
+      "optionsByLocale": {
+        "es": [
+          "32%",
+          "25%",
+          "80%",
+          "3.2%"
+        ],
+        "en": [
+          "32%",
+          "25%",
+          "80%",
+          "3.2%"
+        ],
+        "de": [
+          "32%",
+          "25%",
+          "80%",
+          "3.2%"
+        ],
+        "fr": [
+          "32%",
+          "25%",
+          "80%",
+          "3.2%"
+        ],
+        "ja": [
+          "32%",
+          "25%",
+          "80%",
+          "3.2%"
+        ],
+        "pt": [
+          "32%",
+          "25%",
+          "80%",
+          "3.2%"
+        ]
+      },
+      "correctByLocale": {
+        "es": "32%",
+        "en": "32%",
+        "de": "32%",
+        "fr": "32%",
+        "ja": "32%",
+        "pt": "32%"
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Proyecto: Presupuesto mensual",
+    "en": "Project: Monthly Budget",
+    "de": "Projekt: Monatsbudget",
+    "fr": "Projet : Budget mensuel",
+    "ja": "プロジェクト：月間予算シート",
+    "pt": "Projeto: Orçamento mensal"
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "ref": "G1",
+  "title": "Formato condicional: Reglas simples",
+  "titleByLocale": {
+    "es": "Formato condicional: Reglas simples",
+    "en": "Conditional Formatting: Basic Rules",
+    "de": "Bedingte Formatierung: Einfache Regeln",
+    "fr": "Mise en forme conditionnelle : Règles simples",
+    "ja": "条件付き書式：基本ルール",
+    "pt": "Formatação condicional: Regras básicas"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿En qué pestaña principal de Excel se encuentra el botón 'Formato condicional'?",
+      "promptByLocale": {
+        "es": "¿En qué pestaña principal de Excel se encuentra el botón 'Formato condicional'?",
+        "en": "On which primary Excel ribbon tab is the 'Conditional Formatting' button located?",
+        "de": "Auf welcher Hauptregisterkarte von Excel befindet sich die Schaltfläche 'Bedingte Formatierung'?",
+        "fr": "Dans quel onglet principal du ruban Excel trouve-t-on le bouton 'Mise en forme conditionnelle' ?",
+        "ja": "Excelの「条件付き書式」ボタンはどの主要タブにありますか？",
+        "pt": "Em qual guia principal do Excel fica o botão 'Formatação condicional'?"
+      },
+      "options": [
+        "Pestaña Inicio (Home)",
+        "Pestaña Fórmulas",
+        "Pestaña Datos",
+        "Pestaña Vista"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Pestaña Inicio (Home)",
+          "Pestaña Fórmulas",
+          "Pestaña Datos",
+          "Pestaña Vista"
+        ],
+        "en": [
+          "Home tab",
+          "Formulas tab",
+          "Data tab",
+          "View tab"
+        ],
+        "de": [
+          "Registerkarte Start",
+          "Registerkarte Formeln",
+          "Registerkarte Daten",
+          "Registerkarte Ansicht"
+        ],
+        "fr": [
+          "Onglet Accueil",
+          "Onglet Formules",
+          "Onglet Données",
+          "Onglet Affichage"
+        ],
+        "ja": [
+          "ホーム タブ",
+          "数式 タブ",
+          "データ タブ",
+          "表示 タブ"
+        ],
+        "pt": [
+          "Guia Página Inicial",
+          "Guia Fórmulas",
+          "Guia Dados",
+          "Guia Exibir"
+        ]
+      },
+      "correct": "Pestaña Inicio (Home)",
+      "correctByLocale": {
+        "es": "Pestaña Inicio (Home)",
+        "en": "Home tab",
+        "de": "Registerkarte Start",
+        "fr": "Onglet Accueil",
+        "ja": "ホーム タブ",
+        "pt": "Guia Página Inicial"
+      },
+      "explanation": "El Formato Condicional está en Inicio > Estilos, permitiendo resaltar celdas según su valor.",
+      "explanationByLocale": {
+        "es": "El Formato Condicional está en Inicio > Estilos, permitiendo resaltar celdas según su valor.",
+        "en": "Conditional Formatting is located on Home > Styles, styling cells dynamically based on their values.",
+        "de": "Bedingte Formatierung befindet sich unter Start > Formatvorlagen und hebt Zellen automatisch hervor.",
+        "fr": "La mise en forme conditionnelle se trouve dans Accueil > Styles pour colorer les cellules selon leur valeur.",
+        "ja": "条件付き書式は「ホーム」タブの「スタイル」グループにあり、値に応じた動的な色付けが可能です。",
+        "pt": "A Formatação Condicional fica em Página Inicial > Estilos, destacando células conforme seu valor."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la celda B3 que supera la meta de 100 y debería destacarse en verde:",
+      "promptByLocale": {
+        "es": "Selecciona la celda B3 que supera la meta de 100 y debería destacarse en verde:",
+        "en": "Select cell B3 that exceeds the target of 100 and should be highlighted in green:",
+        "de": "Wähle Zelle B3 aus, die das Ziel von 100 übertrifft und grün hervorgehoben werden soll:",
+        "fr": "Sélectionnez la cellule B3 qui dépasse l'objectif de 100 et doit être surlignée en vert :",
+        "ja": "目標の100を超えており、緑色で強調されるべきセルB3を選択してください：",
+        "pt": "Selecione a célula B3 que ultrapassa a meta de 100 e deve ser destacada em verde:"
+      },
+      "correct": "B3",
+      "data": {
+        "A1": "Vendedor",
+        "B1": "Ventas",
+        "A2": "Lucía",
+        "B2": "85",
+        "A3": "Marcos",
+        "B3": "120"
+      },
+      "explanation": "La regla 'Es mayor que...' evalúa B3 (120 > 100) y le aplica relleno verde suave.",
+      "explanationByLocale": {
+        "es": "La regla 'Es mayor que...' evalúa B3 (120 > 100) y le aplica relleno verde suave.",
+        "en": "The 'Greater Than...' rule detects that B3 (120 > 100) and applies light green shading.",
+        "de": "Die Regel 'Größer als...' erkennt B3 (120 > 100) und färbt sie hellgrün ein.",
+        "fr": "La règle 'Supérieur à...' détecte B3 (120 > 100) et applique un remplissage vert clair.",
+        "ja": "「指定の値より大きい」ルールにより、100を超えるB3(120)に薄い緑色が適用されます。",
+        "pt": "A regra 'É maior do que...' detecta B3 (120 > 100) e aplica preenchimento verde claro."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué sucede con el color de una celda con formato condicional si cambias su número y ya no cumple la regla?",
+      "promptByLocale": {
+        "es": "¿Qué sucede con el color de una celda con formato condicional si cambias su número y ya no cumple la regla?",
+        "en": "What happens to a conditionally formatted cell's color if you edit its number and it no longer meets the rule?",
+        "de": "Was passiert mit der Zellenfarbe, wenn der geänderte Wert die Regel nicht mehr erfüllt?",
+        "fr": "Que devient la couleur d'une cellule si sa nouvelle valeur ne remplit plus la règle ?",
+        "ja": "条件付き書式が設定されたセルの値を変更し、条件を満たさなくなった場合どうなりますか？",
+        "pt": "O que acontece com a cor da célula se o novo valor não atender mais à regra?"
+      },
+      "options": [
+        "El color se retira automáticamente en tiempo real",
+        "Permanece coloreada para siempre hasta borrarla a mano",
+        "Muestra un mensaje de error #¡FORMATO!",
+        "La celda se bloquea con contraseña"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "El color se retira automáticamente en tiempo real",
+          "Permanece coloreada para siempre hasta borrarla a mano",
+          "Muestra un mensaje de error #¡FORMATO!",
+          "La celda se bloquea con contraseña"
+        ],
+        "en": [
+          "The formatting is immediately removed in real time",
+          "It stays colored permanently until cleared manually",
+          "It throws a #FORMAT! error",
+          "The cell locks itself with a password"
+        ],
+        "de": [
+          "Die Farbe wird in Echtzeit automatisch entfernt",
+          "Sie bleibt dauerhaft farbig",
+          "Es erscheint ein Fehler #FORMAT!",
+          "Die Zelle wird gesperrt"
+        ],
+        "fr": [
+          "La couleur disparaît automatiquement en temps réel",
+          "Elle reste colorée définitivement",
+          "Elle affiche une erreur #FORMAT!",
+          "La cellule se verrouille"
+        ],
+        "ja": [
+          "リアルタイムで自動的に書式・色が解除される",
+          "手動で解除するまでずっと色が残る",
+          "#FORMAT! エラーが表示される",
+          "セルがパスワードでロックされる"
+        ],
+        "pt": [
+          "A formatação é removida automaticamente em tempo real",
+          "Permanece colorida até ser apagada manualmente",
+          "Apresenta um erro #FORMATO!",
+          "A célula é bloqueada com senha"
+        ]
+      },
+      "correct": "El color se retira automáticamente en tiempo real",
+      "correctByLocale": {
+        "es": "El color se retira automáticamente en tiempo real",
+        "en": "The formatting is immediately removed in real time",
+        "de": "Die Farbe wird in Echtzeit automatisch entfernt",
+        "fr": "La couleur disparaît automatiquement en temps réel",
+        "ja": "リアルタイムで自動的に書式・色が解除される",
+        "pt": "A formatação é removida automaticamente em tempo real"
+      },
+      "explanation": "El formato condicional es 100% dinámico y reactivo a cualquier cambio de datos.",
+      "explanationByLocale": {
+        "es": "El formato condicional es 100% dinámico y reactivo a cualquier cambio de datos.",
+        "en": "Conditional formatting is fully dynamic and reacts immediately to data updates.",
+        "de": "Bedingte Formatierung ist dynamisch und reagiert sofort auf alle Datenänderungen.",
+        "fr": "La mise en forme conditionnelle est dynamique et réagit instantanément aux modifications.",
+        "ja": "条件付き書式は動的・即時反応型で、セルの値の変化に応じて自動更新されます。",
+        "pt": "A formatação condicional é 100% dinâmica e reativa a alterações de dados."
+      }
+    }
+  ]
+}

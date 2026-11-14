@@ -1,0 +1,90 @@
+{
+  "ref": "H2",
+  "title": "BUSCARV aproximada",
+  "titleByLocale": {
+    "es": "BUSCARV aproximada",
+    "en": "VLOOKUP Approximate Match",
+    "de": "SVERWEIS Ungefähre Übereinstimmung",
+    "fr": "RECHERCHEV correspondance approximative",
+    "ja": "VLOOKUP 近似一致",
+    "pt": "PROCV Correspondência aproximada"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué requisito es 100% indispensable en la primera columna de la tabla para que una búsqueda APROXIMADA (VERDADERO) funcione bien?",
+      "promptByLocale": {
+        "es": "¿Qué requisito es 100% indispensable en la primera columna de la tabla para que una búsqueda APROXIMADA (VERDADERO) funcione bien?",
+        "en": "What requirement is mandatory for the 1st column of the lookup table when using APPROXIMATE match (TRUE)?",
+        "de": "Welche Voraussetzung muss die 1. Spalte bei einer UNGEFÄHREN Suche (WAHR) zwingend erfüllen?",
+        "fr": "Quelle condition est indispensable pour la 1ère colonne lors d'une recherche APPROXIMATIVE (VRAI) ?",
+        "ja": "近似一致（TRUE）検索を正しく機能させるために、検索表の1列目に必須となる条件は何ですか？",
+        "pt": "Qual requisito é indispensável na 1ª coluna da tabela para que a busca APROXIMADA (VERDADEIRO) funcione?"
+      },
+      "options": [
+        "Estar ordenada de menor a mayor (ascendente)",
+        "Estar ordenada de mayor a menor (descendente)",
+        "Tener todas las letras en minúsculas",
+        "No tener números pares"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Estar ordenada de menor a mayor (ascendente)",
+          "Estar ordenada de mayor a menor (descendente)",
+          "Tener todas las letras en minúsculas",
+          "No tener números pares"
+        ],
+        "en": [
+          "Sorted in ascending order (smallest to largest)",
+          "Sorted in descending order (largest to smallest)",
+          "All lowercase letters",
+          "Contain no even numbers"
+        ],
+        "de": [
+          "Aufsteigend sortiert sein (von klein nach groß)",
+          "Absteigend sortiert sein",
+          "Nur Kleinbuchstaben enthalten",
+          "Keine geraden Zahlen enthalten"
+        ],
+        "fr": [
+          "Être triée par ordre croissant (du plus petit au plus grand)",
+          "Être triée par ordre décroissant",
+          "Être uniquement en minuscules",
+          "Ne pas avoir de nombres pairs"
+        ],
+        "ja": [
+          "昇順（小さい順）に並べ替えられていること",
+          "降順（大きい順）に並べ替えられていること",
+          "すべての英字が小文字であること",
+          "偶数が含まれていないこと"
+        ],
+        "pt": [
+          "Estar ordenada em ordem crescente (do menor para o maior)",
+          "Estar ordenada em ordem decrescente",
+          "Conter apenas letras minúsculas",
+          "Não conter números pares"
+        ]
+      },
+      "correct": "Estar ordenada de menor a mayor (ascendente)",
+      "correctByLocale": {
+        "es": "Estar ordenada de menor a mayor (ascendente)",
+        "en": "Sorted in ascending order (smallest to largest)",
+        "de": "Aufsteigend sortiert sein (von klein nach groß)",
+        "fr": "Être triée par ordre croissant (du plus petit au plus grand)",
+        "ja": "昇順（小さい順）に並べ替えられていること",
+        "pt": "Estar ordenada em ordem crescente (do menor para o maior)"
+      },
+      "explanation": "La coincidencia aproximada busca el mayor valor que sea menor o igual al valor buscado en una lista ascendente.",
+      "explanationByLocale": {
+        "es": "La coincidencia aproximada busca el mayor valor que sea menor o igual al valor buscado en una lista ascendente.",
+        "en": "Approximate match finds the greatest value that is less than or equal to the lookup value in an ascending list.",
+        "de": "Die ungefähre Suche ermittelt den größten Wert, der kleiner oder gleich dem Suchkriterium in einer aufsteigenden Liste ist.",
+        "fr": "La recherche approximative trouve la plus grande valeur inférieure ou égale dans une liste croissante.",
+        "ja": "近似一致は昇順に並んだ表の中で、「検索値以下で最大の数値」を探し出します（歩合給や税率ランク表で多用）。",
+        "pt": "A busca aproximada encontra o maior valor menor ou igual ao valor procurado em uma lista crescente."
+      }
+    }
+  ]
+}

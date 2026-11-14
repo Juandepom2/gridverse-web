@@ -1,0 +1,273 @@
+{
+  "ref": "B1",
+  "title": "Tu primera SUMA",
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "select_range",
+      "prompt": "Selecciona los valores de A1 hasta A4 para sumarlos.",
+      "correct": "A1:A4",
+      "data": {
+        "A1": "10",
+        "A2": "20",
+        "A3": "30",
+        "A4": "40",
+        "A5": "Total"
+      },
+      "promptByLocale": {
+        "es": "Selecciona los valores de A1 hasta A4 para sumarlos.",
+        "en": "Select values from A1 to A4 to add them together.",
+        "de": "Wähle die Werte von A1 bis A4 aus, um sie zu addieren.",
+        "fr": "Sélectionne les valeurs de A1 à A4 pour les additionner.",
+        "ja": "合計するために、セル A1 から A4 までの値を選択してください。",
+        "pt": "Selecione os valores de A1 até A4 para somá-los."
+      },
+      "explanationByLocale": {
+        "es": "El rango vertical A1:A4 reúne las cuatro cifras numéricas a calcular.",
+        "en": "The vertical range A1:A4 gathers the four numeric values to calculate.",
+        "de": "Der vertikale Bereich A1:A4 fasst die vier zu berechnenden Zahlen zusammen.",
+        "fr": "La plage verticale A1:A4 regroupe les quatre valeurs numériques à calculer.",
+        "ja": "縦方向のセル範囲 A1:A4 に、計算対象となる4つの数値が並んでいます。",
+        "pt": "O intervalo vertical A1:A4 reúne os quatro valores numéricos a calcular."
+      }
+    },
+    {
+      "type": "write_formula",
+      "prompt": "Suma el rango A1:A4 en la celda A5 usando la función SUMA.",
+      "correct": "=SUMA(A1:A4)",
+      "data": {
+        "A1": "10",
+        "A2": "20",
+        "A3": "30",
+        "A4": "40"
+      },
+      "targetCell": "A5",
+      "suggestions": [
+        "=",
+        "SUMA(",
+        "A1:A4",
+        ")",
+        "+"
+      ],
+      "promptByLocale": {
+        "es": "Suma el rango A1:A4 en la celda A5 usando la función SUMA.",
+        "en": "Sum the range A1:A4 in cell A5 using the SUM function.",
+        "de": "Addiere den Bereich A1:A4 in Zelle A5 mit der Funktion SUMME.",
+        "fr": "Additionne la plage A1:A4 dans la cellule A5 avec la fonction SOMME.",
+        "ja": "A5セルで、SUM関数を使って範囲 A1:A4 の合計を計算してください。",
+        "pt": "Some o intervalo A1:A4 na célula A5 usando a função SOMA."
+      },
+      "explanationByLocale": {
+        "es": "La función =SUMA(rango) totaliza de forma óptima todos los números dentro del paréntesis.",
+        "en": "The =SUM(range) function cleanly adds up all numbers within the parentheses.",
+        "de": "Die Funktion =SUMME(Bereich) addiert alle Zahlen im angegebenen Bereich.",
+        "fr": "La fonction =SOMME(plage) additionne tous les nombres de la plage indiquée.",
+        "ja": "=SUM(範囲) 関数を使うと、カッコ内の数値をまとめて一括合計できます。",
+        "pt": "A função =SOMA(intervalo) totaliza perfeitamente todos os números do intervalo."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Cuál es el resultado de =SUMA(10, 20, 30)?",
+      "formula": "=SUMA(10, 20, 30)",
+      "correct": "60",
+      "data": {},
+      "options": [
+        "60",
+        "50",
+        "30",
+        "102030"
+      ],
+      "promptByLocale": {
+        "es": "¿Cuál es el resultado de =SUMA(10, 20, 30)?",
+        "en": "What is the result of =SUM(10, 20, 30)?",
+        "de": "Was ist das Ergebnis von =SUMME(10, 20, 30)?",
+        "fr": "Quel est le résultat de =SOMME(10, 20, 30) ?",
+        "ja": "数式「=SUM(10, 20, 30)」の結果はいくつになりますか？",
+        "pt": "Qual é o resultado de =SOMA(10, 20, 30)?"
+      },
+      "formulaByLocale": {
+        "es": "=SUMA(10, 20, 30)",
+        "en": "=SUM(10, 20, 30)",
+        "de": "=SUMME(10, 20, 30)",
+        "fr": "=SOMME(10, 20, 30)",
+        "ja": "=SUM(10, 20, 30)",
+        "pt": "=SOMA(10, 20, 30)"
+      },
+      "explanationByLocale": {
+        "es": "SUMA acepta números individuales separados por coma: 10 + 20 + 30 = 60.",
+        "en": "SUM accepts individual numbers separated by commas: 10 + 20 + 30 = 60.",
+        "de": "SUMME akzeptiert durch Kommas getrennte Einzelwerte: 10 + 20 + 30 = 60.",
+        "fr": "SOMME accepte des nombres séparés par des virgules : 10 + 20 + 30 = 60.",
+        "ja": "SUM関数はカンマ区切りで複数の数値を直接指定でき、10 + 20 + 30 = 60 となります。",
+        "pt": "A função SOMA aceita números separados por vírgula: 10 + 20 + 30 = 60."
+      },
+      "optionsByLocale": {
+        "es": [
+          "60",
+          "50",
+          "30",
+          "102030"
+        ],
+        "en": [
+          "60",
+          "50",
+          "30",
+          "102030"
+        ],
+        "de": [
+          "60",
+          "50",
+          "30",
+          "102030"
+        ],
+        "fr": [
+          "60",
+          "50",
+          "30",
+          "102030"
+        ],
+        "ja": [
+          "60",
+          "50",
+          "30",
+          "102030"
+        ],
+        "pt": [
+          "60",
+          "50",
+          "30",
+          "102030"
+        ]
+      },
+      "correctByLocale": {
+        "es": "60",
+        "en": "60",
+        "de": "60",
+        "fr": "60",
+        "ja": "60",
+        "pt": "60"
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula completa para sumar las ventas de B2 a B5.",
+      "correct": "=SUMA(B2:B5)",
+      "blocks": [
+        "=",
+        "SUMA(",
+        "B2:B5",
+        ")",
+        "PROMEDIO("
+      ],
+      "promptByLocale": {
+        "es": "Arma la fórmula completa para sumar las ventas de B2 a B5.",
+        "en": "Build the full formula to sum sales from B2 to B5.",
+        "de": "Erstelle die vollständige Formel, um die Verkäufe von B2 bis B5 zu addieren.",
+        "fr": "Construis la formule complète pour additionner les ventes de B2 à B5.",
+        "ja": "B2からB5までの売上を合計する数式を組み立ててください。",
+        "pt": "Monte a fórmula completa para somar as vendas de B2 a B5."
+      },
+      "explanationByLocale": {
+        "es": "La sintaxis estándar agrupa inicio y fin mediante dos puntos (:).",
+        "en": "Standard range syntax connects starting and ending cells using a colon (:).",
+        "de": "Die Bereichssyntax verbindet Start- und Endzelle über einen Doppelpunkt (:).",
+        "fr": "La syntaxe de plage relie la cellule de départ et de fin par un deux-points (:).",
+        "ja": "コロン（:）で開始セルと終了セルをつなぐのが範囲指定の基本構文です。",
+        "pt": "A sintaxe padrão de intervalo conecta a célula inicial e a final por dois pontos (:)."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si sumas 100 celdas continuas, ¿qué método es más eficiente y limpio?",
+      "formula": "Buenas prácticas",
+      "correct": "=SUMA(rango)",
+      "data": {},
+      "options": [
+        "=SUMA(rango)",
+        "=A1+A2+A3...",
+        "Ambas dan igual",
+        "Ninguna"
+      ],
+      "promptByLocale": {
+        "es": "Si sumas 100 celdas continuas, ¿qué método es más eficiente y limpio?",
+        "en": "If adding 100 contiguous cells, which method is most efficient and clean?",
+        "de": "Welche Methode ist am effizientesten, um 100 aufeinanderfolgende Zellen zu addieren?",
+        "fr": "Pour additionner 100 cellules consécutives, quelle méthode est la plus efficace ?",
+        "ja": "連続する100個のセルを足し算する場合、最も効率的でスマートな方法はどれですか？",
+        "pt": "Se você somar 100 células contínuas, qual método é mais eficiente e limpo?"
+      },
+      "formulaByLocale": {
+        "es": "Buenas prácticas",
+        "en": "Best practices",
+        "de": "Best Practices",
+        "fr": "Bonnes pratiques",
+        "ja": "ベストプラクティス",
+        "pt": "Boas práticas"
+      },
+      "correctByLocale": {
+        "es": "=SUMA(rango)",
+        "en": "=SUM(range)",
+        "de": "=SUMME(Bereich)",
+        "fr": "=SOMME(plage)",
+        "ja": "=SUM(範囲)",
+        "pt": "=SOMA(intervalo)"
+      },
+      "optionsByLocale": {
+        "es": [
+          "=SUMA(rango)",
+          "=A1+A2+A3...",
+          "Ambas dan igual",
+          "Ninguna"
+        ],
+        "en": [
+          "=SUM(range)",
+          "=A1+A2+A3...",
+          "Both are equal",
+          "Neither"
+        ],
+        "de": [
+          "=SUMME(Bereich)",
+          "=A1+A2+A3...",
+          "Beide gleich gut",
+          "Keine"
+        ],
+        "fr": [
+          "=SOMME(plage)",
+          "=A1+A2+A3...",
+          "Les deux se valent",
+          "Aucune"
+        ],
+        "ja": [
+          "=SUM(範囲)",
+          "=A1+A2+A3...",
+          "どちらでも同じ",
+          "どちらでもない"
+        ],
+        "pt": [
+          "=SOMA(intervalo)",
+          "=A1+A2+A3...",
+          "Ambas dão no mesmo",
+          "Nenhuma"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Usar funciones con rangos compactos evita fórmulas kilométricas propensas a errores.",
+        "en": "Using range functions avoids endless, error-prone manual formulas.",
+        "de": "Funktionen mit Zellbereichen verhindern unübersichtliche und fehleranfällige Formeln.",
+        "fr": "Utiliser une fonction avec plage évite les formules interminables sujettes aux erreurs.",
+        "ja": "範囲指定関数を使うことで、入力ミスを防ぎ短く管理しやすい数式になります。",
+        "pt": "Usar funções de intervalo evita fórmulas longas propensas a erros."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "SUMA",
+    "en": "SUM",
+    "de": "SUMME",
+    "fr": "SOMME",
+    "ja": "SUM",
+    "pt": "SOMA"
+  }
+}

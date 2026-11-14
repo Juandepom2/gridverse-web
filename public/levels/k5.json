@@ -1,0 +1,125 @@
+{
+  "ref": "K5",
+  "title": "Jefe: Desbordamiento",
+  "titleByLocale": {
+    "es": "Jefe: Desbordamiento",
+    "en": "Boss: Spill Overflow",
+    "de": "Boss: Überlauffehler",
+    "fr": "Boss : Erreur de propagation",
+    "ja": "ボス：スピル（オーバーフロー）エラー",
+    "pt": "Chefe: Erro de despejo"
+  },
+  "version": 1,
+  "rewardXp": 25,
+  "exercises": [
+    {
+      "type": "find_error",
+      "prompt": "La fórmula matricial en B2 intenta desbordar 4 filas pero la celda B4 tiene un texto que bloquea el camino, causando #¡DESBORDAR! (#SPILL!). Toca la celda que estorba en B4:",
+      "promptByLocale": {
+        "es": "La fórmula matricial en B2 intenta desbordar 4 filas pero la celda B4 tiene un texto que bloquea el camino, causando #¡DESBORDAR! (#SPILL!). Toca la celda que estorba en B4:",
+        "en": "The array formula in B2 needs 4 rows to spill, but cell B4 contains obstructing text causing a #SPILL! error. Tap the blocking cell B4:",
+        "de": "Die Matrixformel in B2 will überlaufen, aber Zelle B4 ist belegt (#ÜBERLAUF!). Tippe auf die blockierende Zelle B4:",
+        "fr": "La formule en B2 doit se propager mais la cellule B4 est occupée, provoquant #PROPAGATION!. Touchez la cellule bloquante B4 :",
+        "ja": "B2のスピル数式が展開しようとしていますが、B4に文字が入っているため邪魔になり #SPILL! エラーが発生しています。妨げになっているB4セルをタップしてください：",
+        "pt": "A fórmula matricial em B2 tenta se propagar mas B4 está ocupada gerando #DESPEJAR! (#SPILL!). Toque na célula bloqueadora B4:"
+      },
+      "correct": "B4",
+      "errorCell": "B4",
+      "data": {
+        "A1": "ID",
+        "B1": "Resultado",
+        "A2": "10",
+        "B2": "#¡DESBORDAR!",
+        "A3": "20",
+        "B3": "",
+        "A4": "30",
+        "B4": "Obstáculo",
+        "A5": "40",
+        "B5": ""
+      },
+      "explanation": "El error #¡DESBORDAR! (#SPILL!) ocurre cuando una celda con datos obstruye el rango de expansión requerido.",
+      "explanationByLocale": {
+        "es": "El error #¡DESBORDAR! (#SPILL!) ocurre cuando una celda con datos obstruye el rango de expansión requerido.",
+        "en": "A #SPILL! error occurs when non-empty cells block the necessary array expansion path.",
+        "de": "Ein #ÜBERLAUF!-Fehler entsteht, wenn belegte Nachbarzellen die Ausdehnung der Matrix blockieren.",
+        "fr": "L'erreur #PROPAGATION! survient lorsqu'une cellule non vide bloque la zone requise.",
+        "ja": "#SPILL! エラーは、数式が展開先として必要とするセル範囲に既にデータが存在し、邪魔になっている時に発生します。",
+        "pt": "O erro #DESPEJAR! (#SPILL!) acontece quando uma célula com conteúdo bloqueia o caminho da matriz."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Cómo se soluciona de inmediato el error #¡DESBORDAR! (#SPILL!)?",
+      "promptByLocale": {
+        "es": "¿Cómo se soluciona de inmediato el error #¡DESBORDAR! (#SPILL!)?",
+        "en": "How do you immediately resolve a #SPILL! error?",
+        "de": "Wie behebt man den #ÜBERLAUF!-Fehler sofort?",
+        "fr": "Comment résoudre immédiatement l'erreur #PROPAGATION! ?",
+        "ja": "#SPILL! エラーを解決する最も直接的で正しい方法はどれですか？",
+        "pt": "Como solucionar de imediato o erro #DESPEJAR! (#SPILL!)?"
+      },
+      "options": [
+        "Borrar o mover el contenido de las celdas que están bloqueando el camino",
+        "Guardar el archivo como PDF",
+        "Reiniciar Excel",
+        "Poner toda la columna en negrita"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Borrar o mover el contenido de las celdas que están bloqueando el camino",
+          "Guardar el archivo como PDF",
+          "Reiniciar Excel",
+          "Poner toda la columna en negrita"
+        ],
+        "en": [
+          "Clear or move the contents of the obstructing cells",
+          "Export the file as PDF",
+          "Restart Excel",
+          "Make the entire column bold"
+        ],
+        "de": [
+          "Den Inhalt der blockierenden Zellen löschen oder verschieben",
+          "Als PDF speichern",
+          "Excel neu starten",
+          "Spalte fett formatieren"
+        ],
+        "fr": [
+          "Effacer ou déplacer le contenu des cellules qui bloquent la propagation",
+          "Exporter en PDF",
+          "Redémarrer Excel",
+          "Mettre la colonne en gras"
+        ],
+        "ja": [
+          "スピル範囲の邪魔（障害物）になっているセルのデータを削除または別の場所へ移動する",
+          "ファイルをPDFとして保存する",
+          "Excelを再起動する",
+          "列全体を太字にする"
+        ],
+        "pt": [
+          "Apagar ou mover o conteúdo das células que estão bloqueando o caminho",
+          "Salvar o arquivo como PDF",
+          "Reiniciar o Excel",
+          "Aplicar negrito em toda a coluna"
+        ]
+      },
+      "correct": "Borrar o mover el contenido de las celdas que están bloqueando el camino",
+      "correctByLocale": {
+        "es": "Borrar o mover el contenido de las celdas que están bloqueando el camino",
+        "en": "Clear or move the contents of the obstructing cells",
+        "de": "Den Inhalt der blockierenden Zellen löschen oder verschieben",
+        "fr": "Effacer ou déplacer le contenu des cellules qui bloquent la propagation",
+        "ja": "スピル範囲の邪魔（障害物）になっているセルのデータを削除または別の場所へ移動する",
+        "pt": "Apagar ou mover o conteúdo das células que estão bloqueando o caminho"
+      },
+      "explanation": "Al vaciar las celdas que estorban, la fórmula se despliega instantáneamente llenando el espacio.",
+      "explanationByLocale": {
+        "es": "Al vaciar las celdas que estorban, la fórmula se despliega instantáneamente llenando el espacio.",
+        "en": "Clearing the obstructing cells lets the array formula fill its required range immediately.",
+        "de": "Sobald der Weg frei ist, entfaltet sich die Matrixformel blitzschnell.",
+        "fr": "Dès que les cellules sont libérées, la formule matricielle se déploie sans accroc.",
+        "ja": "邪魔なセルの中身を消去した瞬間に、数式が全行へきれいにスピル展開されます。",
+        "pt": "Ao desocupar as células bloqueadoras, a fórmula se expande instantaneamente."
+      }
+    }
+  ]
+}

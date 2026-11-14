@@ -1,0 +1,90 @@
+{
+  "ref": "H7",
+  "title": "INDICE + COINCIDIR",
+  "titleByLocale": {
+    "es": "INDICE + COINCIDIR",
+    "en": "INDEX + MATCH",
+    "de": "INDEX + VERGLEICH",
+    "fr": "INDEX + EQUIV",
+    "ja": "INDEX + MATCH",
+    "pt": "ÍNDICE + CORRESP"
+  },
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Por qué la combinación =INDICE(..., COINCIDIR(...)) es universalmente preferida sobre BUSCARV en hojas corporativas?",
+      "promptByLocale": {
+        "es": "¿Por qué la combinación =INDICE(..., COINCIDIR(...)) es universalmente preferida sobre BUSCARV en hojas corporativas?",
+        "en": "Why is the =INDEX(..., MATCH(...)) combination widely preferred over VLOOKUP in enterprise models?",
+        "de": "Warum wird die Kombination =INDEX(..., VERGLEICH(...)) in Firmenmodellen traditionell gegenüber SVERWEIS bevorzugt?",
+        "fr": "Pourquoi la formule =INDEX(..., EQUIV(...)) est-elle universellement préférée à RECHERCHEV en entreprise ?",
+        "ja": "企業の大規模シートにおいて、なぜ =INDEX + MATCH の組み合わせが従来のVLOOKUPよりも圧倒的に好まれるのですか？",
+        "pt": "Por que a combinação =ÍNDICE(..., CORRESP(...)) é universalmente preferida sobre o PROCV em planilhas corporativas?"
+      },
+      "options": [
+        "Permite buscar hacia la izquierda y no se rompe si se insertan columnas en medio",
+        "Calcula más rápido la raíz cuadrada",
+        "Evita tener que pagar la licencia de Excel",
+        "Convierte los gráficos a 3D"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Permite buscar hacia la izquierda y no se rompe si se insertan columnas en medio",
+          "Calcula más rápido la raíz cuadrada",
+          "Evita tener que pagar la licencia de Excel",
+          "Convierte los gráficos a 3D"
+        ],
+        "en": [
+          "It searches to the left and never breaks when inserting intermediate columns",
+          "It calculates square roots faster",
+          "It waives Microsoft licensing fees",
+          "It turns charts into 3D objects"
+        ],
+        "de": [
+          "Kann flexibel nach links suchen und ist immun gegen eingefügte Spalten",
+          "Berechnet Quadratwurzeln schneller",
+          "Spart Lizenzkosten",
+          "Erzeugt 3D-Diagramme"
+        ],
+        "fr": [
+          "Recherche vers la gauche et reste intacte si des colonnes sont insérées",
+          "Calcule plus vite les racines carrées",
+          "Supprime les frais de licence",
+          "Convertit les graphiques en 3D"
+        ],
+        "ja": [
+          "左方向への検索（逆引き）が可能で、途中に列が挿入されても壊れない堅牢性がある",
+          "平方根の計算速度が向上する",
+          "Excelのライセンス費用が不要になる",
+          "グラフが自動で3D化される"
+        ],
+        "pt": [
+          "Permite buscar para a esquerda e não quebra com a inserção de novas colunas",
+          "Calcula raiz quadrada com maior velocidade",
+          "Elimina taxas de licença",
+          "Converte gráficos em 3D"
+        ]
+      },
+      "correct": "Permite buscar hacia la izquierda y no se rompe si se insertan columnas en medio",
+      "correctByLocale": {
+        "es": "Permite buscar hacia la izquierda y no se rompe si se insertan columnas en medio",
+        "en": "It searches to the left and never breaks when inserting intermediate columns",
+        "de": "Kann flexibel nach links suchen und ist immun gegen eingefügte Spalten",
+        "fr": "Recherche vers la gauche et reste intacte si des colonnes sont insérées",
+        "ja": "左方向への検索（逆引き）が可能で、途中に列が挿入されても壊れない堅牢性がある",
+        "pt": "Permite buscar para a esquerda e não quebra com a inserção de novas colunas"
+      },
+      "explanation": "COINCIDIR calcula dinámicamente el número de fila que luego INDICE extrae con total solidez.",
+      "explanationByLocale": {
+        "es": "COINCIDIR calcula dinámicamente el número de fila que luego INDICE extrae con total solidez.",
+        "en": "MATCH dynamically solves the row coordinate, which INDEX retrieves securely without index breakage.",
+        "de": "VERGLEICH liefert dynamisch die Zeilennummer, die INDEX zielsicher abruft.",
+        "fr": "EQUIV trouve dynamiquement la ligne, qu'INDEX extrait ensuite en toute robustesse.",
+        "ja": "MATCHが行番号を動的に割り出し、それをINDEXに渡すことで、列の追加や移動にびくともしない強固な数式になります。",
+        "pt": "CORRESP calcula a linha dinamicamente, permitindo que ÍNDICE extraia o dado com máxima robustez."
+      }
+    }
+  ]
+}

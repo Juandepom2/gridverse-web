@@ -1,0 +1,274 @@
+{
+  "ref": "A3",
+  "title": "Tipos de datos",
+  "titleByLocale": {
+    "es": "Tipos de datos",
+    "en": "Data Types",
+    "de": "Datentypen",
+    "fr": "Types de données",
+    "ja": "データ型",
+    "pt": "Tipos de dados"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Por defecto, los textos en Excel se alinean a la:",
+      "promptByLocale": {
+        "es": "Por defecto, los textos en Excel se alinean a la:",
+        "en": "By default, text in Excel is aligned to the:",
+        "de": "Standardmäßig wird Text in Excel wie ausgerichtet:",
+        "fr": "Par défaut, les textes dans Excel sont alignés à :",
+        "ja": "Excelではデフォルトで、文字列はどちら側に配置されますか？",
+        "pt": "Por padrão, os textos no Excel são alinhados à:"
+      },
+      "formula": "Alineación",
+      "formulaByLocale": {
+        "es": "Alineación",
+        "en": "Alignment",
+        "de": "Ausrichtung",
+        "fr": "Alignement",
+        "ja": "配置",
+        "pt": "Alinhamento"
+      },
+      "correct": "Izquierda",
+      "correctByLocale": {
+        "es": "Izquierda",
+        "en": "Left",
+        "de": "Links",
+        "fr": "Gauche",
+        "ja": "左揃え",
+        "pt": "Esquerda"
+      },
+      "data": {
+        "A1": "Hola",
+        "B1": "100"
+      },
+      "dataByLocale": {
+        "es": { "A1": "Hola", "B1": "100" },
+        "en": { "A1": "Hello", "B1": "100" },
+        "de": { "A1": "Hallo", "B1": "100" },
+        "fr": { "A1": "Salut", "B1": "100" },
+        "ja": { "A1": "こんにちは", "B1": "100" },
+        "pt": { "A1": "Olá", "B1": "100" }
+      },
+      "options": ["Izquierda", "Derecha", "Centro", "Justificado"],
+      "optionsByLocale": {
+        "es": ["Izquierda", "Derecha", "Centro", "Justificado"],
+        "en": ["Left", "Right", "Center", "Justified"],
+        "de": ["Links", "Rechts", "Zentriert", "Blocksatz"],
+        "fr": ["Gauche", "Droite", "Centré", "Justifié"],
+        "ja": ["左揃え", "右揃え", "中央揃え", "両端揃え"],
+        "pt": ["Esquerda", "Direita", "Centro", "Justificado"]
+      },
+      "explanation": "Excel alinea automáticamente las cadenas de texto al borde izquierdo de la celda.",
+      "explanationByLocale": {
+        "es": "Excel alinea automáticamente las cadenas de texto al borde izquierdo de la celda.",
+        "en": "Excel automatically aligns text strings to the left edge of the cell.",
+        "de": "Excel richtet Textzeichenketten standardmäßig am linken Zellenrand aus.",
+        "fr": "Excel aligne automatiquement les chaînes de texte sur le bord gauche de la cellule.",
+        "ja": "Excelでは文字列は自動的にセルの左端に配置されます。",
+        "pt": "O Excel alinha automaticamente sequências de texto à borda esquerda da célula."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Por defecto, los números en Excel se alinean a la:",
+      "promptByLocale": {
+        "es": "Por defecto, los números en Excel se alinean a la:",
+        "en": "By default, numbers in Excel are aligned to the:",
+        "de": "Standardmäßig werden Zahlen in Excel wie ausgerichtet:",
+        "fr": "Par défaut, les nombres dans Excel sont alignés à :",
+        "ja": "Excelではデフォルトで、数値はどちら側に配置されますか？",
+        "pt": "Por padrão, os números no Excel são alinhados à:"
+      },
+      "formula": "Alineación",
+      "formulaByLocale": {
+        "es": "Alineación",
+        "en": "Alignment",
+        "de": "Ausrichtung",
+        "fr": "Alignement",
+        "ja": "配置",
+        "pt": "Alinhamento"
+      },
+      "correct": "Derecha",
+      "correctByLocale": {
+        "es": "Derecha",
+        "en": "Right",
+        "de": "Rechts",
+        "fr": "Droite",
+        "ja": "右揃え",
+        "pt": "Direita"
+      },
+      "data": {
+        "A1": "Hola",
+        "B1": "100"
+      },
+      "dataByLocale": {
+        "es": { "A1": "Hola", "B1": "100" },
+        "en": { "A1": "Hello", "B1": "100" },
+        "de": { "A1": "Hallo", "B1": "100" },
+        "fr": { "A1": "Salut", "B1": "100" },
+        "ja": { "A1": "こんにちは", "B1": "100" },
+        "pt": { "A1": "Olá", "B1": "100" }
+      },
+      "options": ["Derecha", "Izquierda", "Centro", "Arriba"],
+      "optionsByLocale": {
+        "es": ["Derecha", "Izquierda", "Centro", "Arriba"],
+        "en": ["Right", "Left", "Center", "Top"],
+        "de": ["Rechts", "Links", "Zentriert", "Oben"],
+        "fr": ["Droite", "Gauche", "Centré", "Haut"],
+        "ja": ["右揃え", "左揃え", "中央揃え", "上揃え"],
+        "pt": ["Direita", "Esquerda", "Centro", "Superior"]
+      },
+      "explanation": "Los valores numéricos se alinean a la derecha para que los puntos y dígitos decimales coincidan visualmente.",
+      "explanationByLocale": {
+        "es": "Los valores numéricos se alinean a la derecha para que los puntos y dígitos decimales coincidan visualmente.",
+        "en": "Numeric values align to the right so that digits and decimal points align vertically.",
+        "de": "Zahlenwerte werden rechts ausgerichtet, damit Stellen und Kommas sauber untereinanderstehen.",
+        "fr": "Les valeurs numériques sont alignées à droite pour que chiffres et virgules s'alignent visuellement.",
+        "ja": "数値は桁や小数点位置を縦に揃えやすくするため、自動的に右側に配置されます。",
+        "pt": "Os valores numéricos alinham-se à direita para facilitar a leitura visual das casas decimais."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la celda B1 que contiene un dato de tipo fecha.",
+      "promptByLocale": {
+        "es": "Selecciona la celda B1 que contiene un dato de tipo fecha.",
+        "en": "Select cell B1 containing a date value.",
+        "de": "Wähle Zelle B1 aus, die ein Datumsformat enthält.",
+        "fr": "Sélectionne la cellule B1 contenant une date.",
+        "ja": "日付データが格納されているセル B1 を選択してください。",
+        "pt": "Selecione a célula B1 que contém um dado do tipo data."
+      },
+      "correct": "B1",
+      "data": {
+        "A1": "Producto",
+        "B1": "01/11/2026",
+        "A2": "Precio",
+        "B2": "$50"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Producto",
+          "B1": "01/11/2026",
+          "A2": "Precio",
+          "B2": "$50"
+        },
+        "en": {
+          "A1": "Product",
+          "B1": "11/01/2026",
+          "A2": "Price",
+          "B2": "$50"
+        },
+        "de": {
+          "A1": "Produkt",
+          "B1": "01.11.2026",
+          "A2": "Preis",
+          "B2": "50 €"
+        },
+        "fr": {
+          "A1": "Produit",
+          "B1": "01/11/2026",
+          "A2": "Prix",
+          "B2": "50 €"
+        },
+        "ja": {
+          "A1": "商品",
+          "B1": "2026/11/01",
+          "A2": "価格",
+          "B2": "¥50"
+        },
+        "pt": {
+          "A1": "Produto",
+          "B1": "01/11/2026",
+          "A2": "Preço",
+          "B2": "R$ 50"
+        }
+      },
+      "explanation": "La celda B1 almacena una fecha, la cual internamente en Excel es tratada como un número de serie secuencial.",
+      "explanationByLocale": {
+        "es": "La celda B1 almacena una fecha, la cual internamente en Excel es tratada como un número de serie secuencial.",
+        "en": "Cell B1 stores a date, which internally in Excel is treated as a sequential serial number.",
+        "de": "Zelle B1 speichert ein Datum, das in Excel intern als fortlaufende Seriennummer behandelt wird.",
+        "fr": "La cellule B1 stocke une date, qui est traitée en interne par Excel comme un numéro de série séquentiel.",
+        "ja": "セル B1 には日付が格納されており、Excel内部ではシリアル値という連続した数値として扱われます。",
+        "pt": "A célula B1 armazena uma data, que no Excel é tratada internamente como um número de série sequencial."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué valor devuelve la condición lógica =5>3 en una celda?",
+      "promptByLocale": {
+        "es": "¿Qué valor devuelve la condición lógica =5>3 en una celda?",
+        "en": "What value does the logical condition =5>3 return in a cell?",
+        "de": "Welchen Wert liefert die logische Bedingung =5>3 in einer Zelle zurück?",
+        "fr": "Quelle valeur renvoie la condition logique =5>3 dans une cellule ?",
+        "ja": "セルに「=5>3」と入力すると、どんな論理値が返されますか？",
+        "pt": "Qual valor a condição lógica =5>3 retorna em uma célula?"
+      },
+      "formula": "=5>3",
+      "formulaByLocale": {
+        "es": "=5>3",
+        "en": "=5>3",
+        "de": "=5>3",
+        "fr": "=5>3",
+        "ja": "=5>3",
+        "pt": "=5>3"
+      },
+      "correct": "VERDADERO",
+      "correctByLocale": {
+        "es": "VERDADERO",
+        "en": "TRUE",
+        "de": "WAHR",
+        "fr": "VRAI",
+        "ja": "TRUE",
+        "pt": "VERDADEIRO"
+      },
+      "data": {},
+      "options": ["VERDADERO", "FALSO", "5", "ERROR"],
+      "optionsByLocale": {
+        "es": ["VERDADERO", "FALSO", "5", "ERROR"],
+        "en": ["TRUE", "FALSE", "5", "ERROR"],
+        "de": ["WAHR", "FALSCH", "5", "FEHLER"],
+        "fr": ["VRAI", "FAUX", "5", "ERREUR"],
+        "ja": ["TRUE", "FALSE", "5", "ERROR"],
+        "pt": ["VERDADEIRO", "FALSO", "5", "ERRO"]
+      },
+      "explanation": "Como 5 es mayor que 3, Excel evalúa la comparación lógica como VERDADERO (TRUE).",
+      "explanationByLocale": {
+        "es": "Como 5 es mayor que 3, Excel evalúa la comparación lógica como VERDADERO (TRUE).",
+        "en": "Since 5 is greater than 3, Excel evaluates the logical comparison as TRUE.",
+        "de": "Da 5 größer als 3 ist, wertet Excel den logischen Vergleich als WAHR (TRUE) aus.",
+        "fr": "Comme 5 est supérieur à 3, Excel évalue la comparaison logique comme VRAI (TRUE).",
+        "ja": "5は3より大きいため、Excelはこの論理式を「TRUE」と判定します。",
+        "pt": "Como 5 é maior que 3, o Excel avalia a comparação lógica como VERDADEIRO (TRUE)."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma una fórmula que sume el número 10 y el valor de la celda A1.",
+      "promptByLocale": {
+        "es": "Arma una fórmula que sume el número 10 y el valor de la celda A1.",
+        "en": "Build a formula that adds the number 10 and the value of cell A1.",
+        "de": "Erstelle eine Formel, die die Zahl 10 und den Wert der Zelle A1 addiert.",
+        "fr": "Construis une formule qui additionne le nombre 10 et la valeur de la cellule A1.",
+        "ja": "数値「10」とセル A1 の値を足し算する数式を組み立ててください。",
+        "pt": "Monte uma fórmula que some o número 10 e o valor da célula A1."
+      },
+      "correct": "=10+A1",
+      "blocks": ["=", "10", "+", "A1", "\"10\""],
+      "explanation": "Los números se colocan directos sin comillas para que Excel realice una suma aritmética y no trate el dato como texto.",
+      "explanationByLocale": {
+        "es": "Los números se colocan directos sin comillas para que Excel realice una suma aritmética y no trate el dato como texto.",
+        "en": "Numbers are written directly without quotes so Excel performs an arithmetic addition rather than treating it as text.",
+        "de": "Zahlen werden ohne Anführungszeichen eingegeben, damit Excel rechnet und den Wert nicht als Text interpretiert.",
+        "fr": "Les nombres s'écrivent directement sans guillemets pour qu'Excel effectue une addition arithmétique et non du texte.",
+        "ja": "数値はダブルクォーテーションで囲まず入力することで、文字列ではなく四則演算として計算されます。",
+        "pt": "Os números são inseridos diretamente sem aspas para que o Excel faça uma soma e não trate como texto."
+      }
+    }
+  ]
+}

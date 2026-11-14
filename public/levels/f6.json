@@ -1,0 +1,121 @@
+{
+  "ref": "F6",
+  "title": "DIAS.LAB (días hábiles)",
+  "titleByLocale": {
+    "es": "DIAS.LAB (días hábiles)",
+    "en": "NETWORKDAYS (Workdays)",
+    "de": "NETTOARBEITSTAGE (Werktage)",
+    "fr": "NB.JOURS.OUVRES (Jours ouvrés)",
+    "ja": "NETWORKDAYS（稼働日・営業日数）",
+    "pt": "DIATRABALHOTOTAL (Dias úteis)"
+  },
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué días excluye por defecto la función DIAS.LAB / NETWORKDAYS al calcular el lapso entre dos fechas?",
+      "promptByLocale": {
+        "es": "¿Qué días excluye por defecto la función DIAS.LAB / NETWORKDAYS al calcular el lapso entre dos fechas?",
+        "en": "Which days does NETWORKDAYS exclude by default when calculating working days between dates?",
+        "de": "Welche Tage schließt NETTOARBEITSTAGE standardmäßig bei der Berechnung von Arbeitstagen aus?",
+        "fr": "Quels jours la fonction NB.JOURS.OUVRES exclut-elle par défaut lors du calcul de la période ?",
+        "ja": "NETWORKDAYS関数は、期間中のどの曜日を初期設定で自動的に除外しますか？",
+        "pt": "Quais dias a função DIATRABALHOTOTAL exclui por padrão ao calcular dias úteis?"
+      },
+      "options": [
+        "Sábados y domingos",
+        "Solo domingos",
+        "Solo viernes y sábados",
+        "Ninguno, solo días festivos manuales"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Sábados y domingos",
+          "Solo domingos",
+          "Solo viernes y sábados",
+          "Ninguno, solo días festivos manuales"
+        ],
+        "en": [
+          "Saturdays and Sundays",
+          "Only Sundays",
+          "Only Fridays and Saturdays",
+          "None, only custom holidays"
+        ],
+        "de": [
+          "Samstage und Sonntage",
+          "Nur Sonntage",
+          "Nur Freitage und Samstage",
+          "Keine, nur manuelle Feiertage"
+        ],
+        "fr": [
+          "Samedis et dimanches",
+          "Uniquement les dimanches",
+          "Vendredis et samedis",
+          "Aucun, seulement les jours fériés saisis"
+        ],
+        "ja": [
+          "土曜日と日曜日（週末）",
+          "日曜日のみ",
+          "金曜日と土曜日",
+          "自動除外はなく祝日指定のみ"
+        ],
+        "pt": [
+          "Sábados e domingos",
+          "Apenas domingos",
+          "Apenas sextas e sábados",
+          "Nenhum, apenas feriados informados"
+        ]
+      },
+      "correct": "Sábados y domingos",
+      "correctByLocale": {
+        "es": "Sábados y domingos",
+        "en": "Saturdays and Sundays",
+        "de": "Samstage und Sonntage",
+        "fr": "Samedis et dimanches",
+        "ja": "土曜日と日曜日（週末）",
+        "pt": "Sábados e domingos"
+      },
+      "explanation": "DIAS.LAB excluye automáticamente fines de semana (sábado y domingo) y permite indicar un rango opcional de días festivos.",
+      "explanationByLocale": {
+        "es": "DIAS.LAB excluye automáticamente fines de semana (sábado y domingo) y permite indicar un rango opcional de días festivos.",
+        "en": "NETWORKDAYS automatically excludes Saturdays and Sundays, and accepts an optional holiday range.",
+        "de": "NETTOARBEITSTAGE schließt Wochenenden automatisch aus und erlaubt die optionale Angabe von Feiertagen.",
+        "fr": "NB.JOURS.OUVRES exclut automatiquement les week-ends et permet d'ajouter une liste de jours fériés.",
+        "ja": "NETWORKDAYSは土日を自動除外します。さらに第3引数で祝日一覧のセル範囲を除外指定できます。",
+        "pt": "DIATRABALHOTOTAL exclui automaticamente os fins de semana e aceita um intervalo opcional de feriados."
+      }
+    },
+    {
+      "type": "write_formula",
+      "prompt": "Escribe en C2 la fórmula para obtener los días laborables entre la fecha inicial (A2) y la final (B2):",
+      "promptByLocale": {
+        "es": "Escribe en C2 la fórmula para obtener los días laborables entre la fecha inicial (A2) y la final (B2):",
+        "en": "Write the formula in C2 to calculate workdays between start date (A2) and end date (B2):",
+        "de": "Schreibe in C2 die Formel für die Arbeitstage zwischen Startdatum (A2) und Enddatum (B2):",
+        "fr": "Écrivez en C2 la formule pour calculer les jours ouvrés entre début (A2) et fin (B2) :",
+        "ja": "開始日(A2)から終了日(B2)までの営業日数を計算する数式をC2に入力してください：",
+        "pt": "Escreva em C2 a fórmula para calcular os dias úteis entre a data inicial (A2) e final (B2):"
+      },
+      "correct": "=DIAS.LAB(A2,B2)",
+      "targetCell": "C2",
+      "data": {
+        "A1": "Inicio",
+        "B1": "Fin",
+        "C1": "Días Hábiles",
+        "A2": "2024-06-03",
+        "B2": "2024-06-14",
+        "C2": ""
+      },
+      "explanation": "Sintaxis: =DIAS.LAB(fecha_inicial, fecha_final)",
+      "explanationByLocale": {
+        "es": "Sintaxis: =DIAS.LAB(fecha_inicial, fecha_final)",
+        "en": "Syntax: =NETWORKDAYS(start_date, end_date)",
+        "de": "Syntax: =NETTOARBEITSTAGE(Ausgangsdatum; Enddatum)",
+        "fr": "Syntaxe : =NB.JOURS.OUVRES(date_début; date_fin)",
+        "ja": "構文： =NETWORKDAYS(開始日, 終了日)",
+        "pt": "Sintaxe: =DIATRABALHOTOTAL(data_inicial; data_final)"
+      }
+    }
+  ]
+}

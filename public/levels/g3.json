@@ -1,0 +1,164 @@
+{
+  "ref": "G3",
+  "title": "Formato condicional con fórmula",
+  "titleByLocale": {
+    "es": "Formato condicional con fórmula",
+    "en": "Formula-Based Conditional Formatting",
+    "de": "Bedingte Formatierung mit Formeln",
+    "fr": "Mise en forme conditionnelle par formule",
+    "ja": "数式を使った高度な条件付き書式",
+    "pt": "Formatação condicional com fórmula"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Para que una fórmula personalizada aplique el formato en la celda, ¿qué resultado debe devolver la fórmula?",
+      "promptByLocale": {
+        "es": "Para que una fórmula personalizada aplique el formato en la celda, ¿qué resultado debe devolver la fórmula?",
+        "en": "For a custom formula rule to trigger and color a cell, what value must it evaluate to?",
+        "de": "Welchen logischen Wert muss eine benutzerdefinierte Formel liefern, damit das Format angewendet wird?",
+        "fr": "Pour qu'une formule personnalisée déclenche la mise en forme, quel résultat doit-elle renvoyer ?",
+        "ja": "数式を使った条件付き書式で書式を適用させるには、数式が何を返す必要がありますか？",
+        "pt": "Para que uma fórmula personalizada aplique a formatação na célula, qual valor ela deve retornar?"
+      },
+      "options": [
+        "VERDADERO (TRUE)",
+        "FALSO (FALSE)",
+        "0",
+        "\"OK\""
+      ],
+      "optionsByLocale": {
+        "es": [
+          "VERDADERO (TRUE)",
+          "FALSO (FALSE)",
+          "0",
+          "\"OK\""
+        ],
+        "en": [
+          "TRUE",
+          "FALSE",
+          "0",
+          "\"OK\""
+        ],
+        "de": [
+          "WAHR (TRUE)",
+          "FALSCH (FALSE)",
+          "0",
+          "\"OK\""
+        ],
+        "fr": [
+          "VRAI (TRUE)",
+          "FAUX (FALSE)",
+          "0",
+          "\"OK\""
+        ],
+        "ja": [
+          "TRUE（真）",
+          "FALSE（偽）",
+          "0",
+          "\"OK\""
+        ],
+        "pt": [
+          "VERDADEIRO (TRUE)",
+          "FALSO (FALSE)",
+          "0",
+          "\"OK\""
+        ]
+      },
+      "correct": "VERDADERO (TRUE)",
+      "correctByLocale": {
+        "es": "VERDADERO (TRUE)",
+        "en": "TRUE",
+        "de": "WAHR (TRUE)",
+        "fr": "VRAI (TRUE)",
+        "ja": "TRUE（真）",
+        "pt": "VERDADEIRO (TRUE)"
+      },
+      "explanation": "Toda regla basada en fórmula aplica el formato únicamente si la expresión evalúa a VERDADERO.",
+      "explanationByLocale": {
+        "es": "Toda regla basada en fórmula aplica el formato únicamente si la expresión evalúa a VERDADERO.",
+        "en": "Formula-based formatting applies styles exclusively when the condition evaluates to TRUE.",
+        "de": "Formelbasierte Regeln färben die Zelle nur dann ein, wenn die Bedingung WAHR ergibt.",
+        "fr": "Toute règle par formule applique le format seulement si l'expression renvoie VRAI.",
+        "ja": "数式による条件付き書式は、判定結果が「TRUE」になった時だけ書式を反映します。",
+        "pt": "Toda regra com fórmula aplica o formato apenas quando a expressão resulta em VERDADEIRO."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si deseas colorear TODA la fila completa si la columna C es igual a \"Urgente\", ¿cómo debes fijar la referencia en la fórmula?",
+      "promptByLocale": {
+        "es": "Si deseas colorear TODA la fila completa si la columna C es igual a \"Urgente\", ¿cómo debes fijar la referencia en la fórmula?",
+        "en": "To highlight the ENTIRE row when column C equals \"Urgente\", how must you lock the cell reference in the formula?",
+        "de": "Wie sperrt man den Bezug, um die GESAMTE Zeile einzufärben, wenn Spalte C \"Urgente\" ist?",
+        "fr": "Pour colorer TOUTE la ligne si la colonne C vaut \"Urgente\", comment figer la référence ?",
+        "ja": "C列が「Urgente」のときに行全体を着色するには、参照をどのように固定すべきですか？",
+        "pt": "Para colorir TODA a linha se a coluna C for igual a \"Urgente\", como travar a referência?"
+      },
+      "options": [
+        "=$C2=\"Urgente\"",
+        "=C$2=\"Urgente\"",
+        "=$C$2=\"Urgente\"",
+        "=C2=\"Urgente\""
+      ],
+      "optionsByLocale": {
+        "es": [
+          "=$C2=\"Urgente\"",
+          "=C$2=\"Urgente\"",
+          "=$C$2=\"Urgente\"",
+          "=C2=\"Urgente\""
+        ],
+        "en": [
+          "=$C2=\"Urgente\"",
+          "=C$2=\"Urgente\"",
+          "=$C$2=\"Urgente\"",
+          "=C2=\"Urgente\""
+        ],
+        "de": [
+          "=$C2=\"Urgente\"",
+          "=C$2=\"Urgente\"",
+          "=$C$2=\"Urgente\"",
+          "=C2=\"Urgente\""
+        ],
+        "fr": [
+          "=$C2=\"Urgente\"",
+          "=C$2=\"Urgente\"",
+          "=$C$2=\"Urgente\"",
+          "=C2=\"Urgente\""
+        ],
+        "ja": [
+          "=$C2=\"Urgente\"",
+          "=C$2=\"Urgente\"",
+          "=$C$2=\"Urgente\"",
+          "=C2=\"Urgente\""
+        ],
+        "pt": [
+          "=$C2=\"Urgente\"",
+          "=C$2=\"Urgente\"",
+          "=$C$2=\"Urgente\"",
+          "=C2=\"Urgente\""
+        ]
+      },
+      "correct": "=$C2=\"Urgente\"",
+      "correctByLocale": {
+        "es": "=$C2=\"Urgente\"",
+        "en": "=$C2=\"Urgente\"",
+        "de": "=$C2=\"Urgente\"",
+        "fr": "=$C2=\"Urgente\"",
+        "ja": "=$C2=\"Urgente\"",
+        "pt": "=$C2=\"Urgente\""
+      },
+      "explanation": "Fijar la columna ($C) permite que las celdas de las columnas A, B, C y D miren siempre a la columna C en cada fila.",
+      "explanationByLocale": {
+        "es": "Fijar la columna ($C) permite que las celdas de las columnas A, B, C y D miren siempre a la columna C en cada fila.",
+        "en": "Locking the column ($C) ensures columns A, B, and D inspect column C of that same row.",
+        "de": "Das Fixieren der Spalte ($C) sorgt dafür, dass alle Spalten der Zeile auf Spalte C prüfen.",
+        "fr": "Figer la colonne ($C) force toutes les cellules de la ligne à vérifier la colonne C.",
+        "ja": "列にドル記号($C)を付けて固定することで、A列やB列のセルも同じ行のC列を判定対象にできます。",
+        "pt": "Travar a coluna ($C) garante que todas as células da linha consultem a coluna C correspondente."
+      }
+    }
+  ]
+}

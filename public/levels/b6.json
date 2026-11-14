@@ -1,0 +1,308 @@
+{
+  "ref": "B6",
+  "title": "Porcentajes: Descuento e IVA",
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Si un producto cuesta $100 (B2) y tiene un 20% de descuento (C2 = 0.20), ¿cuánto es el monto del descuento?",
+      "formula": "=100 * 20%",
+      "correct": "20",
+      "data": {},
+      "options": [
+        "20",
+        "80",
+        "200",
+        "0.20"
+      ],
+      "explanation": "El monto de descuento se obtiene directamente multiplicando Precio * Porcentaje (=B2*C2).",
+      "promptByLocale": {
+        "es": "Si un producto cuesta $100 (B2) y tiene un 20% de descuento (C2 = 0.20), ¿cuánto es el monto del descuento?",
+        "en": "If a product costs $100 (B2) and has a 20% discount (C2 = 0.20), how much is the discount amount?",
+        "de": "Wenn ein Produkt 100 $ kostet (B2) und 20 % Rabatt hat (C2 = 0.20), wie hoch ist der Rabattbetrag?",
+        "fr": "Si un produit coûte 100 $ (B2) avec 20 % de remise (C2 = 0,20), quel est le montant de la remise ?",
+        "ja": "商品が100ドル（B2）で20%割引（C2 = 0.20）の場合、値引き額はいくらですか？",
+        "pt": "Se um produto custa $100 (B2) e tem 20% de desconto (C2 = 0,20), quanto é o valor do desconto?"
+      },
+      "formulaByLocale": {
+        "es": "=100 * 20%",
+        "en": "=100 * 20%",
+        "de": "=100 * 20%",
+        "fr": "=100 * 20%",
+        "ja": "=100 * 20%",
+        "pt": "=100 * 20%"
+      },
+      "explanationByLocale": {
+        "es": "El monto de descuento se obtiene directamente multiplicando Precio * Porcentaje (=B2*C2).",
+        "en": "The discount amount is obtained by multiplying Price * Percentage (=B2*C2).",
+        "de": "Der Rabattbetrag wird durch Multiplikation von Preis * Prozentsatz berechnet (=B2*C2).",
+        "fr": "Le montant de la remise s'obtient en multipliant Prix * Pourcentage (=B2*C2).",
+        "ja": "割引額は「価格 × 割引率（=B2*C2）」を掛けることで直接求められます。",
+        "pt": "O valor do desconto é obtido multiplicando Preço * Porcentagem (=B2*C2)."
+      },
+      "optionsByLocale": {
+        "es": [
+          "20",
+          "80",
+          "200",
+          "0.20"
+        ],
+        "en": [
+          "20",
+          "80",
+          "200",
+          "0.20"
+        ],
+        "de": [
+          "20",
+          "80",
+          "200",
+          "0.20"
+        ],
+        "fr": [
+          "20",
+          "80",
+          "200",
+          "0.20"
+        ],
+        "ja": [
+          "20",
+          "80",
+          "200",
+          "0.20"
+        ],
+        "pt": [
+          "20",
+          "80",
+          "200",
+          "0.20"
+        ]
+      },
+      "correctByLocale": {
+        "es": "20",
+        "en": "20",
+        "de": "20",
+        "fr": "20",
+        "ja": "20",
+        "pt": "20"
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué fórmula calcula el precio final a pagar restando directamente el 20% a un producto de $100?",
+      "formula": "Precio final con descuento",
+      "correct": "=B2*(1-C2)",
+      "data": {},
+      "options": [
+        "=B2*(1-C2)",
+        "=B2-C2",
+        "=B2*C2",
+        "=B2/C2"
+      ],
+      "explanation": "Multiplicar por (1 - tasa) calcula en una sola operación el importe neto tras el descuento.",
+      "promptByLocale": {
+        "es": "¿Qué fórmula calcula el precio final a pagar restando directamente el 20% a un producto de $100?",
+        "en": "Which formula calculates the final price to pay by directly deducting 20% from a $100 product?",
+        "de": "Welche Formel berechnet den Endpreis, indem 20 % direkt von einem 100-$-Produkt abgezogen werden?",
+        "fr": "Quelle formule calcule le prix final à payer en déduisant directement 20 % d'un produit à 100 $ ?",
+        "ja": "100ドルの商品から20%を直接差し引いて最終支払額を計算する数式はどれですか？",
+        "pt": "Qual fórmula calcula o preço final a pagar subtraindo diretamente 20% de um produto de $100?"
+      },
+      "formulaByLocale": {
+        "es": "Precio final con descuento",
+        "en": "Final discounted price",
+        "de": "Endpreis mit Rabatt",
+        "fr": "Prix final avec remise",
+        "ja": "割引後の支払額",
+        "pt": "Preço final com desconto"
+      },
+      "explanationByLocale": {
+        "es": "Multiplicar por (1 - tasa) calcula en una sola operación el importe neto tras el descuento.",
+        "en": "Multiplying by (1 - rate) computes the net amount after discount in a single operation.",
+        "de": "Die Multiplikation mit (1 - Satz) berechnet den Nettobetrag nach Rabatt in einem Schritt.",
+        "fr": "Multiplier par (1 - taux) calcule en une seule étape le montant net après remise.",
+        "ja": "「(1 - 割引率)」を掛けることで、1回の計算で割引後の正味支払額を求められます。",
+        "pt": "Multiplicar por (1 - taxa) calcula em uma única operação o valor líquido após o desconto."
+      },
+      "optionsByLocale": {
+        "es": [
+          "=B2*(1-C2)",
+          "=B2-C2",
+          "=B2*C2",
+          "=B2/C2"
+        ],
+        "en": [
+          "=B2*(1-C2)",
+          "=B2-C2",
+          "=B2*C2",
+          "=B2/C2"
+        ],
+        "de": [
+          "=B2*(1-C2)",
+          "=B2-C2",
+          "=B2*C2",
+          "=B2/C2"
+        ],
+        "fr": [
+          "=B2*(1-C2)",
+          "=B2-C2",
+          "=B2*C2",
+          "=B2/C2"
+        ],
+        "ja": [
+          "=B2*(1-C2)",
+          "=B2-C2",
+          "=B2*C2",
+          "=B2/C2"
+        ],
+        "pt": [
+          "=B2*(1-C2)",
+          "=B2-C2",
+          "=B2*C2",
+          "=B2/C2"
+        ]
+      },
+      "correctByLocale": {
+        "es": "=B2*(1-C2)",
+        "en": "=B2*(1-C2)",
+        "de": "=B2*(1-C2)",
+        "fr": "=B2*(1-C2)",
+        "ja": "=B2*(1-C2)",
+        "pt": "=B2*(1-C2)"
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para agregar el 16% de IVA al Subtotal en B2.",
+      "correct": "=B2*1.16",
+      "blocks": [
+        "=",
+        "B2",
+        "*",
+        "1.16",
+        "+"
+      ],
+      "explanation": "Multiplicar por 1.16 añade el 16% de IVA de manera directa y compacta.",
+      "promptByLocale": {
+        "es": "Arma la fórmula para agregar el 16% de IVA al Subtotal en B2.",
+        "en": "Build the formula to add 16% tax to the Subtotal in B2.",
+        "de": "Erstelle die Formel, um 16 % MwSt. zum Zwischenwert in B2 hinzuzufügen.",
+        "fr": "Construis la formule pour ajouter 16 % de TVA au sous-total en B2.",
+        "ja": "B2の小計に16%の消費税を加算する数式を組み立ててください。",
+        "pt": "Monte a fórmula para adicionar 16% de imposto ao Subtotal em B2."
+      },
+      "explanationByLocale": {
+        "es": "Multiplicar por 1.16 añade el 16% de IVA de manera directa y compacta.",
+        "en": "Multiplying by 1.16 adds 16% tax directly and concisely.",
+        "de": "Die Multiplikation mit 1.16 schlägt 16 % MwSt. direkt und kompakt auf.",
+        "fr": "Multiplier par 1,16 ajoute directement et simplement les 16 % de TVA.",
+        "ja": "1.16 を掛けることで、16%の税額を一括で直接加算できます。",
+        "pt": "Multiplicar por 1.16 adiciona 16% de imposto de forma direta e compacta."
+      }
+    },
+    {
+      "type": "write_formula",
+      "prompt": "En D2, calcula el IVA de $200 multiplicando Subtotal (B2) por la tasa de IVA (C2).",
+      "correct": "=B2*C2",
+      "targetCell": "D2",
+      "data": {
+        "A1": "Prod",
+        "B1": "Subtotal",
+        "C1": "IVA %",
+        "D1": "Monto IVA",
+        "A2": "Teclado",
+        "B2": "200",
+        "C2": "0.16"
+      },
+      "suggestions": [
+        "=",
+        "B2",
+        "*",
+        "C2",
+        "+"
+      ],
+      "explanation": "El producto de subtotal por la tasa entrega el impuesto exacto.",
+      "promptByLocale": {
+        "es": "En D2, calcula el IVA de $200 multiplicando Subtotal (B2) por la tasa de IVA (C2).",
+        "en": "In D2, calculate the tax on $200 by multiplying Subtotal (B2) by the tax rate (C2).",
+        "de": "Berechne in D2 die MwSt. auf 200 $, indem du den Zwischenwert (B2) mit dem Steuersatz (C2) multiplizierst.",
+        "fr": "En D2, calcule la TVA de 200 $ en multipliant le sous-total (B2) par le taux de TVA (C2).",
+        "ja": "D2セルで、小計（B2）に税率（C2）を掛けて消費税額を計算してください。",
+        "pt": "Em D2, calcule o imposto de $200 multiplicando o Subtotal (B2) pela taxa de imposto (C2)."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Prod",
+          "B1": "Subtotal",
+          "C1": "IVA %",
+          "D1": "Monto IVA",
+          "A2": "Teclado",
+          "B2": "200",
+          "C2": "0.16"
+        },
+        "en": {
+          "A1": "Item",
+          "B1": "Subtotal",
+          "C1": "Tax %",
+          "D1": "Tax Amt",
+          "A2": "Keyboard",
+          "B2": "200",
+          "C2": "0.16"
+        },
+        "de": {
+          "A1": "Prod",
+          "B1": "Zwischensumme",
+          "C1": "MwSt. %",
+          "D1": "MwSt. Betrag",
+          "A2": "Tastatur",
+          "B2": "200",
+          "C2": "0.16"
+        },
+        "fr": {
+          "A1": "Prod",
+          "B1": "Sous-total",
+          "C1": "TVA %",
+          "D1": "Montant TVA",
+          "A2": "Clavier",
+          "B2": "200",
+          "C2": "0.16"
+        },
+        "ja": {
+          "A1": "商品",
+          "B1": "小計",
+          "C1": "税率",
+          "D1": "税額",
+          "A2": "キーボード",
+          "B2": "200",
+          "C2": "0.16"
+        },
+        "pt": {
+          "A1": "Prod",
+          "B1": "Subtotal",
+          "C1": "Imposto %",
+          "D1": "Valor Imp.",
+          "A2": "Teclado",
+          "B2": "200",
+          "C2": "0.16"
+        }
+      },
+      "explanationByLocale": {
+        "es": "El producto de subtotal por la tasa entrega el impuesto exacto.",
+        "en": "Multiplying the subtotal by the rate yields the exact tax amount.",
+        "de": "Das Produkt aus Zwischensumme und Steuersatz ergibt den genauen Steuerbetrag.",
+        "fr": "Le produit du sous-total par le taux donne le montant exact de la taxe.",
+        "ja": "小計に税率を掛け算することで、正確な税額が求められます。",
+        "pt": "O produto do subtotal pela taxa entrega o valor exato do imposto."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Porcentajes: Descuento e IVA",
+    "en": "Percentages: Discounts and Tax",
+    "de": "Prozentsätze: Rabatt und MwSt.",
+    "fr": "Pourcentages : Remises et TVA",
+    "ja": "パーセンテージ：割引と消費税",
+    "pt": "Porcentagens: Descontos e Impostos"
+  }
+}

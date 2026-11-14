@@ -1,0 +1,90 @@
+{
+  "ref": "K1",
+  "title": "FILTRAR",
+  "titleByLocale": {
+    "es": "FILTRAR",
+    "en": "FILTER",
+    "de": "FILTER",
+    "fr": "FILTRE",
+    "ja": "FILTER",
+    "pt": "FILTRO"
+  },
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué comportamiento especial tienen las funciones de matriz dinámica como =FILTRAR?",
+      "promptByLocale": {
+        "es": "¿Qué comportamiento especial tienen las funciones de matriz dinámica como =FILTRAR?",
+        "en": "What unique capability do dynamic array functions like =FILTER exhibit in modern Excel?",
+        "de": "Welches besondere Verhalten zeigen dynamische Array-Funktionen wie =FILTER?",
+        "fr": "Quel comportement distinctif caractérise les fonctions matricielles dynamiques comme =FILTRE ?",
+        "ja": "=FILTER などの動的配列（スピル）関数が持つ最大の特徴は何ですか？",
+        "pt": "Qual comportamento especial caracteriza as funções de matriz dinâmica como =FILTRO?"
+      },
+      "options": [
+        "Desbordan (spill) automáticamente los resultados en múltiples celdas contiguas con una sola fórmula",
+        "Obligan a presionar Ctrl+Shift+Enter cada vez",
+        "Solo devuelven la primera letra",
+        "Bloquean la edición de la columna"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Desbordan (spill) automáticamente los resultados en múltiples celdas contiguas con una sola fórmula",
+          "Obligan a presionar Ctrl+Shift+Enter cada vez",
+          "Solo devuelven la primera letra",
+          "Bloquean la edición de la columna"
+        ],
+        "en": [
+          "They automatically spill multiple result rows/columns into adjacent cells from a single formula",
+          "They require pressing Ctrl+Shift+Enter on every edit",
+          "They only output the first character",
+          "They lock editing across the entire sheet"
+        ],
+        "de": [
+          "Sie laufen (spill) automatisch aus einer einzigen Formel in benachbarte Zellen über",
+          "Sie erfordern Strg+Umschalt+Enter",
+          "Sie liefern nur ein Zeichen",
+          "Sie sperren die Spalte"
+        ],
+        "fr": [
+          "Elles propagent (spill) automatiquement les résultats sur plusieurs cellules à partir d'une seule formule",
+          "Elles exigent Ctrl+Maj+Entrée",
+          "Elles ne renvoient que la première lettre",
+          "Elles verrouillent la colonne"
+        ],
+        "ja": [
+          "1つのセルに数式を入力するだけで、結果が隣接する複数のセルへ自動的にスピル（展開・あふれ出し）される",
+          "毎回必ず Ctrl+Shift+Enter を押さなければならない",
+          "最初の1文字しか返さない",
+          "列全体の編集をロックしてしまう"
+        ],
+        "pt": [
+          "Despejam (spill) automaticamente os resultados em múltiplas células a partir de uma única fórmula",
+          "Exigem pressionar Ctrl+Shift+Enter",
+          "Retornam apenas a primeira letra",
+          "Bloqueiam a edição da coluna"
+        ]
+      },
+      "correct": "Desbordan (spill) automáticamente los resultados en múltiples celdas contiguas con una sola fórmula",
+      "correctByLocale": {
+        "es": "Desbordan (spill) automáticamente los resultados en múltiples celdas contiguas con una sola fórmula",
+        "en": "They automatically spill multiple result rows/columns into adjacent cells from a single formula",
+        "de": "Sie laufen (spill) automatisch aus einer einzigen Formel in benachbarte Zellen über",
+        "fr": "Elles propagent (spill) automatiquement les résultats sur plusieurs cellules à partir d'une seule formule",
+        "ja": "1つのセルに数式を入力するだけで、結果が隣接する複数のセルへ自動的にスピル（展開・あふれ出し）される",
+        "pt": "Despejam (spill) automaticamente os resultados em múltiplas células a partir de uma única fórmula"
+      },
+      "explanation": "El motor de cálculo dinámico de Excel permite devolver matrices completas sin arrastrar fórmulas.",
+      "explanationByLocale": {
+        "es": "El motor de cálculo dinámico de Excel permite devolver matrices completas sin arrastrar fórmulas.",
+        "en": "Modern Excel's calculation engine spills whole result sets dynamically without formula dragging.",
+        "de": "Moderne Matrizen verteilen Ergebnisse flüssig ohne manuelles Herunterziehen.",
+        "fr": "Le moteur de calcul dynamique propage des matrices entières sans étirer la formule.",
+        "ja": "Excelの動的配列エンジンにより、数式を下にドラッグすることなく範囲全体を一括抽出できます。",
+        "pt": "O motor de cálculo dinâmico propaga matrizes inteiras sem precisar arrastar fórmulas."
+      }
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "ref": "D5",
+  "title": "SI con texto y vacías",
+  "titleByLocale": {
+    "es": "SI con texto y vacías",
+    "en": "IF with Text and Blanks",
+    "de": "WENN mit Text und leeren Zellen",
+    "fr": "SI avec texte et cellules vides",
+    "ja": "文字列や空白判定の IF",
+    "pt": "SE com texto e células vazias"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cómo se representa una celda en blanco o vacía en una prueba lógica de Excel?",
+      "promptByLocale": {
+        "es": "¿Cómo se representa una celda en blanco o vacía en una prueba lógica de Excel?",
+        "en": "How do you represent a blank or empty cell inside an Excel logical test?",
+        "de": "Wie stellt man eine leere Zelle in einer logischen Prüfung in Excel dar?",
+        "fr": "Comment représente-t-on une cellule vide dans un test logique sous Excel ?",
+        "ja": "Excelの論理式で「セルが空白（空っぽ）」であることを表す記号はどれですか？",
+        "pt": "Como se representa uma célula em branco ou vazia em um teste lógico do Excel?"
+      },
+      "options": ["\"\"", "NULL", "VACIO", "0"],
+      "optionsByLocale": {
+        "es": ["\"\"", "NULL", "VACIO", "0"],
+        "en": ["\"\"", "NULL", "EMPTY", "0"],
+        "de": ["\"\"", "NULL", "LEER", "0"],
+        "fr": ["\"\"", "NULL", "VIDE", "0"],
+        "ja": ["\"\"", "NULL", "EMPTY", "0"],
+        "pt": ["\"\"", "NULL", "VAZIO", "0"]
+      },
+      "correct": "\"\"",
+      "correctByLocale": {
+        "es": "\"\"",
+        "en": "\"\"",
+        "de": "\"\"",
+        "fr": "\"\"",
+        "ja": "\"\"",
+        "pt": "\"\""
+      },
+      "explanation": "Dos comillas dobles juntas (\"\") representan una cadena de texto vacía de longitud cero.",
+      "explanationByLocale": {
+        "es": "Dos comillas dobles juntas (\"\") representan una cadena de texto vacía de longitud cero.",
+        "en": "Two consecutive double quotes (\"\") denote an empty string of length zero.",
+        "de": "Zwei aufeinanderfolgende doppelte Anführungszeichen (\"\") stehen für eine leere Textkette.",
+        "fr": "Deux guillemets consécutifs (\"\") représentent une chaîne de caractères vide.",
+        "ja": "二重引用符を2つ並べた「\"\"」は、長さ0の空白文字列を表します。",
+        "pt": "Duas aspas duplas consecutivas (\"\") representam um texto vazio de comprimento zero."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿La comparación de texto dentro de =SI(A1=\"aprobado\", ...) distingue entre mayúsculas y minúsculas en Excel?",
+      "promptByLocale": {
+        "es": "¿La comparación de texto dentro de =SI(A1=\"aprobado\", ...) distingue entre mayúsculas y minúsculas en Excel?",
+        "en": "Does text comparison in =IF(A1=\"approved\", ...) distinguish uppercase vs lowercase letters in Excel?",
+        "de": "Unterscheidet der Textvergleich in =WENN(A1=\"ja\"; ...) in Excel zwischen Groß- und Kleinschreibung?",
+        "fr": "La comparaison de texte dans =SI(A1=\"oui\"; ...) fait-elle la distinction majuscules/minuscules ?",
+        "ja": "Excelの =IF(A1=\"ok\", ...) における文字列比較は、大文字と小文字を区別しますか？",
+        "pt": "A comparação de texto dentro de =SE(A1=\"aprovado\"; ...) diferencia maiúsculas de minúsculas?"
+      },
+      "options": [
+        "No, Excel no distingue entre mayúsculas y minúsculas por defecto",
+        "Sí, son obligatoriamente distintas",
+        "Solo si la celda tiene formato fecha",
+        "Solo en archivos creados en Mac"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "No, Excel no distingue entre mayúsculas y minúsculas por defecto",
+          "Sí, son obligatoriamente distintas",
+          "Solo si la celda tiene formato fecha",
+          "Solo en archivos creados en Mac"
+        ],
+        "en": [
+          "No, Excel is case-insensitive by default in standard comparisons",
+          "Yes, uppercase and lowercase are strictly distinct",
+          "Only if the cell has date formatting",
+          "Only in files created on macOS"
+        ],
+        "de": [
+          "Nein, Excel unterscheidet standardmäßig nicht zwischen Groß- und Kleinschreibung",
+          "Ja, sie sind zwingend unterschiedlich",
+          "Nur bei Datumsformaten",
+          "Nur auf dem Mac"
+        ],
+        "fr": [
+          "Non, Excel ignore la casse par défaut dans les comparaisons standard",
+          "Oui, les majuscules et minuscules sont strictement différentes",
+          "Seulement si la cellule est au format date",
+          "Uniquement sur Mac"
+        ],
+        "ja": [
+          "いいえ、Excelの標準比較では大文字・小文字は区別されません",
+          "はい、厳密に区別されます",
+          "セルが日付形式の場合のみ区別されます",
+          "Mac版Excelでのみ区別されます"
+        ],
+        "pt": [
+          "Não, o Excel ignora maiúsculas e minúsculas por padrão",
+          "Sim, são estritamente diferentes",
+          "Apenas se a célula tiver formato de data",
+          "Apenas em arquivos criados no Mac"
+        ]
+      },
+      "correct": "No, Excel no distingue entre mayúsculas y minúsculas por defecto",
+      "correctByLocale": {
+        "es": "No, Excel no distingue entre mayúsculas y minúsculas por defecto",
+        "en": "No, Excel is case-insensitive by default in standard comparisons",
+        "de": "Nein, Excel unterscheidet standardmäßig nicht zwischen Groß- und Kleinschreibung",
+        "fr": "Non, Excel ignore la casse par défaut dans les comparaisons standard",
+        "ja": "いいえ、Excelの標準比較では大文字・小文字は区別されません",
+        "pt": "Não, o Excel ignora maiúsculas e minúsculas por padrão"
+      },
+      "explanation": "En Excel =(\"HOLA\"=\"hola\") devuelve VERDADERO. Para distinguir mayúsculas se usa la función =IGUAL.",
+      "explanationByLocale": {
+        "es": "En Excel =(\"HOLA\"=\"hola\") devuelve VERDADERO. Para distinguir mayúsculas se usa la función =IGUAL.",
+        "en": "In Excel, =(\"HI\"=\"hi\") evaluates to TRUE. To enforce case sensitivity, use =EXACT.",
+        "de": "In Excel ergibt =(\"JA\"=\"ja\") WAHR. Für exakte Schreibweise nutzt man =IDENTISCH.",
+        "fr": "Sous Excel, =(\"OUI\"=\"oui\") renvoie VRAI. Pour respecter la casse, utilisez =EXACT.",
+        "ja": "Excelでは =(\"A\"=\"a\") はTRUEを返します。厳密に大文字小文字を区別するには =EXACT 関数を使います。",
+        "pt": "No Excel, =(\"SIM\"=\"sim\") retorna VERDADEIRO. Para distinguir maiúsculas, usa-se a função =EXATO."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la celda vacía A3 que debe validarse antes de calcular:",
+      "promptByLocale": {
+        "es": "Selecciona la celda vacía A3 que debe validarse antes de calcular:",
+        "en": "Select empty cell A3 that needs to be checked before calculating:",
+        "de": "Wähle die leere Zelle A3 aus, die vor der Berechnung geprüft werden muss:",
+        "fr": "Sélectionnez la cellule vide A3 qui doit être vérifiée avant calcul :",
+        "ja": "計算前にチェックすべき空白セルA3を選択してください：",
+        "pt": "Selecione a célula vazia A3 que deve ser verificada antes do cálculo:"
+      },
+      "correct": "A3",
+      "data": {
+        "A1": "Nombre",
+        "B1": "Estado",
+        "A2": "María",
+        "B2": "Registrado",
+        "A3": "",
+        "B3": "Pendiente"
+      },
+      "explanation": "Validar con =SI(A3=\"\", \"Pendiente\", ...) previene mostrar cálculos incompletos.",
+      "explanationByLocale": {
+        "es": "Validar con =SI(A3=\"\", \"Pendiente\", ...) previene mostrar cálculos incompletos.",
+        "en": "Checking =IF(A3=\"\", \"Pending\", ...) prevents showing incomplete calculations.",
+        "de": "Das Prüfen mit =WENN(A3=\"\"; \"Ausstehend\"; ...) verhindert unvollständige Formelanzeigen.",
+        "fr": "Vérifier avec =SI(A3=\"\"; \"En attente\"; ...) évite d'afficher des calculs incomplets.",
+        "ja": "=IF(A3=\"\", \"未定\", ...) のように空白判定を挟むことで、未入力時の誤表示を防げます。",
+        "pt": "Verificar com =SE(A3=\"\"; \"Pendente\"; ...) evita exibir cálculos incompletos."
+      }
+    }
+  ]
+}
+

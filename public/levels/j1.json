@@ -1,0 +1,90 @@
+{
+  "ref": "J1",
+  "title": "Qué es y cuándo usarla",
+  "titleByLocale": {
+    "es": "Qué es y cuándo usarla",
+    "en": "What It Is & When to Use It",
+    "de": "Was es ist & Wann man es nutzt",
+    "fr": "Qu'est-ce que c'est et quand l'utiliser",
+    "ja": "ピボットテーブルの基本と活用場面",
+    "pt": "O que é e quando usar"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cuál es la principal ventaja de una Tabla Dinámica frente a escribir fórmulas manuales como SUMAR.SI?",
+      "promptByLocale": {
+        "es": "¿Cuál es la principal ventaja de una Tabla Dinámica frente a escribir fórmulas manuales como SUMAR.SI?",
+        "en": "What is the primary advantage of a Pivot Table over manually writing formulas like SUMIF?",
+        "de": "Was ist der größte Vorteil einer Pivot-Tabelle gegenüber manuellen Formeln wie SUMMEWENN?",
+        "fr": "Quel est le principal avantage d'un tableau croisé dynamique par rapport aux formules manuelles comme SOMME.SI ?",
+        "ja": "SUMIFなどの数式を手動で組むのと比べ、ピボットテーブルの最大の利点は何ですか？",
+        "pt": "Qual é a principal vantagem de uma Tabela Dinâmica sobre fórmulas manuais como SOMASE?"
+      },
+      "options": [
+        "Permite resumir miles de filas en segundos arrastrando campos sin escribir una sola fórmula",
+        "Pesa el doble de megabytes",
+        "Borra los datos de la hoja original",
+        "Requiere programar código en VBA"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Permite resumir miles de filas en segundos arrastrando campos sin escribir una sola fórmula",
+          "Pesa el doble de megabytes",
+          "Borra los datos de la hoja original",
+          "Requiere programar código en VBA"
+        ],
+        "en": [
+          "Summarizes thousands of rows in seconds simply by dragging fields without writing formulas",
+          "Doubles file size in megabytes",
+          "Erases source data from the sheet",
+          "Requires VBA coding"
+        ],
+        "de": [
+          "Fasst Tausende Zeilen in Sekunden durch Ziehen von Feldern formelfrei zusammen",
+          "Verdoppelt die Dateigröße",
+          "Löscht Quelldaten",
+          "Erfordert VBA-Programmierung"
+        ],
+        "fr": [
+          "Résume des milliers de lignes en quelques secondes par simple glisser-déposer sans formule",
+          "Double la taille du fichier",
+          "Supprime les données d'origine",
+          "Nécessite du code VBA"
+        ],
+        "ja": [
+          "数式を1行も書かずに、フィールドをドラッグ＆ドロップするだけで大量のデータを即座に集計・分析できる",
+          "ファイルサイズが2倍に膨らむ",
+          "元データを自動消去する",
+          "VBAプログラミングが必須になる"
+        ],
+        "pt": [
+          "Resume milhares de linhas em segundos arrastando campos sem escrever fórmulas",
+          "Dobra o tamanho do arquivo",
+          "Apaga os dados originais",
+          "Exige programação em VBA"
+        ]
+      },
+      "correct": "Permite resumir miles de filas en segundos arrastrando campos sin escribir una sola fórmula",
+      "correctByLocale": {
+        "es": "Permite resumir miles de filas en segundos arrastrando campos sin escribir una sola fórmula",
+        "en": "Summarizes thousands of rows in seconds simply by dragging fields without writing formulas",
+        "de": "Fasst Tausende Zeilen in Sekunden durch Ziehen von Feldern formelfrei zusammen",
+        "fr": "Résume des milliers de lignes en quelques secondes par simple glisser-déposer sans formule",
+        "ja": "数式を1行も書かずに、フィールドをドラッグ＆ドロップするだけで大量のデータを即座に集計・分析できる",
+        "pt": "Resume milhares de linhas em segundos arrastando campos sem escrever fórmulas"
+      },
+      "explanation": "Las tablas dinámicas son la herramienta número uno de análisis multidimensional para grandes volúmenes de datos.",
+      "explanationByLocale": {
+        "es": "Las tablas dinámicas son la herramienta número uno de análisis multidimensional para grandes volúmenes de datos.",
+        "en": "Pivot tables are the premier multidimensional data exploration tool in business analytics.",
+        "de": "Pivot-Tabellen sind das führende Werkzeug für schnelle mehrdimensionale Datenanalysen.",
+        "fr": "Les TCD sont l'outil numéro un pour l'analyse multidimensionnelle de données volumineuses.",
+        "ja": "ピボットテーブルは大量データを様々な切り口（多次元）で瞬時に分析できる最強のビジネスツールです。",
+        "pt": "As tabelas dinâmicas são a ferramenta número um de análise multidimensional corporativa."
+      }
+    }
+  ]
+}

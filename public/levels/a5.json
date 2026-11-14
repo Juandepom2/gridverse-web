@@ -1,0 +1,368 @@
+{
+  "ref": "A5",
+  "title": "Operaciones + − × ÷",
+  "titleByLocale": {
+    "es": "Operaciones + − × ÷",
+    "en": "Operations + − × ÷",
+    "de": "Grundrechenarten + − × ÷",
+    "fr": "Opérations + − × ÷",
+    "ja": "四則演算 + − × ÷",
+    "pt": "Operações + − × ÷"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "write_formula",
+      "prompt": "Suma las celdas A2 y B2 en la celda C2.",
+      "promptByLocale": {
+        "es": "Suma las celdas A2 y B2 en la celda C2.",
+        "en": "Add cells A2 and B2 in cell C2.",
+        "de": "Addiere die Zellen A2 und B2 in Zelle C2.",
+        "fr": "Additionne les cellules A2 et B2 dans la cellule C2.",
+        "ja": "C2セルで、セル A2 と B2 を足し算してください。",
+        "pt": "Some as células A2 e B2 na célula C2."
+      },
+      "correct": "=A2+B2",
+      "data": {
+        "A1": "Precio",
+        "B1": "Envío",
+        "C1": "Total",
+        "A2": "50",
+        "B2": "10"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Precio",
+          "B1": "Envío",
+          "C1": "Total",
+          "A2": "50",
+          "B2": "10"
+        },
+        "en": {
+          "A1": "Price",
+          "B1": "Shipping",
+          "C1": "Total",
+          "A2": "50",
+          "B2": "10"
+        },
+        "de": {
+          "A1": "Preis",
+          "B1": "Versand",
+          "C1": "Gesamt",
+          "A2": "50",
+          "B2": "10"
+        },
+        "fr": {
+          "A1": "Prix",
+          "B1": "Livraison",
+          "C1": "Total",
+          "A2": "50",
+          "B2": "10"
+        },
+        "ja": {
+          "A1": "価格",
+          "B1": "送料",
+          "C1": "合計",
+          "A2": "50",
+          "B2": "10"
+        },
+        "pt": {
+          "A1": "Preço",
+          "B1": "Frete",
+          "C1": "Total",
+          "A2": "50",
+          "B2": "10"
+        }
+      },
+      "targetCell": "C2",
+      "suggestions": [
+        "=",
+        "A2",
+        "+",
+        "B2",
+        "-"
+      ],
+      "explanation": "El operador suma (+) une los valores de ambas celdas para calcular el total.",
+      "explanationByLocale": {
+        "es": "El operador suma (+) une los valores de ambas celdas para calcular el total.",
+        "en": "The addition operator (+) adds the values of both cells to calculate the total.",
+        "de": "Der Additionsoperator (+) addiert die Werte beider Zellen zum Gesamtwert.",
+        "fr": "L'opérateur d'addition (+) additionne les valeurs des deux cellules pour obtenir le total.",
+        "ja": "加算演算子（+）を使って両セルの値を足し合わせ、合計を計算します。",
+        "pt": "O operador de adição (+) soma os valores de ambas as células para calcular o total."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Cuánto resulta la fórmula =10*2+5 según el orden de operaciones?",
+      "promptByLocale": {
+        "es": "¿Cuánto resulta la fórmula =10*2+5 según el orden de operaciones?",
+        "en": "What is the result of =10*2+5 according to the order of operations?",
+        "de": "Was ist das Ergebnis von =10*2+5 gemäß der mathematischen Rangfolge?",
+        "fr": "Quel est le résultat de la formule =10*2+5 selon la priorité des opérations ?",
+        "ja": "演算の優先順位に従うと、数式「=10*2+5」の結果はいくつになりますか？",
+        "pt": "Quanto resulta a fórmula =10*2+5 segundo a ordem das operações?"
+      },
+      "formula": "=10*2+5",
+      "formulaByLocale": {
+        "es": "=10*2+5",
+        "en": "=10*2+5",
+        "de": "=10*2+5",
+        "fr": "=10*2+5",
+        "ja": "=10*2+5",
+        "pt": "=10*2+5"
+      },
+      "correct": "25",
+      "data": {},
+      "options": [
+        "25",
+        "70",
+        "17",
+        "30"
+      ],
+      "explanation": "Por jerarquía de operaciones (PEMDAS), la multiplicación se realiza primero: 10 * 2 = 20, y luego 20 + 5 = 25.",
+      "explanationByLocale": {
+        "es": "Por jerarquía de operaciones (PEMDAS), la multiplicación se realiza primero: 10 * 2 = 20, y luego 20 + 5 = 25.",
+        "en": "Following operator precedence (PEMDAS), multiplication runs first: 10 * 2 = 20, then 20 + 5 = 25.",
+        "de": "Nach den Rechenregeln (Punkt vor Strich) wird zuerst multipliziert: 10 * 2 = 20, dann 20 + 5 = 25.",
+        "fr": "Selon la priorité opératoire (PEMDAS), la multiplication passe d'abord : 10 * 2 = 20, puis 20 + 5 = 25.",
+        "ja": "計算の優先順位（PEMDAS）により掛け算が優先されます。10 * 2 = 20、続いて 20 + 5 = 25 となります。",
+        "pt": "Pela hierarquia de operações (PEMDAS), a multiplicação é feita primeiro: 10 * 2 = 20 e depois 20 + 5 = 25."
+      },
+      "optionsByLocale": {
+        "es": [
+          "25",
+          "70",
+          "17",
+          "30"
+        ],
+        "en": [
+          "25",
+          "70",
+          "17",
+          "30"
+        ],
+        "de": [
+          "25",
+          "70",
+          "17",
+          "30"
+        ],
+        "fr": [
+          "25",
+          "70",
+          "17",
+          "30"
+        ],
+        "ja": [
+          "25",
+          "70",
+          "17",
+          "30"
+        ],
+        "pt": [
+          "25",
+          "70",
+          "17",
+          "30"
+        ]
+      },
+      "correctByLocale": {
+        "es": "25",
+        "en": "25",
+        "de": "25",
+        "fr": "25",
+        "ja": "25",
+        "pt": "25"
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para restar el costo (B2) de la venta (A2).",
+      "promptByLocale": {
+        "es": "Arma la fórmula para restar el costo (B2) de la venta (A2).",
+        "en": "Build the formula to subtract the cost (B2) from the sale (A2).",
+        "de": "Erstelle die Formel, um die Kosten (B2) vom Umsatz (A2) abzuziehen.",
+        "fr": "Construis la formule pour soustraire le coût (B2) de la vente (A2).",
+        "ja": "売上（A2）から原価（B2）を差し引く数式を組み立ててください。",
+        "pt": "Monte a fórmula para subtrair o custo (B2) da venda (A2)."
+      },
+      "correct": "=A2-B2",
+      "blocks": [
+        "=",
+        "A2",
+        "-",
+        "B2",
+        "+"
+      ],
+      "explanation": "El signo de resta (-) calcula la ganancia restando el costo B2 del ingreso A2.",
+      "explanationByLocale": {
+        "es": "El signo de resta (-) calcula la ganancia restando el costo B2 del ingreso A2.",
+        "en": "The subtraction sign (-) calculates profit by deducting cost B2 from revenue A2.",
+        "de": "Das Minuszeichen (-) berechnet den Gewinn, indem Kosten B2 vom Erlös A2 abgezogen werden.",
+        "fr": "Le signe de soustraction (-) calcule le bénéfice en déduisant le coût B2 du revenu A2.",
+        "ja": "引き算（-）を使って売上A2から原価B2を引くことで、利益を求めます。",
+        "pt": "O sinal de subtração (-) calcula o lucro deduzindo o custo B2 da receita A2."
+      }
+    },
+    {
+      "type": "write_formula",
+      "prompt": "Calcula el total multiplicando cantidad (A2) por precio (B2).",
+      "promptByLocale": {
+        "es": "Calcula el total multiplicando cantidad (A2) por precio (B2).",
+        "en": "Calculate the total by multiplying quantity (A2) by price (B2).",
+        "de": "Berechne den Gesamtbetrag, indem du Menge (A2) mit Preis (B2) multiplizierst.",
+        "fr": "Calcule le total en multipliant la quantité (A2) par le prix (B2).",
+        "ja": "数量（A2）と単価（B2）を掛け算して合計を計算してください。",
+        "pt": "Calcule o total multiplicando a quantidade (A2) pelo preço (B2)."
+      },
+      "correct": "=A2*B2",
+      "data": {
+        "A1": "Cant",
+        "B1": "Precio",
+        "A2": "5",
+        "B2": "20"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Cant",
+          "B1": "Precio",
+          "A2": "5",
+          "B2": "20"
+        },
+        "en": {
+          "A1": "Qty",
+          "B1": "Price",
+          "A2": "5",
+          "B2": "20"
+        },
+        "de": {
+          "A1": "Menge",
+          "B1": "Preis",
+          "A2": "5",
+          "B2": "20"
+        },
+        "fr": {
+          "A1": "Qté",
+          "B1": "Prix",
+          "A2": "5",
+          "B2": "20"
+        },
+        "ja": {
+          "A1": "数量",
+          "B1": "単価",
+          "A2": "5",
+          "B2": "20"
+        },
+        "pt": {
+          "A1": "Qtd",
+          "B1": "Preço",
+          "A2": "5",
+          "B2": "20"
+        }
+      },
+      "targetCell": "C2",
+      "suggestions": [
+        "=",
+        "A2",
+        "*",
+        "B2",
+        "/"
+      ],
+      "explanation": "En Excel, la multiplicación se realiza siempre con el operador asterisco (*).",
+      "explanationByLocale": {
+        "es": "En Excel, la multiplicación se realiza siempre con el operador asterisco (*).",
+        "en": "In Excel, multiplication is always performed with the asterisk operator (*).",
+        "de": "In Excel wird die Multiplikation immer mit dem Sternchen-Operator (*) durchgeführt.",
+        "fr": "Dans Excel, la multiplication s'effectue toujours avec l'opérateur astérisque (*).",
+        "ja": "Excelでは掛け算の演算子として必ずアスタリスク（*）を使用します。",
+        "pt": "No Excel, a multiplicação é sempre feita utilizando o operador asterisco (*)."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué símbolo se usa en Excel para la división?",
+      "promptByLocale": {
+        "es": "¿Qué símbolo se usa en Excel para la división?",
+        "en": "Which symbol is used in Excel for division?",
+        "de": "Welches Symbol wird in Excel für die Division verwendet?",
+        "fr": "Quel symbole est utilisé dans Excel pour la division ?",
+        "ja": "Excelで割り算を行うときに使用する記号はどれですか？",
+        "pt": "Qual símbolo é usado no Excel para divisão?"
+      },
+      "formula": "Operador",
+      "formulaByLocale": {
+        "es": "Operador",
+        "en": "Operator",
+        "de": "Operator",
+        "fr": "Opérateur",
+        "ja": "演算子",
+        "pt": "Operador"
+      },
+      "correct": "/",
+      "data": {},
+      "options": [
+        "/",
+        "÷",
+        ":",
+        "\\"
+      ],
+      "explanation": "La barra inclinada (slash /) es el operador estándar para dividir en hojas de cálculo.",
+      "explanationByLocale": {
+        "es": "La barra inclinada (slash /) es el operador estándar para dividir en hojas de cálculo.",
+        "en": "The forward slash (/) is the standard division operator in spreadsheets.",
+        "de": "Der Schrägstrich (/) ist der Standard-Divisionsoperator in Tabellenkalkulationen.",
+        "fr": "La barre oblique (slash /) est l'opérateur standard de division dans les tableurs.",
+        "ja": "スラッシュ（/）が表計算ソフトにおける標準的な割り算の演算子です。",
+        "pt": "A barra inclinada (/) é o operador padrão para divisão em planilhas."
+      },
+      "optionsByLocale": {
+        "es": [
+          "/",
+          "÷",
+          ":",
+          "\\"
+        ],
+        "en": [
+          "/",
+          "÷",
+          ":",
+          "\\"
+        ],
+        "de": [
+          "/",
+          "÷",
+          ":",
+          "\\"
+        ],
+        "fr": [
+          "/",
+          "÷",
+          ":",
+          "\\"
+        ],
+        "ja": [
+          "/",
+          "÷",
+          ":",
+          "\\"
+        ],
+        "pt": [
+          "/",
+          "÷",
+          ":",
+          "\\"
+        ]
+      },
+      "correctByLocale": {
+        "es": "/",
+        "en": "/",
+        "de": "/",
+        "fr": "/",
+        "ja": "/",
+        "pt": "/"
+      }
+    }
+  ]
+}

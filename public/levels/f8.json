@@ -1,0 +1,124 @@
+{
+  "ref": "F8",
+  "title": "Jefe: Fechas como texto",
+  "titleByLocale": {
+    "es": "Jefe: Fechas como texto",
+    "en": "Boss: Dates as Text",
+    "de": "Boss: Datumsangaben als Text",
+    "fr": "Boss : Dates au format texte",
+    "ja": "ボス：文字列日付エラー",
+    "pt": "Chefe: Datas como texto"
+  },
+  "version": 1,
+  "rewardXp": 35,
+  "exercises": [
+    {
+      "type": "find_error",
+      "prompt": "La celda C3 muestra error #¡VALOR! al calcular los días transcurridos. Toca la celda que contiene la fecha corrupta ingresada como texto:",
+      "promptByLocale": {
+        "es": "La celda C3 muestra error #¡VALOR! al calcular los días transcurridos. Toca la celda que contiene la fecha corrupta ingresada como texto:",
+        "en": "Cell C3 shows a #VALUE! error when calculating elapsed days. Tap the cell with the corrupted date stored as text:",
+        "de": "Zelle C3 zeigt einen #WERT!-Fehler bei der Tagesdifferenz. Tippe auf die Zelle mit dem als Text formatierten Fehlerdatum:",
+        "fr": "La cellule C3 affiche une erreur #VALEUR! lors du calcul des jours. Touchez la cellule avec la fausse date saisie en texte :",
+        "ja": "経過日数を計算するセルC3が #VALUE! エラーを起こしています。文字列として誤入力された日付のセルをタップしてください：",
+        "pt": "A célula C3 exibe erro #VALOR! ao calcular os dias decorridos. Toque na célula com a data corrompida inserida como texto:"
+      },
+      "correct": "B3",
+      "errorCell": "C3",
+      "data": {
+        "A1": "Evento",
+        "B1": "Fecha",
+        "C1": "Días restantes",
+        "A2": "Fase 1",
+        "B2": "2024-09-01",
+        "C2": "=B2-HOY()",
+        "A3": "Fase 2",
+        "B3": "'2024.13.45",
+        "C3": "#¡VALOR!"
+      },
+      "explanation": "B3 tiene un apóstrofe y un mes/día inexistente ('2024.13.45), por lo que Excel la interpreta como texto y no puede hacer operaciones matemáticas con ella.",
+      "explanationByLocale": {
+        "es": "B3 tiene un apóstrofe y un mes/día inexistente ('2024.13.45), por lo que Excel la interpreta como texto y no puede hacer operaciones matemáticas con ella.",
+        "en": "B3 has an apostrophe and non-existent day/month ('2024.13.45), forcing Excel to treat it as plain text unable to do math.",
+        "de": "B3 hat ein Hochkomma und ungültige Werte ('2024.13.45), weshalb Excel sie als Text behandelt und nicht berechnen kann.",
+        "fr": "B3 possède une apostrophe et des valeurs invalides ('2024.13.45), ce qui force Excel à la traiter comme texte incalculable.",
+        "ja": "B3には先頭アポストロフィと存在しない日付 ('2024.13.45) が入っており、Excelが計算不可能な文字列として扱っています。",
+        "pt": "B3 possui um apóstrofo e valores inexistentes ('2024.13.45), fazendo o Excel tratá-la como texto sem poder calcular."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué función de Excel permite convertir una fecha escrita en texto reconocible (ej. \"2024-05-15\") en un número de serie de fecha real?",
+      "promptByLocale": {
+        "es": "¿Qué función de Excel permite convertir una fecha escrita en texto reconocible (ej. \"2024-05-15\") en un número de serie de fecha real?",
+        "en": "Which Excel function converts a recognized text date (e.g. \"2024-05-15\") into a true serial date number?",
+        "de": "Welche Excel-Funktion wandelt ein Datum im Textformat (z.B. \"2024-05-15\") in eine echte serielle Datumszahl um?",
+        "fr": "Quelle fonction Excel convertit une date écrite en texte valide (ex. \"2024-05-15\") en véritable numéro de série de date ?",
+        "ja": "文字列として入力された日付（例：\"2024-05-15\"）を本物の日付シリアル値に変換するExcel関数はどれですか？",
+        "pt": "Qual função do Excel converte uma data em formato de texto (ex. \"2024-05-15\") em um número de série de data real?"
+      },
+      "options": [
+        "FECHANUMERO / DATEVALUE",
+        "TEXTO / TEXT",
+        "CONCATENAR / CONCAT",
+        "EXTRAE / MID"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "FECHANUMERO / DATEVALUE",
+          "TEXTO / TEXT",
+          "CONCATENAR / CONCAT",
+          "EXTRAE / MID"
+        ],
+        "en": [
+          "DATEVALUE",
+          "TEXT",
+          "CONCAT",
+          "MID"
+        ],
+        "de": [
+          "DATWERT / DATEVALUE",
+          "TEXT",
+          "VERKETTEN",
+          "TEIL"
+        ],
+        "fr": [
+          "DATEVAL / DATEVALUE",
+          "TEXTE",
+          "CONCATENER",
+          "STXT"
+        ],
+        "ja": [
+          "DATEVALUE（日付値）",
+          "TEXT",
+          "CONCAT",
+          "MID"
+        ],
+        "pt": [
+          "DATA.VALOR / DATEVALUE",
+          "TEXTO",
+          "CONCATENAR",
+          "EXT.TEXTO"
+        ]
+      },
+      "correct": "FECHANUMERO / DATEVALUE",
+      "correctByLocale": {
+        "es": "FECHANUMERO / DATEVALUE",
+        "en": "DATEVALUE",
+        "de": "DATWERT / DATEVALUE",
+        "fr": "DATEVAL / DATEVALUE",
+        "ja": "DATEVALUE（日付値）",
+        "pt": "DATA.VALOR / DATEVALUE"
+      },
+      "explanation": "FECHANUMERO(texto_fecha) o DATEVALUE convierte representaciones de fecha textuales en números de serie manipulables.",
+      "explanationByLocale": {
+        "es": "FECHANUMERO(texto_fecha) o DATEVALUE convierte representaciones de fecha textuales en números de serie manipulables.",
+        "en": "DATEVALUE(date_text) converts textual date representations into operable date serials.",
+        "de": "DATWERT(datumstext) wandelt Textdaten in echte Datums-Seriennummern um.",
+        "fr": "DATEVAL(texte_date) convertit les chaînes de dates en numéros de série calculables.",
+        "ja": "DATEVALUE(日付文字列) 関数は、文字列形式の日付をExcelで計算可能なシリアル値に変換します。",
+        "pt": "DATA.VALOR(texto_data) converte textos de data em números de série válidos para cálculos."
+      }
+    }
+  ]
+}

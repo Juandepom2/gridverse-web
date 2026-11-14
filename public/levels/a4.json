@@ -1,0 +1,537 @@
+{
+  "ref": "A4",
+  "title": "Formato de celdas",
+  "titleByLocale": {
+    "es": "Formato de celdas",
+    "en": "Cell Formatting",
+    "de": "Zellformatierung",
+    "fr": "Format de cellule",
+    "ja": "セルの書式設定",
+    "pt": "Formatação de células"
+  },
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Si en una celda escribes 0.15 y aplicas el formato de Porcentaje (%), ¿cómo se muestra en pantalla?",
+      "promptByLocale": {
+        "es": "Si en una celda escribes 0.15 y aplicas el formato de Porcentaje (%), ¿cómo se muestra en pantalla?",
+        "en": "If you enter 0.15 in a cell and apply Percentage format (%), how does it appear on screen?",
+        "de": "Wenn du 0.15 in eine Zelle eingibst und das Prozentformat (%) anwendest, wie wird es angezeigt?",
+        "fr": "Si tu saisis 0,15 dans une cellule et appliques le format Pourcentage (%), comment s'affiche-t-il ?",
+        "ja": "セルに「0.15」と入力してパーセンテージ表示形式（%）を適用すると、どのように表示されますか？",
+        "pt": "Se você digitar 0,15 em uma célula e aplicar o formato de Porcentagem (%), como ele é exibido na tela?"
+      },
+      "formula": "Formato %",
+      "formulaByLocale": {
+        "es": "Formato %",
+        "en": "Percentage Format",
+        "de": "Prozentformat",
+        "fr": "Format %",
+        "ja": "パーセント書式",
+        "pt": "Formato %"
+      },
+      "correct": "15%",
+      "data": {},
+      "options": [
+        "15%",
+        "0.15%",
+        "150%",
+        "0.0015%"
+      ],
+      "explanation": "El formato porcentaje multiplica el valor por 100 y le añade el símbolo % visualmente, sin alterar el número real.",
+      "explanationByLocale": {
+        "es": "El formato porcentaje multiplica el valor por 100 y le añade el símbolo % visualmente, sin alterar el número real.",
+        "en": "Percentage format visually multiplies the number by 100 and adds the % symbol without changing the underlying value.",
+        "de": "Das Prozentformat multipliziert den Wert visuell mit 100 und hängt ein % an, ohne den tatsächlichen Wert zu verändern.",
+        "fr": "Le format pourcentage multiplie visuellement par 100 et ajoute le symbole % sans modifier la valeur réelle sous-jacente.",
+        "ja": "パーセンテージ形式は数値を100倍して「%」記号を付与して表示し、内部の実数値は保持されます。",
+        "pt": "O formato de porcentagem multiplica visualmente o valor por 100 e adiciona o símbolo %, sem alterar o número real."
+      },
+      "optionsByLocale": {
+        "es": [
+          "15%",
+          "0.15%",
+          "150%",
+          "0.0015%"
+        ],
+        "en": [
+          "15%",
+          "0.15%",
+          "150%",
+          "0.0015%"
+        ],
+        "de": [
+          "15%",
+          "0.15%",
+          "150%",
+          "0.0015%"
+        ],
+        "fr": [
+          "15%",
+          "0.15%",
+          "150%",
+          "0.0015%"
+        ],
+        "ja": [
+          "15%",
+          "0.15%",
+          "150%",
+          "0.0015%"
+        ],
+        "pt": [
+          "15%",
+          "0.15%",
+          "150%",
+          "0.0015%"
+        ]
+      },
+      "correctByLocale": {
+        "es": "15%",
+        "en": "15%",
+        "de": "15%",
+        "fr": "15%",
+        "ja": "15%",
+        "pt": "15%"
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona las celdas que contienen montos monetarios en la columna Salario (C2:C5).",
+      "promptByLocale": {
+        "es": "Selecciona las celdas que contienen montos monetarios en la columna Salario (C2:C5).",
+        "en": "Select the cells containing currency amounts in the Salary column (C2:C5).",
+        "de": "Wähle die Zellen mit Währungsbeträgen in der Spalte Gehalt aus (C2:C5).",
+        "fr": "Sélectionne les cellules contenant des montants monétaires dans la colonne Salaire (C2:C5).",
+        "ja": "給与列の通貨金額が入っているセル範囲（C2:C5）を選択してください。",
+        "pt": "Selecione as células que contêm valores monetários na coluna Salário (C2:C5)."
+      },
+      "correct": "C2:C5",
+      "data": {
+        "A1": "ID",
+        "B1": "Empleado",
+        "C1": "Salario",
+        "A2": "101",
+        "B2": "Ana",
+        "C2": "$1,200.00",
+        "A3": "102",
+        "B3": "Luis",
+        "C3": "$1,450.00",
+        "A4": "103",
+        "B4": "Carlos",
+        "C4": "$980.00",
+        "A5": "104",
+        "B5": "Elena",
+        "C5": "$1,800.00"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "ID",
+          "B1": "Empleado",
+          "C1": "Salario",
+          "A2": "101",
+          "B2": "Ana",
+          "C2": "$1,200.00",
+          "A3": "102",
+          "B3": "Luis",
+          "C3": "$1,450.00",
+          "A4": "103",
+          "B4": "Carlos",
+          "C4": "$980.00",
+          "A5": "104",
+          "B5": "Elena",
+          "C5": "$1,800.00"
+        },
+        "en": {
+          "A1": "ID",
+          "B1": "Employee",
+          "C1": "Salary",
+          "A2": "101",
+          "B2": "Ana",
+          "C2": "$1,200.00",
+          "A3": "102",
+          "B3": "Luis",
+          "C3": "$1,450.00",
+          "A4": "103",
+          "B4": "Carlos",
+          "C4": "$980.00",
+          "A5": "104",
+          "B5": "Elena",
+          "C5": "$1,800.00"
+        },
+        "de": {
+          "A1": "ID",
+          "B1": "Mitarbeiter",
+          "C1": "Gehalt",
+          "A2": "101",
+          "B2": "Ana",
+          "C2": "$1,200.00",
+          "A3": "102",
+          "B3": "Luis",
+          "C3": "$1,450.00",
+          "A4": "103",
+          "B4": "Carlos",
+          "C4": "$980.00",
+          "A5": "104",
+          "B5": "Elena",
+          "C5": "$1,800.00"
+        },
+        "fr": {
+          "A1": "ID",
+          "B1": "Employé",
+          "C1": "Salaire",
+          "A2": "101",
+          "B2": "Ana",
+          "C2": "$1,200.00",
+          "A3": "102",
+          "B3": "Luis",
+          "C3": "$1,450.00",
+          "A4": "103",
+          "B4": "Carlos",
+          "C4": "$980.00",
+          "A5": "104",
+          "B5": "Elena",
+          "C5": "$1,800.00"
+        },
+        "ja": {
+          "A1": "ID",
+          "B1": "社員名",
+          "C1": "給与",
+          "A2": "101",
+          "B2": "Ana",
+          "C2": "$1,200.00",
+          "A3": "102",
+          "B3": "Luis",
+          "C3": "$1,450.00",
+          "A4": "103",
+          "B4": "Carlos",
+          "C4": "$980.00",
+          "A5": "104",
+          "B5": "Elena",
+          "C5": "$1,800.00"
+        },
+        "pt": {
+          "A1": "ID",
+          "B1": "Funcionário",
+          "C1": "Salário",
+          "A2": "101",
+          "B2": "Ana",
+          "C2": "$1,200.00",
+          "A3": "102",
+          "B3": "Luis",
+          "C3": "$1,450.00",
+          "A4": "103",
+          "B4": "Carlos",
+          "C4": "$980.00",
+          "A5": "104",
+          "B5": "Elena",
+          "C5": "$1,800.00"
+        }
+      },
+      "explanation": "El rango C2:C5 reúne todos los salarios formateados con símbolo de moneda y dos decimales.",
+      "explanationByLocale": {
+        "es": "El rango C2:C5 reúne todos los salarios formateados con símbolo de moneda y dos decimales.",
+        "en": "The range C2:C5 groups all salaries formatted with a currency symbol and two decimal places.",
+        "de": "Der Bereich C2:C5 umfasst alle Gehälter, die mit Währungssymbol und zwei Dezimalstellen formatiert sind.",
+        "fr": "La plage C2:C5 regroupe tous les salaires avec le symbole monétaire et deux décimales.",
+        "ja": "範囲 C2:C5 は、通貨記号と小数点以下2桁の書式が設定された給与データをまとめています。",
+        "pt": "O intervalo C2:C5 reúne todos os salários formatados com símbolo de moeda e duas casas decimais."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si una celda almacena 45.678 y aplicas formato con 2 decimales, ¿qué valor exacto se muestra en pantalla?",
+      "promptByLocale": {
+        "es": "Si una celda almacena 45.678 y aplicas formato con 2 decimales, ¿qué valor exacto se muestra en pantalla?",
+        "en": "If a cell contains 45.678 and you apply a 2-decimal format, what exact value is displayed?",
+        "de": "Wenn eine Zelle 45.678 enthält und du 2 Dezimalstellen formatierst, welcher genaue Wert wird angezeigt?",
+        "fr": "Si une cellule stocke 45,678 et que tu appliques un format à 2 décimales, quelle valeur exacte s'affiche ?",
+        "ja": "セルに「45.678」が格納されており小数点以下2桁の表示形式を適用した場合、画面には何と表示されますか？",
+        "pt": "Se uma célula armazena 45,678 e você aplica formatação com 2 casas decimais, qual valor exato é exibido?"
+      },
+      "formula": "45.678 -> 2 decimales",
+      "formulaByLocale": {
+        "es": "45.678 -> 2 decimales",
+        "en": "45.678 -> 2 decimals",
+        "de": "45.678 -> 2 Dezimalstellen",
+        "fr": "45.678 -> 2 décimales",
+        "ja": "45.678 -> 小数点2桁",
+        "pt": "45.678 -> 2 decimais"
+      },
+      "correct": "45.68",
+      "data": {},
+      "options": [
+        "45.68",
+        "45.67",
+        "46.00",
+        "45.7"
+      ],
+      "explanation": "El formato visual redondea al decimal más cercano: el 8 hace que .67 pase a verse como .68.",
+      "explanationByLocale": {
+        "es": "El formato visual redondea al decimal más cercano: el 8 hace que .67 pase a verse como .68.",
+        "en": "Visual formatting rounds to the nearest decimal: the trailing 8 causes .67 to be displayed as .68.",
+        "de": "Die visuelle Formatierung rundet auf die nächste Dezimalstelle: die 8 rundet .67 zu .68 auf.",
+        "fr": "Le format d'affichage arrondit au plus proche : le 8 final fait passer .67 à .68 à l'écran.",
+        "ja": "表示形式により最も近い桁数に四捨五入されます。末尾の8により「.67」は「.68」として表示されます。",
+        "pt": "A formatação visual arredonda para o decimal mais próximo: o 8 faz com que .67 passe a ser exibido como .68."
+      },
+      "optionsByLocale": {
+        "es": [
+          "45.68",
+          "45.67",
+          "46.00",
+          "45.7"
+        ],
+        "en": [
+          "45.68",
+          "45.67",
+          "46.00",
+          "45.7"
+        ],
+        "de": [
+          "45.68",
+          "45.67",
+          "46.00",
+          "45.7"
+        ],
+        "fr": [
+          "45.68",
+          "45.67",
+          "46.00",
+          "45.7"
+        ],
+        "ja": [
+          "45.68",
+          "45.67",
+          "46.00",
+          "45.7"
+        ],
+        "pt": [
+          "45.68",
+          "45.67",
+          "46.00",
+          "45.7"
+        ]
+      },
+      "correctByLocale": {
+        "es": "45.68",
+        "en": "45.68",
+        "de": "45.68",
+        "fr": "45.68",
+        "ja": "45.68",
+        "pt": "45.68"
+      }
+    },
+    {
+      "type": "find_error",
+      "prompt": "Una de estas celdas está guardada como texto (con un apóstrofe al inicio) y no se suma. Tócala:",
+      "promptByLocale": {
+        "es": "Una de estas celdas está guardada como texto (con un apóstrofe al inicio) y no se suma. Tócala:",
+        "en": "One of these cells is stored as text (with a leading apostrophe) and is ignored in sums. Tap it:",
+        "de": "Eine dieser Zellen ist als Text gespeichert (mit einem Apostroph am Anfang) und wird nicht addiert. Tippe darauf:",
+        "fr": "L'une de ces cellules est stockée sous forme de texte (avec une apostrophe au début) et n'est pas additionnée. Touche-la :",
+        "ja": "これらのセルのうち1つは先頭にアポストロフィが付いた文字列として保存されており、合計から除外されます。そのセルをタップしてください：",
+        "pt": "Uma destas células está salva como texto (com apóstrofo no início) e não é somada. Toque nela:"
+      },
+      "correct": "B4",
+      "errorCell": "B4",
+      "data": {
+        "A1": "Mes",
+        "B1": "Venta",
+        "A2": "Ene",
+        "B2": "500",
+        "A3": "Feb",
+        "B3": "700",
+        "A4": "Mar",
+        "B4": "'450",
+        "A5": "Total",
+        "B5": "1200"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Mes",
+          "B1": "Venta",
+          "A2": "Ene",
+          "B2": "500",
+          "A3": "Feb",
+          "B3": "700",
+          "A4": "Mar",
+          "B4": "'450",
+          "A5": "Total",
+          "B5": "1200"
+        },
+        "en": {
+          "A1": "Month",
+          "B1": "Sales",
+          "A2": "Jan",
+          "B2": "500",
+          "A3": "Feb",
+          "B3": "700",
+          "A4": "Mar",
+          "B4": "'450",
+          "A5": "Total",
+          "B5": "1200"
+        },
+        "de": {
+          "A1": "Monat",
+          "B1": "Umsatz",
+          "A2": "Jan",
+          "B2": "500",
+          "A3": "Feb",
+          "B3": "700",
+          "A4": "Mär",
+          "B4": "'450",
+          "A5": "Gesamt",
+          "B5": "1200"
+        },
+        "fr": {
+          "A1": "Mois",
+          "B1": "Ventes",
+          "A2": "Jan",
+          "B2": "500",
+          "A3": "Fév",
+          "B3": "700",
+          "A4": "Mar",
+          "B4": "'450",
+          "A5": "Total",
+          "B5": "1200"
+        },
+        "ja": {
+          "A1": "月",
+          "B1": "売上",
+          "A2": "1月",
+          "B2": "500",
+          "A3": "2月",
+          "B3": "700",
+          "A4": "3月",
+          "B4": "'450",
+          "A5": "合計",
+          "B5": "1200"
+        },
+        "pt": {
+          "A1": "Mês",
+          "B1": "Vendas",
+          "A2": "Jan",
+          "B2": "500",
+          "A3": "Fev",
+          "B3": "700",
+          "A4": "Mar",
+          "B4": "'450",
+          "A5": "Total",
+          "B5": "1200"
+        }
+      },
+      "displayValues": {
+        "B2": "500",
+        "B3": "700",
+        "B4": "'450",
+        "B5": "1200"
+      },
+      "explanation": "La celda B4 contiene un apóstrofe inicial que fuerza al número a comportarse como texto, por lo que SUMA la omite.",
+      "explanationByLocale": {
+        "es": "La celda B4 contiene un apóstrofe inicial que fuerza al número a comportarse como texto, por lo que SUMA la omite.",
+        "en": "Cell B4 has a leading apostrophe that forces the number to behave as text, causing SUM to ignore it.",
+        "de": "Zelle B4 enthält ein vorangestelltes Apostroph, das die Zahl als Text behandelt; SUMME ignoriert sie daher.",
+        "fr": "La cellule B4 contient une apostrophe initiale qui force le nombre en texte, ainsi SOMME l'ignore.",
+        "ja": "セル B4 は先頭にアポストロフィがあるため文字列扱いとなり、SUM関数による合計計算から除外されています。",
+        "pt": "A célula B4 contém um apóstrofo inicial que força o número como texto, fazendo a função SOMA ignorá-la."
+      }
+    },
+    {
+      "type": "write_formula",
+      "prompt": "En B5, calcula la suma real sumando B2 más B3.",
+      "promptByLocale": {
+        "es": "En B5, calcula la suma real sumando B2 más B3.",
+        "en": "In B5, calculate the actual total by adding B2 plus B3.",
+        "de": "Berechne in B5 die Summe, indem du B2 und B3 addierst.",
+        "fr": "En B5, calcule la somme réelle en additionnant B2 plus B3.",
+        "ja": "B5セルで、B2 と B3 を足し算して実際の合計を計算してください。",
+        "pt": "Em B5, calcule a soma real somando B2 mais B3."
+      },
+      "correct": "=B2+B3",
+      "targetCell": "B5",
+      "data": {
+        "A1": "Mes",
+        "B1": "Venta",
+        "A2": "Ene",
+        "B2": "500",
+        "A3": "Feb",
+        "B3": "700",
+        "A5": "Suma"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Mes",
+          "B1": "Venta",
+          "A2": "Ene",
+          "B2": "500",
+          "A3": "Feb",
+          "B3": "700",
+          "A5": "Suma"
+        },
+        "en": {
+          "A1": "Month",
+          "B1": "Sales",
+          "A2": "Jan",
+          "B2": "500",
+          "A3": "Feb",
+          "B3": "700",
+          "A5": "Sum"
+        },
+        "de": {
+          "A1": "Monat",
+          "B1": "Umsatz",
+          "A2": "Jan",
+          "B2": "500",
+          "A3": "Feb",
+          "B3": "700",
+          "A5": "Summe"
+        },
+        "fr": {
+          "A1": "Mois",
+          "B1": "Ventes",
+          "A2": "Jan",
+          "B2": "500",
+          "A3": "Fév",
+          "B3": "700",
+          "A5": "Somme"
+        },
+        "ja": {
+          "A1": "月",
+          "B1": "売上",
+          "A2": "1月",
+          "B2": "500",
+          "A3": "2月",
+          "B3": "700",
+          "A5": "合計"
+        },
+        "pt": {
+          "A1": "Mês",
+          "B1": "Vendas",
+          "A2": "Jan",
+          "B2": "500",
+          "A3": "Fev",
+          "B3": "700",
+          "A5": "Soma"
+        }
+      },
+      "suggestions": [
+        "=",
+        "B2",
+        "+",
+        "B3",
+        "*"
+      ],
+      "explanation": "Sumar celdas con valores numéricos válidos asegura resultados matemáticos precisos.",
+      "explanationByLocale": {
+        "es": "Sumar celdas con valores numéricos válidos asegura resultados matemáticos precisos.",
+        "en": "Adding cells with valid numeric values guarantees accurate mathematical results.",
+        "de": "Das Addieren von Zellen mit gültigen Zahlenwerten stellt präzise Rechenergebnisse sicher.",
+        "fr": "Additionner des cellules avec des valeurs numériques valides garantit des résultats mathématiques exacts.",
+        "ja": "有効な数値が入っているセル同士を足し算することで、正確な計算結果が得られます。",
+        "pt": "Somar células com valores numéricos válidos garante resultados matemáticos precisos."
+      }
+    }
+  ]
+}

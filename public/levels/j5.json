@@ -1,0 +1,90 @@
+{
+  "ref": "J5",
+  "title": "Segmentaciones (Slicers)",
+  "titleByLocale": {
+    "es": "Segmentaciones (Slicers)",
+    "en": "Slicers & Timelines",
+    "de": "Datenschnitte (Slicers)",
+    "fr": "Segments (Slicers)",
+    "ja": "スライサーとタイムライン",
+    "pt": "Segmentações de dados (Slicers)"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué es una 'Segmentación de datos' (Slicer) en una Tabla Dinámica?",
+      "promptByLocale": {
+        "es": "¿Qué es una 'Segmentación de datos' (Slicer) en una Tabla Dinámica?",
+        "en": "What is a 'Slicer' in a PivotTable environment?",
+        "de": "Was ist ein 'Datenschnitt' (Slicer) in einer Pivot-Tabelle?",
+        "fr": "Qu'est-ce qu'un 'Segment' (Slicer) dans un tableau croisé dynamique ?",
+        "ja": "ピボットテーブルにおける「スライサー（Slicer）」とは何ですか？",
+        "pt": "O que é uma 'Segmentação de dados' (Slicer) em uma Tabela Dinâmica?"
+      },
+      "options": [
+        "Un panel interactivo con botones visuales para filtrar datos con un solo clic",
+        "Una herramienta que borra duplicados",
+        "Un tipo de letra especial para imprimir",
+        "Un comando para cerrar el libro"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Un panel interactivo con botones visuales para filtrar datos con un solo clic",
+          "Una herramienta que borra duplicados",
+          "Un tipo de letra especial para imprimir",
+          "Un comando para cerrar el libro"
+        ],
+        "en": [
+          "An interactive visual button panel for one-click filtering",
+          "A tool that deletes duplicate records",
+          "A print font style",
+          "A command that closes the workbook"
+        ],
+        "de": [
+          "Ein interaktives Schaltflächen-Panel für 1-Klick-Filterung",
+          "Ein Werkzeug zum Löschen von Duplikaten",
+          "Eine Schriftart",
+          "Ein Befehl zum Schließen"
+        ],
+        "fr": [
+          "Un panneau interactif de boutons visuels pour filtrer en un clic",
+          "Un outil de suppression des doublons",
+          "Une police d'impression",
+          "Une commande pour fermer"
+        ],
+        "ja": [
+          "1クリックで直感的にデータを抽出・絞り込みできる視覚的なボタン型フィルターパネル",
+          "重複データを削除するツール",
+          "印刷専用のフォントスタイル",
+          "ブックを閉じるコマンド"
+        ],
+        "pt": [
+          "Um painel interativo com botões visuais para filtrar dados com um clique",
+          "Uma ferramenta que exclui duplicatas",
+          "Uma fonte tipográfica para impressão",
+          "Um comando para fechar o arquivo"
+        ]
+      },
+      "correct": "Un panel interactivo con botones visuales para filtrar datos con un solo clic",
+      "correctByLocale": {
+        "es": "Un panel interactivo con botones visuales para filtrar datos con un solo clic",
+        "en": "An interactive visual button panel for one-click filtering",
+        "de": "Ein interaktives Schaltflächen-Panel für 1-Klick-Filterung",
+        "fr": "Un panneau interactif de boutons visuels pour filtrer en un clic",
+        "ja": "1クリックで直感的にデータを抽出・絞り込みできる視覚的なボタン型フィルターパネル",
+        "pt": "Um painel interativo com botões visuais para filtrar dados com um clique"
+      },
+      "explanation": "Los Slicers transforman tablas dinámicas estáticas en paneles ejecutivos altamente interactivos.",
+      "explanationByLocale": {
+        "es": "Los Slicers transforman tablas dinámicas estáticas en paneles ejecutivos altamente interactivos.",
+        "en": "Slicers turn standard pivot tables into sleek, highly interactive dashboards.",
+        "de": "Datenschnitte verwandeln einfache Pivot-Tabellen in dynamische Dashboards.",
+        "fr": "Les segments transforment les TCD en tableaux de bord exécutifs modernes.",
+        "ja": "スライサーを配置することで、プレゼンやダッシュボードで誰もが直感的に操作できるUIになります。",
+        "pt": "Os Slicers transformam tabelas dinâmicas em dashboards executivos interativos."
+      }
+    }
+  ]
+}

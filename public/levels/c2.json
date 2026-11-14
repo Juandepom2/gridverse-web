@@ -1,0 +1,376 @@
+{
+  "ref": "C2",
+  "title": "Lógica compuesta con Y / O",
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "La función =Y(condición1, condición2) devuelve VERDADERO solo si:",
+      "formula": "=Y()",
+      "correct": "TODAS las condiciones son verdaderas",
+      "data": {},
+      "options": [
+        "TODAS las condiciones son verdaderas",
+        "Al menos una condición es verdadera",
+        "Ninguna condición se cumple",
+        "El resultado es mayor a cero"
+      ],
+      "promptByLocale": {
+        "es": "La función =Y(condición1, condición2) devuelve VERDADERO solo si:",
+        "en": "The =AND(condition1, condition2) function returns TRUE only if:",
+        "de": "Die Funktion =UND(Bedingung1; Bedingung2) liefert WAHR nur wenn:",
+        "fr": "La fonction =ET(condition1; condition2) renvoie VRAI uniquement si :",
+        "ja": "AND(条件1, 条件2) 関数が TRUE を返すのはどんなときですか？",
+        "pt": "A função =E(condição1; condição2) retorna VERDADEIRO apenas se:"
+      },
+      "formulaByLocale": {
+        "es": "=Y()",
+        "en": "=AND()",
+        "de": "=UND()",
+        "fr": "=ET()",
+        "ja": "=AND()",
+        "pt": "=E()"
+      },
+      "correctByLocale": {
+        "es": "TODAS las condiciones son verdaderas",
+        "en": "ALL conditions are true",
+        "de": "ALLE Bedingungen wahr sind",
+        "fr": "TOUTES les conditions sont vraies",
+        "ja": "すべての条件が成立（TRUE）しているとき",
+        "pt": "TODAS as condições são verdadeiras"
+      },
+      "optionsByLocale": {
+        "es": [
+          "TODAS las condiciones son verdaderas",
+          "Al menos una condición es verdadera",
+          "Ninguna condición se cumple",
+          "El resultado es mayor a cero"
+        ],
+        "en": [
+          "ALL conditions are true",
+          "At least one condition is true",
+          "No condition is met",
+          "The result is greater than zero"
+        ],
+        "de": [
+          "ALLE Bedingungen wahr sind",
+          "Mindestens eine Bedingung wahr ist",
+          "Keine Bedingung erfüllt ist",
+          "Das Ergebnis größer als Null ist"
+        ],
+        "fr": [
+          "TOUTES les conditions sont vraies",
+          "Au moins une condition est vraie",
+          "Aucune condition n'est remplie",
+          "Le résultat est supérieur à zéro"
+        ],
+        "ja": [
+          "すべての条件が成立（TRUE）しているとき",
+          "少なくとも1つの条件が成立しているとき",
+          "どの条件も満たしていないとき",
+          "結果がゼロより大きいとき"
+        ],
+        "pt": [
+          "TODAS as condições são verdadeiras",
+          "Pelo menos uma condição é verdadeira",
+          "Nenhuma condição é cumprida",
+          "O resultado é maior que zero"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "La función Y requiere que el 100% de los criterios se cumplan para arrojar VERDADERO.",
+        "en": "The AND function requires 100% of the criteria to be met to return TRUE.",
+        "de": "Die UND-Funktion verlangt, dass alle Kriterien ausnahmslos erfüllt sind.",
+        "fr": "La fonction ET exige que 100 % des critères soient remplis pour renvoyer VRAI.",
+        "ja": "AND関数はすべての条件が満たされた場合のみ TRUE を返します。",
+        "pt": "A função E exige que 100% dos critérios sejam atendidos para retornar VERDADEIRO."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "La función =O(condición1, condición2) devuelve VERDADERO cuando:",
+      "formula": "=O()",
+      "correct": "Al menos UNA de las condiciones es verdadera",
+      "data": {},
+      "options": [
+        "Al menos UNA de las condiciones es verdadera",
+        "Todas las condiciones son obligatorias",
+        "Ambas condiciones son falsas",
+        "Se compara únicamente texto"
+      ],
+      "promptByLocale": {
+        "es": "La función =O(condición1, condición2) devuelve VERDADERO cuando:",
+        "en": "The =OR(condition1, condition2) function returns TRUE when:",
+        "de": "Die Funktion =ODER(Bedingung1; Bedingung2) liefert WAHR wenn:",
+        "fr": "La fonction =OU(condition1; condition2) renvoie VRAI quand :",
+        "ja": "OR(条件1, 条件2) 関数が TRUE を返すのはどんなときですか？",
+        "pt": "A função =OU(condição1; condição2) retorna VERDADEIRO quando:"
+      },
+      "formulaByLocale": {
+        "es": "=O()",
+        "en": "=OR()",
+        "de": "=ODER()",
+        "fr": "=OU()",
+        "ja": "=OR()",
+        "pt": "=OU()"
+      },
+      "correctByLocale": {
+        "es": "Al menos UNA de las condiciones es verdadera",
+        "en": "At least ONE of the conditions is true",
+        "de": "Mindestens EINE der Bedingungen wahr ist",
+        "fr": "Au moins UNE des conditions est vraie",
+        "ja": "少なくとも1つの条件が成立（TRUE）しているとき",
+        "pt": "Pelo menos UMA das condições é verdadeira"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Al menos UNA de las condiciones es verdadera",
+          "Todas las condiciones son obligatorias",
+          "Ambas condiciones son falsas",
+          "Se compara únicamente texto"
+        ],
+        "en": [
+          "At least ONE of the conditions is true",
+          "All conditions are mandatory",
+          "Both conditions are false",
+          "Only text is compared"
+        ],
+        "de": [
+          "Mindestens EINE der Bedingungen wahr ist",
+          "Alle Bedingungen zwingend erfüllt sein müssen",
+          "Beide Bedingungen falsch sind",
+          "Ausschließlich Text verglichen wird"
+        ],
+        "fr": [
+          "Au moins UNE des conditions est vraie",
+          "Toutes les conditions sont obligatoires",
+          "Les deux conditions sont fausses",
+          "On compare uniquement du texte"
+        ],
+        "ja": [
+          "少なくとも1つの条件が成立（TRUE）しているとき",
+          "すべての条件を満たすことが必須のとき",
+          "両方の条件がFALSEのとき",
+          "文字列のみを比較するとき"
+        ],
+        "pt": [
+          "Pelo menos UMA das condições é verdadeira",
+          "Todas as condições são obrigatórias",
+          "Ambas as condições são falsas",
+          "Compara-se apenas texto"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Con que una sola prueba lógica sea cierta, la función O devuelve VERDADERO de inmediato.",
+        "en": "If even a single logical test is true, the OR function immediately returns TRUE.",
+        "de": "Sobald auch nur eine Bedingung wahr ist, liefert ODER sofort WAHR zurück.",
+        "fr": "Dès qu'un seul test logique est vrai, la fonction OU renvoie immédiatement VRAI.",
+        "ja": "いずれか1つでも条件が真であれば、OR関数は直ちに TRUE を返します。",
+        "pt": "Bastando que um único teste lógico seja verdadeiro, a função OU retorna VERDADEIRO."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué devuelve =Y(10>5, 2>8)?",
+      "formula": "=Y(VERDADERO, FALSO)",
+      "correct": "FALSO",
+      "data": {},
+      "options": [
+        "FALSO",
+        "VERDADERO",
+        "ERROR",
+        "10"
+      ],
+      "promptByLocale": {
+        "es": "¿Qué devuelve =Y(10>5, 2>8)?",
+        "en": "What does =AND(10>5, 2>8) return?",
+        "de": "Was liefert =UND(10>5; 2>8)?",
+        "fr": "Que renvoie =ET(10>5; 2>8) ?",
+        "ja": "数式「=AND(10>5, 2>8)」は何を返しますか？",
+        "pt": "O que retorna =E(10>5; 2>8)?"
+      },
+      "formulaByLocale": {
+        "es": "=Y(VERDADERO, FALSO)",
+        "en": "=AND(TRUE, FALSE)",
+        "de": "=UND(WAHR; FALSCH)",
+        "fr": "=ET(VRAI; FAUX)",
+        "ja": "=AND(TRUE, FALSE)",
+        "pt": "=E(VERDADEIRO; FALSO)"
+      },
+      "correctByLocale": {
+        "es": "FALSO",
+        "en": "FALSE",
+        "de": "FALSCH",
+        "fr": "FAUX",
+        "ja": "FALSE",
+        "pt": "FALSO"
+      },
+      "optionsByLocale": {
+        "es": [
+          "FALSO",
+          "VERDADERO",
+          "ERROR",
+          "10"
+        ],
+        "en": [
+          "FALSE",
+          "TRUE",
+          "ERROR",
+          "10"
+        ],
+        "de": [
+          "FALSCH",
+          "WAHR",
+          "FEHLER",
+          "10"
+        ],
+        "fr": [
+          "FAUX",
+          "VRAI",
+          "ERREUR",
+          "10"
+        ],
+        "ja": [
+          "FALSE",
+          "TRUE",
+          "ERROR",
+          "10"
+        ],
+        "pt": [
+          "FALSO",
+          "VERDADEIRO",
+          "ERRO",
+          "10"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "10>5 es VERDADERO, pero 2>8 es FALSO. Al haber una falsa, Y devuelve FALSO.",
+        "en": "10>5 is TRUE, but 2>8 is FALSE. Having one false condition makes AND return FALSE.",
+        "de": "10>5 ist WAHR, aber 2>8 ist FALSCH. Wegen der falschen Bedingung liefert UND FALSCH.",
+        "fr": "10>5 est VRAI, mais 2>8 est FAUX. Une condition étant fausse, ET renvoie FAUX.",
+        "ja": "10>5はTRUEですが、2>8がFALSEのため、AND関数全体の結果は FALSE になります。",
+        "pt": "10>5 é VERDADEIRO, mas 2>8 é FALSO. Como há uma falsa, E retorna FALSO."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué devuelve =O(10>5, 2>8)?",
+      "formula": "=O(VERDADERO, FALSO)",
+      "correct": "VERDADERO",
+      "data": {},
+      "options": [
+        "VERDADERO",
+        "FALSO",
+        "ERROR",
+        "2"
+      ],
+      "promptByLocale": {
+        "es": "¿Qué devuelve =O(10>5, 2>8)?",
+        "en": "What does =OR(10>5, 2>8) return?",
+        "de": "Was liefert =ODER(10>5; 2>8)?",
+        "fr": "Que renvoie =OU(10>5; 2>8) ?",
+        "ja": "数式「=OR(10>5, 2>8)」は何を返しますか？",
+        "pt": "O que retorna =OU(10>5; 2>8)?"
+      },
+      "formulaByLocale": {
+        "es": "=O(VERDADERO, FALSO)",
+        "en": "=OR(TRUE, FALSE)",
+        "de": "=ODER(WAHR; FALSCH)",
+        "fr": "=OU(VRAI; FAUX)",
+        "ja": "=OR(TRUE, FALSE)",
+        "pt": "=OU(VERDADEIRO; FALSO)"
+      },
+      "correctByLocale": {
+        "es": "VERDADERO",
+        "en": "TRUE",
+        "de": "WAHR",
+        "fr": "VRAI",
+        "ja": "TRUE",
+        "pt": "VERDADEIRO"
+      },
+      "optionsByLocale": {
+        "es": [
+          "VERDADERO",
+          "FALSO",
+          "ERROR",
+          "2"
+        ],
+        "en": [
+          "TRUE",
+          "FALSE",
+          "ERROR",
+          "2"
+        ],
+        "de": [
+          "WAHR",
+          "FALSCH",
+          "FEHLER",
+          "2"
+        ],
+        "fr": [
+          "VRAI",
+          "FAUX",
+          "ERREUR",
+          "2"
+        ],
+        "ja": [
+          "TRUE",
+          "FALSE",
+          "ERROR",
+          "2"
+        ],
+        "pt": [
+          "VERDADEIRO",
+          "FALSO",
+          "ERRO",
+          "2"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Como la primera condición 10>5 se cumple, la función O devuelve VERDADERO.",
+        "en": "Because the first condition 10>5 is met, the OR function returns TRUE.",
+        "de": "Da die erste Bedingung 10>5 erfüllt ist, liefert die ODER-Funktion WAHR.",
+        "fr": "Comme la première condition 10>5 est remplie, la fonction OU renvoie VRAI.",
+        "ja": "第1条件の 10>5 が成立しているため、OR関数は TRUE を返します。",
+        "pt": "Como a primeira condição 10>5 é verdadeira, a função OU retorna VERDADEIRO."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para evaluar si la edad (A2) es mayor de 18 Y tiene pase (B2=\"SI\").",
+      "correct": "=Y(A2>=18,B2=\"SI\")",
+      "blocks": [
+        "=",
+        "Y(",
+        "A2>=18",
+        ",B2=\"SI\"",
+        ")"
+      ],
+      "promptByLocale": {
+        "es": "Arma la fórmula para evaluar si la edad (A2) es mayor de 18 Y tiene pase (B2=\"SI\").",
+        "en": "Build the formula to evaluate if age (A2) is over 18 AND has a pass (B2=\"SI\").",
+        "de": "Erstelle die Formel: Alter (A2) >= 18 UND Ticket vorhanden (B2=\"SI\").",
+        "fr": "Construis la formule : âge (A2) supérieur à 18 ET pass valide (B2=\"SI\").",
+        "ja": "年齢（A2）が18歳以上で、かつパスを所持している（B2=\"SI\"）かを判定する数式を組み立ててください。",
+        "pt": "Monte a fórmula para avaliar se a idade (A2) é maior de 18 E tem passe (B2=\"SI\")."
+      },
+      "explanationByLocale": {
+        "es": "=Y(A2>=18,B2=\"SI\") comprueba ambos requisitos de forma simultánea.",
+        "en": "=AND(A2>=18,B2=\"SI\") checks both requirements simultaneously.",
+        "de": "=UND(A2>=18;B2=\"SI\") prüft beide Kriterien gleichzeitig.",
+        "fr": "=ET(A2>=18;B2=\"SI\") vérifie les deux conditions simultanément.",
+        "ja": "=AND(A2>=18,B2=\"SI\") で両方の条件が同時に満たされているかを判定します。",
+        "pt": "=E(A2>=18;B2=\"SI\") verifica ambos os requisitos simultaneamente."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Lógica compuesta con Y / O",
+    "en": "Compound Logic with AND / OR",
+    "de": "Zusammengesetzte Logik mit UND / ODER",
+    "fr": "Logique combinée avec ET / OU",
+    "ja": "AND / OR による複合条件",
+    "pt": "Lógica composta com E / OU"
+  }
+}

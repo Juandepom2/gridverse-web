@@ -1,0 +1,499 @@
+{
+  "levels": [
+    {
+      "ref": "A1",
+      "file": "a1.json",
+      "version": 1
+    },
+    {
+      "ref": "A2",
+      "file": "a2.json",
+      "version": 1
+    },
+    {
+      "ref": "A3",
+      "file": "a3.json",
+      "version": 1
+    },
+    {
+      "ref": "A4",
+      "file": "a4.json",
+      "version": 1
+    },
+    {
+      "ref": "A5",
+      "file": "a5.json",
+      "version": 1
+    },
+    {
+      "ref": "A6",
+      "file": "a6.json",
+      "version": 1
+    },
+    {
+      "ref": "A8",
+      "file": "a8.json",
+      "version": 1
+    },
+    {
+      "ref": "B1",
+      "file": "b1.json",
+      "version": 1
+    },
+    {
+      "ref": "B2",
+      "file": "b2.json",
+      "version": 1
+    },
+    {
+      "ref": "B3",
+      "file": "b3.json",
+      "version": 1
+    },
+    {
+      "ref": "B4",
+      "file": "b4.json",
+      "version": 1
+    },
+    {
+      "ref": "B5",
+      "file": "b5.json",
+      "version": 1
+    },
+    {
+      "ref": "B6",
+      "file": "b6.json",
+      "version": 1
+    },
+    {
+      "ref": "B7",
+      "file": "b7.json",
+      "version": 1
+    },
+    {
+      "ref": "B8",
+      "file": "b8.json",
+      "version": 1
+    },
+    {
+      "ref": "B9",
+      "file": "b9.json",
+      "version": 1
+    },
+    {
+      "ref": "B10",
+      "file": "b10.json",
+      "version": 1
+    },
+    {
+      "ref": "B11",
+      "file": "b11.json",
+      "version": 1
+    },
+    {
+      "ref": "B12",
+      "file": "b12.json",
+      "version": 1
+    },
+    {
+      "ref": "C1",
+      "file": "c1.json",
+      "version": 1
+    },
+    {
+      "ref": "C2",
+      "file": "c2.json",
+      "version": 1
+    },
+    {
+      "ref": "C3",
+      "file": "c3.json",
+      "version": 1
+    },
+    {
+      "ref": "C4",
+      "file": "c4.json",
+      "version": 1
+    },
+    {
+      "ref": "C5",
+      "file": "c5.json",
+      "version": 1
+    },
+    {
+      "ref": "C6",
+      "file": "c6.json",
+      "version": 1
+    },
+    {
+      "ref": "C7",
+      "file": "c7.json",
+      "version": 1
+    },
+    {
+      "ref": "C9",
+      "file": "c9.json",
+      "version": 1
+    },
+    {
+      "ref": "D1",
+      "file": "d1.json",
+      "version": 1
+    },
+    {
+      "ref": "D2",
+      "file": "d2.json",
+      "version": 1
+    },
+    {
+      "ref": "D3",
+      "file": "d3.json",
+      "version": 1
+    },
+    {
+      "ref": "D4",
+      "file": "d4.json",
+      "version": 1
+    },
+    {
+      "ref": "D5",
+      "file": "d5.json",
+      "version": 1
+    },
+    {
+      "ref": "D6",
+      "file": "d6.json",
+      "version": 1
+    },
+    {
+      "ref": "D8",
+      "file": "d8.json",
+      "version": 1
+    },
+    {
+      "ref": "D9",
+      "file": "d9.json",
+      "version": 1
+    },
+    {
+      "ref": "E1",
+      "file": "e1.json",
+      "version": 1
+    },
+    {
+      "ref": "E2",
+      "file": "e2.json",
+      "version": 1
+    },
+    {
+      "ref": "E3",
+      "file": "e3.json",
+      "version": 1
+    },
+    {
+      "ref": "E4",
+      "file": "e4.json",
+      "version": 1
+    },
+    {
+      "ref": "E5",
+      "file": "e5.json",
+      "version": 1
+    },
+    {
+      "ref": "E6",
+      "file": "e6.json",
+      "version": 1
+    },
+    {
+      "ref": "E7",
+      "file": "e7.json",
+      "version": 1
+    },
+    {
+      "ref": "E8",
+      "file": "e8.json",
+      "version": 1
+    },
+    {
+      "ref": "E9",
+      "file": "e9.json",
+      "version": 1
+    },
+    {
+      "ref": "E10",
+      "file": "e10.json",
+      "version": 1
+    },
+    {
+      "ref": "F1",
+      "file": "f1.json",
+      "version": 1
+    },
+    {
+      "ref": "F2",
+      "file": "f2.json",
+      "version": 1
+    },
+    {
+      "ref": "F3",
+      "file": "f3.json",
+      "version": 1
+    },
+    {
+      "ref": "F4",
+      "file": "f4.json",
+      "version": 1
+    },
+    {
+      "ref": "F5",
+      "file": "f5.json",
+      "version": 1
+    },
+    {
+      "ref": "F6",
+      "file": "f6.json",
+      "version": 1
+    },
+    {
+      "ref": "F8",
+      "file": "f8.json",
+      "version": 1
+    },
+    {
+      "ref": "G1",
+      "file": "g1.json",
+      "version": 1
+    },
+    {
+      "ref": "G2",
+      "file": "g2.json",
+      "version": 1
+    },
+    {
+      "ref": "G3",
+      "file": "g3.json",
+      "version": 1
+    },
+    {
+      "ref": "G4",
+      "file": "g4.json",
+      "version": 1
+    },
+    {
+      "ref": "G5",
+      "file": "g5.json",
+      "version": 1
+    },
+    {
+      "ref": "G6",
+      "file": "g6.json",
+      "version": 1
+    },
+    {
+      "ref": "G7",
+      "file": "g7.json",
+      "version": 1
+    },
+    {
+      "ref": "G8",
+      "file": "g8.json",
+      "version": 1
+    },
+    {
+      "ref": "G9",
+      "file": "g9.json",
+      "version": 1
+    },
+    {
+      "ref": "G10",
+      "file": "g10.json",
+      "version": 1
+    },
+    {
+      "ref": "H1",
+      "file": "h1.json",
+      "version": 1
+    },
+    {
+      "ref": "H2",
+      "file": "h2.json",
+      "version": 1
+    },
+    {
+      "ref": "H3",
+      "file": "h3.json",
+      "version": 1
+    },
+    {
+      "ref": "H4",
+      "file": "h4.json",
+      "version": 1
+    },
+    {
+      "ref": "H5",
+      "file": "h5.json",
+      "version": 1
+    },
+    {
+      "ref": "H6",
+      "file": "h6.json",
+      "version": 1
+    },
+    {
+      "ref": "H7",
+      "file": "h7.json",
+      "version": 1
+    },
+    {
+      "ref": "H8",
+      "file": "h8.json",
+      "version": 1
+    },
+    {
+      "ref": "H9",
+      "file": "h9.json",
+      "version": 1
+    },
+    {
+      "ref": "I1",
+      "file": "i1.json",
+      "version": 1
+    },
+    {
+      "ref": "I2",
+      "file": "i2.json",
+      "version": 1
+    },
+    {
+      "ref": "I3",
+      "file": "i3.json",
+      "version": 1
+    },
+    {
+      "ref": "I4",
+      "file": "i4.json",
+      "version": 1
+    },
+    {
+      "ref": "I5",
+      "file": "i5.json",
+      "version": 1
+    },
+    {
+      "ref": "I6",
+      "file": "i6.json",
+      "version": 1
+    },
+    {
+      "ref": "I7",
+      "file": "i7.json",
+      "version": 1
+    },
+    {
+      "ref": "I9",
+      "file": "i9.json",
+      "version": 1
+    },
+    {
+      "ref": "J1",
+      "file": "j1.json",
+      "version": 1
+    },
+    {
+      "ref": "J2",
+      "file": "j2.json",
+      "version": 1
+    },
+    {
+      "ref": "J3",
+      "file": "j3.json",
+      "version": 1
+    },
+    {
+      "ref": "J4",
+      "file": "j4.json",
+      "version": 1
+    },
+    {
+      "ref": "J5",
+      "file": "j5.json",
+      "version": 1
+    },
+    {
+      "ref": "J6",
+      "file": "j6.json",
+      "version": 1
+    },
+    {
+      "ref": "J7",
+      "file": "j7.json",
+      "version": 1
+    },
+    {
+      "ref": "K1",
+      "file": "k1.json",
+      "version": 1
+    },
+    {
+      "ref": "K2",
+      "file": "k2.json",
+      "version": 1
+    },
+    {
+      "ref": "K3",
+      "file": "k3.json",
+      "version": 1
+    },
+    {
+      "ref": "K4",
+      "file": "k4.json",
+      "version": 1
+    },
+    {
+      "ref": "K5",
+      "file": "k5.json",
+      "version": 1
+    },
+    {
+      "ref": "K6",
+      "file": "k6.json",
+      "version": 1
+    },
+    {
+      "ref": "K7",
+      "file": "k7.json",
+      "version": 1
+    },
+    {
+      "ref": "L1",
+      "file": "l1.json",
+      "version": 1
+    },
+    {
+      "ref": "L2",
+      "file": "l2.json",
+      "version": 1
+    },
+    {
+      "ref": "L3",
+      "file": "l3.json",
+      "version": 1
+    },
+    {
+      "ref": "L4",
+      "file": "l4.json",
+      "version": 1
+    },
+    {
+      "ref": "L5",
+      "file": "l5.json",
+      "version": 1
+    },
+    {
+      "ref": "L6",
+      "file": "l6.json",
+      "version": 1
+    }
+  ]
+}

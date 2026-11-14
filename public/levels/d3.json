@@ -1,0 +1,173 @@
+{
+  "ref": "D3",
+  "title": "SI anidado",
+  "titleByLocale": {
+    "es": "SI anidado",
+    "en": "Nested IF",
+    "de": "Verschachteltes WENN",
+    "fr": "SI imbriqués",
+    "ja": "ネストされた IF",
+    "pt": "SE aninhado"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "En una fórmula de SI anidado con 3 rangos de calificación (Sobresaliente, Aprobado, Reprobado), ¿cuántas funciones SI necesitas como mínimo?",
+      "promptByLocale": {
+        "es": "En una fórmula de SI anidado con 3 rangos de calificación (Sobresaliente, Aprobado, Reprobado), ¿cuántas funciones SI necesitas como mínimo?",
+        "en": "In a nested IF formula evaluating 3 outcome categories (High, Pass, Fail), how many IF functions do you need at minimum?",
+        "de": "Wie viele WENN-Funktionen werden mindestens benötigt, um 3 Bewertungskategorien abzubilden?",
+        "fr": "Dans une formule SI imbriquée évaluant 3 issues (Excellent, Reçu, Ajourné), combien de fonctions SI sont nécessaires au minimum ?",
+        "ja": "3つの評価区分（優・良・不可）に判定を分岐させる場合、最低いくつの IF 関数が必要ですか？",
+        "pt": "Em uma fórmula SE aninhada com 3 resultados possíveis (Excelente, Aprovado, Reprovado), quantas funções SE são necessárias no mínimo?"
+      },
+      "options": ["2", "3", "1", "4"],
+      "optionsByLocale": {
+        "es": ["2", "3", "1", "4"],
+        "en": ["2", "3", "1", "4"],
+        "de": ["2", "3", "1", "4"],
+        "fr": ["2", "3", "1", "4"],
+        "ja": ["2", "3", "1", "4"],
+        "pt": ["2", "3", "1", "4"]
+      },
+      "correct": "2",
+      "correctByLocale": {
+        "es": "2",
+        "en": "2",
+        "de": "2",
+        "fr": "2",
+        "ja": "2",
+        "pt": "2"
+      },
+      "explanation": "Para N resultados posibles siempre se requieren N - 1 funciones SI (ej: 3 categorías necesitan 2 SI).",
+      "explanationByLocale": {
+        "es": "Para N resultados posibles siempre se requieren N - 1 funciones SI (ej: 3 categorías necesitan 2 SI).",
+        "en": "For N potential outcomes, you always need N - 1 IF conditions (3 outcomes need 2 IFs).",
+        "de": "Für N mögliche Ergebnisse benötigt man stets N - 1 WENN-Bedingungen (3 Ergebnisse = 2 WENN).",
+        "fr": "Pour N résultats possibles, il faut toujours N - 1 fonctions SI (3 résultats = 2 SI).",
+        "ja": "N通りの結果に分岐させるには、常に「N - 1」個の IF 関数が必要です（3区分なら2つのIF）。",
+        "pt": "Para N resultados possíveis, você sempre precisará de N - 1 funções SE (3 resultados = 2 SE)."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si A1=95, ¿qué resultado devuelve =SI(A1>=90, \"A\", SI(A1>=70, \"B\", \"C\"))?",
+      "promptByLocale": {
+        "es": "Si A1=95, ¿qué resultado devuelve =SI(A1>=90, \"A\", SI(A1>=70, \"B\", \"C\"))?",
+        "en": "If A1=95, what does =IF(A1>=90, \"A\", IF(A1>=70, \"B\", \"C\")) return?",
+        "de": "Wenn A1=95, welches Ergebnis liefert =WENN(A1>=90; \"A\"; WENN(A1>=70; \"B\"; \"C\"))?",
+        "fr": "Si A1=95, que renvoie =SI(A1>=90; \"A\"; SI(A1>=70; \"B\"; \"C\")) ?",
+        "ja": "A1が95の場合、=IF(A1>=90, \"A\", IF(A1>=70, \"B\", \"C\")) は何を返しますか？",
+        "pt": "Se A1=95, qual resultado retorna =SE(A1>=90; \"A\"; SE(A1>=70; \"B\"; \"C\"))?"
+      },
+      "options": ["A", "B", "C", "VERDADERO"],
+      "optionsByLocale": {
+        "es": ["A", "B", "C", "VERDADERO"],
+        "en": ["A", "B", "C", "TRUE"],
+        "de": ["A", "B", "C", "WAHR"],
+        "fr": ["A", "B", "C", "VRAI"],
+        "ja": ["A", "B", "C", "TRUE"],
+        "pt": ["A", "B", "C", "VERDADEIRO"]
+      },
+      "correct": "A",
+      "correctByLocale": {
+        "es": "A",
+        "en": "A",
+        "de": "A",
+        "fr": "A",
+        "ja": "A",
+        "pt": "A"
+      },
+      "explanation": "Como la primera condición (A1>=90) se cumple inmediatamente, Excel devuelve 'A' sin evaluar el segundo SI.",
+      "explanationByLocale": {
+        "es": "Como la primera condición (A1>=90) se cumple inmediatamente, Excel devuelve 'A' sin evaluar el segundo SI.",
+        "en": "Since the first condition (A1>=90) is TRUE, Excel returns 'A' right away without testing the inner IF.",
+        "de": "Da die erste Bedingung (A1>=90) erfüllt ist, liefert Excel sofort 'A', ohne das innere WENN zu prüfen.",
+        "fr": "Comme la première condition (A1>=90) est VRAIE, Excel renvoie 'A' immédiatement sans tester le second SI.",
+        "ja": "最初の条件（A1>=90）が真(TRUE)となるため、2つ目のIFを評価することなく直ちに「A」を返します。",
+        "pt": "Como a primeira condição (A1>=90) é verdadeira, o Excel retorna 'A' imediatamente sem testar o segundo SE."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la celda B2 donde se clasifica el cliente según su nivel de compras:",
+      "promptByLocale": {
+        "es": "Selecciona la celda B2 donde se clasifica el cliente según su nivel de compras:",
+        "en": "Select cell B2 where customer tier is classified based on purchase volume:",
+        "de": "Wähle Zelle B2 aus, in der die Kundeneinstufung berechnet wird:",
+        "fr": "Sélectionnez la cellule B2 où le statut client est calculé :",
+        "ja": "購入金額に応じて会員ランクが判定されるセルB2を選択してください：",
+        "pt": "Selecione a célula B2 onde o nível do cliente é classificado:"
+      },
+      "correct": "B2",
+      "data": {
+        "A1": "Compras",
+        "B1": "Categoría",
+        "A2": "1200",
+        "B2": "VIP",
+        "A3": "400",
+        "B3": "Regular"
+      },
+      "explanation": "La celda B2 evalúa si las compras superan 1000 para clasificarlo como VIP.",
+      "explanationByLocale": {
+        "es": "La celda B2 evalúa si las compras superan 1000 para clasificarlo como VIP.",
+        "en": "Cell B2 evaluates whether purchases exceed 1000 to assign the VIP tier.",
+        "de": "Zelle B2 prüft, ob der Umsatz 1000 übersteigt, um den VIP-Status zuzuweisen.",
+        "fr": "La cellule B2 évalue si les achats dépassent 1000 pour attribuer le statut VIP.",
+        "ja": "セルB2は購入額が1000を超えているかを判定し、VIPランクを割り当てています。",
+        "pt": "A célula B2 avalia se as compras ultrapassam 1000 para classificar como VIP."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula: si B2 es mayor o igual a 90 devuelve \"A\", de lo contrario si es mayor o igual a 70 devuelve \"B\", o si no \"C\":",
+      "promptByLocale": {
+        "es": "Arma la fórmula: si B2 es mayor o igual a 90 devuelve \"A\", de lo contrario si es mayor o igual a 70 devuelve \"B\", o si no \"C\":",
+        "en": "Build formula: if B2 is greater than or equal to 90 return \"A\", else if greater than or equal to 70 return \"B\", else \"C\":",
+        "de": "Baue die Formel: wenn B2>=90 dann \"A\", sonst wenn B2>=70 dann \"B\", sonst \"C\":",
+        "fr": "Construisez la formule : si B2>=90 renvoie \"A\", sinon si B2>=70 renvoie \"B\", sinon \"C\" :",
+        "ja": "数式を構築：もしB2が90以上なら「A」、そうでなく70以上なら「B」、それ以外なら「C」：",
+        "pt": "Monte a fórmula: se B2 for maior ou igual a 90 retorna \"A\", senão se for maior ou igual a 70 retorna \"B\", senão \"C\":"
+      },
+      "formula": "=SI(B2>=90,\"A\",SI(B2>=70,\"B\",\"C\"))",
+      "formulaByLocale": {
+        "es": "=SI(B2>=90,\"A\",SI(B2>=70,\"B\",\"C\"))",
+        "en": "=IF(B2>=90,\"A\",IF(B2>=70,\"B\",\"C\"))",
+        "de": "=WENN(B2>=90,\"A\",WENN(B2>=70,\"B\",\"C\"))",
+        "fr": "=SI(B2>=90,\"A\",SI(B2>=70,\"B\",\"C\"))",
+        "ja": "=IF(B2>=90,\"A\",IF(B2>=70,\"B\",\"C\"))",
+        "pt": "=SE(B2>=90,\"A\",SE(B2>=70,\"B\",\"C\"))"
+      },
+      "correct": "=SI(B2>=90,\"A\",SI(B2>=70,\"B\",\"C\"))",
+      "correctByLocale": {
+        "es": "=SI(B2>=90,\"A\",SI(B2>=70,\"B\",\"C\"))",
+        "en": "=IF(B2>=90,\"A\",IF(B2>=70,\"B\",\"C\"))",
+        "de": "=WENN(B2>=90,\"A\",WENN(B2>=70,\"B\",\"C\"))",
+        "fr": "=SI(B2>=90,\"A\",SI(B2>=70,\"B\",\"C\"))",
+        "ja": "=IF(B2>=90,\"A\",IF(B2>=70,\"B\",\"C\"))",
+        "pt": "=SE(B2>=90,\"A\",SE(B2>=70,\"B\",\"C\"))"
+      },
+      "blocks": ["=SI(", "B2>=90,", "\"A\",", "SI(", "B2>=70,", "\"B\",", "\"C\"))"],
+      "blocksByLocale": {
+        "es": ["=SI(", "B2>=90,", "\"A\",", "SI(", "B2>=70,", "\"B\",", "\"C\"))"],
+        "en": ["=IF(", "B2>=90,", "\"A\",", "IF(", "B2>=70,", "\"B\",", "\"C\"))"],
+        "de": ["=WENN(", "B2>=90,", "\"A\",", "WENN(", "B2>=70,", "\"B\",", "\"C\"))"],
+        "fr": ["=SI(", "B2>=90,", "\"A\",", "SI(", "B2>=70,", "\"B\",", "\"C\"))"],
+        "ja": ["=IF(", "B2>=90,", "\"A\",", "IF(", "B2>=70,", "\"B\",", "\"C\"))"],
+        "pt": ["=SE(", "B2>=90,", "\"A\",", "SE(", "B2>=70,", "\"B\",", "\"C\"))"]
+      },
+      "explanation": "Al anidar un SI dentro del valor_si_falso, creas ramas lógicas sucesivas.",
+      "explanationByLocale": {
+        "es": "Al anidar un SI dentro del valor_si_falso, creas ramas lógicas sucesivas.",
+        "en": "Nesting an IF inside value_if_false creates successive logical evaluation branches.",
+        "de": "Das Einbetten eines WENN im Wert_wenn_falsch erzeugt aufeinanderfolgende Logikzweige.",
+        "fr": "Imbriquer un SI dans la valeur_si_faux crée des branches logiques successives.",
+        "ja": "偽の場合(value_if_false)に別のIFを入れることで、多段階の条件分岐を作成できます。",
+        "pt": "Ao aninhar um SE dentro de valor_se_falso, você cria ramificações lógicas sucessivas."
+      }
+    }
+  ]
+}
+

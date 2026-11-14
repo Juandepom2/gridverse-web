@@ -1,0 +1,237 @@
+{
+  "ref": "C5",
+  "title": "Convertir en tabla (Ctrl+T)",
+  "titleByLocale": {
+    "es": "Convertir en tabla (Ctrl+T)",
+    "en": "Convert to Table (Ctrl+T)",
+    "de": "In Tabelle konvertieren (Strg+T)",
+    "fr": "Convertir en tableau (Ctrl+L/T)",
+    "ja": "テーブルの作成 (Ctrl+T)",
+    "pt": "Converter em tabela (Ctrl+Alt+T)"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cuál es el atajo de teclado estándar para convertir un rango de celdas en una Tabla oficial de Excel?",
+      "promptByLocale": {
+        "es": "¿Cuál es el atajo de teclado estándar para convertir un rango de celdas en una Tabla oficial de Excel?",
+        "en": "What is the standard keyboard shortcut to convert a range into an official Excel Table?",
+        "de": "Was ist der Standard-Tastaturkurzbefehl, um einen Bereich in eine offizielle Excel-Tabelle umzuwandeln?",
+        "fr": "Quel est le raccourci clavier standard pour convertir une plage en tableau Excel officiel ?",
+        "ja": "セル範囲を公式のExcelテーブルに変換する標準ショートカットキーはどれですか？",
+        "pt": "Qual é o atalho de teclado padrão para converter um intervalo em uma Tabela oficial do Excel?"
+      },
+      "options": ["Ctrl + T", "Ctrl + B", "Ctrl + P", "Ctrl + Z"],
+      "optionsByLocale": {
+        "es": ["Ctrl + T", "Ctrl + B", "Ctrl + P", "Ctrl + Z"],
+        "en": ["Ctrl + T", "Ctrl + B", "Ctrl + P", "Ctrl + Z"],
+        "de": ["Strg + T", "Strg + B", "Strg + P", "Strg + Z"],
+        "fr": ["Ctrl + L", "Ctrl + B", "Ctrl + P", "Ctrl + Z"],
+        "ja": ["Ctrl + T", "Ctrl + B", "Ctrl + P", "Ctrl + Z"],
+        "pt": ["Ctrl + Alt + T", "Ctrl + B", "Ctrl + P", "Ctrl + Z"]
+      },
+      "correct": "Ctrl + T",
+      "correctByLocale": {
+        "es": "Ctrl + T",
+        "en": "Ctrl + T",
+        "de": "Strg + T",
+        "fr": "Ctrl + L",
+        "ja": "Ctrl + T",
+        "pt": "Ctrl + Alt + T"
+      },
+      "explanation": "Ctrl+T (o Ctrl+L en francés, Ctrl+Alt+T en portugués) convierte inmediatamente el rango en una tabla con diseño, filtros y filas alternadas.",
+      "explanationByLocale": {
+        "es": "Ctrl+T (o Ctrl+L en francés, Ctrl+Alt+T en portugués) convierte inmediatamente el rango en una tabla con diseño, filtros y filas alternadas.",
+        "en": "Ctrl+T creates an official Excel Table with auto-filters, zebra striping, and structured references.",
+        "de": "Strg+T wandelt den Datenbereich sofort in eine offizielle intelligente Tabelle mit Filter und Format um.",
+        "fr": "Ctrl+L (ou Ctrl+T) convertit immédiatement la plage en tableau officiel avec filtres automatiques.",
+        "ja": "Ctrl+Tを押すと、自動フィルターや縞模様の書式が適用されたExcelテーブルに変換されます。",
+        "pt": "Ctrl+Alt+T converte o intervalo em uma tabela oficial com filtros automáticos e referências estruturadas."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona el encabezado de la columna 'Total' (C1) para inspeccionar la tabla:",
+      "promptByLocale": {
+        "es": "Selecciona el encabezado de la columna 'Total' (C1) para inspeccionar la tabla:",
+        "en": "Select the 'Total' column header (C1) to inspect the table structure:",
+        "de": "Wähle die Spaltenüberschrift 'Total' (C1) aus, um die Tabellenstruktur zu prüfen:",
+        "fr": "Sélectionnez l'en-tête de colonne 'Total' (C1) pour inspecter la table :",
+        "ja": "テーブル構造を確認するため、列ヘッダー「Total」(C1)を選択してください：",
+        "pt": "Selecione o cabeçalho da coluna 'Total' (C1) para inspecionar a tabela:"
+      },
+      "correct": "C1",
+      "data": {
+        "A1": "Producto",
+        "B1": "Precio",
+        "C1": "Total",
+        "A2": "Teclado",
+        "B2": "50",
+        "C2": "50",
+        "A3": "Mouse",
+        "B3": "25",
+        "C3": "25"
+      },
+      "explanation": "Los encabezados de una tabla oficial son únicos y activan filtros automáticos.",
+      "explanationByLocale": {
+        "es": "Los encabezados de una tabla oficial son únicos y activan filtros automáticos.",
+        "en": "Table headers must have unique names and automatically enable column filtering.",
+        "de": "Tabellenüberschriften sind eindeutig und schalten automatische Filter-Schaltflächen frei.",
+        "fr": "Les en-têtes d'un tableau officiel sont uniques et intègrent des flèches de filtre.",
+        "ja": "テーブルのヘッダーは一意である必要があり、自動フィルターボタンが有効になります。",
+        "pt": "Os cabeçalhos de uma tabela oficial são únicos e ativam filtros automáticos."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué gran ventaja tienen las fórmulas cuando escribes un cálculo en una Tabla oficial de Excel?",
+      "promptByLocale": {
+        "es": "¿Qué gran ventaja tienen las fórmulas cuando escribes un cálculo en una Tabla oficial de Excel?",
+        "en": "What is a major advantage when writing a formula in an official Excel Table?",
+        "de": "Welcher große Vorteil entsteht beim Schreiben einer Formel in einer offiziellen Excel-Tabelle?",
+        "fr": "Quel est le grand avantage lors de la saisie d'une formule dans un tableau officiel ?",
+        "ja": "Excelテーブル内で数式を1つ入力したときの大きなメリットは何ですか？",
+        "pt": "Qual é a grande vantagem ao escrever uma fórmula em uma Tabela oficial do Excel?"
+      },
+      "options": [
+        "Se propaga automáticamente a toda la columna calculada",
+        "Borra las celdas de las demás columnas",
+        "Convierte todos los números en texto",
+        "Requiere guardar el archivo como macro (.xlsm)"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Se propaga automáticamente a toda la columna calculada",
+          "Borra las celdas de las demás columnas",
+          "Convierte todos los números en texto",
+          "Requiere guardar el archivo como macro (.xlsm)"
+        ],
+        "en": [
+          "It automatically populates down the entire calculated column",
+          "It deletes cells in other columns",
+          "It converts numbers to text",
+          "It requires saving the file as a macro (.xlsm)"
+        ],
+        "de": [
+          "Sie wird automatisch in der gesamten berechneten Spalte ausgefüllt",
+          "Sie löscht andere Spalten",
+          "Sie wandelt Zahlen in Text um",
+          "Sie erfordert das Speichern als Makro-Arbeitsmappe (.xlsm)"
+        ],
+        "fr": [
+          "Elle se propage automatiquement sur toute la colonne calculée",
+          "Elle supprime les cellules voisines",
+          "Elle convertit les nombres en texte",
+          "Elle nécessite d'enregistrer le classeur en macro (.xlsm)"
+        ],
+        "ja": [
+          "計算列全体に自動で数式がコピー・展開される",
+          "他の列のデータが消去される",
+          "すべての数値が文字列に変換される",
+          "マクロ有効ブック(.xlsm)として保存が必須になる"
+        ],
+        "pt": [
+          "Propaga-se automaticamente por toda a coluna calculada",
+          "Apaga as células das outras colunas",
+          "Converte todos os números em texto",
+          "Exige salvar o arquivo como pasta com macro (.xlsm)"
+        ]
+      },
+      "correct": "Se propaga automáticamente a toda la columna calculada",
+      "correctByLocale": {
+        "es": "Se propaga automáticamente a toda la columna calculada",
+        "en": "It automatically populates down the entire calculated column",
+        "de": "Sie wird automatisch in der gesamten berechneten Spalte ausgefüllt",
+        "fr": "Elle se propage automatiquement sur toute la colonne calculée",
+        "ja": "計算列全体に自動で数式がコピー・展開される",
+        "pt": "Propaga-se automaticamente por toda a coluna calculada"
+      },
+      "explanation": "Las 'columnas calculadas' aplican la fórmula a todas las filas de la tabla de inmediato sin arrastrar manualmente.",
+      "explanationByLocale": {
+        "es": "Las 'columnas calculadas' aplican la fórmula a todas las filas de la tabla de inmediato sin arrastrar manualmente.",
+        "en": "Calculated columns instantly fill the formula across all rows in that column automatically.",
+        "de": "Berechnete Spalten wenden die Formel sofort automatisch auf alle Zeilen der Spalte an.",
+        "fr": "Les colonnes calculées appliquent la formule à toutes les lignes du tableau sans avoir à la glisser.",
+        "ja": "計算列機能により、数式を入力すると下の行まで一瞬で自動反映されます。",
+        "pt": "As colunas calculadas aplicam a fórmula a todas as linhas da tabela imediatamente sem precisar arrastar."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "En una tabla llamada 'Ventas', ¿cómo se ve una referencia estructurada que suma la columna 'Monto'?",
+      "promptByLocale": {
+        "es": "En una tabla llamada 'Ventas', ¿cómo se ve una referencia estructurada que suma la columna 'Monto'?",
+        "en": "In a table named 'Ventas', what does a structured reference summing the 'Monto' column look like?",
+        "de": "Wie sieht ein strukturierter Bezug aus, der die Spalte 'Monto' in einer Tabelle namens 'Ventas' summiert?",
+        "fr": "Dans un tableau nommé 'Ventas', à quoi ressemble une référence structurée qui somme la colonne 'Monto' ?",
+        "ja": "「Ventas」という名前のテーブルで「Monto」列を合計する構造化参照はどれですか？",
+        "pt": "Em uma tabela chamada 'Ventas', como é a referência estruturada somando a coluna 'Monto'?"
+      },
+      "options": [
+        "=SUMA(Ventas[Monto])",
+        "=SUMA(Ventas->Monto)",
+        "=SUMA(Ventas.Monto)",
+        "=SUMA(Monto@Ventas)"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "=SUMA(Ventas[Monto])",
+          "=SUMA(Ventas->Monto)",
+          "=SUMA(Ventas.Monto)",
+          "=SUMA(Monto@Ventas)"
+        ],
+        "en": [
+          "=SUM(Ventas[Monto])",
+          "=SUM(Ventas->Monto)",
+          "=SUM(Ventas.Monto)",
+          "=SUM(Monto@Ventas)"
+        ],
+        "de": [
+          "=SUMME(Ventas[Monto])",
+          "=SUMME(Ventas->Monto)",
+          "=SUMME(Ventas.Monto)",
+          "=SUMME(Monto@Ventas)"
+        ],
+        "fr": [
+          "=SOMME(Ventas[Monto])",
+          "=SOMME(Ventas->Monto)",
+          "=SOMME(Ventas.Monto)",
+          "=SOMME(Monto@Ventas)"
+        ],
+        "ja": [
+          "=SUM(Ventas[Monto])",
+          "=SUM(Ventas->Monto)",
+          "=SUM(Ventas.Monto)",
+          "=SUM(Monto@Ventas)"
+        ],
+        "pt": [
+          "=SOMA(Ventas[Monto])",
+          "=SOMA(Ventas->Monto)",
+          "=SOMA(Ventas.Monto)",
+          "=SOMA(Monto@Ventas)"
+        ]
+      },
+      "correct": "=SUMA(Ventas[Monto])",
+      "correctByLocale": {
+        "es": "=SUMA(Ventas[Monto])",
+        "en": "=SUM(Ventas[Monto])",
+        "de": "=SUMME(Ventas[Monto])",
+        "fr": "=SOMME(Ventas[Monto])",
+        "ja": "=SUM(Ventas[Monto])",
+        "pt": "=SOMA(Ventas[Monto])"
+      },
+      "explanation": "Las referencias estructuradas usan corchetes [NombreColumna], haciendo las fórmulas mucho más legibles.",
+      "explanationByLocale": {
+        "es": "Las referencias estructuradas usan corchetes [NombreColumna], haciendo las fórmulas mucho más legibles.",
+        "en": "Structured references use brackets [ColumnName], making formulas intuitive and self-documenting.",
+        "de": "Strukturierte Verweise nutzen eckige Klammern [Spaltenname], wodurch Formeln selbsterklärend sind.",
+        "fr": "Les références structurées utilisent des crochets [NomColonne], rendant les formules très lisibles.",
+        "ja": "構造化参照は角括弧 [列名] を使用し、セル番地よりも直感的で分かりやすい数式になります。",
+        "pt": "As referências estruturadas usam colchetes [NomeColuna], tornando as fórmulas muito mais legíveis."
+      }
+    }
+  ]
+}
+

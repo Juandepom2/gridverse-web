@@ -1,0 +1,178 @@
+{
+  "ref": "E3",
+  "title": "ESPACIOS y LARGO",
+  "titleByLocale": {
+    "es": "ESPACIOS y LARGO",
+    "en": "TRIM and LEN",
+    "de": "GLÄTTEN und LÄNGE",
+    "fr": "SUPPRESPACE et NBCAR",
+    "ja": "TRIM と LEN",
+    "pt": "TIRAR.ESPAÇOS e NÚM.CARACT"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué hace exactamente la función =ESPACIOS(texto) en Excel?",
+      "promptByLocale": {
+        "es": "¿Qué hace exactamente la función =ESPACIOS(texto) en Excel?",
+        "en": "What does the =TRIM(text) function do in Excel?",
+        "de": "Was genau bewirkt die Funktion =GLÄTTEN(Text) in Excel?",
+        "fr": "Que fait exactement la fonction =SUPPRESPACE(texte) sous Excel ?",
+        "ja": "Excelの =TRIM(文字列) 関数は具体的に何をしますか？",
+        "pt": "O que exatamente a função =TIRAR.ESPAÇOS(texto) faz no Excel?"
+      },
+      "options": [
+        "Elimina espacios al inicio, al final y dobles espacios intermedios",
+        "Elimina todas las vocales del texto",
+        "Convierte todos los números en ceros",
+        "Borra la celda por completo"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Elimina espacios al inicio, al final y dobles espacios intermedios",
+          "Elimina todas las vocales del texto",
+          "Convierte todos los números en ceros",
+          "Borra la celda por completo"
+        ],
+        "en": [
+          "Removes leading, trailing, and duplicate spaces between words",
+          "Removes all vowels from the text",
+          "Converts all numbers to zeros",
+          "Deletes the cell entirely"
+        ],
+        "de": [
+          "Entfernt führende, nachfolgende und überflüssige doppelte Leerzeichen",
+          "Entfernt alle Vokale aus dem Text",
+          "Wandelt alle Zahlen in Nullen um",
+          "Löscht die Zelle vollständig"
+        ],
+        "fr": [
+          "Supprime les espaces au début, à la fin et les doubles espaces intérieurs",
+          "Supprime toutes les voyelles du texte",
+          "Convertit tous les nombres en zéros",
+          "Efface complètement la cellule"
+        ],
+        "ja": [
+          "先頭・末尾の余計な空白と、単語間の連続スペースを1つに整理する",
+          "テキストからすべての母音を削除する",
+          "すべての数値をゼロに変換する",
+          "セルの中身を完全に消去する"
+        ],
+        "pt": [
+          "Remove espaços no início, no fim e espaços duplos entre palavras",
+          "Remove todas as vogais do texto",
+          "Converte todos os números em zeros",
+          "Apaga a célula completamente"
+        ]
+      },
+      "correct": "Elimina espacios al inicio, al final y dobles espacios intermedios",
+      "correctByLocale": {
+        "es": "Elimina espacios al inicio, al final y dobles espacios intermedios",
+        "en": "Removes leading, trailing, and duplicate spaces between words",
+        "de": "Entfernt führende, nachfolgende und überflüssige doppelte Leerzeichen",
+        "fr": "Supprime les espaces au début, à la fin et les doubles espaces intérieurs",
+        "ja": "先頭・末尾の余計な空白と、単語間の連続スペースを1つに整理する",
+        "pt": "Remove espaços no início, no fim e espaços duplos entre palavras"
+      },
+      "explanation": "ESPACIOS (TRIM) es fundamental para limpiar datos importados donde espacios invisibles rompen BUSCARV.",
+      "explanationByLocale": {
+        "es": "ESPACIOS (TRIM) es fundamental para limpiar datos importados donde espacios invisibles rompen BUSCARV.",
+        "en": "TRIM is essential for cleaning messy imports where hidden spaces cause VLOOKUP to fail.",
+        "de": "GLÄTTEN ist unverzichtbar für Datenbereinigung, um fehlschlagende SVERWEIS-Suchen zu heilen.",
+        "fr": "SUPPRESPACE est capital pour nettoyer les imports où des espaces invisibles font échouer RECHERCHEV.",
+        "ja": "見えない前後の空白によってVLOOKUPが#N/Aになるのを防ぐため、TRIMによるデータクレンジングは必須です。",
+        "pt": "TIRAR.ESPAÇOS é indispensável para limpar dados onde espaços invisíveis causam erro no PROCV."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si en A1 tienes el texto \"Excel 365\", ¿qué valor devuelve la fórmula =LARGO(A1)?",
+      "promptByLocale": {
+        "es": "Si en A1 tienes el texto \"Excel 365\", ¿qué valor devuelve la fórmula =LARGO(A1)?",
+        "en": "If A1 contains \"Excel 365\", what value does =LEN(A1) return?",
+        "de": "Wenn in A1 der Text \"Excel 365\" steht, welchen Wert liefert =LÄNGE(A1)?",
+        "fr": "Si A1 contient le texte \"Excel 365\", quelle valeur renvoie la formule =NBCAR(A1) ?",
+        "ja": "A1に「Excel 365」と入力されている場合、=LEN(A1) は何を返しますか？",
+        "pt": "Se em A1 você tem o texto \"Excel 365\", qual valor retorna a fórmula =NÚM.CARACT(A1)?"
+      },
+      "options": ["9", "8", "5", "3"],
+      "optionsByLocale": {
+        "es": ["9", "8", "5", "3"],
+        "en": ["9", "8", "5", "3"],
+        "de": ["9", "8", "5", "3"],
+        "fr": ["9", "8", "5", "3"],
+        "ja": ["9", "8", "5", "3"],
+        "pt": ["9", "8", "5", "3"]
+      },
+      "correct": "9",
+      "correctByLocale": {
+        "es": "9",
+        "en": "9",
+        "de": "9",
+        "fr": "9",
+        "ja": "9",
+        "pt": "9"
+      },
+      "explanation": "LARGO cuenta todos los caracteres incluyendo letras, números y el espacio central (E-x-c-e-l- -3-6-5 = 9).",
+      "explanationByLocale": {
+        "es": "LARGO cuenta todos los caracteres incluyendo letras, números y el espacio central (E-x-c-e-l- -3-6-5 = 9).",
+        "en": "LEN counts all characters including letters, numbers, and the space (E-x-c-e-l- -3-6-5 = 9).",
+        "de": "LÄNGE zählt alle Zeichen einschließlich Buchstaben, Zahlen und Leerzeichen (E-x-c-e-l- -3-6-5 = 9).",
+        "fr": "NBCAR compte tous les caractères, y compris lettres, chiffres et espace (E-x-c-e-l- -3-6-5 = 9).",
+        "ja": "LENは英字、数字、そして中間の空白スペースも含めてすべての文字数をカウントします（合計9文字）。",
+        "pt": "NÚM.CARACT conta todos os caracteres incluindo letras, números e o espaço central (E-x-c-e-l- -3-6-5 = 9)."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para limpiar los espacios sucios de la celda A2:",
+      "promptByLocale": {
+        "es": "Arma la fórmula para limpiar los espacios sucios de la celda A2:",
+        "en": "Build formula to clean leading and trailing whitespace from cell A2:",
+        "de": "Baue die Formel, um überflüssige Leerzeichen aus Zelle A2 zu bereinigen:",
+        "fr": "Construisez la formule pour nettoyer les espaces indésirables de la cellule A2 :",
+        "ja": "セルA2の前後の余分な空白を除去・クレンジングする数式を構築してください：",
+        "pt": "Monte a fórmula para limpar os espaços em excesso da célula A2:"
+      },
+      "formula": "=ESPACIOS(A2)",
+      "formulaByLocale": {
+        "es": "=ESPACIOS(A2)",
+        "en": "=TRIM(A2)",
+        "de": "=GLÄTTEN(A2)",
+        "fr": "=SUPPRESPACE(A2)",
+        "ja": "=TRIM(A2)",
+        "pt": "=TIRAR.ESPAÇOS(A2)"
+      },
+      "correct": "=ESPACIOS(A2)",
+      "correctByLocale": {
+        "es": "=ESPACIOS(A2)",
+        "en": "=TRIM(A2)",
+        "de": "=GLÄTTEN(A2)",
+        "fr": "=SUPPRESPACE(A2)",
+        "ja": "=TRIM(A2)",
+        "pt": "=TIRAR.ESPAÇOS(A2)"
+      },
+      "blocks": ["=ESPACIOS(", "A2)"],
+      "blocksByLocale": {
+        "es": ["=ESPACIOS(", "A2)"],
+        "en": ["=TRIM(", "A2)"],
+        "de": ["=GLÄTTEN(", "A2)"],
+        "fr": ["=SUPPRESPACE(", "A2)"],
+        "ja": ["=TRIM(", "A2)"],
+        "pt": ["=TIRAR.ESPAÇOS(", "A2)"]
+      },
+      "explanation": "Al limpiar A2, el texto queda listo para búsquedas y cruces de información exactos.",
+      "explanationByLocale": {
+        "es": "Al limpiar A2, el texto queda listo para búsquedas y cruces de información exactos.",
+        "en": "Cleaning A2 prepares strings for accurate matching in lookups and validations.",
+        "de": "Das Glätten von A2 bereitet Daten zuverlässig für Abgleiche und Formeln vor.",
+        "fr": "Nettoyer A2 rend le texte prêt pour des recherches et jointures exactes.",
+        "ja": "A2をトリムすることで、正確な照合や検索を行える安全なデータに整います。",
+        "pt": "Ao limpar A2, o texto fica pronto para buscas e cruzamentos exatos."
+      }
+    }
+  ]
+}
+

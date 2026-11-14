@@ -1,0 +1,134 @@
+{
+  "ref": "E1",
+  "title": "Unir con &",
+  "titleByLocale": {
+    "es": "Unir con &",
+    "en": "Join with &",
+    "de": "Verbinden mit &",
+    "fr": "Joindre avec &",
+    "ja": "& による文字列結合",
+    "pt": "Concatenar com &"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Si A1=\"Ana\" y B1=\"López\", ¿qué devuelve exactamente la fórmula =A1&B1?",
+      "promptByLocale": {
+        "es": "Si A1=\"Ana\" y B1=\"López\", ¿qué devuelve exactamente la fórmula =A1&B1?",
+        "en": "If A1=\"Ana\" and B1=\"López\", what exact text does the formula =A1&B1 output?",
+        "de": "Wenn A1=\"Ana\" und B1=\"López\", was liefert die Formel =A1&B1?",
+        "fr": "Si A1=\"Ana\" et B1=\"López\", que renvoie exactement la formule =A1&B1 ?",
+        "ja": "A1=\"Ana\"、B1=\"López\" のとき、数式 =A1&B1 は正確に何を返しますか？",
+        "pt": "Se A1=\"Ana\" e B1=\"López\", o que retorna exatamente a fórmula =A1&B1?"
+      },
+      "options": ["AnaLópez", "Ana López", "Ana, López", "LópezAna"],
+      "optionsByLocale": {
+        "es": ["AnaLópez", "Ana López", "Ana, López", "LópezAna"],
+        "en": ["AnaLópez", "Ana López", "Ana, López", "LópezAna"],
+        "de": ["AnaLópez", "Ana López", "Ana, López", "LópezAna"],
+        "fr": ["AnaLópez", "Ana López", "Ana, López", "LópezAna"],
+        "ja": ["AnaLópez", "Ana López", "Ana, López", "LópezAna"],
+        "pt": ["AnaLópez", "Ana López", "Ana, López", "LópezAna"]
+      },
+      "correct": "AnaLópez",
+      "correctByLocale": {
+        "es": "AnaLópez",
+        "en": "AnaLópez",
+        "de": "AnaLópez",
+        "fr": "AnaLópez",
+        "ja": "AnaLópez",
+        "pt": "AnaLópez"
+      },
+      "explanation": "El operador & une directamente sin añadir espacios. Para separarlos debes incluir &\" \"&.",
+      "explanationByLocale": {
+        "es": "El operador & une directamente sin añadir espacios. Para separarlos debes incluir &\" \"&.",
+        "en": "The & ampersand joins strings directly without spaces. To separate words, use &\" \"&.",
+        "de": "Der &-Operator verbindet direkt ohne Leerzeichen. Für ein Leerzeichen nutzt man &\" \"&.",
+        "fr": "L'opérateur & concatène sans espace. Pour séparer les mots, écrivez &\" \"&.",
+        "ja": "&演算子は前後の文字をそのまま直結します。空白を入れるには &\" \"& と書く必要があります。",
+        "pt": "O operador & junta diretamente sem espaços. Para separar, inclua &\" \"&."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para unir el Nombre (A2) con un espacio intermedio y el Apellido (B2):",
+      "promptByLocale": {
+        "es": "Arma la fórmula para unir el Nombre (A2) con un espacio intermedio y el Apellido (B2):",
+        "en": "Build formula to join First Name (A2) with a space and Last Name (B2):",
+        "de": "Baue die Formel, um Vorname (A2) mit einem Leerzeichen und Nachname (B2) zu verbinden:",
+        "fr": "Construisez la formule pour joindre le prénom (A2) avec un espace et le nom (B2) :",
+        "ja": "名(A2)と空白スペース、そして姓(B2)を結合する数式を構築してください：",
+        "pt": "Monte a fórmula para juntar o Nome (A2) com um espaço e o Sobrenome (B2):"
+      },
+      "formula": "=A2&\" \"&B2",
+      "formulaByLocale": {
+        "es": "=A2&\" \"&B2",
+        "en": "=A2&\" \"&B2",
+        "de": "=A2&\" \"&B2",
+        "fr": "=A2&\" \"&B2",
+        "ja": "=A2&\" \"&B2",
+        "pt": "=A2&\" \"&B2"
+      },
+      "correct": "=A2&\" \"&B2",
+      "correctByLocale": {
+        "es": "=A2&\" \"&B2",
+        "en": "=A2&\" \"&B2",
+        "de": "=A2&\" \"&B2",
+        "fr": "=A2&\" \"&B2",
+        "ja": "=A2&\" \"&B2",
+        "pt": "=A2&\" \"&B2"
+      },
+      "blocks": ["=A2", "&\" \"&", "B2"],
+      "blocksByLocale": {
+        "es": ["=A2", "&\" \"&", "B2"],
+        "en": ["=A2", "&\" \"&", "B2"],
+        "de": ["=A2", "&\" \"&", "B2"],
+        "fr": ["=A2", "&\" \"&", "B2"],
+        "ja": ["=A2", "&\" \"&", "B2"],
+        "pt": ["=A2", "&\" \"&", "B2"]
+      },
+      "explanation": "Intercalar &\" \"& inserta un carácter de espacio literal entre ambos textos.",
+      "explanationByLocale": {
+        "es": "Intercalar &\" \"& inserta un carácter de espacio literal entre ambos textos.",
+        "en": "Interleaving &\" \"& injects a literal space character between the two references.",
+        "de": "Das Einfügen von &\" \"& setzt ein Leerzeichen zwischen die beiden Zellen.",
+        "fr": "Insérer &\" \"& ajoute un espace littéral entre les deux références.",
+        "ja": "&\" \"& を挟むことで、2つの単語の間に半角スペースを挿入できます。",
+        "pt": "Intercalar &\" \"& insere um espaço literal entre ambas as células."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la celda C2 donde se generó el correo institucional concatenado:",
+      "promptByLocale": {
+        "es": "Selecciona la celda C2 donde se generó el correo institucional concatenado:",
+        "en": "Select cell C2 containing the generated concatenated email address:",
+        "de": "Wähle Zelle C2 mit der erzeugten E-Mail-Adresse aus:",
+        "fr": "Sélectionnez la cellule C2 avec l'adresse e-mail concaténée générée :",
+        "ja": "結合して作成された社用メールアドレスのセルC2を選択してください：",
+        "pt": "Selecione a célula C2 onde o e-mail corporativo concatenado foi gerado:"
+      },
+      "correct": "C2",
+      "data": {
+        "A1": "Usuario",
+        "B1": "Dominio",
+        "C1": "Correo",
+        "A2": "carlos",
+        "B2": "@empresa.com",
+        "C2": "carlos@empresa.com"
+      },
+      "explanation": "La celda C2 usa la fórmula =A2&B2 para crear direcciones dinámicas.",
+      "explanationByLocale": {
+        "es": "La celda C2 usa la fórmula =A2&B2 para crear direcciones dinámicas.",
+        "en": "Cell C2 uses the formula =A2&B2 to dynamically assemble email addresses.",
+        "de": "Zelle C2 nutzt die Formel =A2&B2, um dynamische E-Mail-Adressen zusammenzusetzen.",
+        "fr": "La cellule C2 utilise la formule =A2&B2 pour composer des adresses e-mail dynamiques.",
+        "ja": "セルC2は =A2&B2 の数式を使ってメールアドレスを動的に組み立てています。",
+        "pt": "A célula C2 usa a fórmula =A2&B2 para gerar endereços dinâmicos."
+      }
+    }
+  ]
+}
+

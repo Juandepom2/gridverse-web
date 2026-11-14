@@ -1,0 +1,90 @@
+{
+  "ref": "L4",
+  "title": "Referencias circulares",
+  "titleByLocale": {
+    "es": "Referencias circulares",
+    "en": "Circular References",
+    "de": "Zirkelbezüge",
+    "fr": "Références circulaires",
+    "ja": "循環参照",
+    "pt": "Referências circulares"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué es una 'Referencia circular' en Excel?",
+      "promptByLocale": {
+        "es": "¿Qué es una 'Referencia circular' en Excel?",
+        "en": "What is a 'Circular Reference' in Excel?",
+        "de": "Was ist ein 'Zirkelbezug' in Excel?",
+        "fr": "Qu'est-ce qu'une 'Référence circulaire' dans Excel ?",
+        "ja": "Excelにおける「循環参照（Circular Reference）」とは何ですか？",
+        "pt": "O que é uma 'Referência circular' no Excel?"
+      },
+      "options": [
+        "Una fórmula que depende de su propio resultado directa o indirectamente (ej. en B4 escribir =SUMA(B1:B4))",
+        "Un gráfico con forma de dona o círculo",
+        "Un archivo guardado en la nube",
+        "Una macro que se repite 10 veces"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Una fórmula que depende de su propio resultado directa o indirectamente (ej. en B4 escribir =SUMA(B1:B4))",
+          "Un gráfico con forma de dona o círculo",
+          "Un archivo guardado en la nube",
+          "Una macro que se repite 10 veces"
+        ],
+        "en": [
+          "A formula that refers to its own cell directly or indirectly (e.g. typing =SUM(B1:B4) inside cell B4)",
+          "A donut or circular chart",
+          "A workbook saved in OneDrive",
+          "A macro looping 10 times"
+        ],
+        "de": [
+          "Eine Formel, die sich direkt oder indirekt auf die eigene Zelle bezieht (z. B. =SUMME(B1:B4) in Zelle B4)",
+          "Ein Ring- oder Kreisdiagramm",
+          "Eine Datei in der Cloud",
+          "Ein Makro mit 10 Durchläufen"
+        ],
+        "fr": [
+          "Une formule qui fait référence à sa propre cellule directement ou indirectement (ex. =SOMME(B1:B4) dans B4)",
+          "Un graphique en anneau",
+          "Un fichier dans le cloud",
+          "Une macro avec 10 boucles"
+        ],
+        "ja": [
+          "数式が直接または間接的に自分自身のセルを参照してしまっている状態（例：B4セルの中に =SUM(B1:B4) と書く）",
+          "円グラフやドーナツグラフのこと",
+          "クラウドに保存されたファイル",
+          "10回ループするマクロ"
+        ],
+        "pt": [
+          "Uma fórmula que faz referência à sua própria célula direta ou indiretamente (ex: em B4 digitar =SOMA(B1:B4))",
+          "Um gráfico de rosca ou pizza",
+          "Um arquivo salvo na nuvem",
+          "Uma macro que repete 10 vezes"
+        ]
+      },
+      "correct": "Una fórmula que depende de su propio resultado directa o indirectamente (ej. en B4 escribir =SUMA(B1:B4))",
+      "correctByLocale": {
+        "es": "Una fórmula que depende de su propio resultado directa o indirectamente (ej. en B4 escribir =SUMA(B1:B4))",
+        "en": "A formula that refers to its own cell directly or indirectly (e.g. typing =SUM(B1:B4) inside cell B4)",
+        "de": "Eine Formel, die sich direkt oder indirekt auf die eigene Zelle bezieht (z. B. =SUMME(B1:B4) in Zelle B4)",
+        "fr": "Une formule qui fait référence à sa propre cellule directement ou indirectement (ex. =SOMME(B1:B4) dans B4)",
+        "ja": "数式が直接または間接的に自分自身のセルを参照してしまっている状態（例：B4セルの中に =SUM(B1:B4) と書く）",
+        "pt": "Uma fórmula que faz referência à sua própria célula direta ou indiretamente (ex: em B4 digitar =SOMA(B1:B4))"
+      },
+      "explanation": "Las referencias circulares crean bucles infinitos y congelan o devuelven 0 en los cálculos hasta ser corregidas.",
+      "explanationByLocale": {
+        "es": "Las referencias circulares crean bucles infinitos y congelan o devuelven 0 en los cálculos hasta ser corregidas.",
+        "en": "Circular references cause infinite calculation loops and evaluate to 0 or crash models until resolved.",
+        "de": "Zirkelbezüge erzeugen Endlosschleifen und blockieren Berechnungen (liefern oft 0), bis sie behoben werden.",
+        "fr": "Les références circulaires créent des boucles infinies et renvoient 0 tant qu'elles ne sont pas corrigées.",
+        "ja": "循環参照は無限ループを引き起こすため、Excelは計算を停止して「0」を返したり警告を発します。",
+        "pt": "Referências circulares criam loops infinitos e travam ou retornam 0 até serem resolvidas."
+      }
+    }
+  ]
+}

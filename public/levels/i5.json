@@ -1,0 +1,90 @@
+{
+  "ref": "I5",
+  "title": "CONTAR.SI.CONJUNTO",
+  "titleByLocale": {
+    "es": "CONTAR.SI.CONJUNTO",
+    "en": "COUNTIFS",
+    "de": "ZÄHLENWENNS",
+    "fr": "NB.SI.ENS",
+    "ja": "COUNTIFS",
+    "pt": "CONT.SES"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cómo se combinan las condiciones dentro de =CONTAR.SI.CONJUNTO?",
+      "promptByLocale": {
+        "es": "¿Cómo se combinan las condiciones dentro de =CONTAR.SI.CONJUNTO?",
+        "en": "How are multiple conditions combined within =COUNTIFS?",
+        "de": "Wie werden mehrere Bedingungen in =ZÄHLENWENNS logisch verknüpft?",
+        "fr": "Comment les conditions multiples sont-elles combinées dans =NB.SI.ENS ?",
+        "ja": "=COUNTIFS 関数で複数条件を指定した場合、条件同士はどのように評価されますか？",
+        "pt": "Como múltiplas condições são combinadas dentro do =CONT.SES?"
+      },
+      "options": [
+        "Con lógica 'Y' (AND): todas las condiciones deben cumplirse a la vez en la misma fila",
+        "Con lógica 'O' (OR): basta con que se cumpla cualquiera de las condiciones",
+        "Se alternan una fila sí y una fila no",
+        "Cuenta únicamente los números impares"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Con lógica 'Y' (AND): todas las condiciones deben cumplirse a la vez en la misma fila",
+          "Con lógica 'O' (OR): basta con que se cumpla cualquiera de las condiciones",
+          "Se alternan una fila sí y una fila no",
+          "Cuenta únicamente los números impares"
+        ],
+        "en": [
+          "With 'AND' logic: all conditions must be satisfied simultaneously on the same row",
+          "With 'OR' logic: satisfying any single condition suffices",
+          "Alternating every other row",
+          "Counts only odd numbers"
+        ],
+        "de": [
+          "Mit 'UND'-Logik: alle Bedingungen müssen gleichzeitig für dieselbe Zeile zutreffen",
+          "Mit 'ODER'-Logik",
+          "Jede zweite Zeile",
+          "Nur ungerade Zahlen"
+        ],
+        "fr": [
+          "Avec la logique 'ET' (AND) : toutes les conditions doivent être réunies simultanément sur la même ligne",
+          "Avec la logique 'OU' (OR)",
+          "Une ligne sur deux",
+          "Uniquement les nombres impairs"
+        ],
+        "ja": [
+          "「AND（かつ）」条件：同一行ですべての指定条件が同時に満たされた場合のみカウント",
+          "「OR（または）」条件：いずれか1つでも満たせばカウント",
+          "1行おきに交互にカウント",
+          "奇数のみをカウント"
+        ],
+        "pt": [
+          "Com lógica 'E' (AND): todas as condições devem ser satisfeitas simultaneamente na mesma linha",
+          "Com lógica 'OU' (OR)",
+          "Alternando linha sim, linha não",
+          "Apenas números ímpares"
+        ]
+      },
+      "correct": "Con lógica 'Y' (AND): todas las condiciones deben cumplirse a la vez en la misma fila",
+      "correctByLocale": {
+        "es": "Con lógica 'Y' (AND): todas las condiciones deben cumplirse a la vez en la misma fila",
+        "en": "With 'AND' logic: all conditions must be satisfied simultaneously on the same row",
+        "de": "Mit 'UND'-Logik: alle Bedingungen müssen gleichzeitig für dieselbe Zeile zutreffen",
+        "fr": "Avec la logique 'ET' (AND) : toutes les conditions doivent être réunies simultanément sur la même ligne",
+        "ja": "「AND（かつ）」条件：同一行ですべての指定条件が同時に満たされた場合のみカウント",
+        "pt": "Com lógica 'E' (AND): todas as condições devem ser satisfeitas simultaneamente na mesma linha"
+      },
+      "explanation": "Cada criterio adicional filtra aún más el conjunto, aplicando una intersección estricta (AND).",
+      "explanationByLocale": {
+        "es": "Cada criterio adicional filtra aún más el conjunto, aplicando una intersección estricta (AND).",
+        "en": "Each additional criteria pair narrows the dataset using strict AND intersection.",
+        "de": "Jedes weitere Kriterienpaar verengt die Auswahl über eine strikte UND-Schnittmenge.",
+        "fr": "Chaque critère additionnel restreint la sélection selon une intersection ET stricte.",
+        "ja": "条件を追加するたびに絞り込みが行われ、厳格なAND条件として集計されます。",
+        "pt": "Cada critério adicional restringe ainda mais o conjunto com lógica E estrita."
+      }
+    }
+  ]
+}

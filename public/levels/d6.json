@@ -1,0 +1,279 @@
+{
+  "ref": "D6",
+  "title": "Jefe: Nombre no reconocido",
+  "version": 1,
+  "rewardXp": 35,
+  "exercises": [
+    {
+      "type": "find_error",
+      "prompt": "B5 muestra #¿NOMBRE?. Toca la celda con el error tipográfico.",
+      "correct": "B5",
+      "errorCell": "B5",
+      "data": {
+        "A1": "Item",
+        "B1": "Valor",
+        "A2": "Lápiz",
+        "B2": "10",
+        "A3": "Goma",
+        "B3": "5",
+        "A4": "Regla",
+        "B4": "15",
+        "A5": "Total",
+        "B5": "=SUMAA(B2:B4)"
+      },
+      "displayValues": {
+        "B2": "10",
+        "B3": "5",
+        "B4": "15",
+        "B5": "#¿NOMBRE?"
+      },
+      "promptByLocale": {
+        "es": "B5 muestra #¿NOMBRE?. Toca la celda con el error tipográfico.",
+        "en": "B5 displays #NAME?. Tap the cell with the typing error.",
+        "de": "B5 zeigt #NAME?. Tippe auf die Zelle mit dem Tippfehler.",
+        "fr": "B5 affiche #NOM?. Touche la cellule contenant la faute de frappe.",
+        "ja": "B5が #NAME? となっています。関数名のスペルミスがあるセルをタップしてください。",
+        "pt": "B5 mostra #NOME?. Toque na célula com o erro de digitação."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Item",
+          "B1": "Valor",
+          "A2": "Lápiz",
+          "B2": "10",
+          "A3": "Goma",
+          "B3": "5",
+          "A4": "Regla",
+          "B4": "15",
+          "A5": "Total",
+          "B5": "=SUMAA(B2:B4)"
+        },
+        "en": {
+          "A1": "Item",
+          "B1": "Value",
+          "A2": "Pencil",
+          "B2": "10",
+          "A3": "Eraser",
+          "B3": "5",
+          "A4": "Ruler",
+          "B4": "15",
+          "A5": "Total",
+          "B5": "=SUMAA(B2:B4)"
+        },
+        "de": {
+          "A1": "Artikel",
+          "B1": "Wert",
+          "A2": "Stift",
+          "B2": "10",
+          "A3": "Radierer",
+          "B3": "5",
+          "A4": "Lineal",
+          "B4": "15",
+          "A5": "Gesamt",
+          "B5": "=SUMAA(B2:B4)"
+        },
+        "fr": {
+          "A1": "Article",
+          "B1": "Valeur",
+          "A2": "Crayon",
+          "B2": "10",
+          "A3": "Gomme",
+          "B3": "5",
+          "A4": "Règle",
+          "B4": "15",
+          "A5": "Total",
+          "B5": "=SUMAA(B2:B4)"
+        },
+        "ja": {
+          "A1": "品目",
+          "B1": "金額",
+          "A2": "鉛筆",
+          "B2": "10",
+          "A3": "消しゴム",
+          "B3": "5",
+          "A4": "定規",
+          "B4": "15",
+          "A5": "合計",
+          "B5": "=SUMAA(B2:B4)"
+        },
+        "pt": {
+          "A1": "Item",
+          "B1": "Valor",
+          "A2": "Lápis",
+          "B2": "10",
+          "A3": "Borracha",
+          "B3": "5",
+          "A4": "Régua",
+          "B4": "15",
+          "A5": "Total",
+          "B5": "=SUMAA(B2:B4)"
+        }
+      },
+      "displayValuesByLocale": {
+        "es": {
+          "B2": "10",
+          "B3": "5",
+          "B4": "15",
+          "B5": "#¿NOMBRE?"
+        },
+        "en": {
+          "B2": "10",
+          "B3": "5",
+          "B4": "15",
+          "B5": "#NAME?"
+        },
+        "de": {
+          "B2": "10",
+          "B3": "5",
+          "B4": "15",
+          "B5": "#NAME?"
+        },
+        "fr": {
+          "B2": "10",
+          "B3": "5",
+          "B4": "15",
+          "B5": "#NOM?"
+        },
+        "ja": {
+          "B2": "10",
+          "B3": "5",
+          "B4": "15",
+          "B5": "#NAME?"
+        },
+        "pt": {
+          "B2": "10",
+          "B3": "5",
+          "B4": "15",
+          "B5": "#NOME?"
+        }
+      },
+      "explanationByLocale": {
+        "es": "La fórmula en B5 contiene '=SUMAA', un nombre inexistente en Excel.",
+        "en": "The formula in B5 contains '=SUMAA', an unrecognized function name in Excel.",
+        "de": "Die Formel in B5 enthält '=SUMAA', einen unbekannten Funktionsnamen in Excel.",
+        "fr": "La formule en B5 contient '=SUMAA', un nom de fonction non reconnu.",
+        "ja": "B5セルの数式に存在しない関数名「=SUMAA」が入力されているためエラーになります。",
+        "pt": "A fórmula em B5 contém '=SUMAA', uma função que não existe no Excel."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Por qué aparece el error #¿NOMBRE? en Excel?",
+      "formula": "#¿NOMBRE?",
+      "correct": "El nombre de la función está mal escrito o falta comillas a un texto",
+      "data": {},
+      "options": [
+        "El nombre de la función está mal escrito o falta comillas a un texto",
+        "El resultado es negativo",
+        "La columna no tiene suficiente ancho",
+        "Se agotó la memoria de la computadora"
+      ],
+      "promptByLocale": {
+        "es": "¿Por qué aparece el error #¿NOMBRE? en Excel?",
+        "en": "Why does the #NAME? error appear in Excel?",
+        "de": "Warum tritt der Fehler #NAME? in Excel auf?",
+        "fr": "Pourquoi l'erreur #NOM? apparaît-elle dans Excel ?",
+        "ja": "Excelで #NAME? エラーが発生する原因は何ですか？",
+        "pt": "Por que o erro #NOME? aparece no Excel?"
+      },
+      "formulaByLocale": {
+        "es": "#¿NOMBRE?",
+        "en": "#NAME?",
+        "de": "#NAME?",
+        "fr": "#NOM?",
+        "ja": "#NAME?",
+        "pt": "#NOME?"
+      },
+      "correctByLocale": {
+        "es": "El nombre de la función está mal escrito o falta comillas a un texto",
+        "en": "The function name is misspelled or quotation marks are missing from text",
+        "de": "Der Funktionsname ist falsch geschrieben oder Anführungszeichen fehlen",
+        "fr": "Le nom de fonction est mal orthographié ou des guillemets manquent",
+        "ja": "関数名のスペルミス、または文字列の引用符が抜けているため",
+        "pt": "O nome da função está escrito errado ou faltam aspas no texto"
+      },
+      "optionsByLocale": {
+        "es": [
+          "El nombre de la función está mal escrito o falta comillas a un texto",
+          "El resultado es negativo",
+          "La columna no tiene suficiente ancho",
+          "Se agotó la memoria de la computadora"
+        ],
+        "en": [
+          "The function name is misspelled or quotation marks are missing from text",
+          "The result is negative",
+          "The column is not wide enough",
+          "The computer ran out of memory"
+        ],
+        "de": [
+          "Der Funktionsname ist falsch geschrieben oder Anführungszeichen fehlen",
+          "Das Ergebnis ist negativ",
+          "Die Spalte ist nicht breit genug",
+          "Der Arbeitsspeicher ist voll"
+        ],
+        "fr": [
+          "Le nom de fonction est mal orthographié ou des guillemets manquent",
+          "Le résultat est négatif",
+          "La colonne n'est pas assez large",
+          "Mémoire insuffisante"
+        ],
+        "ja": [
+          "関数名のスペルミス、または文字列の引用符が抜けているため",
+          "計算結果がマイナスになったため",
+          "列の幅が足りないため",
+          "コンピュータのメモリが不足したため"
+        ],
+        "pt": [
+          "O nome da função está escrito errado ou faltam aspas no texto",
+          "O resultado é negativo",
+          "A coluna não tem largura suficiente",
+          "A memória do computador esgotou"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Excel interpreta cualquier palabra no reconocida sin comillas como una función desconocida.",
+        "en": "Excel treats any unrecognized word without quotes as an unknown function or named range.",
+        "de": "Excel interpretiert nicht erkannte Wörter ohne Anführungszeichen als unbekannte Funktion.",
+        "fr": "Excel interprète tout mot non reconnu sans guillemets comme une fonction inconnue.",
+        "ja": "Excelは引用符のない未認識の文字列を未知の関数または未定義の名前と判断します。",
+        "pt": "O Excel interpreta qualquer palavra não reconhecida sem aspas como função desconhecida."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arregla la fórmula escribiendo el nombre correcto de la función SUMA.",
+      "correct": "=SUMA(B2:B4)",
+      "blocks": [
+        "=",
+        "SUMA(",
+        "B2:B4",
+        ")",
+        "SUMAA("
+      ],
+      "promptByLocale": {
+        "es": "Arregla la fórmula escribiendo el nombre correcto de la función SUMA.",
+        "en": "Fix the formula by writing the correct name of the SUM function.",
+        "de": "Korrigiere die Formel mit dem richtigen Namen der SUMME-Funktion.",
+        "fr": "Répare la formule en écrivant le nom correct de la fonction SOMME.",
+        "ja": "正しいSUM関数の名前を入力して数式を修復してください。",
+        "pt": "Conserte a fórmula escrevendo o nome correto da função SOMA."
+      },
+      "explanationByLocale": {
+        "es": "Reemplazar '=SUMAA' por '=SUMA' restaura inmediatamente el cálculo correcto de la suma.",
+        "en": "Replacing '=SUMAA' with '=SUM' immediately restores the correct sum calculation.",
+        "de": "Das Ersetzen von '=SUMAA' durch '=SUMME' stellt die korrekte Summenberechnung wieder her.",
+        "fr": "Remplacer '=SUMAA' par '=SOMME' rétablit immédiatement le calcul de la somme.",
+        "ja": "「=SUMAA」を正しい「=SUM」に修正することで、合計計算が正常に復帰します。",
+        "pt": "Substituir '=SUMAA' por '=SOMA' restaura de imediato o cálculo correto da soma."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Jefe: Nombre no reconocido",
+    "en": "Boss: Unrecognized Name",
+    "de": "Boss: Unbekannter Name",
+    "fr": "Boss : Nom non reconnu",
+    "ja": "ボス：無効な関数名エラー",
+    "pt": "Chefe: Nome não reconhecido"
+  }
+}

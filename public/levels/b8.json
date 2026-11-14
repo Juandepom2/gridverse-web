@@ -1,0 +1,297 @@
+{
+  "ref": "B8",
+  "title": "Referencias relativas",
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Por defecto en Excel, cuando escribes '=A1+B1' sin símbolos de dólar ($), ¿qué tipo de referencia es?",
+      "formula": "=A1+B1",
+      "correct": "Referencia relativa",
+      "data": {},
+      "options": [
+        "Referencia relativa",
+        "Referencia absoluta",
+        "Referencia circular",
+        "Referencia 3D"
+      ],
+      "explanation": "Las referencias relativas se adaptan automáticamente a la posición donde se copian o arrastran.",
+      "promptByLocale": {
+        "es": "Por defecto en Excel, cuando escribes '=A1+B1' sin símbolos de dólar ($), ¿qué tipo de referencia es?",
+        "en": "By default in Excel, when you type '=A1+B1' without dollar signs ($), what type of reference is it?",
+        "de": "Was für eine Bezugsart liegt standardmäßig vor, wenn man '=A1+B1' ohne Dollarzeichen ($) eingibt?",
+        "fr": "Par défaut dans Excel, quand on écrit '=A1+B1' sans symbole dollar ($), de quel type de référence s'agit-il ?",
+        "ja": "Excelでドル記号（$）を付けずに「=A1+B1」と入力した場合、どのような参照になりますか？",
+        "pt": "Por padrão no Excel, quando você digita '=A1+B1' sem símbolos de cifrão ($), que tipo de referência é?"
+      },
+      "formulaByLocale": {
+        "es": "=A1+B1",
+        "en": "=A1+B1",
+        "de": "=A1+B1",
+        "fr": "=A1+B1",
+        "ja": "=A1+B1",
+        "pt": "=A1+B1"
+      },
+      "correctByLocale": {
+        "es": "Referencia relativa",
+        "en": "Relative reference",
+        "de": "Relativer Bezug",
+        "fr": "Référence relative",
+        "ja": "相対参照",
+        "pt": "Referência relativa"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Referencia relativa",
+          "Referencia absoluta",
+          "Referencia circular",
+          "Referencia 3D"
+        ],
+        "en": [
+          "Relative reference",
+          "Absolute reference",
+          "Circular reference",
+          "3D reference"
+        ],
+        "de": [
+          "Relativer Bezug",
+          "Absoluter Bezug",
+          "Zirkelbezug",
+          "3D-Bezug"
+        ],
+        "fr": [
+          "Référence relative",
+          "Référence absolue",
+          "Référence circulaire",
+          "Référence 3D"
+        ],
+        "ja": [
+          "相対参照",
+          "絶対参照",
+          "循環参照",
+          "3D参照"
+        ],
+        "pt": [
+          "Referência relativa",
+          "Referência absoluta",
+          "Referência circular",
+          "Referência 3D"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Las referencias relativas se adaptan automáticamente a la posición donde se copian o arrastran.",
+        "en": "Relative references automatically adjust based on their relative position when copied or autofilled.",
+        "de": "Relative Bezüge passen sich beim Kopieren oder Ziehen automatisch der Zielposition an.",
+        "fr": "Les références relatives s'adaptent automatiquement à la position où elles sont copiées.",
+        "ja": "相対参照は、コピーやオートフィル先の位置に合わせて自動的に参照先が移動します。",
+        "pt": "As referências relativas adaptam-se automaticamente à posição para onde são copiadas."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si en la celda C2 tienes '=A2*B2' y arrastras la celda dos filas hacia abajo hasta C4, ¿qué fórmula queda?",
+      "formula": "Arrastrar C2 a C4",
+      "correct": "=A4*B4",
+      "data": {},
+      "options": [
+        "=A4*B4",
+        "=A2*B2",
+        "=A3*B3",
+        "=B4*C4"
+      ],
+      "explanation": "Al desplazarte dos filas hacia abajo (+2), los números de fila pasan de 2 a 4 automáticamente.",
+      "promptByLocale": {
+        "es": "Si en la celda C2 tienes '=A2*B2' y arrastras la celda dos filas hacia abajo hasta C4, ¿qué fórmula queda?",
+        "en": "If cell C2 contains '=A2*B2' and you drag it two rows down to C4, what formula do you get?",
+        "de": "Wenn in C2 '=A2*B2' steht und du die Zelle zwei Zeilen nach unten nach C4 ziehst, wie lautet die Formel?",
+        "fr": "Si la cellule C2 contient '=A2*B2' et que tu l'étires de deux lignes vers le bas jusqu'à C4, quelle est la formule ?",
+        "ja": "C2セルに「=A2*B2」が入っており、2行下のC4までドラッグした場合、数式はどうなりますか？",
+        "pt": "Se na célula C2 você tem '=A2*B2' e arrasta a célula duas linhas para baixo até C4, qual fórmula fica?"
+      },
+      "formulaByLocale": {
+        "es": "Arrastrar C2 a C4",
+        "en": "Drag C2 to C4",
+        "de": "Ziehe C2 nach C4",
+        "fr": "Étirer C2 vers C4",
+        "ja": "C2からC4へドラッグ",
+        "pt": "Arrastar C2 até C4"
+      },
+      "explanationByLocale": {
+        "es": "Al desplazarte dos filas hacia abajo (+2), los números de fila pasan de 2 a 4 automáticamente.",
+        "en": "Moving two rows down (+2) automatically shifts the row numbers from 2 to 4.",
+        "de": "Beim Ziehen um zwei Zeilen nach unten (+2) ändern sich die Zeilennummern von 2 auf 4.",
+        "fr": "En descendant de deux lignes (+2), les numéros de ligne passent automatiquement de 2 à 4.",
+        "ja": "2行下に移動（+2）するため、行番号が2から4に自動変化して「=A4*B4」になります。",
+        "pt": "Ao descer duas linhas (+2), os números de linha passam de 2 para 4 automaticamente."
+      },
+      "optionsByLocale": {
+        "es": [
+          "=A4*B4",
+          "=A2*B2",
+          "=A3*B3",
+          "=B4*C4"
+        ],
+        "en": [
+          "=A4*B4",
+          "=A2*B2",
+          "=A3*B3",
+          "=B4*C4"
+        ],
+        "de": [
+          "=A4*B4",
+          "=A2*B2",
+          "=A3*B3",
+          "=B4*C4"
+        ],
+        "fr": [
+          "=A4*B4",
+          "=A2*B2",
+          "=A3*B3",
+          "=B4*C4"
+        ],
+        "ja": [
+          "=A4*B4",
+          "=A2*B2",
+          "=A3*B3",
+          "=B4*C4"
+        ],
+        "pt": [
+          "=A4*B4",
+          "=A2*B2",
+          "=A3*B3",
+          "=B4*C4"
+        ]
+      },
+      "correctByLocale": {
+        "es": "=A4*B4",
+        "en": "=A4*B4",
+        "de": "=A4*B4",
+        "fr": "=A4*B4",
+        "ja": "=A4*B4",
+        "pt": "=A4*B4"
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si en B2 tienes '=A1' y copias la fórmula una columna a la derecha (en C2), ¿qué fórmula queda?",
+      "formula": "Copiar a la derecha",
+      "correct": "=B1",
+      "data": {},
+      "options": [
+        "=B1",
+        "=A1",
+        "=A2",
+        "=C1"
+      ],
+      "explanation": "Al desplazarse una columna a la derecha (+1 columna), la letra A se transforma en B.",
+      "promptByLocale": {
+        "es": "Si en B2 tienes '=A1' y copias la fórmula una columna a la derecha (en C2), ¿qué fórmula queda?",
+        "en": "If cell B2 contains '=A1' and you copy the formula one column to the right (to C2), what formula do you get?",
+        "de": "Wenn in B2 '=A1' steht und du die Formel eine Spalte nach rechts nach C2 kopierst, wie lautet sie?",
+        "fr": "Si la cellule B2 contient '=A1' et que tu copies la formule d'une colonne vers la droite (en C2), que devient-elle ?",
+        "ja": "B2セルに「=A1」が入っており、1列右のC2へコピーした場合、数式はどう変化しますか？",
+        "pt": "Se em B2 você tem '=A1' e copia a fórmula uma coluna para a direita (em C2), qual fórmula fica?"
+      },
+      "formulaByLocale": {
+        "es": "Copiar a la derecha",
+        "en": "Copy to the right",
+        "de": "Nach rechts kopieren",
+        "fr": "Copier vers la droite",
+        "ja": "右方向へコピー",
+        "pt": "Copiar para a direita"
+      },
+      "explanationByLocale": {
+        "es": "Al desplazarse una columna a la derecha (+1 columna), la letra A se transforma en B.",
+        "en": "Moving one column to the right (+1 column) converts column A into B.",
+        "de": "Beim Verschieben um eine Spalte nach rechts (+1 Spalte) wird aus A die Spalte B.",
+        "fr": "En décalant d'une colonne vers la droite (+1 colonne), la colonne A devient B.",
+        "ja": "1列右に移動（+1列）するため、列記号がAからBに変わって「=B1」になります。",
+        "pt": "Ao deslocar uma coluna para a direita (+1 coluna), a letra A se transforma em B."
+      },
+      "optionsByLocale": {
+        "es": [
+          "=B1",
+          "=A1",
+          "=A2",
+          "=C1"
+        ],
+        "en": [
+          "=B1",
+          "=A1",
+          "=A2",
+          "=C1"
+        ],
+        "de": [
+          "=B1",
+          "=A1",
+          "=A2",
+          "=C1"
+        ],
+        "fr": [
+          "=B1",
+          "=A1",
+          "=A2",
+          "=C1"
+        ],
+        "ja": [
+          "=B1",
+          "=A1",
+          "=A2",
+          "=C1"
+        ],
+        "pt": [
+          "=B1",
+          "=A1",
+          "=A2",
+          "=C1"
+        ]
+      },
+      "correctByLocale": {
+        "es": "=B1",
+        "en": "=B1",
+        "de": "=B1",
+        "fr": "=B1",
+        "ja": "=B1",
+        "pt": "=B1"
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para sumar los valores relativos de la fila 2 (A2 y B2).",
+      "correct": "=A2+B2",
+      "blocks": [
+        "=",
+        "A2",
+        "+",
+        "B2",
+        "$A$2"
+      ],
+      "explanation": "Sin signos de dólar, la fórmula está lista para ser propagada a toda la tabla.",
+      "promptByLocale": {
+        "es": "Arma la fórmula para sumar los valores relativos de la fila 2 (A2 y B2).",
+        "en": "Build the formula to sum the relative values in row 2 (A2 and B2).",
+        "de": "Erstelle die Formel, um die relativen Werte der Zeile 2 (A2 und B2) zu addieren.",
+        "fr": "Construis la formule pour additionner les valeurs relatives de la ligne 2 (A2 et B2).",
+        "ja": "2行目の相対参照の値（A2 と B2）を足し算する数式を組み立ててください。",
+        "pt": "Monte a fórmula para somar os valores relativos da linha 2 (A2 e B2)."
+      },
+      "explanationByLocale": {
+        "es": "Sin signos de dólar, la fórmula está lista para ser propagada a toda la tabla.",
+        "en": "Without dollar signs, the formula is ready to be propagated across the table.",
+        "de": "Ohne Dollarzeichen kann die Formel problemlos über die Tabelle gezogen werden.",
+        "fr": "Sans symbole dollar, la formule s'adapte parfaitement lors de la recopie.",
+        "ja": "ドル記号を付けないことで、表の他の行へスムーズにオートフィルできます。",
+        "pt": "Sem símbolos de cifrão, a fórmula está pronta para ser propagada por toda a tabela."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Referencias relativas",
+    "en": "Relative References",
+    "de": "Relative Bezüge",
+    "fr": "Références relatives",
+    "ja": "相対参照",
+    "pt": "Referências relativas"
+  }
+}

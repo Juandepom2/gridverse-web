@@ -1,0 +1,419 @@
+{
+  "ref": "E2",
+  "title": "Tu primer BUSCARV (VLOOKUP)",
+  "version": 1,
+  "rewardXp": 25,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué hace la función =BUSCARV en una tabla de Excel?",
+      "formula": "=BUSCARV()",
+      "correct": "Busca un valor en la primera columna y devuelve un dato de la misma fila",
+      "data": {},
+      "options": [
+        "Busca un valor en la primera columna y devuelve un dato de la misma fila",
+        "Suma todos los números impares",
+        "Cambia el color de la celda",
+        "Crea una gráfica automática"
+      ],
+      "promptByLocale": {
+        "es": "¿Qué hace la función =BUSCARV en una tabla de Excel?",
+        "en": "What does the =VLOOKUP function do in an Excel table?",
+        "de": "Was macht die Funktion =SVERWEIS in einer Excel-Tabelle?",
+        "fr": "Que fait la fonction =RECHERCHEV dans un tableau Excel ?",
+        "ja": "Excelの =VLOOKUP 関数にはどのような働きがありますか？",
+        "pt": "O que faz a função =PROCV em uma tabela do Excel?"
+      },
+      "formulaByLocale": {
+        "es": "=BUSCARV()",
+        "en": "=VLOOKUP()",
+        "de": "=SVERWEIS()",
+        "fr": "=RECHERCHEV()",
+        "ja": "=VLOOKUP()",
+        "pt": "=PROCV()"
+      },
+      "correctByLocale": {
+        "es": "Busca un valor en la primera columna y devuelve un dato de la misma fila",
+        "en": "Searches for a value in the first column and returns data from the same row",
+        "de": "Sucht einen Wert in der ersten Spalte und liefert einen Wert derselben Zeile",
+        "fr": "Cherche une valeur dans la première colonne et renvoie une donnée de la même ligne",
+        "ja": "先頭列で検索値を縦に探し、一致した行の指定列のデータを返す",
+        "pt": "Procura um valor na primeira coluna e retorna um dado da mesma linha"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Busca un valor en la primera columna y devuelve un dato de la misma fila",
+          "Suma todos los números impares",
+          "Cambia el color de la celda",
+          "Crea una gráfica automática"
+        ],
+        "en": [
+          "Searches for a value in the first column and returns data from the same row",
+          "Sums all odd numbers",
+          "Changes cell fill color",
+          "Creates an automatic chart"
+        ],
+        "de": [
+          "Sucht einen Wert in der ersten Spalte und liefert einen Wert derselben Zeile",
+          "Addiert alle ungeraden Zahlen",
+          "Ändert die Zellfarbe",
+          "Erstellt automatisch ein Diagramm"
+        ],
+        "fr": [
+          "Cherche une valeur dans la première colonne et renvoie une donnée de la même ligne",
+          "Additionne les nombres impairs",
+          "Modifie la couleur de la cellule",
+          "Crée un graphique automatique"
+        ],
+        "ja": [
+          "先頭列で検索値を縦に探し、一致した行の指定列のデータを返す",
+          "すべての奇数値を合計する",
+          "セルの背景色を変更する",
+          "自動的にグラフを作成する"
+        ],
+        "pt": [
+          "Procura um valor na primeira coluna e retorna um dado da mesma linha",
+          "Soma todos os números ímpares",
+          "Altera a cor da célula",
+          "Cria um gráfico automático"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "BUSCARV (Búsqueda Vertical) localiza un identificador clave en la columna izquierda y extrae atributos asociados.",
+        "en": "VLOOKUP (Vertical Lookup) locates a key identifier in the leftmost column and extracts related data.",
+        "de": "SVERWEIS sucht ein Kriterium in der ersten Spalte und liest Werte aus einer Spalte rechts daneben aus.",
+        "fr": "RECHERCHEV cherche un identifiant dans la colonne de gauche et extrait l'information sur la même ligne.",
+        "ja": "VLOOKUP（Vertical Lookup）は指定した表の左端列で値を垂直方向に検索し、同じ行の指定列の値を返します。",
+        "pt": "PROCV (Procura Vertical) localiza um código na coluna à esquerda e extrai dados da mesma linha."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Por qué casi siempre ponemos FALSO (o 0) en el último argumento de BUSCARV?",
+      "formula": "BUSCARV(..., ..., ..., FALSO)",
+      "correct": "Para exigir una coincidencia EXACTA y evitar datos incorrectos",
+      "data": {},
+      "options": [
+        "Para exigir una coincidencia EXACTA y evitar datos incorrectos",
+        "Porque la fórmula no funciona sin mentir",
+        "Para buscar solo los números impares",
+        "Solo es por compatibilidad antigua"
+      ],
+      "promptByLocale": {
+        "es": "¿Por qué casi siempre ponemos FALSO (o 0) en el último argumento de BUSCARV?",
+        "en": "Why do we almost always put FALSE (or 0) as the last argument in VLOOKUP?",
+        "de": "Warum setzt man fast immer FALSCH (oder 0) als letztes Argument in SVERWEIS?",
+        "fr": "Pourquoi met-on presque toujours FAUX (ou 0) comme dernier argument de RECHERCHEV ?",
+        "ja": "VLOOKUP関数の最後の引数に、ほぼ必ず FALSE（または 0）を指定する理由は何ですか？",
+        "pt": "Por que quase sempre colocamos FALSO (ou 0) no último argumento do PROCV?"
+      },
+      "formulaByLocale": {
+        "es": "BUSCARV(..., ..., ..., FALSO)",
+        "en": "VLOOKUP(..., ..., ..., FALSE)",
+        "de": "SVERWEIS(..., ..., ..., FALSCH)",
+        "fr": "RECHERCHEV(..., ..., ..., FAUX)",
+        "ja": "VLOOKUP(..., ..., ..., FALSE)",
+        "pt": "PROCV(..., ..., ..., FALSO)"
+      },
+      "correctByLocale": {
+        "es": "Para exigir una coincidencia EXACTA y evitar datos incorrectos",
+        "en": "To require an EXACT match and avoid returning incorrect data",
+        "de": "Um eine GENAUE Übereinstimmung zu erzwingen und Fehlzuordnungen zu vermeiden",
+        "fr": "Pour exiger une correspondance EXACTE et éviter des données erronées",
+        "ja": "完全一致検索を指定し、誤ったデータが返されるのを防ぐため",
+        "pt": "Para exigir correspondência EXATA e evitar dados incorretos"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Para exigir una coincidencia EXACTA y evitar datos incorrectos",
+          "Porque la fórmula no funciona sin mentir",
+          "Para buscar solo los números impares",
+          "Solo es por compatibilidad antigua"
+        ],
+        "en": [
+          "To require an EXACT match and avoid returning incorrect data",
+          "Because the formula fails otherwise",
+          "To only match odd numbers",
+          "Solely for backward compatibility"
+        ],
+        "de": [
+          "Um eine GENAUE Übereinstimmung zu erzwingen und Fehlzuordnungen zu vermeiden",
+          "Weil die Formel sonst abstürzt",
+          "Um nur ungerade Zahlen zu suchen",
+          "Reine Altlast der Abwärtskompatibilität"
+        ],
+        "fr": [
+          "Pour exiger une correspondance EXACTE et éviter des données erronées",
+          "Parce que la formule ne marche pas sinon",
+          "Pour ne chercher que les nombres impairs",
+          "Uniquement pour compatibilité ascendante"
+        ],
+        "ja": [
+          "完全一致検索を指定し、誤ったデータが返されるのを防ぐため",
+          "数式が動作しなくなるのを避けるため",
+          "奇数の数値のみを検索対象にするため",
+          "古いバージョンのExcelとの互換性のためだけ"
+        ],
+        "pt": [
+          "Para exigir correspondência EXATA e evitar dados incorretos",
+          "Porque a fórmula não funciona de outra forma",
+          "Para buscar apenas números ímpares",
+          "Apenas por compatibilidade antiga"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "FALSO / 0 garantiza que si el código no coincide al 100%, Excel no invente un valor aproximado.",
+        "en": "FALSE / 0 guarantees that if the key doesn't match 100%, Excel won't guess an approximate value.",
+        "de": "FALSCH / 0 stellt sicher, dass ohne exakten Treffer keine fehlerhaften Näherungswerte ausgegeben werden.",
+        "fr": "FAUX / 0 garantit que sans correspondance exacte à 100 %, Excel ne devine pas une valeur approchée.",
+        "ja": "FALSE / 0 を指定することで、検索対象と100%一致しない場合に近似値が誤って返されるのを防ぎます。",
+        "pt": "FALSO / 0 garante que, se o código não coincidir exatamente, o Excel não retorne um valor aproximado."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la matriz de productos y precios (A2:C4).",
+      "correct": "A2:C4",
+      "data": {
+        "A1": "ID",
+        "B1": "Producto",
+        "C1": "Precio",
+        "A2": "101",
+        "B2": "Teclado",
+        "C2": "45",
+        "A3": "102",
+        "B3": "Mouse",
+        "C3": "25",
+        "A4": "103",
+        "B4": "Monitor",
+        "C4": "180"
+      },
+      "promptByLocale": {
+        "es": "Selecciona la matriz de productos y precios (A2:C4).",
+        "en": "Select the product and price table array (A2:C4).",
+        "de": "Wähle die Produkt- und Preistabelle (A2:C4) aus.",
+        "fr": "Sélectionne la table matrice des produits et prix (A2:C4).",
+        "ja": "商品と価格の一覧表（A2:C4）を選択してください。",
+        "pt": "Selecione a matriz de produtos e preços (A2:C4)."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "ID",
+          "B1": "Producto",
+          "C1": "Precio",
+          "A2": "101",
+          "B2": "Teclado",
+          "C2": "45",
+          "A3": "102",
+          "B3": "Mouse",
+          "C3": "25",
+          "A4": "103",
+          "B4": "Monitor",
+          "C4": "180"
+        },
+        "en": {
+          "A1": "ID",
+          "B1": "Product",
+          "C1": "Price",
+          "A2": "101",
+          "B2": "Keyboard",
+          "C2": "45",
+          "A3": "102",
+          "B3": "Mouse",
+          "C3": "25",
+          "A4": "103",
+          "B4": "Monitor",
+          "C4": "180"
+        },
+        "de": {
+          "A1": "ID",
+          "B1": "Produkt",
+          "C1": "Preis",
+          "A2": "101",
+          "B2": "Tastatur",
+          "C2": "45",
+          "A3": "102",
+          "B3": "Maus",
+          "C3": "25",
+          "A4": "103",
+          "B4": "Monitor",
+          "C4": "180"
+        },
+        "fr": {
+          "A1": "ID",
+          "B1": "Produit",
+          "C1": "Prix",
+          "A2": "101",
+          "B2": "Clavier",
+          "C2": "45",
+          "A3": "102",
+          "B3": "Souris",
+          "C3": "25",
+          "A4": "103",
+          "B4": "Écran",
+          "C4": "180"
+        },
+        "ja": {
+          "A1": "ID",
+          "B1": "商品",
+          "C1": "単価",
+          "A2": "101",
+          "B2": "キーボード",
+          "C2": "45",
+          "A3": "102",
+          "B3": "マウス",
+          "C3": "25",
+          "A4": "103",
+          "B4": "モニター",
+          "C4": "180"
+        },
+        "pt": {
+          "A1": "ID",
+          "B1": "Produto",
+          "C1": "Preço",
+          "A2": "101",
+          "B2": "Teclado",
+          "C2": "45",
+          "A3": "102",
+          "B3": "Mouse",
+          "C3": "25",
+          "A4": "103",
+          "B4": "Monitor",
+          "C4": "180"
+        }
+      },
+      "explanationByLocale": {
+        "es": "A2:C4 comprende las 3 columnas maestras requeridas para la búsqueda de información.",
+        "en": "A2:C4 spans the 3 master columns required for looking up data.",
+        "de": "A2:C4 umfasst die 3 erforderlichen Hauptspalten für den Datenabruf.",
+        "fr": "A2:C4 englobe les 3 colonnes nécessaires à la recherche d'informations.",
+        "ja": "A2:C4 はデータ検索に必要な3列分のマスタテーブル全体を含んでいます。",
+        "pt": "A2:C4 compreende as 3 colunas mestre necessárias para a busca de informações."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para buscar el ID en F2, en la tabla A2:C4, trayendo la columna 2 con FALSO.",
+      "correct": "=BUSCARV(F2,A2:C4,2,FALSO)",
+      "blocks": [
+        "=",
+        "BUSCARV(",
+        "F2,",
+        "A2:C4,",
+        "2,",
+        "FALSO)"
+      ],
+      "promptByLocale": {
+        "es": "Arma la fórmula para buscar el ID en F2, en la tabla A2:C4, trayendo la columna 2 con FALSO.",
+        "en": "Build the formula to look up the ID in F2, in table A2:C4, returning column 2 with FALSE.",
+        "de": "Erstelle die Formel, um die ID in F2 in der Tabelle A2:C4 zu suchen (Spalte 2 mit FALSCH).",
+        "fr": "Construis la formule pour chercher l'ID en F2 dans la table A2:C4, en renvoyant la colonne 2 avec FAUX.",
+        "ja": "F2のIDをテーブル A2:C4 で検索し、2列目のデータを完全一致（FALSO/FALSE）で取得する数式を組み立ててください。",
+        "pt": "Monte a fórmula para buscar o ID em F2, na tabela A2:C4, trazendo a coluna 2 com FALSO."
+      },
+      "explanationByLocale": {
+        "es": "=BUSCARV(F2,A2:C4,2,FALSO) vincula dinámicamente el catálogo de productos con la orden.",
+        "en": "=VLOOKUP(F2,A2:C4,2,FALSE) dynamically links product catalog entries to the order.",
+        "de": "=SVERWEIS(F2;A2:C4;2;FALSCH) verknüpft Produktdaten dynamisch mit dem Auftrag.",
+        "fr": "=RECHERCHEV(F2;A2:C4;2;FAUX) lie dynamiquement les produits du catalogue à la commande.",
+        "ja": "=BUSCARV(F2,A2:C4,2,FALSO) で商品マスタから該当する名称を動的に引き出します。",
+        "pt": "=PROCV(F2;A2:C4;2;FALSO) vincula dinamicamente os produtos do catálogo ao pedido."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si buscas el ID 102 en la matriz A2:C4 pidiendo la columna 3 (Precio), ¿qué devuelve?",
+      "formula": "=BUSCARV(102, A2:C4, 3, FALSO)",
+      "correct": "25",
+      "data": {
+        "A3": "102",
+        "B3": "Mouse",
+        "C3": "25"
+      },
+      "options": [
+        "25",
+        "Mouse",
+        "102",
+        "180"
+      ],
+      "promptByLocale": {
+        "es": "Si buscas el ID 102 en la matriz A2:C4 pidiendo la columna 3 (Precio), ¿qué devuelve?",
+        "en": "If you look up ID 102 in matrix A2:C4 requesting column 3 (Price), what is returned?",
+        "de": "Wenn du nach ID 102 in A2:C4 suchst und Spalte 3 (Preis) abfragst, was wird zurückgegeben?",
+        "fr": "Si tu cherches l'ID 102 dans la matrice A2:C4 en demandant la colonne 3 (Prix), que renvoie la formule ?",
+        "ja": "テーブル A2:C4 でID 102 を検索し、3列目（単価）を指定した場合、何が返されますか？",
+        "pt": "Se você buscar o ID 102 na matriz A2:C4 solicitando a coluna 3 (Preço), o que retorna?"
+      },
+      "formulaByLocale": {
+        "es": "=BUSCARV(102, A2:C4, 3, FALSO)",
+        "en": "=VLOOKUP(102, A2:C4, 3, FALSE)",
+        "de": "=SVERWEIS(102; A2:C4; 3; FALSCH)",
+        "fr": "=RECHERCHEV(102; A2:C4; 3; FAUX)",
+        "ja": "=VLOOKUP(102, A2:C4, 3, FALSE)",
+        "pt": "=PROCV(102; A2:C4; 3; FALSO)"
+      },
+      "explanationByLocale": {
+        "es": "Para el ID 102 (fila 3), la columna 3 contiene exactamente 25.",
+        "en": "For ID 102 (row 3), column 3 holds exactly 25.",
+        "de": "Zu ID 102 (Zeile 3) enthält Spalte 3 genau den Preis 25.",
+        "fr": "Pour l'ID 102 (ligne 3), la colonne 3 contient exactement 25.",
+        "ja": "ID 102（3行目）の3列目（単価）には「25」が格納されています。",
+        "pt": "Para o ID 102 (linha 3), a coluna 3 contém exatamente 25."
+      },
+      "optionsByLocale": {
+        "es": [
+          "25",
+          "Mouse",
+          "102",
+          "180"
+        ],
+        "en": [
+          "25",
+          "Mouse",
+          "102",
+          "180"
+        ],
+        "de": [
+          "25",
+          "Mouse",
+          "102",
+          "180"
+        ],
+        "fr": [
+          "25",
+          "Mouse",
+          "102",
+          "180"
+        ],
+        "ja": [
+          "25",
+          "Mouse",
+          "102",
+          "180"
+        ],
+        "pt": [
+          "25",
+          "Mouse",
+          "102",
+          "180"
+        ]
+      },
+      "correctByLocale": {
+        "es": "25",
+        "en": "25",
+        "de": "25",
+        "fr": "25",
+        "ja": "25",
+        "pt": "25"
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "BUSCARV",
+    "en": "VLOOKUP",
+    "de": "SVERWEIS",
+    "fr": "RECHERCHEV",
+    "ja": "VLOOKUP",
+    "pt": "PROCV"
+  }
+}

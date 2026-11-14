@@ -1,0 +1,119 @@
+{
+  "ref": "I9",
+  "title": "Jefe: Argumento numérico",
+  "titleByLocale": {
+    "es": "Jefe: Argumento numérico",
+    "en": "Boss: Numeric Argument Error",
+    "de": "Boss: Zahlenwertfehler",
+    "fr": "Boss : Erreur d'argument numérique",
+    "ja": "ボス：数値エラー",
+    "pt": "Chefe: Argumento numérico"
+  },
+  "version": 1,
+  "rewardXp": 25,
+  "exercises": [
+    {
+      "type": "find_error",
+      "prompt": "Se intentó calcular la raíz cuadrada de un número negativo en B2 provocando el error #¡NUM!. Toca la celda con error:",
+      "promptByLocale": {
+        "es": "Se intentó calcular la raíz cuadrada de un número negativo en B2 provocando el error #¡NUM!. Toca la celda con error:",
+        "en": "Calculating the square root of a negative number in B2 caused a #NUM! error. Tap the error cell:",
+        "de": "Die Quadratwurzel einer negativen Zahl in B2 erzeugte einen #ZAHL!-Fehler. Tippe auf die Fehlerzelle:",
+        "fr": "Calculer la racine d'un nombre négatif en B2 a causé l'erreur #NOMBRE!. Touchez la cellule en erreur :",
+        "ja": "B2で負の数値の平方根を計算しようとしたため、#NUM! エラーが発生しました。エラーセルをタップしてください：",
+        "pt": "A raiz quadrada de um número negativo em B2 gerou o erro #NÚM!. Toque na célula com erro:"
+      },
+      "correct": "B2",
+      "errorCell": "B2",
+      "data": {
+        "A1": "Número",
+        "B1": "Raíz",
+        "A2": "-25",
+        "B2": "#¡NUM!"
+      },
+      "explanation": "#¡NUM! surge cuando una función matemática recibe un valor numérico inválido (ej. raíz de negativos).",
+      "explanationByLocale": {
+        "es": "#¡NUM! surge cuando una función matemática recibe un valor numérico inválido (ej. raíz de negativos).",
+        "en": "#NUM! occurs when a mathematical formula receives an invalid number (like square roots of negative numbers).",
+        "de": "#ZAHL! tritt auf, wenn Berechnungen mathematisch unzulässige Werte erhalten.",
+        "fr": "#NOMBRE! apparaît lorsqu'une fonction reçoit un argument numérique non valide.",
+        "ja": "#NUM! は負の数の平方根など、数学的に不可能な引数が関数に渡された時に発生します。",
+        "pt": "#NÚM! ocorre quando uma função recebe um argumento numérico matematicamente inválido."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué función matemática debes aplicar al número antes de calcular su raíz para evitar #¡NUM! convirtiéndolo a positivo?",
+      "promptByLocale": {
+        "es": "¿Qué función matemática debes aplicar al número antes de calcular su raíz para evitar #¡NUM! convirtiéndolo a positivo?",
+        "en": "Which mathematical function converts a negative number to positive to prevent #NUM! before calculating its square root?",
+        "de": "Welche mathematische Funktion wandelt negative Zahlen in positive um, um #ZAHL! zu verhindern?",
+        "fr": "Quelle fonction mathématique convertit un nombre négatif en positif pour éviter #NOMBRE! ?",
+        "ja": "負の数を絶対値（正の数）に変換して #NUM! エラーを防ぐ数学関数はどれですか？",
+        "pt": "Qual função matemática converte um número negativo em positivo para evitar o erro #NÚM!?"
+      },
+      "options": [
+        "=ABS(número)",
+        "=REDONDEAR(número)",
+        "=ENTERO(número)",
+        "=SIGNO(número)"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "=ABS(número)",
+          "=REDONDEAR(número)",
+          "=ENTERO(número)",
+          "=SIGNO(número)"
+        ],
+        "en": [
+          "=ABS(number)",
+          "=ROUND(number)",
+          "=INT(number)",
+          "=SIGN(number)"
+        ],
+        "de": [
+          "=ABS(Zahl)",
+          "=RUNDEN(Zahl)",
+          "=GANZZAHL(Zahl)",
+          "=VORZEICHEN(Zahl)"
+        ],
+        "fr": [
+          "=ABS(nombre)",
+          "=ARRONDI(nombre)",
+          "=ENT(nombre)",
+          "=SIGNE(nombre)"
+        ],
+        "ja": [
+          "=ABS(数値)",
+          "=ROUND(数値)",
+          "=INT(数値)",
+          "=SIGN(数値)"
+        ],
+        "pt": [
+          "=ABS(número)",
+          "=ARRED(número)",
+          "=INT(número)",
+          "=SINAL(número)"
+        ]
+      },
+      "correct": "=ABS(número)",
+      "correctByLocale": {
+        "es": "=ABS(número)",
+        "en": "=ABS(number)",
+        "de": "=ABS(Zahl)",
+        "fr": "=ABS(nombre)",
+        "ja": "=ABS(数値)",
+        "pt": "=ABS(número)"
+      },
+      "explanation": "=ABS devuelve el valor absoluto positivo de cualquier número eliminando el signo negativo.",
+      "explanationByLocale": {
+        "es": "=ABS devuelve el valor absoluto positivo de cualquier número eliminando el signo negativo.",
+        "en": "=ABS outputs the positive absolute value of a number, safely stripping negative signs.",
+        "de": "=ABS liefert den positiven Absolutwert einer Zahl ohne Vorzeichen.",
+        "fr": "=ABS renvoie la valeur absolue positive en supprimant le signe négatif.",
+        "ja": "=ABS 関数は任意の数値の符号を取り去り、常に正の絶対値を返します。",
+        "pt": "=ABS retorna o valor absoluto positivo de qualquer número."
+      }
+    }
+  ]
+}

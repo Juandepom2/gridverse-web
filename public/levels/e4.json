@@ -1,0 +1,143 @@
+{
+  "ref": "E4",
+  "title": "IZQUIERDA y DERECHA",
+  "titleByLocale": {
+    "es": "IZQUIERDA y DERECHA",
+    "en": "LEFT and RIGHT",
+    "de": "LINKS und RECHTS",
+    "fr": "GAUCHE et DROITE",
+    "ja": "LEFT と RIGHT",
+    "pt": "ESQUERDA e DIREITA"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Si en A1 tienes el código \"MEX-2024\", ¿qué devuelve =IZQUIERDA(A1, 3)?",
+      "promptByLocale": {
+        "es": "Si en A1 tienes el código \"MEX-2024\", ¿qué devuelve =IZQUIERDA(A1, 3)?",
+        "en": "If A1 contains code \"MEX-2024\", what does =LEFT(A1, 3) return?",
+        "de": "Wenn A1 den Code \"MEX-2024\" enthält, was liefert =LINKS(A1; 3)?",
+        "fr": "Si A1 contient le code \"MEX-2024\", que renvoie =GAUCHE(A1; 3) ?",
+        "ja": "A1に「MEX-2024」というコードがある場合、=LEFT(A1, 3) は何を返しますか？",
+        "pt": "Se em A1 você tem o código \"MEX-2024\", o que retorna =ESQUERDA(A1; 3)?"
+      },
+      "options": ["MEX", "2024", "MEX-", "-2024"],
+      "optionsByLocale": {
+        "es": ["MEX", "2024", "MEX-", "-2024"],
+        "en": ["MEX", "2024", "MEX-", "-2024"],
+        "de": ["MEX", "2024", "MEX-", "-2024"],
+        "fr": ["MEX", "2024", "MEX-", "-2024"],
+        "ja": ["MEX", "2024", "MEX-", "-2024"],
+        "pt": ["MEX", "2024", "MEX-", "-2024"]
+      },
+      "correct": "MEX",
+      "correctByLocale": {
+        "es": "MEX",
+        "en": "MEX",
+        "de": "MEX",
+        "fr": "MEX",
+        "ja": "MEX",
+        "pt": "MEX"
+      },
+      "explanation": "IZQUIERDA toma los primeros N caracteres iniciando desde el extremo izquierdo del texto.",
+      "explanationByLocale": {
+        "es": "IZQUIERDA toma los primeros N caracteres iniciando desde el extremo izquierdo del texto.",
+        "en": "LEFT extracts the first N characters starting from the beginning of the string.",
+        "de": "LINKS extrahiert die ersten N Zeichen ab dem linken Rand der Zeichenkette.",
+        "fr": "GAUCHE extrait les N premiers caractères depuis le début du texte.",
+        "ja": "LEFT関数は文字列の先頭（左端）から指定した文字数を抜き出します。",
+        "pt": "ESQUERDA extrai os primeiros N caracteres iniciando pelo lado esquerdo do texto."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si en A1 tienes \"MEX-2024\", ¿qué devuelve la fórmula =DERECHA(A1, 4)?",
+      "promptByLocale": {
+        "es": "Si en A1 tienes \"MEX-2024\", ¿qué devuelve la fórmula =DERECHA(A1, 4)?",
+        "en": "If A1 contains \"MEX-2024\", what does =RIGHT(A1, 4) return?",
+        "de": "Wenn A1 \"MEX-2024\" enthält, was liefert die Formel =RECHTS(A1; 4)?",
+        "fr": "Si A1 contient \"MEX-2024\", que renvoie =DROITE(A1; 4) ?",
+        "ja": "A1に「MEX-2024」がある場合、=RIGHT(A1, 4) は何を返しますか？",
+        "pt": "Se em A1 você tem \"MEX-2024\", o que retorna a fórmula =DIREITA(A1; 4)?"
+      },
+      "options": ["2024", "MEX", "-2024", "MEX-"],
+      "optionsByLocale": {
+        "es": ["2024", "MEX", "-2024", "MEX-"],
+        "en": ["2024", "MEX", "-2024", "MEX-"],
+        "de": ["2024", "MEX", "-2024", "MEX-"],
+        "fr": ["2024", "MEX", "-2024", "MEX-"],
+        "ja": ["2024", "MEX", "-2024", "MEX-"],
+        "pt": ["2024", "MEX", "-2024", "MEX-"]
+      },
+      "correct": "2024",
+      "correctByLocale": {
+        "es": "2024",
+        "en": "2024",
+        "de": "2024",
+        "fr": "2024",
+        "ja": "2024",
+        "pt": "2024"
+      },
+      "explanation": "DERECHA extrae el número especificado de caracteres contando desde el final del texto.",
+      "explanationByLocale": {
+        "es": "DERECHA extrae el número especificado de caracteres contando desde el final del texto.",
+        "en": "RIGHT extracts the specified number of characters counting backwards from the end.",
+        "de": "RECHTS extrahiert die angegebene Anzahl an Zeichen vom rechten Ende der Zeichenkette.",
+        "fr": "DROITE extrait le nombre de caractères spécifié depuis la fin du texte.",
+        "ja": "RIGHT関数は文字列の末尾（右端）から指定した文字数を抜き出します。",
+        "pt": "DIREITA extrai o número especificado de caracteres contando a partir do final do texto."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para extraer los últimos 2 dígitos del año desde A2:",
+      "promptByLocale": {
+        "es": "Arma la fórmula para extraer los últimos 2 dígitos del año desde A2:",
+        "en": "Build formula to extract the last 2 digits of the year from A2:",
+        "de": "Baue die Formel, um die letzten 2 Ziffern der Jahreszahl aus A2 zu extrahieren:",
+        "fr": "Construisez la formule pour extraire les 2 derniers chiffres de l'année depuis A2 :",
+        "ja": "A2から西暦の下2桁を抽出する数式を構築してください：",
+        "pt": "Monte a fórmula para extrair os últimos 2 dígitos do ano a partir de A2:"
+      },
+      "formula": "=DERECHA(A2,2)",
+      "formulaByLocale": {
+        "es": "=DERECHA(A2,2)",
+        "en": "=RIGHT(A2,2)",
+        "de": "=RECHTS(A2,2)",
+        "fr": "=DROITE(A2,2)",
+        "ja": "=RIGHT(A2,2)",
+        "pt": "=DIREITA(A2,2)"
+      },
+      "correct": "=DERECHA(A2,2)",
+      "correctByLocale": {
+        "es": "=DERECHA(A2,2)",
+        "en": "=RIGHT(A2,2)",
+        "de": "=RECHTS(A2,2)",
+        "fr": "=DROITE(A2,2)",
+        "ja": "=RIGHT(A2,2)",
+        "pt": "=DIREITA(A2,2)"
+      },
+      "blocks": ["=DERECHA(", "A2,", "2)"],
+      "blocksByLocale": {
+        "es": ["=DERECHA(", "A2,", "2)"],
+        "en": ["=RIGHT(", "A2,", "2)"],
+        "de": ["=RECHTS(", "A2,", "2)"],
+        "fr": ["=DROITE(", "A2,", "2)"],
+        "ja": ["=RIGHT(", "A2,", "2)"],
+        "pt": ["=DIREITA(", "A2,", "2)"]
+      },
+      "explanation": "DERECHA(A2, 2) extrae convenientemente los sufijos o años abreviados.",
+      "explanationByLocale": {
+        "es": "DERECHA(A2, 2) extrae convenientemente los sufijos o años abreviados.",
+        "en": "RIGHT(A2, 2) easily captures trailing digits, suffixes, or abbreviated years.",
+        "de": "RECHTS(A2, 2) extrahiert Endziffern, Suffixe oder Kurzjahre.",
+        "fr": "DROITE(A2, 2) extrait aisément les suffixes ou les années abrégées.",
+        "ja": "RIGHT(A2, 2)で末尾2文字を素早く取り出せます。",
+        "pt": "DIREITA(A2, 2) extrai convenientemente os sufixos ou anos abreviados."
+      }
+    }
+  ]
+}
+

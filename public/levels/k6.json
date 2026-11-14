@@ -1,0 +1,90 @@
+{
+  "ref": "K6",
+  "title": "LET (variables locales)",
+  "titleByLocale": {
+    "es": "LET (variables locales)",
+    "en": "LET (Local Variables)",
+    "de": "LET (Lokale Variablen)",
+    "fr": "LET (Variables locales)",
+    "ja": "LET（数式内の変数定義）",
+    "pt": "LET (variáveis locais)"
+  },
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cuál es el principal beneficio de usar la función =LET(nombre, valor, cálculo)?",
+      "promptByLocale": {
+        "es": "¿Cuál es el principal beneficio de usar la función =LET(nombre, valor, cálculo)?",
+        "en": "What is the primary benefit of using the =LET(name, value, calculation) function in Excel?",
+        "de": "Was ist der größte Vorteil der Funktion =LET(Name; Wert; Berechnung)?",
+        "fr": "Quel est le bénéfice majeur de la fonction =LET(nom; valeur; calcul) ?",
+        "ja": "=LET(変数名, 値, 計算式) 関数を使用する最大のメリットは何ですか？",
+        "pt": "Qual é o principal benefício de usar a função =LET(nome; valor; cálculo)?"
+      },
+      "options": [
+        "Asignar nombres a cálculos intermedios para hacer fórmulas más legibles y hasta 10 veces más rápidas",
+        "Traducir fórmulas de español a inglés automáticamente",
+        "Cambiar el color de la celda a dorado",
+        "Aumentar el número de filas de la hoja"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Asignar nombres a cálculos intermedios para hacer fórmulas más legibles y hasta 10 veces más rápidas",
+          "Traducir fórmulas de español a inglés automáticamente",
+          "Cambiar el color de la celda a dorado",
+          "Aumentar el número de filas de la hoja"
+        ],
+        "en": [
+          "Assign names to intermediate calculations, making formulas readable and up to 10x faster",
+          "Automatically translate formulas across languages",
+          "Turn cell background color gold",
+          "Increase the max row limit in Excel"
+        ],
+        "de": [
+          "Zwischenergebnissen Namen geben, um Formeln lesbar und bis zu 10x schneller zu machen",
+          "Formeln automatisch übersetzen",
+          "Farbe in Gold ändern",
+          "Mehr Zeilen bereitstellen"
+        ],
+        "fr": [
+          "Nommer des calculs intermédiaires pour rendre les formules lisibles et jusqu'à 10x plus rapides",
+          "Traduire les formules automatiquement",
+          "Colorer en or",
+          "Ajouter des lignes à la feuille"
+        ],
+        "ja": [
+          "途中計算に変数を割り当てて重複計算を省き、数式の可読性と処理速度を大幅に向上させる",
+          "数式を自動で多言語翻訳する",
+          "セルの背景をゴールド色にする",
+          "Excelの最大行数を増やす"
+        ],
+        "pt": [
+          "Atribuir nomes a cálculos intermediários tornando fórmulas legíveis e até 10x mais rápidas",
+          "Traduzir fórmulas automaticamente",
+          "Colorir células de dourado",
+          "Aumentar o limite de linhas"
+        ]
+      },
+      "correct": "Asignar nombres a cálculos intermedios para hacer fórmulas más legibles y hasta 10 veces más rápidas",
+      "correctByLocale": {
+        "es": "Asignar nombres a cálculos intermedios para hacer fórmulas más legibles y hasta 10 veces más rápidas",
+        "en": "Assign names to intermediate calculations, making formulas readable and up to 10x faster",
+        "de": "Zwischenergebnissen Namen geben, um Formeln lesbar und bis zu 10x schneller zu machen",
+        "fr": "Nommer des calculs intermédiaires pour rendre les formules lisibles et jusqu'à 10x plus rapides",
+        "ja": "途中計算に変数を割り当てて重複計算を省き、数式の可読性と処理速度を大幅に向上させる",
+        "pt": "Atribuir nomes a cálculos intermediários tornando fórmulas legíveis e até 10x mais rápidas"
+      },
+      "explanation": "LET calcula la expresión pesada solo una vez en memoria en lugar de repetirla múltiples veces dentro del SI.",
+      "explanationByLocale": {
+        "es": "LET calcula la expresión pesada solo una vez en memoria en lugar de repetirla múltiples veces dentro del SI.",
+        "en": "LET computes heavy calculations once in memory instead of re-evaluating them across nested logic.",
+        "de": "LET berechnet aufwändige Ausdrücke nur einmal und spart Rechenleistung.",
+        "fr": "LET calcule une expression lourde une seule fois au lieu de la répéter dans des SI imbriqués.",
+        "ja": "LETは負荷の高い検索や計算をメモリ上で1回だけ実行して再利用するため、計算速度が劇的に向上します。",
+        "pt": "LET calcula a expressão pesada apenas uma vez na memória em vez de repeti-la no SE."
+      }
+    }
+  ]
+}

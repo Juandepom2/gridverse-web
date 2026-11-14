@@ -1,0 +1,90 @@
+{
+  "ref": "K2",
+  "title": "ORDENAR",
+  "titleByLocale": {
+    "es": "ORDENAR",
+    "en": "SORT",
+    "de": "SORTIEREN",
+    "fr": "TRIER",
+    "ja": "SORT",
+    "pt": "CLASSIFICAR"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "En la función =ORDENAR(matriz, [índice_orden], [criterio_orden]), ¿qué número indica orden DESCENDENTE (de mayor a menor)?",
+      "promptByLocale": {
+        "es": "En la función =ORDENAR(matriz, [índice_orden], [criterio_orden]), ¿qué número indica orden DESCENDENTE (de mayor a menor)?",
+        "en": "In the =SORT(array, [sort_index], [sort_order]) function, what number represents DESCENDING order?",
+        "de": "Welche Zahl gibt in =SORTIEREN(Matrix; [Sortierindex]; [Sortierreihenfolge]) eine ABSTEIGENDE Sortierung an?",
+        "fr": "Dans la fonction =TRIER(tableau; [index_tri]; [ordre_tri]), quel chiffre indique un tri DÉCROISSANT ?",
+        "ja": "=SORT(配列, [並べ替え順序のインデックス], [並べ替え順序]) 関数で「降順（大きい順）」を指定する数値はどれですか？",
+        "pt": "Na função =CLASSIFICAR(matriz; [índice_ordem]; [ordem]), qual número indica ordem DECRESCENTE?"
+      },
+      "options": [
+        "-1",
+        "1",
+        "0",
+        "99"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "-1",
+          "1",
+          "0",
+          "99"
+        ],
+        "en": [
+          "-1",
+          "1",
+          "0",
+          "99"
+        ],
+        "de": [
+          "-1",
+          "1",
+          "0",
+          "99"
+        ],
+        "fr": [
+          "-1",
+          "1",
+          "0",
+          "99"
+        ],
+        "ja": [
+          "-1",
+          "1",
+          "0",
+          "99"
+        ],
+        "pt": [
+          "-1",
+          "1",
+          "0",
+          "99"
+        ]
+      },
+      "correct": "-1",
+      "correctByLocale": {
+        "es": "-1",
+        "en": "-1",
+        "de": "-1",
+        "fr": "-1",
+        "ja": "-1",
+        "pt": "-1"
+      },
+      "explanation": "El valor 1 representa orden ascendente (A-Z) y -1 representa orden descendente (Z-A).",
+      "explanationByLocale": {
+        "es": "El valor 1 representa orden ascendente (A-Z) y -1 representa orden descendente (Z-A).",
+        "en": "A value of 1 represents ascending order (A-Z), while -1 denotes descending order (Z-A).",
+        "de": "1 steht für aufsteigende Sortierung (A-Z), -1 für absteigend (Z-A).",
+        "fr": "La valeur 1 correspond à l'ordre croissant et -1 à l'ordre décroissant.",
+        "ja": "「1」は昇順（A→Z、小さい順）を表し、「-1」は降順（Z→A、大きい順）を指定します。",
+        "pt": "O valor 1 representa ordem crescente (A-Z) e -1 representa ordem decrescente (Z-A)."
+      }
+    }
+  ]
+}

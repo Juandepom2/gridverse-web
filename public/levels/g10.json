@@ -1,0 +1,120 @@
+{
+  "ref": "G10",
+  "title": "Proyecto: Mini dashboard",
+  "titleByLocale": {
+    "es": "Proyecto: Mini dashboard",
+    "en": "Project: Mini Dashboard",
+    "de": "Projekt: Mini-Dashboard",
+    "fr": "Projet : Mini tableau de bord",
+    "ja": "プロジェクト：ミニダッシュボード",
+    "pt": "Projeto: Mini dashboard"
+  },
+  "version": 1,
+  "rewardXp": 25,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Al diseñar un Mini Dashboard ejecutivo en Excel, ¿cuál es una mejor práctica recomendada para maximizar la legibilidad?",
+      "promptByLocale": {
+        "es": "Al diseñar un Mini Dashboard ejecutivo en Excel, ¿cuál es una mejor práctica recomendada para maximizar la legibilidad?",
+        "en": "When designing an executive Mini Dashboard in Excel, which is a key best practice for visual clarity?",
+        "de": "Was ist eine bewährte Design-Regel beim Erstellen eines übersichtlichen Excel-Dashboards?",
+        "fr": "Lors de la création d'un tableau de bord exécutif sous Excel, quelle est la bonne pratique essentielle ?",
+        "ja": "Excelで経営ダッシュボードを設計する際、視認性とプロらしさを高めるベストプラクティスはどれですか？",
+        "pt": "Ao criar um Mini Dashboard executivo no Excel, qual é a melhor prática recomendada?"
+      },
+      "options": [
+        "Ocultar las líneas de cuadrícula y limitar la paleta a 2 o 3 colores funcionales",
+        "Llenar todas las celdas con colores primarios saturados",
+        "Usar 8 tipos de fuentes tipográficas distintas",
+        "Colocar 10 gráficos circulares en 3D en la misma pantalla"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Ocultar las líneas de cuadrícula y limitar la paleta a 2 o 3 colores funcionales",
+          "Llenar todas las celdas con colores primarios saturados",
+          "Usar 8 tipos de fuentes tipográficas distintas",
+          "Colocar 10 gráficos circulares en 3D en la misma pantalla"
+        ],
+        "en": [
+          "Hide worksheet gridlines and restrict the color palette to 2-3 functional brand colors",
+          "Fill every cell with saturated primary rainbow colors",
+          "Use 8 different font families simultaneously",
+          "Tile 10 3D pie charts onto a single screen"
+        ],
+        "de": [
+          "Gitternetzlinien ausblenden und eine ruhige Palette aus 2-3 Akzentfarben nutzen",
+          "Alle Zellen knallbunt einfärben",
+          "8 unterschiedliche Schriftarten mischen",
+          "10 dreidimensionale Tortendiagramme platzieren"
+        ],
+        "fr": [
+          "Masquer le quadrillage et limiter la palette à 2-3 couleurs fonctionnelles sobres",
+          "Colorer toutes les cellules en arc-en-ciel",
+          "Mélanger 8 polices d'écriture différentes",
+          "Empiler 10 camemberts 3D sur le même écran"
+        ],
+        "ja": [
+          "枠線（目盛線）を非表示にし、カラーパレットを2〜3色の機能的な配色に統一する",
+          "すべてのセルを原色でカラフルに塗りつぶす",
+          "8種類以上のフォントを混在させて装飾する",
+          "同一画面に3D円グラフを10個並べる"
+        ],
+        "pt": [
+          "Ocultar as linhas de grade e limitar a paleta a 2 ou 3 cores funcionais",
+          "Preencher todas as células com cores primárias saturadas",
+          "Misturar 8 fontes tipográficas distintas",
+          "Inserir 10 gráficos de pizza 3D na mesma tela"
+        ]
+      },
+      "correct": "Ocultar las líneas de cuadrícula y limitar la paleta a 2 o 3 colores funcionales",
+      "correctByLocale": {
+        "es": "Ocultar las líneas de cuadrícula y limitar la paleta a 2 o 3 colores funcionales",
+        "en": "Hide worksheet gridlines and restrict the color palette to 2-3 functional brand colors",
+        "de": "Gitternetzlinien ausblenden und eine ruhige Palette aus 2-3 Akzentfarben nutzen",
+        "fr": "Masquer le quadrillage et limiter la palette à 2-3 couleurs fonctionnelles sobres",
+        "ja": "枠線（目盛線）を非表示にし、カラーパレットを2〜3色の機能的な配色に統一する",
+        "pt": "Ocultar as linhas de grade e limitar a paleta a 2 ou 3 cores funcionais"
+      },
+      "explanation": "Desactivar líneas de cuadrícula (Vista > Líneas de cuadrícula) da apariencia limpia de aplicación profesional.",
+      "explanationByLocale": {
+        "es": "Desactivar líneas de cuadrícula (Vista > Líneas de cuadrícula) da apariencia limpia de aplicación profesional.",
+        "en": "Disabling gridlines (View > Gridlines) delivers a sleek, app-like finish suitable for executive reporting.",
+        "de": "Das Ausblenden der Gitternetzlinien (Ansicht > Gitternetzlinien) erzeugt einen professionellen Anwendungslook.",
+        "fr": "Désactiver le quadrillage (Affichage > Quadrillage) procure un rendu d'application épuré et moderne.",
+        "ja": "「表示」タブで目盛線をオフにすると、まるで専用アプリのような洗練されたダッシュボードに仕上がります。",
+        "pt": "Desmarcar as linhas de grade (Exibir > Linhas de grade) confere acabamento profissional de aplicativo."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la celda del KPI principal 'Ventas Totales' (B2) para enlazarla a la tarjeta de métricas:",
+      "promptByLocale": {
+        "es": "Selecciona la celda del KPI principal 'Ventas Totales' (B2) para enlazarla a la tarjeta de métricas:",
+        "en": "Select the primary 'Total Sales' KPI cell (B2) to link it to the metric summary card:",
+        "de": "Wähle die primäre KPI-Zelle 'Gesamtumsatz' (B2) aus:",
+        "fr": "Sélectionnez la cellule KPI principale 'Ventes Totales' (B2) :",
+        "ja": "サマリーカードに連携させる主要KPI「合計売上」セルB2を選択してください：",
+        "pt": "Selecione a célula do KPI principal 'Vendas Totais' (B2):"
+      },
+      "correct": "B2",
+      "data": {
+        "A1": "Métrica",
+        "B1": "Valor",
+        "A2": "Ventas Totales",
+        "B2": "$45,200",
+        "A3": "Margen %",
+        "B3": "34.5%"
+      },
+      "explanation": "Las tarjetas de KPI destacan números clave en tamaño grande para captar la atención ejecutiva.",
+      "explanationByLocale": {
+        "es": "Las tarjetas de KPI destacan números clave en tamaño grande para captar la atención ejecutiva.",
+        "en": "KPI metric cards showcase headline numbers in large typography for instant executive digestion.",
+        "de": "KPI-Karten heben wichtige Kennzahlen groß hervor, um schnelle Entscheidungen zu unterstützen.",
+        "fr": "Les cartes KPI mettent en valeur les chiffres clés en grand format pour la prise de décision rapide.",
+        "ja": "主要KPIカードは重要な数値を大きく配置し、経営陣が一目で判断できるように強調します。",
+        "pt": "Os cartões de KPI destacam números essenciais em fonte grande para leitura executiva rápida."
+      }
+    }
+  ]
+}

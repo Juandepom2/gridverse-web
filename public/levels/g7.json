@@ -1,0 +1,90 @@
+{
+  "ref": "G7",
+  "title": "Gráficos de líneas",
+  "titleByLocale": {
+    "es": "Gráficos de líneas",
+    "en": "Line Charts",
+    "de": "Liniendiagramme",
+    "fr": "Graphiques en courbes",
+    "ja": "折れ線グラフ",
+    "pt": "Gráficos de linha"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Para qué tipo de análisis es especialmente ideal un gráfico de líneas?",
+      "promptByLocale": {
+        "es": "¿Para qué tipo de análisis es especialmente ideal un gráfico de líneas?",
+        "en": "For which analytical purpose is a line chart especially well-suited?",
+        "de": "Für welchen Zweck ist ein Liniendiagramm besonders gut geeignet?",
+        "fr": "Pour quel type d'analyse un graphique en courbes est-il idéal ?",
+        "ja": "折れ線グラフはどのような分析に最も適していますか？",
+        "pt": "Para qual finalidade analítica um gráfico de linhas é especialmente adequado?"
+      },
+      "options": [
+        "Mostrar tendencias y evolución continua a lo largo del tiempo (meses, años)",
+        "Mostrar la composición porcentual de un total fijo",
+        "Comparar partes de un todo sin orden cronológico",
+        "Crear filtros de tabla dinámica"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Mostrar tendencias y evolución continua a lo largo del tiempo (meses, años)",
+          "Mostrar la composición porcentual de un total fijo",
+          "Comparar partes de un todo sin orden cronológico",
+          "Crear filtros de tabla dinámica"
+        ],
+        "en": [
+          "Display trends and continuous progression over time (months, quarters, years)",
+          "Show percentage breakdown of a fixed whole",
+          "Compare unordered parts without chronological progression",
+          "Build pivot table slicers"
+        ],
+        "de": [
+          "Trends und zeitliche Verläufe darstellen (Monate, Quartale, Jahre)",
+          "Prozentuale Anteile eines Ganzen anzeigen",
+          "Teile ohne zeitlichen Bezug vergleichen",
+          "Pivot-Datenschnitte erstellen"
+        ],
+        "fr": [
+          "Afficher des tendances et évolutions temporelles (mois, années)",
+          "Montrer la répartition en pourcentage d'un total",
+          "Comparer des éléments sans ordre chronologique",
+          "Créer des segments de tableau croisé"
+        ],
+        "ja": [
+          "時間経過に伴うトレンドや推移・変動を可視化する（月次・年次推移）",
+          "固定された全体の構成割合を示す",
+          "時系列に関係のない項目の内訳を比較する",
+          "ピボットテーブルのスライサーを作成する"
+        ],
+        "pt": [
+          "Mostrar tendências e evolução contínua ao longo do tempo (meses, anos)",
+          "Exibir a composição percentual de um total fixo",
+          "Comparar partes de um todo sem ordem cronológica",
+          "Criar segmentações de tabela dinâmica"
+        ]
+      },
+      "correct": "Mostrar tendencias y evolución continua a lo largo del tiempo (meses, años)",
+      "correctByLocale": {
+        "es": "Mostrar tendencias y evolución continua a lo largo del tiempo (meses, años)",
+        "en": "Display trends and continuous progression over time (months, quarters, years)",
+        "de": "Trends und zeitliche Verläufe darstellen (Monate, Quartale, Jahre)",
+        "fr": "Afficher des tendances et évolutions temporelles (mois, années)",
+        "ja": "時間経過に伴うトレンドや推移・変動を可視化する（月次・年次推移）",
+        "pt": "Mostrar tendências e evolução contínua ao longo do tempo (meses, anos)"
+      },
+      "explanation": "Las líneas conectan puntos temporales en el eje X, revelando aceleración, caídas y estacionalidad.",
+      "explanationByLocale": {
+        "es": "Las líneas conectan puntos temporales en el eje X, revelando aceleración, caídas y estacionalidad.",
+        "en": "Lines connect points chronologically along the X axis, highlighting growth, dips, and seasonal patterns.",
+        "de": "Linien verbinden Zeitpunkte auf der X-Achse und machen Trends sowie Saisonalität sichtbar.",
+        "fr": "Les courbes relient les points chronologiques sur l'axe X pour révéler croissance et saisonnalité.",
+        "ja": "X軸の時間軸に沿って点を結ぶことで、上昇傾向、急落、季節変動の把握が一目瞭然になります。",
+        "pt": "As linhas conectam pontos cronológicos no eixo X, revelando crescimento, quedas e sazonalidade."
+      }
+    }
+  ]
+}

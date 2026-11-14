@@ -1,0 +1,366 @@
+{
+  "ref": "E10",
+  "title": "Jefe: Nombre inválido",
+  "version": 1,
+  "rewardXp": 35,
+  "exercises": [
+    {
+      "type": "find_error",
+      "prompt": "B5 muestra #¿NOMBRE?. Toca la celda con el error tipográfico en el nombre de la función:",
+      "correct": "B5",
+      "errorCell": "B5",
+      "data": {
+        "A1": "Item",
+        "B1": "Valor",
+        "A2": "Lápiz",
+        "B2": "10",
+        "A3": "Goma",
+        "B3": "5",
+        "A4": "Regla",
+        "B4": "15",
+        "A5": "Total",
+        "B5": "=SUMAA(B2:B4)"
+      },
+      "displayValues": {
+        "B2": "10",
+        "B3": "5",
+        "B4": "15",
+        "B5": "#¿NOMBRE?"
+      },
+      "explanation": "La celda B5 tiene escrita la función inexistente '=SUMAA()'. Excel no reconoce ese nombre y arroja #¿NOMBRE?.",
+      "promptByLocale": {
+        "es": "B5 muestra #¿NOMBRE?. Toca la celda con el error tipográfico en el nombre de la función:",
+        "en": "B5 shows #NAME?. Tap the cell with the typo in the function name:",
+        "de": "B5 zeigt #NAME?. Tippe auf die Zelle mit dem Tippfehler im Funktionsnamen:",
+        "fr": "B5 affiche #NOM?. Touche la cellule avec la faute dans le nom de la fonction :",
+        "ja": "B5が #NAME? となっています。関数名にスペルミスがあるセルをタップしてください：",
+        "pt": "B5 mostra #NOME?. Toque na célula com o erro de digitação no nome da função:"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Item",
+          "B1": "Valor",
+          "A2": "Lápiz",
+          "B2": "10",
+          "A3": "Goma",
+          "B3": "5",
+          "A4": "Regla",
+          "B4": "15",
+          "A5": "Total",
+          "B5": "=SUMAA(B2:B4)"
+        },
+        "en": {
+          "A1": "Item",
+          "B1": "Value",
+          "A2": "Pencil",
+          "B2": "10",
+          "A3": "Eraser",
+          "B3": "5",
+          "A4": "Ruler",
+          "B4": "15",
+          "A5": "Total",
+          "B5": "=SUMAA(B2:B4)"
+        },
+        "de": {
+          "A1": "Artikel",
+          "B1": "Wert",
+          "A2": "Stift",
+          "B2": "10",
+          "A3": "Radierer",
+          "B3": "5",
+          "A4": "Lineal",
+          "B4": "15",
+          "A5": "Gesamt",
+          "B5": "=SUMAA(B2:B4)"
+        },
+        "fr": {
+          "A1": "Article",
+          "B1": "Valeur",
+          "A2": "Crayon",
+          "B2": "10",
+          "A3": "Gomme",
+          "B3": "5",
+          "A4": "Règle",
+          "B4": "15",
+          "A5": "Total",
+          "B5": "=SUMAA(B2:B4)"
+        },
+        "ja": {
+          "A1": "品目",
+          "B1": "金額",
+          "A2": "鉛筆",
+          "B2": "10",
+          "A3": "消しゴム",
+          "B3": "5",
+          "A4": "定規",
+          "B4": "15",
+          "A5": "合計",
+          "B5": "=SUMAA(B2:B4)"
+        },
+        "pt": {
+          "A1": "Item",
+          "B1": "Valor",
+          "A2": "Lápis",
+          "B2": "10",
+          "A3": "Borracha",
+          "B3": "5",
+          "A4": "Régua",
+          "B4": "15",
+          "A5": "Total",
+          "B5": "=SUMAA(B2:B4)"
+        }
+      },
+      "displayValuesByLocale": {
+        "es": {
+          "B2": "10",
+          "B3": "5",
+          "B4": "15",
+          "B5": "#¿NOMBRE?"
+        },
+        "en": {
+          "B2": "10",
+          "B3": "5",
+          "B4": "15",
+          "B5": "#NAME?"
+        },
+        "de": {
+          "B2": "10",
+          "B3": "5",
+          "B4": "15",
+          "B5": "#NAME?"
+        },
+        "fr": {
+          "B2": "10",
+          "B3": "5",
+          "B4": "15",
+          "B5": "#NOM?"
+        },
+        "ja": {
+          "B2": "10",
+          "B3": "5",
+          "B4": "15",
+          "B5": "#NAME?"
+        },
+        "pt": {
+          "B2": "10",
+          "B3": "5",
+          "B4": "15",
+          "B5": "#NOME?"
+        }
+      },
+      "explanationByLocale": {
+        "es": "La celda B5 tiene escrita la función inexistente '=SUMAA()'. Excel no reconoce ese nombre y arroja #¿NOMBRE?.",
+        "en": "Cell B5 uses the nonexistent function '=SUMAA()'. Excel fails to identify it and returns #NAME?.",
+        "de": "In B5 steht die nicht existierende Funktion '=SUMAA()', weshalb Excel den Fehler #NAME? wirft.",
+        "fr": "La cellule B5 contient la fonction fictive '=SUMAA()', ce qui déclenche l'erreur #NOM?.",
+        "ja": "B5セルに存在しない関数名「=SUMAA()」が記述されているため、Excelが #NAME? を返しています。",
+        "pt": "A célula B5 usa a função inexistente '=SUMAA()', fazendo o Excel gerar o erro #NOME?."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Por qué aparece el error #¿NOMBRE? en Excel?",
+      "formula": "#¿NOMBRE?",
+      "correct": "El nombre de la función está mal escrito o falta comillas a un texto",
+      "data": {},
+      "options": [
+        "El nombre de la función está mal escrito o falta comillas a un texto",
+        "El resultado es negativo",
+        "La columna no tiene suficiente ancho",
+        "Se agotó la memoria de la computadora"
+      ],
+      "explanation": "Excel cree que un texto sin comillas o una función mal escrita es un 'Rango con nombre' que no existe.",
+      "promptByLocale": {
+        "es": "¿Por qué aparece el error #¿NOMBRE? en Excel?",
+        "en": "Why does the #NAME? error appear in Excel?",
+        "de": "Warum tritt der Fehler #NAME? in Excel auf?",
+        "fr": "Pourquoi l'erreur #NOM? apparaît-elle dans Excel ?",
+        "ja": "Excelで #NAME? エラーが発生する原因は何ですか？",
+        "pt": "Por que o erro #NOME? aparece no Excel?"
+      },
+      "formulaByLocale": {
+        "es": "#¿NOMBRE?",
+        "en": "#NAME?",
+        "de": "#NAME?",
+        "fr": "#NOM?",
+        "ja": "#NAME?",
+        "pt": "#NOME?"
+      },
+      "correctByLocale": {
+        "es": "El nombre de la función está mal escrito o falta comillas a un texto",
+        "en": "The function name is misspelled or quotation marks are missing from text",
+        "de": "Der Funktionsname ist falsch geschrieben oder Anführungszeichen fehlen",
+        "fr": "Le nom de fonction est mal orthographié ou des guillemets manquent",
+        "ja": "関数名のスペルミス、または文字列の引用符が抜けているため",
+        "pt": "O nome da função está escrito errado ou faltam aspas no texto"
+      },
+      "optionsByLocale": {
+        "es": [
+          "El nombre de la función está mal escrito o falta comillas a un texto",
+          "El resultado es negativo",
+          "La columna no tiene suficiente ancho",
+          "Se agotó la memoria de la computadora"
+        ],
+        "en": [
+          "The function name is misspelled or quotation marks are missing from text",
+          "The result is negative",
+          "The column is not wide enough",
+          "The computer ran out of memory"
+        ],
+        "de": [
+          "Der Funktionsname ist falsch geschrieben oder Anführungszeichen fehlen",
+          "Das Ergebnis ist negativ",
+          "Die Spalte ist nicht breit genug",
+          "Der Arbeitsspeicher ist voll"
+        ],
+        "fr": [
+          "Le nom de fonction est mal orthographié ou des guillemets manquent",
+          "Le résultat est négatif",
+          "La colonne n'est pas assez large",
+          "Mémoire insuffisante"
+        ],
+        "ja": [
+          "関数名のスペルミス、または文字列の引用符が抜けているため",
+          "計算結果がマイナスになったため",
+          "列の幅が足りないため",
+          "コンピュータのメモリが不足したため"
+        ],
+        "pt": [
+          "O nome da função está escrito errado ou faltam aspas no texto",
+          "O resultado é negativo",
+          "A coluna não tem largura suficiente",
+          "A memória do computador esgotou"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Excel cree que un texto sin comillas o una función mal escrita es un 'Rango con nombre' que no existe.",
+        "en": "Excel assumes unquoted text or misspelled functions are nonexistent named ranges.",
+        "de": "Excel hält nicht erkannte Texte oder Tippfehler für einen nicht definierten Namen.",
+        "fr": "Excel prend les mots sans guillemets ou mal orthographiés pour des plages nommées inexistantes.",
+        "ja": "Excelは引用符のない文字列や誤った関数名を、存在しない「定義された名前」として解釈します。",
+        "pt": "O Excel presume que textos sem aspas ou funções erradas sejam nomes definidos inexistentes."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arregla la fórmula escribiendo el nombre correcto de la función SUMA.",
+      "correct": "=SUMA(B2:B4)",
+      "blocks": [
+        "=",
+        "SUMA(",
+        "B2:B4",
+        ")",
+        "SUMAA("
+      ],
+      "explanation": "Corregir el nombre a =SUMA() restaura de inmediato el cálculo de las celdas.",
+      "promptByLocale": {
+        "es": "Arregla la fórmula escribiendo el nombre correcto de la función SUMA.",
+        "en": "Fix the formula by typing the correct name of the SUM function.",
+        "de": "Korrigiere die Formel durch Eingabe des korrekten Funktionsnamens SUMME.",
+        "fr": "Répare la formule en tapant le nom correct de la fonction SOMME.",
+        "ja": "SUM関数の正しい名前を入力して数式を修復してください。",
+        "pt": "Conserte a fórmula escrevendo o nome correto da função SOMA."
+      },
+      "explanationByLocale": {
+        "es": "Corregir el nombre a =SUMA() restaura de inmediato el cálculo de las celdas.",
+        "en": "Fixing the spelling to =SUM() immediately restores calculations across cells.",
+        "de": "Die Korrektur zu =SUMME() stellt die Zellenberechnung sofort wieder her.",
+        "fr": "Corriger l'intitulé en =SOMME() rétablit aussitôt le calcul des cellules.",
+        "ja": "スペルを正しく「=SUM()」に修正することで、セルの計算が即時に回復します。",
+        "pt": "Corrigir o nome para =SOMA() restaura imediatamente o cálculo das células."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si escribes =SI(A1=Aprobado, 1, 0) sin comillas en Aprobado, ¿qué error arroja?",
+      "formula": "=SI(A1=Aprobado...)",
+      "correct": "#¿NOMBRE?",
+      "data": {},
+      "options": [
+        "#¿NOMBRE?",
+        "#¡VALOR!",
+        "#¡REF!",
+        "0"
+      ],
+      "explanation": "Al omitir comillas dobles (\"Aprobado\"), Excel busca un nombre definido con la palabra Aprobado y falla.",
+      "promptByLocale": {
+        "es": "Si escribes =SI(A1=Aprobado, 1, 0) sin comillas en Aprobado, ¿qué error arroja?",
+        "en": "If you write =IF(A1=Passed, 1, 0) without quotes around Passed, what error is thrown?",
+        "de": "Wenn du =WENN(A1=Bestanden; 1; 0) ohne Anführungszeichen schreibst, welcher Fehler entsteht?",
+        "fr": "Si tu écris =SI(A1=Admis; 1; 0) sans guillemets autour d'Admis, quelle erreur est générée ?",
+        "ja": "=IF(A1=Aprobado, 1, 0) のように引用符を付けずに入力すると、どのエラーが発生しますか？",
+        "pt": "Se você escrever =SE(A1=Aprovado; 1; 0) sem aspas em Aprovado, qual erro é gerado?"
+      },
+      "formulaByLocale": {
+        "es": "=SI(A1=Aprobado...)",
+        "en": "=IF(A1=Passed...)",
+        "de": "=WENN(A1=Bestanden...)",
+        "fr": "=SI(A1=Admis...)",
+        "ja": "=IF(A1=Aprobado...)",
+        "pt": "=SE(A1=Aprovado...)"
+      },
+      "correctByLocale": {
+        "es": "#¿NOMBRE?",
+        "en": "#NAME?",
+        "de": "#NAME?",
+        "fr": "#NOM?",
+        "ja": "#NAME?",
+        "pt": "#NOME?"
+      },
+      "optionsByLocale": {
+        "es": [
+          "#¿NOMBRE?",
+          "#¡VALOR!",
+          "#¡REF!",
+          "0"
+        ],
+        "en": [
+          "#NAME?",
+          "#VALUE!",
+          "#REF!",
+          "0"
+        ],
+        "de": [
+          "#NAME?",
+          "#WERT!",
+          "#BEZUG!",
+          "0"
+        ],
+        "fr": [
+          "#NOM?",
+          "#VALEUR!",
+          "#REF!",
+          "0"
+        ],
+        "ja": [
+          "#NAME?",
+          "#VALUE!",
+          "#REF!",
+          "0"
+        ],
+        "pt": [
+          "#NOME?",
+          "#VALOR!",
+          "#REF!",
+          "0"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Al omitir comillas dobles (\"Aprobado\"), Excel busca un nombre definido con la palabra Aprobado y falla.",
+        "en": "Omitting double quotes causes Excel to search for a defined named range with that label and fail.",
+        "de": "Ohne Anführungszeichen sucht Excel nach einem definierten Namen und erzeugt den Fehler #NAME?.",
+        "fr": "En omettant les guillemets, Excel cherche un nom défini et échoue avec #NOM?.",
+        "ja": "二重引用符（\"\"）を省略すると、Excelはその語句を名前付き範囲とみなして検索し失敗します。",
+        "pt": "Ao omitir as aspas duplas, o Excel busca um intervalo nomeado com essa palavra e falha."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Jefe: Nombre inválido",
+    "en": "Boss: Invalid Name (#NAME?)",
+    "de": "Boss: Ungültiger Name (#NAME?)",
+    "fr": "Boss : Nom invalide (#NOM?)",
+    "ja": "ボス：無効な名前エラー (#NAME?)",
+    "pt": "Chefe: Nome inválido (#NOME?)"
+  }
+}

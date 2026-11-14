@@ -1,0 +1,90 @@
+{
+  "ref": "L3",
+  "title": "Errores ocultos (números como texto)",
+  "titleByLocale": {
+    "es": "Errores ocultos (números como texto)",
+    "en": "Hidden Errors (Numbers as Text)",
+    "de": "Versteckte Fehler (Zahlen als Text)",
+    "fr": "Erreurs cachées (Nombres stockés sous forme de texte)",
+    "ja": "潜むエラー（文字列として保存された数値）",
+    "pt": "Erros ocultos (números como texto)"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Si una columna contiene números almacenados como TEXTO (tienen un triángulo verde en la esquina), ¿qué ocurre al aplicarles =SUMA?",
+      "promptByLocale": {
+        "es": "Si una columna contiene números almacenados como TEXTO (tienen un triángulo verde en la esquina), ¿qué ocurre al aplicarles =SUMA?",
+        "en": "If a column contains numbers stored as TEXT (displaying a green corner triangle), what happens when applying =SUM?",
+        "de": "Was passiert bei =SUMME, wenn Zahlen als TEXT formatiert sind (grünes Dreieck in der Ecke)?",
+        "fr": "Si des nombres sont stockés sous forme de TEXTE (triangle vert dans le coin), que fait =SOMME ?",
+        "ja": "セル内の数値が「文字列として保存」されている場合（セルの左上に緑の三角マーク）、=SUM 関数を適用するとどうなりますか？",
+        "pt": "Se uma coluna contém números armazenados como TEXTO (com triângulo verde no canto), o que ocorre ao aplicar =SOMA?"
+      },
+      "options": [
+        "La función SUMA los ignora por completo y devuelve 0 (o un total incompleto)",
+        "Suma los números normalmente",
+        "Los multiplica por 10",
+        "Muestra un mensaje de advertencia sonoro"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "La función SUMA los ignora por completo y devuelve 0 (o un total incompleto)",
+          "Suma los números normalmente",
+          "Los multiplica por 10",
+          "Muestra un mensaje de advertencia sonoro"
+        ],
+        "en": [
+          "The SUM function completely ignores them, returning 0 (or an understated total)",
+          "It adds them normally without issue",
+          "It multiplies them by 10",
+          "It triggers an audible alert chime"
+        ],
+        "de": [
+          "Die Funktion SUMME ignoriert sie völlig und liefert 0 (oder eine falsche Zwischensumme)",
+          "Sie addiert ganz normal",
+          "Sie multipliziert mit 10",
+          "Sie spielt einen Ton ab"
+        ],
+        "fr": [
+          "La fonction SOMME les ignore complètement et renvoie 0 (ou un total erroné)",
+          "Elle les additionne normalement",
+          "Elle les multiplie par 10",
+          "Elle émet un avertissement sonore"
+        ],
+        "ja": [
+          "SUM関数はそれらを完全に無視（ゼロ扱い）し、計算結果が「0」または過小な不正合計になる",
+          "何事もなく正常に合算される",
+          "数値を10倍して計算する",
+          "警告アラート音が鳴る"
+        ],
+        "pt": [
+          "A função SOMA os ignora completamente e retorna 0 (ou um total incorreto)",
+          "Soma os números normalmente",
+          "Multiplica por 10",
+          "Toca um sinal sonoro de aviso"
+        ]
+      },
+      "correct": "La función SUMA los ignora por completo y devuelve 0 (o un total incompleto)",
+      "correctByLocale": {
+        "es": "La función SUMA los ignora por completo y devuelve 0 (o un total incompleto)",
+        "en": "The SUM function completely ignores them, returning 0 (or an understated total)",
+        "de": "Die Funktion SUMME ignoriert sie völlig und liefert 0 (oder eine falsche Zwischensumme)",
+        "fr": "La fonction SOMME les ignore complètement et renvoie 0 (ou un total erroné)",
+        "ja": "SUM関数はそれらを完全に無視（ゼロ扱い）し、計算結果が「0」または過小な不正合計になる",
+        "pt": "A função SOMA os ignora completamente e retorna 0 (ou um total incorreto)"
+      },
+      "explanation": "=SUMA ignora textos silenciosamente sin dar error. Por eso es vital convertirlos a número real con 'Texto en columnas' o multiplicando por 1.",
+      "explanationByLocale": {
+        "es": "=SUMA ignora textos silenciosamente sin dar error. Por eso es vital convertirlos a número real con 'Texto en columnas' o multiplicando por 1.",
+        "en": "=SUM silently bypasses text cells without error flags, which is why converting them to real numbers is vital.",
+        "de": "=SUMME übergeht Textzellen stillschweigend – Konvertieren zu Zahlen ist für korrekte Auswertungen unerlässlich.",
+        "fr": "=SOMME ignore silencieusement le texte sans alerter, d'où l'importance de les convertir en vrais nombres.",
+        "ja": "=SUM 関数は文字列データを何のエラーも出さずに静かに無視するため、気付かないまま重大な計算ミスを引き起こします。",
+        "pt": "=SOMA ignora textos silenciosamente sem acusar erro. É essencial convertê-los em números reais."
+      }
+    }
+  ]
+}

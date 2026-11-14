@@ -1,0 +1,232 @@
+{
+  "ref": "C7",
+  "title": "Copiar y pegar especial",
+  "titleByLocale": {
+    "es": "Copiar y pegar especial",
+    "en": "Copy and Paste Special",
+    "de": "Inhalte einfügen (Paste Special)",
+    "fr": "Copier et collage spécial",
+    "ja": "形式を選択して貼り付け",
+    "pt": "Colar especial"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Tienes celdas calculadas con fórmulas. ¿Qué opción de Pegado Especial debes usar para fijar los resultados finales y poder borrar las columnas originales?",
+      "promptByLocale": {
+        "es": "Tienes celdas calculadas con fórmulas. ¿Qué opción de Pegado Especial debes usar para fijar los resultados finales y poder borrar las columnas originales?",
+        "en": "You have cells calculated with formulas. Which Paste Special option freezes the values so you can safely delete the source data?",
+        "de": "Du hast Formelergebnisse. Welche Option von 'Inhalte einfügen' fixiert die Ergebnisse als feste Werte?",
+        "fr": "Vous avez des formules calculées. Quelle option de collage spécial fige les résultats en valeurs définitives ?",
+        "ja": "数式で計算された結果があります。参照元の列を削除しても値が壊れないように確定するには、どの貼り付けを使いますか？",
+        "pt": "Você tem células calculadas com fórmulas. Qual opção de Colar Especial fixa os resultados para poder excluir as colunas de origem?"
+      },
+      "options": [
+        "Pegar solo Valores (123)",
+        "Pegar solo Fórmulas",
+        "Pegar solo Formato",
+        "Pegar como Imagen vinculada"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Pegar solo Valores (123)",
+          "Pegar solo Fórmulas",
+          "Pegar solo Formato",
+          "Pegar como Imagen vinculada"
+        ],
+        "en": [
+          "Paste as Values (123)",
+          "Paste Formulas",
+          "Paste Formats only",
+          "Paste as Linked Picture"
+        ],
+        "de": [
+          "Nur Werte einfügen (123)",
+          "Formeln einfügen",
+          "Nur Formate einfügen",
+          "Als verknüpftes Bild einfügen"
+        ],
+        "fr": [
+          "Coller les valeurs (123)",
+          "Coller les formules",
+          "Coller le format",
+          "Coller avec liaison"
+        ],
+        "ja": [
+          "値として貼り付け (123)",
+          "数式のみ貼り付け",
+          "書式のみ貼り付け",
+          "リンクされた図として貼り付け"
+        ],
+        "pt": [
+          "Colar apenas Valores (123)",
+          "Colar Fórmulas",
+          "Colar apenas Formatação",
+          "Colar como Imagem vinculada"
+        ]
+      },
+      "correct": "Pegar solo Valores (123)",
+      "correctByLocale": {
+        "es": "Pegar solo Valores (123)",
+        "en": "Paste as Values (123)",
+        "de": "Nur Werte einfügen (123)",
+        "fr": "Coller les valeurs (123)",
+        "ja": "値として貼り付け (123)",
+        "pt": "Colar apenas Valores (123)"
+      },
+      "explanation": "Pegar como Valores reemplaza la fórmula viva por su texto o número resultante permanente.",
+      "explanationByLocale": {
+        "es": "Pegar como Valores reemplaza la fórmula viva por su texto o número resultante permanente.",
+        "en": "Pasting values strips the dynamic formula, replacing it with the permanent static result.",
+        "de": "Werte einfügen ersetzt die lebendige Formel durch das feste, dauerhafte Ergebnis.",
+        "fr": "Coller les valeurs supprime la formule dynamique et conserve uniquement le résultat final.",
+        "ja": "「値として貼り付け」を行うと、動的な数式がその時点の確定した数値・テキストに置き換わります。",
+        "pt": "Colar como Valores substitui a fórmula ativa pelo seu resultado estático e permanente."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué operación de Pegado Especial permite convertir una fila horizontal de datos en una columna vertical (o viceversa)?",
+      "promptByLocale": {
+        "es": "¿Qué operación de Pegado Especial permite convertir una fila horizontal de datos en una columna vertical (o viceversa)?",
+        "en": "Which Paste Special option transforms a horizontal row into a vertical column (or vice versa)?",
+        "de": "Welche Option bei 'Inhalte einfügen' wandelt eine Zeile in eine Spalte um (oder umgekehrt)?",
+        "fr": "Quelle option de collage spécial permute les lignes en colonnes (ou inversement) ?",
+        "ja": "行のデータを列に（または列を行に）向きを反転して貼り付ける機能はどれですか？",
+        "pt": "Qual opção de Colar Especial converte uma linha horizontal em coluna vertical (ou vice-versa)?"
+      },
+      "options": ["Transponer", "Invertir", "Pivotar", "Rotar"],
+      "optionsByLocale": {
+        "es": ["Transponer", "Invertir", "Pivotar", "Rotar"],
+        "en": ["Transpose", "Invert", "Pivot", "Rotate"],
+        "de": ["Transponieren", "Invertieren", "Pivotieren", "Rotieren"],
+        "fr": ["Transposer", "Inverser", "Pivoter", "Tourner"],
+        "ja": ["行列を入れ替える（行/列の入れ替え）", "反転", "ピボット", "回転"],
+        "pt": ["Transpor", "Inverter", "Pivotar", "Girar"]
+      },
+      "correct": "Transponer",
+      "correctByLocale": {
+        "es": "Transponer",
+        "en": "Transpose",
+        "de": "Transponieren",
+        "fr": "Transposer",
+        "ja": "行列を入れ替える（行/列の入れ替え）",
+        "pt": "Transpor"
+      },
+      "explanation": "Transponer intercambia los ejes X e Y de los datos copiados al pegarlos.",
+      "explanationByLocale": {
+        "es": "Transponer intercambia los ejes X e Y de los datos copiados al pegarlos.",
+        "en": "Transpose flips rows into columns and columns into rows seamlessly.",
+        "de": "Transponieren vertauscht Zeilen und Spalten des kopierten Bereichs.",
+        "fr": "Transposer permute les lignes et colonnes de la plage copiée lors du collage.",
+        "ja": "「行/列の入れ替え」を使うと、コピー元の縦横の軸を入れ替えて貼り付けることができます。",
+        "pt": "Transpor inverte as linhas e colunas dos dados copiados ao colá-los."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la celda de resultado B2 que debe copiarse y pegarse como valor:",
+      "promptByLocale": {
+        "es": "Selecciona la celda de resultado B2 que debe copiarse y pegarse como valor:",
+        "en": "Select the result cell B2 that needs to be copied and pasted as values:",
+        "de": "Wähle die Ergebniszelle B2 aus, die kopiert und als Wert eingefügt werden soll:",
+        "fr": "Sélectionnez la cellule B2 qui doit être copiée et collée en valeurs :",
+        "ja": "コピーして値貼り付けすべき計算結果セルB2を選択してください：",
+        "pt": "Selecione a célula de resultado B2 que deve ser copiada e colada como valor:"
+      },
+      "correct": "B2",
+      "data": {
+        "A1": "Precio",
+        "B1": "Con Impuesto",
+        "A2": "100",
+        "B2": "116"
+      },
+      "explanation": "Al copiar B2 y pegar con 'Pegar Valores', la celda conserva 116 de forma estática.",
+      "explanationByLocale": {
+        "es": "Al copiar B2 y pegar con 'Pegar Valores', la celda conserva 116 de forma estática.",
+        "en": "Copying B2 and pasting as values preserves 116 as a static number.",
+        "de": "Beim Kopieren von B2 und 'Werte einfügen' bleibt 116 als feste Zahl erhalten.",
+        "fr": "En copiant B2 et en collant les valeurs, la cellule conserve 116 de façon figée.",
+        "ja": "B2をコピーして値貼り付けを行うと、「116」が固定値として残ります。",
+        "pt": "Ao copiar B2 e colar como Valores, a célula preserva 116 de forma estática."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué atajo abre la ventana completa de 'Pegado Especial' en Windows?",
+      "promptByLocale": {
+        "es": "¿Qué atajo abre la ventana completa de 'Pegado Especial' en Windows?",
+        "en": "What keyboard shortcut opens the full 'Paste Special' dialog in Windows?",
+        "de": "Welcher Kurzbefehl öffnet das vollständige Dialogfeld 'Inhalte einfügen' unter Windows?",
+        "fr": "Quel raccourci ouvre la boîte de dialogue complète 'Collage spécial' sous Windows ?",
+        "ja": "Windowsで「形式を選択して貼り付け」ダイアログを一発で開くショートカットはどれですか？",
+        "pt": "Qual atalho abre a janela completa de 'Colar Especial' no Windows?"
+      },
+      "options": [
+        "Ctrl + Alt + V",
+        "Ctrl + Shift + Z",
+        "Alt + F4",
+        "Ctrl + Espacio"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Ctrl + Alt + V",
+          "Ctrl + Shift + Z",
+          "Alt + F4",
+          "Ctrl + Espacio"
+        ],
+        "en": [
+          "Ctrl + Alt + V",
+          "Ctrl + Shift + Z",
+          "Alt + F4",
+          "Ctrl + Space"
+        ],
+        "de": [
+          "Strg + Alt + V",
+          "Strg + Umschalt + Z",
+          "Alt + F4",
+          "Strg + Leertaste"
+        ],
+        "fr": [
+          "Ctrl + Alt + V",
+          "Ctrl + Maj + Z",
+          "Alt + F4",
+          "Ctrl + Espace"
+        ],
+        "ja": [
+          "Ctrl + Alt + V",
+          "Ctrl + Shift + Z",
+          "Alt + F4",
+          "Ctrl + Space"
+        ],
+        "pt": [
+          "Ctrl + Alt + V",
+          "Ctrl + Shift + Z",
+          "Alt + F4",
+          "Ctrl + Espaço"
+        ]
+      },
+      "correct": "Ctrl + Alt + V",
+      "correctByLocale": {
+        "es": "Ctrl + Alt + V",
+        "en": "Ctrl + Alt + V",
+        "de": "Strg + Alt + V",
+        "fr": "Ctrl + Alt + V",
+        "ja": "Ctrl + Alt + V",
+        "pt": "Ctrl + Alt + V"
+      },
+      "explanation": "Ctrl+Alt+V abre directamente el cuadro con opciones de valores, formatos, fórmulas, transponer y operaciones.",
+      "explanationByLocale": {
+        "es": "Ctrl+Alt+V abre directamente el cuadro con opciones de valores, formatos, fórmulas, transponer y operaciones.",
+        "en": "Ctrl+Alt+V immediately launches the Paste Special dialog with all options.",
+        "de": "Strg+Alt+V öffnet sofort das Menü 'Inhalte einfügen' mit allen Auswahlmöglichkeiten.",
+        "fr": "Ctrl+Alt+V ouvre instantanément la boîte Collage spécial avec toutes les options.",
+        "ja": "Ctrl+Alt+Vを押すと、「形式を選択して貼り付け」ダイアログボックスが直接表示されます。",
+        "pt": "Ctrl+Alt+V abre de imediato a caixa de diálogo de Colar Especial com todas as opções."
+      }
+    }
+  ]
+}
+

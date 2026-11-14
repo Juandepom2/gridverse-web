@@ -1,0 +1,297 @@
+{
+  "ref": "B10",
+  "title": "Referencias entre hojas",
+  "version": 1,
+  "rewardXp": 25,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué carácter separa obligatoriamente el nombre de la hoja de la celda en una fórmula de Excel?",
+      "formula": "Sintaxis entre hojas",
+      "correct": "El signo de exclamación (!)",
+      "data": {},
+      "options": [
+        "El signo de exclamación (!)",
+        "Dos puntos (:)",
+        "Un punto (.)",
+        "Una barra (/)"
+      ],
+      "explanation": "Excel utiliza el signo de exclamación (!) para indicar a qué hoja pertenece la coordenada (ej. Hoja2!A1).",
+      "promptByLocale": {
+        "es": "¿Qué carácter separa obligatoriamente el nombre de la hoja de la celda en una fórmula de Excel?",
+        "en": "Which character must separate the sheet name from the cell in an Excel formula?",
+        "de": "Welches Zeichen trennt in Excel zwingend den Blattnamen von der Zellkoordinate?",
+        "fr": "Quel caractère sépare obligatoirement le nom de la feuille de la cellule dans Excel ?",
+        "ja": "Excelの数式において、シート名とセル参照を区切る記号は何ですか？",
+        "pt": "Qual caractere separa obrigatoriamente o nome da planilha da célula em uma fórmula no Excel?"
+      },
+      "formulaByLocale": {
+        "es": "Sintaxis entre hojas",
+        "en": "Cross-sheet syntax",
+        "de": "Blattsyntax",
+        "fr": "Syntaxe inter-feuilles",
+        "ja": "別シート参照の構文",
+        "pt": "Sintaxe entre planilhas"
+      },
+      "correctByLocale": {
+        "es": "El signo de exclamación (!)",
+        "en": "Exclamation mark (!)",
+        "de": "Das Ausrufezeichen (!)",
+        "fr": "Le point d'exclamation (!)",
+        "ja": "感嘆符・エクスクラメーション（!）",
+        "pt": "O ponto de exclamação (!)"
+      },
+      "optionsByLocale": {
+        "es": [
+          "El signo de exclamación (!)",
+          "Dos puntos (:)",
+          "Un punto (.)",
+          "Una barra (/)"
+        ],
+        "en": [
+          "Exclamation mark (!)",
+          "Colon (:)",
+          "Period (.)",
+          "Slash (/)"
+        ],
+        "de": [
+          "Das Ausrufezeichen (!)",
+          "Doppelpunkt (:)",
+          "Punkt (.)",
+          "Schrägstrich (/)"
+        ],
+        "fr": [
+          "Le point d'exclamation (!)",
+          "Deux-points (:)",
+          "Point (.)",
+          "Barre oblique (/)"
+        ],
+        "ja": [
+          "感嘆符・エクスクラメーション（!）",
+          "コロン（:）",
+          "ピリオド（.）",
+          "スラッシュ（/）"
+        ],
+        "pt": [
+          "O ponto de exclamação (!)",
+          "Dois pontos (:)",
+          "Ponto (.)",
+          "Barra (/)"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Excel utiliza el signo de exclamación (!) para indicar a qué hoja pertenece la coordenada (ej. Hoja2!A1).",
+        "en": "Excel uses the exclamation mark (!) to designate which worksheet a cell coordinate belongs to (e.g. Sheet2!A1).",
+        "de": "Excel trennt den Namen des Tabellenblatts mit einem Ausrufezeichen (!) von der Zellkoordinate (z. B. Tabelle2!A1).",
+        "fr": "Excel utilise le point d'exclamation (!) pour indiquer à quelle feuille appartient la coordonnée (ex: Feuil2!A1).",
+        "ja": "Excelではシート名とセル番地を感嘆符「!」で繋ぎます（例：Sheet2!A1）。",
+        "pt": "O Excel usa o ponto de exclamação (!) para indicar a qual planilha a coordenada pertence (ex: Plan2!A1)."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si el nombre de la hoja tiene espacios (ej. 'Ventas 2024'), ¿cómo debe escribirse en la fórmula?",
+      "formula": "Hoja con espacios",
+      "correct": "Entre comillas simples: ='Ventas 2024'!B5",
+      "data": {},
+      "options": [
+        "Entre comillas simples: ='Ventas 2024'!B5",
+        "Entre corchetes: =[Ventas 2024]!B5",
+        "Sin espacios: =Ventas2024!B5",
+        "Entre paréntesis: =(Ventas 2024)!B5"
+      ],
+      "explanation": "Las comillas simples son indispensables cuando el nombre de la pestaña contiene espacios o caracteres especiales.",
+      "promptByLocale": {
+        "es": "Si el nombre de la hoja tiene espacios (ej. 'Ventas 2024'), ¿cómo debe escribirse en la fórmula?",
+        "en": "If a sheet name contains spaces (e.g. 'Sales 2024'), how must it be written in the formula?",
+        "de": "Wenn der Blattname Leerzeichen enthält (z. B. 'Umsatz 2024'), wie muss er geschrieben werden?",
+        "fr": "Si le nom de feuille contient des espaces (ex: 'Ventes 2024'), comment doit-il s'écrire ?",
+        "ja": "シート名に半角スペースが含まれている場合（例：'Sales 2024'）、数式内ではどう表記しますか？",
+        "pt": "Se o nome da planilha contiver espaços (ex: 'Vendas 2024'), como deve ser escrito na fórmula?"
+      },
+      "formulaByLocale": {
+        "es": "Hoja con espacios",
+        "en": "Sheet with spaces",
+        "de": "Blatt mit Leerzeichen",
+        "fr": "Feuille avec espaces",
+        "ja": "空白を含むシート名",
+        "pt": "Planilha com espaços"
+      },
+      "correctByLocale": {
+        "es": "Entre comillas simples: ='Ventas 2024'!B5",
+        "en": "Enclosed in single quotes: ='Sales 2024'!B5",
+        "de": "In einfachen Anführungszeichen: ='Umsatz 2024'!B5",
+        "fr": "Entre guillemets simples : ='Ventes 2024'!B5",
+        "ja": "シングルクォーテーションで囲む：='Sales 2024'!B5",
+        "pt": "Entre aspas simples: ='Vendas 2024'!B5"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Entre comillas simples: ='Ventas 2024'!B5",
+          "Entre corchetes: =[Ventas 2024]!B5",
+          "Sin espacios: =Ventas2024!B5",
+          "Entre paréntesis: =(Ventas 2024)!B5"
+        ],
+        "en": [
+          "Enclosed in single quotes: ='Sales 2024'!B5",
+          "In square brackets: =[Sales 2024]!B5",
+          "Without spaces: =Sales2024!B5",
+          "In parentheses: =(Sales 2024)!B5"
+        ],
+        "de": [
+          "In einfachen Anführungszeichen: ='Umsatz 2024'!B5",
+          "In eckigen Klammern: =[Umsatz 2024]!B5",
+          "Ohne Leerzeichen: =Umsatz2024!B5",
+          "In runden Klammern: =(Umsatz 2024)!B5"
+        ],
+        "fr": [
+          "Entre guillemets simples : ='Ventes 2024'!B5",
+          "Entre crochets : =[Ventes 2024]!B5",
+          "Sans espaces : =Ventes2024!B5",
+          "Entre parenthèses : =(Ventes 2024)!B5"
+        ],
+        "ja": [
+          "シングルクォーテーションで囲む：='Sales 2024'!B5",
+          "大カッコで囲む：=[Sales 2024]!B5",
+          "スペースを削除：=Sales2024!B5",
+          "丸カッコで囲む：=(Sales 2024)!B5"
+        ],
+        "pt": [
+          "Entre aspas simples: ='Vendas 2024'!B5",
+          "Entre colchetes: =[Vendas 2024]!B5",
+          "Sem espaços: =Vendas2024!B5",
+          "Entre parênteses: =(Vendas 2024)!B5"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Las comillas simples son indispensables cuando el nombre de la pestaña contiene espacios o caracteres especiales.",
+        "en": "Single quotes are required whenever the sheet tab name contains spaces or special characters.",
+        "de": "Einfache Anführungszeichen sind erforderlich, wenn der Blattname Leer- oder Sonderzeichen enthält.",
+        "fr": "Les guillemets simples sont requis dès que le nom d'onglet comporte des espaces.",
+        "ja": "シート名にスペースや記号が含まれる場合、シングルクォーテーション「'」で囲む必要があります。",
+        "pt": "As aspas simples são obrigatórias quando o nome da aba contiver espaços ou caracteres especiais."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para traer el Total desde la celda D10 de la hoja 'Datos'.",
+      "correct": "=Datos!D10",
+      "blocks": [
+        "=",
+        "Datos!",
+        "D10",
+        ":",
+        "Datos."
+      ],
+      "explanation": "Vincular hojas mantiene los libros de cálculo ordenados y modulares.",
+      "promptByLocale": {
+        "es": "Arma la fórmula para traer el Total desde la celda D10 de la hoja 'Datos'.",
+        "en": "Build the formula to pull the Total from cell D10 of the 'Datos' sheet.",
+        "de": "Erstelle die Formel, um den Gesamtwert aus Zelle D10 des Blatts 'Datos' zu holen.",
+        "fr": "Construis la formule pour importer le Total depuis la cellule D10 de la feuille 'Datos'.",
+        "ja": "「Datos」シートのセル D10 から合計データを参照する数式を組み立ててください。",
+        "pt": "Monte a fórmula para buscar o Total da célula D10 da planilha 'Datos'."
+      },
+      "explanationByLocale": {
+        "es": "Vincular hojas mantiene los libros de cálculo ordenados y modulares.",
+        "en": "Linking worksheets keeps complex workbooks modular and well-structured.",
+        "de": "Blattverknüpfungen halten komplexe Arbeitsmappen übersichtlich und modular.",
+        "fr": "Lier des feuilles permet d'organiser les classeurs de manière modulaire et claire.",
+        "ja": "シートを連携させることで、大規模なブックでも整理されたデータ設計が保たれます。",
+        "pt": "Vincular planilhas mantém as pastas de trabalho organizadas e modulares."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si modificas el valor en Hoja1!A1, ¿qué le ocurre a la celda en Hoja2 que tiene =Hoja1!A1?",
+      "formula": "Actualización en tiempo real",
+      "correct": "Se actualiza instantáneamente con el nuevo valor",
+      "data": {},
+      "options": [
+        "Se actualiza instantáneamente con el nuevo valor",
+        "Requiere guardar y cerrar el archivo",
+        "Muestra un error #¡REF!",
+        "Permanece con el valor anterior"
+      ],
+      "explanation": "Excel mantiene un árbol de dependencias activo que recalcula las fórmulas interconectadas en milisegundos.",
+      "promptByLocale": {
+        "es": "Si modificas el valor en Hoja1!A1, ¿qué le ocurre a la celda en Hoja2 que tiene =Hoja1!A1?",
+        "en": "If you modify the value in Sheet1!A1, what happens to the cell in Sheet2 containing =Sheet1!A1?",
+        "de": "Wenn du den Wert in Tabelle1!A1 änderst, was passiert mit der Zelle in Tabelle2 mit =Tabelle1!A1?",
+        "fr": "Si tu modifies la valeur dans Feuil1!A1, qu'arrive-t-il à la cellule en Feuil2 avec =Feuil1!A1 ?",
+        "ja": "Sheet1のA1セルの値を変更した場合、「=Sheet1!A1」と入力されたSheet2のセルはどうなりますか？",
+        "pt": "Se você modificar o valor em Plan1!A1, o que acontece com a célula na Plan2 que contém =Plan1!A1?"
+      },
+      "formulaByLocale": {
+        "es": "Actualización en tiempo real",
+        "en": "Real-time update",
+        "de": "Echtzeit-Aktualisierung",
+        "fr": "Mise à jour instantanée",
+        "ja": "リアルタイム更新",
+        "pt": "Atualização em tempo real"
+      },
+      "correctByLocale": {
+        "es": "Se actualiza instantáneamente con el nuevo valor",
+        "en": "It updates instantly with the new value",
+        "de": "Sie aktualisiert sich sofort mit dem neuen Wert",
+        "fr": "Elle se met à jour instantanément avec la nouvelle valeur",
+        "ja": "新しい値に即座に自動更新される",
+        "pt": "Atualiza instantaneamente com o novo valor"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Se actualiza instantáneamente con el nuevo valor",
+          "Requiere guardar y cerrar el archivo",
+          "Muestra un error #¡REF!",
+          "Permanece con el valor anterior"
+        ],
+        "en": [
+          "It updates instantly with the new value",
+          "Requires saving and closing the file",
+          "Displays a #REF! error",
+          "Stays with the previous value"
+        ],
+        "de": [
+          "Sie aktualisiert sich sofort mit dem neuen Wert",
+          "Erfordert Speichern und Schließen der Datei",
+          "Zeigt einen #BEZUG!-Fehler an",
+          "Bleibt beim vorherigen Wert"
+        ],
+        "fr": [
+          "Elle se met à jour instantanément avec la nouvelle valeur",
+          "Nécessite d'enregistrer et fermer le fichier",
+          "Affiche une erreur #REF!",
+          "Conserve la valeur précédente"
+        ],
+        "ja": [
+          "新しい値に即座に自動更新される",
+          "ファイルを保存して開き直す必要がある",
+          "#REF! エラーが表示される",
+          "以前の値のまま変化しない"
+        ],
+        "pt": [
+          "Atualiza instantaneamente com o novo valor",
+          "Requer salvar e fechar o arquivo",
+          "Mostra um erro #REF!",
+          "Permanece com o valor anterior"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Excel mantiene un árbol de dependencias activo que recalcula las fórmulas interconectadas en milisegundos.",
+        "en": "Excel maintains an active dependency graph that recalculates interconnected formulas in milliseconds.",
+        "de": "Excel berechnet vernetzte Formeln über seinen internen Abhängigkeitsbaum sofort neu.",
+        "fr": "Excel maintient un arbre de dépendance actif qui recalcule immédiatement les formules liées.",
+        "ja": "Excelは計算の依存関係をリアルタイムで追跡し、参照先の変更をミリ秒単位で瞬時に再計算します。",
+        "pt": "O Excel mantém uma árvore de dependências ativa que recalcula as fórmulas interligadas em milissegundos."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Referencias entre hojas",
+    "en": "Cross-Sheet References",
+    "de": "Blattübergreifende Bezüge",
+    "fr": "Références entre feuilles",
+    "ja": "シート間参照",
+    "pt": "Referências entre planilhas"
+  }
+}

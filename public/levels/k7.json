@@ -1,0 +1,90 @@
+{
+  "ref": "K7",
+  "title": "Introducción a LAMBDA",
+  "titleByLocale": {
+    "es": "Introducción a LAMBDA",
+    "en": "Intro to LAMBDA",
+    "de": "Einführung in LAMBDA",
+    "fr": "Introduction à LAMBDA",
+    "ja": "LAMBDA 入門（自作関数）",
+    "pt": "Introdução ao LAMBDA"
+  },
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué revolucionaria capacidad otorga la función =LAMBDA a los usuarios avanzados de Excel?",
+      "promptByLocale": {
+        "es": "¿Qué revolucionaria capacidad otorga la función =LAMBDA a los usuarios avanzados de Excel?",
+        "en": "What breakthrough capability does the =LAMBDA function bring to Excel power users?",
+        "de": "Welche bahnbrechende Fähigkeit bringt die =LAMBDA-Funktion in modernes Excel?",
+        "fr": "Quelle capacité révolutionnaire la fonction =LAMBDA apporte-t-elle sous Excel ?",
+        "ja": "=LAMBDA 関数がExcelユーザーにもたらした画期的な機能は何ですか？",
+        "pt": "Que capacidade revolucionária a função =LAMBDA traz aos usuários avançados do Excel?"
+      },
+      "options": [
+        "Crear tus propias funciones personalizadas reutilizables con nombre propio sin programar VBA ni macros",
+        "Acceder al código fuente del sistema operativo",
+        "Instalar juegos dentro de la hoja",
+        "Imprimir documentos a doble cara"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Crear tus propias funciones personalizadas reutilizables con nombre propio sin programar VBA ni macros",
+          "Acceder al código fuente del sistema operativo",
+          "Instalar juegos dentro de la hoja",
+          "Imprimir documentos a doble cara"
+        ],
+        "en": [
+          "Build custom reusable functions with their own names without writing VBA macros",
+          "Access the operating system source code",
+          "Install games inside the grid",
+          "Print two-sided documents"
+        ],
+        "de": [
+          "Eigene wiederverwendbare Funktionen mit eigenem Namen ganz ohne VBA-Makros erstellen",
+          "Auf Betriebssystemcode zugreifen",
+          "Spiele installieren",
+          "Beidseitig drucken"
+        ],
+        "fr": [
+          "Créer ses propres fonctions réutilisables nommées sans coder en VBA ou macros",
+          "Accéder au code du système d'exploitation",
+          "Installer des jeux vidéo",
+          "Imprimer recto-verso"
+        ],
+        "ja": [
+          "VBAやマクロを使わずに、数式だけで自分専用のオリジナル自作関数（UDF）を定義・作成できる",
+          "OSのソースコードを書き換える",
+          "シート内にゲームをインストールする",
+          "両面印刷を設定する"
+        ],
+        "pt": [
+          "Criar funções personalizadas reutilizáveis com nome próprio sem precisar de VBA ou macros",
+          "Acessar o código-fonte do sistema",
+          "Instalar jogos na planilha",
+          "Imprimir frente e verso"
+        ]
+      },
+      "correct": "Crear tus propias funciones personalizadas reutilizables con nombre propio sin programar VBA ni macros",
+      "correctByLocale": {
+        "es": "Crear tus propias funciones personalizadas reutilizables con nombre propio sin programar VBA ni macros",
+        "en": "Build custom reusable functions with their own names without writing VBA macros",
+        "de": "Eigene wiederverwendbare Funktionen mit eigenem Namen ganz ohne VBA-Makros erstellen",
+        "fr": "Créer ses propres fonctions réutilisables nommées sans coder en VBA ou macros",
+        "ja": "VBAやマクロを使わずに、数式だけで自分専用のオリジナル自作関数（UDF）を定義・作成できる",
+        "pt": "Criar funções personalizadas reutilizáveis com nome próprio sem precisar de VBA ou macros"
+      },
+      "explanation": "Al registrar un LAMBDA en el Administrador de Nombres, creas una función nativa de tu empresa para todo el libro.",
+      "explanationByLocale": {
+        "es": "Al registrar un LAMBDA en el Administrador de Nombres, creas una función nativa de tu empresa para todo el libro.",
+        "en": "Naming a LAMBDA in the Name Manager makes it a native custom function across your workbook.",
+        "de": "Wird LAMBDA im Namens-Manager definiert, steht die Funktion arbeitsmappenweit wie eine native Formel bereit.",
+        "fr": "Associer un LAMBDA dans le Gestionnaire de noms crée une fonction d'entreprise native.",
+        "ja": "LAMBDAを名前の管理で登録すると、=CALCULAR_IMPUESTO() のように独自のネイティブ関数として使えます。",
+        "pt": "Ao registrar um LAMBDA no Gerenciador de Nomes, você cria uma função nativa para toda a planilha."
+      }
+    }
+  ]
+}

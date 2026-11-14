@@ -1,0 +1,308 @@
+{
+  "ref": "A1",
+  "title": "Hola, celda",
+  "titleByLocale": {
+    "es": "Hola, celda",
+    "en": "Hello, Cell",
+    "de": "Hallo, Zelle",
+    "fr": "Bonjour, cellule",
+    "ja": "ハロー、セル",
+    "pt": "Olá, célula"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "select_range",
+      "prompt": "Toca la celda A1 para seleccionarla.",
+      "promptByLocale": {
+        "es": "Toca la celda A1 para seleccionarla.",
+        "en": "Tap cell A1 to select it.",
+        "de": "Tippe auf Zelle A1, um sie auszuwählen.",
+        "fr": "Touche la cellule A1 pour la sélectionner.",
+        "ja": "セル A1 をタップして選択してください。",
+        "pt": "Toque na célula A1 para selecioná-la."
+      },
+      "correct": "A1",
+      "data": {
+        "A1": "10",
+        "B1": "20",
+        "A2": "30",
+        "B2": "40"
+      },
+      "explanation": "Las celdas se identifican por la letra de la columna y el número de la fila: Columna A, Fila 1 = A1.",
+      "explanationByLocale": {
+        "es": "Las celdas se identifican por la letra de la columna y el número de la fila: Columna A, Fila 1 = A1.",
+        "en": "Cells are identified by the column letter and row number: Column A, Row 1 = A1.",
+        "de": "Zellen werden durch den Spaltenbuchstaben und die Zeilennummer benannt: Spalte A, Zeile 1 = A1.",
+        "fr": "Les cellules sont identifiées par la lettre de colonne et le numéro de ligne : Colonne A, Ligne 1 = A1.",
+        "ja": "セルは列（アルファベット）と行（数字）の組み合わせで表されます。列A、行1＝A1。",
+        "pt": "As células são identificadas pela letra da coluna e número da linha: Coluna A, Linha 1 = A1."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué celda se encuentra en la Columna B, Fila 2?",
+      "promptByLocale": {
+        "es": "¿Qué celda se encuentra en la Columna B, Fila 2?",
+        "en": "Which cell is in Column B, Row 2?",
+        "de": "Welche Zelle befindet sich in Spalte B, Zeile 2?",
+        "fr": "Quelle cellule se trouve dans la Colonne B, Ligne 2 ?",
+        "ja": "列B・行2にあるセルはどれですか？",
+        "pt": "Qual célula está localizada na Coluna B, Linha 2?"
+      },
+      "formula": "Coordenadas",
+      "formulaByLocale": {
+        "es": "Coordenadas",
+        "en": "Coordinates",
+        "de": "Koordinaten",
+        "fr": "Coordonnées",
+        "ja": "座標",
+        "pt": "Coordenadas"
+      },
+      "correct": "B2",
+      "data": {
+        "A1": "Ene",
+        "B1": "Feb",
+        "A2": "100",
+        "B2": "200"
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Ene",
+          "B1": "Feb",
+          "A2": "100",
+          "B2": "200"
+        },
+        "en": {
+          "A1": "Jan",
+          "B1": "Feb",
+          "A2": "100",
+          "B2": "200"
+        },
+        "de": {
+          "A1": "Jan",
+          "B1": "Feb",
+          "A2": "100",
+          "B2": "200"
+        },
+        "fr": {
+          "A1": "Jan",
+          "B1": "Fév",
+          "A2": "100",
+          "B2": "200"
+        },
+        "ja": {
+          "A1": "1月",
+          "B1": "2月",
+          "A2": "100",
+          "B2": "200"
+        },
+        "pt": {
+          "A1": "Jan",
+          "B1": "Fev",
+          "A2": "100",
+          "B2": "200"
+        }
+      },
+      "options": [
+        "A1",
+        "B2",
+        "B1",
+        "A2"
+      ],
+      "explanation": "La intersección de la Columna B con la Fila 2 forma la celda B2 (con valor 200).",
+      "explanationByLocale": {
+        "es": "La intersección de la Columna B con la Fila 2 forma la celda B2 (con valor 200).",
+        "en": "The intersection of Column B and Row 2 forms cell B2 (holding value 200).",
+        "de": "Der Schnittpunkt von Spalte B und Zeile 2 ergibt Zelle B2 (mit dem Wert 200).",
+        "fr": "L'intersection de la Colonne B et de la Ligne 2 forme la cellule B2 (valeur 200).",
+        "ja": "列Bと行2が交差する位置にあるセルが「B2」です（値は 200）。",
+        "pt": "A interseção da Coluna B com a Linha 2 forma a célula B2 (com valor 200)."
+      },
+      "optionsByLocale": {
+        "es": [
+          "A1",
+          "B2",
+          "B1",
+          "A2"
+        ],
+        "en": [
+          "A1",
+          "B2",
+          "B1",
+          "A2"
+        ],
+        "de": [
+          "A1",
+          "B2",
+          "B1",
+          "A2"
+        ],
+        "fr": [
+          "A1",
+          "B2",
+          "B1",
+          "A2"
+        ],
+        "ja": [
+          "A1",
+          "B2",
+          "B1",
+          "A2"
+        ],
+        "pt": [
+          "A1",
+          "B2",
+          "B1",
+          "A2"
+        ]
+      },
+      "correctByLocale": {
+        "es": "B2",
+        "en": "B2",
+        "de": "B2",
+        "fr": "B2",
+        "ja": "B2",
+        "pt": "B2"
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Toda fórmula en Excel inicia con el signo igual (=). Arma la referencia a A1.",
+      "promptByLocale": {
+        "es": "Toda fórmula en Excel inicia con el signo igual (=). Arma la referencia a A1.",
+        "en": "Every formula in Excel starts with an equal sign (=). Build the reference to A1.",
+        "de": "Jede Formel in Excel beginnt mit einem Gleichheitszeichen (=). Baue den Bezug auf A1.",
+        "fr": "Toute formule dans Excel commence par un signe égal (=). Construis la référence à A1.",
+        "ja": "Excelの数式は必ず等号（=）から始まります。A1への参照を組み立ててください。",
+        "pt": "Toda fórmula no Excel começa com o sinal de igual (=). Monte a referência para A1."
+      },
+      "correct": "=A1",
+      "blocks": [
+        "A1",
+        "=",
+        "+",
+        "B1"
+      ],
+      "explanation": "El signo = indica a Excel que estás calculando o referenciando; luego se escribe la celda A1.",
+      "explanationByLocale": {
+        "es": "El signo = indica a Excel que estás calculando o referenciando; luego se escribe la celda A1.",
+        "en": "The = sign tells Excel you are calculating or referencing; then type cell A1.",
+        "de": "Das =-Zeichen signalisiert Excel eine Berechnung oder einen Bezug; danach folgt Zelle A1.",
+        "fr": "Le signe = indique à Excel que tu effectues un calcul ou une référence, suivi de la cellule A1.",
+        "ja": "「=」を最初に入力することでExcelが数式と認識し、続けて「A1」を入力して参照します。",
+        "pt": "O sinal = avisa ao Excel que você está calculando ou referenciando; depois vem a célula A1."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la celda B1 con el valor 200.",
+      "promptByLocale": {
+        "es": "Selecciona la celda B1 con el valor 200.",
+        "en": "Select cell B1 with the value 200.",
+        "de": "Wähle Zelle B1 mit dem Wert 200 aus.",
+        "fr": "Sélectionne la cellule B1 avec la valeur 200.",
+        "ja": "値「200」が入っているセル B1 を選択してください。",
+        "pt": "Selecione a célula B1 com o valor 200."
+      },
+      "correct": "B1",
+      "data": {
+        "A1": "100",
+        "B1": "200",
+        "A2": "300",
+        "B2": "400"
+      },
+      "explanation": "B1 se encuentra en la primera fila de la Columna B y contiene el número 200.",
+      "explanationByLocale": {
+        "es": "B1 se encuentra en la primera fila de la Columna B y contiene el número 200.",
+        "en": "B1 is located in the first row of Column B and contains the number 200.",
+        "de": "B1 befindet sich in der ersten Zeile von Spalte B und enthält die Zahl 200.",
+        "fr": "B1 se trouve dans la première ligne de la Colonne B et contient le nombre 200.",
+        "ja": "B1 は列Bの1行目に位置し、数値「200」が格納されています。",
+        "pt": "B1 fica na primeira linha da Coluna B e contém o número 200."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Cuál es el valor que contiene la celda A2?",
+      "promptByLocale": {
+        "es": "¿Cuál es el valor que contiene la celda A2?",
+        "en": "What value is contained in cell A2?",
+        "de": "Welchen Wert enthält Zelle A2?",
+        "fr": "Quelle valeur contient la cellule A2 ?",
+        "ja": "セル A2 に入っている値は何ですか？",
+        "pt": "Qual é o valor contido na célula A2?"
+      },
+      "formula": "=A2",
+      "correct": "300",
+      "data": {
+        "A1": "100",
+        "B1": "200",
+        "A2": "300",
+        "B2": "400"
+      },
+      "options": [
+        "100",
+        "200",
+        "300",
+        "400"
+      ],
+      "explanation": "Al consultar la Columna A en la Fila 2 encontramos exactamente el número 300.",
+      "explanationByLocale": {
+        "es": "Al consultar la Columna A en la Fila 2 encontramos exactamente el número 300.",
+        "en": "Looking at Column A in Row 2, we find exactly the number 300.",
+        "de": "Wenn wir Spalte A in Zeile 2 betrachten, finden wir genau den Wert 300.",
+        "fr": "En regardant la Colonne A à la Ligne 2, on trouve exactement le nombre 300.",
+        "ja": "列Aの行2を確認すると、格納されている値は「300」です。",
+        "pt": "Ao olhar a Coluna A na Linha 2, encontramos exatamente o número 300."
+      },
+      "optionsByLocale": {
+        "es": [
+          "100",
+          "200",
+          "300",
+          "400"
+        ],
+        "en": [
+          "100",
+          "200",
+          "300",
+          "400"
+        ],
+        "de": [
+          "100",
+          "200",
+          "300",
+          "400"
+        ],
+        "fr": [
+          "100",
+          "200",
+          "300",
+          "400"
+        ],
+        "ja": [
+          "100",
+          "200",
+          "300",
+          "400"
+        ],
+        "pt": [
+          "100",
+          "200",
+          "300",
+          "400"
+        ]
+      },
+      "correctByLocale": {
+        "es": "300",
+        "en": "300",
+        "de": "300",
+        "fr": "300",
+        "ja": "300",
+        "pt": "300"
+      }
+    }
+  ]
+}

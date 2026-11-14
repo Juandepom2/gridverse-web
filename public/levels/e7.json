@@ -1,0 +1,178 @@
+{
+  "ref": "E7",
+  "title": "SUSTITUIR",
+  "titleByLocale": {
+    "es": "SUSTITUIR",
+    "en": "SUBSTITUTE",
+    "de": "WECHSELN",
+    "fr": "SUBSTITUE",
+    "ja": "SUBSTITUTE",
+    "pt": "SUBSTITUIR"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cuál es la función principal de =SUSTITUIR(texto, texto_original, texto_nuevo)?",
+      "promptByLocale": {
+        "es": "¿Cuál es la función principal de =SUSTITUIR(texto, texto_original, texto_nuevo)?",
+        "en": "What is the primary role of =SUBSTITUTE(text, old_text, new_text)?",
+        "de": "Was ist der Hauptzweck von =WECHSELN(Text; Alter_Text; Neuer_Text)?",
+        "fr": "Quel est le rôle principal de =SUBSTITUE(texte; ancien_texte; nouveau_texte) ?",
+        "ja": "=SUBSTITUTE(文字列, 検索文字列, 置換文字列) の主な役割は何ですか？",
+        "pt": "Qual é a principal função de =SUBSTITUIR(texto; texto_antigo; novo_texto)?"
+      },
+      "options": [
+        "Reemplaza ocurrencias de un texto específico por otro",
+        "Borra la fila completa donde coincida el texto",
+        "Convierte los números en formato de moneda",
+        "Traduce el texto a otro idioma automáticamente"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Reemplaza ocurrencias de un texto específico por otro",
+          "Borra la fila completa donde coincida el texto",
+          "Convierte los números en formato de moneda",
+          "Traduce el texto a otro idioma automáticamente"
+        ],
+        "en": [
+          "Replaces specific character occurrences with new text",
+          "Deletes the matching row entirely",
+          "Formats numbers as currency",
+          "Translates text into another language"
+        ],
+        "de": [
+          "Ersetzt bestimmte Textbestandteile durch einen neuen Text",
+          "Löscht die gesamte Zeile",
+          "Formatiert Zahlen als Währung",
+          "Übersetzt den Text in eine andere Sprache"
+        ],
+        "fr": [
+          "Remplace des occurrences de texte spécifique par un nouveau texte",
+          "Supprime toute la ligne correspondante",
+          "Formate les nombres en monnaie",
+          "Traduit le texte dans une autre langue"
+        ],
+        "ja": [
+          "特定の文字列を別の新しい文字列に置き換える",
+          "一致する行全体を削除する",
+          "数値を自動的に通貨表示にする",
+          "テキストを自動翻訳する"
+        ],
+        "pt": [
+          "Substitui ocorrências de um texto específico por um novo texto",
+          "Exclui a linha correspondente por completo",
+          "Formata números como moeda",
+          "Traduz o texto automaticamente"
+        ]
+      },
+      "correct": "Reemplaza ocurrencias de un texto específico por otro",
+      "correctByLocale": {
+        "es": "Reemplaza ocurrencias de un texto específico por otro",
+        "en": "Replaces specific character occurrences with new text",
+        "de": "Ersetzt bestimmte Textbestandteile durch einen neuen Text",
+        "fr": "Remplace des occurrences de texte spécifique par un nouveau texte",
+        "ja": "特定の文字列を別の新しい文字列に置き換える",
+        "pt": "Substitui ocorrências de um texto específico por um novo texto"
+      },
+      "explanation": "SUSTITUIR busca caracteres exactos (como guiones, comas o palabras) y los intercambia.",
+      "explanationByLocale": {
+        "es": "SUSTITUIR busca caracteres exactos (como guiones, comas o palabras) y los intercambia.",
+        "en": "SUBSTITUTE locates matching characters (like dashes, slashes, or terms) and swaps them.",
+        "de": "WECHSELN sucht gezielt nach Zeichen (wie Bindestrichen oder Wörtern) und tauscht sie aus.",
+        "fr": "SUBSTITUE recherche des caractères précis (tirets, mots) et les remplace.",
+        "ja": "SUBSTITUTEは指定した文字（ハイフンや特定の単語など）を探し出し、新しい文字へ置換します。",
+        "pt": "SUBSTITUIR localiza caracteres exatos (como hífens, vírgulas ou palavras) e os troca."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si en A1 tienes \"2024-01-15\", ¿qué devuelve =SUSTITUIR(A1, \"-\", \"/\")?",
+      "promptByLocale": {
+        "es": "Si en A1 tienes \"2024-01-15\", ¿qué devuelve =SUSTITUIR(A1, \"-\", \"/\")?",
+        "en": "If A1 contains \"2024-01-15\", what does =SUBSTITUTE(A1, \"-\", \"/\") return?",
+        "de": "Wenn A1 \"2024-01-15\" enthält, was liefert =WECHSELN(A1; \"-\"; \"/\")?",
+        "fr": "Si A1 contient \"2024-01-15\", que renvoie =SUBSTITUE(A1; \"-\"; \"/\") ?",
+        "ja": "A1に「2024-01-15」がある場合、=SUBSTITUTE(A1, \"-\", \"/\") は何を返しますか？",
+        "pt": "Se em A1 você tem \"2024-01-15\", o que retorna =SUBSTITUIR(A1; \"-\"; \"/\")?"
+      },
+      "options": ["2024/01/15", "2024-01-15", "20240115", "/2024/01/15/"],
+      "optionsByLocale": {
+        "es": ["2024/01/15", "2024-01-15", "20240115", "/2024/01/15/"],
+        "en": ["2024/01/15", "2024-01-15", "20240115", "/2024/01/15/"],
+        "de": ["2024/01/15", "2024-01-15", "20240115", "/2024/01/15/"],
+        "fr": ["2024/01/15", "2024-01-15", "20240115", "/2024/01/15/"],
+        "ja": ["2024/01/15", "2024-01-15", "20240115", "/2024/01/15/"],
+        "pt": ["2024/01/15", "2024-01-15", "20240115", "/2024/01/15/"]
+      },
+      "correct": "2024/01/15",
+      "correctByLocale": {
+        "es": "2024/01/15",
+        "en": "2024/01/15",
+        "de": "2024/01/15",
+        "fr": "2024/01/15",
+        "ja": "2024/01/15",
+        "pt": "2024/01/15"
+      },
+      "explanation": "Al no especificar el cuarto argumento opcional (núm_de_ocurrencia), sustituye todos los guiones por barras.",
+      "explanationByLocale": {
+        "es": "Al no especificar el cuarto argumento opcional (núm_de_ocurrencia), sustituye todos los guiones por barras.",
+        "en": "Without the optional 4th argument (instance_num), it replaces all occurrences of dashes with slashes.",
+        "de": "Wird das 4. optionale Argument weggelassen, ersetzt WECHSELN alle Bindestriche durch Schrägstriche.",
+        "fr": "Sans le 4e argument optionnel, la fonction remplace tous les tirets par des barres obliques.",
+        "ja": "第4引数を省略すると、対象文字列内のすべてのハイフンがスラッシュに置き換わります。",
+        "pt": "Sem o 4º argumento opcional, a função substitui todos os hífens por barras."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para eliminar los guiones en A2 cambiándolos por un texto vacío \"\":",
+      "promptByLocale": {
+        "es": "Arma la fórmula para eliminar los guiones en A2 cambiándolos por un texto vacío \"\":",
+        "en": "Build formula to strip dashes from A2 by replacing them with empty quotes \"\":",
+        "de": "Baue die Formel, um Bindestriche in A2 zu entfernen (durch \"\" ersetzen):",
+        "fr": "Construisez la formule pour supprimer les tirets en A2 en les remplaçant par \"\" :",
+        "ja": "A2のハイフンを空文字\"\"に置換して消去する数式を構築してください：",
+        "pt": "Monte a fórmula para remover os hífens em A2 substituindo-os por vazio \"\":"
+      },
+      "formula": "=SUSTITUIR(A2,\"-\",\"\")",
+      "formulaByLocale": {
+        "es": "=SUSTITUIR(A2,\"-\",\"\")",
+        "en": "=SUBSTITUTE(A2,\"-\",\"\")",
+        "de": "=WECHSELN(A2,\"-\",\"\")",
+        "fr": "=SUBSTITUE(A2,\"-\",\"\")",
+        "ja": "=SUBSTITUTE(A2,\"-\",\"\")",
+        "pt": "=SUBSTITUIR(A2,\"-\",\"\")"
+      },
+      "correct": "=SUSTITUIR(A2,\"-\",\"\")",
+      "correctByLocale": {
+        "es": "=SUSTITUIR(A2,\"-\",\"\")",
+        "en": "=SUBSTITUTE(A2,\"-\",\"\")",
+        "de": "=WECHSELN(A2,\"-\",\"\")",
+        "fr": "=SUBSTITUE(A2,\"-\",\"\")",
+        "ja": "=SUBSTITUTE(A2,\"-\",\"\")",
+        "pt": "=SUBSTITUIR(A2,\"-\",\"\")"
+      },
+      "blocks": ["=SUSTITUIR(", "A2,", "\"-\",", "\"\")"],
+      "blocksByLocale": {
+        "es": ["=SUSTITUIR(", "A2,", "\"-\",", "\"\")"],
+        "en": ["=SUBSTITUTE(", "A2,", "\"-\",", "\"\")"],
+        "de": ["=WECHSELN(", "A2,", "\"-\",", "\"\")"],
+        "fr": ["=SUBSTITUE(", "A2,", "\"-\",", "\"\")"],
+        "ja": ["=SUBSTITUTE(", "A2,", "\"-\",", "\"\")"],
+        "pt": ["=SUBSTITUIR(", "A2,", "\"-\",", "\"\")"]
+      },
+      "explanation": "Reemplazar un carácter por \"\" es el método estándar en Excel para eliminar símbolos indeseados.",
+      "explanationByLocale": {
+        "es": "Reemplazar un carácter por \"\" es el método estándar en Excel para eliminar símbolos indeseados.",
+        "en": "Replacing with \"\" is Excel's standard technique to remove unwanted characters from strings.",
+        "de": "Das Ersetzen durch \"\" ist die bewährte Methode, um Zeichen aus Texten zu tilgen.",
+        "fr": "Remplacer par \"\" est la méthode classique sous Excel pour supprimer des caractères gênants.",
+        "ja": "\"\"（空文字）に置換することで、不要な記号をきれいに除去できます。",
+        "pt": "Substituir por \"\" é a técnica padrão no Excel para remover caracteres indesejados."
+      }
+    }
+  ]
+}
+

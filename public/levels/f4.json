@@ -1,0 +1,78 @@
+{
+  "ref": "F4",
+  "title": "Sumar y restar fechas",
+  "titleByLocale": {
+    "es": "Sumar y restar fechas",
+    "en": "Adding and Subtracting Dates",
+    "de": "Datumsrechnung (+ / -)",
+    "fr": "Ajouter et soustraire des dates",
+    "ja": "日付の加算・減算",
+    "pt": "Somar e subtrair datas"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "write_formula",
+      "prompt": "Calcula en C2 la fecha límite sumando el plazo de días de B2 a la fecha de emisión en A2:",
+      "promptByLocale": {
+        "es": "Calcula en C2 la fecha límite sumando el plazo de días de B2 a la fecha de emisión en A2:",
+        "en": "Calculate the due date in C2 by adding the days in B2 to the start date in A2:",
+        "de": "Berechne in C2 das Fälligkeitsdatum, indem du die Tage in B2 zum Datum in A2 addierst:",
+        "fr": "Calculez en C2 la date limite en ajoutant le délai de B2 à la date d'émission en A2 :",
+        "ja": "A2の発行日にB2の日数を足して、C2に支払期限を計算してください：",
+        "pt": "Calcule em C2 o vencimento somando o prazo em B2 à data de emissão em A2:"
+      },
+      "correct": "=A2+B2",
+      "targetCell": "C2",
+      "data": {
+        "A1": "Emisión",
+        "B1": "Plazo (días)",
+        "C1": "Vencimiento",
+        "A2": "2024-05-10",
+        "B2": "30",
+        "C2": ""
+      },
+      "explanation": "Basta con sumar directamente la celda de fecha y la celda de días.",
+      "explanationByLocale": {
+        "es": "Basta con sumar directamente la celda de fecha y la celda de días.",
+        "en": "Directly adding the date cell and the integer days cell is all that's required.",
+        "de": "Es reicht, die Datumszelle und die Tageszelle direkt zu addieren.",
+        "fr": "Il suffit d'additionner directement la cellule de date et le nombre de jours.",
+        "ja": "日付セルと日数セルを足し算演算子(+)で直接加算するだけです。",
+        "pt": "Basta somar diretamente a célula de data e a célula de dias."
+      }
+    },
+    {
+      "type": "write_formula",
+      "prompt": "Calcula en C2 cuántos días han transcurrido restando la fecha inicial (A2) de la fecha final (B2):",
+      "promptByLocale": {
+        "es": "Calcula en C2 cuántos días han transcurrido restando la fecha inicial (A2) de la fecha final (B2):",
+        "en": "Calculate in C2 elapsed days by subtracting start date (A2) from end date (B2):",
+        "de": "Berechne in C2 die vergangenen Tage, indem du das Startdatum (A2) vom Enddatum (B2) abziehst:",
+        "fr": "Calculez en C2 le nombre de jours écoulés en soustrayant la date de début (A2) de la date de fin (B2) :",
+        "ja": "終了日(B2)から開始日(A2)を引き算して、経過日数をC2に計算してください：",
+        "pt": "Calcule em C2 quantos dias se passaram subtraindo a data inicial (A2) da data final (B2):"
+      },
+      "correct": "=B2-A2",
+      "targetCell": "C2",
+      "data": {
+        "A1": "Inicio",
+        "B1": "Fin",
+        "C1": "Días",
+        "A2": "2024-01-01",
+        "B2": "2024-01-20",
+        "C2": ""
+      },
+      "explanation": "Al restar dos fechas (FechaFin - FechaInicio), Excel devuelve el número de días de diferencia.",
+      "explanationByLocale": {
+        "es": "Al restar dos fechas (FechaFin - FechaInicio), Excel devuelve el número de días de diferencia.",
+        "en": "Subtracting two dates (EndDate - StartDate) returns the exact difference in days.",
+        "de": "Wenn man zwei Daten subtrahiert (Ende - Start), erhält man die genaue Tagesdifferenz.",
+        "fr": "En soustrayant deux dates (Fin - Début), Excel donne le nombre exact de jours d'écart.",
+        "ja": "2つの日付を引き算 (終了日 - 開始日) すると、日数差が算出されます。",
+        "pt": "Ao subtrair duas datas (DataFinal - DataInicial), o Excel fornece a diferença exata em dias."
+      }
+    }
+  ]
+}

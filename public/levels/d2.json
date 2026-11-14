@@ -1,0 +1,388 @@
+{
+  "ref": "D2",
+  "title": "MAYUSC, MINUSC y NOMPROPIO",
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué función convierte un texto completamente a letras MAYÚSCULAS?",
+      "formula": "=MAYUSC()",
+      "correct": "=MAYUSC(texto)",
+      "data": {},
+      "options": [
+        "=MAYUSC(texto)",
+        "=UPPERCASE(texto)",
+        "=GRANDE(texto)",
+        "=CAPITAL(texto)"
+      ],
+      "promptByLocale": {
+        "es": "¿Qué función convierte un texto completamente a letras MAYÚSCULAS?",
+        "en": "Which function converts a text string entirely to UPPERCASE letters?",
+        "de": "Welche Funktion wandelt einen Text komplett in GROSSBUCHSTABEN um?",
+        "fr": "Quelle fonction convertit un texte entièrement en lettres MAJUSCULES ?",
+        "ja": "文字列をすべて大文字に変換するExcel関数はどれですか？",
+        "pt": "Qual função converte um texto inteiramente para letras MAIÚSCULAS?"
+      },
+      "formulaByLocale": {
+        "es": "=MAYUSC()",
+        "en": "=UPPER()",
+        "de": "=GROSS()",
+        "fr": "=MAJUSCULE()",
+        "ja": "=UPPER()",
+        "pt": "=MAIÚSCULA()"
+      },
+      "explanationByLocale": {
+        "es": "=MAYUSC() convierte cada caracter del texto en su versión mayúscula.",
+        "en": "=UPPER() capitalizes every character in the target text string.",
+        "de": "=GROSS() wandelt jeden Buchstaben in Großschreibung um.",
+        "fr": "=MAJUSCULE() convertit tous les caractères en majuscules.",
+        "ja": "=UPPER() 関数は指定した文字列のすべてのアルファベットを大文字に変換します。",
+        "pt": "=MAIÚSCULA() transforma todos os caracteres em maiúsculas."
+      },
+      "optionsByLocale": {
+        "es": [
+          "=MAYUSC(texto)",
+          "=UPPERCASE(texto)",
+          "=GRANDE(texto)",
+          "=CAPITAL(texto)"
+        ],
+        "en": [
+          "=MAYUSC(texto)",
+          "=UPPERCASE(texto)",
+          "=GRANDE(texto)",
+          "=CAPITAL(texto)"
+        ],
+        "de": [
+          "=MAYUSC(texto)",
+          "=UPPERCASE(texto)",
+          "=GRANDE(texto)",
+          "=CAPITAL(texto)"
+        ],
+        "fr": [
+          "=MAYUSC(texto)",
+          "=UPPERCASE(texto)",
+          "=GRANDE(texto)",
+          "=CAPITAL(texto)"
+        ],
+        "ja": [
+          "=MAYUSC(texto)",
+          "=UPPERCASE(texto)",
+          "=GRANDE(texto)",
+          "=CAPITAL(texto)"
+        ],
+        "pt": [
+          "=MAYUSC(texto)",
+          "=UPPERCASE(texto)",
+          "=GRANDE(texto)",
+          "=CAPITAL(texto)"
+        ]
+      },
+      "correctByLocale": {
+        "es": "=MAYUSC(texto)",
+        "en": "=MAYUSC(texto)",
+        "de": "=MAYUSC(texto)",
+        "fr": "=MAYUSC(texto)",
+        "ja": "=MAYUSC(texto)",
+        "pt": "=MAYUSC(texto)"
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si A1='juan perez', ¿qué devuelve =NOMPROPIO(A1)?",
+      "formula": "=NOMPROPIO(\"juan perez\")",
+      "correct": "Juan Perez",
+      "data": {
+        "A1": "juan perez"
+      },
+      "options": [
+        "Juan Perez",
+        "JUAN PEREZ",
+        "juan perez",
+        "J. Perez"
+      ],
+      "promptByLocale": {
+        "es": "Si A1='juan perez', ¿qué devuelve =NOMPROPIO(A1)?",
+        "en": "If A1='john doe', what does =PROPER(A1) return?",
+        "de": "Wenn A1='max mustermann' ist, was liefert =GROSS2(A1)?",
+        "fr": "Si A1='jean dupont', que renvoie =NOMPROPRE(A1) ?",
+        "ja": "A1='juan perez' のとき、=PROPER(A1) は何を返しますか？",
+        "pt": "Se A1='joao silva', o que retorna =PRI.MAIÚSCULA(A1)?"
+      },
+      "formulaByLocale": {
+        "es": "=NOMPROPIO(\"juan perez\")",
+        "en": "=PROPER(\"john doe\")",
+        "de": "=GROSS2(\"max mustermann\")",
+        "fr": "=NOMPROPRE(\"jean dupont\")",
+        "ja": "=PROPER(\"juan perez\")",
+        "pt": "=PRI.MAIÚSCULA(\"joao silva\")"
+      },
+      "explanationByLocale": {
+        "es": "NOMPROPIO pone en mayúscula la letra inicial de cada palabra ('Juan Perez').",
+        "en": "PROPER capitalizes the first letter of each word ('Juan Perez').",
+        "de": "GROSS2 setzt den ersten Buchstaben jedes Wortes in Großschrift ('Juan Perez').",
+        "fr": "NOMPROPRE met en majuscule la première lettre de chaque mot ('Juan Perez').",
+        "ja": "PROPER関数は各単語の先頭文字を大文字に整えます（'Juan Perez'）。",
+        "pt": "PRI.MAIÚSCULA coloca em maiúscula a primeira letra de cada palavra ('Juan Perez')."
+      },
+      "optionsByLocale": {
+        "es": [
+          "Juan Perez",
+          "JUAN PEREZ",
+          "juan perez",
+          "J. Perez"
+        ],
+        "en": [
+          "Juan Perez",
+          "JUAN PEREZ",
+          "juan perez",
+          "J. Perez"
+        ],
+        "de": [
+          "Juan Perez",
+          "JUAN PEREZ",
+          "juan perez",
+          "J. Perez"
+        ],
+        "fr": [
+          "Juan Perez",
+          "JUAN PEREZ",
+          "juan perez",
+          "J. Perez"
+        ],
+        "ja": [
+          "Juan Perez",
+          "JUAN PEREZ",
+          "juan perez",
+          "J. Perez"
+        ],
+        "pt": [
+          "Juan Perez",
+          "JUAN PEREZ",
+          "juan perez",
+          "J. Perez"
+        ]
+      },
+      "correctByLocale": {
+        "es": "Juan Perez",
+        "en": "Juan Perez",
+        "de": "Juan Perez",
+        "fr": "Juan Perez",
+        "ja": "Juan Perez",
+        "pt": "Juan Perez"
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la lista de correos en minúsculas en B2:B4.",
+      "correct": "B2:B4",
+      "data": {
+        "A1": "Original",
+        "B1": "Limpio",
+        "A2": "User@Mail.Com",
+        "B2": "=MINUSC(A2)",
+        "A3": "Test@Doc.Net",
+        "B3": "=MINUSC(A3)",
+        "A4": "Dev@Grid.Xls",
+        "B4": "=MINUSC(A4)"
+      },
+      "promptByLocale": {
+        "es": "Selecciona la lista de correos en minúsculas en B2:B4.",
+        "en": "Select the list of cleaned lowercase emails in B2:B4.",
+        "de": "Wähle die Liste der kleingeschriebenen E-Mails in B2:B4 aus.",
+        "fr": "Sélectionne la liste des e-mails en minuscules en B2:B4.",
+        "ja": "B2:B4 にある小文字化されたメールアドレス一覧を選択してください。",
+        "pt": "Selecione a lista de e-mails em minúsculas em B2:B4."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Original",
+          "B1": "Limpio",
+          "A2": "User@Mail.Com",
+          "B2": "=MINUSC(A2)",
+          "A3": "Test@Doc.Net",
+          "B3": "=MINUSC(A3)",
+          "A4": "Dev@Grid.Xls",
+          "B4": "=MINUSC(A4)"
+        },
+        "en": {
+          "A1": "Raw",
+          "B1": "Clean",
+          "A2": "User@Mail.Com",
+          "B2": "=LOWER(A2)",
+          "A3": "Test@Doc.Net",
+          "B3": "=LOWER(A3)",
+          "A4": "Dev@Grid.Xls",
+          "B4": "=LOWER(A4)"
+        },
+        "de": {
+          "A1": "Original",
+          "B1": "Bereinigt",
+          "A2": "User@Mail.Com",
+          "B2": "=KLEIN(A2)",
+          "A3": "Test@Doc.Net",
+          "B3": "=KLEIN(A3)",
+          "A4": "Dev@Grid.Xls",
+          "B4": "=KLEIN(A4)"
+        },
+        "fr": {
+          "A1": "Brut",
+          "B1": "Nettoyé",
+          "A2": "User@Mail.Com",
+          "B2": "=MINUSCULE(A2)",
+          "A3": "Test@Doc.Net",
+          "B3": "=MINUSCULE(A3)",
+          "A4": "Dev@Grid.Xls",
+          "B4": "=MINUSCULE(A4)"
+        },
+        "ja": {
+          "A1": "変換前",
+          "B1": "整形後",
+          "A2": "User@Mail.Com",
+          "B2": "=LOWER(A2)",
+          "A3": "Test@Doc.Net",
+          "B3": "=LOWER(A3)",
+          "A4": "Dev@Grid.Xls",
+          "B4": "=LOWER(A4)"
+        },
+        "pt": {
+          "A1": "Original",
+          "B1": "Limpo",
+          "A2": "User@Mail.Com",
+          "B2": "=MINÚSCULA(A2)",
+          "A3": "Test@Doc.Net",
+          "B3": "=MINÚSCULA(A3)",
+          "A4": "Dev@Grid.Xls",
+          "B4": "=MINÚSCULA(A4)"
+        }
+      },
+      "explanationByLocale": {
+        "es": "La columna B normaliza los correos electrónicos para evitar duplicados.",
+        "en": "Column B normalizes emails to lowercase to prevent duplicates.",
+        "de": "Spalte B vereinheitlicht E-Mails in Kleinbuchstaben zur Duplikaterkennung.",
+        "fr": "La colonne B standardise les e-mails en minuscules pour éviter les doublons.",
+        "ja": "列Bでメールアドレスをすべて小文字に統一して正規化しています。",
+        "pt": "A coluna B padroniza os e-mails em minúsculas para evitar duplicidades."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para convertir el texto de A2 en mayúsculas.",
+      "correct": "=MAYUSC(A2)",
+      "blocks": [
+        "=",
+        "MAYUSC(",
+        "A2",
+        ")",
+        "MINUSC("
+      ],
+      "promptByLocale": {
+        "es": "Arma la fórmula para convertir el texto de A2 en mayúsculas.",
+        "en": "Build the formula to convert text in A2 to uppercase.",
+        "de": "Erstelle die Formel, um den Text in A2 in Großbuchstaben umzuwandeln.",
+        "fr": "Construis la formule pour convertir le texte de A2 en majuscules.",
+        "ja": "セル A2 の文字列を大文字に変換する数式を組み立ててください。",
+        "pt": "Monte a fórmula para converter o texto de A2 em maiúsculas."
+      },
+      "explanationByLocale": {
+        "es": "=MAYUSC(A2) transforma todas las letras en mayúsculas.",
+        "en": "=UPPER(A2) transforms all characters into uppercase.",
+        "de": "=GROSS(A2) wandelt den Text vollständig in Großbuchstaben um.",
+        "fr": "=MAJUSCULE(A2) transforme tous les caractères en majuscules.",
+        "ja": "=UPPER(A2) でセル内の英字がすべて大文字になります。",
+        "pt": "=MAIÚSCULA(A2) transforma todas as letras em maiúsculas."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué función transforma un texto a minúsculas?",
+      "formula": "=MINUSC()",
+      "correct": "=MINUSC(texto)",
+      "data": {},
+      "options": [
+        "=MINUSC(texto)",
+        "=LOWER(texto)",
+        "=PEQUEÑO(texto)",
+        "=BAJA(texto)"
+      ],
+      "promptByLocale": {
+        "es": "¿Qué función transforma un texto a minúsculas?",
+        "en": "Which function transforms a text string to lowercase?",
+        "de": "Welche Funktion wandelt Text in Kleinbuchstaben um?",
+        "fr": "Quelle fonction transforme un texte en minuscules ?",
+        "ja": "文字列を小文字に変換する関数はどれですか？",
+        "pt": "Qual função transforma um texto em minúsculas?"
+      },
+      "formulaByLocale": {
+        "es": "=MINUSC()",
+        "en": "=LOWER()",
+        "de": "=KLEIN()",
+        "fr": "=MINUSCULE()",
+        "ja": "=LOWER()",
+        "pt": "=MINÚSCULA()"
+      },
+      "explanationByLocale": {
+        "es": "=MINUSC() convierte cada caracter del texto en su versión minúscula.",
+        "en": "=LOWER() shifts every character to lowercase letters.",
+        "de": "=KLEIN() wandelt alle Buchstaben in Kleinbuchstaben um.",
+        "fr": "=MINUSCULE() passe tous les caractères en minuscules.",
+        "ja": "=LOWER() は指定したテキストのすべてのアルファベットを小文字に変換します。",
+        "pt": "=MINÚSCULA() converte cada caractere do texto para minúscula."
+      },
+      "optionsByLocale": {
+        "es": [
+          "=MINUSC(texto)",
+          "=LOWER(texto)",
+          "=PEQUEÑO(texto)",
+          "=BAJA(texto)"
+        ],
+        "en": [
+          "=MINUSC(texto)",
+          "=LOWER(texto)",
+          "=PEQUEÑO(texto)",
+          "=BAJA(texto)"
+        ],
+        "de": [
+          "=MINUSC(texto)",
+          "=LOWER(texto)",
+          "=PEQUEÑO(texto)",
+          "=BAJA(texto)"
+        ],
+        "fr": [
+          "=MINUSC(texto)",
+          "=LOWER(texto)",
+          "=PEQUEÑO(texto)",
+          "=BAJA(texto)"
+        ],
+        "ja": [
+          "=MINUSC(texto)",
+          "=LOWER(texto)",
+          "=PEQUEÑO(texto)",
+          "=BAJA(texto)"
+        ],
+        "pt": [
+          "=MINUSC(texto)",
+          "=LOWER(texto)",
+          "=PEQUEÑO(texto)",
+          "=BAJA(texto)"
+        ]
+      },
+      "correctByLocale": {
+        "es": "=MINUSC(texto)",
+        "en": "=MINUSC(texto)",
+        "de": "=MINUSC(texto)",
+        "fr": "=MINUSC(texto)",
+        "ja": "=MINUSC(texto)",
+        "pt": "=MINUSC(texto)"
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "MAYUSC, MINUSC y NOMPROPIO",
+    "en": "UPPER, LOWER, and PROPER",
+    "de": "GROSS, KLEIN und GROSS2",
+    "fr": "MAJUSCULE, MINUSCULE et NOMPROPRE",
+    "ja": "UPPER、LOWER、PROPER",
+    "pt": "MAIÚSCULA, MINÚSCULA e PRI.MAIÚSCULA"
+  }
+}

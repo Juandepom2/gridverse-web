@@ -1,0 +1,164 @@
+{
+  "ref": "G4",
+  "title": "Validación de datos",
+  "titleByLocale": {
+    "es": "Validación de datos",
+    "en": "Data Validation",
+    "de": "Datenüberprüfung",
+    "fr": "Validation des données",
+    "ja": "データの入力規則",
+    "pt": "Validação de dados"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cuál es el objetivo primordial de la herramienta 'Validación de datos'?",
+      "promptByLocale": {
+        "es": "¿Cuál es el objetivo primordial de la herramienta 'Validación de datos'?",
+        "en": "What is the primary purpose of the 'Data Validation' feature in Excel?",
+        "de": "Was ist der Hauptzweck der 'Datenüberprüfung' in Excel?",
+        "fr": "Quel est l'objectif principal de la 'Validation des données' dans Excel ?",
+        "ja": "Excelの「データの入力規則」機能の主な目的は何ですか？",
+        "pt": "Qual é o objetivo principal da ferramenta 'Validação de dados' no Excel?"
+      },
+      "options": [
+        "Restringir qué tipo de información o valores puede ingresar el usuario en una celda",
+        "Calcular la suma de la columna automáticamente",
+        "Proteger el archivo con contraseña de apertura",
+        "Exportar la hoja a formato PDF"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Restringir qué tipo de información o valores puede ingresar el usuario en una celda",
+          "Calcular la suma de la columna automáticamente",
+          "Proteger el archivo con contraseña de apertura",
+          "Exportar la hoja a formato PDF"
+        ],
+        "en": [
+          "Restrict the type and range of values users can enter into a cell",
+          "Automatically sum column numbers",
+          "Encrypt the workbook with an open password",
+          "Export the sheet to PDF format"
+        ],
+        "de": [
+          "Einschränken, welche Werte und Datentypen Benutzer in Zellen eingeben dürfen",
+          "Automatisch Summen berechnen",
+          "Die Datei mit einem Passwort schützen",
+          "Das Blatt als PDF exportieren"
+        ],
+        "fr": [
+          "Restreindre le type et l'intervalle de valeurs autorisées dans une cellule",
+          "Calculer automatiquement la somme",
+          "Chiffrer le fichier avec un mot de passe",
+          "Exporter la feuille en PDF"
+        ],
+        "ja": [
+          "ユーザーがセルに入力できるデータの種類や数値の範囲を制限・制御する",
+          "列の合計を自動計算する",
+          "ブックを暗号化してパスワードを設定する",
+          "シートをPDF形式で書き出す"
+        ],
+        "pt": [
+          "Restringir os tipos e faixas de valores que o usuário pode inserir em uma célula",
+          "Calcular a soma da coluna automaticamente",
+          "Proteger a planilha com senha de abertura",
+          "Exportar a pasta para PDF"
+        ]
+      },
+      "correct": "Restringir qué tipo de información o valores puede ingresar el usuario en una celda",
+      "correctByLocale": {
+        "es": "Restringir qué tipo de información o valores puede ingresar el usuario en una celda",
+        "en": "Restrict the type and range of values users can enter into a cell",
+        "de": "Einschränken, welche Werte und Datentypen Benutzer in Zellen eingeben dürfen",
+        "fr": "Restreindre le type et l'intervalle de valeurs autorisées dans une cellule",
+        "ja": "ユーザーがセルに入力できるデータの種類や数値の範囲を制限・制御する",
+        "pt": "Restringir os tipos e faixas de valores que o usuário pode inserir em uma célula"
+      },
+      "explanation": "La validación previene errores humanos (ej. impedir números negativos o fechas inválidas).",
+      "explanationByLocale": {
+        "es": "La validación previene errores humanos (ej. impedir números negativos o fechas inválidas).",
+        "en": "Data validation prevents human input errors, like blocking negative numbers or invalid dates.",
+        "de": "Datenüberprüfung verhindert Tippfehler (z. B. keine negativen Zahlen oder ungültige Daten).",
+        "fr": "La validation évite les erreurs de saisie (empêcher nombres négatifs ou dates erronées).",
+        "ja": "負の数の入力を防いだり日付の範囲を限定するなど、人為的な入力ミスを未然に防ぎます。",
+        "pt": "A validação previne erros de digitação (ex: impedir números negativos ou datas inválidas)."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Al configurar una regla de validación, ¿qué estilo de 'Mensaje de error' impide totalmente que el usuario ingrese el dato inválido?",
+      "promptByLocale": {
+        "es": "¿Qué estilo de 'Mensaje de error' impide totalmente que el usuario ingrese el dato inválido?",
+        "en": "Which error alert style strictly stops and blocks the user from saving an invalid entry?",
+        "de": "Welche Fehlermeldung verhindert strikt, dass der Benutzer ungültige Daten speichern kann?",
+        "fr": "Quel type d'alerte d'erreur bloque strictement et interdit la saisie invalide ?",
+        "ja": "不正な値が入力されたとき、入力を完全にブロック・禁止するエラーアラートのスタイルはどれですか？",
+        "pt": "Qual estilo de alerta de erro bloqueia estritamente e impede o usuário de inserir o dado inválido?"
+      },
+      "options": [
+        "Alto / Detener (Stop)",
+        "Advertencia (Warning)",
+        "Información (Information)",
+        "Neutro"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Alto / Detener (Stop)",
+          "Advertencia (Warning)",
+          "Información (Information)",
+          "Neutro"
+        ],
+        "en": [
+          "Stop",
+          "Warning",
+          "Information",
+          "Neutral"
+        ],
+        "de": [
+          "Stopp (Stop)",
+          "Warnung (Warning)",
+          "Information",
+          "Neutral"
+        ],
+        "fr": [
+          "Arrêt (Stop)",
+          "Avertissement (Warning)",
+          "Information",
+          "Neutre"
+        ],
+        "ja": [
+          "停止 (Stop)",
+          "注意 (Warning)",
+          "情報 (Information)",
+          "ニュートラル"
+        ],
+        "pt": [
+          "Parar (Stop)",
+          "Aviso (Warning)",
+          "Informações (Information)",
+          "Neutro"
+        ]
+      },
+      "correct": "Alto / Detener (Stop)",
+      "correctByLocale": {
+        "es": "Alto / Detener (Stop)",
+        "en": "Stop",
+        "de": "Stopp (Stop)",
+        "fr": "Arrêt (Stop)",
+        "ja": "停止 (Stop)",
+        "pt": "Parar (Stop)"
+      },
+      "explanation": "El estilo 'Alto/Detener' rechaza el dato y no permite avanzar hasta escribir un valor correcto.",
+      "explanationByLocale": {
+        "es": "El estilo 'Alto/Detener' rechaza el dato y no permite avanzar hasta escribir un valor correcto.",
+        "en": "'Stop' rejects invalid data and forces the user to retry or cancel, guaranteeing data integrity.",
+        "de": "'Stopp' sperrt ungültige Eingaben ab und verlangt einen gültigen Wert oder Abbruch.",
+        "fr": "'Arrêt' rejette la valeur invalide et oblige l'utilisateur à recommencer ou annuler.",
+        "ja": "「停止」スタイルは不正な値を断固として拒否し、正しい値を入力するまで進行を止めます。",
+        "pt": "O estilo 'Parar' rejeita o dado e não permite prosseguir até que um valor válido seja inserido."
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "ref": "J2",
+  "title": "Crear la primera",
+  "titleByLocale": {
+    "es": "Crear la primera",
+    "en": "Creating Your First Pivot Table",
+    "de": "Die erste Pivot-Tabelle erstellen",
+    "fr": "Créer son premier TCD",
+    "ja": "最初のピボットテーブルを作成する",
+    "pt": "Criar a primeira tabela dinâmica"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿En qué pestaña de Excel se encuentra el botón 'Tabla dinámica' (PivotTable)?",
+      "promptByLocale": {
+        "es": "¿En qué pestaña de Excel se encuentra el botón 'Tabla dinámica' (PivotTable)?",
+        "en": "On which Excel ribbon tab is the 'PivotTable' creation button located?",
+        "de": "Auf welcher Registerkarte befindet sich der Befehl 'PivotTable'?",
+        "fr": "Dans quel onglet d'Excel trouve-t-on le bouton 'Tableau croisé dynamique' ?",
+        "ja": "Excelで「ピボットテーブル」を作成するボタンはどのタブにありますか？",
+        "pt": "Em qual guia do Excel fica o botão 'Tabela Dinâmica' (PivotTable)?"
+      },
+      "options": [
+        "Pestaña Insertar",
+        "Pestaña Fórmulas",
+        "Pestaña Vista",
+        "Pestaña Ayuda"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Pestaña Insertar",
+          "Pestaña Fórmulas",
+          "Pestaña Vista",
+          "Pestaña Ayuda"
+        ],
+        "en": [
+          "Insert tab",
+          "Formulas tab",
+          "View tab",
+          "Help tab"
+        ],
+        "de": [
+          "Registerkarte Einfügen",
+          "Registerkarte Formeln",
+          "Registerkarte Ansicht",
+          "Registerkarte Hilfe"
+        ],
+        "fr": [
+          "Onglet Insertion",
+          "Onglet Formules",
+          "Onglet Affichage",
+          "Onglet Aide"
+        ],
+        "ja": [
+          "挿入 タブ",
+          "数式 タブ",
+          "表示 タブ",
+          "ヘルプ タブ"
+        ],
+        "pt": [
+          "Guia Inserir",
+          "Guia Fórmulas",
+          "Guia Exibir",
+          "Guia Ajuda"
+        ]
+      },
+      "correct": "Pestaña Insertar",
+      "correctByLocale": {
+        "es": "Pestaña Insertar",
+        "en": "Insert tab",
+        "de": "Registerkarte Einfügen",
+        "fr": "Onglet Insertion",
+        "ja": "挿入 タブ",
+        "pt": "Guia Inserir"
+      },
+      "explanation": "Se encuentra en Insertar > Tabla dinámica, justo al principio de la cinta de opciones.",
+      "explanationByLocale": {
+        "es": "Se encuentra en Insertar > Tabla dinámica, justo al principio de la cinta de opciones.",
+        "en": "Located at Insert > PivotTable at the far left of the ribbon.",
+        "de": "Zu finden unter Einfügen > PivotTable ganz links im Menüband.",
+        "fr": "Situé dans Insertion > Tableau croisé dynamique tout à gauche du ruban.",
+        "ja": "「挿入」タブの一番左にある「ピボットテーブル」から作成を開始します。",
+        "pt": "Localiza-se em Inserir > Tabela Dinâmica no início da faixa de opções."
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "ref": "H6",
+  "title": "COINCIDIR",
+  "titleByLocale": {
+    "es": "COINCIDIR",
+    "en": "MATCH",
+    "de": "VERGLEICH",
+    "fr": "EQUIV",
+    "ja": "MATCH",
+    "pt": "CORRESP"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué devuelve exactamente la función =COINCIDIR (MATCH) cuando encuentra el elemento buscado?",
+      "promptByLocale": {
+        "es": "¿Qué devuelve exactamente la función =COINCIDIR (MATCH) cuando encuentra el elemento buscado?",
+        "en": "What does the =MATCH function return when it finds the search value?",
+        "de": "Was genau liefert die Funktion =VERGLEICH (MATCH), wenn sie den Suchwert findet?",
+        "fr": "Que renvoie exactement la fonction =EQUIV (MATCH) lorsqu'elle trouve l'élément cherché ?",
+        "ja": "=MATCH 関数が検索対象の値を見つけたとき、正確には何を返しますか？",
+        "pt": "O que exatamente a função =CORRESP (MATCH) retorna quando encontra o elemento buscado?"
+      },
+      "options": [
+        "La posición numérica relativa del elemento dentro de la lista (1, 2, 3...)",
+        "El contenido de texto de la celda",
+        "La letra de la columna en mayúscula",
+        "VERDADERO o FALSO"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "La posición numérica relativa del elemento dentro de la lista (1, 2, 3...)",
+          "El contenido de texto de la celda",
+          "La letra de la columna en mayúscula",
+          "VERDADERO o FALSO"
+        ],
+        "en": [
+          "The relative numerical position of the item within the list (1, 2, 3...)",
+          "The text content of the cell",
+          "The column letter in uppercase",
+          "TRUE or FALSE"
+        ],
+        "de": [
+          "Die relative numerische Position des Elements in der Liste (1, 2, 3...)",
+          "Den Textinhalt der Zelle",
+          "Den Spaltenbuchstaben",
+          "WAHR oder FALSCH"
+        ],
+        "fr": [
+          "La position numérique relative de l'élément dans la liste (1, 2, 3...)",
+          "Le contenu textuel de la cellule",
+          "La lettre de colonne en majuscule",
+          "VRAI ou FAUX"
+        ],
+        "ja": [
+          "指定したリスト内での項目の相対的な「位置番号（1, 2, 3...）」",
+          "セルのテキスト文字列そのもの",
+          "列のアルファベット記号",
+          "TRUE または FALSE"
+        ],
+        "pt": [
+          "A posição numérica relativa do item dentro da lista (1, 2, 3...)",
+          "O conteúdo de texto da célula",
+          "A letra da coluna em maiúscula",
+          "VERDADEIRO ou FALSO"
+        ]
+      },
+      "correct": "La posición numérica relativa del elemento dentro de la lista (1, 2, 3...)",
+      "correctByLocale": {
+        "es": "La posición numérica relativa del elemento dentro de la lista (1, 2, 3...)",
+        "en": "The relative numerical position of the item within the list (1, 2, 3...)",
+        "de": "Die relative numerische Position des Elements in der Liste (1, 2, 3...)",
+        "fr": "La position numérique relative de l'élément dans la liste (1, 2, 3...)",
+        "ja": "指定したリスト内での項目の相対的な「位置番号（1, 2, 3...）」",
+        "pt": "A posição numérica relativa do item dentro da lista (1, 2, 3...)"
+      },
+      "explanation": "COINCIDIR devuelve un número entero que representa en qué posición (fila o columna) se ubica el dato.",
+      "explanationByLocale": {
+        "es": "COINCIDIR devuelve un número entero que representa en qué posición (fila o columna) se ubica el dato.",
+        "en": "MATCH returns an integer denoting the item's relative 1-based index in the vector.",
+        "de": "VERGLEICH gibt eine Ganzzahl zurück, die die relative Zeilen- oder Spaltenposition beziffert.",
+        "fr": "EQUIV renvoie un nombre entier représentant la position relative de l'élément.",
+        "ja": "MATCHは値そのものではなく、その範囲の何番目（インデックス）にあるかを整数値で返します。",
+        "pt": "CORRESP retorna um número inteiro indicando em qual posição da lista o item está."
+      }
+    }
+  ]
+}

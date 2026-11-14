@@ -1,0 +1,90 @@
+{
+  "ref": "I2",
+  "title": "CONTAR.SI",
+  "titleByLocale": {
+    "es": "CONTAR.SI",
+    "en": "COUNTIF",
+    "de": "ZÄHLENWENN",
+    "fr": "NB.SI",
+    "ja": "COUNTIF",
+    "pt": "CONT.SE"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cómo se escribe el criterio en =CONTAR.SI(A1:A10, ...) para contar cuántas celdas son mayores a 50?",
+      "promptByLocale": {
+        "es": "¿Cómo se escribe el criterio en =CONTAR.SI(A1:A10, ...) para contar cuántas celdas son mayores a 50?",
+        "en": "How do you write the criteria in =COUNTIF(A1:A10, ...) to count cells strictly greater than 50?",
+        "de": "Wie lautet das Kriterium in =ZÄHLENWENN(A1:A10; ...), um Zellen > 50 zu zählen?",
+        "fr": "Comment s'écrit le critère dans =NB.SI(A1:A10; ...) pour compter les cellules strictement supérieures à 50 ?",
+        "ja": "=COUNTIF(A1:A10, ...) で「50より大きいセル」をカウントする条件の正しい書き方はどれですか？",
+        "pt": "Como se escreve o critério em =CONT.SE(A1:A10; ...) para contar células maiores que 50?"
+      },
+      "options": [
+        "\">50\" (entre comillas)",
+        ">50 sin comillas",
+        "MAYOR(50)",
+        "A1:A10>50"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "\">50\" (entre comillas)",
+          ">50 sin comillas",
+          "MAYOR(50)",
+          "A1:A10>50"
+        ],
+        "en": [
+          "\">50\" (in double quotes)",
+          ">50 without quotes",
+          "GREATER(50)",
+          "A1:A10>50"
+        ],
+        "de": [
+          "\">50\" (in Anführungszeichen)",
+          ">50 ohne Anführungszeichen",
+          "GRÖSSER(50)",
+          "A1:A10>50"
+        ],
+        "fr": [
+          "\">50\" (entre guillemets)",
+          ">50 sans guillemets",
+          "SUPERIEUR(50)",
+          "A1:A10>50"
+        ],
+        "ja": [
+          "\">50\"（二重引用符で囲む）",
+          ">50（引用符なし）",
+          "GREATER(50)",
+          "A1:A10>50"
+        ],
+        "pt": [
+          "\">50\" (entre aspas)",
+          ">50 sem aspas",
+          "MAIOR(50)",
+          "A1:A10>50"
+        ]
+      },
+      "correct": "\">50\" (entre comillas)",
+      "correctByLocale": {
+        "es": "\">50\" (entre comillas)",
+        "en": "\">50\" (in double quotes)",
+        "de": "\">50\" (in Anführungszeichen)",
+        "fr": "\">50\" (entre guillemets)",
+        "ja": "\">50\"（二重引用符で囲む）",
+        "pt": "\">50\" (entre aspas)"
+      },
+      "explanation": "Los operadores lógicos (>, <, >=, <=, <>) deben encerrarse siempre entre comillas dobles en CONTAR.SI y SUMAR.SI.",
+      "explanationByLocale": {
+        "es": "Los operadores lógicos (>, <, >=, <=, <>) deben encerrarse siempre entre comillas dobles en CONTAR.SI y SUMAR.SI.",
+        "en": "Comparison operators in COUNTIF and SUMIF must always be enclosed in double quotes.",
+        "de": "Vergleichsoperatoren müssen in ZÄHLENWENN und SUMMEWENN stets in Anführungszeichen stehen.",
+        "fr": "Les opérateurs de comparaison doivent impérativement être placés entre guillemets.",
+        "ja": "COUNTIFやSUMIFで比較演算子を使う場合、条件全体を必ず二重引用符（\"\"）で囲む必要があります。",
+        "pt": "Operadores relacionais devem sempre ficar entre aspas duplas no CONT.SE e SOMASE."
+      }
+    }
+  ]
+}

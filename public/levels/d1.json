@@ -1,0 +1,396 @@
+{
+  "ref": "D1",
+  "title": "Unir texto con & y CONCATENAR",
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué símbolo se utiliza en Excel para unir dos textos como fórmula rápida?",
+      "formula": "Operador de texto",
+      "correct": "& (ampersand)",
+      "data": {},
+      "options": [
+        "& (ampersand)",
+        "+ (más)",
+        "* (asterisco)",
+        "# (numeral)"
+      ],
+      "promptByLocale": {
+        "es": "¿Qué símbolo se utiliza en Excel para unir dos textos como fórmula rápida?",
+        "en": "Which symbol is used in Excel to join two text strings as a quick formula?",
+        "de": "Welches Symbol wird in Excel genutzt, um zwei Texte schnell miteinander zu verketten?",
+        "fr": "Quel symbole est utilisé dans Excel pour joindre deux textes rapidement ?",
+        "ja": "Excelで2つの文字列を手軽に結合するときに使う演算子記号は何ですか？",
+        "pt": "Qual símbolo é utilizado no Excel para unir dois textos de forma rápida?"
+      },
+      "formulaByLocale": {
+        "es": "Operador de texto",
+        "en": "Text operator",
+        "de": "Textoperator",
+        "fr": "Opérateur de texte",
+        "ja": "文字列演算子",
+        "pt": "Operador de texto"
+      },
+      "correctByLocale": {
+        "es": "& (ampersand)",
+        "en": "& (ampersand)",
+        "de": "& (Kaufmanns-Und)",
+        "fr": "& (esperluette)",
+        "ja": "&（アンパサンド）",
+        "pt": "& (e comercial)"
+      },
+      "optionsByLocale": {
+        "es": [
+          "& (ampersand)",
+          "+ (más)",
+          "* (asterisco)",
+          "# (numeral)"
+        ],
+        "en": [
+          "& (ampersand)",
+          "+ (plus)",
+          "* (asterisk)",
+          "# (hash)"
+        ],
+        "de": [
+          "& (Kaufmanns-Und)",
+          "+ (Plus)",
+          "* (Stern)",
+          "# (Raute)"
+        ],
+        "fr": [
+          "& (esperluette)",
+          "+ (plus)",
+          "* (astérisque)",
+          "# (dièse)"
+        ],
+        "ja": [
+          "&（アンパサンド）",
+          "+（プラス）",
+          "*（アスタリスク）",
+          "#（シャープ）"
+        ],
+        "pt": [
+          "& (e comercial)",
+          "+ (mais)",
+          "* (asterisco)",
+          "# (jogo da velha)"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "El ampersand (&) es el operador nativo de concatenación en hojas de cálculo.",
+        "en": "The ampersand (&) is the native concatenation operator in spreadsheets.",
+        "de": "Das Und-Zeichen (&) ist der native Verkettungsoperator in Tabellenkalkulationen.",
+        "fr": "L'esperluette (&) est l'opérateur natif de concaténation dans les tableurs.",
+        "ja": "アンパサンド（&）は表計算ソフトにおける標準の文字列結合演算子です。",
+        "pt": "O e comercial (&) é o operador nativo de concatenação em planilhas."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si A1=\"Juan\" y B1=\"Pérez\", ¿qué devuelve =A1&\" \"&B1?",
+      "formula": "=A1&\" \"&B1",
+      "correct": "Juan Pérez",
+      "data": {
+        "A1": "Juan",
+        "B1": "Pérez"
+      },
+      "options": [
+        "Juan Pérez",
+        "JuanPérez",
+        "Juan B1",
+        "ERROR"
+      ],
+      "promptByLocale": {
+        "es": "Si A1=\"Juan\" y B1=\"Pérez\", ¿qué devuelve =A1&\" \"&B1?",
+        "en": "If A1=\"John\" and B1=\"Doe\", what does =A1&\" \"&B1 return?",
+        "de": "Wenn A1=\"Max\" und B1=\"Mustermann\" ist, was liefert =A1&\" \"&B1?",
+        "fr": "Si A1=\"Jean\" et B1=\"Dupont\", que renvoie =A1&\" \"&B1 ?",
+        "ja": "A1=\"Juan\"、B1=\"Pérez\" のとき、数式 =A1&\" \"&B1 は何を返しますか？",
+        "pt": "Se A1=\"João\" e B1=\"Silva\", o que retorna =A1&\" \"&B1?"
+      },
+      "formulaByLocale": {
+        "es": "=A1&\" \"&B1",
+        "en": "=A1&\" \"&B1",
+        "de": "=A1&\" \"&B1",
+        "fr": "=A1&\" \"&B1",
+        "ja": "=A1&\" \"&B1",
+        "pt": "=A1&\" \"&B1"
+      },
+      "explanationByLocale": {
+        "es": "Une el contenido de ambas celdas intercalando un espacio en blanco entre ellas.",
+        "en": "Joins the content of both cells while inserting a blank space between them.",
+        "de": "Verbindet den Inhalt beider Zellen mit einem Leerzeichen dazwischen.",
+        "fr": "Joint le contenu des deux cellules en intercalant un espace vide entre les deux.",
+        "ja": "両セルのテキストを間に半角スペースを挟んで1つに結合します。",
+        "pt": "Une o conteúdo de ambas as células intercalando um espaço entre elas."
+      },
+      "optionsByLocale": {
+        "es": [
+          "Juan Pérez",
+          "JuanPérez",
+          "Juan B1",
+          "ERROR"
+        ],
+        "en": [
+          "Juan Pérez",
+          "JuanPérez",
+          "Juan B1",
+          "ERROR"
+        ],
+        "de": [
+          "Juan Pérez",
+          "JuanPérez",
+          "Juan B1",
+          "ERROR"
+        ],
+        "fr": [
+          "Juan Pérez",
+          "JuanPérez",
+          "Juan B1",
+          "ERROR"
+        ],
+        "ja": [
+          "Juan Pérez",
+          "JuanPérez",
+          "Juan B1",
+          "ERROR"
+        ],
+        "pt": [
+          "Juan Pérez",
+          "JuanPérez",
+          "Juan B1",
+          "ERROR"
+        ]
+      },
+      "correctByLocale": {
+        "es": "Juan Pérez",
+        "en": "Juan Pérez",
+        "de": "Juan Pérez",
+        "fr": "Juan Pérez",
+        "ja": "Juan Pérez",
+        "pt": "Juan Pérez"
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona los nombres y apellidos en A2:B4.",
+      "correct": "A2:B4",
+      "data": {
+        "A1": "Nombre",
+        "B1": "Apellido",
+        "C1": "Completo",
+        "A2": "Ana",
+        "B2": "Gómez",
+        "A3": "Luis",
+        "B3": "Torres",
+        "A4": "Eva",
+        "B4": "Ríos"
+      },
+      "promptByLocale": {
+        "es": "Selecciona los nombres y apellidos en A2:B4.",
+        "en": "Select the first and last names in A2:B4.",
+        "de": "Wähle die Vor- und Nachnamen in A2:B4 aus.",
+        "fr": "Sélectionne les prénoms et noms en A2:B4.",
+        "ja": "A2:B4 にある名と姓のセル範囲を選択してください。",
+        "pt": "Selecione os nomes e sobrenomes em A2:B4."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Nombre",
+          "B1": "Apellido",
+          "C1": "Completo",
+          "A2": "Ana",
+          "B2": "Gómez",
+          "A3": "Luis",
+          "B3": "Torres",
+          "A4": "Eva",
+          "B4": "Ríos"
+        },
+        "en": {
+          "A1": "First Name",
+          "B1": "Last Name",
+          "C1": "Full Name",
+          "A2": "Anna",
+          "B2": "Smith",
+          "A3": "Louis",
+          "B3": "Miller",
+          "A4": "Eva",
+          "B4": "Davis"
+        },
+        "de": {
+          "A1": "Vorname",
+          "B1": "Nachname",
+          "C1": "Vollständig",
+          "A2": "Anna",
+          "B2": "Schmidt",
+          "A3": "Lukas",
+          "B3": "Weber",
+          "A4": "Eva",
+          "B4": "Fischer"
+        },
+        "fr": {
+          "A1": "Prénom",
+          "B1": "Nom",
+          "C1": "Complet",
+          "A2": "Anne",
+          "B2": "Dubois",
+          "A3": "Louis",
+          "B3": "Moreau",
+          "A4": "Ève",
+          "B4": "Roux"
+        },
+        "ja": {
+          "A1": "名",
+          "B1": "姓",
+          "C1": "フルネーム",
+          "A2": "Ana",
+          "B2": "Gómez",
+          "A3": "Luis",
+          "B3": "Torres",
+          "A4": "Eva",
+          "B4": "Ríos"
+        },
+        "pt": {
+          "A1": "Nome",
+          "B1": "Sobrenome",
+          "C1": "Completo",
+          "A2": "Ana",
+          "B2": "Gomes",
+          "A3": "Luís",
+          "B3": "Torres",
+          "A4": "Eva",
+          "B4": "Rios"
+        }
+      },
+      "explanationByLocale": {
+        "es": "El rango rectangular A2:B4 abarca 3 registros en 2 columnas.",
+        "en": "The rectangular range A2:B4 spans 3 records across 2 columns.",
+        "de": "Der Bereich A2:B4 erstreckt sich über 3 Datensätze in 2 Spalten.",
+        "fr": "La plage A2:B4 englobe 3 enregistrements sur 2 colonnes.",
+        "ja": "セル範囲 A2:B4 に2列×3行分の氏名データが入っています。",
+        "pt": "O intervalo A2:B4 abrange 3 registros em 2 colunas."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para unir el Nombre (A2) con un espacio y el Apellido (B2).",
+      "correct": "=A2&\" \"&B2",
+      "blocks": [
+        "=",
+        "A2",
+        "&\" \"&",
+        "B2",
+        "+"
+      ],
+      "promptByLocale": {
+        "es": "Arma la fórmula para unir el Nombre (A2) con un espacio y el Apellido (B2).",
+        "en": "Build the formula to join First Name (A2) with a space and Last Name (B2).",
+        "de": "Erstelle die Formel, um Vorname (A2) mit einem Leerzeichen und Nachname (B2) zu verbinden.",
+        "fr": "Construis la formule pour joindre le Prénom (A2) avec un espace et le Nom (B2).",
+        "ja": "名（A2）と姓（B2）の間にスペースを挟んで結合する数式を組み立ててください。",
+        "pt": "Monte a fórmula para unir o Nome (A2) com um espaço e o Sobrenome (B2)."
+      },
+      "explanationByLocale": {
+        "es": "=A2&\" \"&B2 genera el nombre completo con separación natural.",
+        "en": "=A2&\" \"&B2 outputs the full name with clean spacing.",
+        "de": "=A2&\" \"&B2 erzeugt den vollständigen Namen mit ordentlichem Leerzeichen.",
+        "fr": "=A2&\" \"&B2 génère le nom complet avec une séparation propre.",
+        "ja": "=A2&\" \"&B2 でスペース付きの自然なフルネームが作られます。",
+        "pt": "=A2&\" \"&B2 gera o nome completo com espaçamento natural."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Por qué pusimos &\" \"& en medio de las celdas?",
+      "formula": "Espacio intermedio",
+      "correct": "Para que los nombres no queden pegados sin espacio",
+      "data": {},
+      "options": [
+        "Para que los nombres no queden pegados sin espacio",
+        "Para borrar el apellido",
+        "Porque Excel lo exige por gramática",
+        "Es un código secreto"
+      ],
+      "promptByLocale": {
+        "es": "¿Por qué pusimos &\" \"& en medio de las celdas?",
+        "en": "Why did we place &\" \"& between the cells?",
+        "de": "Warum haben wir &\" \"& zwischen die Zellen gesetzt?",
+        "fr": "Pourquoi avons-nous placé &\" \"& entre les cellules ?",
+        "ja": "セルの間に「&\" \"&」を挟んだ理由は何ですか？",
+        "pt": "Por que colocamos &\" \"& no meio das células?"
+      },
+      "formulaByLocale": {
+        "es": "Espacio intermedio",
+        "en": "Spacing in between",
+        "de": "Leerzeichen dazwischen",
+        "fr": "Espace intermédiaire",
+        "ja": "間のスペース",
+        "pt": "Espaço intermediário"
+      },
+      "correctByLocale": {
+        "es": "Para que los nombres no queden pegados sin espacio",
+        "en": "So the names do not run together without a space",
+        "de": "Damit die Namen nicht ohne Abstand aneinanderkleben",
+        "fr": "Pour que les noms ne soient pas collés sans espace",
+        "ja": "名前同士がスペースなしで密着してしまうのを防ぐため",
+        "pt": "Para que os nomes não fiquem colados sem espaço"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Para que los nombres no queden pegados sin espacio",
+          "Para borrar el apellido",
+          "Porque Excel lo exige por gramática",
+          "Es un código secreto"
+        ],
+        "en": [
+          "So the names do not run together without a space",
+          "To delete the last name",
+          "Because Excel enforces grammatical rules",
+          "It is a secret cheat code"
+        ],
+        "de": [
+          "Damit die Namen nicht ohne Abstand aneinanderkleben",
+          "Um den Nachnamen zu löschen",
+          "Weil Excel Grammatikregeln erzwingt",
+          "Es ist ein geheimer Code"
+        ],
+        "fr": [
+          "Pour que les noms ne soient pas collés sans espace",
+          "Pour effacer le nom de famille",
+          "Parce qu'Excel l'exige pour la grammaire",
+          "C'est un code secret"
+        ],
+        "ja": [
+          "名前同士がスペースなしで密着してしまうのを防ぐため",
+          "名字のデータを削除するため",
+          "Excelが文法ルールとして必須としているため",
+          "隠しコマンドのため"
+        ],
+        "pt": [
+          "Para que os nomes não fiquem colados sem espaço",
+          "Para apagar o sobrenome",
+          "Porque o Excel exige por gramática",
+          "É um código secreto"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Sin el espacio literal \" \", el resultado sería 'AnaGómez'.",
+        "en": "Without the literal space \" \", the output would merge as 'AnnaSmith'.",
+        "de": "Ohne das Leerzeichen \" \" würde der Text als 'AnnaSchmidt' zusammengeklebt.",
+        "fr": "Sans l'espace \" \", le texte apparaîtrait collé comme 'AnneDubois'.",
+        "ja": "スペース「\" \"」がないと、文字が結合されて「AnaGómez」のようにくっついてしまいます。",
+        "pt": "Sem o espaço literal \" \", o resultado ficaria colado como 'AnaGomes'."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Unir texto con & y CONCATENAR",
+    "en": "Join Text with & and CONCATENATE",
+    "de": "Text verbinden mit & und VERKETTEN",
+    "fr": "Joindre du texte avec & et CONCATENER",
+    "ja": "「&」と CONCATENATE で文字列結合",
+    "pt": "Unir texto com & e CONCATENAR"
+  }
+}

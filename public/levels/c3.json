@@ -1,0 +1,375 @@
+{
+  "ref": "C3",
+  "title": "SI anidado y SI.ERROR",
+  "version": 1,
+  "rewardXp": 25,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Para qué sirve la función =SI.ERROR(fórmula, valor_alternativo)?",
+      "formula": "=SI.ERROR()",
+      "correct": "Atrapa cualquier error (#¡DIV/0!, #N/D...) y muestra un texto limpio en su lugar",
+      "data": {},
+      "options": [
+        "Atrapa cualquier error (#¡DIV/0!, #N/D...) y muestra un texto limpio en su lugar",
+        "Obliga a que la fórmula siempre dé error",
+        "Borra la celda que tenga error",
+        "Suma los números ignorando letras"
+      ],
+      "promptByLocale": {
+        "es": "¿Para qué sirve la función =SI.ERROR(fórmula, valor_alternativo)?",
+        "en": "What is the purpose of the =IFERROR(formula, value_if_error) function?",
+        "de": "Wozu dient die Funktion =WENNFEHLER(Formel; Wert_wenn_Fehler)?",
+        "fr": "À quoi sert la fonction =SIERREUR(formule; valeur_si_erreur) ?",
+        "ja": "=IFERROR(数式, エラー時の値) 関数の役割は何ですか？",
+        "pt": "Para que serve a função =SEERRO(fórmula; valor_se_erro)?"
+      },
+      "formulaByLocale": {
+        "es": "=SI.ERROR()",
+        "en": "=IFERROR()",
+        "de": "=WENNFEHLER()",
+        "fr": "=SIERREUR()",
+        "ja": "=IFERROR()",
+        "pt": "=SEERRO()"
+      },
+      "correctByLocale": {
+        "es": "Atrapa cualquier error (#¡DIV/0!, #N/D...) y muestra un texto limpio en su lugar",
+        "en": "Catches any error (#DIV/0!, #N/A...) and displays clean fallback text instead",
+        "de": "Fängt Fehler ab (#DIV/0!, #NV...) und zeigt stattdessen einen sauberen Ersatzwert",
+        "fr": "Intercepte toute erreur (#DIV/0!, #N/A...) et affiche un texte propre à la place",
+        "ja": "エラー（#DIV/0! や #N/A 等）を検知し、代わりに指定した表示テキストを返す",
+        "pt": "Captura qualquer erro (#DIV/0!, #N/D...) e exibe um texto limpo em seu lugar"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Atrapa cualquier error (#¡DIV/0!, #N/D...) y muestra un texto limpio en su lugar",
+          "Obliga a que la fórmula siempre dé error",
+          "Borra la celda que tenga error",
+          "Suma los números ignorando letras"
+        ],
+        "en": [
+          "Catches any error (#DIV/0!, #N/A...) and displays clean fallback text instead",
+          "Forces the formula to always produce an error",
+          "Deletes the cell containing an error",
+          "Sums numbers while ignoring letters"
+        ],
+        "de": [
+          "Fängt Fehler ab (#DIV/0!, #NV...) und zeigt stattdessen einen sauberen Ersatzwert",
+          "Erzwingt stets einen Fehler in der Formel",
+          "Löscht die fehlerhafte Zelle",
+          "Addiert Zahlen und ignoriert Text"
+        ],
+        "fr": [
+          "Intercepte toute erreur (#DIV/0!, #N/A...) et affiche un texte propre à la place",
+          "Force la formule à toujours afficher une erreur",
+          "Supprime la cellule en erreur",
+          "Additionne les nombres en ignorant les lettres"
+        ],
+        "ja": [
+          "エラー（#DIV/0! や #N/A 等）を検知し、代わりに指定した表示テキストを返す",
+          "数式が必ずエラーになるよう強制する",
+          "エラーの発生したセルを削除する",
+          "文字列を無視して数値だけを合計する"
+        ],
+        "pt": [
+          "Captura qualquer erro (#DIV/0!, #N/D...) e exibe um texto limpo em seu lugar",
+          "Obriga a fórmula a sempre dar erro",
+          "Apaga a célula que tiver erro",
+          "Soma os números ignorando letras"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "SI.ERROR protege la presentación visual de tus hojas de cálculo ante imprevistos.",
+        "en": "IFERROR protects your spreadsheet's visual presentation against calculation errors.",
+        "de": "WENNFEHLER bewahrt das professionelle Erscheinungsbild deiner Berichte vor unschönen Fehlermeldungen.",
+        "fr": "SIERREUR protège la présentation de vos feuilles de calcul contre les erreurs inattendues.",
+        "ja": "IFERROR関数を使うことで、見栄えの悪いエラー表示を防ぎ、クリーンなシートを保てます。",
+        "pt": "SEERRO protege a apresentação visual das planilhas contra erros inesperados."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si en B2 hay una división por cero, ¿qué muestra =SI.ERROR(A2/B2, 0)?",
+      "formula": "=SI.ERROR(#¡DIV/0!, 0)",
+      "correct": "0",
+      "data": {
+        "A2": "100",
+        "B2": "0"
+      },
+      "options": [
+        "0",
+        "#¡DIV/0!",
+        "ERROR",
+        "100"
+      ],
+      "promptByLocale": {
+        "es": "Si en B2 hay una división por cero, ¿qué muestra =SI.ERROR(A2/B2, 0)?",
+        "en": "If B2 causes division by zero, what does =IFERROR(A2/B2, 0) display?",
+        "de": "Wenn in B2 eine Division durch Null vorliegt, was zeigt =WENNFEHLER(A2/B2; 0)?",
+        "fr": "Si B2 provoque une division par zéro, qu'affiche =SIERREUR(A2/B2; 0) ?",
+        "ja": "B2がゼロ除算を引き起こすとき、=IFERROR(A2/B2, 0) は何を表示しますか？",
+        "pt": "Se em B2 houver divisão por zero, o que mostra =SEERRO(A2/B2; 0)?"
+      },
+      "formulaByLocale": {
+        "es": "=SI.ERROR(#¡DIV/0!, 0)",
+        "en": "=IFERROR(#DIV/0!, 0)",
+        "de": "=WENNFEHLER(#DIV/0!; 0)",
+        "fr": "=SIERREUR(#DIV/0!; 0)",
+        "ja": "=IFERROR(#DIV/0!, 0)",
+        "pt": "=SEERRO(#DIV/0!; 0)"
+      },
+      "explanationByLocale": {
+        "es": "La división arroja #¡DIV/0!, por lo que SI.ERROR salta y entrega el valor 0.",
+        "en": "The division produces #DIV/0!, so IFERROR intercepts and returns 0.",
+        "de": "Die Division ergibt #DIV/0!, sodass WENNFEHLER eingreift und 0 liefert.",
+        "fr": "La division produit #DIV/0!, SIERREUR intercepte et renvoie 0.",
+        "ja": "A2/B2が #DIV/0! エラーとなるため、IFERRORが機能して「0」を返します。",
+        "pt": "A divisão gera #DIV/0!, portanto SEERRO intercepta e devolve 0."
+      },
+      "optionsByLocale": {
+        "es": [
+          "0",
+          "#¡DIV/0!",
+          "ERROR",
+          "100"
+        ],
+        "en": [
+          "0",
+          "#¡DIV/0!",
+          "ERROR",
+          "100"
+        ],
+        "de": [
+          "0",
+          "#¡DIV/0!",
+          "ERROR",
+          "100"
+        ],
+        "fr": [
+          "0",
+          "#¡DIV/0!",
+          "ERROR",
+          "100"
+        ],
+        "ja": [
+          "0",
+          "#¡DIV/0!",
+          "ERROR",
+          "100"
+        ],
+        "pt": [
+          "0",
+          "#¡DIV/0!",
+          "ERROR",
+          "100"
+        ]
+      },
+      "correctByLocale": {
+        "es": "0",
+        "en": "0",
+        "de": "0",
+        "fr": "0",
+        "ja": "0",
+        "pt": "0"
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula para proteger la división A2/B2 mostrando \"Sin datos\" si falla.",
+      "correct": "=SI.ERROR(A2/B2,\"Sin datos\")",
+      "blocks": [
+        "=",
+        "SI.ERROR(",
+        "A2/B2",
+        ",\"Sin datos\"",
+        ")"
+      ],
+      "promptByLocale": {
+        "es": "Arma la fórmula para proteger la división A2/B2 mostrando \"Sin datos\" si falla.",
+        "en": "Build the formula to protect the division A2/B2, showing \"Sin datos\" if it fails.",
+        "de": "Erstelle die Formel zum Schutz der Division A2/B2 mit \"Sin datos\" bei Fehler.",
+        "fr": "Construis la formule pour protéger la division A2/B2 en affichant \"Sin datos\" en cas d'erreur.",
+        "ja": "A2/B2 の除算を保護し、エラー時に「Sin datos」と表示する数式を組み立ててください。",
+        "pt": "Monte a fórmula para proteger a divisão A2/B2 exibindo \"Sin datos\" se falhar."
+      },
+      "explanationByLocale": {
+        "es": "=SI.ERROR(A2/B2,\"Sin datos\") oculta códigos feos y presenta un texto explicativo.",
+        "en": "=IFERROR(A2/B2,\"Sin datos\") conceals unsightly error codes with an informative message.",
+        "de": "=WENNFEHLER(A2/B2;\"Sin datos\") ersetzt kryptische Fehler durch eine verständliche Meldung.",
+        "fr": "=SIERREUR(A2/B2;\"Sin datos\") masque les erreurs pour afficher un libellé clair.",
+        "ja": "=IFERROR(A2/B2,\"Sin datos\") でエラーコードを隠し、分かりやすいメッセージを表示します。",
+        "pt": "=SEERRO(A2/B2;\"Sin datos\") oculta os códigos de erro exibindo uma mensagem amigável."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué es un 'SI anidado'?",
+      "formula": "=SI(..., SI(..., ...))",
+      "correct": "Poner una función SI dentro de otra para evaluar más de 2 categorías",
+      "data": {},
+      "options": [
+        "Poner una función SI dentro de otra para evaluar más de 2 categorías",
+        "Escribir la palabra SI en mayúscula dos veces",
+        "Una fórmula que no tiene condición",
+        "Una función exclusiva de Excel en inglés"
+      ],
+      "promptByLocale": {
+        "es": "¿Qué es un 'SI anidado'?",
+        "en": "What is a 'nested IF'?",
+        "de": "Was ist eine 'verschachtelte WENN-Funktion'?",
+        "fr": "Qu'est-ce qu'un 'SI imbriqué' ?",
+        "ja": "「ネストされたIF関数（入れ子構造）」とは何ですか？",
+        "pt": "O que é um 'SE aninhado'?"
+      },
+      "formulaByLocale": {
+        "es": "=SI(..., SI(..., ...))",
+        "en": "=IF(..., IF(..., ...))",
+        "de": "=WENN(...; WENN(...; ...))",
+        "fr": "=SI(...; SI(...; ...))",
+        "ja": "=IF(..., IF(..., ...))",
+        "pt": "=SE(...; SE(...; ...))"
+      },
+      "correctByLocale": {
+        "es": "Poner una función SI dentro de otra para evaluar más de 2 categorías",
+        "en": "Placing an IF function inside another to evaluate more than 2 conditions",
+        "de": "Eine WENN-Funktion in eine andere einbetten, um mehr als 2 Fälle zu prüfen",
+        "fr": "Placer une fonction SI dans une autre pour évaluer plus de 2 catégories",
+        "ja": "3つ以上の条件を判定するために、IF関数の中にもう1つのIF関数を入れること",
+        "pt": "Colocar uma função SE dentro de outra para avaliar mais de 2 categorias"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Poner una función SI dentro de otra para evaluar más de 2 categorías",
+          "Escribir la palabra SI en mayúscula dos veces",
+          "Una fórmula que no tiene condición",
+          "Una función exclusiva de Excel en inglés"
+        ],
+        "en": [
+          "Placing an IF function inside another to evaluate more than 2 conditions",
+          "Typing the word IF in uppercase twice",
+          "A formula that lacks any condition",
+          "A feature exclusive to English Excel"
+        ],
+        "de": [
+          "Eine WENN-Funktion in eine andere einbetten, um mehr als 2 Fälle zu prüfen",
+          "Das Wort WENN zweimal hintereinander schreiben",
+          "Eine Formel ohne jegliche Bedingung",
+          "Eine Funktion, die es nur im englischen Excel gibt"
+        ],
+        "fr": [
+          "Placer une fonction SI dans une autre pour évaluer plus de 2 catégories",
+          "Écrire le mot SI deux fois en majuscules",
+          "Une formule sans aucune condition",
+          "Une fonction disponible uniquement en anglais"
+        ],
+        "ja": [
+          "3つ以上の条件を判定するために、IF関数の中にもう1つのIF関数を入れること",
+          "IFという単語を大文字で2回連続して書くこと",
+          "条件式を持たない数式のこと",
+          "英語版Excelのみに存在する特殊な機能"
+        ],
+        "pt": [
+          "Colocar uma função SE dentro de outra para avaliar mais de 2 categorias",
+          "Escrever a palavra SE duas vezes em maiúsculas",
+          "Uma fórmula que não tem condição",
+          "Uma função exclusiva do Excel em inglês"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Anidar permite crear ramas de decisión complejas: Excelente, Bueno, Regular o Insuficiente.",
+        "en": "Nesting enables multi-tiered decision trees: Excellent, Good, Fair, or Poor.",
+        "de": "Verschachtelung erlaubt mehrstufige Einstufungen wie Sehr gut, Gut oder Ausreichend.",
+        "fr": "L'imbrication permet de traiter plusieurs catégories successives : Très bien, Bien, Moyen, etc.",
+        "ja": "入れ子（ネスト）にすることで、「優・良・可・不可」のような多段階の判定が可能になります。",
+        "pt": "Aninhar permite criar ramificações complexas: Excelente, Bom, Regular ou Insuficiente."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la celda C2 con la fórmula protegida.",
+      "correct": "C2",
+      "data": {
+        "A1": "Venta",
+        "B1": "Meta",
+        "C1": "Cumplimiento",
+        "A2": "50",
+        "B2": "0",
+        "C2": "=SI.ERROR(A2/B2, 0)"
+      },
+      "promptByLocale": {
+        "es": "Selecciona la celda C2 con la fórmula protegida.",
+        "en": "Select cell C2 containing the protected formula.",
+        "de": "Wähle Zelle C2 mit der geschützten Formel aus.",
+        "fr": "Sélectionne la cellule C2 avec la formule protégée.",
+        "ja": "保護された数式が入っているセル C2 を選択してください。",
+        "pt": "Selecione a célula C2 com a fórmula protegida."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Venta",
+          "B1": "Meta",
+          "C1": "Cumplimiento",
+          "A2": "50",
+          "B2": "0",
+          "C2": "=SI.ERROR(A2/B2, 0)"
+        },
+        "en": {
+          "A1": "Sales",
+          "B1": "Target",
+          "C1": "Achievement",
+          "A2": "50",
+          "B2": "0",
+          "C2": "=IFERROR(A2/B2, 0)"
+        },
+        "de": {
+          "A1": "Umsatz",
+          "B1": "Ziel",
+          "C1": "Erfüllung",
+          "A2": "50",
+          "B2": "0",
+          "C2": "=WENNFEHLER(A2/B2; 0)"
+        },
+        "fr": {
+          "A1": "Vente",
+          "B1": "Objectif",
+          "C1": "Réalisation",
+          "A2": "50",
+          "B2": "0",
+          "C2": "=SIERREUR(A2/B2; 0)"
+        },
+        "ja": {
+          "A1": "売上",
+          "B1": "目標",
+          "C1": "達成率",
+          "A2": "50",
+          "B2": "0",
+          "C2": "=IFERROR(A2/B2, 0)"
+        },
+        "pt": {
+          "A1": "Vendas",
+          "B1": "Meta",
+          "C1": "Desempenho",
+          "A2": "50",
+          "B2": "0",
+          "C2": "=SEERRO(A2/B2; 0)"
+        }
+      },
+      "explanationByLocale": {
+        "es": "La celda C2 encapsula la división con SI.ERROR para prevenir caídas ante meta cero.",
+        "en": "Cell C2 safely wraps division with IFERROR to guard against zero targets.",
+        "de": "Zelle C2 schützt die Division mit WENNFEHLER vor Abstürzen bei Null-Zielen.",
+        "fr": "La cellule C2 sécurise la division avec SIERREUR en cas d'objectif égal à zéro.",
+        "ja": "セル C2 は目標値が0の場合に備えてIFERRORで除算を安全に保護しています。",
+        "pt": "A célula C2 protege a divisão com SEERRO para evitar erros quando a meta for zero."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "SI anidado y SI.ERROR",
+    "en": "Nested IF and IFERROR",
+    "de": "Verschachteltes WENN und WENNFEHLER",
+    "fr": "SI imbriqué et SI.NON.DISP / SIERREUR",
+    "ja": "ネストしたIF と IFERROR",
+    "pt": "SE aninhado e SEERRO"
+  }
+}

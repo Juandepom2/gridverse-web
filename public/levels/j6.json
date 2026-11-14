@@ -1,0 +1,90 @@
+{
+  "ref": "J6",
+  "title": "Gráfico dinámico",
+  "titleByLocale": {
+    "es": "Gráfico dinámico",
+    "en": "Pivot Chart",
+    "de": "Pivot-Diagramm",
+    "fr": "Graphique croisé dynamique",
+    "ja": "ピボットグラフ",
+    "pt": "Gráfico dinâmico"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Qué ocurre automáticamente con un Gráfico Dinámico cuando filtras o modificas su Tabla Dinámica asociada?",
+      "promptByLocale": {
+        "es": "¿Qué ocurre automáticamente con un Gráfico Dinámico cuando filtras o modificas su Tabla Dinámica asociada?",
+        "en": "What happens automatically to a Pivot Chart when you filter or alter its connected PivotTable?",
+        "de": "Was passiert automatisch mit einem Pivot-Diagramm, wenn man die zugehörige Pivot-Tabelle filtert?",
+        "fr": "Que se passe-t-il automatiquement sur un graphique croisé dynamique quand vous filtrez le TCD ?",
+        "ja": "ピボットテーブルをフィルター操作したり構造を変えた時、連動するピボットグラフはどうなりますか？",
+        "pt": "O que acontece automaticamente com um Gráfico Dinâmico quando você filtra a Tabela Dinâmica vinculada?"
+      },
+      "options": [
+        "El gráfico se actualiza inmediatamente reflejando los nuevos datos filtrados",
+        "El gráfico se borra y hay que insertarlo de nuevo",
+        "Muestra un mensaje de advertencia",
+        "Se convierte en una imagen congelada"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "El gráfico se actualiza inmediatamente reflejando los nuevos datos filtrados",
+          "El gráfico se borra y hay que insertarlo de nuevo",
+          "Muestra un mensaje de advertencia",
+          "Se convierte en una imagen congelada"
+        ],
+        "en": [
+          "The chart updates immediately, mirroring the newly filtered dataset",
+          "The chart deletes itself and must be rebuilt",
+          "A modal warning pops up",
+          "It freezes permanently as a bitmap"
+        ],
+        "de": [
+          "Das Diagramm aktualisiert sich sofort und spiegelt die gefilterten Daten wider",
+          "Das Diagramm wird gelöscht",
+          "Eine Warnung erscheint",
+          "Es wird ein statisches Bild"
+        ],
+        "fr": [
+          "Le graphique s'actualise instantanément en phase avec les filtres",
+          "Le graphique est supprimé",
+          "Un avertissement s'affiche",
+          "Il devient une image figée"
+        ],
+        "ja": [
+          "グラフが瞬時にリアルタイム連動し、フィルターされた最新データを反映する",
+          "グラフが消去され再作成が必要になる",
+          "警告ダイアログが表示される",
+          "固定された静止画像に変換される"
+        ],
+        "pt": [
+          "O gráfico atualiza-se imediatamente refletindo os novos dados filtrados",
+          "O gráfico é excluído",
+          "Exibe um aviso de erro",
+          "Converte-se em imagem estática"
+        ]
+      },
+      "correct": "El gráfico se actualiza inmediatamente reflejando los nuevos datos filtrados",
+      "correctByLocale": {
+        "es": "El gráfico se actualiza inmediatamente reflejando los nuevos datos filtrados",
+        "en": "The chart updates immediately, mirroring the newly filtered dataset",
+        "de": "Das Diagramm aktualisiert sich sofort und spiegelt die gefilterten Daten wider",
+        "fr": "Le graphique s'actualise instantanément en phase avec les filtres",
+        "ja": "グラフが瞬時にリアルタイム連動し、フィルターされた最新データを反映する",
+        "pt": "O gráfico atualiza-se imediatamente refletindo os novos dados filtrados"
+      },
+      "explanation": "La tabla dinámica y el gráfico dinámico están 100% sincronizados de forma bidireccional.",
+      "explanationByLocale": {
+        "es": "La tabla dinámica y el gráfico dinámico están 100% sincronizados de forma bidireccional.",
+        "en": "The pivot table and its pivot chart are strictly synchronized bidirectionally in real time.",
+        "de": "Pivot-Tabelle und Pivot-Diagramm sind bidirektional synchronisiert.",
+        "fr": "Le TCD et son graphique sont synchronisés en temps réel dans les deux sens.",
+        "ja": "ピボットテーブルとピボットグラフは双方向で完全同期しており、常に最新の状態を保ちます。",
+        "pt": "A tabela e o gráfico dinâmico estão 100% sincronizados bidirecionalmente."
+      }
+    }
+  ]
+}

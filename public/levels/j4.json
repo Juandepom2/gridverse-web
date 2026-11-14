@@ -1,0 +1,90 @@
+{
+  "ref": "J4",
+  "title": "Agrupar por fechas",
+  "titleByLocale": {
+    "es": "Agrupar por fechas",
+    "en": "Grouping by Dates",
+    "de": "Nach Datum gruppieren",
+    "fr": "Grouper par dates",
+    "ja": "日付のグループ化（年・四半期・月）",
+    "pt": "Agrupar por datas"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "Al arrastrar un campo de fecha a 'Filas', ¿qué potente función de clic derecho permite condensar días sueltos en Meses, Trimestres y Años?",
+      "promptByLocale": {
+        "es": "Al arrastrar un campo de fecha a 'Filas', ¿qué potente función de clic derecho permite condensar días sueltos en Meses, Trimestres y Años?",
+        "en": "When placing a date field into 'Rows', which right-click tool consolidates days into Months, Quarters, and Years?",
+        "de": "Welche Rechtsklick-Funktion fasst einzelne Tage in Monate, Quartale und Jahre zusammen?",
+        "fr": "Quel outil par clic droit permet de regrouper des dates individuelles en Mois, Trimestres et Années ?",
+        "ja": "日付フィールドを行に配置した際、右クリックから日付を「年・四半期・月」単位にまとめる機能は何ですか？",
+        "pt": "Qual recurso com botão direito permite agrupar datas individuais em Meses, Trimestres e Anos?"
+      },
+      "options": [
+        "Agrupar... (Group)",
+        "Ordenar de A a Z",
+        "Ocultar",
+        "Eliminar fila"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Agrupar... (Group)",
+          "Ordenar de A a Z",
+          "Ocultar",
+          "Eliminar fila"
+        ],
+        "en": [
+          "Group...",
+          "Sort A to Z",
+          "Hide",
+          "Delete row"
+        ],
+        "de": [
+          "Gruppieren... (Group)",
+          "Von A bis Z sortieren",
+          "Ausblenden",
+          "Zeile löschen"
+        ],
+        "fr": [
+          "Grouper... (Group)",
+          "Trier de A à Z",
+          "Masquer",
+          "Supprimer la ligne"
+        ],
+        "ja": [
+          "グループ化... (Group)",
+          "昇順で並べ替え",
+          "非表示",
+          "行の削除"
+        ],
+        "pt": [
+          "Agrupar... (Group)",
+          "Classificar de A a Z",
+          "Ocultar",
+          "Excluir linha"
+        ]
+      },
+      "correct": "Agrupar... (Group)",
+      "correctByLocale": {
+        "es": "Agrupar... (Group)",
+        "en": "Group...",
+        "de": "Gruppieren... (Group)",
+        "fr": "Grouper... (Group)",
+        "ja": "グループ化... (Group)",
+        "pt": "Agrupar... (Group)"
+      },
+      "explanation": "Agrupar crea jerarquías temporales automáticas sin necesidad de agregar columnas auxiliares en la base de datos.",
+      "explanationByLocale": {
+        "es": "Agrupar crea jerarquías temporales automáticas sin necesidad de agregar columnas auxiliares en la base de datos.",
+        "en": "Grouping generates instant time hierarchies without adding helper columns to the raw source data.",
+        "de": "Gruppieren erzeugt Zeit-Hierarchien, ohne Hilfsspalten in den Quelldaten zu benötigen.",
+        "fr": "Le groupement crée des hiérarchies temporelles sans modifier la table source.",
+        "ja": "「グループ化」を使うと、元データに列を追加することなく日付を自動で年月別に階層集計できます。",
+        "pt": "Agrupar cria hierarquias temporais instantâneas sem exigir colunas auxiliares na base original."
+      }
+    }
+  ]
+}

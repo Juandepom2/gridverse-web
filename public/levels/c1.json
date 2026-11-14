@@ -1,0 +1,374 @@
+{
+  "ref": "C1",
+  "title": "Decisiones con SI",
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cuáles son los 3 argumentos obligatorios de la función SI?",
+      "formula": "=SI(prueba_lógica, valor_si_verdadero, valor_si_falso)",
+      "correct": "Condición, qué hacer si se cumple, y qué hacer si no",
+      "data": {},
+      "options": [
+        "Condición, qué hacer si se cumple, y qué hacer si no",
+        "Rango, criterio y celda de suma",
+        "Valor buscado, matriz y columna",
+        "Texto, mayúsculas y minúsculas"
+      ],
+      "promptByLocale": {
+        "es": "¿Cuáles son los 3 argumentos obligatorios de la función SI?",
+        "en": "What are the 3 mandatory arguments of the IF function?",
+        "de": "Welche 3 Argumente gehören standardmäßig zur WENN-Funktion?",
+        "fr": "Quels sont les 3 arguments obligatoires de la fonction SI ?",
+        "ja": "IF関数を構成する3つの必須引数は何ですか？",
+        "pt": "Quais são os 3 argumentos obrigatórios da função SE?"
+      },
+      "formulaByLocale": {
+        "es": "=SI(prueba_lógica, valor_si_verdadero, valor_si_falso)",
+        "en": "=IF(logical_test, value_if_true, value_if_false)",
+        "de": "=WENN(Prüfung; Dann_Wert; Sonst_Wert)",
+        "fr": "=SI(test_logique; valeur_si_vrai; valeur_si_faux)",
+        "ja": "=IF(論理式, 真の場合, 偽の場合)",
+        "pt": "=SE(teste_lógico; valor_se_verdadeiro; valor_se_falso)"
+      },
+      "correctByLocale": {
+        "es": "Condición, qué hacer si se cumple, y qué hacer si no",
+        "en": "Condition, what to do if true, and what to do if false",
+        "de": "Bedingung, Wert wenn wahr, und Wert wenn falsch",
+        "fr": "Condition, action si vrai, et action si faux",
+        "ja": "条件（論理式）、一致した場合、一致しない場合",
+        "pt": "Condição, o que fazer se verdadeiro e o que fazer se falso"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Condición, qué hacer si se cumple, y qué hacer si no",
+          "Rango, criterio y celda de suma",
+          "Valor buscado, matriz y columna",
+          "Texto, mayúsculas y minúsculas"
+        ],
+        "en": [
+          "Condition, what to do if true, and what to do if false",
+          "Range, criteria, and sum cell",
+          "Lookup value, table, and column",
+          "Text, uppercase, and lowercase"
+        ],
+        "de": [
+          "Bedingung, Wert wenn wahr, und Wert wenn falsch",
+          "Bereich, Kriterium und Summenzelle",
+          "Suchkriterium, Matrix und Spaltenindex",
+          "Text, Groß- und Kleinschreibung"
+        ],
+        "fr": [
+          "Condition, action si vrai, et action si faux",
+          "Plage, critère et cellule de somme",
+          "Valeur cherchée, tableau et colonne",
+          "Texte, majuscules et minuscules"
+        ],
+        "ja": [
+          "条件（論理式）、一致した場合、一致しない場合",
+          "範囲、検索条件、合計範囲",
+          "検索値、範囲、列番号",
+          "文字列、大文字、小文字"
+        ],
+        "pt": [
+          "Condição, o que fazer se verdadeiro e o que fazer se falso",
+          "Intervalo, critério e célula de soma",
+          "Valor procurado, matriz e coluna",
+          "Texto, maiúsculas e minúsculas"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "La función SI evalúa una prueba lógica y devuelve una respuesta si es cierta y otra si no.",
+        "en": "The IF function tests a logical condition and returns one value if true and another if false.",
+        "de": "Die WENN-Funktion prüft eine Bedingung und gibt je nach Ergebnis einen von zwei Werten zurück.",
+        "fr": "La fonction SI teste une condition logique et renvoie un résultat si vrai et un autre si faux.",
+        "ja": "IF関数は論理式を判定し、真（TRUE）か偽（FALSE）かに応じて異なる値を返します。",
+        "pt": "A função SE avalia um teste lógico e retorna um valor se verdadeiro e outro se falso."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "Si A1=80, ¿qué devuelve la fórmula =SI(A1>=70, \"Aprobado\", \"Reprobado\")?",
+      "formula": "=SI(80>=70, ...)",
+      "correct": "Aprobado",
+      "data": {
+        "A1": "80"
+      },
+      "options": [
+        "Aprobado",
+        "Reprobado",
+        "VERDADERO",
+        "70"
+      ],
+      "promptByLocale": {
+        "es": "Si A1=80, ¿qué devuelve la fórmula =SI(A1>=70, \"Aprobado\", \"Reprobado\")?",
+        "en": "If A1=80, what does =IF(A1>=70, \"Passed\", \"Failed\") return?",
+        "de": "Wenn A1=80 ist, was liefert =WENN(A1>=70; \"Bestanden\"; \"Nicht bestanden\")?",
+        "fr": "Si A1=80, que renvoie =SI(A1>=70; \"Admis\"; \"Recalé\") ?",
+        "ja": "A1=80 のとき、数式 =IF(A1>=70, \"合格\", \"不合格\") は何を返しますか？",
+        "pt": "Se A1=80, o que retorna a fórmula =SE(A1>=70; \"Aprovado\"; \"Reprovado\")?"
+      },
+      "formulaByLocale": {
+        "es": "=SI(80>=70, ...)",
+        "en": "=IF(80>=70, ...)",
+        "de": "=WENN(80>=70; ...)",
+        "fr": "=SI(80>=70; ...)",
+        "ja": "=IF(80>=70, ...)",
+        "pt": "=SE(80>=70; ...)"
+      },
+      "correctByLocale": {
+        "es": "Aprobado",
+        "en": "Passed",
+        "de": "Bestanden",
+        "fr": "Admis",
+        "ja": "合格",
+        "pt": "Aprovado"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Aprobado",
+          "Reprobado",
+          "VERDADERO",
+          "70"
+        ],
+        "en": [
+          "Passed",
+          "Failed",
+          "TRUE",
+          "70"
+        ],
+        "de": [
+          "Bestanden",
+          "Nicht bestanden",
+          "WAHR",
+          "70"
+        ],
+        "fr": [
+          "Admis",
+          "Recalé",
+          "VRAI",
+          "70"
+        ],
+        "ja": [
+          "合格",
+          "不合格",
+          "TRUE",
+          "70"
+        ],
+        "pt": [
+          "Aprovado",
+          "Reprovado",
+          "VERDADEIRO",
+          "70"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Como 80 es mayor o igual a 70, la condición es verdadera y devuelve 'Aprobado'.",
+        "en": "Since 80 is greater than or equal to 70, the condition is true and returns 'Passed'.",
+        "de": "Da 80 größer oder gleich 70 ist, ist die Bedingung wahr und liefert 'Bestanden'.",
+        "fr": "Comme 80 est supérieur ou égal à 70, la condition est vraie et renvoie 'Admis'.",
+        "ja": "80は70以上であるため条件が成立（TRUE）し、「合格」が返されます。",
+        "pt": "Como 80 é maior ou igual a 70, a condição é verdadeira e retorna 'Aprovado'."
+      }
+    },
+    {
+      "type": "select_range",
+      "prompt": "Selecciona la celda de la calificación del estudiante (B2).",
+      "correct": "B2",
+      "data": {
+        "A1": "Alumno",
+        "B1": "Puntaje",
+        "C1": "Estado",
+        "A2": "María",
+        "B2": "95",
+        "C2": "=SI(B2>=60,\"Pasa\",\"No pasa\")"
+      },
+      "promptByLocale": {
+        "es": "Selecciona la celda de la calificación del estudiante (B2).",
+        "en": "Select the student's grade cell (B2).",
+        "de": "Wähle die Zelle mit der Note des Schülers aus (B2).",
+        "fr": "Sélectionne la cellule de la note de l'élève (B2).",
+        "ja": "生徒の点数が入っているセル（B2）を選択してください。",
+        "pt": "Selecione a célula da nota do aluno (B2)."
+      },
+      "dataByLocale": {
+        "es": {
+          "A1": "Alumno",
+          "B1": "Puntaje",
+          "C1": "Estado",
+          "A2": "María",
+          "B2": "95",
+          "C2": "=SI(B2>=60,\"Pasa\",\"No pasa\")"
+        },
+        "en": {
+          "A1": "Student",
+          "B1": "Score",
+          "C1": "Status",
+          "A2": "Mary",
+          "B2": "95",
+          "C2": "=IF(B2>=60,\"Pass\",\"Fail\")"
+        },
+        "de": {
+          "A1": "Schüler",
+          "B1": "Punkte",
+          "C1": "Status",
+          "A2": "Maria",
+          "B2": "95",
+          "C2": "=WENN(B2>=60;\"Pass\";\"Fail\")"
+        },
+        "fr": {
+          "A1": "Élève",
+          "B1": "Score",
+          "C1": "Statut",
+          "A2": "Marie",
+          "B2": "95",
+          "C2": "=SI(B2>=60;\"Reçu\";\"Échec\")"
+        },
+        "ja": {
+          "A1": "生徒名",
+          "B1": "得点",
+          "C1": "判定",
+          "A2": "Mary",
+          "B2": "95",
+          "C2": "=IF(B2>=60,\"合格\",\"不合格\")"
+        },
+        "pt": {
+          "A1": "Aluno",
+          "B1": "Pontos",
+          "C1": "Status",
+          "A2": "Maria",
+          "B2": "95",
+          "C2": "=SE(B2>=60;\"Passa\";\"Não passa\")"
+        }
+      },
+      "explanationByLocale": {
+        "es": "La celda B2 contiene el puntaje 95 que evalúa la función lógica de la columna C.",
+        "en": "Cell B2 contains the score 95 evaluated by the logical formula in column C.",
+        "de": "Zelle B2 enthält die Punktzahl 95, die von der Formel in Spalte C geprüft wird.",
+        "fr": "La cellule B2 contient le score 95 évalué par la formule de la colonne C.",
+        "ja": "セル B2 には、列Cの論理式で判定される得点 95 が入っています。",
+        "pt": "A célula B2 contém a pontuação 95 avaliada pela fórmula lógica da coluna C."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Arma la fórmula: si B2 es mayor o igual a 100 dar 10% de descuento, si no 0.",
+      "correct": "=SI(B2>=100,0.1,0)",
+      "blocks": [
+        "=",
+        "SI(",
+        "B2>=100",
+        ",0.1",
+        ",0)"
+      ],
+      "promptByLocale": {
+        "es": "Arma la fórmula: si B2 es mayor o igual a 100 dar 10% de descuento, si no 0.",
+        "en": "Build the formula: if B2 is greater than or equal to 100 give a 10% discount, otherwise 0.",
+        "de": "Erstelle die Formel: wenn B2 >= 100 ist, gewähre 10 % Rabatt, sonst 0.",
+        "fr": "Construis la formule : si B2 est supérieur ou égal à 100, accorder 10 % de remise, sinon 0.",
+        "ja": "「B2が100以上なら10%（0.1）引き、そうでなければ0」とする数式を組み立ててください。",
+        "pt": "Monte a fórmula: se B2 for maior ou igual a 100 dar 10% de desconto, senão 0."
+      },
+      "explanationByLocale": {
+        "es": "La estructura =SI(B2>=100,0.1,0) aplica el descuento solo cuando se alcanza la meta de compra.",
+        "en": "=IF(B2>=100,0.1,0) applies the discount only when reaching the qualifying purchase threshold.",
+        "de": "=WENN(B2>=100;0.1;0) gewährt den Rabatt erst ab Erreichen der Kaufschwelle.",
+        "fr": "=SI(B2>=100;0,1;0) applique la remise uniquement si le seuil d'achat est atteint.",
+        "ja": "=IF(B2>=100,0.1,0) で条件を満たした時のみ割引を適用します。",
+        "pt": "=SE(B2>=100;0.1;0) aplica o desconto somente ao atingir o limite de compra estipulado."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Por qué los textos como \"Aprobado\" dentro de una fórmula deben llevar comillas?",
+      "formula": "\"Texto entre comillas\"",
+      "correct": "Para que Excel los reconozca como texto y no como nombres de funciones",
+      "data": {},
+      "options": [
+        "Para que Excel los reconozca como texto y no como nombres de funciones",
+        "Solo es por estética visual",
+        "Para que se pinten de color verde",
+        "No es obligatorio, da igual"
+      ],
+      "promptByLocale": {
+        "es": "¿Por qué los textos como \"Aprobado\" dentro de una fórmula deben llevar comillas?",
+        "en": "Why must literal text strings like \"Passed\" be enclosed in quotation marks inside a formula?",
+        "de": "Warum müssen Texte wie \"Bestanden\" in einer Formel in Anführungszeichen stehen?",
+        "fr": "Pourquoi les textes comme \"Admis\" dans une formule doivent-ils être entre guillemets ?",
+        "ja": "数式内で「\"合格\"」のような文字列をダブルクォーテーションで囲む理由は何ですか？",
+        "pt": "Por que textos como \"Aprovado\" dentro de uma fórmula devem ter aspas?"
+      },
+      "formulaByLocale": {
+        "es": "\"Texto entre comillas\"",
+        "en": "\"Text in quotes\"",
+        "de": "\"Text in Anführungszeichen\"",
+        "fr": "\"Texte entre guillemets\"",
+        "ja": "\"文字列の引用符\"",
+        "pt": "\"Texto entre aspas\""
+      },
+      "correctByLocale": {
+        "es": "Para que Excel los reconozca como texto y no como nombres de funciones",
+        "en": "So Excel recognizes them as text rather than function or range names",
+        "de": "Damit Excel sie als Text und nicht als Funktionsnamen interpretiert",
+        "fr": "Pour qu'Excel les reconnaisse comme texte et non comme noms de fonctions",
+        "ja": "Excelに関数名や名前付き範囲ではなく文字列定数として認識させるため",
+        "pt": "Para que o Excel os reconheça como texto e não como nomes de funções"
+      },
+      "optionsByLocale": {
+        "es": [
+          "Para que Excel los reconozca como texto y no como nombres de funciones",
+          "Solo es por estética visual",
+          "Para que se pinten de color verde",
+          "No es obligatorio, da igual"
+        ],
+        "en": [
+          "So Excel recognizes them as text rather than function or range names",
+          "Only for visual aesthetics",
+          "To highlight them in green",
+          "It is not mandatory, it does not matter"
+        ],
+        "de": [
+          "Damit Excel sie als Text und nicht als Funktionsnamen interpretiert",
+          "Nur aus rein optischen Gründen",
+          "Damit sie grün hervorgehoben werden",
+          "Ist nicht erforderlich, völlig egal"
+        ],
+        "fr": [
+          "Pour qu'Excel les reconnaisse comme texte et non comme noms de fonctions",
+          "C'est purement esthétique",
+          "Pour qu'ils s'affichent en vert",
+          "Ce n'est pas obligatoire, peu importe"
+        ],
+        "ja": [
+          "Excelに関数名や名前付き範囲ではなく文字列定数として認識させるため",
+          "見た目の装飾のためだけ",
+          "文字色を緑色で強調するため",
+          "特に必須ではなく省略可能"
+        ],
+        "pt": [
+          "Para que o Excel os reconheça como texto e não como nomes de funções",
+          "Apenas por estética visual",
+          "Para que fiquem destacados em verde",
+          "Não é obrigatório, tanto faz"
+        ]
+      },
+      "explanationByLocale": {
+        "es": "Sin comillas, Excel interpreta la palabra como el nombre de una fórmula o celda y arroja error #¿NOMBRE?.",
+        "en": "Without quotes, Excel interprets the word as a formula or range name, throwing a #NAME? error.",
+        "de": "Ohne Anführungszeichen hält Excel das Wort für einen Namen oder eine Funktion (#NAME?).",
+        "fr": "Sans guillemets, Excel prend le mot pour une formule ou une plage nommée (#NOM?).",
+        "ja": "引用符がないと、Excelは関数名や定義された名前と誤認して #NAME? エラーを出します。",
+        "pt": "Sem aspas, o Excel interpreta a palavra como uma fórmula ou intervalo, gerando o erro #NOME?."
+      }
+    }
+  ],
+  "titleByLocale": {
+    "es": "Decisiones con SI",
+    "en": "Decisions with IF",
+    "de": "Entscheidungen mit WENN",
+    "fr": "Décisions avec SI",
+    "ja": "IF関数による条件分岐",
+    "pt": "Decisões com SE"
+  }
+}

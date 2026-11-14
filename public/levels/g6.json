@@ -1,0 +1,164 @@
+{
+  "ref": "G6",
+  "title": "Gráficos de barras y columnas",
+  "titleByLocale": {
+    "es": "Gráficos de barras y columnas",
+    "en": "Bar and Column Charts",
+    "de": "Balken- und Säulendiagramme",
+    "fr": "Graphiques à barres et histogrammes",
+    "ja": "棒グラフと縦棒グラフ",
+    "pt": "Gráficos de barras e colunas"
+  },
+  "version": 1,
+  "rewardXp": 15,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿Cuál es la principal diferencia visual entre un gráfico de columnas y uno de barras en Excel?",
+      "promptByLocale": {
+        "es": "¿Cuál es la principal diferencia visual entre un gráfico de columnas y uno de barras en Excel?",
+        "en": "What is the primary visual difference between a column chart and a bar chart in Excel?",
+        "de": "Was ist der optische Unterschied zwischen einem Säulendiagramm und einem Balkendiagramm?",
+        "fr": "Quelle est la différence visuelle essentielle entre un histogramme et un graphique à barres ?",
+        "ja": "Excelにおいて縦棒グラフ（Column）と横棒グラフ（Bar）の視覚的な違いは何ですか？",
+        "pt": "Qual é a principal diferença visual entre um gráfico de colunas e um de barras no Excel?"
+      },
+      "options": [
+        "Las columnas son verticales y las barras son horizontales",
+        "Las columnas solo muestran números negativos",
+        "Las barras solo admiten dos categorías",
+        "Las columnas requieren macros habilitadas"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Las columnas son verticales y las barras son horizontales",
+          "Las columnas solo muestran números negativos",
+          "Las barras solo admiten dos categorías",
+          "Las columnas requieren macros habilitadas"
+        ],
+        "en": [
+          "Column charts are vertical; bar charts are horizontal",
+          "Column charts only display negative values",
+          "Bar charts only support two categories",
+          "Column charts require macros enabled"
+        ],
+        "de": [
+          "Säulen verlaufen vertikal; Balken verlaufen horizontal",
+          "Säulen zeigen nur negative Werte",
+          "Balken erlauben nur zwei Kategorien",
+          "Säulen erfordern Makros"
+        ],
+        "fr": [
+          "Les histogrammes sont verticaux ; les barres sont horizontales",
+          "Les histogrammes n'affichent que des valeurs négatives",
+          "Les barres n'acceptent que deux catégories",
+          "Les histogrammes nécessitent des macros"
+        ],
+        "ja": [
+          "縦棒グラフは垂直（縦方向）、横棒グラフは水平（横方向）に伸びる",
+          "縦棒グラフは負の数しか表示できない",
+          "横棒グラフは最大2項目しか扱えない",
+          "縦棒グラフを使うにはマクロの有効化が必要"
+        ],
+        "pt": [
+          "Colunas são verticais e barras são horizontais",
+          "Colunas só exibem números negativos",
+          "Barras só suportam duas categorias",
+          "Colunas requerem macros ativadas"
+        ]
+      },
+      "correct": "Las columnas son verticales y las barras son horizontales",
+      "correctByLocale": {
+        "es": "Las columnas son verticales y las barras son horizontales",
+        "en": "Column charts are vertical; bar charts are horizontal",
+        "de": "Säulen verlaufen vertikal; Balken verlaufen horizontal",
+        "fr": "Les histogrammes sont verticaux ; les barres sont horizontales",
+        "ja": "縦棒グラフは垂直（縦方向）、横棒グラフは水平（横方向）に伸びる",
+        "pt": "Colunas são verticais e barras são horizontais"
+      },
+      "explanation": "Las barras horizontales son ideales cuando los nombres de las categorías son largos y legibles.",
+      "explanationByLocale": {
+        "es": "Las barras horizontales son ideales cuando los nombres de las categorías son largos y legibles.",
+        "en": "Horizontal bar charts are ideal when category labels are long and require comfortable reading space.",
+        "de": "Horizontale Balkendiagramme eignen sich hervorragend für lange, lesbare Beschriftungen.",
+        "fr": "Les barres horizontales sont parfaites quand les étiquettes de catégories sont longues.",
+        "ja": "横棒グラフは項目名が長い場合に文字が重ならず読みやすいため最適です。",
+        "pt": "As barras horizontais são perfeitas quando os nomes das categorias são longos e detalhados."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "¿Qué atajo de teclado en Windows crea instantáneamente un gráfico con los datos seleccionados en una hoja nueva?",
+      "promptByLocale": {
+        "es": "¿Qué atajo de teclado en Windows crea instantáneamente un gráfico con los datos seleccionados en una hoja nueva?",
+        "en": "Which keyboard shortcut in Windows instantly generates a default chart on a new sheet?",
+        "de": "Welche Tastenkombination unter Windows erstellt sofort ein Standarddiagramm in einem neuen Blatt?",
+        "fr": "Quel raccourci Windows génère instantanément un graphique par défaut sur une nouvelle feuille ?",
+        "ja": "Windowsで選択範囲から瞬時に新しいシートに既定のグラフを生成するショートカットはどれですか？",
+        "pt": "Qual atalho de teclado no Windows cria instantaneamente um gráfico padrão em uma nova planilha?"
+      },
+      "options": [
+        "F11 (o Alt+F1 en la misma hoja)",
+        "Ctrl + G",
+        "Ctrl + P",
+        "Shift + F3"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "F11 (o Alt+F1 en la misma hoja)",
+          "Ctrl + G",
+          "Ctrl + P",
+          "Shift + F3"
+        ],
+        "en": [
+          "F11 (or Alt+F1 in the same sheet)",
+          "Ctrl + G",
+          "Ctrl + P",
+          "Shift + F3"
+        ],
+        "de": [
+          "F11 (oder Alt+F1 im selben Blatt)",
+          "Strg + G",
+          "Strg + P",
+          "Umschalt + F3"
+        ],
+        "fr": [
+          "F11 (ou Alt+F1 sur la même feuille)",
+          "Ctrl + G",
+          "Ctrl + P",
+          "Maj + F3"
+        ],
+        "ja": [
+          "F11（同一シート内ならAlt+F1）",
+          "Ctrl + G",
+          "Ctrl + P",
+          "Shift + F3"
+        ],
+        "pt": [
+          "F11 (ou Alt+F1 na mesma planilha)",
+          "Ctrl + G",
+          "Ctrl + P",
+          "Shift + F3"
+        ]
+      },
+      "correct": "F11 (o Alt+F1 en la misma hoja)",
+      "correctByLocale": {
+        "es": "F11 (o Alt+F1 en la misma hoja)",
+        "en": "F11 (or Alt+F1 in the same sheet)",
+        "de": "F11 (oder Alt+F1 im selben Blatt)",
+        "fr": "F11 (ou Alt+F1 sur la même feuille)",
+        "ja": "F11（同一シート内ならAlt+F1）",
+        "pt": "F11 (ou Alt+F1 na mesma planilha)"
+      },
+      "explanation": "F11 crea una hoja de gráfico dedicada en un segundo, mientras Alt+F1 lo inserta como objeto flotante.",
+      "explanationByLocale": {
+        "es": "F11 crea una hoja de gráfico dedicada en un segundo, mientras Alt+F1 lo inserta como objeto flotante.",
+        "en": "F11 builds a standalone chart sheet in 1 second, while Alt+F1 embeds it directly in the worksheet.",
+        "de": "F11 erstellt sofort ein Diagrammblatt, während Alt+F1 das Diagramm eingebettet einfügt.",
+        "fr": "F11 crée une feuille de graphique dédiée, tandis qu'Alt+F1 l'insère directement dans la feuille active.",
+        "ja": "F11を押すとグラフシートが一瞬で作成され、Alt+F1なら現在作業中のシート内に埋め込まれます。",
+        "pt": "F11 cria uma aba exclusiva de gráfico num instante, enquanto Alt+F1 o insere como objeto na planilha."
+      }
+    }
+  ]
+}

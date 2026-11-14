@@ -1,0 +1,90 @@
+{
+  "ref": "I4",
+  "title": "SUMAR.SI.CONJUNTO",
+  "titleByLocale": {
+    "es": "SUMAR.SI.CONJUNTO",
+    "en": "SUMIFS",
+    "de": "SUMMEWENNS",
+    "fr": "SOMME.SI.ENS",
+    "ja": "SUMIFS",
+    "pt": "SOMASES"
+  },
+  "version": 1,
+  "rewardXp": 20,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿En qué orden se coloca el 'rango_suma' en =SUMAR.SI.CONJUNTO en comparación con el SUMAR.SI simple?",
+      "promptByLocale": {
+        "es": "¿En qué orden se coloca el 'rango_suma' en =SUMAR.SI.CONJUNTO en comparación con el SUMAR.SI simple?",
+        "en": "Where is the 'sum_range' positioned in =SUMIFS compared to standard SUMIF?",
+        "de": "An welcher Stelle steht der 'Summe_Bereich' bei =SUMMEWENNS im Vergleich zu SUMMEWENN?",
+        "fr": "Où se place la 'somme_plage' dans =SOMME.SI.ENS par rapport à SOMME.SI simple ?",
+        "ja": "複数条件の =SUMIFS では、通常のSUMIFと比べて「合計対象範囲」をどこに記述しますか？",
+        "pt": "Onde fica posicionado o 'intervalo_soma' no =SOMASES em comparação com o SOMASE simples?"
+      },
+      "options": [
+        "Va al PRINCIPIO como primer argumento obligatorio",
+        "Va al FINAL como último argumento",
+        "No se incluye ningún rango de suma",
+        "En medio de los criterios"
+      ],
+      "optionsByLocale": {
+        "es": [
+          "Va al PRINCIPIO como primer argumento obligatorio",
+          "Va al FINAL como último argumento",
+          "No se incluye ningún rango de suma",
+          "En medio de los criterios"
+        ],
+        "en": [
+          "At the very BEGINNING as the 1st mandatory argument",
+          "At the very END as the last argument",
+          "No sum range is required",
+          "In the middle between criteria"
+        ],
+        "de": [
+          "Ganz am ANFANG als 1. Pflichtargument",
+          "Ganz am ENDE als letztes Argument",
+          "Wird nicht benötigt",
+          "In der Mitte der Kriterien"
+        ],
+        "fr": [
+          "Au tout DÉBUT comme 1er argument obligatoire",
+          "Tout à la FIN comme dernier argument",
+          "Aucune plage requise",
+          "Au milieu des critères"
+        ],
+        "ja": [
+          "一番最初（第1引数）に必須として配置する",
+          "一番最後（末尾）に配置する",
+          "合計範囲は不要",
+          "条件の真ん中に挟む"
+        ],
+        "pt": [
+          "Fica no INÍCIO como primeiro argumento obrigatório",
+          "Fica no FINAL como último argumento",
+          "Nenhum intervalo é necessário",
+          "No meio dos critérios"
+        ]
+      },
+      "correct": "Va al PRINCIPIO como primer argumento obligatorio",
+      "correctByLocale": {
+        "es": "Va al PRINCIPIO como primer argumento obligatorio",
+        "en": "At the very BEGINNING as the 1st mandatory argument",
+        "de": "Ganz am ANFANG als 1. Pflichtargument",
+        "fr": "Au tout DÉBUT comme 1er argument obligatoire",
+        "ja": "一番最初（第1引数）に必須として配置する",
+        "pt": "Fica no INÍCIO como primeiro argumento obrigatório"
+      },
+      "explanation": "En SUMAR.SI.CONJUNTO el rango_suma va primero para permitir agregar parejas ilimitadas de (rango_criterio, criterio) después.",
+      "explanationByLocale": {
+        "es": "En SUMAR.SI.CONJUNTO el rango_suma va primero para permitir agregar parejas ilimitadas de (rango_criterio, criterio) después.",
+        "en": "In SUMIFS, sum_range comes first so you can append unlimited (criteria_range, criteria) pairs afterwards.",
+        "de": "Bei SUMMEWENNS steht der Summenbereich vorn, damit beliebig viele Kriterienpaare folgen können.",
+        "fr": "Dans SOMME.SI.ENS, la somme_plage est en tête pour pouvoir ajouter autant de paires de critères que nécessaire.",
+        "ja": "SUMIFSは後から（条件範囲, 条件）のペアを何組でも追加できるように、合計範囲が第1引数になっています。",
+        "pt": "No SOMASES o intervalo_soma vem primeiro para permitir pares ilimitados de critérios em seguida."
+      }
+    }
+  ]
+}
