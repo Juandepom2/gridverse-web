@@ -46,6 +46,114 @@
   }
 }
 
+/* Celdi Idle Organic Breathing Animation */
+.celdi-squash-group {
+  animation: celdi-breathe 4s ease-in-out infinite;
+  transform-origin: 100px 165px;
+}
+
+/* Celdi Fill Handle Tail Wag Animation */
+.celdi-tail {
+  animation: celdi-tail-wag 3s ease-in-out infinite;
+  transform-origin: 174px 166px;
+}
+
+/* Celdi Shadow scale synchronized with breathing */
+.celdi-shadow {
+  animation: celdi-shadow-pulse 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Natural eye blink */
+.celdi-blink-eye {
+  animation: celdi-blink 4.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Poke spring bounce when clicked */
+.celdi-poking .celdi-squash-group {
+  animation: celdi-poke-spring 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+}
+
+/* Celebrating jump loop */
+.celdi-celebrating .celdi-squash-group {
+  animation: celdi-jump 0.75s ease-in-out infinite !important;
+}
+
+@keyframes celdi-breathe {
+  0%, 100% {
+    transform: translateY(0px) scale(1, 1);
+  }
+  50% {
+    transform: translateY(-5px) scale(0.98, 1.02);
+  }
+}
+
+@keyframes celdi-tail-wag {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(14deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+}
+
+@keyframes celdi-shadow-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(0.92);
+    opacity: 0.28;
+  }
+}
+
+@keyframes celdi-blink {
+  0%, 94%, 98%, 100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.08);
+  }
+}
+
+@keyframes celdi-poke-spring {
+  0% {
+    transform: translateY(0) scale(1.18, 0.82);
+  }
+  30% {
+    transform: translateY(-16px) scale(0.88, 1.15) rotate(-3deg);
+  }
+  60% {
+    transform: translateY(3px) scale(1.06, 0.95) rotate(2deg);
+  }
+  85% {
+    transform: translateY(-2px) scale(0.98, 1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1) rotate(0);
+  }
+}
+
+@keyframes celdi-jump {
+  0%, 100% {
+    transform: translateY(0) scale(1.08, 0.92);
+  }
+  45% {
+    transform: translateY(-22px) scale(0.92, 1.12);
+  }
+  55% {
+    transform: translateY(-20px) scale(0.94, 1.08);
+  }
+  80% {
+    transform: translateY(0) scale(1.12, 0.88);
+  }
+}
+
 @keyframes pulse-subtle {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.85; transform: scale(1.03); }

@@ -1,160 +1,285 @@
 import React, { useState } from 'react';
 import { sound } from '../lib/audio';
 
-export type CeldiMood = 'happy' | 'thinking' | 'celebrating' | 'sad' | 'onFire';
+export type CeldiMood = 'happy' | 'thinking' | 'celebrating' | 'onFire' | 'sad';
 
 interface CeldiProps {
   mood?: CeldiMood;
   size?: number;
   speechText?: string;
+  showBubble?: boolean;
+  interactive?: boolean;
   onClick?: () => void;
+  className?: string;
 }
+
+const MOOD_THEMES = {
+  happy: {
+    stroke: '#21C26B',
+    glow: 'rgba(33, 194, 107, 0.45)',
+    bg: '#18221D',
+    blush: 'rgba(33, 194, 107, 0.35)',
+  },
+  thinking: {
+    stroke: '#38BDF8',
+    glow: 'rgba(56, 189, 248, 0.45)',
+    bg: '#15242C',
+    blush: 'rgba(56, 189, 248, 0.3)',
+  },
+  celebrating: {
+    stroke: '#7CFFB2',
+    glow: 'rgba(124, 255, 178, 0.6)',
+    bg: '#18271F',
+    blush: 'rgba(255, 107, 158, 0.4)',
+  },
+  onFire: {
+    stroke: '#22C55E',
+    glow: 'rgba(34, 197, 94, 0.7)',
+    bg: '#16281E',
+    blush: 'rgba(255, 120, 70, 0.45)',
+  },
+  sad: {
+    stroke: '#EF4444',
+    glow: 'rgba(239, 68, 68, 0.45)',
+    bg: '#251717',
+    blush: 'transparent',
+  },
+};
 
 export const CeldiMascot: React.FC<CeldiProps> = ({
   mood = 'happy',
-  size = 72,
+  size = 120,
   speechText,
+  showBubble = true,
+  interactive = true,
   onClick,
+  className = '',
 }) => {
-  const [isPoked, setIsPoked] = useState(false);
+  const [isPoking, setIsPoking] = useState(false);
+  const theme = MOOD_THEMES[mood] || MOOD_THEMES.happy;
+  const isCelebrating = mood === 'celebrating' || mood === 'onFire';
+  const isSad = mood === 'sad';
+  const isThinking = mood === 'thinking';
 
   const handleClick = () => {
-    setIsPoked(true);
+    if (!interactive) return;
+    setIsPoking(true);
     sound.play('celdi_poke');
     if (onClick) onClick();
-    setTimeout(() => setIsPoked(false), 400);
-  };
-
-  // Eyes and mouth styling based on mood
-  const renderFace = () => {
-    switch (mood) {
-      case 'thinking':
-        return (
-          <>
-            {/* Ojos curiosos mirando arriba */}
-            <circle cx="36" cy="38" r="4.5" fill="#E6EFE9" />
-            <circle cx="37" cy="36" r="2" fill="#0A0F0C" />
-            <circle cx="64" cy="38" r="4.5" fill="#E6EFE9" />
-            <circle cx="65" cy="36" r="2" fill="#0A0F0C" />
-            {/* Boca pequeña pensativa */}
-            <ellipse cx="50" cy="56" rx="4" ry="3" fill="#E6EFE9" />
-          </>
-        );
-      case 'celebrating':
-        return (
-          <>
-            {/* Ojos estrellados / cerrados felices ^ ^ */}
-            <path d="M 30 40 Q 36 33 42 40" stroke="#E6EFE9" strokeWidth="3" fill="none" strokeLinecap="round" />
-            <path d="M 58 40 Q 64 33 70 40" stroke="#E6EFE9" strokeWidth="3" fill="none" strokeLinecap="round" />
-            {/* Sonrisa grande abierta */}
-            <path d="M 38 52 Q 50 68 62 52 Z" fill="#21C26B" stroke="#E6EFE9" strokeWidth="2" />
-          </>
-        );
-      case 'sad':
-        return (
-          <>
-            {/* Ojos tristes caídos */}
-            <circle cx="36" cy="40" r="4" fill="#E6EFE9" />
-            <circle cx="64" cy="40" r="4" fill="#E6EFE9" />
-            {/* Boca hacia abajo */}
-            <path d="M 40 58 Q 50 50 60 58" stroke="#FF5D5D" strokeWidth="3" fill="none" strokeLinecap="round" />
-          </>
-        );
-      case 'onFire':
-        return (
-          <>
-            {/* Ojos determinados */}
-            <circle cx="36" cy="38" r="4" fill="#FF8A3D" />
-            <circle cx="64" cy="38" r="4" fill="#FF8A3D" />
-            {/* Sonrisa audaz */}
-            <path d="M 40 52 Q 50 62 60 52" stroke="#FF8A3D" strokeWidth="3" fill="none" strokeLinecap="round" />
-          </>
-        );
-      case 'happy':
-      default:
-        return (
-          <>
-            {/* Ojos grandes amigables con brillo */}
-            <circle cx="36" cy="40" r="5" fill="#E6EFE9" />
-            <circle cx="38" cy="38" r="1.8" fill="#111915" />
-            <circle cx="64" cy="40" r="5" fill="#E6EFE9" />
-            <circle cx="66" cy="38" r="1.8" fill="#111915" />
-            {/* Sonrisa alegre */}
-            <path d="M 38 52 Q 50 64 62 52" stroke="#E6EFE9" strokeWidth="3" fill="none" strokeLinecap="round" />
-            {/* Chapitas mejillas sonrosadas */}
-            <circle cx="28" cy="48" r="3" fill="#21C26B" opacity="0.4" />
-            <circle cx="72" cy="48" r="3" fill="#21C26B" opacity="0.4" />
-          </>
-        );
-    }
+    setTimeout(() => setIsPoking(false), 650);
   };
 
   return (
-    <div className="flex items-center gap-3">
-      {/* Celdi Mascot Icon */}
-      <div
-        onClick={handleClick}
-        style={{ width: size, height: size }}
-        className={`relative shrink-0 cursor-pointer select-none transition-transform duration-200 ${
-          isPoked ? 'scale-90 rotate-6' : 'hover:scale-105 active:scale-95'
-        }`}
-        title="¡Haz clic en Celdi!"
-      >
-        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-md">
-          {/* Sombra base */}
-          <ellipse cx="50" cy="92" rx="36" ry="6" fill="#000000" opacity="0.4" />
-
-          {/* Cuerpo principal tipo celda con bordes redondeados y gradiente */}
-          <rect
-            x="14"
-            y="14"
-            width="72"
-            height="72"
-            rx="16"
-            fill="url(#celdiGrad)"
-            stroke="#21C26B"
-            strokeWidth="3.5"
-          />
-
-          {/* Líneas sutiles de cuadrícula de hoja de cálculo en la cabeza */}
-          <line x1="14" y1="28" x2="86" y2="28" stroke="#243029" strokeWidth="1.5" strokeDasharray="3 3" />
-          <line x1="50" y1="14" x2="50" y2="28" stroke="#243029" strokeWidth="1.5" />
-
-          {/* Controlador de relleno de Excel (Fill handle en esquina inferior derecha) */}
-          <rect
-            x="80"
-            y="80"
-            width="9"
-            height="9"
-            fill="#7CFFB2"
-            stroke="#13804A"
-            strokeWidth="1.5"
-            rx="2"
-          />
-
-          {/* Rostro y expresiones */}
-          {renderFace()}
-
-          <defs>
-            <linearGradient id="celdiGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#182A20" />
-              <stop offset="100%" stopColor="#111915" />
-            </linearGradient>
-          </defs>
-        </svg>
-
-        {mood === 'onFire' && (
-          <span className="absolute -top-2 -right-1 text-base animate-bounce">🔥</span>
-        )}
-      </div>
-
-      {/* Speech Bubble opcional */}
-      {speechText && (
-        <div className="relative bg-gv-surface-high border border-gv-border rounded-xl px-3.5 py-2 text-xs md:text-sm text-gv-text max-w-xs shadow-lg animate-fade-in">
-          <div className="absolute top-1/2 -left-2 -translate-y-1/2 w-0 h-0 border-y-4 border-y-transparent border-r-8 border-r-gv-border" />
-          <p className="font-medium leading-relaxed">{speechText}</p>
+    <div
+      className={`celdi-mascot-container group relative inline-flex flex-col items-center justify-center select-none ${
+        interactive ? 'cursor-pointer' : ''
+      } ${isPoking ? 'celdi-poking' : ''} ${isCelebrating ? 'celdi-celebrating' : ''} ${className}`}
+      onClick={handleClick}
+      role={interactive ? 'button' : 'img'}
+      aria-label={`Celdi mascot (${mood})`}
+    >
+      {/* Excel Speech Bubble (matching landing design with fx badge) */}
+      {speechText && showBubble && (
+        <div className="absolute -top-12 z-20 pointer-events-none transition-all duration-300 transform opacity-100 scale-100 -translate-y-1">
+          <div className="relative bg-gv-surface-higher/95 backdrop-blur-md border border-gv-primary/40 text-gv-text px-3 py-1.5 rounded-xl text-xs font-mono shadow-xl whitespace-nowrap flex items-center gap-1.5">
+            <span className="text-gv-primary font-bold">fx</span>
+            <span className="font-medium text-[11px] md:text-xs">{speechText}</span>
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-gv-surface-higher border-b border-r border-gv-primary/40 transform rotate-45" />
+          </div>
         </div>
       )}
+
+      {/* SVG Mascot Body with complete physical animations */}
+      <div className="relative" style={{ width: size, height: size }}>
+        <svg
+          viewBox="0 0 200 200"
+          width={size}
+          height={size}
+          className="overflow-visible w-full h-full"
+        >
+          <defs>
+            {/* Outer Glow Filter */}
+            <filter id={`glow-${mood}`} x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="8" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+
+            {/* OnFire Energy Gradient */}
+            <linearGradient id="energyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#7CFFB2" stopOpacity="0.85" />
+              <stop offset="100%" stopColor="#21C26B" stopOpacity="0.3" />
+            </linearGradient>
+          </defs>
+
+          {/* Dynamic Ground Shadow synchronized with breathing */}
+          <ellipse
+            cx="100"
+            cy="184"
+            rx="68"
+            ry="8"
+            className="celdi-shadow fill-black/55 blur-[2.5px]"
+          />
+
+          {/* Physical Body Group (subject to squash, stretch, bounce & breathing) */}
+          <g className="celdi-squash-group">
+            {/* OnFire Energy Aura Spikes on top */}
+            {mood === 'onFire' && (
+              <path
+                d="M 40,40 Q 60,10 80,35 Q 100,5 120,35 Q 140,10 160,40"
+                fill="none"
+                stroke="url(#energyGrad)"
+                strokeWidth="4.5"
+                strokeLinecap="round"
+                className="animate-pulse"
+              />
+            )}
+
+            {/* Main Cell Body (Rounded spreadsheet cell) */}
+            <rect
+              x="26"
+              y="34"
+              width="148"
+              height="132"
+              rx="18"
+              ry="18"
+              fill={theme.bg}
+              stroke={theme.stroke}
+              strokeWidth="9"
+              strokeLinejoin="round"
+              style={{ filter: `drop-shadow(0 0 12px ${theme.glow})` }}
+            />
+
+            {/* 3D Glass Specular Sheen Bar (spreadsheet cell bevel highlight) */}
+            <rect
+              x="34"
+              y="42"
+              width="132"
+              height="24"
+              rx="8"
+              fill="white"
+              fillOpacity="0.08"
+            />
+
+            {/* Error Glitch Crack line when sad / damaged */}
+            {isSad && (
+              <path
+                d="M 120,44 L 110,60 L 124,75 L 115,92"
+                fill="none"
+                stroke="#EF4444"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            )}
+
+            {/* Spreadsheet Cell Header Reference Tag */}
+            <text
+              x="38"
+              y="58"
+              fill={theme.stroke}
+              fillOpacity="0.35"
+              fontSize="12"
+              fontFamily="monospace"
+              fontWeight="bold"
+            >
+              A1
+            </text>
+
+            {/* Cheeks Blush */}
+            <ellipse cx="48" cy="118" rx="10" ry="5.5" fill={theme.blush} />
+            <ellipse cx="152" cy="118" rx="10" ry="5.5" fill={theme.blush} />
+
+            {/* Eyes */}
+            <g className="celdi-blink-eye">
+              {isCelebrating ? (
+                /* Happy Arcs (^ ^) when celebrating */
+                <>
+                  <path
+                    d="M 56 102 Q 68 84 80 102"
+                    stroke="#FFFFFF"
+                    strokeWidth="6"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M 120 102 Q 132 84 144 102"
+                    stroke="#FFFFFF"
+                    strokeWidth="6"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                </>
+              ) : isThinking ? (
+                /* Thinking eyes looking curious */
+                <>
+                  <ellipse cx="72" cy="92" rx="8" ry="13" fill="#FFFFFF" />
+                  <circle cx="75" cy="88" r="4" fill="#0A0F0C" />
+                  <ellipse cx="136" cy="92" rx="8" ry="13" fill="#FFFFFF" />
+                  <circle cx="139" cy="88" r="4" fill="#0A0F0C" />
+                </>
+              ) : isSad ? (
+                /* Sad drooping eyes */
+                <>
+                  <ellipse cx="68" cy="102" rx="8" ry="10" fill="#FFFFFF" />
+                  <circle cx="68" cy="104" r="3.5" fill="#251717" />
+                  <ellipse cx="132" cy="102" rx="8" ry="10" fill="#FFFFFF" />
+                  <circle cx="132" cy="104" r="3.5" fill="#251717" />
+                </>
+              ) : (
+                /* Normal happy big expressive eyes with catchlights */
+                <>
+                  <ellipse cx="68" cy="98" rx="8.5" ry="14" fill="#FFFFFF" />
+                  <circle cx="71" cy="93" r="3.8" fill="#18221D" />
+                  <ellipse cx="132" cy="98" rx="8.5" ry="14" fill="#FFFFFF" />
+                  <circle cx="135" cy="93" r="3.8" fill="#18221D" />
+                </>
+              )}
+            </g>
+
+            {/* Mouth */}
+            {isCelebrating ? (
+              <path
+                d="M 82 116 Q 100 144 118 116 Z"
+                fill="#15803D"
+                stroke="#FFFFFF"
+                strokeWidth="4.5"
+              />
+            ) : isThinking ? (
+              <ellipse cx="100" cy="122" rx="5" ry="4" fill="#FFFFFF" />
+            ) : isSad ? (
+              <path
+                d="M 84 128 Q 100 114 116 128"
+                stroke="#EF4444"
+                strokeWidth="5.5"
+                fill="none"
+                strokeLinecap="round"
+              />
+            ) : (
+              <path
+                d="M 84 118 Q 100 134 116 118"
+                stroke="#FFFFFF"
+                strokeWidth="5.5"
+                fill="none"
+                strokeLinecap="round"
+              />
+            )}
+
+            {/* Fill Handle Tail ("Colita" con inercia wag) */}
+            <g className="celdi-tail">
+              <rect
+                x="166"
+                y="158"
+                width="22"
+                height="22"
+                rx="3.5"
+                ry="3.5"
+                fill={theme.stroke}
+                style={{ filter: `drop-shadow(0 0 6px ${theme.glow})` }}
+              />
+            </g>
+          </g>
+        </svg>
+      </div>
     </div>
   );
 };
