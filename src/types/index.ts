@@ -1,17 +1,35 @@
 export type SupportedLocale = 'es' | 'en' | 'de' | 'fr' | 'ja' | 'pt';
 
-export type ExerciseType = 'select_range' | 'predict' | 'formula' | 'drag_order' | 'fix_error';
+export type ExerciseType =
+  | 'select_range'
+  | 'predict'
+  | 'build_formula'
+  | 'formula'
+  | 'drag_order'
+  | 'find_error'
+  | 'write_formula'
+  | 'fix_error';
 
 export interface Exercise {
   type: ExerciseType;
   prompt: string;
   promptByLocale?: Record<SupportedLocale, string>;
   correct: string;
+  correctByLocale?: Record<SupportedLocale, string>;
   options?: string[];
   optionsByLocale?: Record<SupportedLocale, string[]>;
   data?: Record<string, string>;
+  dataByLocale?: Record<SupportedLocale, Record<string, string>>;
   explanation?: string;
   explanationByLocale?: Record<SupportedLocale, string>;
+  formula?: string;
+  formulaByLocale?: Record<SupportedLocale, string>;
+  blocks?: string[];
+  blocksByLocale?: Record<SupportedLocale, string[]>;
+  suggestions?: string[];
+  targetCell?: string;
+  errorCell?: string;
+  displayValues?: Record<string, string>;
   targetFormula?: string;
 }
 
