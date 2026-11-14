@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Map, Zap, BookOpen, ShoppingBag, User } from 'lucide-react';
-import { UserStats, SupportedLocale } from './types';
+import { UserStats } from './types';
 import { loadUserStats, saveUserStats, markLevelCompleted } from './lib/storage';
 import { MOCK_REGIONS } from './data/mapData';
 import { Header } from './components/Header';
@@ -11,24 +11,100 @@ import { ShopTab } from './components/tabs/ShopTab';
 import { ProfileTab } from './components/tabs/ProfileTab';
 import { LessonModal } from './components/LessonModal';
 import { sound } from './lib/audio';
+import {
+  auth,
+  db,
+  parseFirestoreUserToStats,
+  syncStatsToFirestore,
+  verifyAndSyncProAndLegacyProfile,
+} from './lib/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { doc, onSnapshot } from 'firebase/firestore';
 
 export const App: React.FC = () => {
   const [stats, setStats] = useState<UserStats>(loadUserStats);
   const [activeTab, setActiveTab] = useState<'map' | 'practice' | 'formulas' | 'shop' | 'profile'>('map');
   const [activeLesson, setActiveLesson] = useState<{ ref: string; file: string } | null>(null);
+  const checkedProForUidRef = useRef<string | null>(null);
 
   useEffect(() => {
     sound.setSfxEnabled(stats.soundEnabled);
   }, [stats.soundEnabled]);
 
-  // Sync state changes with localStorage
+  // Real-time Firebase Auth + Firestore `users/{uid}` + RevenueCat PRO synchronization
+  useEffect(() => {
+    let unsubFirestore: (() => void) | null = null;
+
+    const unsubAuth = onAuthStateChanged(auth, (user) => {
+      if (unsubFirestore) {
+        unsubFirestore();
+        unsubFirestore = null;
+      }
+
+      if (!user) {
+        checkedProForUidRef.current = null;
+        return;
+      }
+
+      const userDocRef = doc(db, 'users', user.uid);
+      unsubFirestore = onSnapshot(
+        userDocRef,
+        async (snapshot) => {
+          const docData = snapshot.exists() ? snapshot.data() : undefined;
+
+          if (docData) {
+            setStats((prev) => {
+              const nextStats = parseFirestoreUserToStats(docData, prev);
+              saveUserStats(nextStats);
+              return nextStats;
+            });
+          }
+
+          // Verify RevenueCat entitlement & legacy/duo profile once per signed-in user session
+          if (checkedProForUidRef.current !== user.uid) {
+            checkedProForUidRef.current = user.uid;
+            const proVerification = await verifyAndSyncProAndLegacyProfile(user, docData);
+            if (proVerification.isPro || proVerification.mergedData) {
+              setStats((prev) => {
+                const base = proVerification.mergedData
+                  ? parseFirestoreUserToStats(proVerification.mergedData, prev)
+                  : prev;
+                const updated: UserStats = {
+                  ...base,
+                  isPro: proVerification.isPro || base.isPro,
+                  subscriptionPlan:
+                    proVerification.planName || base.subscriptionPlan || (proVerification.isPro ? 'lifetime' : undefined),
+                  lives: proVerification.isPro || base.isPro ? 5 : base.lives,
+                };
+                saveUserStats(updated);
+                return updated;
+              });
+            }
+          }
+        },
+        (error) => {
+          console.warn('[Firestore] Error watching user doc:', error);
+        }
+      );
+    });
+
+    return () => {
+      unsubAuth();
+      if (unsubFirestore) unsubFirestore();
+    };
+  }, []);
+
+  // Sync state changes with localStorage and Firestore
   const handleUpdateStats = (newStats: UserStats) => {
     setStats(newStats);
     saveUserStats(newStats);
+    if (auth.currentUser) {
+      syncStatsToFirestore(auth.currentUser.uid, newStats, auth.currentUser);
+    }
   };
 
   const handleSelectLevel = (ref: string, file: string) => {
-    if (stats.lives <= 0) {
+    if (!stats.isPro && stats.lives <= 0) {
       alert(
         stats.locale === 'es'
           ? '¡Te has quedado sin vidas! Visita la tienda para recargar o espera a que se regeneren.'
@@ -47,13 +123,20 @@ export const App: React.FC = () => {
       currIdx >= 0 && currIdx < allRefs.length - 1 ? allRefs[currIdx + 1] : undefined;
     const updated = markLevelCompleted(stats, levelRef, stars, earnedXp, nextRef);
     setStats(updated);
+    if (auth.currentUser) {
+      syncStatsToFirestore(auth.currentUser.uid, updated, auth.currentUser);
+    }
   };
 
   const handleLoseLife = () => {
     setStats((prev) => {
+      if (prev.isPro) return prev;
       const nextLives = Math.max(0, prev.lives - 1);
       const updated = { ...prev, lives: nextLives };
       saveUserStats(updated);
+      if (auth.currentUser) {
+        syncStatsToFirestore(auth.currentUser.uid, updated, auth.currentUser);
+      }
       return updated;
     });
   };
@@ -66,6 +149,9 @@ export const App: React.FC = () => {
         gems: prev.gems + gems,
       };
       saveUserStats(updated);
+      if (auth.currentUser) {
+        syncStatsToFirestore(auth.currentUser.uid, updated, auth.currentUser);
+      }
       return updated;
     });
   };
@@ -83,9 +169,16 @@ export const App: React.FC = () => {
         unlockedLevel: nextRef,
       };
       saveUserStats(updated);
+      if (auth.currentUser) {
+        syncStatsToFirestore(auth.currentUser.uid, updated, auth.currentUser);
+      }
       return updated;
     });
-    alert(stats.locale === 'es' ? `¡Has abierto el cofre ${chestRef} y ganado +${gems} Gemas 💎!` : `You opened chest ${chestRef} and gained +${gems} Gems 💎!`);
+    alert(
+      stats.locale === 'es'
+        ? `¡Has abierto el cofre ${chestRef} y ganado +${gems} Gemas 💎!`
+        : `You opened chest ${chestRef} and gained +${gems} Gems 💎!`
+    );
   };
 
   const navItems = [

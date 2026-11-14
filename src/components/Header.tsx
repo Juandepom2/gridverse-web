@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Heart, Flame, Gem, Volume2, VolumeX, Music, Globe, ExternalLink } from 'lucide-react';
+import { Heart, Flame, Gem, Volume2, VolumeX, Music, Globe, ExternalLink, Infinity as InfinityIcon } from 'lucide-react';
 import { UserStats, SupportedLocale } from '../types';
 import { sound } from '../lib/audio';
 
@@ -13,7 +13,6 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   stats,
   onUpdateStats,
-  activeTab,
   onChangeTab,
 }) => {
   const [bgmActive, setBgmActive] = useState(sound.isBgmEnabled());
@@ -56,9 +55,15 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="font-black tracking-tight text-base md:text-lg text-gv-text">
                 GRIDVERSE
               </span>
-              <span className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-gv-primary-soft text-gv-accent border border-gv-primary/30">
-                Web
-              </span>
+              {stats.isPro ? (
+                <span className="text-[10px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded bg-gv-primary text-black">
+                  PRO
+                </span>
+              ) : (
+                <span className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-gv-primary-soft text-gv-accent border border-gv-primary/30">
+                  Web
+                </span>
+              )}
             </div>
             <p className="text-[10px] text-gv-muted hidden sm:block">Aprende Excel jugando celda a celda</p>
           </div>
@@ -66,19 +71,9 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* HUD Game Stats */}
         <div className="flex items-center gap-2 md:gap-4">
-          {/* Lives ❤️ */}
-          <div
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-gv-surface-high border border-gv-border text-xs md:text-sm font-bold text-gv-integrity cursor-pointer hover:bg-gv-surface-higher transition-colors"
-            title="Vidas restantes para lecciones"
-            onClick={() => onChangeTab('shop')}
-          >
-            <Heart className="w-4 h-4 fill-gv-integrity text-gv-integrity" />
-            <span className="tabular-nums">{stats.lives}</span>
-          </div>
-
           {/* Streak 🔥 */}
           <div
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-gv-surface-high border border-gv-border text-xs md:text-sm font-bold text-gv-streak cursor-pointer hover:bg-gv-surface-higher transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gv-streak/10 border border-gv-streak/25 text-xs md:text-sm font-mono font-bold text-gv-streak cursor-pointer hover:bg-gv-streak/15 transition-colors"
             title="Racha de días consecutivos"
           >
             <Flame className="w-4 h-4 fill-gv-streak text-gv-streak animate-pulse-subtle" />
@@ -87,13 +82,34 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Gems 💎 */}
           <div
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-gv-surface-high border border-gv-border text-xs md:text-sm font-bold text-gv-bytes cursor-pointer hover:bg-gv-surface-higher transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gv-bytes/10 border border-gv-bytes/25 text-xs md:text-sm font-mono font-bold text-gv-bytes cursor-pointer hover:bg-gv-bytes/15 transition-colors"
             title="Gemas / Puntos ganados"
             onClick={() => onChangeTab('shop')}
           >
             <Gem className="w-4 h-4 text-gv-bytes fill-gv-bytes/20" />
             <span className="tabular-nums">{stats.gems}</span>
           </div>
+
+          {/* Lives ❤️ or PRO ∞ (matching Flutter StatChip in stat_chip.dart) */}
+          {stats.isPro ? (
+            <div
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gv-primary-soft border border-gv-primary/40 text-xs md:text-sm font-mono font-extrabold text-gv-accent cursor-pointer hover:bg-gv-primary/20 transition-colors"
+              title="Gridverse PRO: Vidas Ilimitadas"
+              onClick={() => onChangeTab('shop')}
+            >
+              <InfinityIcon className="w-4 h-4 text-gv-accent stroke-[2.5]" />
+              <span>PRO</span>
+            </div>
+          ) : (
+            <div
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gv-integrity/10 border border-gv-integrity/25 text-xs md:text-sm font-mono font-bold text-gv-integrity cursor-pointer hover:bg-gv-integrity/15 transition-colors"
+              title="Vidas restantes para lecciones"
+              onClick={() => onChangeTab('shop')}
+            >
+              <Heart className="w-4 h-4 fill-gv-integrity text-gv-integrity" />
+              <span className="tabular-nums">{stats.lives}</span>
+            </div>
+          )}
         </div>
 
         {/* Controls: Audio, Music BGM, Locale & Landing Link */}

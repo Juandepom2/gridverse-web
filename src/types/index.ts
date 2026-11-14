@@ -61,4 +61,11 @@ export interface UserStats {
   unlockedLevel: string;
   soundEnabled: boolean;
   locale: SupportedLocale;
+  isPro?: boolean;
+  subscriptionPlan?: string;
+  levelTitle?: string;
+  displayName?: string;
+  photoUrl?: string;
+  activityHistory?: Record<string, number>;
+  lastStreakDate?: string;
 }

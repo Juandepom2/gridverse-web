@@ -13,6 +13,7 @@ import {
   Eye,
   Lock,
   Delete,
+  Infinity as InfinityIcon,
 } from 'lucide-react';
 import { LevelData, Exercise, UserStats, SupportedLocale } from '../types';
 import { CeldiMascot, CeldiMood } from './CeldiMascot';
@@ -552,11 +553,13 @@ export const LessonModal: React.FC<LessonModalProps> = ({
       setMistakes((prev) => prev + 1);
 
       setShakeScreen(true);
-      setShowLostLifeAnim(true);
       setTimeout(() => setShakeScreen(false), 500);
-      setTimeout(() => setShowLostLifeAnim(false), 1200);
 
-      onLoseLife();
+      if (!stats.isPro) {
+        setShowLostLifeAnim(true);
+        setTimeout(() => setShowLostLifeAnim(false), 1200);
+        onLoseLife();
+      }
 
       // Re-queue failed exercise at the end of the lesson with newly shuffled options/blocks (Duolingo / Flutter parity)
       const reshuffled = shuffleExerciseAnswers(currentQueued.exercise, locale);
@@ -675,19 +678,26 @@ export const LessonModal: React.FC<LessonModalProps> = ({
             </div>
           </div>
 
-          {/* Lives Indicator */}
-          <div className="relative flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-gv-integrity/15 border border-gv-integrity/30 text-gv-integrity text-xs font-mono font-extrabold shrink-0">
-            <Heart
-              className={`w-4 h-4 fill-gv-integrity ${shakeScreen ? 'animate-bounce' : ''}`}
-            />
-            <span>{stats.lives}</span>
+          {/* Lives or PRO Indicator */}
+          {stats.isPro ? (
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-gv-primary-soft border border-gv-primary/40 text-gv-accent text-xs font-mono font-extrabold shrink-0">
+              <InfinityIcon className="w-4 h-4 stroke-[2.5]" />
+              <span>PRO</span>
+            </div>
+          ) : (
+            <div className="relative flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-gv-integrity/15 border border-gv-integrity/30 text-gv-integrity text-xs font-mono font-extrabold shrink-0">
+              <Heart
+                className={`w-4 h-4 fill-gv-integrity ${shakeScreen ? 'animate-bounce' : ''}`}
+              />
+              <span>{stats.lives}</span>
 
-            {showLostLifeAnim && (
-              <span className="absolute -top-3 -right-2 bg-gv-error text-black font-black text-[10px] px-1.5 rounded-full animate-bounce">
-                -1
-              </span>
-            )}
-          </div>
+              {showLostLifeAnim && (
+                <span className="absolute -top-3 -right-2 bg-gv-error text-black font-black text-[10px] px-1.5 rounded-full animate-bounce">
+                  -1
+                </span>
+              )}
+            </div>
+          )}
         </div>
 
         {/* ── 2. Middle Exercise Body */}
