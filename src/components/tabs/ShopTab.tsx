@@ -1027,24 +1027,44 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
               </h3>
             </div>
 
-            <button
-              type="button"
-              onClick={handleProceedToStripeCheckout}
-              disabled={isRedirectingCheckout}
-              className="w-full max-w-md py-4 px-6 rounded-2xl bg-gv-primary hover:bg-gv-accent text-black font-black text-sm md:text-base uppercase tracking-wider transition-all transform active:scale-98 shadow-xl shadow-gv-primary/30 flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-60"
-            >
-              {isRedirectingCheckout ? (
-                <>
-                  <RefreshCw className="w-5 h-5 animate-spin" />
-                  <span>{tr(locale, { es: 'Abriendo Stripe Checkout...', en: 'Opening Stripe Checkout...', de: 'Stripe Checkout wird geöffnet...', fr: 'Ouverture de Stripe Checkout...', ja: 'Stripeを開いています...', pt: 'Abrindo Stripe Checkout...' })}</span>
-                </>
-              ) : (
-                <>
-                  <Zap className="w-5 h-5 fill-black" />
-                  <span>{getCtaButtonLabel()}</span>
-                </>
-              )}
-            </button>
+            {stats.isPro && (
+              (stats.subscriptionPlan || 'lifetime').toLowerCase().includes('lifetime')
+                ? (selectedCategory === 'individual' || (stats.subscriptionPlan || '').toLowerCase().includes('duo'))
+                : (stats.subscriptionPlan || '').toLowerCase().includes(selectedTier) && (selectedCategory === 'duo' ? (stats.subscriptionPlan || '').toLowerCase().includes('duo') : !(stats.subscriptionPlan || '').toLowerCase().includes('duo'))
+            ) ? (
+              <div className="w-full max-w-md py-3.5 px-6 rounded-2xl bg-gv-primary-soft/80 border-2 border-gv-primary text-gv-accent font-black text-xs md:text-sm flex items-center justify-center gap-2.5 shadow-lg">
+                <CheckCircle2 className="w-5 h-5 text-gv-primary stroke-[2.5]" />
+                <span>
+                  {tr(locale, {
+                    es: '¡YA TIENES ESTE PLAN ACTIVO EN TU CUENTA!',
+                    en: 'YOU ALREADY HAVE THIS PLAN ACTIVE ON YOUR ACCOUNT!',
+                    de: 'DU HAST DIESEN PLAN BEREITS AKTIV!',
+                    fr: 'TU AS DÉJÀ CE PLAN ACTIF SUR TON COMPTE !',
+                    ja: '既にこのプランがアカウントで有効です！',
+                    pt: 'VOCÊ JÁ TEM ESTE PLANO ATIVO EM SUA CONTA!',
+                  })}
+                </span>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={handleProceedToStripeCheckout}
+                disabled={isRedirectingCheckout}
+                className="w-full max-w-md py-4 px-6 rounded-2xl bg-gv-primary hover:bg-gv-accent text-black font-black text-sm md:text-base uppercase tracking-wider transition-all transform active:scale-98 shadow-xl shadow-gv-primary/30 flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-60"
+              >
+                {isRedirectingCheckout ? (
+                  <>
+                    <RefreshCw className="w-5 h-5 animate-spin" />
+                    <span>{tr(locale, { es: 'Abriendo Stripe Checkout...', en: 'Opening Stripe Checkout...', de: 'Stripe Checkout wird geöffnet...', fr: 'Ouverture de Stripe Checkout...', ja: 'Stripeを開いています...', pt: 'Abrindo Stripe Checkout...' })}</span>
+                  </>
+                ) : (
+                  <>
+                    <Zap className="w-5 h-5 fill-black" />
+                    <span>{getCtaButtonLabel()}</span>
+                  </>
+                )}
+              </button>
+            )}
 
             {/* Trust Badges */}
             <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[11px] text-gv-muted pt-1">

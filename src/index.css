@@ -23,22 +23,56 @@
   --color-gv-integrity: #FF5D8F;
 }
 
+:root,
+html.dark,
+[data-theme="dark"] {
+  --grid-line-color: rgba(36, 48, 41, 0.4);
+  color-scheme: dark;
+}
+
+html.light,
+[data-theme="light"] {
+  --color-gv-bg: #F4F7F5;
+  --color-gv-surface: #FFFFFF;
+  --color-gv-surface-high: #EEF4F0;
+  --color-gv-surface-higher: #E2ECE5;
+  --color-gv-border: #D1DDD5;
+  --color-gv-grid: #E3EDE6;
+  --color-gv-primary: #1FB865;
+  --color-gv-primary-dark: #128243;
+  --color-gv-primary-soft: #DCFCE7;
+  --color-gv-accent: #0D8A46;
+  --color-gv-text: #111B15;
+  --color-gv-muted: #4B6354;
+  --color-gv-faint: #81988A;
+  --color-gv-error: #DC2626;
+  --color-gv-warning: #D97706;
+  --color-gv-info: #0284C7;
+  --color-gv-boss: #7C3AED;
+  --color-gv-streak: #EA580C;
+  --color-gv-bytes: #0284C7;
+  --color-gv-integrity: #E11D48;
+  --grid-line-color: rgba(22, 32, 27, 0.08);
+  color-scheme: light;
+}
+
 @layer base {
   body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-    background-color: #0A0F0C;
-    color: #E6EFE9;
+    background-color: var(--color-gv-bg);
+    color: var(--color-gv-text);
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   /* Spreadsheet Grid Pattern */
   .spreadsheet-grid-bg {
     background-size: 36px 36px;
     background-image: 
-      linear-gradient(to right, rgba(36, 48, 41, 0.4) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(36, 48, 41, 0.4) 1px, transparent 1px);
+      linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
   }
 
   .tabular-nums {
