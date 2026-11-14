@@ -1,27 +1,103 @@
-// Audio manager using audio files with mute support
+// Audio manager with Sound Effects and Background Music (BGM) looping
 
 class SoundManager {
-  private enabled: boolean = true;
+  private sfxEnabled: boolean = true;
+  private bgmEnabled: boolean = true;
   private cache: Record<string, HTMLAudioElement> = {};
+  private bgmAudio: HTMLAudioElement | null = null;
+  private listeners: (() => void)[] = [];
 
   constructor() {
-    const saved = localStorage.getItem('gridverse_sound');
-    if (saved !== null) {
-      this.enabled = saved === 'true';
+    const savedSfx = localStorage.getItem('gridverse_sound');
+    if (savedSfx !== null) {
+      this.sfxEnabled = savedSfx === 'true';
+    }
+    const savedBgm = localStorage.getItem('gridverse_bgm');
+    if (savedBgm !== null) {
+      this.bgmEnabled = savedBgm === 'true';
+    }
+
+    // Try auto-starting BGM on first user interaction (browser autoplay policy requirement)
+    const startOnFirstGesture = () => {
+      if (this.bgmEnabled && (!this.bgmAudio || this.bgmAudio.paused)) {
+        this.startBgm();
+      }
+      window.removeEventListener('pointerdown', startOnFirstGesture);
+      window.removeEventListener('keydown', startOnFirstGesture);
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('pointerdown', startOnFirstGesture, { once: true });
+      window.addEventListener('keydown', startOnFirstGesture, { once: true });
     }
   }
 
-  public setEnabled(val: boolean) {
-    this.enabled = val;
+  public subscribe(cb: () => void) {
+    this.listeners.push(cb);
+    return () => {
+      this.listeners = this.listeners.filter((l) => l !== cb);
+    };
+  }
+
+  private notify() {
+    this.listeners.forEach((l) => l());
+  }
+
+  public setSfxEnabled(val: boolean) {
+    this.sfxEnabled = val;
     localStorage.setItem('gridverse_sound', String(val));
+    this.notify();
   }
 
-  public isEnabled(): boolean {
-    return this.enabled;
+  public isSfxEnabled(): boolean {
+    return this.sfxEnabled;
   }
 
-  public play(name: 'tap' | 'correct' | 'wrong' | 'coin' | 'level_win' | 'streak' | 'celdi_poke') {
-    if (!this.enabled) return;
+  public setBgmEnabled(val: boolean) {
+    this.bgmEnabled = val;
+    localStorage.setItem('gridverse_bgm', String(val));
+    if (val) {
+      this.startBgm();
+    } else {
+      this.stopBgm();
+    }
+    this.notify();
+  }
+
+  public isBgmEnabled(): boolean {
+    return this.bgmEnabled;
+  }
+
+  public isBgmPlaying(): boolean {
+    return Boolean(this.bgmAudio && !this.bgmAudio.paused);
+  }
+
+  public startBgm() {
+    if (!this.bgmEnabled) return;
+    try {
+      if (!this.bgmAudio) {
+        this.bgmAudio = new Audio('/audio/bgm_chill.wav');
+        this.bgmAudio.loop = true;
+        this.bgmAudio.volume = 0.35;
+      }
+      this.bgmAudio.play().catch(() => {
+        // Will start on next gesture
+      });
+      this.notify();
+    } catch {
+      // Ignorar fallback
+    }
+  }
+
+  public stopBgm() {
+    if (this.bgmAudio) {
+      this.bgmAudio.pause();
+      this.notify();
+    }
+  }
+
+  public play(name: 'tap' | 'correct' | 'wrong' | 'coin' | 'level_win' | 'streak' | 'celdi_poke' | 'hint' | 'game_over') {
+    if (!this.sfxEnabled) return;
 
     try {
       const path = `/audio/${name}.wav`;
@@ -31,9 +107,9 @@ class SoundManager {
         this.cache[path] = audio;
       }
       audio.currentTime = 0;
-      audio.volume = 0.6;
+      audio.volume = name === 'tap' ? 0.45 : 0.75;
       audio.play().catch(() => {
-        // Ignorar si el navegador bloquea autoplay hasta interacción
+        // Ignore autoplay restriction
       });
     } catch {
       // Audio fallback

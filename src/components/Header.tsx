@@ -1,5 +1,5 @@
-import React from 'react';
-import { Heart, Flame, Gem, Volume2, VolumeX, Globe, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Heart, Flame, Gem, Volume2, VolumeX, Music, Globe, ExternalLink } from 'lucide-react';
 import { UserStats, SupportedLocale } from '../types';
 import { sound } from '../lib/audio';
 
@@ -16,10 +16,25 @@ export const Header: React.FC<HeaderProps> = ({
   activeTab,
   onChangeTab,
 }) => {
+  const [bgmActive, setBgmActive] = useState(sound.isBgmEnabled());
+
+  useEffect(() => {
+    return sound.subscribe(() => {
+      setBgmActive(sound.isBgmEnabled());
+    });
+  }, []);
+
   const toggleSound = () => {
     const next = !stats.soundEnabled;
-    sound.setEnabled(next);
+    sound.setSfxEnabled(next);
     onUpdateStats({ ...stats, soundEnabled: next });
+    if (next) sound.play('tap');
+  };
+
+  const toggleBgm = () => {
+    const next = !bgmActive;
+    sound.setBgmEnabled(next);
+    setBgmActive(next);
     if (next) sound.play('tap');
   };
 
@@ -81,13 +96,27 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* Controls: Audio, Locale & Landing Link */}
+        {/* Controls: Audio, Music BGM, Locale & Landing Link */}
         <div className="flex items-center gap-2">
-          {/* Sound Mute Toggle */}
+          {/* Background Music (BGM) Looping Toggle 🎵 */}
+          <button
+            onClick={toggleBgm}
+            className={`p-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer ${
+              bgmActive
+                ? 'bg-gv-primary-soft border-gv-primary text-gv-accent animate-pulse-subtle'
+                : 'bg-gv-surface-high border-gv-border text-gv-muted hover:text-gv-text'
+            }`}
+            title={bgmActive ? 'Música de fondo activa (bgm_chill.wav)' : 'Activar música de fondo'}
+          >
+            <Music className="w-4 h-4" />
+            <span className="text-[10px] hidden lg:inline font-mono">BGM</span>
+          </button>
+
+          {/* Sound FX Mute Toggle */}
           <button
             onClick={toggleSound}
-            className="p-1.5 rounded-lg bg-gv-surface-high border border-gv-border text-gv-muted hover:text-gv-text hover:bg-gv-surface-higher transition-colors"
-            title={stats.soundEnabled ? 'Silenciar sonidos' : 'Activar sonidos'}
+            className="p-1.5 rounded-lg bg-gv-surface-high border border-gv-border text-gv-muted hover:text-gv-text hover:bg-gv-surface-higher transition-colors cursor-pointer"
+            title={stats.soundEnabled ? 'Silenciar efectos SFX' : 'Activar efectos SFX'}
           >
             {stats.soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
           </button>

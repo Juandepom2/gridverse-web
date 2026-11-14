@@ -76,6 +76,24 @@ export const App: React.FC = () => {
     });
   };
 
+  const handleClaimChest = (chestRef: string, gems: number, nextRef: string) => {
+    sound.play('coin');
+    setStats((prev) => {
+      const updated = {
+        ...prev,
+        gems: prev.gems + gems,
+        completedLevels: {
+          ...prev.completedLevels,
+          [chestRef]: { stars: 1, completedAt: new Date().toISOString() },
+        },
+        unlockedLevel: nextRef,
+      };
+      saveUserStats(updated);
+      return updated;
+    });
+    alert(stats.locale === 'es' ? `¡Has abierto el cofre ${chestRef} y ganado +${gems} Gemas 💎!` : `You opened chest ${chestRef} and gained +${gems} Gems 💎!`);
+  };
+
   const navItems = [
     { id: 'map', label: stats.locale === 'es' ? 'Ruta' : 'Map', icon: Map },
     { id: 'practice', label: stats.locale === 'es' ? 'Práctica' : 'Practice', icon: Zap },
@@ -101,6 +119,8 @@ export const App: React.FC = () => {
             stats={stats}
             locale={stats.locale}
             onSelectLevel={handleSelectLevel}
+            onNavigateTab={(t) => setActiveTab(t as any)}
+            onClaimChest={handleClaimChest}
           />
         )}
         {activeTab === 'practice' && (
