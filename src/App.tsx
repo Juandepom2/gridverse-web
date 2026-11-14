@@ -17,6 +17,10 @@ export const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'map' | 'practice' | 'formulas' | 'shop' | 'profile'>('map');
   const [activeLesson, setActiveLesson] = useState<{ ref: string; file: string } | null>(null);
 
+  useEffect(() => {
+    sound.setSfxEnabled(stats.soundEnabled);
+  }, [stats.soundEnabled]);
+
   // Sync state changes with localStorage
   const handleUpdateStats = (newStats: UserStats) => {
     setStats(newStats);
