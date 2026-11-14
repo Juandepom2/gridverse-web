@@ -597,6 +597,36 @@ export const LessonModal: React.FC<LessonModalProps> = ({
     }
   };
 
+  // Live sheet data for write_formula (inserts user's typed formula into targetCell live)
+  const effectiveSheetData = useMemo(() => {
+    if (!exerciseData) return undefined;
+    if (isWriteFormula && currentExercise?.targetCell) {
+      return {
+        ...exerciseData,
+        [currentExercise.targetCell]: writtenFormula,
+      };
+    }
+    return exerciseData;
+  }, [exerciseData, isWriteFormula, currentExercise?.targetCell, writtenFormula]);
+
+  // Formula reference highlights (matching Flutter's `highlightsFor(formula)`)
+  const activeFormulaHighlights = useMemo(() => {
+    if (isWriteFormula) return highlightsForFormula(writtenFormula);
+    if (isPredict && exerciseFormula) return highlightsForFormula(exerciseFormula);
+    return {};
+  }, [isWriteFormula, writtenFormula, isPredict, exerciseFormula]);
+
+  // Effective selection displayed in SpreadsheetGrid:
+  // - select_range: `selectedCell` (starts empty '')
+  // - find_error: `selectedCell` (starts empty ''; user taps cell to diagnose)
+  // - write_formula: `currentExercise.targetCell`
+  // - predict: `'B1'`
+  const sheetSelection = useMemo(() => {
+    if (isSelectRange || isFindError) return selectedCell;
+    if (isWriteFormula) return currentExercise?.targetCell || 'A1';
+    return 'B1';
+  }, [isSelectRange, isFindError, selectedCell, isWriteFormula, currentExercise?.targetCell]);
+
   if (loading || !level || !currentExercise || !currentQueued) {
     return (
       <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
@@ -614,36 +644,6 @@ export const LessonModal: React.FC<LessonModalProps> = ({
       : Math.min(100, Math.round((solvedOriginalIndices.size / initialTotal) * 100));
 
   const isCurrentRevealed = revealedOriginalIndices.has(currentQueued.originalIndex);
-
-  // Live sheet data for write_formula (inserts user's typed formula into targetCell live)
-  const effectiveSheetData = useMemo(() => {
-    if (!exerciseData) return undefined;
-    if (isWriteFormula && currentExercise.targetCell) {
-      return {
-        ...exerciseData,
-        [currentExercise.targetCell]: writtenFormula,
-      };
-    }
-    return exerciseData;
-  }, [exerciseData, isWriteFormula, currentExercise.targetCell, writtenFormula]);
-
-  // Formula reference highlights (matching Flutter's `highlightsFor(formula)`)
-  const activeFormulaHighlights = useMemo(() => {
-    if (isWriteFormula) return highlightsForFormula(writtenFormula);
-    if (isPredict && exerciseFormula) return highlightsForFormula(exerciseFormula);
-    return {};
-  }, [isWriteFormula, writtenFormula, isPredict, exerciseFormula]);
-
-  // Effective selection displayed in SpreadsheetGrid:
-  // - select_range: `selectedCell` (starts empty '')
-  // - find_error: `selectedCell` (starts empty ''; user taps cell to diagnose)
-  // - write_formula: `currentExercise.targetCell`
-  // - predict: `'B1'`
-  const sheetSelection = useMemo(() => {
-    if (isSelectRange || isFindError) return selectedCell;
-    if (isWriteFormula) return currentExercise.targetCell || 'A1';
-    return 'B1';
-  }, [isSelectRange, isFindError, selectedCell, isWriteFormula, currentExercise.targetCell]);
 
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 animate-fade-in">

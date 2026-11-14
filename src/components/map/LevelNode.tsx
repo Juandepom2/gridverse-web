@@ -34,10 +34,6 @@ export const LevelNode: React.FC<LevelNodeProps> = ({
   const edgeColor = locked ? '#141D18' : '#0B4D2A';
 
   const handleClick = () => {
-    if (locked) {
-      sound.play('tap');
-      return;
-    }
     sound.play('tap');
     onTap();
   };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Map, Zap, BookOpen, ShoppingBag, User } from 'lucide-react';
 import { UserStats, SupportedLocale } from './types';
 import { loadUserStats, saveUserStats, markLevelCompleted } from './lib/storage';
+import { MOCK_REGIONS } from './data/mapData';
 import { Header } from './components/Header';
 import { MapTab } from './components/tabs/MapTab';
 import { PracticeTab } from './components/tabs/PracticeTab';
@@ -36,21 +37,10 @@ export const App: React.FC = () => {
   };
 
   const handleCompleteLevel = (levelRef: string, stars: number, earnedXp: number) => {
-    // Determine next level reference
-    const nextRefMap: Record<string, string> = {
-      A1: 'A2',
-      A2: 'A3',
-      A3: 'A4',
-      A4: 'A5',
-      A5: 'B1',
-      B1: 'B2',
-      B2: 'B3',
-      B3: 'B4',
-      B4: 'C1',
-      C1: 'C2',
-      C2: 'C3',
-    };
-    const nextRef = nextRefMap[levelRef];
+    const allRefs = MOCK_REGIONS.flatMap((r) => r.levels.map((l) => l.ref));
+    const currIdx = allRefs.indexOf(levelRef);
+    const nextRef =
+      currIdx >= 0 && currIdx < allRefs.length - 1 ? allRefs[currIdx + 1] : undefined;
     const updated = markLevelCompleted(stats, levelRef, stars, earnedXp, nextRef);
     setStats(updated);
   };
