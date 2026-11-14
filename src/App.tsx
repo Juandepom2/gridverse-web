@@ -1,3 +1,4 @@
+import confetti from 'canvas-confetti';
 import React, { useState, useEffect, useRef } from 'react';
 import { Map, Zap, BookOpen, ShoppingBag, User } from 'lucide-react';
 import { UserStats } from './types';
@@ -20,7 +21,7 @@ import {
 } from './lib/firebase';
 import { tr, UI_STRINGS } from './lib/i18n';
 import { onAuthStateChanged } from 'firebase/auth';
-import { doc, onSnapshot } from 'firebase/firestore';
+import { doc, onSnapshot, setDoc, serverTimestamp } from 'firebase/firestore';
 
 const LIFE_REGEN_MS = 20 * 60 * 1000; // 20 minutes per life
 
@@ -37,6 +38,52 @@ export const App: React.FC = () => {
   useEffect(() => {
     sound.setSfxEnabled(stats.soundEnabled);
   }, [stats.soundEnabled]);
+
+  // Handle Stripe Checkout return (?checkout_success=true)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('checkout_success') === 'true') {
+      const sessionId = params.get('session_id') || '';
+      const pendingPlan = localStorage.getItem('gridverse_pending_checkout_plan') || 'annual';
+
+      sound.play('coin');
+      confetti({
+        particleCount: 110,
+        spread: 80,
+        origin: { y: 0.6 },
+      });
+
+      setStats((prev) => {
+        const updated: UserStats = {
+          ...prev,
+          isPro: true,
+          subscriptionPlan: pendingPlan,
+          lives: 5,
+        };
+        saveUserStats(updated);
+        return updated;
+      });
+
+      const user = auth.currentUser;
+      if (user) {
+        const userDocRef = doc(db, 'users', user.uid);
+        setDoc(
+          userDocRef,
+          {
+            isPro: true,
+            subscriptionPlan: pendingPlan,
+            stripeSessionId: sessionId,
+            integrity: 5,
+            updatedAt: serverTimestamp(),
+          },
+          { merge: true }
+        ).catch((err) => console.warn('[StripeReturn] Error saving PRO to Firestore:', err));
+      }
+
+      window.history.replaceState({}, '', window.location.pathname);
+      setActiveTab('shop');
+    }
+  }, []);
 
   // Automatic 20-minute life regeneration timer (matching Flutter LivesService)
   useEffect(() => {
@@ -285,6 +332,7 @@ export const App: React.FC = () => {
             stats={stats}
             locale={stats.locale}
             onUpdateStats={handleUpdateStats}
+            onNavigateTab={(t) => setActiveTab(t as any)}
           />
         )}
         {activeTab === 'profile' && (

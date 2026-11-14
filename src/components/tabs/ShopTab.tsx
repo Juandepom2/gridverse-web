@@ -27,9 +27,23 @@ interface ShopTabProps {
   stats: UserStats;
   locale: SupportedLocale;
   onUpdateStats: (newStats: UserStats) => void;
+  onNavigateTab?: (tab: string) => void;
 }
 
-export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }) => {
+export const STRIPE_PAYMENT_LINKS = {
+  individual: {
+    annual: 'https://buy.stripe.com/fZuaEY3HEdGi2yJ9637Vm04',
+    monthly: 'https://buy.stripe.com/7sYdRaemi1XA7T33LJ7Vm05',
+    lifetime: 'https://buy.stripe.com/9B6dRa4LIcCe2yJ81Z7Vm06',
+  },
+  duo: {
+    annual: 'https://buy.stripe.com/dRmbJ24LIbya3CNcif7Vm07',
+    monthly: 'https://buy.stripe.com/4gM9AU3HE59M0qBcif7Vm08',
+    lifetime: 'https://buy.stripe.com/cNi14oa62gSu5KVbeb7Vm09',
+  },
+} as const;
+
+export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, onNavigateTab }) => {
   const [restoring, setRestoring] = useState(false);
   const [restoreMessage, setRestoreMessage] = useState<string | null>(null);
 
@@ -37,6 +51,8 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }
   const [isViewingOtherPlans, setIsViewingOtherPlans] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<'individual' | 'duo'>('individual');
   const [selectedTier, setSelectedTier] = useState<'annual' | 'monthly' | 'lifetime'>('annual');
+  const [isRedirectingCheckout, setIsRedirectingCheckout] = useState(false);
+  const [showAuthRequiredModal, setShowAuthRequiredModal] = useState(false);
 
   // Duo Partner Email management (synced to Firestore users/{uid}.duoPartnerEmail)
   const [duoEmail, setDuoEmail] = useState('');
@@ -304,6 +320,60 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }
       fr: 'PRO ACTIF',
       ja: 'PRO 有効',
       pt: 'PRO ATIVO',
+    });
+  };
+
+  const handleProceedToStripeCheckout = () => {
+    sound.play('tap');
+    const user = auth.currentUser;
+    if (!user) {
+      setShowAuthRequiredModal(true);
+      return;
+    }
+
+    setIsRedirectingCheckout(true);
+    const planKey = `${selectedCategory}_${selectedTier}`;
+    localStorage.setItem('gridverse_pending_checkout_plan', planKey);
+
+    const baseLink = STRIPE_PAYMENT_LINKS[selectedCategory][selectedTier];
+    const url = new URL(baseLink);
+    url.searchParams.set('client_reference_id', user.uid);
+    if (user.email) {
+      url.searchParams.set('prefilled_email', user.email);
+    }
+    window.location.href = url.toString();
+  };
+
+  const getCtaButtonLabel = () => {
+    if (selectedTier === 'annual') {
+      return tr(locale, {
+        es: selectedCategory === 'duo' ? 'INICIAR PRUEBA DÚO DE 7 DÍAS GRATIS >' : 'INICIAR PRUEBA DE 7 DÍAS GRATIS >',
+        en: selectedCategory === 'duo' ? 'START 7-DAY DUO FREE TRIAL >' : 'START 7-DAY FREE TRIAL >',
+        de: selectedCategory === 'duo' ? '7 TAGE DUO KOSTENLOS TESTEN >' : '7 TAGE KOSTENLOS TESTEN >',
+        fr: selectedCategory === 'duo' ? 'DÉMARRER L’ESSAI DUO 7 JOURS GRATUIT >' : 'DÉMARRER L’ESSAI 7 JOURS GRATUIT >',
+        ja: selectedCategory === 'duo' ? '7日間無料デュオ体験を始める >' : '7日間無料体験を始める >',
+        pt: selectedCategory === 'duo' ? 'INICIAR TESTE DUO DE 7 DIAS GRÁTIS >' : 'INICIAR TESTE DE 7 DIAS GRÁTIS >',
+      });
+    }
+    if (selectedTier === 'monthly') {
+      const priceStr = selectedCategory === 'duo' ? '$7.99' : '$4.99';
+      return tr(locale, {
+        es: `SUSCRIBIRME POR ${priceStr}/MES >`,
+        en: `SUBSCRIBE FOR ${priceStr}/MO >`,
+        de: `FÜR ${priceStr}/MONAT ABONNIEREN >`,
+        fr: `S’ABONNER POUR ${priceStr}/MOIS >`,
+        ja: `月額 ${priceStr} で登録する >`,
+        pt: `ASSINAR POR ${priceStr}/MÊS >`,
+      });
+    }
+    const lifetimePrice = selectedCategory === 'duo' ? '$99.99' : '$59.99';
+    return tr(locale, {
+      es: selectedCategory === 'duo' ? `OBTENER DÚO DE POR VIDA · ${lifetimePrice} >` : `OBTENER ACCESO DE POR VIDA · ${lifetimePrice} >`,
+      en: selectedCategory === 'duo' ? `GET DUO LIFETIME · ${lifetimePrice} >` : `GET LIFETIME ACCESS · ${lifetimePrice} >`,
+      de: selectedCategory === 'duo' ? `DUO LEBENSLANG SICHERN · ${lifetimePrice} >` : `LEBENSLANGEN ZUGRIFF SICHERN · ${lifetimePrice} >`,
+      fr: selectedCategory === 'duo' ? `OBTENIR DUO À VIE · ${lifetimePrice} >` : `OBTENIR L’ACCÈS À VIE · ${lifetimePrice} >`,
+      ja: selectedCategory === 'duo' ? `ペア生涯買い切りを入手 · ${lifetimePrice} >` : `生涯買い切りプランを入手 · ${lifetimePrice} >`,
+      pt: selectedCategory === 'duo' ? `OBTER DUO VITALÍCIO · ${lifetimePrice} >` : `OBTER ACESSO VITALÍCIO · ${lifetimePrice} >`,
     });
   };
 
@@ -685,7 +755,7 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }
                       })}
                 </h3>
                 <div className="text-2xl font-black text-gv-accent font-mono mt-1">
-                  {selectedCategory === 'duo' ? '$54.99' : '$37.99'}
+                  {selectedCategory === 'duo' ? '$59.99' : '$37.99'}
                   <span className="text-xs text-gv-muted font-normal">
                     {' '}
                     / {tr(locale, { es: 'año', en: 'year', de: 'Jahr', fr: 'an', ja: '年', pt: 'ano' })}
@@ -694,20 +764,20 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }
                 <p className="text-[11px] text-gv-muted mt-1">
                   {selectedCategory === 'duo'
                     ? tr(locale, {
-                        es: 'Solo $0.52/semana por persona · 2 cuentas PRO',
-                        en: 'Only $0.52/week per person · 2 PRO accounts',
-                        de: 'Nur $0.52/Woche pro Person · 2 PRO-Konten',
-                        fr: 'Seulement 0,52 $/semaine par personne · 2 comptes PRO',
-                        ja: '1人あたり週$0.52 · 2アカウントPRO',
-                        pt: 'Apenas $0.52/semana por pessoa · 2 contas PRO',
+                        es: 'Solo $2.50/mes por persona · 2 cuentas PRO sincronizadas',
+                        en: 'Only $2.50/mo per person · 2 synced PRO accounts',
+                        de: 'Nur 2,50 $/Monat pro Person · 2 synchronisierte PRO-Konten',
+                        fr: 'Seulement 2,50 $/mois par personne · 2 comptes PRO synchronisés',
+                        ja: '1人あたり月$2.50 · 2アカウントPRO連携',
+                        pt: 'Apenas $2.50/mês por pessoa · 2 contas PRO sincronizadas',
                       })
                     : tr(locale, {
-                        es: 'Solo $0.73/semana · Menos que un café al mes',
-                        en: 'Only $0.73/week · Less than a coffee per month',
-                        de: 'Nur $0.73/Woche · Weniger als ein Kaffee im Monat',
-                        fr: 'Seulement 0,73 $/semaine · Moins cher qu’un café',
-                        ja: '週わずか$0.73 · 最もお得なプラン',
-                        pt: 'Apenas $0.73/semana · Menos que um café por mês',
+                        es: 'Solo $3.16/mes ($0.73/sem) · Menos que un café al mes',
+                        en: 'Only $3.16/mo ($0.73/wk) · Less than a coffee per month',
+                        de: 'Nur 3,16 $/Monat (0,73 $/Woche) · Weniger als ein Kaffee',
+                        fr: 'Seulement 3,16 $/mois (0,73 $/sem) · Moins cher qu’un café',
+                        ja: '月わずか$3.16（週$0.73） · 一番人気のプラン',
+                        pt: 'Apenas $3.16/mês ($0.73/sem) · Menos que um café por mês',
                       })}
                 </p>
               </div>
@@ -758,21 +828,30 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }
                       })}
                 </h3>
                 <div className="text-2xl font-black text-gv-text font-mono mt-1">
-                  {selectedCategory === 'duo' ? '$9.99' : '$6.99'}
+                  {selectedCategory === 'duo' ? '$7.99' : '$4.99'}
                   <span className="text-xs text-gv-muted font-normal">
                     {' '}
                     / {tr(locale, { es: 'mes', en: 'mo', de: 'Monat', fr: 'mois', ja: '月', pt: 'mês' })}
                   </span>
                 </div>
                 <p className="text-[11px] text-gv-muted mt-1">
-                  {tr(locale, {
-                    es: 'Sin plazos forzosos · Cancela cuando quieras',
-                    en: 'No lock-in · Cancel anytime',
-                    de: 'Keine Bindung · Jederzeit kündbar',
-                    fr: 'Sans engagement · Annule quand tu veux',
-                    ja: '縛りなし · いつでも解約可能',
-                    pt: 'Sem fidelidade · Cancele quando quiser',
-                  })}
+                  {selectedCategory === 'duo'
+                    ? tr(locale, {
+                        es: '2 miembros activos ($4.00/persona) · Cancela cuando quieras',
+                        en: '2 active members ($4.00/person) · Cancel anytime',
+                        de: '2 aktive Mitglieder (4,00 $/Person) · Jederzeit kündbar',
+                        fr: '2 membres actifs (4,00 $/personne) · Sans engagement',
+                        ja: '2アカウント共有（1人$4.00） · いつでも解約可能',
+                        pt: '2 membros ativos ($4.00/pessoa) · Cancele quando quiser',
+                      })
+                    : tr(locale, {
+                        es: 'Sin plazos forzosos · Cancela en 1 clic cuando quieras',
+                        en: 'No lock-in · Cancel in 1 click anytime',
+                        de: 'Keine Bindung · Mit 1 Klick jederzeit kündbar',
+                        fr: 'Sans engagement · Annule en 1 clic quand tu veux',
+                        ja: '縛りなし · 1クリックでいつでも解約可能',
+                        pt: 'Sem fidelidade · Cancele em 1 clique quando quiser',
+                      })}
                 </p>
               </div>
             </div>
@@ -823,7 +902,7 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }
                       })}
                 </h3>
                 <div className="text-2xl font-black text-gv-warning font-mono mt-1">
-                  {selectedCategory === 'duo' ? '$119.99' : '$79.99'}
+                  {selectedCategory === 'duo' ? '$99.99' : '$59.99'}
                   <span className="text-xs text-gv-muted font-normal">
                     {' '}
                     {tr(locale, {
@@ -837,16 +916,167 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }
                   </span>
                 </div>
                 <p className="text-[11px] text-gv-muted mt-1">
-                  {tr(locale, {
-                    es: 'Acceso permanente para siempre sin renovaciones',
-                    en: 'Permanent access forever without renewals',
-                    de: 'Dauerhafter Zugang für immer ohne Verlängerungen',
-                    fr: 'Accès permanent à vie sans renouvellement',
-                    ja: '追加課金なしで永久にすべて利用可能',
-                    pt: 'Acesso permanente para sempre sem renovações',
-                  })}
+                  {selectedCategory === 'duo'
+                    ? tr(locale, {
+                        es: 'Acceso permanente para siempre para 2 cuentas sin renovaciones',
+                        en: 'Permanent access forever for 2 accounts without renewals',
+                        de: 'Dauerhafter Zugang für immer für 2 Konten ohne Verlängerungen',
+                        fr: 'Accès permanent à vie pour 2 comptes sans renouvellement',
+                        ja: '2アカウント永久アクセス · 追加費用なし',
+                        pt: 'Acesso permanente para sempre para 2 contas sem renovações',
+                      })
+                    : tr(locale, {
+                        es: 'Acceso permanente para siempre sin renovaciones',
+                        en: 'Permanent access forever without renewals',
+                        de: 'Dauerhafter Zugang für immer ohne Verlängerungen',
+                        fr: 'Accès permanent à vie sans renouvellement',
+                        ja: '追加課金なしで永久にすべて利用可能',
+                        pt: 'Acesso permanente para siempre sem renovações',
+                      })}
                 </p>
               </div>
+            </div>
+          </div>
+
+          {/* Main Stripe Checkout CTA Card */}
+          <div className="bg-gradient-to-r from-gv-surface via-gv-surface-high to-gv-primary/10 border-2 border-gv-primary/50 rounded-2xl p-5 md:p-6 shadow-xl flex flex-col items-center text-center gap-3.5">
+            <div className="flex flex-col items-center gap-1">
+              <span className="text-[10px] font-mono font-black uppercase tracking-wider text-gv-primary flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5" />
+                {selectedTier === 'annual'
+                  ? tr(locale, {
+                      es: '7 DÍAS DE PRUEBA GRATIS · CANCELA EN CUALQUIER MOMENTO',
+                      en: '7-DAY FREE TRIAL · CANCEL ANYTIME',
+                      de: '7 TAGE KOSTENLOS TESTEN · JEDERZEIT KÜNDBAR',
+                      fr: 'ESSAI GRATUIT DE 7 JOURS · SANS ENGAGEMENT',
+                      ja: '7日間無料体験 · いつでも解約可能',
+                      pt: '7 DIAS DE TESTE GRÁTIS · CANCELE QUANDO QUISER',
+                    })
+                  : selectedTier === 'monthly'
+                  ? tr(locale, {
+                      es: 'FACTURACIÓN MES A MES · SIN PLAZOS FORZOSOS',
+                      en: 'MONTH-TO-MONTH BILLING · NO COMMITMENT',
+                      de: 'MONATLICHE ABRECHNUNG · KEINE BINDUNG',
+                      fr: 'FACTURATION AU MOIS · SANS ENGAGEMENT',
+                      ja: '月々請求 · 契約縛りなし',
+                      pt: 'COBRANÇA MÊS A MÊS · SEM FIDELIDADE',
+                    })
+                  : tr(locale, {
+                      es: 'PAGO ÚNICO · ACCESO ILIMITADO DE POR VIDA',
+                      en: 'ONE-TIME PAYMENT · LIFETIME UNLIMITED ACCESS',
+                      de: 'EINMALZAHLUNG · LEBENSLANGER ZUGANG',
+                      fr: 'PAIEMENT UNIQUE · ACCÈS ILLIMITÉ À VIE',
+                      ja: '買い切り決済 · 生涯無制限アクセス',
+                      pt: 'PAGAMENTO ÚNICO · ACESSO ILIMITADO VITALÍCIO',
+                    })}
+              </span>
+              <h3 className="text-lg md:text-xl font-black text-gv-text">
+                {selectedCategory === 'duo'
+                  ? selectedTier === 'annual'
+                    ? tr(locale, {
+                        es: 'Plan Anual Dúo: $59.99/año ($2.50/mes por persona)',
+                        en: 'Duo Annual Plan: $59.99/yr ($2.50/mo per person)',
+                        de: 'Duo-Jahresplan: 59,99 $/Jahr (2,50 $/Monat pro Person)',
+                        fr: 'Plan Duo Annuel : 59,99 $/an (2,50 $/mois par personne)',
+                        ja: '年間デュオプラン: $59.99/年（1人月$2.50）',
+                        pt: 'Plano Anual Duo: $59.99/ano ($2.50/mês por persona)',
+                      })
+                    : selectedTier === 'monthly'
+                    ? tr(locale, {
+                        es: 'Plan Mensual Dúo: $7.99/mes para 2 personas',
+                        en: 'Duo Monthly Plan: $7.99/mo for 2 people',
+                        de: 'Duo-Monatsplan: 7,99 $/Monat für 2 Personen',
+                        fr: 'Plan Duo Mensuel : 7,99 $/mois pour 2 personnes',
+                        ja: '月間デュオプラン: 2名で $7.99/月',
+                        pt: 'Plano Mensal Duo: $7.99/mês para 2 pessoas',
+                      })
+                    : tr(locale, {
+                        es: 'Plan Dúo De Por Vida: $99.99 pago único para 2 cuentas',
+                        en: 'Duo Lifetime Plan: $99.99 one-time for 2 accounts',
+                        de: 'Duo-Lebenslang: 99,99 $ Einmalzahlung für 2 Konten',
+                        fr: 'Plan Duo À Vie : 99,99 $ paiement unique pour 2 comptes',
+                        ja: 'デュオ永久プラン: 2アカウントで $99.99 買い切り',
+                        pt: 'Plano Duo Vitalício: $99.99 pagamento único para 2 contas',
+                      })
+                  : selectedTier === 'annual'
+                  ? tr(locale, {
+                      es: 'Plan Anual PRO: $37.99/año ($3.16/mes · $0.73/semana)',
+                      en: 'Annual PRO Plan: $37.99/yr ($3.16/mo · $0.73/wk)',
+                      de: 'PRO-Jahresplan: 37,99 $/Jahr (3,16 $/Monat)',
+                      fr: 'Plan PRO Annuel : 37,99 $/an (3,16 $/mois)',
+                      ja: '年間PROプラン: $37.99/年（月$3.16 · 週$0.73）',
+                      pt: 'Plano Anual PRO: $37.99/ano ($3.16/mês · $0.73/sem)',
+                    })
+                  : selectedTier === 'monthly'
+                  ? tr(locale, {
+                      es: 'Plan Mensual PRO: $4.99/mes flexible',
+                      en: 'Monthly PRO Plan: $4.99/mo flexible',
+                      de: 'PRO-Monatsplan: 4,99 $/Monat flexibel',
+                      fr: 'Plan PRO Mensuel : 4,99 $/mois flexible',
+                      ja: '月間PROプラン: $4.99/月 フレキシブル',
+                      pt: 'Plano Mensal PRO: $4.99/mês flexível',
+                    })
+                  : tr(locale, {
+                      es: 'Plan De Por Vida PRO: $59.99 pago único para siempre',
+                      en: 'Lifetime PRO Plan: $59.99 one-time payment forever',
+                      de: 'PRO-Lebenslang: 59,99 $ einmalig für immer',
+                      fr: 'Plan PRO À Vie : 59,99 $ paiement unique pour toujours',
+                      ja: '永久PROプラン: $59.99 追加課金なし買い切り',
+                      pt: 'Plano Vitalício PRO: $59.99 pagamento único para siempre',
+                    })}
+              </h3>
+            </div>
+
+            <button
+              type="button"
+              onClick={handleProceedToStripeCheckout}
+              disabled={isRedirectingCheckout}
+              className="w-full max-w-md py-4 px-6 rounded-2xl bg-gv-primary hover:bg-gv-accent text-black font-black text-sm md:text-base uppercase tracking-wider transition-all transform active:scale-98 shadow-xl shadow-gv-primary/30 flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-60"
+            >
+              {isRedirectingCheckout ? (
+                <>
+                  <RefreshCw className="w-5 h-5 animate-spin" />
+                  <span>{tr(locale, { es: 'Abriendo Stripe Checkout...', en: 'Opening Stripe Checkout...', de: 'Stripe Checkout wird geöffnet...', fr: 'Ouverture de Stripe Checkout...', ja: 'Stripeを開いています...', pt: 'Abrindo Stripe Checkout...' })}</span>
+                </>
+              ) : (
+                <>
+                  <Zap className="w-5 h-5 fill-black" />
+                  <span>{getCtaButtonLabel()}</span>
+                </>
+              )}
+            </button>
+
+            {/* Trust Badges */}
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[11px] text-gv-muted pt-1">
+              <span className="flex items-center gap-1.5">
+                <Shield className="w-3.5 h-3.5 text-gv-accent" />
+                {tr(locale, {
+                  es: 'Pago 100% seguro con Stripe',
+                  en: '100% Secure Checkout with Stripe',
+                  de: '100% sichere Zahlung mit Stripe',
+                  fr: 'Paiement 100% sécurisé avec Stripe',
+                  ja: 'Stripeによる安全な暗号化決済',
+                  pt: 'Pagamento 100% seguro com Stripe',
+                })}
+              </span>
+              <span>•</span>
+              <span>{tr(locale, {
+                es: 'Tarjeta, Apple Pay y Google Pay',
+                en: 'Card, Apple Pay & Google Pay',
+                de: 'Karte, Apple Pay & Google Pay',
+                fr: 'Carte, Apple Pay & Google Pay',
+                ja: 'カード / Apple Pay / Google Pay 対応',
+                pt: 'Cartão, Apple Pay e Google Pay',
+              })}</span>
+              <span>•</span>
+              <span>{tr(locale, {
+                es: 'Cancela cuando quieras',
+                en: 'Cancel anytime',
+                de: 'Jederzeit kündbar',
+                fr: 'Annulation en 1 clic',
+                ja: 'いつでも解約可能',
+                pt: 'Cancele quando quiser',
+              })}</span>
             </div>
           </div>
 
@@ -1042,32 +1272,47 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }
             </div>
 
             {!stats.isPro && (
-              <div className="p-4 bg-gv-surface-high border-t border-gv-border flex flex-col sm:flex-row items-center justify-between gap-3">
-                <p className="text-xs text-gv-muted">
-                  {tr(locale, {
-                    es: 'Adquiere tu plan desde la app móvil oficial y se activará automáticamente en Web.',
-                    en: 'Get your plan on the official mobile app and it will activate automatically on Web.',
-                    de: 'Hol dir deinen Plan in der offiziellen App – er wird im Web automatisch aktiviert.',
-                    fr: 'Prends ton abonnement sur l’application mobile officielle et il sera activé sur le Web.',
-                    ja: '公式モバイルアプリでプランを購入すると、Web版でも自動的に有効になります。',
-                    pt: 'Adquira seu plano no app móvel oficial e ele será ativado automaticamente na Web.',
-                  })}
-                </p>
-                <a
-                  href="https://gridverse.app#download"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs uppercase tracking-wider shrink-0 shadow-lg shadow-gv-primary/20"
+              <div className="p-5 bg-gv-surface-high border-t border-gv-border flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                  <p className="text-xs font-bold text-gv-text">
+                    {tr(locale, {
+                      es: '¿Listo para dominar Excel con Gridverse PRO?',
+                      en: 'Ready to master Excel with Gridverse PRO?',
+                      de: 'Bereit, Excel mit Gridverse PRO zu meistern?',
+                      fr: 'Prêt à maîtriser Excel avec Gridverse PRO ?',
+                      ja: 'Gridverse PROでExcelを極めませんか？',
+                      pt: 'Pronto para dominar o Excel com o Gridverse PRO?',
+                    })}
+                  </p>
+                  <p className="text-[11px] text-gv-muted mt-0.5">
+                    {tr(locale, {
+                      es: 'Tu suscripción web se sincroniza automáticamente con tu app en iPhone y Android.',
+                      en: 'Your web subscription automatically syncs with your iPhone and Android apps.',
+                      de: 'Dein Web-Abo synchronisiert sich automatisch mit iPhone und Android.',
+                      fr: 'Ton abonnement web se synchronise automáticamente avec iPhone et Android.',
+                      ja: 'Web版の購入はiPhone/Androidアプリと自動同期されます。',
+                      pt: 'Sua assinatura web sincroniza automaticamente com iPhone e Android.',
+                    })}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleProceedToStripeCheckout}
+                  disabled={isRedirectingCheckout}
+                  className="px-5 py-3 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs uppercase tracking-wider shrink-0 shadow-lg shadow-gv-primary/25 cursor-pointer flex items-center gap-2"
                 >
-                  {tr(locale, {
-                    es: 'Activar en la App >',
-                    en: 'Activate in App >',
-                    de: 'In der App aktivieren >',
-                    fr: "Activer dans l'App >",
-                    ja: 'アプリで有効化 >',
-                    pt: 'Ativar no App >',
-                  })}
-                </a>
+                  <Zap className="w-4 h-4 fill-black" />
+                  <span>
+                    {tr(locale, {
+                      es: 'Suscribirme con Stripe >',
+                      en: 'Subscribe with Stripe >',
+                      de: 'Mit Stripe abonnieren >',
+                      fr: 'S’abonner avec Stripe >',
+                      ja: 'Stripeで申し込む >',
+                      pt: 'Assinar com Stripe >',
+                    })}
+                  </span>
+                </button>
               </div>
             )}
           </div>
@@ -1188,6 +1433,72 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }
           </div>
         </div>
       </div>
+      {showAuthRequiredModal && (
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-gv-surface border-2 border-gv-primary rounded-2xl max-w-md w-full p-6 flex flex-col gap-4 shadow-2xl">
+            <div className="w-12 h-12 rounded-xl bg-gv-primary/15 border border-gv-primary/30 flex items-center justify-center text-gv-accent mx-auto">
+              <User className="w-6 h-6" />
+            </div>
+            <div className="text-center">
+              <h3 className="text-base font-black text-gv-text">
+                {tr(locale, {
+                  es: 'Inicia sesión para continuar',
+                  en: 'Sign in to continue',
+                  de: 'Anmelden, um fortzufahren',
+                  fr: 'Connecte-toi pour continuer',
+                  ja: 'ログインして続行',
+                  pt: 'Faça login para continuar',
+                })}
+              </h3>
+              <p className="text-xs text-gv-muted mt-1.5 leading-relaxed">
+                {tr(locale, {
+                  es: 'Para vincular tu membresía PRO a tu cuenta y que esté sincronizada en tu navegador, iPhone y Android, inicia sesión con Google o Apple.',
+                  en: 'To link your PRO membership to your account and sync across browser, iPhone, and Android, please sign in with Google or Apple.',
+                  de: 'Um deine PRO-Mitgliedschaft mit deinem Konto zu verknüpfen und auf Web, iPhone und Android zu synchronisieren, melde dich bitte an.',
+                  fr: 'Pour associer ton abonnement PRO à ton compte et le synchroniser sur le Web, iPhone et Android, connecte-toi avec Google ou Apple.',
+                  ja: 'PROメンバーシップをアカウントに紐づけ、Web・iPhone・Androidで同期するために、GoogleまたはAppleでログインしてください。',
+                  pt: 'Para vincular sua assinatura PRO à sua conta e sincronizar no navegador, iPhone e Android, faça login com Google ou Apple.',
+                })}
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-2 pt-2">
+              <button
+                type="button"
+                onClick={() => {
+                  sound.play('tap');
+                  setShowAuthRequiredModal(false);
+                  if (onNavigateTab) onNavigateTab('profile');
+                }}
+                className="w-full py-3 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs uppercase tracking-wider cursor-pointer"
+              >
+                {tr(locale, {
+                  es: 'Ir al Perfil / Iniciar Sesión',
+                  en: 'Go to Profile / Sign In',
+                  de: 'Zum Profil / Anmelden',
+                  fr: 'Aller au Profil / Se Connecter',
+                  ja: 'プロフィールへ移動してログイン',
+                  pt: 'Ir ao Perfil / Fazer Login',
+                })}
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowAuthRequiredModal(false)}
+                className="w-full py-2.5 rounded-xl bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border text-xs font-bold text-gv-muted hover:text-gv-text cursor-pointer"
+              >
+                {tr(locale, {
+                  es: 'Cancelar',
+                  en: 'Cancel',
+                  de: 'Abbrechen',
+                  fr: 'Annuler',
+                  ja: 'キャンセル',
+                  pt: 'Cancelar',
+                })}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
