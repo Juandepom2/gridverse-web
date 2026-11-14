@@ -5,6 +5,8 @@ import {
   OAuthProvider,
   signInWithPopup,
   linkWithPopup,
+  updateProfile,
+  deleteUser,
   User as FirebaseUser,
 } from 'firebase/auth';
 import {
@@ -12,6 +14,8 @@ import {
   doc,
   getDoc,
   setDoc,
+  addDoc,
+  deleteDoc,
   collection,
   query,
   where,
@@ -246,9 +250,19 @@ export async function syncStatsToFirestore(uid: string, stats: UserStats, user?:
       updatedAt: serverTimestamp(),
     };
 
-    if (user?.displayName) payload.displayName = user.displayName;
+    if (stats.displayName || user?.displayName) {
+      payload.displayName = stats.displayName || user?.displayName;
+    }
     if (user?.email) payload.email = user.email;
-    if (user?.photoURL) payload.photoUrl = user.photoURL;
+    if (stats.photoUrl || user?.photoURL) {
+      payload.photoUrl = stats.photoUrl || user?.photoURL;
+    }
+    if (stats.activityHistory && Object.keys(stats.activityHistory).length > 0) {
+      payload.activityHistory = stats.activityHistory;
+    }
+    if (stats.lastStreakDate) {
+      payload.lastStreakDate = stats.lastStreakDate;
+    }
     if (stats.isPro) payload.isPro = true;
     if (stats.subscriptionPlan) payload.subscriptionPlan = stats.subscriptionPlan;
 
@@ -364,4 +378,58 @@ export async function linkAccountWithApple() {
 export async function linkAccountWithGoogle() {
   if (!auth.currentUser) throw new Error('No hay sesión activa para vincular.');
   return linkWithPopup(auth.currentUser, googleProvider);
+}
+
+export async function updateUserProfileData(
+  displayName: string,
+  photoUrl: string
+): Promise<void> {
+  const user = auth.currentUser;
+  if (!user) return;
+  try {
+    await updateProfile(user, {
+      displayName: displayName.trim().slice(0, 25),
+      ...(photoUrl.startsWith('http') ? { photoURL: photoUrl } : {}),
+    });
+  } catch (err) {
+    console.warn('[Auth] Error updating Firebase Auth profile:', err);
+  }
+  try {
+    await setDoc(
+      doc(db, 'users', user.uid),
+      {
+        displayName: displayName.trim().slice(0, 25),
+        photoUrl: photoUrl.slice(0, 500),
+        updatedAt: serverTimestamp(),
+      },
+      { merge: true }
+    );
+  } catch (err) {
+    console.warn('[Firestore] Error updating user profile doc:', err);
+  }
+}
+
+export async function deleteAccountAndFirestoreData(): Promise<void> {
+  const user = auth.currentUser;
+  if (!user) return;
+  const uid = user.uid;
+  try {
+    await deleteDoc(doc(db, 'users', uid));
+  } catch (err) {
+    console.warn('[Firestore] Error deleting user doc:', err);
+  }
+  await deleteUser(user);
+}
+
+export async function submitAppFeedback(feedback: string): Promise<void> {
+  const user = auth.currentUser;
+  const cleanText = feedback.trim().slice(0, 1990);
+  if (!cleanText) return;
+  await addDoc(collection(db, 'app_feedback'), {
+    uid: user?.uid || 'guest_web',
+    email: user?.email || 'guest@gridverse.app',
+    feedback: cleanText,
+    createdAt: serverTimestamp(),
+    platform: 'web',
+  });
 }

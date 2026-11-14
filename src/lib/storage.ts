@@ -32,6 +32,23 @@ export function saveUserStats(stats: UserStats): void {
   }
 }
 
+export function resetUserStats(): UserStats {
+  const clean: UserStats = {
+    ...DEFAULT_STATS,
+    completedLevels: {},
+    activityHistory: {},
+  };
+  saveUserStats(clean);
+  return clean;
+}
+
+export function formatLocalDateKey(d: Date = new Date()): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
 export function markLevelCompleted(
   current: UserStats,
   levelRef: string,
@@ -49,6 +66,17 @@ export function markLevelCompleted(
   };
   updated.xp += earnedXp;
   updated.gems += earnedXp >= 15 ? 5 : 2;
+
+  const todayKey = formatLocalDateKey();
+  const prevHistory = updated.activityHistory || {};
+  updated.activityHistory = {
+    ...prevHistory,
+    [todayKey]: (prevHistory[todayKey] || 0) + 1,
+  };
+  if (updated.lastStreakDate !== todayKey) {
+    updated.lastStreakDate = todayKey;
+    updated.streak = Math.max(1, updated.streak);
+  }
 
   if (nextLevelRef) {
     updated.unlockedLevel = nextLevelRef;

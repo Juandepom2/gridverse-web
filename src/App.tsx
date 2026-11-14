@@ -231,6 +231,8 @@ export const App: React.FC = () => {
           <ProfileTab
             stats={stats}
             locale={stats.locale}
+            onUpdateStats={handleUpdateStats}
+            onNavigateTab={(t) => setActiveTab(t as any)}
           />
         )}
       </main>
