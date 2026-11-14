@@ -89,7 +89,7 @@ export const CeldiMascot: React.FC<CeldiProps> = ({
         </div>
       )}
 
-      {/* SVG Mascot Body with complete physical animations */}
+      {/* SVG Mascot Body - Identical to Flutter App without pupils */}
       <div className="relative" style={{ width: size, height: size }}>
         <svg
           viewBox="0 0 200 200"
@@ -111,7 +111,7 @@ export const CeldiMascot: React.FC<CeldiProps> = ({
             </linearGradient>
           </defs>
 
-          {/* Dynamic Ground Shadow synchronized with breathing */}
+          {/* Dynamic Ground Shadow */}
           <ellipse
             cx="100"
             cy="184"
@@ -120,7 +120,7 @@ export const CeldiMascot: React.FC<CeldiProps> = ({
             className="celdi-shadow fill-black/55 blur-[2.5px]"
           />
 
-          {/* Physical Body Group (subject to squash, stretch, bounce & breathing) */}
+          {/* Physical Body Group */}
           <g className="celdi-squash-group">
             {/* OnFire Energy Aura Spikes on top */}
             {mood === 'onFire' && (
@@ -149,7 +149,7 @@ export const CeldiMascot: React.FC<CeldiProps> = ({
               style={{ filter: `drop-shadow(0 0 12px ${theme.glow})` }}
             />
 
-            {/* 3D Glass Specular Sheen Bar (spreadsheet cell bevel highlight) */}
+            {/* 3D Glass Specular Sheen Bar */}
             <rect
               x="34"
               y="42"
@@ -172,24 +172,66 @@ export const CeldiMascot: React.FC<CeldiProps> = ({
               />
             )}
 
-            {/* Spreadsheet Cell Header Reference Tag */}
-            <text
-              x="38"
-              y="58"
-              fill={theme.stroke}
-              fillOpacity="0.35"
-              fontSize="12"
-              fontFamily="monospace"
-              fontWeight="bold"
-            >
-              A1
-            </text>
+            {/* Floating Question Mark for Thinking Mood (like mobile app) */}
+            {isThinking && (
+              <text
+                x="180"
+                y="40"
+                fill={theme.stroke}
+                fontSize="28"
+                fontFamily="system-ui, sans-serif"
+                fontWeight="900"
+                className="animate-pulse"
+                style={{ filter: `drop-shadow(0 0 6px ${theme.glow})` }}
+              >
+                ?
+              </text>
+            )}
 
             {/* Cheeks Blush */}
             <ellipse cx="48" cy="118" rx="10" ry="5.5" fill={theme.blush} />
             <ellipse cx="152" cy="118" rx="10" ry="5.5" fill={theme.blush} />
 
-            {/* Eyes */}
+            {/* Eyebrows */}
+            {isThinking ? (
+              /* Curved inquisitive left brow, flat furrowed right brow (mobile app match) */
+              <>
+                <path
+                  d="M 60 74 Q 72 64 84 74"
+                  stroke="#FFFFFF"
+                  strokeWidth="4"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M 120 73 L 142 77"
+                  stroke="#FFFFFF"
+                  strokeWidth="4"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </>
+            ) : isSad ? (
+              /* Sad angled eyebrows */
+              <>
+                <path
+                  d="M 60 78 L 82 72"
+                  stroke="#EF4444"
+                  strokeWidth="4"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M 122 72 L 144 78"
+                  stroke="#EF4444"
+                  strokeWidth="4"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </>
+            ) : null}
+
+            {/* Eyes - STRICTLY SOLID WHITE WITHOUT PUPILS (App match) */}
             <g className="celdi-blink-eye">
               {isCelebrating ? (
                 /* Happy Arcs (^ ^) when celebrating */
@@ -210,28 +252,22 @@ export const CeldiMascot: React.FC<CeldiProps> = ({
                   />
                 </>
               ) : isThinking ? (
-                /* Thinking eyes looking curious */
+                /* Solid white eyes with NO pupils */
                 <>
-                  <ellipse cx="72" cy="92" rx="8" ry="13" fill="#FFFFFF" />
-                  <circle cx="75" cy="88" r="4" fill="#0A0F0C" />
-                  <ellipse cx="136" cy="92" rx="8" ry="13" fill="#FFFFFF" />
-                  <circle cx="139" cy="88" r="4" fill="#0A0F0C" />
+                  <ellipse cx="72" cy="95" rx="8" ry="12" fill="#FFFFFF" />
+                  <ellipse cx="134" cy="95" rx="8" ry="12" fill="#FFFFFF" />
                 </>
               ) : isSad ? (
-                /* Sad drooping eyes */
+                /* Solid white oval eyes with NO pupils */
                 <>
-                  <ellipse cx="68" cy="102" rx="8" ry="10" fill="#FFFFFF" />
-                  <circle cx="68" cy="104" r="3.5" fill="#251717" />
-                  <ellipse cx="132" cy="102" rx="8" ry="10" fill="#FFFFFF" />
-                  <circle cx="132" cy="104" r="3.5" fill="#251717" />
+                  <ellipse cx="68" cy="102" rx="8" ry="11" fill="#FFFFFF" />
+                  <ellipse cx="132" cy="102" rx="8" ry="11" fill="#FFFFFF" />
                 </>
               ) : (
-                /* Normal happy big expressive eyes with catchlights */
+                /* Normal mood: Solid white ovals, NO pupils (matching Flutter mobile app) */
                 <>
-                  <ellipse cx="68" cy="98" rx="8.5" ry="14" fill="#FFFFFF" />
-                  <circle cx="71" cy="93" r="3.8" fill="#18221D" />
-                  <ellipse cx="132" cy="98" rx="8.5" ry="14" fill="#FFFFFF" />
-                  <circle cx="135" cy="93" r="3.8" fill="#18221D" />
+                  <ellipse cx="68" cy="98" rx="8.5" ry="13.5" fill="#FFFFFF" />
+                  <ellipse cx="132" cy="98" rx="8.5" ry="13.5" fill="#FFFFFF" />
                 </>
               )}
             </g>
@@ -245,7 +281,15 @@ export const CeldiMascot: React.FC<CeldiProps> = ({
                 strokeWidth="4.5"
               />
             ) : isThinking ? (
-              <ellipse cx="100" cy="122" rx="5" ry="4" fill="#FFFFFF" />
+              /* Cute small circular mouth "o" (matching Flutter mobile app screenshot) */
+              <circle
+                cx="100"
+                cy="120"
+                r="5"
+                fill="none"
+                stroke="#FFFFFF"
+                strokeWidth="3.5"
+              />
             ) : isSad ? (
               <path
                 d="M 84 128 Q 100 114 116 128"
@@ -264,7 +308,7 @@ export const CeldiMascot: React.FC<CeldiProps> = ({
               />
             )}
 
-            {/* Fill Handle Tail ("Colita" con inercia wag) */}
+            {/* Fill Handle Tail ("Colita" with inertial wag) */}
             <g className="celdi-tail">
               <rect
                 x="166"

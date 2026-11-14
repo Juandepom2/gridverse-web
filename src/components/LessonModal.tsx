@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import confetti from 'canvas-confetti';
 import {
   X,
@@ -109,6 +109,10 @@ export const LessonModal: React.FC<LessonModalProps> = ({
   const [mistakes, setMistakes] = useState(0);
   const [combo, setCombo] = useState(0);
   const [showHint, setShowHint] = useState(false);
+  const [shakeScreen, setShakeScreen] = useState(false);
+  const [showLostLifeAnim, setShowLostLifeAnim] = useState(false);
+
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Load level JSON
   useEffect(() => {
@@ -163,7 +167,7 @@ export const LessonModal: React.FC<LessonModalProps> = ({
   // Reset exercise state upon step change
   useEffect(() => {
     if (currentExercise) {
-      setSelectedCell(currentExercise.data ? Object.keys(currentExercise.data)[0] || 'A1' : '');
+      setSelectedCell(currentExercise.data ? Object.keys(currentExercise.data)[0] || 'A1' : 'B1');
       setSelectedOption(null);
       setPickedBlockIndices([]);
       setWrittenFormula('');
@@ -171,6 +175,13 @@ export const LessonModal: React.FC<LessonModalProps> = ({
       setIsCorrect(false);
       setCeldiMood('thinking');
       setShowHint(false);
+      setShakeScreen(false);
+      setShowLostLifeAnim(false);
+
+      // Scroll container to top smoothly on new exercise
+      if (containerRef.current) {
+        containerRef.current.scrollTop = 0;
+      }
     }
   }, [currentIndex, currentExercise]);
 
@@ -211,7 +222,10 @@ export const LessonModal: React.FC<LessonModalProps> = ({
   }, [currentExercise, locale]);
 
   // Determine exercise type
-  const isBlocksExercise = (currentExercise?.type === 'build_formula' || currentExercise?.type === 'formula') || (blocks.length > 0);
+  const isBlocksExercise =
+    currentExercise?.type === 'build_formula' ||
+    currentExercise?.type === 'formula' ||
+    blocks.length > 0;
   const isSelectRange = currentExercise?.type === 'select_range';
   const isFindError = currentExercise?.type === 'find_error';
   const isWriteFormula = currentExercise?.type === 'write_formula';
@@ -232,7 +246,18 @@ export const LessonModal: React.FC<LessonModalProps> = ({
       return writtenFormula;
     }
     return '';
-  }, [isBlocksExercise, pickedBlockIndices, blocks, isPredict, selectedOption, isSelectRange, isFindError, selectedCell, isWriteFormula, writtenFormula]);
+  }, [
+    isBlocksExercise,
+    pickedBlockIndices,
+    blocks,
+    isPredict,
+    selectedOption,
+    isSelectRange,
+    isFindError,
+    selectedCell,
+    isWriteFormula,
+    writtenFormula,
+  ]);
 
   const canSubmit = currentAnswer.trim().length > 0;
 
@@ -245,6 +270,11 @@ export const LessonModal: React.FC<LessonModalProps> = ({
     if (isWriteFormula) return EXERCISE_LABELS.write_formula[locale] || 'Escribe la fórmula';
     return EXERCISE_LABELS.predict[locale] || 'Predice el resultado';
   }, [currentExercise, isBlocksExercise, isFindError, isSelectRange, isWriteFormula, locale]);
+
+  // Check whether options should use single-column layout (if any option is long, like in Flutter)
+  const useSingleColumnOptions = useMemo(() => {
+    return options.some((opt) => opt.length > 18 || opt.includes(' '));
+  }, [options]);
 
   const handleVerify = () => {
     if (isAnswered || !canSubmit) return;
@@ -270,11 +300,28 @@ export const LessonModal: React.FC<LessonModalProps> = ({
         sound.play('correct');
       }
       setCeldiMood('celebrating');
+
+      // Visual confetti burst
+      try {
+        confetti({
+          particleCount: 65,
+          spread: 60,
+          origin: { y: 0.72 },
+          colors: ['#21C26B', '#7CFFB2', '#3B82F6', '#FFC53D'],
+        });
+      } catch (_) {}
     } else {
       setCombo(0);
       sound.play('wrong');
       setCeldiMood('sad');
       setMistakes((prev) => prev + 1);
+
+      // Trigger shake effect and lost life animation
+      setShakeScreen(true);
+      setShowLostLifeAnim(true);
+      setTimeout(() => setShakeScreen(false), 500);
+      setTimeout(() => setShowLostLifeAnim(false), 1200);
+
       onLoseLife();
     }
   };
@@ -289,12 +336,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
       // Completed level
       setIsCompleted(true);
       sound.play('level_win');
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#21C26B', '#7CFFB2', '#3B82F6', '#F59E0B'],
-      });
+      try {
+        confetti({
+          particleCount: 110,
+          spread: 75,
+          origin: { y: 0.6 },
+          colors: ['#21C26B', '#7CFFB2', '#3B82F6', '#F59E0B'],
+        });
+      } catch (_) {}
 
       const stars = mistakes === 0 ? 3 : mistakes <= 1 ? 2 : 1;
       const earnedXp = level.rewardXp ?? 20;
@@ -304,9 +353,9 @@ export const LessonModal: React.FC<LessonModalProps> = ({
 
   if (loading || !level || !currentExercise) {
     return (
-      <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
         <div className="bg-gv-surface border border-gv-border rounded-2xl p-6 text-center">
-          <CeldiMascot mood="thinking" size={64} speechText="Cargando lección..." />
+          <CeldiMascot mood="thinking" size={60} speechText="Cargando lección..." />
         </div>
       </div>
     );
@@ -315,24 +364,28 @@ export const LessonModal: React.FC<LessonModalProps> = ({
   const progressPercent = ((currentIndex + 1) / level.exercises.length) * 100;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto">
-      <div className="bg-gv-surface border border-gv-border rounded-2xl md:rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden flex flex-col my-auto max-h-[92vh]">
-        {/* ── Top Bar: Exit + Progress + Lives + Combo */}
-        <div className="p-4 sm:p-5 border-b border-gv-border/80 flex items-center gap-3 bg-gv-surface-high/60">
+    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 animate-fade-in">
+      <div
+        className={`bg-gv-surface border border-gv-border rounded-2xl sm:rounded-3xl max-w-xl w-full shadow-2xl overflow-hidden flex flex-col h-[94vh] sm:h-auto sm:max-h-[88vh] transition-all ${
+          shakeScreen ? 'animate-shake' : ''
+        }`}
+      >
+        {/* ── 1. Top Bar (Compact, always pinned) */}
+        <div className="px-4 py-3 sm:px-5 sm:py-3.5 border-b border-gv-border/80 flex items-center gap-2.5 sm:gap-3 bg-gv-surface-high/60 shrink-0">
           <button
             onClick={() => {
               sound.play('tap');
               onClose();
             }}
-            className="w-9 h-9 rounded-xl bg-gv-surface border border-gv-border hover:bg-gv-surface-higher flex items-center justify-center text-gv-muted hover:text-gv-text transition-colors cursor-pointer shrink-0"
+            className="w-8 h-8 rounded-xl bg-gv-surface border border-gv-border hover:bg-gv-surface-higher flex items-center justify-center text-gv-muted hover:text-gv-text transition-colors cursor-pointer shrink-0"
             title="Cerrar lección"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
 
           {/* Progress bar */}
           <div className="flex-1">
-            <div className="w-full bg-gv-surface-higher h-3 rounded-full overflow-hidden border border-gv-border p-0.5">
+            <div className="w-full bg-gv-surface-higher h-2.5 rounded-full overflow-hidden border border-gv-border p-0.5">
               <div
                 className="bg-gradient-to-r from-gv-primary to-gv-accent h-full rounded-full transition-all duration-300 shadow-[0_0_8px_rgba(33,194,107,0.5)]"
                 style={{ width: `${progressPercent}%` }}
@@ -340,36 +393,40 @@ export const LessonModal: React.FC<LessonModalProps> = ({
             </div>
           </div>
 
-          {/* Step Indicator */}
-          <span className="text-xs font-mono font-bold text-gv-muted px-2 py-1 rounded-lg bg-gv-surface border border-gv-border shrink-0">
-            {currentIndex + 1}/{level.exercises.length}
-          </span>
-
           {/* Combo Badge */}
           {combo >= 2 && (
-            <div className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-gv-primary/15 border border-gv-primary/40 text-gv-accent text-xs font-mono font-black animate-bounce-subtle">
-              <Zap className="w-3.5 h-3.5 fill-gv-accent" />
+            <div className="flex items-center gap-1 px-2 py-0.5 rounded-lg bg-gv-primary/15 border border-gv-primary/40 text-gv-accent text-xs font-mono font-black animate-scale-up">
+              <Zap className="w-3 h-3 fill-gv-accent" />
               <span>x{combo}</span>
             </div>
           )}
 
-          {/* Lives Indicator */}
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-gv-error/15 border border-gv-error/30 text-gv-error text-xs font-mono font-bold shrink-0">
-            <Heart className="w-4 h-4 fill-gv-error" />
+          {/* Lives Indicator with minus 1 animation */}
+          <div className="relative flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-gv-error/15 border border-gv-error/30 text-gv-error text-xs font-mono font-bold shrink-0">
+            <Heart className={`w-3.5 h-3.5 fill-gv-error ${shakeScreen ? 'animate-bounce' : ''}`} />
             <span>{stats.lives}</span>
+
+            {showLostLifeAnim && (
+              <span className="absolute -top-3 -right-2 bg-gv-error text-black font-black text-[10px] px-1 rounded-full animate-bounce">
+                -1
+              </span>
+            )}
           </div>
         </div>
 
-        {/* ── Main Body */}
+        {/* ── 2. Scrollable Middle Body (Compact spacing to avoid scrolling) */}
         {!isCompleted ? (
-          <div className="p-4 sm:p-6 flex-1 overflow-y-auto space-y-5">
-            {/* 1. Category Bar + Level Ref + Hint */}
+          <div
+            ref={containerRef}
+            className="p-3 sm:p-5 flex-1 overflow-y-auto space-y-3 sm:space-y-4"
+          >
+            {/* Category Sub-Row: Ref Badge + Exercise Label + Hint Button */}
             <div className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-2">
-                <span className="px-2.5 py-1 rounded-md bg-gv-primary-soft text-gv-accent text-xs font-mono font-bold tracking-wider">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="px-2 py-0.5 rounded bg-gv-primary-soft text-gv-accent text-[11px] font-mono font-bold tracking-wider">
                   {level.ref}
                 </span>
-                <span className="text-xs font-bold uppercase tracking-wider text-gv-primary">
+                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-gv-primary">
                   {exerciseLabel}
                 </span>
               </div>
@@ -380,22 +437,22 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                     sound.play('hint');
                     setShowHint((prev) => !prev);
                   }}
-                  className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold border transition-colors cursor-pointer ${
+                  className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-colors cursor-pointer ${
                     showHint
                       ? 'bg-gv-warning/20 border-gv-warning text-gv-warning'
                       : 'bg-gv-surface-high border-gv-border text-gv-muted hover:text-gv-warning hover:border-gv-warning/50'
                   }`}
                 >
-                  <Lightbulb className="w-3.5 h-3.5" />
+                  <Lightbulb className="w-3 h-3" />
                   <span>{locale === 'es' ? 'Pista' : 'Hint'}</span>
                 </button>
               )}
             </div>
 
-            {/* Hint Card (Toggled) */}
+            {/* Hint Drawer (Toggled) */}
             {showHint && explanationText && (
-              <div className="p-3.5 rounded-xl bg-gv-warning/10 border border-gv-warning/30 flex items-start gap-3 animate-fade-in text-xs text-gv-warning">
-                <Sparkles className="w-4 h-4 shrink-0 mt-0.5" />
+              <div className="p-3 rounded-xl bg-gv-warning/10 border border-gv-warning/30 flex items-start gap-2.5 animate-pop-up text-xs text-gv-warning">
+                <Sparkles className="w-3.5 h-3.5 shrink-0 mt-0.5" />
                 <div className="leading-relaxed">
                   <span className="font-bold">
                     {locale === 'es' ? 'Pista de Celdi: ' : 'Celdi’s hint: '}
@@ -405,33 +462,32 @@ export const LessonModal: React.FC<LessonModalProps> = ({
               </div>
             )}
 
-            {/* 2. Celdi Mascot + Dialogue Speech Bubble (The Prompt) */}
-            <div className="flex items-start gap-3 sm:gap-4">
+            {/* Celdi Mascot (No Pupils) + Speech Bubble with Prompt */}
+            <div className="flex items-start gap-3">
               <div className="shrink-0 pt-0.5">
-                <CeldiMascot mood={celdiMood} size={64} />
+                <CeldiMascot mood={celdiMood} size={54} />
               </div>
-              <div className="relative flex-1 bg-gv-surface-high border border-gv-border rounded-2xl p-4 sm:p-5 shadow-lg">
-                {/* Speech tail */}
-                <div className="absolute top-5 -left-2 w-3 h-3 bg-gv-surface-high border-l border-b border-gv-border transform rotate-45" />
-                <p className="text-sm sm:text-base font-semibold text-gv-text leading-relaxed">
+              <div className="relative flex-1 bg-gv-surface-high border border-gv-border rounded-xl p-3 sm:p-3.5 shadow-md">
+                <div className="absolute top-4 -left-1.5 w-2.5 h-2.5 bg-gv-surface-high border-l border-b border-gv-border transform rotate-45" />
+                <p className="text-xs sm:text-sm font-semibold text-gv-text leading-snug">
                   {promptText}
                 </p>
               </div>
             </div>
 
-            {/* 3. Formula Context Banner (if applicable, e.g. Predict with fx formula) */}
+            {/* Formula Context Banner (e.g. fx =BUSCARV()) */}
             {exerciseFormula && !isBlocksExercise && (
-              <div className="flex items-center gap-3 px-4 py-3 bg-gv-surface-higher border border-gv-border rounded-xl">
-                <span className="text-sm font-mono font-bold italic text-gv-primary">fx</span>
-                <span className="text-sm sm:text-base font-mono font-bold text-gv-text truncate">
+              <div className="flex items-center gap-2.5 px-3 py-2 bg-gv-surface-higher border border-gv-border rounded-xl">
+                <span className="text-xs font-mono font-bold italic text-gv-primary">fx</span>
+                <span className="text-xs sm:text-sm font-mono font-bold text-gv-text truncate">
                   {exerciseFormula}
                 </span>
               </div>
             )}
 
-            {/* 4. MiniSheet / Spreadsheet Grid (if data present) */}
+            {/* MiniSheet / Spreadsheet Grid (Only rendered if relevant, compact) */}
             {exerciseData && (
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <SpreadsheetGrid
                   data={exerciseData}
                   selectedCell={selectedCell}
@@ -443,36 +499,34 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                   targetFormula={exerciseFormula}
                 />
                 {(isSelectRange || isFindError) && (
-                  <div className="flex items-center justify-between text-xs px-2 text-gv-muted font-mono">
-                    <span className="flex items-center gap-1.5">
+                  <div className="flex items-center justify-between text-[11px] px-1 text-gv-muted font-mono">
+                    <span className="flex items-center gap-1">
                       {isFindError ? (
-                        <Bug className="w-3.5 h-3.5 text-gv-error" />
+                        <Bug className="w-3 h-3 text-gv-error" />
                       ) : (
-                        <MousePointerClick className="w-3.5 h-3.5 text-gv-primary" />
+                        <MousePointerClick className="w-3 h-3 text-gv-primary" />
                       )}
                       {locale === 'es'
-                        ? 'Toca una celda en la tabla para marcarla'
-                        : 'Tap a cell on the grid to pick it'}
+                        ? 'Toca una celda en la tabla para responder'
+                        : 'Tap a cell on the grid to answer'}
                     </span>
                     {selectedCell && (
-                      <span className="font-bold text-gv-accent">
-                        [{selectedCell}]
-                      </span>
+                      <span className="font-bold text-gv-accent">[{selectedCell}]</span>
                     )}
                   </div>
                 )}
               </div>
             )}
 
-            {/* 5. INTERACTIVE ANSWER AREA */}
+            {/* INTERACTIVE ANSWER AREA */}
 
-            {/* CASE A: Build Formula with Blocks (LEGO tokens) */}
+            {/* CASE A: Build Formula with Blocks */}
             {isBlocksExercise && (
-              <div className="space-y-4 pt-1">
+              <div className="space-y-3 pt-1">
                 {/* Construction Dropzone */}
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-gv-muted font-mono">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-gv-muted font-mono">
                       {locale === 'es' ? 'Fórmula armada:' : 'Formula assembled:'}
                     </span>
                     {pickedBlockIndices.length > 0 && !isAnswered && (
@@ -481,17 +535,17 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                           sound.play('tap');
                           setPickedBlockIndices([]);
                         }}
-                        className="text-xs text-gv-muted hover:text-gv-error flex items-center gap-1 transition-colors cursor-pointer"
+                        className="text-[11px] text-gv-muted hover:text-gv-error flex items-center gap-1 transition-colors cursor-pointer"
                       >
-                        <RotateCcw className="w-3 h-3" />
+                        <RotateCcw className="w-2.5 h-2.5" />
                         <span>{locale === 'es' ? 'Borrar todo' : 'Clear all'}</span>
                       </button>
                     )}
                   </div>
 
-                  <div className="min-h-[72px] p-3 rounded-xl bg-gv-surface-high border-2 border-dashed border-gv-border flex flex-wrap items-center gap-2 transition-all">
+                  <div className="min-h-[56px] p-2 sm:p-2.5 rounded-xl bg-gv-surface-high border-2 border-dashed border-gv-border flex flex-wrap items-center gap-1.5 transition-all">
                     {pickedBlockIndices.length === 0 ? (
-                      <div className="w-full text-center text-xs sm:text-sm text-gv-faint py-3 font-mono">
+                      <div className="w-full text-center text-xs text-gv-faint py-2 font-mono">
                         {locale === 'es'
                           ? '👆 Toca las fichas de abajo para armar la fórmula'
                           : '👆 Tap the chips below to build the formula'}
@@ -510,7 +564,7 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                                 prev.filter((_, idx) => idx !== orderIdx)
                               );
                             }}
-                            className="px-3.5 py-2 rounded-lg bg-gv-primary-soft border border-gv-primary border-b-4 border-b-gv-primary-dark font-mono font-bold text-sm sm:text-base text-gv-accent hover:bg-gv-primary/25 transition-all transform active:scale-95 cursor-pointer shadow-md flex items-center gap-1.5 animate-scale-up"
+                            className="px-3 py-1.5 rounded-lg bg-gv-primary-soft border border-gv-primary border-b-2 sm:border-b-4 border-b-gv-primary-dark font-mono font-bold text-xs sm:text-sm text-gv-accent hover:bg-gv-primary/25 transition-all active:scale-95 cursor-pointer shadow flex items-center gap-1 animate-scale-up"
                           >
                             <span>{token}</span>
                             {!isAnswered && (
@@ -524,11 +578,11 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 </div>
 
                 {/* Available Token Chips Pool */}
-                <div className="pt-2">
-                  <span className="block text-xs font-bold uppercase tracking-wider text-gv-muted mb-2.5 font-mono text-center">
+                <div>
+                  <span className="block text-[11px] font-bold uppercase tracking-wider text-gv-muted mb-2 font-mono text-center">
                     {locale === 'es' ? 'Fichas disponibles:' : 'Available chips:'}
                   </span>
-                  <div className="flex flex-wrap items-center justify-center gap-2.5">
+                  <div className="flex flex-wrap items-center justify-center gap-2">
                     {blocks.map((token, idx) => {
                       const isPicked = pickedBlockIndices.includes(idx);
                       return (
@@ -539,10 +593,10 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                             sound.play('tap');
                             setPickedBlockIndices((prev) => [...prev, idx]);
                           }}
-                          className={`px-4 py-2.5 rounded-xl font-mono font-bold text-sm sm:text-base transition-all select-none ${
+                          className={`px-3.5 py-2 rounded-xl font-mono font-bold text-xs sm:text-sm transition-all select-none ${
                             isPicked
                               ? 'opacity-20 bg-gv-surface-high border border-gv-border text-gv-faint cursor-not-allowed scale-95'
-                              : 'bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border border-b-4 border-b-black/50 text-gv-text hover:border-gv-primary/60 hover:text-gv-accent cursor-pointer active:scale-95 shadow-md'
+                              : 'bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border border-b-3 border-b-black/50 text-gv-text hover:border-gv-primary/60 hover:text-gv-accent cursor-pointer active:scale-95 shadow'
                           }`}
                         >
                           {token}
@@ -556,11 +610,15 @@ export const LessonModal: React.FC<LessonModalProps> = ({
 
             {/* CASE B: Predict / Multiple Choice */}
             {isPredict && options.length > 0 && (
-              <div className="space-y-2 pt-1">
-                <span className="block text-xs font-bold uppercase tracking-wider text-gv-muted mb-2 font-mono">
+              <div className="space-y-2 pt-0.5">
+                <span className="block text-[11px] font-bold uppercase tracking-wider text-gv-muted mb-1.5 font-mono">
                   {locale === 'es' ? 'Selecciona una respuesta:' : 'Select an answer:'}
                 </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div
+                  className={`grid gap-2 ${
+                    useSingleColumnOptions ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2'
+                  }`}
+                >
                   {options.map((opt, idx) => {
                     const isSelected = selectedOption === opt;
                     return (
@@ -571,19 +629,19 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                           sound.play('tap');
                           setSelectedOption(opt);
                         }}
-                        className={`p-3.5 rounded-xl border text-sm font-semibold font-mono text-left transition-all border-b-4 cursor-pointer flex items-center justify-between ${
+                        className={`px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm font-semibold font-mono text-left transition-all border-b-3 cursor-pointer flex items-center justify-between min-h-[46px] select-none ${
                           isSelected
                             ? isAnswered
                               ? isCorrect
-                                ? 'bg-gv-primary-soft border-gv-primary border-b-gv-primary-dark text-gv-accent'
-                                : 'bg-gv-error/20 border-gv-error border-b-gv-error/80 text-gv-error'
-                              : 'bg-gv-primary-soft/40 border-gv-primary border-b-gv-primary-dark text-gv-accent shadow-md'
-                            : 'bg-gv-surface-high border-gv-border border-b-black/50 text-gv-text hover:border-gv-primary/50 hover:bg-gv-surface-higher'
+                                ? 'bg-gv-primary-soft border-gv-primary border-b-gv-primary-dark text-gv-accent animate-scale-up animate-glow-flash'
+                                : 'bg-gv-error/25 border-gv-error border-b-gv-error/80 text-gv-error animate-shake'
+                              : 'bg-gv-primary-soft/50 border-gv-primary border-b-gv-primary-dark text-gv-accent shadow-md'
+                            : 'bg-gv-surface-high border-gv-border border-b-black/50 text-gv-text hover:border-gv-primary/50 hover:bg-gv-surface-higher active:scale-[0.99]'
                         }`}
                       >
-                        <span className="truncate">{opt}</span>
+                        <span className="leading-snug">{opt}</span>
                         <div
-                          className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ml-2 ${
+                          className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ml-2 ${
                             isSelected
                               ? 'border-gv-primary bg-gv-primary text-black'
                               : 'border-gv-border'
@@ -600,9 +658,9 @@ export const LessonModal: React.FC<LessonModalProps> = ({
 
             {/* CASE C: Write Formula */}
             {isWriteFormula && (
-              <div className="space-y-3 pt-1">
-                <div className="p-3 bg-gv-surface-high border border-gv-border rounded-xl flex items-center gap-2 font-mono">
-                  <span className="text-gv-accent font-bold">
+              <div className="space-y-2 pt-1">
+                <div className="p-2.5 bg-gv-surface-high border border-gv-border rounded-xl flex items-center gap-2 font-mono">
+                  <span className="text-gv-accent font-bold text-xs">
                     {currentExercise.targetCell ?? 'A1'} =
                   </span>
                   <input
@@ -610,7 +668,7 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                     readOnly
                     value={writtenFormula}
                     placeholder={locale === 'es' ? 'Toca sugerencias...' : 'Tap tokens...'}
-                    className="flex-1 bg-transparent text-gv-text font-bold text-sm sm:text-base outline-none"
+                    className="flex-1 bg-transparent text-gv-text font-bold text-xs sm:text-sm outline-none"
                   />
                   {writtenFormula.length > 0 && !isAnswered && (
                     <button
@@ -618,15 +676,15 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                         sound.play('tap');
                         setWrittenFormula((prev) => prev.slice(0, -1));
                       }}
-                      className="p-1.5 text-gv-muted hover:text-gv-error cursor-pointer"
+                      className="p-1 text-gv-muted hover:text-gv-error cursor-pointer"
                     >
-                      <RotateCcw className="w-4 h-4" />
+                      <RotateCcw className="w-3.5 h-3.5" />
                     </button>
                   )}
                 </div>
 
                 {currentExercise.suggestions && (
-                  <div className="flex flex-wrap gap-2 justify-center">
+                  <div className="flex flex-wrap gap-1.5 justify-center">
                     {currentExercise.suggestions.map((s, idx) => (
                       <button
                         key={idx}
@@ -635,7 +693,7 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                           sound.play('tap');
                           setWrittenFormula((prev) => prev + s);
                         }}
-                        className="px-3 py-2 rounded-lg bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border border-b-2 text-xs font-mono font-bold text-gv-text cursor-pointer active:scale-95"
+                        className="px-2.5 py-1.5 rounded-lg bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border border-b-2 text-xs font-mono font-bold text-gv-text cursor-pointer active:scale-95"
                       >
                         {s}
                       </button>
@@ -646,14 +704,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
             )}
           </div>
         ) : (
-          /* ── Victory / Result Screen */
-          <div className="p-8 text-center flex flex-col items-center gap-5 my-auto">
-            <CeldiMascot mood="celebrating" size={96} />
+          /* ── Victory Screen */
+          <div className="p-6 sm:p-8 text-center flex flex-col items-center gap-4 my-auto">
+            <CeldiMascot mood="celebrating" size={88} />
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-gv-primary font-mono">
                 {locale === 'es' ? '¡Nivel Completado!' : 'Level Completed!'}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-gv-text mt-1">
+              <h2 className="text-xl sm:text-2xl font-black text-gv-text mt-1">
                 {level.titleByLocale?.[locale] ?? level.title}
               </h2>
             </div>
@@ -665,8 +723,8 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 return (
                   <Star
                     key={star}
-                    className={`w-9 h-9 ${
-                      earned ? 'fill-gv-warning text-gv-warning animate-bounce-subtle' : 'text-gv-border fill-gv-surface-high'
+                    className={`w-8 h-8 ${
+                      earned ? 'fill-gv-warning text-gv-warning animate-scale-up' : 'text-gv-border fill-gv-surface-high'
                     }`}
                   />
                 );
@@ -674,12 +732,12 @@ export const LessonModal: React.FC<LessonModalProps> = ({
             </div>
 
             {/* XP & Rewards */}
-            <div className="flex items-center gap-4 bg-gv-surface-high border border-gv-border rounded-xl px-6 py-3 text-sm">
-              <div className="flex items-center gap-2 font-bold text-gv-accent font-mono">
-                <Award className="w-5 h-5" />
+            <div className="flex items-center gap-4 bg-gv-surface-high border border-gv-border rounded-xl px-5 py-2.5 text-xs sm:text-sm">
+              <div className="flex items-center gap-1.5 font-bold text-gv-accent font-mono">
+                <Award className="w-4 h-4" />
                 <span>+{level.rewardXp ?? 20} XP</span>
               </div>
-              <div className="w-px h-5 bg-gv-border" />
+              <div className="w-px h-4 bg-gv-border" />
               <div className="flex items-center gap-1.5 font-bold text-gv-bytes font-mono">
                 <span>+5 Gemas 💎</span>
               </div>
@@ -687,21 +745,21 @@ export const LessonModal: React.FC<LessonModalProps> = ({
 
             <button
               onClick={onClose}
-              className="w-full max-w-xs py-3.5 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-sm uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-gv-primary/20 active:scale-98"
+              className="w-full max-w-xs py-3 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-gv-primary/20 active:scale-98"
             >
               {locale === 'es' ? 'Continuar al Mapa' : 'Back to Map'}
             </button>
           </div>
         )}
 
-        {/* ── Bottom Action / Feedback Footer */}
+        {/* ── 3. Bottom Action / Feedback Footer (PINNED, ALWAYS ON SCREEN) */}
         {!isCompleted && (
-          <div className="p-4 sm:p-5 border-t border-gv-border bg-gv-surface-high/80">
+          <div className="p-3 sm:p-4 border-t border-gv-border bg-gv-surface-high/90 shrink-0">
             {!isAnswered ? (
               <button
                 disabled={!canSubmit}
                 onClick={handleVerify}
-                className={`w-full py-3.5 rounded-xl font-black text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 select-none ${
+                className={`w-full py-3 sm:py-3.5 rounded-xl font-black text-xs sm:text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 select-none ${
                   canSubmit
                     ? 'bg-gv-primary hover:bg-gv-accent text-black border-b-4 border-b-gv-primary-dark cursor-pointer active:translate-y-0.5 active:border-b-2 shadow-lg shadow-gv-primary/25'
                     : 'bg-gv-surface-higher text-gv-faint border border-gv-border cursor-not-allowed'
@@ -712,20 +770,20 @@ export const LessonModal: React.FC<LessonModalProps> = ({
               </button>
             ) : (
               <div
-                className={`p-4 rounded-xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in ${
+                className={`p-3 sm:p-3.5 rounded-xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-pop-up ${
                   isCorrect
-                    ? 'bg-gv-primary-soft/60 border-gv-primary/50 text-gv-text'
-                    : 'bg-gv-error/15 border-gv-error/40 text-gv-text'
+                    ? 'bg-gv-primary-soft/80 border-gv-primary/60 text-gv-text'
+                    : 'bg-gv-error/20 border-gv-error/50 text-gv-text'
                 }`}
               >
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-2.5">
                   {isCorrect ? (
-                    <CheckCircle2 className="w-6 h-6 text-gv-accent shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-gv-accent shrink-0 mt-0.5" />
                   ) : (
-                    <AlertCircle className="w-6 h-6 text-gv-error shrink-0 mt-0.5" />
+                    <AlertCircle className="w-5 h-5 text-gv-error shrink-0 mt-0.5" />
                   )}
                   <div className="text-xs sm:text-sm">
-                    <p className="font-bold text-sm sm:text-base mb-0.5">
+                    <p className="font-bold text-xs sm:text-sm mb-0.5">
                       {isCorrect
                         ? locale === 'es'
                           ? '¡Excelente! Respuesta correcta'
@@ -741,14 +799,16 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                       </p>
                     )}
                     {explanationText && (
-                      <p className="text-gv-muted leading-relaxed max-w-lg">{explanationText}</p>
+                      <p className="text-gv-muted leading-relaxed text-[11px] sm:text-xs max-w-md">
+                        {explanationText}
+                      </p>
                     )}
                   </div>
                 </div>
 
                 <button
                   onClick={handleNext}
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shrink-0 transition-all cursor-pointer shadow-md active:scale-95"
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-1.5 shrink-0 transition-all cursor-pointer shadow-md active:scale-95"
                 >
                   <span>{locale === 'es' ? 'Continuar' : 'Next'}</span>
                   <ArrowRight className="w-4 h-4" />
