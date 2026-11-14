@@ -38,6 +38,8 @@ import {
   X,
   ChevronRight,
   MessageSquareHeart,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { UserStats, SupportedLocale } from '../../types';
 import {
@@ -780,9 +782,23 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
       }
       sound.play('correct');
       setShowEditProfileModal(false);
-      showToast('¡Perfil actualizado correctamente!');
+      showToast(tr(locale, {
+        es: '¡Perfil actualizado correctamente!',
+        en: 'Profile updated successfully!',
+        de: 'Profil erfolgreich aktualisiert!',
+        fr: 'Profil mis à jour avec succès !',
+        ja: 'プロフィールを更新しました！',
+        pt: 'Perfil atualizado com sucesso!',
+      }));
     } catch (err: any) {
-      showToast(err?.message || 'Error al guardar el perfil', 'err');
+      showToast(err?.message || tr(locale, {
+        es: 'Error al guardar el perfil',
+        en: 'Error saving profile',
+        de: 'Fehler beim Speichern des Profils',
+        fr: 'Erreur lors de l’enregistrement du profil',
+        ja: 'プロフィールの保存に失敗しました',
+        pt: 'Erro ao salvar o perfil',
+      }), 'err');
     } finally {
       setSavingProfile(false);
     }
@@ -790,11 +806,25 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
 
   const handleShareProfile = async () => {
     sound.play('tap');
-    const shareText = `¡Llevo ${stats.streak} días de racha y ${stats.xp} XP como ${rankTitle} en Gridverse! 🚀 Domina Excel jugando en https://gridverse.app`;
+    const shareText = tr(locale, {
+      es: `¡Llevo ${stats.streak} días de racha y ${stats.xp} XP como ${rankTitle} en Gridverse! 🚀 Domina Excel jugando en https://gridverse.app`,
+      en: `I have a ${stats.streak}-day streak and ${stats.xp} XP as ${rankTitle} in Gridverse! 🚀 Master Excel by playing at https://gridverse.app`,
+      de: `Ich habe eine ${stats.streak}-Tage-Serie und ${stats.xp} XP als ${rankTitle} in Gridverse! 🚀 Meistere Excel auf https://gridverse.app`,
+      fr: `J'ai une série de ${stats.streak} jours et ${stats.xp} XP en tant que ${rankTitle} sur Gridverse ! 🚀 Maîtrise Excel sur https://gridverse.app`,
+      ja: `Gridverseで${stats.streak}日連続学習＆${stats.xp} XP（ランク: ${rankTitle}）を達成！ 🚀 https://gridverse.app で楽しくExcelをマスター`,
+      pt: `Tenho uma ofensiva de ${stats.streak} dias e ${stats.xp} XP como ${rankTitle} no Gridverse! 🚀 Domine o Excel jogando em https://gridverse.app`,
+    });
     try {
       if (navigator.share) {
         await navigator.share({
-          title: 'Mi progreso en Gridverse',
+          title: tr(locale, {
+            es: 'Mi progreso en Gridverse',
+            en: 'My Gridverse Progress',
+            de: 'Mein Gridverse-Fortschritt',
+            fr: 'Ma progression sur Gridverse',
+            ja: 'Gridverseの学習進捗',
+            pt: 'Meu progresso no Gridverse',
+          }),
           text: shareText,
           url: 'https://gridverse.app',
         });
@@ -805,7 +835,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
     }
     try {
       await navigator.clipboard.writeText(shareText);
-      showToast('¡Resumen de progreso copiado al portapapeles para compartir!');
+      showToast(tr(locale, {
+        es: '¡Resumen de progreso copiado al portapapeles para compartir!',
+        en: 'Progress summary copied to clipboard!',
+        de: 'Fortschrittszusammenfassung in die Zwischenablage kopiert!',
+        fr: 'Résumé de progression copié dans le presse-papiers !',
+        ja: '進捗の要約をクリップボードにコピーしました！',
+        pt: 'Resumo do progresso copiado para a área de transferência!',
+      }));
     } catch {
       showToast(shareText);
     }
@@ -813,12 +850,25 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
 
   const handleRecommendApp = async () => {
     sound.play('tap');
-    const inviteText =
-      '¡Aprende y domina Microsoft Excel jugando celda por celda con Gridverse! 🚀 Descárgala o juega gratis en https://gridverse.app';
+    const inviteText = tr(locale, {
+      es: '¡Aprende y domina Microsoft Excel jugando celda por celda con Gridverse! 🚀 Descárgala o juega gratis en https://gridverse.app',
+      en: 'Learn and master Microsoft Excel cell by cell with Gridverse! 🚀 Play free at https://gridverse.app',
+      de: 'Lerne und meistere Microsoft Excel spielerisch Zelle für Zelle mit Gridverse! 🚀 Kostenlos spielen unter https://gridverse.app',
+      fr: 'Apprends et maîtrise Microsoft Excel cellule par cellule avec Gridverse ! 🚀 Joue gratuitement sur https://gridverse.app',
+      ja: 'Gridverseでセルごとに楽しくMicrosoft Excelをマスターしよう！ 🚀 https://gridverse.app で無料プレイ',
+      pt: 'Aprenda e domine o Microsoft Excel célula por célula com o Gridverse! 🚀 Jogue grátis em https://gridverse.app',
+    });
     try {
       if (navigator.share) {
         await navigator.share({
-          title: 'Recomendar Gridverse',
+          title: tr(locale, {
+            es: 'Recomendar Gridverse',
+            en: 'Recommend Gridverse',
+            de: 'Gridverse weiterempfehlen',
+            fr: 'Recommander Gridverse',
+            ja: 'Gridverseをおすすめする',
+            pt: 'Recomendar o Gridverse',
+          }),
           text: inviteText,
           url: 'https://gridverse.app',
         });
@@ -829,7 +879,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
     }
     try {
       await navigator.clipboard.writeText(inviteText);
-      showToast('¡Enlace de invitación copiado al portapapeles!');
+      showToast(tr(locale, {
+        es: '¡Enlace de invitación copiado al portapapeles!',
+        en: 'Invite link copied to clipboard!',
+        de: 'Einladungslink in die Zwischenablage kopiert!',
+        fr: 'Lien d’invitation copié dans le presse-papiers !',
+        ja: '招待リンクをクリップボードにコピーしました！',
+        pt: 'Link de convite copiado para a área de transferência!',
+      }));
     } catch {
       showToast(inviteText);
     }
@@ -847,11 +904,25 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
       sound.play('level_win');
       setShowRateModal(false);
       setRateFeedbackText('');
-      showToast('¡Muchas gracias por tu calificación de 5 estrellas! 💚');
+      showToast(tr(locale, {
+        es: '¡Muchas gracias por tu calificación de 5 estrellas! 💚',
+        en: 'Thank you so much for your 5-star rating! 💚',
+        de: 'Vielen Dank für deine 5-Sterne-Bewertung! 💚',
+        fr: 'Merci infiniment pour ta note 5 étoiles ! 💚',
+        ja: '5つ星評価をありがとうございます！ 💚',
+        pt: 'Muito obrigado pela sua avaliação de 5 estrelas! 💚',
+      }));
     } catch {
       sound.play('correct');
       setShowRateModal(false);
-      showToast('¡Gracias por apoyar a Gridverse!');
+      showToast(tr(locale, {
+        es: '¡Gracias por apoyar a Gridverse!',
+        en: 'Thank you for supporting Gridverse!',
+        de: 'Danke für deine Unterstützung von Gridverse!',
+        fr: 'Merci de soutenir Gridverse !',
+        ja: 'Gridverseを応援していただきありがとうございます！',
+        pt: 'Obrigado por apoiar o Gridverse!',
+      }));
     } finally {
       setSubmittingFeedback(false);
     }
@@ -864,12 +935,26 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
     try {
       await signInWithGooglePopup();
       sound.play('correct');
-      showToast('Sesión iniciada con Google. Tu progreso y plan PRO se han sincronizado.');
+      showToast(tr(locale, {
+        es: 'Sesión iniciada con Google. Tu progreso y plan PRO se han sincronizado.',
+        en: 'Signed in with Google. Your progress and PRO plan are synced.',
+        de: 'Mit Google angemeldet. Dein Fortschritt und PRO-Plan sind synchronisiert.',
+        fr: 'Connecté avec Google. Ta progression et ton plan PRO sont synchronisés.',
+        ja: 'Googleでログインしました。進捗とPROプランが同期されました。',
+        pt: 'Sessão iniciada com o Google. Seu progresso e plano PRO foram sincronizados.',
+      }));
     } catch (e: any) {
       if (e?.code === 'auth/popup-closed-by-user' || e?.code === 'auth/cancelled-popup-request') {
         return;
       }
-      showToast(e?.message || 'Error al iniciar sesión con Google', 'err');
+      showToast(e?.message || tr(locale, {
+          es: 'Error al iniciar sesión con Google',
+          en: 'Error signing in with Google',
+          de: 'Fehler bei der Anmeldung mit Google',
+          fr: 'Erreur lors de la connexion avec Google',
+          ja: 'Googleログインに失敗しました',
+          pt: 'Erro ao fazer login com o Google',
+        }), 'err');
     } finally {
       setLoadingAuth(false);
     }
@@ -882,15 +967,36 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
     try {
       await signInWithApplePopup();
       sound.play('correct');
-      showToast('Sesión iniciada con Apple. Tu progreso y plan PRO se han sincronizado.');
+      showToast(tr(locale, {
+        es: 'Sesión iniciada con Apple. Tu progreso y plan PRO se han sincronizado.',
+        en: 'Signed in with Apple. Your progress and PRO plan are synced.',
+        de: 'Mit Apple angemeldet. Dein Fortschritt und PRO-Plan sind synchronisiert.',
+        fr: 'Connecté avec Apple. Ta progression et ton plan PRO sont synchronisés.',
+        ja: 'Appleでログインしました。進捗とPROプランが同期されました。',
+        pt: 'Sessão iniciada com a Apple. Seu progresso e plano PRO foram sincronizados.',
+      }));
     } catch (e: any) {
       if (e?.code === 'auth/popup-closed-by-user' || e?.code === 'auth/cancelled-popup-request') {
         return;
       }
       showToast(
         e?.code === 'auth/operation-not-allowed'
-          ? 'Apple Sign-In requiere configuración de dominio web en Firebase Auth.'
-          : e?.message || 'Error al iniciar sesión con Apple',
+          ? tr(locale, {
+              es: 'Apple Sign-In requiere configuración de dominio web en Firebase Auth.',
+              en: 'Apple Sign-In requires web domain configuration in Firebase Auth.',
+              de: 'Apple Sign-In erfordert Web-Domain-Konfiguration in Firebase Auth.',
+              fr: 'Apple Sign-In nécessite la configuration du domaine sur Firebase Auth.',
+              ja: 'Firebase AuthでApple Sign-InのWebドメイン設定が必要です。',
+              pt: 'O Apple Sign-In requer configuração de domínio da web no Firebase Auth.',
+            })
+          : e?.message || tr(locale, {
+              es: 'Error al iniciar sesión con Apple',
+              en: 'Error signing in with Apple',
+              de: 'Fehler bei der Anmeldung mit Apple',
+              fr: 'Erreur lors de la connexion avec Apple',
+              ja: 'Appleログインに失敗しました',
+              pt: 'Erro ao fazer login com a Apple',
+            }),
         'err'
       );
     } finally {
@@ -906,7 +1012,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
       const res = await linkAccountWithApple();
       setCurrentUser(res.user);
       sound.play('correct');
-      showToast('¡Cuenta de Apple vinculada exitosamente a tu perfil!');
+      showToast(tr(locale, {
+        es: '¡Cuenta de Apple vinculada exitosamente a tu perfil!',
+        en: 'Apple account successfully linked to your profile!',
+        de: 'Apple-Konto erfolgreich mit deinem Profil verknüpft!',
+        fr: 'Compte Apple associé avec succès à ton profil !',
+        ja: 'Appleアカウントを正常に連携しました！',
+        pt: 'Conta da Apple vinculada com sucesso ao seu perfil!',
+      }));
     } catch (e: any) {
       if (e?.code === 'auth/popup-closed-by-user' || e?.code === 'auth/cancelled-popup-request') {
         return;
@@ -916,11 +1029,25 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
         if (cred) {
           await signInWithCredential(auth, cred);
           sound.play('correct');
-          showToast('Conectado a tu cuenta de Apple existente con tu progreso sincronizado.');
+          showToast(tr(locale, {
+            es: 'Conectado a tu cuenta de Apple existente con tu progreso sincronizado.',
+            en: 'Connected to existing Apple account with progress synced.',
+            de: 'Mit bestehendem Apple-Konto verbunden und synchronisiert.',
+            fr: 'Connecté au compte Apple existant avec progression synchronisée.',
+            ja: '既存のAppleアカウントに接続し、進捗を同期しました。',
+            pt: 'Conectado à sua conta Apple existente com progresso sincronizado.',
+          }));
           return;
         }
       }
-      showToast(e?.message || 'No se pudo vincular con Apple.', 'err');
+      showToast(e?.message || tr(locale, {
+        es: 'No se pudo vincular con Apple.',
+        en: 'Could not link Apple account.',
+        de: 'Apple-Konto konnte nicht verknüpft werden.',
+        fr: 'Impossible de lier le compte Apple.',
+        ja: 'Appleアカウントの連携に失敗しました。',
+        pt: 'Não foi possível vincular a conta da Apple.',
+      }), 'err');
     } finally {
       setLoadingAuth(false);
     }
@@ -934,7 +1061,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
       const res = await linkAccountWithGoogle();
       setCurrentUser(res.user);
       sound.play('correct');
-      showToast('¡Cuenta de Google vinculada exitosamente a tu perfil!');
+      showToast(tr(locale, {
+        es: '¡Cuenta de Google vinculada exitosamente a tu perfil!',
+        en: 'Google account successfully linked to your profile!',
+        de: 'Google-Konto erfolgreich mit deinem Profil verknüpft!',
+        fr: 'Compte Google associé avec succès à ton profil !',
+        ja: 'Googleアカウントを正常に連携しました！',
+        pt: 'Conta do Google vinculada com sucesso ao seu perfil!',
+      }));
     } catch (e: any) {
       if (e?.code === 'auth/popup-closed-by-user' || e?.code === 'auth/cancelled-popup-request') {
         return;
@@ -944,11 +1078,25 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
         if (cred) {
           await signInWithCredential(auth, cred);
           sound.play('correct');
-          showToast('Conectado a tu cuenta de Google existente con tu progreso sincronizado.');
+          showToast(tr(locale, {
+            es: 'Conectado a tu cuenta de Google existente con tu progreso sincronizado.',
+            en: 'Connected to existing Google account with progress synced.',
+            de: 'Mit bestehendem Google-Konto verbunden und synchronisiert.',
+            fr: 'Connecté au compte Google existant avec progression synchronisée.',
+            ja: '既存のGoogleアカウントに接続し、進捗を同期しました。',
+            pt: 'Conectado à sua conta Google existente com progresso sincronizado.',
+          }));
           return;
         }
       }
-      showToast(e?.message || 'No se pudo vincular con Google.', 'err');
+      showToast(e?.message || tr(locale, {
+        es: 'No se pudo vincular con Google.',
+        en: 'Could not link Google account.',
+        de: 'Google-Konto konnte nicht verknüpft werden.',
+        fr: 'Impossible de lier le compte Google.',
+        ja: 'Googleアカウントの連携に失敗しました。',
+        pt: 'Não foi possível vincular a conta do Google.',
+      }), 'err');
     } finally {
       setLoadingAuth(false);
     }
@@ -960,25 +1108,60 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
     setConfirmAction(null);
     if (action === 'signout') {
       await signOut(auth);
-      showToast('Has cerrado sesión correctamente.');
+      showToast(tr(locale, {
+        es: 'Has cerrado sesión correctamente.',
+        en: 'You have signed out successfully.',
+        de: 'Du hast dich erfolgreich abgemeldet.',
+        fr: 'Tu t’es déconnecté avec succès.',
+        ja: '正常にログアウトしました。',
+        pt: 'Você saiu da conta com sucesso.',
+      }));
     } else if (action === 'delete_account') {
       try {
         await deleteAccountAndFirestoreData();
         const reset = resetUserStats();
         onUpdateStats?.(reset);
-        showToast('Tu cuenta y datos han sido eliminados permanentemente.');
+        showToast(tr(locale, {
+          es: 'Tu cuenta y datos han sido eliminados permanentemente.',
+          en: 'Your account and data have been permanently deleted.',
+          de: 'Dein Konto und deine Daten wurden dauerhaft gelöscht.',
+          fr: 'Ton compte et tes données ont été définitivement supprimés.',
+          ja: 'アカウントとデータが完全に削除されました。',
+          pt: 'Sua conta e dados foram excluídos permanentemente.',
+        }));
       } catch (err: any) {
         showToast(
           err?.code === 'auth/requires-recent-login'
-            ? 'Por seguridad, vuelve a iniciar sesión antes de eliminar tu cuenta.'
-            : err?.message || 'No se pudo eliminar la cuenta.',
+            ? tr(locale, {
+                es: 'Por seguridad, vuelve a iniciar sesión antes de eliminar tu cuenta.',
+                en: 'For security, please sign in again before deleting your account.',
+                de: 'Aus Sicherheitsgründen bitte erneut anmelden, bevor du dein Konto löschst.',
+                fr: 'Par sécurité, reconnecte-toi avant de supprimer ton compte.',
+                ja: 'セキュリティのため、アカウント削除前にもう一度ログインしてください。',
+                pt: 'Por segurança, faça login novamente antes de excluir sua conta.',
+              })
+            : err?.message || tr(locale, {
+                es: 'No se pudo eliminar la cuenta.',
+                en: 'Could not delete account.',
+                de: 'Konto konnte nicht gelöscht werden.',
+                fr: 'Impossible de supprimer le compte.',
+                ja: 'アカウントを削除できませんでした。',
+                pt: 'Não foi possível excluir a conta.',
+              }),
           'err'
         );
       }
     } else if (action === 'reset_local') {
       const reset = resetUserStats();
       onUpdateStats?.(reset);
-      showToast('Datos locales reiniciados a la celda A1.');
+      showToast(tr(locale, {
+        es: 'Datos locales reiniciados a la celda A1.',
+        en: 'Local data reset to cell A1.',
+        de: 'Lokale Daten auf Zelle A1 zurückgesetzt.',
+        fr: 'Données locales réinitialisées à la cellule A1.',
+        ja: 'ローカルデータをセルA1にリセットしました。',
+        pt: 'Dados locais reiniciados para a célula A1.',
+      }));
     }
   };
 
@@ -990,7 +1173,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
     } catch {
       // ignore
     }
-    showToast('Lista de primeros pasos reactivada en el mapa.');
+    showToast(tr(locale, {
+      es: 'Lista de primeros pasos reactivada en el mapa.',
+      en: 'Starter checklist reactivated on the map.',
+      de: 'Erste-Schritte-Checkliste auf der Karte reaktiviert.',
+      fr: 'Liste des premiers pas réactivée sur la carte.',
+      ja: 'マップ上で最初のステップ一覧を再表示しました。',
+      pt: 'Lista de primeiros passos reativada na trilha.',
+    }));
     onNavigateTab?.('map');
   };
 
@@ -1030,7 +1220,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
           <button
             type="button"
             onClick={openEditProfile}
-            title="Editar perfil y avatar"
+            title={tr(locale, {
+              es: 'Editar perfil y avatar',
+              en: 'Edit profile and avatar',
+              de: 'Profil und Avatar bearbeiten',
+              fr: 'Modifier le profil et l’avatar',
+              ja: 'プロフィールとアバターを編集',
+              pt: 'Editar perfil e avatar',
+            })}
             className="relative group shrink-0 cursor-pointer focus:outline-none"
           >
             <div className="w-[74px] h-[74px] rounded-[22px] bg-gv-surface-high border-2 border-gv-primary flex items-center justify-center overflow-hidden shadow-[0_6px_14px_rgba(33,194,107,0.18)] group-hover:scale-[1.03] transition-transform">
@@ -2250,6 +2447,102 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               <ChevronRight className="w-4 h-4 text-gv-muted" />
             </button>
 
+            {/* Tema de la interfaz (Modo Claro / Oscuro) */}
+            <div className="p-4 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                {stats.theme === 'light' ? (
+                  <Sun className="w-5 h-5 text-gv-warning" />
+                ) : (
+                  <Moon className="w-5 h-5 text-gv-accent" />
+                )}
+                <div>
+                  <p className="text-sm font-semibold text-gv-text">
+                    {tr(locale, {
+                      es: 'Tema de la interfaz',
+                      en: 'Interface Theme',
+                      de: 'Design',
+                      fr: "Thème de l'interface",
+                      ja: 'テーマ',
+                      pt: 'Tema da interface',
+                    })}
+                  </p>
+                  <p className="text-xs text-gv-muted">
+                    {stats.theme === 'light'
+                      ? tr(locale, {
+                          es: 'Modo claro activo',
+                          en: 'Light mode active',
+                          de: 'Hellmodus aktiv',
+                          fr: 'Mode clair actif',
+                          ja: 'ライトモード有効',
+                          pt: 'Modo claro ativo',
+                        })
+                      : tr(locale, {
+                          es: 'Modo oscuro activo',
+                          en: 'Dark mode active',
+                          de: 'Dunkelmodus aktiv',
+                          fr: 'Mode sombre actif',
+                          ja: 'ダークモード有効',
+                          pt: 'Modo escuro ativo',
+                        })}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-1 bg-gv-surface-high border border-gv-border rounded-xl p-1">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (stats.theme !== 'dark') {
+                      sound.play('tap');
+                      onUpdateStats?.({ ...stats, theme: 'dark' });
+                    }
+                  }}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    stats.theme !== 'light'
+                      ? 'bg-gv-surface text-gv-text shadow-sm border border-gv-border'
+                      : 'text-gv-muted hover:text-gv-text'
+                  }`}
+                >
+                  <Moon className="w-3.5 h-3.5" />
+                  <span>
+                    {tr(locale, {
+                      es: 'Oscuro',
+                      en: 'Dark',
+                      de: 'Dunkel',
+                      fr: 'Sombre',
+                      ja: 'ダーク',
+                      pt: 'Escuro',
+                    })}
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (stats.theme !== 'light') {
+                      sound.play('tap');
+                      onUpdateStats?.({ ...stats, theme: 'light' });
+                    }
+                  }}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    stats.theme === 'light'
+                      ? 'bg-gv-surface text-gv-text shadow-sm border border-gv-border'
+                      : 'text-gv-muted hover:text-gv-text'
+                  }`}
+                >
+                  <Sun className="w-3.5 h-3.5 text-gv-warning" />
+                  <span>
+                    {tr(locale, {
+                      es: 'Claro',
+                      en: 'Light',
+                      de: 'Hell',
+                      fr: 'Clair',
+                      ja: 'ライト',
+                      pt: 'Claro',
+                    })}
+                  </span>
+                </button>
+              </div>
+            </div>
+
             {/* Efectos de sonido (SFX) */}
             <div className="p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -2881,7 +3174,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               <button
                 type="button"
                 onClick={() => setShowCertificateModal(false)}
-                className="w-8 h-8 rounded-lg bg-gv-surface-high border border-gv-border flex items-center justify-center text-gv-muted hover:text-white cursor-pointer"
+                className="w-8 h-8 rounded-lg bg-gv-surface-high border border-gv-border flex items-center justify-center text-gv-muted hover:text-gv-text cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>

@@ -13,6 +13,8 @@ import {
   X,
   Sparkles,
   CheckCircle2,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { UserStats, SupportedLocale } from '../types';
 import { sound } from '../lib/audio';
@@ -64,6 +66,13 @@ export const Header: React.FC<HeaderProps> = ({
     sound.setBgmEnabled(next);
     setBgmActive(next);
     if (next) sound.play('tap');
+  };
+
+  const currentTheme = stats.theme || 'dark';
+  const toggleTheme = () => {
+    const next = currentTheme === 'light' ? 'dark' : 'light';
+    sound.play('tap');
+    onUpdateStats({ ...stats, theme: next });
   };
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -123,7 +132,14 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Streak 🔥 */}
             <div
               className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gv-streak/10 border border-gv-streak/25 text-xs md:text-sm font-mono font-bold text-gv-streak cursor-pointer hover:bg-gv-streak/15 transition-colors"
-              title="Racha de días consecutivos"
+              title={tr(stats.locale, {
+                es: 'Racha de días consecutivos',
+                en: 'Daily streak',
+                de: 'Tägliche Serie',
+                fr: 'Série quotidienne',
+                ja: '連続学習日数',
+                pt: 'Ofensiva diária',
+              })}
             >
               <Flame className="w-4 h-4 fill-gv-streak text-gv-streak animate-pulse-subtle" />
               <span className="tabular-nums">{stats.streak}</span>
@@ -132,7 +148,14 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Gems 💎 */}
             <div
               className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gv-bytes/10 border border-gv-bytes/25 text-xs md:text-sm font-mono font-bold text-gv-bytes cursor-pointer hover:bg-gv-bytes/15 transition-colors"
-              title="Gemas / Puntos ganados"
+              title={tr(stats.locale, {
+                es: 'Gemas / Puntos ganados',
+                en: 'Gems / Points earned',
+                de: 'Edelsteine / Punkte',
+                fr: 'Gemmes / Points gagnés',
+                ja: '獲得ジェム・ポイント',
+                pt: 'Gemas / Pontos ganhos',
+              })}
               onClick={() => onChangeTab('shop')}
             >
               <Gem className="w-4 h-4 text-gv-bytes fill-gv-bytes/20" />
@@ -143,7 +166,14 @@ export const Header: React.FC<HeaderProps> = ({
             {stats.isPro ? (
               <div
                 className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gv-primary-soft border border-gv-primary/40 text-xs md:text-sm font-mono font-extrabold text-gv-accent cursor-pointer hover:bg-gv-primary/20 transition-colors"
-                title="Gridverse PRO: Vidas Ilimitadas"
+                title={tr(stats.locale, {
+                  es: 'Gridverse PRO: Vidas Ilimitadas',
+                  en: 'Gridverse PRO: Unlimited Lives',
+                  de: 'Gridverse PRO: Unbegrenzte Leben',
+                  fr: 'Gridverse PRO : Vies Illimitées',
+                  ja: 'Gridverse PRO: ライフ無制限',
+                  pt: 'Gridverse PRO: Vidas Ilimitadas',
+                })}
                 onClick={() => onChangeTab('shop')}
               >
                 <InfinityIcon className="w-4 h-4 text-gv-accent stroke-[2.5]" />
@@ -157,7 +187,14 @@ export const Header: React.FC<HeaderProps> = ({
                   setLivesModalOpen(true);
                 }}
                 className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gv-integrity/10 border border-gv-integrity/25 text-xs md:text-sm font-mono font-bold text-gv-integrity cursor-pointer hover:bg-gv-integrity/15 transition-colors"
-                title="Ver estado y regeneración de vidas"
+                title={tr(stats.locale, {
+                  es: 'Ver estado y regeneración de vidas',
+                  en: 'View lives status and refill',
+                  de: 'Leben-Status & Auffüllung ansehen',
+                  fr: 'Voir l’état et la recharge des vies',
+                  ja: 'ライフの状態と回復時間を確認',
+                  pt: 'Ver status e recarga de vidas',
+                })}
               >
                 <Heart className="w-4 h-4 fill-gv-integrity text-gv-integrity" />
                 <span className="tabular-nums">{stats.lives}</span>
@@ -181,7 +218,23 @@ export const Header: React.FC<HeaderProps> = ({
                   : 'bg-gv-surface-high border-gv-border text-gv-muted hover:text-gv-text'
               }`}
               title={
-                bgmActive ? 'Música de fondo activa (bgm_chill.wav)' : 'Activar música de fondo'
+                bgmActive
+                  ? tr(stats.locale, {
+                      es: 'Música de fondo activa',
+                      en: 'Background music active',
+                      de: 'Hintergrundmusik aktiv',
+                      fr: 'Musique de fond active',
+                      ja: 'BGM再生中',
+                      pt: 'Música de fundo ativa',
+                    })
+                  : tr(stats.locale, {
+                      es: 'Activar música de fondo',
+                      en: 'Turn on background music',
+                      de: 'Hintergrundmusik aktivieren',
+                      fr: 'Activer la musique de fond',
+                      ja: 'BGMをオンにする',
+                      pt: 'Ativar música de fundo',
+                    })
               }
             >
               <Music className="w-4 h-4" />
@@ -192,12 +245,80 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={toggleSound}
               className="p-1.5 rounded-lg bg-gv-surface-high border border-gv-border text-gv-muted hover:text-gv-text hover:bg-gv-surface-higher transition-colors cursor-pointer"
-              title={stats.soundEnabled ? 'Silenciar efectos SFX' : 'Activar efectos SFX'}
+              title={
+                stats.soundEnabled
+                  ? tr(stats.locale, {
+                      es: 'Silenciar efectos SFX',
+                      en: 'Mute sound effects',
+                      de: 'Soundeffekte stummschalten',
+                      fr: 'Couper les effets sonores',
+                      ja: '効果音をミュート',
+                      pt: 'Silenciar efeitos sonoros',
+                    })
+                  : tr(stats.locale, {
+                      es: 'Activar efectos SFX',
+                      en: 'Enable sound effects',
+                      de: 'Soundeffekte aktivieren',
+                      fr: 'Activer les effets sonores',
+                      ja: '効果音を有効化',
+                      pt: 'Ativar efeitos sonoros',
+                    })
+              }
             >
               {stats.soundEnabled ? (
                 <Volume2 className="w-4 h-4" />
               ) : (
                 <VolumeX className="w-4 h-4" />
+              )}
+            </button>
+
+            {/* Theme Toggle (Modo Claro / Modo Oscuro) ☀️🌙 */}
+            <button
+              onClick={toggleTheme}
+              className="p-1.5 rounded-lg bg-gv-surface-high border border-gv-border text-gv-muted hover:text-gv-text hover:bg-gv-surface-higher transition-colors cursor-pointer"
+              title={
+                currentTheme === 'light'
+                  ? tr(stats.locale, {
+                      es: 'Cambiar a modo oscuro',
+                      en: 'Switch to dark mode',
+                      de: 'Zu Dunkelmodus wechseln',
+                      fr: 'Passer en mode sombre',
+                      ja: 'ダークモードに切り替え',
+                      pt: 'Mudar para modo escuro',
+                    })
+                  : tr(stats.locale, {
+                      es: 'Cambiar a modo claro',
+                      en: 'Switch to light mode',
+                      de: 'Zu Hellmodus wechseln',
+                      fr: 'Passer en mode clair',
+                      ja: 'ライトモードに切り替え',
+                      pt: 'Mudar para modo claro',
+                    })
+              }
+              aria-label={
+                currentTheme === 'light'
+                  ? tr(stats.locale, {
+                      es: 'Activar modo oscuro',
+                      en: 'Enable dark mode',
+                      de: 'Dunkelmodus aktivieren',
+                      fr: 'Activer le mode sombre',
+                      ja: 'ダークモードを有効化',
+                      pt: 'Ativar modo escuro',
+                    })
+                  : tr(stats.locale, {
+                      es: 'Activar modo claro',
+                      en: 'Enable light mode',
+                      de: 'Hellmodus aktivieren',
+                      fr: 'Activer le mode clair',
+                      ja: 'ライトモードを有効化',
+                      pt: 'Ativar modo claro',
+                    })
+              }
+            >
+              {currentTheme === 'light' ? (
+                <Moon className="w-4 h-4 text-gv-primary" />
+              ) : (
+                <Sun className="w-4 h-4 text-gv-warning" />
               )}
             </button>
 
@@ -224,7 +345,14 @@ export const Header: React.FC<HeaderProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:flex items-center gap-1 text-xs font-medium text-gv-muted hover:text-gv-accent transition-colors ml-1"
-              title="Ir a la Landing Page oficial"
+              title={tr(stats.locale, {
+                es: 'Ir a la Landing Page oficial',
+                en: 'Go to official Landing Page',
+                de: 'Zur offiziellen Website',
+                fr: 'Aller sur la page officielle',
+                ja: '公式サイトへ移動',
+                pt: 'Ir para a Landing Page oficial',
+              })}
             >
               Landing <ExternalLink className="w-3 h-3" />
             </a>

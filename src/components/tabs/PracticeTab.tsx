@@ -1105,9 +1105,9 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                 className="bg-gv-surface border-[1.5px] rounded-3xl p-5 md:p-6 shadow-xl flex flex-col gap-4 transition-all"
                 style={{
                   borderColor: !courseUnlocked
-                    ? '#233229'
+                    ? 'var(--color-gv-border)'
                     : courseDone
-                    ? '#21C26B'
+                    ? 'var(--color-gv-primary)'
                     : `${course.color}66`,
                 }}
               >
@@ -1303,7 +1303,7 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                             </p>
 
                             <div className="flex items-center gap-2 mt-2.5 flex-wrap">
-                              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/40 text-gv-accent border border-gv-primary/20">
+                              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-gv-primary-soft text-gv-accent border border-gv-primary/20">
                                 {mission.skills}
                               </span>
                               {isDone && (

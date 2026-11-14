@@ -68,4 +68,5 @@ export interface UserStats {
   photoUrl?: string;
   activityHistory?: Record<string, number>;
   lastStreakDate?: string;
+  theme?: 'dark' | 'light';
 }

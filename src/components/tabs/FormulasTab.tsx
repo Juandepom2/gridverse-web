@@ -1055,10 +1055,10 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                                   key={idx}
                                   style={{
                                     borderColor: arg.isOptional
-                                      ? '#233229'
+                                      ? 'var(--color-gv-border)'
                                       : `${catColor}77`,
                                     backgroundColor: arg.isOptional
-                                      ? '#111915'
+                                      ? 'var(--color-gv-surface)'
                                       : `${catColor}18`,
                                   }}
                                   className="px-2.5 py-1 rounded-lg border flex items-center gap-1.5 text-xs font-mono"
@@ -1066,7 +1066,7 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                                   <span
                                     className="font-bold"
                                     style={{
-                                      color: arg.isOptional ? '#8FA89B' : '#E3F2EA',
+                                      color: arg.isOptional ? 'var(--color-gv-muted)' : 'var(--color-gv-text)',
                                     }}
                                   >
                                     {arg.name}
@@ -1075,9 +1075,9 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                                     className="text-[9px] px-1.5 py-0.2 rounded font-extrabold uppercase"
                                     style={{
                                       backgroundColor: arg.isOptional
-                                        ? '#19241E'
+                                        ? 'var(--color-gv-surface-high)'
                                         : `${catColor}33`,
-                                      color: arg.isOptional ? '#8FA89B' : catColor,
+                                      color: arg.isOptional ? 'var(--color-gv-muted)' : catColor,
                                     }}
                                   >
                                     {arg.isOptional
@@ -1397,7 +1397,7 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                     style={{
                       borderColor: `${catColor}88`,
                       boxShadow: `0 4px 0 ${catColor}55`,
-                      background: `linear-gradient(135deg, ${catColor}1F 0%, #111915 65%)`,
+                      background: `linear-gradient(135deg, ${catColor}1F 0%, var(--color-gv-surface) 65%)`,
                     }}
                     className="rounded-[18px] border-2 p-4 flex flex-col justify-between gap-3.5 hover:brightness-105 active:translate-y-0.5 transition-all cursor-pointer"
                   >

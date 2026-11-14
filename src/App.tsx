@@ -20,6 +20,7 @@ import {
   verifyAndSyncProAndLegacyProfile,
 } from './lib/firebase';
 import { tr, UI_STRINGS } from './lib/i18n';
+import { applyTheme, getInitialTheme } from './lib/theme';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, onSnapshot, setDoc, serverTimestamp } from 'firebase/firestore';
 
@@ -38,6 +39,10 @@ export const App: React.FC = () => {
   useEffect(() => {
     sound.setSfxEnabled(stats.soundEnabled);
   }, [stats.soundEnabled]);
+
+  useEffect(() => {
+    applyTheme(stats.theme || getInitialTheme());
+  }, [stats.theme]);
 
   // Handle Stripe Checkout return (?checkout_success=true)
   useEffect(() => {

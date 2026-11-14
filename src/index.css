@@ -78,6 +78,22 @@ html.light,
   .tabular-nums {
     font-variant-numeric: tabular-nums;
   }
+
+  /* Custom subtle scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-gv-border);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gv-muted);
+  }
 }
 
 /* Celdi Idle Organic Breathing Animation */

@@ -7,6 +7,21 @@
     <meta name="theme-color" content="#0A0F0C" />
     <meta name="description" content="Gridverse Web - Domina Excel y hojas de cálculo celda por celda de forma gamificada." />
     <title>Gridverse Web | Domina Excel Celda por Celda</title>
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('gridverse_theme');
+          var isLight = saved === 'light' || (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
+          if (isLight) {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+            document.documentElement.setAttribute('data-theme', 'light');
+            var meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', '#F4F7F5');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body class="bg-gv-bg text-gv-text min-h-screen selection:bg-gv-primary/30 selection:text-gv-accent">
     <div id="root"></div>

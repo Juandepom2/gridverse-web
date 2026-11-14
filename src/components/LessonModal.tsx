@@ -1180,7 +1180,7 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 ? 'bg-gv-surface border-gv-border'
                 : isCorrect
                 ? 'bg-gv-primary-soft border-gv-primary/50'
-                : 'bg-[#2A1517] border-gv-error/50'
+                : 'bg-gv-error/15 border-gv-error/50'
             }`}
           >
             {isAnswered && (

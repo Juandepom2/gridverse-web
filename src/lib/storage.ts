@@ -1,4 +1,5 @@
 import { UserStats, SupportedLocale } from '../types';
+import { getInitialTheme } from './theme';
 
 const STORAGE_KEY = 'gridverse_web_user_stats';
 
@@ -12,6 +13,7 @@ const DEFAULT_STATS: UserStats = {
   unlockedLevel: 'A1',
   soundEnabled: true,
   locale: 'es',
+  theme: getInitialTheme(),
 };
 
 export function loadUserStats(): UserStats {

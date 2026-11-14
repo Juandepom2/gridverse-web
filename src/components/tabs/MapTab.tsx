@@ -189,7 +189,7 @@ export const MapTab: React.FC<MapTabProps> = ({
 
                 <div className="text-right shrink-0">
                   <span
-                    className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-black/40 border border-white/10"
+                    className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-gv-surface/90 border border-gv-border shadow-xs"
                     style={{ color: region.color }}
                   >
                     {completedInRegion}/{region.levels.length}

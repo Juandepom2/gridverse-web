@@ -438,10 +438,10 @@ export const SpreadsheetGrid: React.FC<SpreadsheetGridProps> = ({
                     const rangeBorderStyles: React.CSSProperties = {};
                     if (inSelectedRange) {
                       const shadows: string[] = [];
-                      if (isTopEdge) shadows.push('inset 0 2px 0 0 #21C26B');
-                      if (isBottomEdge) shadows.push('inset 0 -2px 0 0 #21C26B');
-                      if (isLeftEdge) shadows.push('inset 2px 0 0 0 #21C26B');
-                      if (isRightEdge) shadows.push('inset -2px 0 0 0 #21C26B');
+                      if (isTopEdge) shadows.push('inset 0 2px 0 0 var(--color-gv-primary)');
+                      if (isBottomEdge) shadows.push('inset 0 -2px 0 0 var(--color-gv-primary)');
+                      if (isLeftEdge) shadows.push('inset 2px 0 0 0 var(--color-gv-primary)');
+                      if (isRightEdge) shadows.push('inset -2px 0 0 0 var(--color-gv-primary)');
                       if (shadows.length > 0) {
                         rangeBorderStyles.boxShadow = shadows.join(', ');
                       }

@@ -30,8 +30,8 @@ export const LevelNode: React.FC<LevelNodeProps> = ({
   const depth = 6;
 
   // Colors based on status and level type
-  const faceColor = locked ? '#202C26' : isBoss ? '#B18CFF' : color;
-  const edgeColor = locked ? '#141D18' : '#0B4D2A';
+  const faceColor = locked ? 'var(--color-gv-surface-higher)' : isBoss ? 'var(--color-gv-boss)' : color;
+  const edgeColor = locked ? 'var(--color-gv-border)' : '#0B4D2A';
 
   const handleClick = () => {
     sound.play('tap');
