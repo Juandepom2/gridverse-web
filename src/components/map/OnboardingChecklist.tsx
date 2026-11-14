@@ -3,6 +3,7 @@ import { CheckCircle2, Circle, ChevronDown, ChevronUp, ListChecks, X, ChevronRig
 import { SupportedLocale, UserStats } from '../../types';
 import { auth } from '../../lib/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import { tr, UI_STRINGS } from '../../lib/i18n';
 
 interface OnboardingChecklistProps {
   stats: UserStats;
@@ -33,37 +34,53 @@ export const OnboardingChecklist: React.FC<OnboardingChecklistProps> = ({
   const steps = [
     {
       id: 'calibrate',
-      title:
-        locale === 'es'
-          ? 'Calibrar tu ruta personalizada'
-          : 'Calibrate your custom learning path',
+      title: tr(locale, {
+        es: 'Calibrar tu ruta personalizada',
+        en: 'Calibrate your custom learning path',
+        de: 'Deinen Lernpfad kalibrieren',
+        fr: 'Calibrer ton parcours personnalisé',
+        ja: 'カスタム学習ルートを設定する',
+        pt: 'Calibrar sua trilha personalizada',
+      }),
       done: true,
       onAction: undefined,
     },
     {
       id: 'first_lesson',
-      title:
-        locale === 'es'
-          ? 'Completar tu primera celda en el mapa'
-          : 'Complete your first cell on the map',
+      title: tr(locale, {
+        es: 'Completar tu primera celda en el mapa',
+        en: 'Complete your first cell on the map',
+        de: 'Deine erste Zelle auf der Karte abschließen',
+        fr: 'Terminer ta première cellule sur la carte',
+        ja: 'マップで最初のセルをクリアする',
+        pt: 'Completar sua primeira célula no mapa',
+      }),
       done: completedLevelsCount > 0,
       onAction: undefined,
     },
     {
       id: 'streak',
-      title:
-        locale === 'es'
-          ? 'Encender tu 1.er día de racha 🔥'
-          : 'Ignite your 1st day streak 🔥',
+      title: tr(locale, {
+        es: 'Encender tu 1.er día de racha 🔥',
+        en: 'Ignite your 1st day streak 🔥',
+        de: 'Deinen 1. Streak-Tag starten 🔥',
+        fr: 'Allumer ton 1er jour de série 🔥',
+        ja: '1日目の連続記録をスタート 🔥',
+        pt: 'Acender seu 1º dia de ofensiva 🔥',
+      }),
       done: stats.streak > 0 && completedLevelsCount > 0,
       onAction: undefined,
     },
     {
       id: 'account',
-      title:
-        locale === 'es'
-          ? 'Guardar tu progreso con una cuenta gratis'
-          : 'Save your progress with a free account',
+      title: tr(locale, {
+        es: 'Guardar tu progreso con una cuenta gratis',
+        en: 'Save your progress with a free account',
+        de: 'Fortschritt mit kostenlosem Konto speichern',
+        fr: 'Sauvegarder ta progression avec un compte gratuit',
+        ja: '無料アカウントで進捗を保存する',
+        pt: 'Salvar seu progresso com uma conta grátis',
+      }),
       done: isLoggedIn,
       onAction: !isLoggedIn ? () => onNavigateTab('profile') : undefined,
     },
@@ -104,14 +121,10 @@ export const OnboardingChecklist: React.FC<OnboardingChecklistProps> = ({
           </div>
           <div>
             <h3 className="text-[13.5px] font-extrabold text-gv-text leading-tight">
-              {locale === 'es'
-                ? 'Tus Primeros Pasos en Gridverse'
-                : 'Your First Steps in Gridverse'}
+              {tr(locale, UI_STRINGS.map.onboardingTitle)}
             </h3>
             <p className="text-[11.5px] text-gv-muted">
-              {locale === 'es'
-                ? 'Completa tus misiones de inicio'
-                : 'Complete your starter missions'}
+              {tr(locale, UI_STRINGS.map.onboardingSubtitle)}
             </p>
           </div>
         </div>

@@ -25,9 +25,10 @@ import {
 } from 'lucide-react';
 import { SupportedLocale, UserStats } from '../../types';
 import { sound } from '../../lib/audio';
+import { tr } from '../../lib/i18n';
 import { CeldiMascot, CeldiMood } from '../CeldiMascot';
 import {
-  PRACTICE_COURSES,
+  getPracticeCourses,
   PracticeCourseData,
   MissionData,
   StepByStepExerciseData,
@@ -49,98 +50,227 @@ interface SpeedQuestion {
   correct: string;
 }
 
-const STATIC_SPEED_QUESTIONS: SpeedQuestion[] = [
-  {
-    prompt: '¿Qué celda está en Columna B, Fila 4?',
-    options: ['B4', '4B', 'A4', 'B5'],
-    correct: 'B4',
-  },
-  {
-    prompt: '¿Cuánto resulta la fórmula =5*4+2?',
-    options: ['22', '30', '20', '28'],
-    correct: '22',
-  },
-  {
-    prompt: '¿Qué símbolo inicia obligatoriamente toda fórmula?',
-    options: ['=', '+', '@', '#'],
-    correct: '=',
-  },
-  {
-    prompt: '¿Qué función obtiene el promedio de varias celdas?',
-    options: ['PROMEDIO', 'MEDIA', 'SUMA', 'CONTAR'],
-    correct: 'PROMEDIO',
-  },
-  {
-    prompt: '¿Qué tecla fija una referencia absoluta ($A$1)?',
-    options: ['F4', 'F2', 'F9', 'Ctrl'],
-    correct: 'F4',
-  },
-  {
-    prompt: '¿Cuál es el resultado de =SUMA(10, 15, 5)?',
-    options: ['30', '25', '35', '10155'],
-    correct: '30',
-  },
-  {
-    prompt: '¿Qué símbolo representa división en Excel?',
-    options: ['/', '÷', '\\', ':'],
-    correct: '/',
-  },
-  {
-    prompt: '¿Qué error aparece al dividir un número entre cero?',
-    options: ['#¡DIV/0!', '#¡REF!', '#¡VALOR!', '#N/A'],
-    correct: '#¡DIV/0!',
-  },
-  {
-    prompt: '¿Qué celda está 2 filas abajo de C2?',
-    options: ['C4', 'C3', 'E2', 'B2'],
-    correct: 'C4',
-  },
-  {
-    prompt: '¿Cuál es el resultado de =MAX(12, 45, 8)?',
-    options: ['45', '12', '8', '65'],
-    correct: '45',
-  },
-  {
-    prompt: '¿Qué atajo inserta una Autosuma rápidamente?',
-    options: ['Alt + =', 'Ctrl + S', 'Shift + A', 'Ctrl + +'],
-    correct: 'Alt + =',
-  },
-  {
-    prompt: '¿Cuál es el resultado de =MIN(100, 25, 75)?',
-    options: ['25', '100', '75', '0'],
-    correct: '25',
-  },
-  {
-    prompt: '¿Qué celda está a la derecha de A1?',
-    options: ['B1', 'A2', 'B2', 'AA1'],
-    correct: 'B1',
-  },
-  {
-    prompt: '¿Qué atajo activa o quita los Filtros?',
-    options: ['Ctrl + Shift + L', 'Ctrl + F', 'Alt + F', 'Ctrl + T'],
-    correct: 'Ctrl + Shift + L',
-  },
-  {
-    prompt: '¿Cuánto resulta =2^3 (potencia de 2 al cubo)?',
-    options: ['8', '6', '9', '5'],
-    correct: '8',
-  },
-  {
-    prompt: '¿Qué error indica que el nombre de función no existe?',
-    options: ['#¿NOMBRE?', '#¡REF!', '#¡NULO!', '#¡NUM!'],
-    correct: '#¿NOMBRE?',
-  },
-  {
-    prompt: '¿Qué función cuenta celdas que contienen números?',
-    options: ['CONTAR', 'CONTARA', 'SUMA', 'CONTAR.SI'],
-    correct: 'CONTAR',
-  },
-  {
-    prompt: '¿Cuál es el resultado de =10-2*3?',
-    options: ['4', '24', '16', '6'],
-    correct: '4',
-  },
-];
+function getStaticSpeedQuestions(locale: SupportedLocale): SpeedQuestion[] {
+  const avgFn = tr(locale, {
+    es: 'PROMEDIO',
+    en: 'AVERAGE',
+    de: 'MITTELWERT',
+    fr: 'MOYENNE',
+    ja: 'AVERAGE',
+    pt: 'MÉDIA',
+  });
+  const sumFn = tr(locale, {
+    es: 'SUMA',
+    en: 'SUM',
+    de: 'SUMME',
+    fr: 'SOMME',
+    ja: 'SUM',
+    pt: 'SOMA',
+  });
+  const countFn = tr(locale, {
+    es: 'CONTAR',
+    en: 'COUNT',
+    de: 'ANZAHL',
+    fr: 'NB',
+    ja: 'COUNT',
+    pt: 'CONT.NÚM',
+  });
+
+  return [
+    {
+      prompt: tr(locale, {
+        es: '¿Qué celda está en Columna B, Fila 4?',
+        en: 'Which cell is in Column B, Row 4?',
+        de: 'Welche Zelle liegt in Spalte B, Zeile 4?',
+        fr: 'Quelle cellule se trouve en Colonne B, Ligne 4 ?',
+        ja: 'B列・4行目にあるセルはどれ？',
+        pt: 'Qual célula está na Coluna B, Linha 4?',
+      }),
+      options: ['B4', '4B', 'A4', 'B5'],
+      correct: 'B4',
+    },
+    {
+      prompt: tr(locale, {
+        es: '¿Cuánto resulta la fórmula =5*4+2?',
+        en: 'What is the result of =5*4+2?',
+        de: 'Was ergibt die Formel =5*4+2?',
+        fr: 'Quel est le résultat de =5*4+2 ?',
+        ja: '数式 =5*4+2 の計算結果は？',
+        pt: 'Qual é o resultado da fórmula =5*4+2?',
+      }),
+      options: ['22', '30', '20', '28'],
+      correct: '22',
+    },
+    {
+      prompt: tr(locale, {
+        es: '¿Qué símbolo inicia obligatoriamente toda fórmula?',
+        en: 'Which symbol must start every spreadsheet formula?',
+        de: 'Welches Symbol leitet jede Formel ein?',
+        fr: 'Quel symbole commence obligatoirement toute formule ?',
+        ja: 'すべての数式の先頭に必要な記号は？',
+        pt: 'Qual símbolo inicia obrigatoriamente toda fórmula?',
+      }),
+      options: ['=', '+', '@', '#'],
+      correct: '=',
+    },
+    {
+      prompt: tr(locale, {
+        es: '¿Qué función obtiene el promedio de varias celdas?',
+        en: 'Which function calculates the average of several cells?',
+        de: 'Welche Funktion berechnet den Durchschnitt mehrerer Zellen?',
+        fr: 'Quelle fonction calcule la moyenne de plusieurs cellules ?',
+        ja: '複数セルの平均を求める関数は？',
+        pt: 'Qual função calcula a média de várias células?',
+      }),
+      options: [avgFn, 'MEDIAN', sumFn, countFn],
+      correct: avgFn,
+    },
+    {
+      prompt: tr(locale, {
+        es: '¿Qué tecla fija una referencia absoluta ($A$1)?',
+        en: 'Which key locks an absolute reference ($A$1)?',
+        de: 'Welche Taste fixiert einen absoluten Bezug ($A$1)?',
+        fr: 'Quelle touche fige une référence absolue ($A$1) ?',
+        ja: '絶対参照 ($A$1) に切り替えるキーは？',
+        pt: 'Qual tecla fixa uma referência absoluta ($A$1)?',
+      }),
+      options: ['F4', 'F2', 'F9', 'Ctrl'],
+      correct: 'F4',
+    },
+    {
+      prompt: tr(locale, {
+        es: `¿Cuál es el resultado de =${sumFn}(10, 15, 5)?`,
+        en: `What is the result of =${sumFn}(10, 15, 5)?`,
+        de: `Was ist das Ergebnis von =${sumFn}(10, 15, 5)?`,
+        fr: `Quel est le résultat de =${sumFn}(10, 15, 5) ?`,
+        ja: `=${sumFn}(10, 15, 5) の結果は？`,
+        pt: `Qual é o resultado de =${sumFn}(10, 15, 5)?`,
+      }),
+      options: ['30', '25', '35', '10155'],
+      correct: '30',
+    },
+    {
+      prompt: tr(locale, {
+        es: '¿Qué símbolo representa división en Excel?',
+        en: 'Which symbol represents division in Excel?',
+        de: 'Welches Symbol steht in Excel für Division?',
+        fr: 'Quel symbole représente la division dans Excel ?',
+        ja: 'Excelで割り算を表す記号は？',
+        pt: 'Qual símbolo representa divisão no Excel?',
+      }),
+      options: ['/', '÷', '\\', ':'],
+      correct: '/',
+    },
+    {
+      prompt: tr(locale, {
+        es: '¿Qué error aparece al dividir un número entre cero?',
+        en: 'Which error appears when dividing a number by zero?',
+        de: 'Welcher Fehler erscheint bei einer Division durch Null?',
+        fr: 'Quelle erreur apparaît lors d’une division par zéro ?',
+        ja: '0で割ったときに表示されるエラーは？',
+        pt: 'Qual erro aparece ao dividir um número por zero?',
+      }),
+      options: ['#DIV/0!', '#REF!', '#VALUE!', '#N/A'],
+      correct: '#DIV/0!',
+    },
+    {
+      prompt: tr(locale, {
+        es: '¿Qué celda está 2 filas abajo de C2?',
+        en: 'Which cell is 2 rows below C2?',
+        de: 'Welche Zelle liegt 2 Zeilen unter C2?',
+        fr: 'Quelle cellule est 2 lignes en dessous de C2 ?',
+        ja: 'C2の2行下にあるセルは？',
+        pt: 'Qual célula está 2 linhas abaixo de C2?',
+      }),
+      options: ['C4', 'C3', 'E2', 'B2'],
+      correct: 'C4',
+    },
+    {
+      prompt: tr(locale, {
+        es: '¿Cuál es el resultado de =MAX(12, 45, 8)?',
+        en: 'What is the result of =MAX(12, 45, 8)?',
+        de: 'Was ergibt =MAX(12, 45, 8)?',
+        fr: 'Quel est le résultat de =MAX(12, 45, 8) ?',
+        ja: '=MAX(12, 45, 8) の結果は？',
+        pt: 'Qual é o resultado de =MAX(12, 45, 8)?',
+      }),
+      options: ['45', '12', '8', '65'],
+      correct: '45',
+    },
+    {
+      prompt: tr(locale, {
+        es: '¿Qué atajo inserta una Autosuma rápidamente?',
+        en: 'Which shortcut quickly inserts AutoSum?',
+        de: 'Welche Tastenkombination fügt AutoSumme ein?',
+        fr: 'Quel raccourci insère rapidement Somme automatique ?',
+        ja: 'オートSUMをすばやく挿入するショートカットは？',
+        pt: 'Qual atalho insere uma AutoSoma rapidamente?',
+      }),
+      options: ['Alt + =', 'Ctrl + S', 'Shift + A', 'Ctrl + +'],
+      correct: 'Alt + =',
+    },
+    {
+      prompt: tr(locale, {
+        es: '¿Cuál es el resultado de =MIN(100, 25, 75)?',
+        en: 'What is the result of =MIN(100, 25, 75)?',
+        de: 'Was ergibt =MIN(100, 25, 75)?',
+        fr: 'Quel est le résultat de =MIN(100, 25, 75) ?',
+        ja: '=MIN(100, 25, 75) の結果は？',
+        pt: 'Qual é o resultado de =MIN(100, 25, 75)?',
+      }),
+      options: ['25', '100', '75', '0'],
+      correct: '25',
+    },
+    {
+      prompt: tr(locale, {
+        es: '¿Qué celda está a la derecha de A1?',
+        en: 'Which cell is immediately to the right of A1?',
+        de: 'Welche Zelle liegt rechts neben A1?',
+        fr: 'Quelle cellule est à droite de A1 ?',
+        ja: 'A1の右隣にあるセルは？',
+        pt: 'Qual célula está à direita de A1?',
+      }),
+      options: ['B1', 'A2', 'B2', 'AA1'],
+      correct: 'B1',
+    },
+    {
+      prompt: tr(locale, {
+        es: '¿Qué atajo activa o quita los Filtros?',
+        en: 'Which shortcut toggles Filters on or off?',
+        de: 'Welche Tastenkombination aktiviert Filter?',
+        fr: 'Quel raccourci active ou désactive les Filtres ?',
+        ja: 'フィルターをオン/オフするショートカットは？',
+        pt: 'Qual atalho ativa ou remove os Filtros?',
+      }),
+      options: ['Ctrl + Shift + L', 'Ctrl + F', 'Alt + F', 'Ctrl + T'],
+      correct: 'Ctrl + Shift + L',
+    },
+    {
+      prompt: tr(locale, {
+        es: '¿Cuánto resulta =2^3 (potencia de 2 al cubo)?',
+        en: 'What is the result of =2^3 (2 cubed)?',
+        de: 'Was ergibt =2^3 (2 hoch 3)?',
+        fr: 'Quel est le résultat de =2^3 (2 au cube) ?',
+        ja: '=2^3（2の3乗）の結果は？',
+        pt: 'Quanto resulta =2^3 (2 elevado ao cubo)?',
+      }),
+      options: ['8', '6', '9', '5'],
+      correct: '8',
+    },
+    {
+      prompt: tr(locale, {
+        es: '¿Cuál es el resultado de =10-2*3?',
+        en: 'What is the result of =10-2*3?',
+        de: 'Was ergibt =10-2*3?',
+        fr: 'Quel est le résultat de =10-2*3 ?',
+        ja: '=10-2*3 の計算結果は？',
+        pt: 'Qual é o resultado de =10-2*3?',
+      }),
+      options: ['4', '24', '16', '6'],
+      correct: '4',
+    },
+  ];
+}
 
 function shuffleArray<T>(arr: T[]): T[] {
   const copy = [...arr];
@@ -154,7 +284,15 @@ function shuffleArray<T>(arr: T[]): T[] {
 /**
  * Exact port of Flutter's `_generateProceduralQuestion` from `time_attack_screen.dart`
  */
-function generateProceduralQuestion(): SpeedQuestion {
+function generateProceduralQuestion(locale: SupportedLocale): SpeedQuestion {
+  const sumFn = tr(locale, {
+    es: 'SUMA',
+    en: 'SUM',
+    de: 'SUMME',
+    fr: 'SOMME',
+    ja: 'SUM',
+    pt: 'SOMA',
+  });
   const type = Math.floor(Math.random() * 5);
   if (type === 0) {
     const a = Math.floor(Math.random() * 7) + 2;
@@ -175,7 +313,14 @@ function generateProceduralQuestion(): SpeedQuestion {
         step += 3;
       }
       return {
-        prompt: `¿Cuánto resulta la fórmula =${a}+${b}*${c}?`,
+        prompt: tr(locale, {
+          es: `¿Cuánto resulta la fórmula =${a}+${b}*${c}?`,
+          en: `What is the result of =${a}+${b}*${c}?`,
+          de: `Was ergibt die Formel =${a}+${b}*${c}?`,
+          fr: `Quel est le résultat de =${a}+${b}*${c} ?`,
+          ja: `数式 =${a}+${b}*${c} の結果は？`,
+          pt: `Quanto resulta a fórmula =${a}+${b}*${c}?`,
+        }),
         options: shuffleArray(Array.from(set).slice(0, 4)),
         correct: String(result),
       };
@@ -193,7 +338,14 @@ function generateProceduralQuestion(): SpeedQuestion {
         step += 2;
       }
       return {
-        prompt: `¿Cuánto resulta la fórmula =${a}*${b}-${c}?`,
+        prompt: tr(locale, {
+          es: `¿Cuánto resulta la fórmula =${a}*${b}-${c}?`,
+          en: `What is the result of =${a}*${b}-${c}?`,
+          de: `Was ergibt die Formel =${a}*${b}-${c}?`,
+          fr: `Quel est le résultat de =${a}*${b}-${c} ?`,
+          ja: `数式 =${a}*${b}-${c} の結果は？`,
+          pt: `Quanto resulta a fórmula =${a}*${b}-${c}?`,
+        }),
         options: shuffleArray(Array.from(set).slice(0, 4)),
         correct: String(result),
       };
@@ -210,7 +362,14 @@ function generateProceduralQuestion(): SpeedQuestion {
       `${n1}${n2}`,
     ]);
     return {
-      prompt: `¿Cuál es el resultado de =SUMA(${n1}, ${n2}, ${n3})?`,
+      prompt: tr(locale, {
+        es: `¿Cuál es el resultado de =${sumFn}(${n1}, ${n2}, ${n3})?`,
+        en: `What is the result of =${sumFn}(${n1}, ${n2}, ${n3})?`,
+        de: `Was ergibt =${sumFn}(${n1}, ${n2}, ${n3})?`,
+        fr: `Quel est le résultat de =${sumFn}(${n1}, ${n2}, ${n3}) ?`,
+        ja: `=${sumFn}(${n1}, ${n2}, ${n3}) の結果は？`,
+        pt: `Qual é o resultado de =${sumFn}(${n1}, ${n2}, ${n3})?`,
+      }),
       options: shuffleArray(Array.from(set).slice(0, 4)),
       correct: String(sum),
     };
@@ -230,7 +389,14 @@ function generateProceduralQuestion(): SpeedQuestion {
       String(target + 25),
     ]);
     return {
-      prompt: `¿Cuál es el resultado de =${isMax ? 'MAX' : 'MIN'}(${nA}, ${nB}, ${nC})?`,
+      prompt: tr(locale, {
+        es: `¿Cuál es el resultado de =${isMax ? 'MAX' : 'MIN'}(${nA}, ${nB}, ${nC})?`,
+        en: `What is the result of =${isMax ? 'MAX' : 'MIN'}(${nA}, ${nB}, ${nC})?`,
+        de: `Was ergibt =${isMax ? 'MAX' : 'MIN'}(${nA}, ${nB}, ${nC})?`,
+        fr: `Quel est le résultat de =${isMax ? 'MAX' : 'MIN'}(${nA}, ${nB}, ${nC}) ?`,
+        ja: `=${isMax ? 'MAX' : 'MIN'}(${nA}, ${nB}, ${nC}) の結果は？`,
+        pt: `Qual é o resultado de =${isMax ? 'MAX' : 'MIN'}(${nA}, ${nB}, ${nC})?`,
+      }),
       options: shuffleArray(Array.from(set).slice(0, 4)),
       correct: String(target),
     };
@@ -247,7 +413,14 @@ function generateProceduralQuestion(): SpeedQuestion {
       `${cols[colIdx]}${row > 1 ? row - 1 : row + 3}`,
     ]);
     return {
-      prompt: `¿Qué celda está ${offset} ${offset === 1 ? 'fila' : 'filas'} abajo de ${cols[colIdx]}${row}?`,
+      prompt: tr(locale, {
+        es: `¿Qué celda está ${offset} ${offset === 1 ? 'fila' : 'filas'} abajo de ${cols[colIdx]}${row}?`,
+        en: `Which cell is ${offset} ${offset === 1 ? 'row' : 'rows'} below ${cols[colIdx]}${row}?`,
+        de: `Welche Zelle liegt ${offset} ${offset === 1 ? 'Zeile' : 'Zeilen'} unter ${cols[colIdx]}${row}?`,
+        fr: `Quelle cellule est ${offset} ${offset === 1 ? 'ligne' : 'lignes'} sous ${cols[colIdx]}${row} ?`,
+        ja: `${cols[colIdx]}${row} の ${offset}行下にあるセルは？`,
+        pt: `Qual célula está ${offset} ${offset === 1 ? 'linha' : 'linhas'} abaixo de ${cols[colIdx]}${row}?`,
+      }),
       options: opts,
       correct: target,
     };
@@ -262,80 +435,145 @@ function generateProceduralQuestion(): SpeedQuestion {
       String(base - res),
     ]);
     return {
-      prompt: `¿Cuánto es el ${pct}% de ${base}?`,
+      prompt: tr(locale, {
+        es: `¿Cuánto es el ${pct}% de ${base}?`,
+        en: `What is ${pct}% of ${base}?`,
+        de: `Was sind ${pct}% von ${base}?`,
+        fr: `Combien font ${pct}% de ${base} ?`,
+        ja: `${base} の ${pct}% はいくら？`,
+        pt: `Quanto é ${pct}% de ${base}?`,
+      }),
       options: opts,
       correct: String(res),
     };
   }
 }
 
-function buildTimeAttackDeck(): SpeedQuestion[] {
-  const staticPool = shuffleArray(STATIC_SPEED_QUESTIONS).map((q) => ({
+function buildTimeAttackDeck(locale: SupportedLocale): SpeedQuestion[] {
+  const staticPool = shuffleArray(getStaticSpeedQuestions(locale)).map((q) => ({
     ...q,
     options: shuffleArray(q.options),
   }));
-  const procedural = Array.from({ length: 14 }, () => generateProceduralQuestion());
+  const procedural = Array.from({ length: 14 }, () => generateProceduralQuestion(locale));
   return shuffleArray([...staticPool, ...procedural]);
 }
 
-const SHORTCUT_DRILL_QUESTIONS = [
-  {
-    q: '¿Qué atajo convierte una celda relativa (A1) en absoluta ($A$1)?',
-    win: 'F4',
-    mac: 'Cmd + T / F4',
-    opts: ['F4', 'F2', 'Ctrl + A', 'Alt + F4'],
-    ans: 'F4',
-  },
-  {
-    q: '¿Qué combinación inserta automáticamente la función =SUMA() (Autosuma)?',
-    win: 'Alt + =',
-    mac: 'Cmd + Shift + T',
-    opts: ['Alt + =', 'Ctrl + S', 'Ctrl + +', 'Shift + ='],
-    ans: 'Alt + =',
-  },
-  {
-    q: '¿Qué atajo activa o desactiva los Filtros de una tabla?',
-    win: 'Ctrl + Shift + L',
-    mac: 'Cmd + Shift + F',
-    opts: ['Ctrl + Shift + L', 'Ctrl + F', 'Alt + L', 'Ctrl + T'],
-    ans: 'Ctrl + Shift + L',
-  },
-  {
-    q: '¿Qué tecla permite editar directamente el contenido de la celda activa?',
-    win: 'F2',
-    mac: 'F2 / Ctrl + U',
-    opts: ['F2', 'F5', 'Esc', 'Tab'],
-    ans: 'F2',
-  },
-  {
-    q: '¿Qué atajo selecciona toda la fila actual en la hoja de cálculo?',
-    win: 'Shift + Espacio',
-    mac: 'Shift + Espacio',
-    opts: ['Shift + Espacio', 'Ctrl + Espacio', 'Alt + Espacio', 'Ctrl + R'],
-    ans: 'Shift + Espacio',
-  },
-  {
-    q: '¿Qué atajo selecciona toda la columna actual en la hoja de cálculo?',
-    win: 'Ctrl + Espacio',
-    mac: 'Ctrl + Espacio',
-    opts: ['Ctrl + Espacio', 'Shift + Espacio', 'Ctrl + C', 'Alt + C'],
-    ans: 'Ctrl + Espacio',
-  },
-  {
-    q: '¿Qué combinación convierte un rango de datos en una Tabla Oficial de Excel?',
-    win: 'Ctrl + T',
-    mac: 'Cmd + T',
-    opts: ['Ctrl + T', 'Ctrl + B', 'Alt + T', 'Shift + T'],
-    ans: 'Ctrl + T',
-  },
-  {
-    q: '¿Qué combinación deshace la última acción realizada?',
-    win: 'Ctrl + Z',
-    mac: 'Cmd + Z',
-    opts: ['Ctrl + Z', 'Ctrl + Y', 'Ctrl + X', 'Alt + Z'],
-    ans: 'Ctrl + Z',
-  },
-];
+function getShortcutDrillQuestions(locale: SupportedLocale) {
+  return [
+    {
+      q: tr(locale, {
+        es: '¿Qué atajo convierte una celda relativa (A1) en absoluta ($A$1)?',
+        en: 'Which shortcut converts a relative cell (A1) into an absolute reference ($A$1)?',
+        de: 'Welche Taste wandelt einen relativen Bezug (A1) in einen absoluten ($A$1) um?',
+        fr: 'Quel raccourci convertit une référence relative (A1) en absolue ($A$1) ?',
+        ja: '相対参照 (A1) を絶対参照 ($A$1) に切り替えるショートカットは？',
+        pt: 'Qual atalho converte uma célula relativa (A1) em absoluta ($A$1)?',
+      }),
+      win: 'F4',
+      mac: 'Cmd + T / F4',
+      opts: ['F4', 'F2', 'Ctrl + A', 'Alt + F4'],
+      ans: 'F4',
+    },
+    {
+      q: tr(locale, {
+        es: '¿Qué combinación inserta automáticamente la función Autosuma?',
+        en: 'Which shortcut automatically inserts the AutoSum function?',
+        de: 'Welche Tastenkombination fügt automatisch AutoSumme ein?',
+        fr: 'Quelle combinaison insère automatiquement la fonction Somme automatique ?',
+        ja: 'オートSUM関数を自動挿入するショートカットは？',
+        pt: 'Qual combinação insere automaticamente a função AutoSoma?',
+      }),
+      win: 'Alt + =',
+      mac: 'Cmd + Shift + T',
+      opts: ['Alt + =', 'Ctrl + S', 'Ctrl + +', 'Shift + ='],
+      ans: 'Alt + =',
+    },
+    {
+      q: tr(locale, {
+        es: '¿Qué atajo activa o desactiva los Filtros de una tabla?',
+        en: 'Which shortcut turns table Filters on or off?',
+        de: 'Welche Tastenkombination schaltet Tabellenfilter ein oder aus?',
+        fr: 'Quel raccourci active ou désactive les Filtres d’un tableau ?',
+        ja: 'テーブルのフィルターをオン/オフするショートカットは？',
+        pt: 'Qual atalho ativa ou desativa os Filtros de uma tabela?',
+      }),
+      win: 'Ctrl + Shift + L',
+      mac: 'Cmd + Shift + F',
+      opts: ['Ctrl + Shift + L', 'Ctrl + F', 'Alt + L', 'Ctrl + T'],
+      ans: 'Ctrl + Shift + L',
+    },
+    {
+      q: tr(locale, {
+        es: '¿Qué tecla permite editar directamente el contenido de la celda activa?',
+        en: 'Which key lets you directly edit the active cell content?',
+        de: 'Welche Taste ermöglicht das direkte Bearbeiten der aktiven Zelle?',
+        fr: 'Quelle touche permet de modifier directement le contenu de la cellule active ?',
+        ja: 'アクティブセルの内容を直接編集できるキーは？',
+        pt: 'Qual tecla permite editar diretamente o conteúdo da célula ativa?',
+      }),
+      win: 'F2',
+      mac: 'F2 / Ctrl + U',
+      opts: ['F2', 'F5', 'Esc', 'Tab'],
+      ans: 'F2',
+    },
+    {
+      q: tr(locale, {
+        es: '¿Qué atajo selecciona toda la fila actual en la hoja de cálculo?',
+        en: 'Which shortcut selects the entire current row in the spreadsheet?',
+        de: 'Welche Kombination markiert die gesamte aktuelle Zeile?',
+        fr: 'Quel raccourci sélectionne toute la ligne actuelle ?',
+        ja: '現在の行全体を選択するショートカットは？',
+        pt: 'Qual atalho seleciona toda a linha atual na planilha?',
+      }),
+      win: 'Shift + Space',
+      mac: 'Shift + Space',
+      opts: ['Shift + Space', 'Ctrl + Space', 'Alt + Space', 'Ctrl + R'],
+      ans: 'Shift + Space',
+    },
+    {
+      q: tr(locale, {
+        es: '¿Qué atajo selecciona toda la columna actual en la hoja de cálculo?',
+        en: 'Which shortcut selects the entire current column in the spreadsheet?',
+        de: 'Welche Kombination markiert die gesamte aktuelle Spalte?',
+        fr: 'Quel raccourci sélectionne toute la colonne actuelle ?',
+        ja: '現在の列全体を選択するショートカットは？',
+        pt: 'Qual atalho seleciona toda a coluna atual na planilha?',
+      }),
+      win: 'Ctrl + Space',
+      mac: 'Ctrl + Space',
+      opts: ['Ctrl + Space', 'Shift + Space', 'Ctrl + C', 'Alt + C'],
+      ans: 'Ctrl + Space',
+    },
+    {
+      q: tr(locale, {
+        es: '¿Qué combinación convierte un rango de datos en una Tabla Oficial de Excel?',
+        en: 'Which shortcut converts a data range into an Official Excel Table?',
+        de: 'Welche Kombination wandelt einen Datenbereich in eine Excel-Tabelle um?',
+        fr: 'Quelle combinaison convertit une plage en Tableau Excel officiel ?',
+        ja: 'データ範囲をExcelのテーブルに変換するショートカットは？',
+        pt: 'Qual combinação converte um intervalo em uma Tabela Oficial do Excel?',
+      }),
+      win: 'Ctrl + T',
+      mac: 'Cmd + T',
+      opts: ['Ctrl + T', 'Ctrl + B', 'Alt + T', 'Shift + T'],
+      ans: 'Ctrl + T',
+    },
+    {
+      q: tr(locale, {
+        es: '¿Qué combinación deshace la última acción realizada?',
+        en: 'Which shortcut undoes the last action?',
+        de: 'Welche Kombination macht die letzte Aktion rückgängig?',
+        fr: 'Quelle combinaison annule la dernière action effectuée ?',
+        ja: '直前の操作を元に戻す（Undo）ショートカットは？',
+        pt: 'Qual combinação desfaz a última ação realizada?',
+      }),
+      win: 'Ctrl + Z',
+      mac: 'Cmd + Z',
+      opts: ['Ctrl + Z', 'Ctrl + Y', 'Ctrl + X', 'Alt + Z'],
+      ans: 'Ctrl + Z',
+    },
+  ];
+}
 
 /**
  * Port of `CourseCeldiMascot` from `course_celdi_mascot.dart`
@@ -345,7 +583,8 @@ const CourseCeldiMascot: React.FC<{
   color: string;
   isLocked: boolean;
   isCompleted: boolean;
-}> = ({ courseOrder, color, isLocked, isCompleted }) => {
+  locale: SupportedLocale;
+}> = ({ courseOrder, color, isLocked, isCompleted, locale }) => {
   const [showBubble, setShowBubble] = useState(false);
 
   const mood: CeldiMood = isCompleted
@@ -359,11 +598,50 @@ const CourseCeldiMascot: React.FC<{
     : 'onFire';
 
   const getPhrase = () => {
-    if (isLocked) return '¡Completa el curso anterior o hazte PRO para desbloquearme!';
-    if (isCompleted) return '¡Curso dominado al 100%! 🏆';
-    if (courseOrder === 1) return '¡Vamos a cuadrar las cuentas del negocio!';
-    if (courseOrder === 2) return '¡Activando modo detective de fórmulas!';
-    return '¡Hora de reparar esas bases de datos!';
+    if (isLocked)
+      return tr(locale, {
+        es: '¡Completa el curso anterior o hazte PRO para desbloquearme!',
+        en: 'Complete the previous course or go PRO to unlock me!',
+        de: 'Schließe den vorherigen Kurs ab oder werde PRO!',
+        fr: 'Termine le cours précédent ou passe PRO pour me débloquer !',
+        ja: '前のコースをクリアするか、PROでアンロックしよう！',
+        pt: 'Conclua o curso anterior ou seja PRO para me desbloquear!',
+      });
+    if (isCompleted)
+      return tr(locale, {
+        es: '¡Curso dominado al 100%! 🏆',
+        en: 'Course 100% mastered! 🏆',
+        de: 'Kurs zu 100 % gemeistert! 🏆',
+        fr: 'Cours maîtrisé à 100 % ! 🏆',
+        ja: 'コース100%マスター！ 🏆',
+        pt: 'Curso dominado 100%! 🏆',
+      });
+    if (courseOrder === 1)
+      return tr(locale, {
+        es: '¡Vamos a cuadrar las cuentas del negocio!',
+        en: 'Let’s balance the business books!',
+        de: 'Bringen wir die Geschäftszahlen in Ordnung!',
+        fr: 'Équilibrons les comptes de l’entreprise !',
+        ja: 'ビジネスの帳簿を自動化しよう！',
+        pt: 'Vamos fechar as contas do negócio!',
+      });
+    if (courseOrder === 2)
+      return tr(locale, {
+        es: '¡Activando modo detective de fórmulas!',
+        en: 'Formula detective mode activated!',
+        de: 'Formel-Detektivmodus aktiviert!',
+        fr: 'Mode détective de formules activé !',
+        ja: '数式探偵モード起動！',
+        pt: 'Ativando modo detetive de fórmulas!',
+      });
+    return tr(locale, {
+      es: '¡Hora de reparar esas bases de datos!',
+      en: 'Time to repair those databases!',
+      de: 'Zeit, diese Datenbanken zu reparieren!',
+      fr: 'Il est temps de réparer ces bases de données !',
+      ja: 'データベースのエラーを修復しよう！',
+      pt: 'Hora de reparar essas bases de dados!',
+    });
   };
 
   return (
@@ -471,6 +749,9 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
   const [shortcutSelected, setShortcutSelected] = useState<string | null>(null);
   const [shortcutDone, setShortcutDone] = useState(false);
 
+  const practiceCourses = useMemo(() => getPracticeCourses(locale), [locale]);
+  const shortcutDrillQuestions = useMemo(() => getShortcutDrillQuestions(locale), [locale]);
+
   // Check if a mission is completed (either in stats.completedLevels or localStorage)
   const isMissionDone = (ref: string): boolean => {
     const upper = ref.toUpperCase();
@@ -492,7 +773,7 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
   const isCourseUnlocked = (course: PracticeCourseData): boolean => {
     if (stats.isPro) return true;
     if (!course.prerequisiteCourseId) return true;
-    const prereq = PRACTICE_COURSES.find((c) => c.id === course.prerequisiteCourseId);
+    const prereq = practiceCourses.find((c) => c.id === course.prerequisiteCourseId);
     if (!prereq) return true;
     return isCourseDone(prereq);
   };
@@ -543,7 +824,7 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
 
   const handleOpenTimeAttack = () => {
     sound.play('tap');
-    setTaQuestions(buildTimeAttackDeck());
+    setTaQuestions(buildTimeAttackDeck(locale));
     setTimeLeft(60);
     setScore(0);
     setCombo(0);
@@ -597,8 +878,8 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
     onReward(xp, gems, ref.toUpperCase());
   };
 
-  const totalMissionsCount = PRACTICE_COURSES.reduce((acc, c) => acc + c.missions.length, 0);
-  const completedMissionsCount = PRACTICE_COURSES.reduce(
+  const totalMissionsCount = practiceCourses.reduce((acc, c) => acc + c.missions.length, 0);
+  const completedMissionsCount = practiceCourses.reduce(
     (acc, c) => acc + c.missions.filter((m) => isMissionDone(m.ref)).length,
     0
   );
@@ -609,12 +890,24 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl md:text-3xl font-black text-gv-text tracking-tight">
-            {locale === 'es' ? 'Centro de Práctica' : 'Practice Center'}
+            {tr(locale, {
+              es: 'Centro de Práctica',
+              en: 'Practice Center',
+              de: 'Übungszentrum',
+              fr: "Centre d'Entraînement",
+              ja: '練習センター',
+              pt: 'Centro de Prática',
+            })}
           </h1>
           <p className="text-xs text-gv-muted mt-0.5">
-            {locale === 'es'
-              ? 'Resuelve libros contables multipaso de negocios reales y entrena tu velocidad.'
-              : 'Solve multi-sheet business workbooks and train your formula speed.'}
+            {tr(locale, {
+              es: 'Resuelve libros contables multipaso de negocios reales y entrena tu velocidad.',
+              en: 'Solve multi-sheet business workbooks and train your formula speed.',
+              de: 'Löse mehrseitige Arbeitsmappen aus der Praxis und trainiere deine Geschwindigkeit.',
+              fr: 'Résous des classeurs multi-feuilles réels et entraîne ta vitesse de calcul.',
+              ja: '実務の複数シートブックを解き、数式スピードを鍛えよう。',
+              pt: 'Resolva pastas de trabalho reais de múltiplas abas e treine sua velocidade.',
+            })}
           </p>
         </div>
       </div>
@@ -644,12 +937,22 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>
                   {dailyCompleted
-                    ? locale === 'es'
-                      ? '¡COMPLETADO HOY!'
-                      : 'COMPLETED TODAY!'
-                    : locale === 'es'
-                    ? 'DESAFÍO DIARIO · 3 HOJAS'
-                    : 'DAILY CHALLENGE · 3 SHEETS'}
+                    ? tr(locale, {
+                        es: '¡COMPLETADO HOY!',
+                        en: 'COMPLETED TODAY!',
+                        de: 'HEUTE ERLEDIGT!',
+                        fr: 'TERMINÉ AUJOURD’HUI !',
+                        ja: '本日クリア済み！',
+                        pt: 'CONCLUÍDO HOJE!',
+                      })
+                    : tr(locale, {
+                        es: 'DESAFÍO DIARIO · 3 HOJAS',
+                        en: 'DAILY CHALLENGE · 3 SHEETS',
+                        de: 'TAGESCHALLENGE · 3 BLÄTTER',
+                        fr: 'DÉFI QUOTIDIEN · 3 FEUILLES',
+                        ja: 'デイリーチャレンジ · 3シート',
+                        pt: 'DESAFIO DIÁRIO · 3 ABAS',
+                      })}
                 </span>
               </span>
 
@@ -662,14 +965,24 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
             </div>
 
             <h2 className="text-xl md:text-2xl font-black text-gv-text">
-              {locale === 'es'
-                ? 'La Hoja Rota: Facturación y BUSCARV'
-                : 'The Broken Sheet: Billing & VLOOKUP'}
+              {tr(locale, {
+                es: 'La Hoja Rota: Facturación y BUSCARV',
+                en: 'The Broken Sheet: Billing & VLOOKUP',
+                de: 'Das kaputte Blatt: Abrechnung & SVERWEIS',
+                fr: 'La Feuille Cassée : Facturation & RECHERCHEV',
+                ja: '壊れたシート：請求管理とVLOOKUP',
+                pt: 'A Planilha Quebrada: Faturamento e PROCV',
+              })}
             </h2>
             <p className="text-xs md:text-sm text-gv-muted mt-1 max-w-lg leading-relaxed">
-              {locale === 'es'
-                ? 'Audita y repara 10 pasos en 3 hojas de cálculo empresariales con errores #N/A, SI.ERROR y referencias absolutas $B$5.'
-                : 'Audit and repair 10 steps across 3 business sheets with #N/A errors, IFERROR, and $B$5 references.'}
+              {tr(locale, {
+                es: 'Audita y repara 10 pasos en 3 hojas de cálculo empresariales con errores #N/A, SI.ERROR y referencias absolutas $B$5.',
+                en: 'Audit and repair 10 steps across 3 business sheets with #N/A errors, IFERROR, and $B$5 references.',
+                de: 'Prüfe und repariere 10 Schritte in 3 Blättern mit #NV-Fehlern, WENNFEHLER und $B$5-Bezügen.',
+                fr: 'Audite et répare 10 étapes sur 3 feuilles avec erreurs #N/A, SIERREUR et références $B$5.',
+                ja: '3つのシートにわたる10ステップで#N/Aエラー、IFERROR、絶対参照$B$5を監査・修復します。',
+                pt: 'Audite e repare 10 passos em 3 planilhas empresariais com erros #N/D, SEERRO e referências $B$5.',
+              })}
             </p>
 
             <div className="flex items-center justify-center sm:justify-start gap-3 mt-4 flex-wrap">
@@ -677,10 +990,26 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                 ⚡ +60 XP
               </span>
               <span className="px-2.5 py-1 rounded-lg bg-gv-bytes/15 border border-gv-bytes/30 font-mono text-xs font-extrabold text-gv-bytes">
-                💎 +50 Gemas
+                💎 +50{' '}
+                {tr(locale, {
+                  es: 'Gemas',
+                  en: 'Gems',
+                  de: 'Juwelen',
+                  fr: 'Gemmes',
+                  ja: 'ジェム',
+                  pt: 'Gemas',
+                })}
               </span>
               <span className="px-2.5 py-1 rounded-lg bg-gv-surface border border-gv-border font-mono text-xs font-bold text-gv-muted">
-                📊 10 pasos · 3 hojas
+                📊{' '}
+                {tr(locale, {
+                  es: '10 pasos · 3 hojas',
+                  en: '10 steps · 3 sheets',
+                  de: '10 Schritte · 3 Blätter',
+                  fr: '10 étapes · 3 feuilles',
+                  ja: '10ステップ · 3シート',
+                  pt: '10 passos · 3 abas',
+                })}
               </span>
             </div>
 
@@ -696,12 +1025,22 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                 <Play className="w-3.5 h-3.5 fill-current" />
                 <span>
                   {dailyCompleted
-                    ? locale === 'es'
-                      ? 'Practicar de nuevo'
-                      : 'Practice Again'
-                    : locale === 'es'
-                    ? 'Resolver Desafío Diario'
-                    : 'Solve Daily Challenge'}
+                    ? tr(locale, {
+                        es: 'Practicar de nuevo',
+                        en: 'Practice Again',
+                        de: 'Erneut üben',
+                        fr: 'Pratiquer à nouveau',
+                        ja: 'もう一度練習する',
+                        pt: 'Praticar novamente',
+                      })
+                    : tr(locale, {
+                        es: 'Resolver Desafío Diario',
+                        en: 'Solve Daily Challenge',
+                        de: 'Tageschallenge lösen',
+                        fr: 'Résoudre le Défi Quotidien',
+                        ja: 'デイリーチャレンジに挑戦',
+                        pt: 'Resolver Desafio Diário',
+                      })}
                 </span>
               </button>
             </div>
@@ -718,21 +1057,41 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
         <div className="flex items-center justify-between gap-2 flex-wrap">
           <div>
             <h2 className="text-lg md:text-xl font-black text-gv-text">
-              {locale === 'es' ? 'Ruta de Especialización Práctica' : 'Practical Specialization Path'}
+              {tr(locale, {
+                es: 'Ruta de Especialización Práctica',
+                en: 'Practical Specialization Path',
+                de: 'Praxis-Spezialisierungspfad',
+                fr: 'Parcours de Spécialisation Pratique',
+                ja: '実践スペシャリストコース',
+                pt: 'Trilha de Especialização Prática',
+              })}
             </h2>
             <p className="text-xs text-gv-muted mt-0.5">
-              {locale === 'es'
-                ? 'Libros de trabajo reales de múltiples hojas con clientes y casos de negocio.'
-                : 'Real multi-sheet workbooks with clients and hands-on business cases.'}
+              {tr(locale, {
+                es: 'Libros de trabajo reales de múltiples hojas con clientes y casos de negocio.',
+                en: 'Real multi-sheet workbooks with clients and hands-on business cases.',
+                de: 'Mehrseitige Arbeitsmappen mit Kunden und realen Geschäftsfällen.',
+                fr: 'Classeurs multi-feuilles réels avec clients et cas pratiques.',
+                ja: 'クライアントの実際のビジネスケースを複数シートで解決。',
+                pt: 'Pastas de trabalho reais de múltiplas abas com clientes e casos de negócios.',
+              })}
             </p>
           </div>
           <span className="px-3 py-1 rounded-full bg-gv-primary/15 border border-gv-primary/35 font-mono text-xs font-extrabold text-gv-accent">
-            {completedMissionsCount}/{totalMissionsCount} casos resueltos
+            {completedMissionsCount}/{totalMissionsCount}{' '}
+            {tr(locale, {
+              es: 'casos resueltos',
+              en: 'cases solved',
+              de: 'Fälle gelöst',
+              fr: 'cas résolus',
+              ja: 'ケース解決済み',
+              pt: 'casos resolvidos',
+            })}
           </span>
         </div>
 
         <div className="flex flex-col gap-5">
-          {PRACTICE_COURSES.map((course) => {
+          {practiceCourses.map((course) => {
             const courseUnlocked = isCourseUnlocked(course);
             const courseDone = isCourseDone(course);
             const doneCount = course.missions.filter((m) => isMissionDone(m.ref)).length;
@@ -763,12 +1122,27 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                           color: courseUnlocked ? course.color : '#94A3B8',
                         }}
                       >
-                        CURSO {course.order}
+                        {tr(locale, {
+                          es: 'CURSO',
+                          en: 'COURSE',
+                          de: 'KURS',
+                          fr: 'COURS',
+                          ja: 'コース',
+                          pt: 'CURSO',
+                        })}{' '}
+                        {course.order}
                       </span>
 
                       {isFreeCourse ? (
                         <span className="px-2 py-0.5 rounded-md bg-gv-primary/20 border border-gv-primary/40 font-mono text-[10px] font-black text-gv-accent">
-                          GRATIS
+                          {tr(locale, {
+                            es: 'GRATIS',
+                            en: 'FREE',
+                            de: 'GRATIS',
+                            fr: 'GRATUIT',
+                            ja: '無料',
+                            pt: 'GRÁTIS',
+                          })}
                         </span>
                       ) : !stats.isPro ? (
                         <span className="px-2 py-0.5 rounded-md bg-gv-warning/20 border border-gv-warning/40 font-mono text-[10px] font-black text-gv-warning flex items-center gap-1">
@@ -778,7 +1152,15 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
 
                       {courseDone && (
                         <span className="px-2 py-0.5 rounded-md bg-gv-primary text-black font-mono text-[10px] font-black flex items-center gap-1">
-                          <CheckCircle2 className="w-3 h-3 stroke-[2.5]" /> COMPLETADO
+                          <CheckCircle2 className="w-3 h-3 stroke-[2.5]" />{' '}
+                          {tr(locale, {
+                            es: 'COMPLETADO',
+                            en: 'COMPLETED',
+                            de: 'ABGESCHLOSSEN',
+                            fr: 'TERMINÉ',
+                            ja: '完了',
+                            pt: 'CONCLUÍDO',
+                          })}
                         </span>
                       )}
                     </div>
@@ -796,6 +1178,7 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                     color={course.color}
                     isLocked={!courseUnlocked}
                     isCompleted={courseDone}
+                    locale={locale}
                   />
                 </div>
 
@@ -824,8 +1207,14 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                     <div className="flex items-center gap-2 text-xs text-gv-warning font-semibold">
                       <Lock className="w-4 h-4 shrink-0" />
                       <span>
-                        Completa <strong>{course.prerequisiteCourseTitle}</strong> o desbloquea{' '}
-                        <strong>Gridverse PRO</strong> para acceder inmediatamente.
+                        {tr(locale, {
+                          es: `Completa ${course.prerequisiteCourseTitle} o desbloquea Gridverse PRO para acceder inmediatamente.`,
+                          en: `Complete ${course.prerequisiteCourseTitle} or unlock Gridverse PRO for instant access.`,
+                          de: `Schließe ${course.prerequisiteCourseTitle} ab oder schalte Gridverse PRO frei.`,
+                          fr: `Complète ${course.prerequisiteCourseTitle} ou débloque Gridverse PRO pour un accès immédiat.`,
+                          ja: `${course.prerequisiteCourseTitle}をクリアするか、Gridverse PROで今すぐアンロック。`,
+                          pt: `Conclua ${course.prerequisiteCourseTitle} ou desbloqueie o Gridverse PRO para acesso imediato.`,
+                        })}
                       </span>
                     </div>
                     {onNavigateTab && (
@@ -834,7 +1223,14 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                         onClick={() => onNavigateTab('shop')}
                         className="px-3 py-1 rounded-lg bg-gv-warning text-black font-black text-[11px] cursor-pointer"
                       >
-                        Ver PRO
+                        {tr(locale, {
+                          es: 'Ver PRO',
+                          en: 'View PRO',
+                          de: 'PRO ansehen',
+                          fr: 'Voir PRO',
+                          ja: 'PROを見る',
+                          pt: 'Ver PRO',
+                        })}
                       </button>
                     )}
                   </div>
@@ -852,10 +1248,6 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                         key={mission.ref}
                         onClick={() => {
                           sound.play('tap');
-                          if (!unlocked) {
-                            setPreviewMission(mission);
-                            return;
-                          }
                           setPreviewMission(mission);
                         }}
                         className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-start justify-between gap-3 ${
@@ -882,7 +1274,24 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                                 {mission.client}
                               </span>
                               <span className="text-[10px] font-mono text-gv-primary font-bold">
-                                · {exData.steps.length} pasos · {exData.sheets.length} hojas
+                                · {exData.steps.length}{' '}
+                                {tr(locale, {
+                                  es: 'pasos',
+                                  en: 'steps',
+                                  de: 'Schritte',
+                                  fr: 'étapes',
+                                  ja: 'ステップ',
+                                  pt: 'passos',
+                                })}{' '}
+                                · {exData.sheets.length}{' '}
+                                {tr(locale, {
+                                  es: 'hojas',
+                                  en: 'sheets',
+                                  de: 'Blätter',
+                                  fr: 'feuilles',
+                                  ja: 'シート',
+                                  pt: 'abas',
+                                })}
                               </span>
                             </div>
 
@@ -931,12 +1340,24 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
       <div className="flex flex-col gap-4">
         <div>
           <h2 className="text-lg md:text-xl font-black text-gv-text">
-            {locale === 'es' ? 'Entrenamiento Rápido' : 'Quick Training'}
+            {tr(locale, {
+              es: 'Entrenamiento Rápido',
+              en: 'Quick Training',
+              de: 'Schnelltraining',
+              fr: 'Entraînement Rapide',
+              ja: 'クイックトレーニング',
+              pt: 'Treinamento Rápido',
+            })}
           </h2>
           <p className="text-xs text-gv-muted mt-0.5">
-            {locale === 'es'
-              ? 'Sesiones intensivas para reforzar puntos débiles, agilidad mental y atajos.'
-              : 'Focused drills to reinforce weak spots, mental speed, and keyboard shortcuts.'}
+            {tr(locale, {
+              es: 'Sesiones intensivas para reforzar puntos débiles, agilidad mental y atajos.',
+              en: 'Focused drills to reinforce weak spots, mental speed, and keyboard shortcuts.',
+              de: 'Gezielte Übungen für Schwachstellen, Kopfrechnen und Tastenkombinationen.',
+              fr: 'Sessions intensives pour renforcer tes points faibles, ta vitesse et tes raccourcis.',
+              ja: '弱点補強、暗算スピード、ショートカットを集中トレーニング。',
+              pt: 'Sessões intensivas para reforçar pontos fracos, agilidade mental e atalhos.',
+            })}
           </p>
         </div>
 
@@ -959,16 +1380,37 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
             </div>
             <div>
               <h3 className="text-sm md:text-base font-extrabold text-gv-text">
-                {locale === 'es' ? 'Repasar puntos débiles' : 'Review Weak Points'}
+                {tr(locale, {
+                  es: 'Repasar puntos débiles',
+                  en: 'Review Weak Points',
+                  de: 'Schwachstellen üben',
+                  fr: 'Réviser les points faibles',
+                  ja: '弱点を復習する',
+                  pt: 'Revisar pontos fracos',
+                })}
               </h3>
               <p className="text-xs text-gv-muted mt-1 leading-relaxed">
-                {locale === 'es'
-                  ? 'Practica referencias fijas ($B$5), jerarquía de paréntesis y potencias en 2 hojas.'
-                  : 'Practice absolute references ($B$5), parentheses priority, and powers across 2 sheets.'}
+                {tr(locale, {
+                  es: 'Practica referencias fijas ($B$5), jerarquía de paréntesis y potencias en 2 hojas.',
+                  en: 'Practice absolute references ($B$5), parentheses priority, and powers across 2 sheets.',
+                  de: 'Übe absolute Bezüge ($B$5), Klammer-Rangfolge und Potenzen auf 2 Blättern.',
+                  fr: 'Pratique les références absolues ($B$5), la priorité des parenthèses et les puissances.',
+                  ja: '2つのシートで絶対参照($B$5)、カッコの優先順位、べき乗を練習します。',
+                  pt: 'Pratique referências fixas ($B$5), prioridade de parênteses e potências em 2 abas.',
+                })}
               </p>
             </div>
             <div className="flex items-center justify-between text-[11px] font-mono font-bold text-gv-info pt-1 border-t border-gv-border/60">
-              <span>10 pasos · 2 hojas</span>
+              <span>
+                {tr(locale, {
+                  es: '10 pasos · 2 hojas',
+                  en: '10 steps · 2 sheets',
+                  de: '10 Schritte · 2 Blätter',
+                  fr: '10 étapes · 2 feuilles',
+                  ja: '10ステップ · 2シート',
+                  pt: '10 passos · 2 abas',
+                })}
+              </span>
               <ChevronRight className="w-4 h-4" />
             </div>
           </div>
@@ -983,17 +1425,38 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                 <Timer className="w-6 h-6" />
               </div>
               <span className="text-[11px] font-mono font-extrabold px-2.5 py-1 rounded-full bg-gv-warning/15 text-gv-warning border border-gv-warning/30">
-                {personalRecord > 0 ? `Récord: ${personalRecord} pts` : '60 seg'}
+                {personalRecord > 0
+                  ? `${tr(locale, {
+                      es: 'Récord',
+                      en: 'Best',
+                      de: 'Rekord',
+                      fr: 'Record',
+                      ja: '自己ベスト',
+                      pt: 'Recorde',
+                    })}: ${personalRecord} pts`
+                  : '60s'}
               </span>
             </div>
             <div>
               <h3 className="text-sm md:text-base font-extrabold text-gv-text">
-                {locale === 'es' ? 'Contrarreloj de 60s' : '60s Time Attack'}
+                {tr(locale, {
+                  es: 'Contrarreloj de 60s',
+                  en: '60s Time Attack',
+                  de: '60s Zeitangriff',
+                  fr: 'Contre-la-montre 60s',
+                  ja: '60秒タイムアタック',
+                  pt: 'Contra o relógio 60s',
+                })}
               </h3>
               <p className="text-xs text-gv-muted mt-1 leading-relaxed">
-                {locale === 'es'
-                  ? '¿Cuántas fórmulas y cálculos mentales puedes resolver antes de que acabe el reloj?'
-                  : 'How many formulas and mental calculations can you solve before time runs out?'}
+                {tr(locale, {
+                  es: '¿Cuántas fórmulas y cálculos mentales puedes resolver antes de que acabe el reloj?',
+                  en: 'How many formulas and mental calculations can you solve before time runs out?',
+                  de: 'Wie viele Formeln und Kopfrechnungen schaffst du vor Ablauf der Zeit?',
+                  fr: 'Combien de formules et calculs mentaux peux-tu résoudre avant la fin du chrono ?',
+                  ja: '制限時間内にいくつの数式と暗算を解けるか挑戦しよう！',
+                  pt: 'Quantas fórmulas e cálculos mentais você consegue resolver antes do tempo acabar?',
+                })}
               </p>
             </div>
             <div className="flex items-center justify-between text-[11px] font-mono font-bold text-gv-warning pt-1 border-t border-gv-border/60">
@@ -1024,16 +1487,37 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
             </div>
             <div>
               <h3 className="text-sm md:text-base font-extrabold text-gv-text">
-                {locale === 'es' ? 'Atajos de teclado' : 'Keyboard Shortcuts'}
+                {tr(locale, {
+                  es: 'Atajos de teclado',
+                  en: 'Keyboard Shortcuts',
+                  de: 'Tastenkombinationen',
+                  fr: 'Raccourcis clavier',
+                  ja: 'キーボードショートカット',
+                  pt: 'Atalhos de teclado',
+                })}
               </h3>
               <p className="text-xs text-gv-muted mt-1 leading-relaxed">
-                {locale === 'es'
-                  ? 'Domina F4, Alt+=, Ctrl+Shift+L y combinaciones rápidas de productividad.'
-                  : 'Master F4, Alt+=, Ctrl+Shift+L, and high-speed productivity shortcuts.'}
+                {tr(locale, {
+                  es: 'Domina F4, Alt+=, Ctrl+Shift+L y combinaciones rápidas de productividad.',
+                  en: 'Master F4, Alt+=, Ctrl+Shift+L, and high-speed productivity shortcuts.',
+                  de: 'Meistere F4, Alt+=, Strg+Umschalt+L und schnelle Produktivitäts-Shortcuts.',
+                  fr: 'Maîtrise F4, Alt+=, Ctrl+Maj+L et les raccourcis de productivité.',
+                  ja: 'F4、Alt+=、Ctrl+Shift+Lなど高速ショートカットをマスター。',
+                  pt: 'Domine F4, Alt+=, Ctrl+Shift+L e combinações rápidas de produtividade.',
+                })}
               </p>
             </div>
             <div className="flex items-center justify-between text-[11px] font-mono font-bold text-gv-accent pt-1 border-t border-gv-border/60">
-              <span>8 retos interactivos</span>
+              <span>
+                {tr(locale, {
+                  es: '8 retos interactivos',
+                  en: '8 interactive drills',
+                  de: '8 interaktive Aufgaben',
+                  fr: '8 défis interactifs',
+                  ja: '8つの実践ドリル',
+                  pt: '8 desafios interativos',
+                })}
+              </span>
               <ChevronRight className="w-4 h-4" />
             </div>
           </div>
@@ -1045,8 +1529,8 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
           {(() => {
             const parentCourse =
-              PRACTICE_COURSES.find((c) => c.id === previewMission.courseId) ||
-              PRACTICE_COURSES[0];
+              practiceCourses.find((c) => c.id === previewMission.courseId) ||
+              practiceCourses[0];
             const unlocked = isMissionUnlocked(previewMission, parentCourse);
             const done = isMissionDone(previewMission.ref);
             const ex = getStepByStepExercise(previewMission.ref, locale);
@@ -1072,7 +1556,15 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                           color: previewMission.color,
                         }}
                       >
-                        CLIENTE: {previewMission.client}
+                        {tr(locale, {
+                          es: 'CLIENTE',
+                          en: 'CLIENT',
+                          de: 'KUNDE',
+                          fr: 'CLIENT',
+                          ja: 'クライアント',
+                          pt: 'CLIENTE',
+                        })}
+                        : {previewMission.client}
                       </span>
                       <h3 className="text-lg font-black text-gv-text mt-1">
                         {previewMission.title}
@@ -1097,18 +1589,52 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                   <div className="p-3 rounded-xl bg-gv-surface-high border border-gv-border flex items-center gap-2.5">
                     <ListChecks className="w-4 h-4 text-gv-primary shrink-0" />
                     <div>
-                      <div className="text-[10px] text-gv-muted font-bold">Estructura</div>
+                      <div className="text-[10px] text-gv-muted font-bold">
+                        {tr(locale, {
+                          es: 'Estructura',
+                          en: 'Structure',
+                          de: 'Struktur',
+                          fr: 'Structure',
+                          ja: '構成',
+                          pt: 'Estrutura',
+                        })}
+                      </div>
                       <div className="text-xs font-mono font-extrabold text-gv-text">
-                        {ex.steps.length} pasos guiados
+                        {ex.steps.length}{' '}
+                        {tr(locale, {
+                          es: 'pasos guiados',
+                          en: 'guided steps',
+                          de: 'geführte Schritte',
+                          fr: 'étapes guidées',
+                          ja: 'ガイド付きステップ',
+                          pt: 'passos guiados',
+                        })}
                       </div>
                     </div>
                   </div>
                   <div className="p-3 rounded-xl bg-gv-surface-high border border-gv-border flex items-center gap-2.5">
                     <Table2 className="w-4 h-4 text-gv-info shrink-0" />
                     <div>
-                      <div className="text-[10px] text-gv-muted font-bold">Libro Excel</div>
+                      <div className="text-[10px] text-gv-muted font-bold">
+                        {tr(locale, {
+                          es: 'Libro Excel',
+                          en: 'Excel Workbook',
+                          de: 'Excel-Mappe',
+                          fr: 'Classeur Excel',
+                          ja: 'Excelブック',
+                          pt: 'Pasta Excel',
+                        })}
+                      </div>
                       <div className="text-xs font-mono font-extrabold text-gv-text">
-                        {ex.sheets.length} hojas conectadas
+                        {ex.sheets.length}{' '}
+                        {tr(locale, {
+                          es: 'hojas conectadas',
+                          en: 'linked sheets',
+                          de: 'verknüpfte Blätter',
+                          fr: 'feuilles liées',
+                          ja: '連携シート',
+                          pt: 'abas conectadas',
+                        })}
                       </div>
                     </div>
                   </div>
@@ -1135,7 +1661,17 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                   <div className="w-px h-4 bg-gv-border" />
                   <div className="flex items-center gap-1.5 font-mono text-xs font-extrabold text-gv-bytes">
                     <Gem className="w-4 h-4" />
-                    <span>+{ex.earnedBytes} Gemas</span>
+                    <span>
+                      +{ex.earnedBytes}{' '}
+                      {tr(locale, {
+                        es: 'Gemas',
+                        en: 'Gems',
+                        de: 'Juwelen',
+                        fr: 'Gemmes',
+                        ja: 'ジェム',
+                        pt: 'Gemas',
+                      })}
+                    </span>
                   </div>
                   <div className="w-px h-4 bg-gv-border" />
                   <div className="font-mono text-[11px] font-bold text-gv-accent">
@@ -1148,7 +1684,14 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                     <div className="flex items-center gap-2">
                       <Lock className="w-4 h-4 shrink-0" />
                       <span>
-                        Requisito previo:{' '}
+                        {tr(locale, {
+                          es: 'Requisito previo:',
+                          en: 'Prerequisite:',
+                          de: 'Voraussetzung:',
+                          fr: 'Prérequis :',
+                          ja: '前提条件:',
+                          pt: 'Pré-requisito:',
+                        })}{' '}
                         <strong>
                           {previewMission.prerequisiteTitle ||
                             parentCourse.prerequisiteCourseTitle}
@@ -1164,7 +1707,14 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                         }}
                         className="w-full py-2.5 rounded-xl bg-gv-warning text-black font-black text-xs uppercase cursor-pointer"
                       >
-                        Desbloquear todo con Gridverse PRO
+                        {tr(locale, {
+                          es: 'Desbloquear todo con Gridverse PRO',
+                          en: 'Unlock everything with Gridverse PRO',
+                          de: 'Alles freischalten mit Gridverse PRO',
+                          fr: 'Tout débloquer avec Gridverse PRO',
+                          ja: 'Gridverse PROですべてアンロック',
+                          pt: 'Desbloquear tudo com o Gridverse PRO',
+                        })}
                       </button>
                     )}
                   </div>
@@ -1180,7 +1730,25 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                     className="w-full py-3.5 rounded-2xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs uppercase tracking-wider cursor-pointer shadow-lg shadow-gv-primary/25 flex items-center justify-center gap-2"
                   >
                     <Play className="w-4 h-4 fill-black" />
-                    <span>{done ? 'REPETIR MISIÓN PASO A PASO' : 'COMENZAR MISIÓN'}</span>
+                    <span>
+                      {done
+                        ? tr(locale, {
+                            es: 'REPETIR MISIÓN PASO A PASO',
+                            en: 'REPLAY STEP-BY-STEP MISSION',
+                            de: 'MISSION WIEDERHOLEN',
+                            fr: 'REJOUER LA MISSION PAS À PAS',
+                            ja: 'ミッションをもう一度プレイ',
+                            pt: 'REPETIR MISSÃO PASSO A PASSO',
+                          })
+                        : tr(locale, {
+                            es: 'COMENZAR MISIÓN',
+                            en: 'START MISSION',
+                            de: 'MISSION STARTEN',
+                            fr: 'COMMENCER LA MISSION',
+                            ja: 'ミッション開始',
+                            pt: 'COMEÇAR MISSÃO',
+                          })}
+                    </span>
                   </button>
                 )}
               </div>
@@ -1208,7 +1776,16 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
             <div className="flex items-center justify-between border-b border-gv-border pb-3">
               <div className="flex items-center gap-2 text-gv-warning font-black text-sm">
                 <Timer className="w-5 h-5" />
-                <span>CONTRARRELOJ 60s</span>
+                <span>
+                  {tr(locale, {
+                    es: 'CONTRARRELOJ 60s',
+                    en: '60s TIME ATTACK',
+                    de: '60s ZEITANGRIFF',
+                    fr: 'CONTRE-LA-MONTRE 60s',
+                    ja: '60秒タイムアタック',
+                    pt: 'CONTRA O RELÓGIO 60s',
+                  })}
+                </span>
               </div>
 
               <div className="flex items-center gap-2">
@@ -1241,10 +1818,26 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between text-xs font-mono">
                   <span className="text-gv-muted">
-                    Puntaje: <strong className="text-gv-text text-sm">{score}</strong>
+                    {tr(locale, {
+                      es: 'Puntaje',
+                      en: 'Score',
+                      de: 'Punkte',
+                      fr: 'Score',
+                      ja: 'スコア',
+                      pt: 'Pontuação',
+                    })}
+                    : <strong className="text-gv-text text-sm">{score}</strong>
                   </span>
                   <span className="text-gv-warning">
-                    Récord: <strong>{personalRecord}</strong>
+                    {tr(locale, {
+                      es: 'Récord',
+                      en: 'Best',
+                      de: 'Rekord',
+                      fr: 'Record',
+                      ja: 'ベスト',
+                      pt: 'Recorde',
+                    })}
+                    : <strong>{personalRecord}</strong>
                   </span>
                 </div>
 
@@ -1298,13 +1891,46 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                 <CeldiMascot mood="celebrating" size={88} />
                 {isNewRecord && (
                   <span className="px-3 py-1 rounded-full bg-gv-warning/20 border border-gv-warning text-gv-warning font-mono text-xs font-black">
-                    🏆 ¡NUEVO RÉCORD PERSONAL!
+                    🏆{' '}
+                    {tr(locale, {
+                      es: '¡NUEVO RÉCORD PERSONAL!',
+                      en: 'NEW PERSONAL RECORD!',
+                      de: 'NEUER PERSÖNLICHER REKORD!',
+                      fr: 'NOUVEAU RECORD PERSONNEL !',
+                      ja: '自己ベスト更新！',
+                      pt: 'NOVO RECORDE PESSOAL!',
+                    })}
                   </span>
                 )}
-                <h4 className="text-xl font-black text-gv-text">¡Tiempo terminado!</h4>
+                <h4 className="text-xl font-black text-gv-text">
+                  {tr(locale, {
+                    es: '¡Tiempo terminado!',
+                    en: 'Time’s up!',
+                    de: 'Zeit abgelaufen!',
+                    fr: 'Temps écoulé !',
+                    ja: 'タイムアップ！',
+                    pt: 'Tempo esgotado!',
+                  })}
+                </h4>
                 <p className="text-xs text-gv-muted">
-                  Puntaje final: <strong className="text-gv-accent font-mono">{score} pts</strong> ·
-                  Combo máx: <strong className="text-gv-streak font-mono">x{maxCombo}</strong>
+                  {tr(locale, {
+                    es: 'Puntaje final',
+                    en: 'Final score',
+                    de: 'Endstand',
+                    fr: 'Score final',
+                    ja: '最終スコア',
+                    pt: 'Pontuação final',
+                  })}
+                  : <strong className="text-gv-accent font-mono">{score} pts</strong> ·{' '}
+                  {tr(locale, {
+                    es: 'Combo máx',
+                    en: 'Max combo',
+                    de: 'Max-Combo',
+                    fr: 'Combo max',
+                    ja: '最大コンボ',
+                    pt: 'Combo máx',
+                  })}
+                  : <strong className="text-gv-streak font-mono">x{maxCombo}</strong>
                 </p>
                 <div className="flex items-center gap-3 w-full mt-3">
                   <button
@@ -1312,14 +1938,29 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                     onClick={handleOpenTimeAttack}
                     className="flex-1 py-3 rounded-xl bg-gv-surface-high border border-gv-border hover:border-gv-primary text-gv-text font-black text-xs uppercase cursor-pointer flex items-center justify-center gap-1.5"
                   >
-                    <RotateCcw className="w-4 h-4" /> Jugar otra vez
+                    <RotateCcw className="w-4 h-4" />{' '}
+                    {tr(locale, {
+                      es: 'Jugar otra vez',
+                      en: 'Play Again',
+                      de: 'Nochmal spielen',
+                      fr: 'Rejouer',
+                      ja: 'もう一度プレイ',
+                      pt: 'Jogar novamente',
+                    })}
                   </button>
                   <button
                     type="button"
                     onClick={() => setIsTimeAttackOpen(false)}
                     className="flex-1 py-3 rounded-xl bg-gv-primary text-black font-black text-xs uppercase cursor-pointer"
                   >
-                    Continuar
+                    {tr(locale, {
+                      es: 'Continuar',
+                      en: 'Continue',
+                      de: 'Weiter',
+                      fr: 'Continuer',
+                      ja: '続ける',
+                      pt: 'Continuar',
+                    })}
                   </button>
                 </div>
               </div>
@@ -1335,7 +1976,16 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
             <div className="flex items-center justify-between border-b border-gv-border pb-3">
               <div className="flex items-center gap-2 text-gv-accent font-black text-sm">
                 <Keyboard className="w-5 h-5" />
-                <span>ENTRENAMIENTO DE ATAJOS</span>
+                <span>
+                  {tr(locale, {
+                    es: 'ENTRENAMIENTO DE ATAJOS',
+                    en: 'SHORTCUTS DRILL',
+                    de: 'SHORTCUT-TRAINING',
+                    fr: 'ENTRAÎNEMENT AUX RACCOURCIS',
+                    ja: 'ショートカット練習',
+                    pt: 'TREINO DE ATALHOS',
+                  })}
+                </span>
               </div>
               <button
                 type="button"
@@ -1350,27 +2000,52 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between text-xs font-mono text-gv-muted">
                   <span>
-                    Reto {shortcutIndex + 1} de {SHORTCUT_DRILL_QUESTIONS.length}
+                    {tr(locale, {
+                      es: `Reto ${shortcutIndex + 1} de ${shortcutDrillQuestions.length}`,
+                      en: `Drill ${shortcutIndex + 1} of ${shortcutDrillQuestions.length}`,
+                      de: `Aufgabe ${shortcutIndex + 1} von ${shortcutDrillQuestions.length}`,
+                      fr: `Défi ${shortcutIndex + 1} sur ${shortcutDrillQuestions.length}`,
+                      ja: `問題 ${shortcutIndex + 1} / ${shortcutDrillQuestions.length}`,
+                      pt: `Desafio ${shortcutIndex + 1} de ${shortcutDrillQuestions.length}`,
+                    })}
                   </span>
-                  <span className="text-gv-accent font-bold">Aciertos: {shortcutScore}</span>
+                  <span className="text-gv-accent font-bold">
+                    {tr(locale, {
+                      es: 'Aciertos',
+                      en: 'Hits',
+                      de: 'Treffer',
+                      fr: 'Réussites',
+                      ja: '正解数',
+                      pt: 'Acertos',
+                    })}
+                    : {shortcutScore}
+                  </span>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-gv-surface-high border border-gv-border">
                   <p className="text-sm md:text-base font-bold text-gv-text leading-snug">
-                    {SHORTCUT_DRILL_QUESTIONS[shortcutIndex].q}
+                    {shortcutDrillQuestions[shortcutIndex].q}
                   </p>
                   <p className="text-[11px] font-mono text-gv-muted mt-2">
-                    🍎 En Mac equivale a:{' '}
+                    🍎{' '}
+                    {tr(locale, {
+                      es: 'En Mac equivale a:',
+                      en: 'On Mac equivalent to:',
+                      de: 'Auf Mac entspricht das:',
+                      fr: 'Sur Mac équivaut à :',
+                      ja: 'Macでの対応キー:',
+                      pt: 'No Mac equivale a:',
+                    })}{' '}
                     <span className="text-gv-accent">
-                      {SHORTCUT_DRILL_QUESTIONS[shortcutIndex].mac}
+                      {shortcutDrillQuestions[shortcutIndex].mac}
                     </span>
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 gap-2.5">
-                  {SHORTCUT_DRILL_QUESTIONS[shortcutIndex].opts.map((opt) => {
+                  {shortcutDrillQuestions[shortcutIndex].opts.map((opt) => {
                     const isPicked = shortcutSelected === opt;
-                    const isCorrect = opt === SHORTCUT_DRILL_QUESTIONS[shortcutIndex].ans;
+                    const isCorrect = opt === shortcutDrillQuestions[shortcutIndex].ans;
                     let cls =
                       'bg-gv-surface-high hover:bg-gv-primary/15 border-gv-border text-gv-text';
                     if (shortcutSelected !== null) {
@@ -1391,7 +2066,7 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                             sound.play('wrong');
                           }
                           setTimeout(() => {
-                            if (shortcutIndex + 1 < SHORTCUT_DRILL_QUESTIONS.length) {
+                            if (shortcutIndex + 1 < shortcutDrillQuestions.length) {
                               setShortcutIndex((i) => i + 1);
                               setShortcutSelected(null);
                             } else {
@@ -1412,17 +2087,39 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
             ) : (
               <div className="text-center py-4 flex flex-col items-center gap-3">
                 <CeldiMascot mood="celebrating" size={84} />
-                <h4 className="text-xl font-black text-gv-text">¡Atajos Dominados!</h4>
+                <h4 className="text-xl font-black text-gv-text">
+                  {tr(locale, {
+                    es: '¡Atajos Dominados!',
+                    en: 'Shortcuts Mastered!',
+                    de: 'Shortcuts gemeistert!',
+                    fr: 'Raccourcis Maîtrisés !',
+                    ja: 'ショートカット制覇！',
+                    pt: 'Atalhos Dominados!',
+                  })}
+                </h4>
                 <p className="text-xs text-gv-muted">
-                  Acertaste {shortcutScore} de {SHORTCUT_DRILL_QUESTIONS.length} combinaciones de
-                  teclado (+30 XP y +15 Gemas).
+                  {tr(locale, {
+                    es: `Acertaste ${shortcutScore} de ${shortcutDrillQuestions.length} combinaciones de teclado (+30 XP y +15 Gemas).`,
+                    en: `You got ${shortcutScore} of ${shortcutDrillQuestions.length} keyboard shortcuts right (+30 XP & +15 Gems).`,
+                    de: `Du hast ${shortcutScore} von ${shortcutDrillQuestions.length} Tastenkombinationen richtig (+30 XP & +15 Juwelen).`,
+                    fr: `Tu as réussi ${shortcutScore} raccourcis sur ${shortcutDrillQuestions.length} (+30 XP et +15 Gemmes).`,
+                    ja: `${shortcutDrillQuestions.length}問中${shortcutScore}問正解しました（+30 XP & +15 ジェム）。`,
+                    pt: `Você acertou ${shortcutScore} de ${shortcutDrillQuestions.length} atalhos de teclado (+30 XP e +15 Gemas).`,
+                  })}
                 </p>
                 <button
                   type="button"
                   onClick={() => setIsShortcutsDrillOpen(false)}
                   className="w-full py-3 rounded-xl bg-gv-primary text-black font-black text-xs uppercase cursor-pointer mt-2"
                 >
-                  Continuar
+                  {tr(locale, {
+                    es: 'Continuar',
+                    en: 'Continue',
+                    de: 'Weiter',
+                    fr: 'Continuer',
+                    ja: '続ける',
+                    pt: 'Continuar',
+                  })}
                 </button>
               </div>
             )}

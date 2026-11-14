@@ -1411,25 +1411,990 @@ export const STEP_BY_STEP_EXERCISES: Record<string, StepByStepExerciseData> = {
   },
 };
 
+const COURSE_TITLES_I18N: Record<string, Record<SupportedLocale, string>> = {
+  COURSE_1: {
+    es: 'Curso 1 · Operaciones y Negocios',
+    en: 'Course 1 · Operations & Business',
+    de: 'Kurs 1 · Operationen & Wirtschaft',
+    fr: 'Cours 1 · Opérations et Affaires',
+    ja: 'コース 1 · 業務とビジネス運用',
+    pt: 'Curso 1 · Operações e Negócios',
+  },
+  COURSE_2: {
+    es: 'Curso 2 · Lógica y Auditoría',
+    en: 'Course 2 · Logic & Auditing',
+    de: 'Kurs 2 · Logik & Prüfung',
+    fr: 'Cours 2 · Logique et Audit',
+    ja: 'コース 2 · 論理とデータ監査',
+    pt: 'Curso 2 · Lógica e Auditoria',
+  },
+  COURSE_3: {
+    es: 'Curso 3 · Búsqueda y Reparación',
+    en: 'Course 3 · Lookup & Repair',
+    de: 'Kurs 3 · Nachschlagen & Reparieren',
+    fr: 'Cours 3 · Recherche et Réparation',
+    ja: 'コース 3 · 検索とエラー修復',
+    pt: 'Curso 3 · Busca e Reparo',
+  },
+};
+
+const COURSE_SUBTITLES_I18N: Record<string, Record<SupportedLocale, string>> = {
+  COURSE_1: {
+    es: 'Domina sumas, promedios y control de presupuesto real',
+    en: 'Master sums, averages, and real budget tracking',
+    de: 'Meistere Summen, Durchschnitte und reale Budgetkontrolle',
+    fr: 'Maîtrisez sommes, moyennes et suivi budgétaire réel',
+    ja: '合計、平均、リアルな予算管理をマスター',
+    pt: 'Domine somas, médias e controle de orçamento real',
+  },
+  COURSE_2: {
+    es: 'Condicionales SI, conteo inteligente y referencias fijas $A$1',
+    en: 'Conditional IF, smart counting, and absolute references $A$1',
+    de: 'Bedingtes WENN, intelligentes Zählen und absolute Bezüge $A$1',
+    fr: 'Conditions SI, comptage intelligent et références absolues $A$1',
+    ja: 'IF条件式、条件付きカウント、絶対参照 $A$1',
+    pt: 'Condicionais SE, contagem inteligente e referências fixas $A$1',
+  },
+  COURSE_3: {
+    es: 'Cruza bases de datos con BUSCARV y repara errores #N/A',
+    en: 'Cross-reference databases with VLOOKUP and repair #N/A errors',
+    de: 'Verknüpfe Datenbanken mit SVERWEIS und behebe #NV-Fehler',
+    fr: 'Croisez des bases de données avec RECHERCHEV et réparez les erreurs #N/A',
+    ja: 'VLOOKUPでデータベースを照合し、#N/Aエラーを修復',
+    pt: 'Cruze bases de dados com PROCV e repare erros #N/D',
+  },
+};
+
+const MISSION_TITLES_I18N: Record<string, Record<SupportedLocale, string>> = {
+  MISSION_BAKERY: {
+    es: 'Panadería de Doña Rosa',
+    en: "Doña Rosa's Bakery",
+    de: 'Bäckerei von Doña Rosa',
+    fr: 'Boulangerie de Doña Rosa',
+    ja: 'ロサさんのベーカリー',
+    pt: 'Padaria da Dona Rosa',
+  },
+  MISSION_BUDGET: {
+    es: 'Presupuesto del mes',
+    en: 'Monthly Budget',
+    de: 'Monatsbudget',
+    fr: 'Budget du Mois',
+    ja: '今月の家計簿',
+    pt: 'Orçamento do Mês',
+  },
+  MISSION_GRADES: {
+    es: 'Calificaciones del curso',
+    en: 'Course Grades',
+    de: 'Kursnoten',
+    fr: 'Notes du Cours',
+    ja: 'コースの成績表',
+    pt: 'Notas do Curso',
+  },
+  MISSION_INVENTORY: {
+    es: 'Auditoría de Impuestos e IVA',
+    en: 'Tax & VAT Audit',
+    de: 'Steuer- und MwSt.-Prüfung',
+    fr: 'Audit Taxes et TVA',
+    ja: '税金と消費税の監査',
+    pt: 'Auditoria de Impostos e IVA',
+  },
+  MISSION_LOOKUP: {
+    es: 'Catálogo con BUSCARV',
+    en: 'Catalog with VLOOKUP',
+    de: 'Katalog mit SVERWEIS',
+    fr: 'Catalogue avec RECHERCHEV',
+    ja: 'VLOOKUP商品カタログ',
+    pt: 'Catálogo com PROCV',
+  },
+};
+
+const MISSION_CLIENTS_I18N: Record<string, Record<SupportedLocale, string>> = {
+  MISSION_BAKERY: {
+    es: 'Doña Rosa',
+    en: 'Doña Rosa',
+    de: 'Doña Rosa',
+    fr: 'Doña Rosa',
+    ja: 'ロサさん',
+    pt: 'Dona Rosa',
+  },
+  MISSION_BUDGET: {
+    es: 'Finanzas del Hogar',
+    en: 'Household Finances',
+    de: 'Haushaltsfinanzen',
+    fr: 'Finances du Foyer',
+    ja: '家庭の財務',
+    pt: 'Finanças Domésticas',
+  },
+  MISSION_GRADES: {
+    es: 'Colegio San Lucas',
+    en: 'San Lucas School',
+    de: 'San-Lucas-Schule',
+    fr: 'École Saint-Luc',
+    ja: 'サン・ルーカス校',
+    pt: 'Colégio São Lucas',
+  },
+  MISSION_INVENTORY: {
+    es: 'TecnoStore S.A.',
+    en: 'TecnoStore Inc.',
+    de: 'TecnoStore AG',
+    fr: 'TecnoStore S.A.',
+    ja: 'テクノストア株式会社',
+    pt: 'TecnoStore S.A.',
+  },
+  MISSION_LOOKUP: {
+    es: 'Logística Global',
+    en: 'Global Logistics',
+    de: 'Global Logistics',
+    fr: 'Logistique Globale',
+    ja: 'グローバル・ロジスティクス',
+    pt: 'Logística Global',
+  },
+};
+
+const MISSION_DESCRIPTIONS_I18N: Record<string, Record<SupportedLocale, string>> = {
+  MISSION_BAKERY: {
+    es: 'Doña Rosa lleva las cuentas de su panadería y necesita automatizar el cálculo de las ventas de conchas y bolillos de toda la semana, el promedio diario y el gran total general.',
+    en: 'Doña Rosa runs her local bakery and needs to automate sales tracking for croissants and bread rolls all week, calculating the daily average and grand total.',
+    de: 'Doña Rosa führt ihre Bäckerei und muss die wöchentlichen Backwarenverkäufe von Croissants und Brötchen, Tagesdurchschnitte und die Gesamtsumme berechnen.',
+    fr: 'Doña Rosa gère sa boulangerie et doit automatiser le calcul des ventes hebdomadaires de croissants et baguettes, des moyennes journalières et du total général.',
+    ja: 'ロサさんはパン屋の売り上げを自動計算し、1週間のクロワッサンとロールパンの販売数、日次平均、総合計を算出する必要があります。',
+    pt: 'Dona Rosa administra sua padaria e precisa automatizar o cálculo das vendas semanais de pães doces e franceses, a média diária e o total geral.',
+  },
+  MISSION_BUDGET: {
+    es: 'Organiza los ingresos y egresos familiares, calcula el saldo de ahorro neto restando los gastos e identifica si el mes cerró con superávit o déficit.',
+    en: 'Organize family income and expenses, calculate net savings, and check whether the month closed with a surplus or deficit.',
+    de: 'Erfasse Familieneinkünfte und -ausgaben, berechne Ersparnisse und prüfe Überschuss oder Defizit.',
+    fr: "Organisez revenus et dépenses du foyer, calculez l'épargne nette et vérifiez si le mois s'est terminé par un excédent ou un déficit.",
+    ja: '家族の収入と支出を整理し、支出を引いた純貯蓄残高を計算して黒字か赤字かを判定します。',
+    pt: 'Organize receitas e despesas familiares, calcule o saldo líquido de poupança subtraindo gastos e verifique se o mês fechou com superávit ou déficit.',
+  },
+  MISSION_GRADES: {
+    es: 'El profesor Martínez necesita determinar de forma automatizada qué estudiantes aprueban con nota mayor o igual a 70 puntos y contar cuántos alumnos aprobaron.',
+    en: 'Teacher Martinez needs to automatically determine which students pass with a grade of 70 or higher and count how many students passed.',
+    de: 'Lehrer Martinez möchte ermitteln, welche Schüler mit mindestens 70 Punkten bestehen, und die Anzahl der bestandenen Schüler zählen.',
+    fr: 'Le professeur Martinez doit déterminer automatiquement les étudiants admis avec 70 points ou plus et compter le nombre de reçus.',
+    ja: 'マルティネス先生は70点以上の合格者を自動判定し、合格者総数を集計する必要があります。',
+    pt: 'O professor Martinez precisa determinar automaticamente quais alunos foram aprovados com nota igual ou superior a 70 e contar o total de aprovados.',
+  },
+  MISSION_INVENTORY: {
+    es: 'Calcula el impuesto de múltiples productos anclando la celda de tasa de IVA con referencia absoluta ($B$5) y resuelve fórmulas con jerarquía de operadores.',
+    en: 'Calculate tax on multiple products by anchoring the VAT rate cell with an absolute reference ($B$5) and solve formulas with operator precedence.',
+    de: 'Berechne die Steuer für Produkte durch Fixierung der MwSt.-Zelle mit absolutem Bezug ($B$5) und beachte die Operator-Rangfolge.',
+    fr: 'Calculez la taxe de plusieurs produits en figeant la cellule de TVA avec une référence absolue ($B$5) et respectez la priorité des opérateurs.',
+    ja: '絶対参照 ($B$5) で消費税率セルを固定し、演算子の優先順位を考慮して複数商品の税額を計算します。',
+    pt: 'Calcule o imposto de múltiplos produtos fixando a célula da alíquota de IVA com referência absoluta ($B$5) e respeite a ordem das operações.',
+  },
+  MISSION_LOOKUP: {
+    es: 'El sistema de inventario arroja errores #N/A. Repara las fórmulas de búsqueda vertical, fija el rango de la matriz y blinda el reporte con SI.ERROR.',
+    en: 'The inventory system throws #N/A errors. Fix vertical lookup formulas, lock the table array range, and safeguard reports with IFERROR.',
+    de: 'Das Inventarsystem wirft #NV-Fehler aus. Repariere Verweisformeln, fixiere den Matrixbereich und sichere Berichte mit WENNFEHLER ab.',
+    fr: "Le système d'inventaire affiche des erreurs #N/A. Réparez les formules de recherche verticale, figez la matrice et sécurisez avec SIERREUR.",
+    ja: '在庫システムで#N/Aエラーが発生しています。垂直検索の数式を修正し、検索範囲を固定し、IFERRORで保護します。',
+    pt: 'O sistema de estoque exibe erros #N/D. Corrija as fórmulas de busca vertical, trave o intervalo da matriz e proteja o relatório com SEERRO.',
+  },
+};
+
+const MISSION_SKILLS_I18N: Record<string, Record<SupportedLocale, string>> = {
+  MISSION_BAKERY: {
+    es: 'SUMA · PROMEDIO · MAX',
+    en: 'SUM · AVERAGE · MAX',
+    de: 'SUMME · MITTELWERT · MAX',
+    fr: 'SOMME · MOYENNE · MAX',
+    ja: 'SUM · AVERAGE · MAX',
+    pt: 'SOMA · MÉDIA · MÁXIMO',
+  },
+  MISSION_BUDGET: {
+    es: 'Resta · SI · Balance',
+    en: 'Subtraction · IF · Balance',
+    de: 'Subtraktion · WENN · Saldo',
+    fr: 'Soustraction · SI · Solde',
+    ja: '引き算 · IF · 残高',
+    pt: 'Subtração · SE · Saldo',
+  },
+  MISSION_GRADES: {
+    es: 'SI · CONTAR.SI · PROMEDIO',
+    en: 'IF · COUNTIF · AVERAGE',
+    de: 'WENN · ZÄHLENWENN · MITTELWERT',
+    fr: 'SI · NB.SI · MOYENNE',
+    ja: 'IF · COUNTIF · AVERAGE',
+    pt: 'SE · CONT.SE · MÉDIA',
+  },
+  MISSION_INVENTORY: {
+    es: '$A$1 · Jerarquía · SUMA',
+    en: '$A$1 · Precedence · SUM',
+    de: '$A$1 · Rangfolge · SUMME',
+    fr: '$A$1 · Priorité · SOMME',
+    ja: '$A$1 · 演算優先度 · SUM',
+    pt: '$A$1 · Precedência · SOMA',
+  },
+  MISSION_LOOKUP: {
+    es: 'BUSCARV · SI.ERROR · #N/A',
+    en: 'VLOOKUP · IFERROR · #N/A',
+    de: 'SVERWEIS · WENNFEHLER · #NV',
+    fr: 'RECHERCHEV · SIERREUR · #N/A',
+    ja: 'VLOOKUP · IFERROR · #N/A',
+    pt: 'PROCV · SEERRO · #N/D',
+  },
+};
+
+export function getPracticeCourses(locale: SupportedLocale = 'es'): PracticeCourseData[] {
+  return PRACTICE_COURSES.map((course) => ({
+    ...course,
+    title: COURSE_TITLES_I18N[course.id]?.[locale] || course.title,
+    subtitle: COURSE_SUBTITLES_I18N[course.id]?.[locale] || course.subtitle,
+    prerequisiteCourseTitle: course.prerequisiteCourseId
+      ? COURSE_TITLES_I18N[course.prerequisiteCourseId]?.[locale] || course.prerequisiteCourseTitle
+      : course.prerequisiteCourseTitle,
+    missions: course.missions.map((m) => ({
+      ...m,
+      title: MISSION_TITLES_I18N[m.ref]?.[locale] || m.title,
+      client: MISSION_CLIENTS_I18N[m.ref]?.[locale] || m.client,
+      description: MISSION_DESCRIPTIONS_I18N[m.ref]?.[locale] || m.description,
+      skills: MISSION_SKILLS_I18N[m.ref]?.[locale] || m.skills,
+      prerequisiteTitle: m.prerequisiteRef
+        ? MISSION_TITLES_I18N[m.prerequisiteRef]?.[locale] || m.prerequisiteTitle
+        : m.prerequisiteTitle,
+    })),
+  }));
+}
+
+function buildBakeryExercise(locale: SupportedLocale): StepByStepExerciseData {
+  if (locale === 'es') {
+    return STEP_BY_STEP_EXERCISES.MISSION_BAKERY;
+  }
+
+  const item1 = locale === 'pt' ? 'Pães doces' : locale === 'ja' ? 'クロワッサン' : 'Croissants';
+  const item2 =
+    locale === 'pt'
+      ? 'Pães franceses'
+      : locale === 'fr'
+      ? 'Baguettes'
+      : locale === 'de'
+      ? 'Brötchen'
+      : locale === 'ja'
+      ? 'ロールパン'
+      : 'Bread rolls';
+  const item3 =
+    locale === 'pt'
+      ? 'Baguetes'
+      : locale === 'fr'
+      ? 'Pains aux raisins'
+      : locale === 'ja'
+      ? 'バゲット'
+      : 'Baguettes';
+  const item4 =
+    locale === 'pt'
+      ? 'Rosquinhas'
+      : locale === 'fr'
+      ? 'Beignets'
+      : locale === 'ja'
+      ? 'ドーナツ'
+      : 'Donuts';
+
+  const breadHeader =
+    locale === 'pt'
+      ? 'Pão'
+      : locale === 'fr'
+      ? 'Pain'
+      : locale === 'de'
+      ? 'Brot'
+      : locale === 'ja'
+      ? 'パン'
+      : 'Bread';
+  const d1 = locale === 'pt' ? 'Seg' : locale === 'fr' ? 'Lun' : locale === 'de' ? 'Mo' : locale === 'ja' ? '月' : 'Mon';
+  const d2 = locale === 'pt' ? 'Ter' : locale === 'fr' ? 'Mar' : locale === 'de' ? 'Di' : locale === 'ja' ? '火' : 'Tue';
+  const d3 = locale === 'pt' ? 'Qua' : locale === 'fr' ? 'Mer' : locale === 'de' ? 'Mi' : locale === 'ja' ? '水' : 'Wed';
+  const d4 = locale === 'pt' ? 'Qui' : locale === 'fr' ? 'Jeu' : locale === 'de' ? 'Do' : locale === 'ja' ? '木' : 'Thu';
+  const d5 = locale === 'pt' ? 'Sex' : locale === 'fr' ? 'Ven' : locale === 'de' ? 'Fr' : locale === 'ja' ? '金' : 'Fri';
+  const totalH = locale === 'de' ? 'Gesamt' : locale === 'ja' ? '合計' : 'Total';
+  const avgH =
+    locale === 'pt'
+      ? 'Média'
+      : locale === 'fr'
+      ? 'Moyenne'
+      : locale === 'de'
+      ? 'Durchschnitt'
+      : locale === 'ja'
+      ? '平均'
+      : 'Average';
+
+  const sheet1Name =
+    locale === 'pt'
+      ? 'Vendas'
+      : locale === 'fr'
+      ? 'Ventes'
+      : locale === 'de'
+      ? 'Verkäufe'
+      : locale === 'ja'
+      ? '売上'
+      : 'Sales';
+  const sheet2Name =
+    locale === 'pt'
+      ? 'Custos e Receitas'
+      : locale === 'fr'
+      ? 'Coûts et Revenus'
+      : locale === 'de'
+      ? 'Kosten & Erlöse'
+      : locale === 'ja'
+      ? 'コストと収益'
+      : 'Costs & Revenue';
+  const sheet3Name =
+    locale === 'pt'
+      ? 'Relatório Executivo'
+      : locale === 'fr'
+      ? 'Rapport Exécutif'
+      : locale === 'de'
+      ? 'Bericht'
+      : locale === 'ja'
+      ? 'エグゼクティブレポート'
+      : 'Executive Report';
+
+  const soldH = locale === 'pt' ? 'Vendido' : locale === 'fr' ? 'Vendu' : locale === 'de' ? 'Verkauft' : locale === 'ja' ? '販売数' : 'Sold';
+  const priceH = locale === 'pt' ? 'Preço' : locale === 'fr' ? 'Prix' : locale === 'de' ? 'Preis' : locale === 'ja' ? '単価' : 'Price';
+  const revH = locale === 'pt' ? 'Receita' : locale === 'fr' ? 'Revenu' : locale === 'de' ? 'Erlös' : locale === 'ja' ? '売上額' : 'Revenue';
+  const uCostH = locale === 'pt' ? 'Custo U.' : locale === 'fr' ? 'Coût U.' : locale === 'de' ? 'Stückkosten' : locale === 'ja' ? '原価' : 'Unit Cost';
+  const tCostH = locale === 'pt' ? 'Custo Total' : locale === 'fr' ? 'Coût Total' : locale === 'de' ? 'Gesamtkosten' : locale === 'ja' ? '総原価' : 'Total Cost';
+  const profH = locale === 'pt' ? 'Lucro' : locale === 'fr' ? 'Profit' : locale === 'de' ? 'Gewinn' : locale === 'ja' ? '粗利益' : 'Profit';
+
+  const kpiH = locale === 'pt' ? 'Métrica' : locale === 'fr' ? 'Métrique' : locale === 'de' ? 'Kennzahl' : locale === 'ja' ? '指標' : 'KPI';
+  const valH = locale === 'pt' ? 'Valor' : locale === 'fr' ? 'Valeur' : locale === 'de' ? 'Wert' : locale === 'ja' ? '値' : 'Value';
+  const kpi1 =
+    locale === 'pt'
+      ? 'Total de Pães Vendidos'
+      : locale === 'fr'
+      ? 'Total Produits Vendus'
+      : locale === 'de'
+      ? 'Gesamtverkäufe'
+      : locale === 'ja'
+      ? '総販売数'
+      : 'Total Items Sold';
+  const kpi2 =
+    locale === 'pt'
+      ? 'Venda do Produto Estrela'
+      : locale === 'fr'
+      ? 'Vente Produit Phare'
+      : locale === 'de'
+      ? 'Bestseller-Verkauf'
+      : locale === 'ja'
+      ? 'トップ商品売上'
+      : 'Top Seller Sales';
+  const kpi3 = locale === 'pt' ? 'Meta' : locale === 'fr' ? 'Objectif' : locale === 'de' ? 'Ziel' : locale === 'ja' ? '目標' : 'Target';
+  const kpi4 = locale === 'pt' ? 'Status da Meta' : locale === 'fr' ? 'Statut Objectif' : locale === 'de' ? 'Status' : locale === 'ja' ? '判定' : 'Goal Status';
+
+  const sumName = locale === 'pt' ? 'SOMA' : locale === 'fr' ? 'SOMME' : locale === 'de' ? 'SUMME' : 'SUM';
+  const avgName = locale === 'pt' ? 'MÉDIA' : locale === 'fr' ? 'MOYENNE' : locale === 'de' ? 'MITTELWERT' : 'AVERAGE';
+  const ifName = locale === 'pt' ? 'SE' : locale === 'de' ? 'WENN' : locale === 'fr' ? 'SI' : 'IF';
+
+  const goalMet =
+    locale === 'pt'
+      ? 'Meta Cumprida'
+      : locale === 'fr'
+      ? 'Objectif Atteint'
+      : locale === 'de'
+      ? 'Ziel Erreicht'
+      : locale === 'ja'
+      ? '目標達成'
+      : 'Goal Met';
+  const inProgress =
+    locale === 'pt'
+      ? 'Em Progresso'
+      : locale === 'fr'
+      ? 'En Cours'
+      : locale === 'de'
+      ? 'In Bearbeitung'
+      : locale === 'ja'
+      ? '進行中'
+      : 'In Progress';
+
+  return {
+    id: 'MISSION_BAKERY',
+    title: MISSION_TITLES_I18N.MISSION_BAKERY[locale],
+    subtitle:
+      locale === 'pt'
+        ? 'Vendas, Custos e Balanço'
+        : locale === 'fr'
+        ? 'Ventes, Coûts et Bilan'
+        : locale === 'de'
+        ? 'Verkäufe, Kosten und Bilanz'
+        : locale === 'ja'
+        ? '売上・コスト・収支決算'
+        : 'Sales, Costs and Balance',
+    scenario: MISSION_DESCRIPTIONS_I18N.MISSION_BAKERY[locale],
+    badgeEmoji: '🥐',
+    color: '#FF8A3D',
+    earnedXp: 35,
+    earnedBytes: 25,
+    sheets: [
+      {
+        id: 'ventas',
+        name: sheet1Name,
+        columns: 8,
+        rows: 6,
+        initialData: {
+          A1: breadHeader,
+          B1: d1,
+          C1: d2,
+          D1: d3,
+          E1: d4,
+          F1: d5,
+          G1: totalH,
+          H1: avgH,
+          A2: item1,
+          B2: '40',
+          C2: '45',
+          D2: '50',
+          E2: '55',
+          F2: '60',
+          A3: item2,
+          B3: '100',
+          C3: '110',
+          D3: '105',
+          E3: '120',
+          F3: '130',
+          A4: item3,
+          B4: '20',
+          C4: '25',
+          D4: '30',
+          E4: '25',
+          F4: '35',
+          A5: item4,
+          B5: '50',
+          C5: '60',
+          D5: '55',
+          E5: '70',
+          F5: '65',
+        },
+      },
+      {
+        id: 'costos',
+        name: sheet2Name,
+        columns: 7,
+        rows: 6,
+        initialData: {
+          A1: breadHeader,
+          B1: soldH,
+          C1: priceH,
+          D1: revH,
+          E1: uCostH,
+          F1: tCostH,
+          G1: profH,
+          A2: item1,
+          B2: '250',
+          C2: '12',
+          E2: '6',
+          A3: item2,
+          B3: '565',
+          C3: '5',
+          E3: '2',
+          A4: item3,
+          B4: '135',
+          C4: '18',
+          E4: '8',
+          A5: item4,
+          B5: '300',
+          C5: '8',
+          E5: '3',
+        },
+      },
+      {
+        id: 'reporte',
+        name: sheet3Name,
+        columns: 6,
+        rows: 7,
+        initialData: {
+          A1: kpiH,
+          B1: valH,
+          A2: kpi1,
+          A3: kpi2,
+          A4: kpi3,
+          B4: '1000',
+          A5: kpi4,
+        },
+      },
+    ],
+    steps: [
+      {
+        sheetId: 'ventas',
+        title:
+          locale === 'pt'
+            ? `Passo 1: Total semanal de ${item1}`
+            : locale === 'fr'
+            ? `Étape 1 : Total hebdomadaire de ${item1}`
+            : locale === 'de'
+            ? `Schritt 1: Wöchentliche ${item1}-Gesamtsumme`
+            : locale === 'ja'
+            ? `ステップ 1: ${item1}の1週間合計`
+            : `Step 1: Weekly total for ${item1}`,
+        instruction:
+          locale === 'pt'
+            ? `Na aba ${sheet1Name}, calcule em G2 a soma de ${item1} vendidos de segunda a sexta (B2:F2) usando ${sumName}.`
+            : locale === 'fr'
+            ? `Dans l'onglet ${sheet1Name}, calcule en G2 la somme des ${item1} vendus du lundi au vendredi (B2:F2) avec ${sumName}.`
+            : locale === 'de'
+            ? `Berechne in Zelle G2 des Blattes ${sheet1Name} die Summe der verkauften ${item1} (B2:F2) mit ${sumName}.`
+            : locale === 'ja'
+            ? `${sheet1Name}シートのG2セルで、${sumName}関数を使って月曜から金曜の${item1}販売数（B2:F2）を合計してください。`
+            : `On the ${sheet1Name} sheet, calculate in G2 the sum of ${item1} sold from Monday to Friday (B2:F2) using ${sumName}.`,
+        targetCell: 'G2',
+        acceptedFormulas: [
+          `=${sumName}(B2:F2)`,
+          '=SUM(B2:F2)',
+          '=SUMA(B2:F2)',
+          `=${sumName}(B2,C2,D2,E2,F2)`,
+          '=SUM(B2,C2,D2,E2,F2)',
+        ],
+        resultValue: '250',
+        pedagogicalHint: `=${sumName}(B2:F2)`,
+        emergencySolution: `=${sumName}(B2:F2)`,
+        suggestions: ['=', `${sumName}(`, 'B2:F2', ')', `${avgName}(`, '+'],
+      },
+      {
+        sheetId: 'ventas',
+        title:
+          locale === 'pt'
+            ? `Passo 2: Total semanal de ${item2}`
+            : locale === 'fr'
+            ? `Étape 2 : Total hebdomadaire de ${item2}`
+            : locale === 'de'
+            ? `Schritt 2: Wöchentliche ${item2}-Gesamtsumme`
+            : locale === 'ja'
+            ? `ステップ 2: ${item2}の1週間合計`
+            : `Step 2: Weekly total for ${item2}`,
+        instruction:
+          locale === 'pt'
+            ? `Em G3, calcule o total semanal de ${item2} somando o intervalo B3:F3.`
+            : locale === 'fr'
+            ? `En G3, calcule le total hebdomadaire de ${item2} en additionnant la plage B3:F3.`
+            : locale === 'de'
+            ? `Berechne in G3 die Summe der verkauften ${item2} über den Bereich B3:F3.`
+            : locale === 'ja'
+            ? `G3で、範囲B3:F3を合算して${item2}の週間販売数を計算してください。`
+            : `In G3, calculate the weekly total of ${item2} sold by summing the range B3:F3.`,
+        targetCell: 'G3',
+        acceptedFormulas: [`=${sumName}(B3:F3)`, '=SUM(B3:F3)', '=SUMA(B3:F3)'],
+        resultValue: '565',
+        pedagogicalHint: `=${sumName}(B3:F3)`,
+        emergencySolution: `=${sumName}(B3:F3)`,
+        suggestions: ['=', `${sumName}(`, 'B3:F3', ')', '+', '-'],
+      },
+      {
+        sheetId: 'ventas',
+        title:
+          locale === 'pt'
+            ? `Passo 3: Total semanal de ${item3}`
+            : locale === 'fr'
+            ? `Étape 3 : Total hebdomadaire de ${item3}`
+            : locale === 'de'
+            ? `Schritt 3: Wöchentliche ${item3}-Gesamtsumme`
+            : locale === 'ja'
+            ? `ステップ 3: ${item3}の1週間合計`
+            : `Step 3: Weekly total for ${item3}`,
+        instruction:
+          locale === 'pt'
+            ? `Em G4, calcule a soma das vendas de ${item3} de segunda a sexta (B4:F4).`
+            : locale === 'fr'
+            ? `En G4, calcule la somme des ventes de ${item3} de lundi à vendredi (B4:F4).`
+            : locale === 'de'
+            ? `Berechne in G4 die Summe der Verkäufe von ${item3} (B4:F4).`
+            : locale === 'ja'
+            ? `G4で、月曜から金曜の${item3}売上（B4:F4）を合計してください。`
+            : `In G4, calculate the sum of ${item3} sales from Monday to Friday (B4:F4).`,
+        targetCell: 'G4',
+        acceptedFormulas: [`=${sumName}(B4:F4)`, '=SUM(B4:F4)', '=SUMA(B4:F4)'],
+        resultValue: '135',
+        pedagogicalHint: `=${sumName}(B4:F4)`,
+        emergencySolution: `=${sumName}(B4:F4)`,
+        suggestions: ['=', `${sumName}(`, 'B4:F4', ')', '+'],
+      },
+      {
+        sheetId: 'ventas',
+        title:
+          locale === 'pt'
+            ? `Passo 4: Média diária de ${item4}`
+            : locale === 'fr'
+            ? `Étape 4 : Moyenne journalière de ${item4}`
+            : locale === 'de'
+            ? `Schritt 4: Tagesdurchschnitt von ${item4}`
+            : locale === 'ja'
+            ? `ステップ 4: ${item4}の日次平均`
+            : `Step 4: Daily average for ${item4}`,
+        instruction:
+          locale === 'pt'
+            ? `Em H5, calcule a média diária de vendas de ${item4} usando ${avgName}.`
+            : locale === 'fr'
+            ? `En H5, obtiens la moyenne journalière de ventes de ${item4} avec ${avgName}.`
+            : locale === 'de'
+            ? `Ermittle in H5 den Tagesdurchschnitt der verkauften ${item4} mit ${avgName}.`
+            : locale === 'ja'
+            ? `H5で、${avgName}関数を使って${item4}の日次平均売上を算出してください。`
+            : `In H5, find the daily average sales of ${item4} using the ${avgName} function.`,
+        targetCell: 'H5',
+        acceptedFormulas: [
+          `=${avgName}(B5:F5)`,
+          '=AVERAGE(B5:F5)',
+          '=PROMEDIO(B5:F5)',
+          '=MÉDIA(B5:F5)',
+        ],
+        resultValue: '60',
+        pedagogicalHint: `=${avgName}(B5:F5)`,
+        emergencySolution: `=${avgName}(B5:F5)`,
+        suggestions: ['=', `${avgName}(`, 'B5:F5', ')', `${sumName}(`, '/'],
+      },
+      {
+        sheetId: 'costos',
+        title:
+          locale === 'pt'
+            ? `Passo 5: Receita bruta de ${item1}`
+            : locale === 'fr'
+            ? `Étape 5 : Revenu brut de ${item1}`
+            : locale === 'de'
+            ? `Schritt 5: Bruttoerlös für ${item1}`
+            : locale === 'ja'
+            ? `ステップ 5: ${item1}の総売上`
+            : `Step 5: Gross revenue for ${item1}`,
+        instruction:
+          locale === 'pt'
+            ? `Acesse a aba ${sheet2Name}! Em D2, calcule a receita multiplicando unidades vendidas (B2) pelo preço (C2).`
+            : locale === 'fr'
+            ? `Passe à l'onglet ${sheet2Name} ! En D2, calcule le revenu en multipliant les unités vendues (B2) par le prix (C2).`
+            : locale === 'de'
+            ? `Wechsle zum Blatt ${sheet2Name}! Berechne in D2 den Erlös durch Multiplikation von Verkaufsmenge (B2) und Preis (C2).`
+            : locale === 'ja'
+            ? `${sheet2Name}シートに移動！D2で、販売数（B2）に単価（C2）を掛けて売上額を計算してください。`
+            : `Switch to ${sheet2Name}! In D2, calculate revenue by multiplying units sold (B2) by unit price (C2).`,
+        targetCell: 'D2',
+        acceptedFormulas: ['=B2*C2', '=C2*B2'],
+        resultValue: '3000',
+        pedagogicalHint: '=B2*C2',
+        emergencySolution: '=B2*C2',
+        suggestions: ['=', 'B2', '*', 'C2', 'E2', '+', '-'],
+      },
+      {
+        sheetId: 'costos',
+        title:
+          locale === 'pt'
+            ? `Passo 6: Receita bruta de ${item2}`
+            : locale === 'fr'
+            ? `Étape 6 : Revenu brut de ${item2}`
+            : locale === 'de'
+            ? `Schritt 6: Bruttoerlös für ${item2}`
+            : locale === 'ja'
+            ? `ステップ 6: ${item2}の総売上`
+            : `Step 6: Gross revenue for ${item2}`,
+        instruction:
+          locale === 'pt'
+            ? `Em D3, calcule a receita total de ${item2} multiplicando B3 por C3.`
+            : locale === 'fr'
+            ? `En D3, calcule le revenu total de ${item2} en multipliant B3 par C3.`
+            : locale === 'de'
+            ? `Berechne in D3 den Gesamterlös für ${item2} durch B3*C3.`
+            : locale === 'ja'
+            ? `D3で、B3とC3を掛けて${item2}の総売上を計算してください。`
+            : `In D3, calculate total revenue for ${item2} by multiplying B3 by C3.`,
+        targetCell: 'D3',
+        acceptedFormulas: ['=B3*C3', '=C3*B3'],
+        resultValue: '2825',
+        pedagogicalHint: '=B3*C3',
+        emergencySolution: '=B3*C3',
+        suggestions: ['=', 'B3', '*', 'C3', 'E3', '+', '/'],
+      },
+      {
+        sheetId: 'costos',
+        title:
+          locale === 'pt'
+            ? `Passo 7: Custo total de ${item2}`
+            : locale === 'fr'
+            ? `Étape 7 : Coût total pour ${item2}`
+            : locale === 'de'
+            ? `Schritt 7: Gesamtkosten für ${item2}`
+            : locale === 'ja'
+            ? `ステップ 7: ${item2}の総原価`
+            : `Step 7: Production cost for ${item2}`,
+        instruction:
+          locale === 'pt'
+            ? `Em F3, calcule o custo total de ${item2} multiplicando unidades (B3) pelo custo unitário (E3).`
+            : locale === 'fr'
+            ? `En F3, calcule le coût total pour ${item2} en multipliant les unités (B3) par le coût unitaire (E3).`
+            : locale === 'de'
+            ? `Berechne in F3 die Gesamtkosten für ${item2} durch Multiplikation von Menge (B3) mit Stückkosten (E3).`
+            : locale === 'ja'
+            ? `F3で、販売数（B3）に原価（E3）を掛けて${item2}の総原価を計算してください。`
+            : `In F3, calculate total cost for ${item2} by multiplying units sold (B3) by unit cost (E3).`,
+        targetCell: 'F3',
+        acceptedFormulas: ['=B3*E3', '=E3*B3'],
+        resultValue: '1130',
+        pedagogicalHint: '=B3*E3',
+        emergencySolution: '=B3*E3',
+        suggestions: ['=', 'B3', '*', 'E3', 'C3', '+', '-'],
+      },
+      {
+        sheetId: 'costos',
+        title:
+          locale === 'pt'
+            ? `Passo 8: Lucro líquido de ${item2}`
+            : locale === 'fr'
+            ? `Étape 8 : Bénéfice net pour ${item2}`
+            : locale === 'de'
+            ? `Schritt 8: Reingewinn für ${item2}`
+            : locale === 'ja'
+            ? `ステップ 8: ${item2}の純利益`
+            : `Step 8: Net profit for ${item2}`,
+        instruction:
+          locale === 'pt'
+            ? 'Em G3, calcule o lucro líquido subtraindo o custo total (F3) da receita total (D3).'
+            : locale === 'fr'
+            ? 'En G3, calcule le bénéfice net en soustrayant le coût total (F3) du revenu total (D3).'
+            : locale === 'de'
+            ? 'Berechne in G3 den Reingewinn: Erlös (D3) minus Gesamtkosten (F3).'
+            : locale === 'ja'
+            ? 'G3で、総売上（D3）から総原価（F3）を引いて純利益を計算してください。'
+            : 'In G3, calculate net profit by subtracting total cost (F3) from total revenue (D3).',
+        targetCell: 'G3',
+        acceptedFormulas: ['=D3-F3'],
+        resultValue: '1695',
+        pedagogicalHint: '=D3-F3',
+        emergencySolution: '=D3-F3',
+        suggestions: ['=', 'D3', '-', 'F3', 'B3', '+', '*'],
+      },
+      {
+        sheetId: 'reporte',
+        title:
+          locale === 'pt'
+            ? 'Passo 9: Total Geral de Pães Vendidos'
+            : locale === 'fr'
+            ? 'Étape 9 : Grand Total de Produits Vendus'
+            : locale === 'de'
+            ? 'Schritt 9: Gesamtzahl aller Backwaren'
+            : locale === 'ja'
+            ? 'ステップ 9: 全商品の総合計販売数'
+            : 'Step 9: Grand Total of Items Sold',
+        instruction:
+          locale === 'pt'
+            ? `Passe para a aba ${sheet3Name}. Em B2, some as vendas totais dos 4 produtos: 250, 565, 135 e 300.`
+            : locale === 'fr'
+            ? `Passe à l'onglet ${sheet3Name}. En B2, additionne les ventes des 4 produits : 250, 565, 135 et 300.`
+            : locale === 'de'
+            ? `Wechsle zu ${sheet3Name}. Addiere in B2 die Verkäufe aller 4 Produkte: 250, 565, 135 und 300.`
+            : locale === 'ja'
+            ? `${sheet3Name}シートに移動。B2で、4種類の商品の総販売数（250, 565, 135, 300）を合算してください。`
+            : `Switch to the ${sheet3Name} sheet. In B2, sum the sales of all 4 products: 250, 565, 135, and 300.`,
+        targetCell: 'B2',
+        acceptedFormulas: [
+          `=${sumName}(250,565,135,300)`,
+          '=SUM(250,565,135,300)',
+          '=SUMA(250,565,135,300)',
+          '=250+565+135+300',
+        ],
+        resultValue: '1250',
+        pedagogicalHint: `=${sumName}(250,565,135,300)`,
+        emergencySolution: `=${sumName}(250,565,135,300)`,
+        suggestions: ['=', `${sumName}(`, '250', ',', '565', ',', '135', ',', '300', ')', '+'],
+      },
+      {
+        sheetId: 'reporte',
+        title:
+          locale === 'pt'
+            ? 'Passo 10: Venda do Produto Estrela'
+            : locale === 'fr'
+            ? 'Étape 10 : Vente du Produit Phare'
+            : locale === 'de'
+            ? 'Schritt 10: Bestseller-Höchstwert'
+            : locale === 'ja'
+            ? 'ステップ 10: トップ商品の最高販売数'
+            : 'Step 10: Top Seller Sales with MAX',
+        instruction:
+          locale === 'pt'
+            ? 'Em B3, identifique a maior quantidade vendida entre os 4 produtos usando MAX (250, 565, 135, 300).'
+            : locale === 'fr'
+            ? 'En B3, trouve la plus grande quantité vendue parmi les 4 produits avec MAX (250, 565, 135, 300).'
+            : locale === 'de'
+            ? 'Ermittle in B3 den Maximalwert der 4 Produkte mit MAX (250, 565, 135, 300).'
+            : locale === 'ja'
+            ? 'B3で、MAX関数を使って4商品の中の最大販売数を算出してください（250, 565, 135, 300）。'
+            : 'In B3, find the highest quantity sold among the 4 items using MAX (250, 565, 135, 300).',
+        targetCell: 'B3',
+        acceptedFormulas: ['=MAX(250,565,135,300)'],
+        resultValue: '565',
+        pedagogicalHint: '=MAX(250,565,135,300)',
+        emergencySolution: '=MAX(250,565,135,300)',
+        suggestions: ['=', 'MAX(', '250', ',', '565', ',', '135', ',', '300', ')', 'MIN('],
+      },
+      {
+        sheetId: 'reporte',
+        title:
+          locale === 'pt'
+            ? `Passo 11: Avaliação de Meta com ${ifName}`
+            : locale === 'fr'
+            ? 'Étape 11 : Évaluation avec SI'
+            : locale === 'de'
+            ? `Schritt 11: Zielstatus mit ${ifName}`
+            : locale === 'ja'
+            ? 'ステップ 11: IF関数による目標判定'
+            : 'Step 11: Goal Diagnosis with IF',
+        instruction:
+          locale === 'pt'
+            ? `Em D5, escreva a condição: se B2 >= 1000 retorne "${goalMet}", caso contrário "${inProgress}".`
+            : locale === 'fr'
+            ? `En D5, écris la condition : si B2 >= 1000 renvoie "${goalMet}", sinon "${inProgress}".`
+            : locale === 'de'
+            ? `Schreibe in D5 die Formel: wenn B2 >= 1000 gib "${goalMet}" aus, sonst "${inProgress}".`
+            : locale === 'ja'
+            ? `D5で、条件式を作成：B2が1000以上なら「${goalMet}」、未満なら「${inProgress}」を返してください。`
+            : `In D5, write the conditional formula: if B2 >= 1000, return "${goalMet}", otherwise "${inProgress}".`,
+        targetCell: 'D5',
+        acceptedFormulas: [
+          `=${ifName}(B2>=1000,"${goalMet}","${inProgress}")`,
+          `=${ifName}(B2>=1000,${goalMet},${inProgress})`,
+          '=IF(B2>=1000,"Goal Met","In Progress")',
+          '=SI(B2>=1000,"Meta Cumplida","En Progreso")',
+        ],
+        resultValue: goalMet,
+        pedagogicalHint: `=${ifName}(B2>=1000,"${goalMet}","${inProgress}")`,
+        emergencySolution: `=${ifName}(B2>=1000,"${goalMet}","${inProgress}")`,
+        suggestions: ['=', `${ifName}(`, 'B2>=1000', `,"${goalMet}"`, `,"${inProgress}"`, ')'],
+      },
+    ],
+  };
+}
+
+function localizeFormulaText(text: string, locale: SupportedLocale): string {
+  if (locale === 'es') return text;
+  const fnMap: Record<SupportedLocale, Record<string, string>> = {
+    es: {},
+    en: {
+      'SUMA(': 'SUM(',
+      'PROMEDIO(': 'AVERAGE(',
+      'SI.ERROR(': 'IFERROR(',
+      'CONTAR.SI(': 'COUNTIF(',
+      'BUSCARV(': 'VLOOKUP(',
+      'SI(': 'IF(',
+      'POTENCIA(': 'POWER(',
+      'SUMA': 'SUM',
+      'PROMEDIO': 'AVERAGE',
+      'SI.ERROR': 'IFERROR',
+      'CONTAR.SI': 'COUNTIF',
+      'BUSCARV': 'VLOOKUP',
+    },
+    de: {
+      'SUMA(': 'SUMME(',
+      'PROMEDIO(': 'MITTELWERT(',
+      'SI.ERROR(': 'WENNFEHLER(',
+      'CONTAR.SI(': 'ZÄHLENWENN(',
+      'BUSCARV(': 'SVERWEIS(',
+      'SI(': 'WENN(',
+      'POTENCIA(': 'POTENZ(',
+      'SUMA': 'SUMME',
+      'PROMEDIO': 'MITTELWERT',
+      'SI.ERROR': 'WENNFEHLER',
+      'CONTAR.SI': 'ZÄHLENWENN',
+      'BUSCARV': 'SVERWEIS',
+    },
+    fr: {
+      'SUMA(': 'SOMME(',
+      'PROMEDIO(': 'MOYENNE(',
+      'SI.ERROR(': 'SIERREUR(',
+      'CONTAR.SI(': 'NB.SI(',
+      'BUSCARV(': 'RECHERCHEV(',
+      'POTENCIA(': 'PUISSANCE(',
+      'SUMA': 'SOMME',
+      'PROMEDIO': 'MOYENNE',
+      'SI.ERROR': 'SIERREUR',
+      'CONTAR.SI': 'NB.SI',
+      'BUSCARV': 'RECHERCHEV',
+    },
+    pt: {
+      'SUMA(': 'SOMA(',
+      'PROMEDIO(': 'MÉDIA(',
+      'SI.ERROR(': 'SEERRO(',
+      'CONTAR.SI(': 'CONT.SE(',
+      'BUSCARV(': 'PROCV(',
+      'SI(': 'SE(',
+      'POTENCIA(': 'POTÊNCIA(',
+      'SUMA': 'SOMA',
+      'PROMEDIO': 'MÉDIA',
+      'SI.ERROR': 'SEERRO',
+      'CONTAR.SI': 'CONT.SE',
+      'BUSCARV': 'PROCV',
+    },
+    ja: {
+      'SUMA(': 'SUM(',
+      'PROMEDIO(': 'AVERAGE(',
+      'SI.ERROR(': 'IFERROR(',
+      'CONTAR.SI(': 'COUNTIF(',
+      'BUSCARV(': 'VLOOKUP(',
+      'SI(': 'IF(',
+      'POTENCIA(': 'POWER(',
+      'SUMA': 'SUM',
+      'PROMEDIO': 'AVERAGE',
+      'SI.ERROR': 'IFERROR',
+      'CONTAR.SI': 'COUNTIF',
+      'BUSCARV': 'VLOOKUP',
+    },
+  };
+  let out = text;
+  for (const [k, v] of Object.entries(fnMap[locale] || {})) {
+    out = out.split(k).join(v);
+  }
+  const stepPrefix: Record<SupportedLocale, string> = {
+    es: 'Paso ',
+    en: 'Step ',
+    de: 'Schritt ',
+    fr: 'Étape ',
+    ja: 'ステップ ',
+    pt: 'Passo ',
+  };
+  if (out.startsWith('Paso ')) {
+    out = stepPrefix[locale] + out.slice(5);
+  }
+  return out;
+}
+
+function localizeWorkbookExercise(
+  base: StepByStepExerciseData,
+  locale: SupportedLocale
+): StepByStepExerciseData {
+  if (locale === 'es') return base;
+  return {
+    ...base,
+    title: MISSION_TITLES_I18N[base.id]?.[locale] || localizeFormulaText(base.title, locale),
+    subtitle: localizeFormulaText(base.subtitle, locale),
+    scenario:
+      MISSION_DESCRIPTIONS_I18N[base.id]?.[locale] || localizeFormulaText(base.scenario, locale),
+    steps: base.steps.map((step) => ({
+      ...step,
+      title: localizeFormulaText(step.title, locale),
+      instruction: localizeFormulaText(step.instruction, locale),
+      pedagogicalHint: localizeFormulaText(step.pedagogicalHint, locale),
+      emergencySolution: localizeFormulaText(step.emergencySolution, locale),
+      suggestions: step.suggestions.map((s) => localizeFormulaText(s, locale)),
+    })),
+  };
+}
+
 export function getStepByStepExercise(
   ref: string,
   locale: SupportedLocale = 'es'
 ): StepByStepExerciseData {
   const upper = ref.toUpperCase();
+  if (upper === 'MISSION_BAKERY') {
+    return buildBakeryExercise(locale);
+  }
+
   if (upper === 'MISSION_INVENTORY') {
-    const base = STEP_BY_STEP_EXERCISES.WEAK_POINTS;
+    const base = localizeWorkbookExercise(STEP_BY_STEP_EXERCISES.WEAK_POINTS, locale);
     return {
       ...base,
       id: 'MISSION_INVENTORY',
-      title: locale === 'es' ? 'Auditoría de Impuestos e IVA' : 'Tax & VAT Audit',
-      subtitle:
-        locale === 'es'
-          ? 'Referencias Absolutas $A$1 y Jerarquía'
-          : 'Absolute References $A$1 & Order of Operations',
-      scenario:
-        locale === 'es'
-          ? 'TecnoStore necesita calcular el IVA de su inventario fijando la celda $B$5 y validar sus fórmulas contables.'
-          : 'TecnoStore needs to calculate sales tax across its inventory by anchoring cell $B$5 and validating formulas.',
+      title: MISSION_TITLES_I18N.MISSION_INVENTORY[locale],
+      subtitle: {
+        es: 'Referencias Absolutas $A$1 y Jerarquía',
+        en: 'Absolute References $A$1 & Order of Operations',
+        de: 'Absolute Bezüge $A$1 & Operator-Rangfolge',
+        fr: 'Références Absolues $A$1 et Priorité des Opérateurs',
+        ja: '絶対参照 $A$1 と演算子の優先順位',
+        pt: 'Referências Absolutas $A$1 e Ordem de Operações',
+      }[locale],
+      scenario: MISSION_DESCRIPTIONS_I18N.MISSION_INVENTORY[locale],
       earnedXp: 50,
       earnedBytes: 35,
       badgeEmoji: '📦',
@@ -1438,19 +2403,20 @@ export function getStepByStepExercise(
   }
 
   if (upper === 'MISSION_LOOKUP') {
-    const base = STEP_BY_STEP_EXERCISES.DAILY;
+    const base = localizeWorkbookExercise(STEP_BY_STEP_EXERCISES.DAILY, locale);
     return {
       ...base,
       id: 'MISSION_LOOKUP',
-      title: locale === 'es' ? 'Catálogo con BUSCARV' : 'Catalog with VLOOKUP',
-      subtitle:
-        locale === 'es'
-          ? 'Búsqueda Vertical y Manejo de #N/A'
-          : 'Vertical Lookup & Handling #N/A',
-      scenario:
-        locale === 'es'
-          ? 'Logística Global tiene su hoja de precios rota. Repara las búsquedas con BUSCARV y protege el reporte.'
-          : 'Global Logistics has broken pricing lookups. Fix the VLOOKUP formulas and protect the report against errors.',
+      title: MISSION_TITLES_I18N.MISSION_LOOKUP[locale],
+      subtitle: {
+        es: 'Búsqueda Vertical y Manejo de #N/A',
+        en: 'Vertical Lookup & Handling #N/A',
+        de: 'SVERWEIS & #NV-Fehlerbehandlung',
+        fr: 'Recherche Verticale et Gestion #N/A',
+        ja: 'VLOOKUP検索と#N/Aエラー対策',
+        pt: 'Busca Vertical e Tratamento de #N/D',
+      }[locale],
+      scenario: MISSION_DESCRIPTIONS_I18N.MISSION_LOOKUP[locale],
       earnedXp: 60,
       earnedBytes: 45,
       badgeEmoji: '🛠️',
@@ -1458,5 +2424,6 @@ export function getStepByStepExercise(
     };
   }
 
-  return STEP_BY_STEP_EXERCISES[upper] || STEP_BY_STEP_EXERCISES.MISSION_BAKERY;
+  const found = STEP_BY_STEP_EXERCISES[upper] || STEP_BY_STEP_EXERCISES.MISSION_BAKERY;
+  return localizeWorkbookExercise(found, locale);
 }

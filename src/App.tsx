@@ -18,6 +18,7 @@ import {
   syncStatsToFirestore,
   verifyAndSyncProAndLegacyProfile,
 } from './lib/firebase';
+import { tr, UI_STRINGS } from './lib/i18n';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, onSnapshot } from 'firebase/firestore';
 
@@ -238,11 +239,11 @@ export const App: React.FC = () => {
   };
 
   const navItems = [
-    { id: 'map', label: stats.locale === 'es' ? 'Ruta' : 'Map', icon: Map },
-    { id: 'practice', label: stats.locale === 'es' ? 'Práctica' : 'Practice', icon: Zap },
-    { id: 'formulas', label: stats.locale === 'es' ? 'Fórmulas' : 'Formulas', icon: BookOpen },
-    { id: 'shop', label: stats.locale === 'es' ? 'Tienda' : 'Shop', icon: ShoppingBag },
-    { id: 'profile', label: stats.locale === 'es' ? 'Perfil' : 'Profile', icon: User },
+    { id: 'map', label: tr(stats.locale, UI_STRINGS.nav.map), icon: Map },
+    { id: 'practice', label: tr(stats.locale, UI_STRINGS.nav.practice), icon: Zap },
+    { id: 'formulas', label: tr(stats.locale, UI_STRINGS.nav.formulas), icon: BookOpen },
+    { id: 'shop', label: tr(stats.locale, UI_STRINGS.nav.shop), icon: ShoppingBag },
+    { id: 'profile', label: tr(stats.locale, UI_STRINGS.nav.profile), icon: User },
   ] as const;
 
   return (

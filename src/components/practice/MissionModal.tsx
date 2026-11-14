@@ -24,6 +24,7 @@ import { SupportedLocale, UserStats } from '../../types';
 import { CeldiMascot, CeldiMood } from '../CeldiMascot';
 import { SpreadsheetGrid, highlightsForFormula } from '../SpreadsheetGrid';
 import { sound } from '../../lib/audio';
+import { tr } from '../../lib/i18n';
 
 interface MissionModalProps {
   exercise: StepByStepExerciseData;
@@ -198,12 +199,24 @@ export const MissionModal: React.FC<MissionModalProps> = ({
         <div className="w-full max-w-md bg-gv-surface-high border border-gv-primary/50 rounded-3xl p-6 md:p-8 shadow-2xl flex flex-col items-center text-center animate-fade-in">
           <CeldiMascot mood="celebrating" size={96} />
           <h2 className="text-xl md:text-2xl font-black text-gv-text mt-4">
-            {locale === 'es' ? '¡Misión Completada!' : 'Mission Completed!'}
+            {tr(locale, {
+              es: '¡Misión Completada!',
+              en: 'Mission Completed!',
+              de: 'Mission abgeschlossen!',
+              fr: 'Mission accomplie !',
+              ja: 'ミッション完了！',
+              pt: 'Missão Concluída!',
+            })}
           </h2>
           <p className="text-xs md:text-sm text-gv-muted mt-1.5 leading-relaxed">
-            {locale === 'es'
-              ? `Has resuelto los ${steps.length} pasos en ${exercise.sheets.length} hojas de cálculo con éxito.`
-              : `You solved all ${steps.length} steps across ${exercise.sheets.length} sheets!`}
+            {tr(locale, {
+              es: `Has resuelto los ${steps.length} pasos en ${exercise.sheets.length} hojas de cálculo con éxito.`,
+              en: `You solved all ${steps.length} steps across ${exercise.sheets.length} sheets!`,
+              de: `Du hast alle ${steps.length} Schritte in ${exercise.sheets.length} Tabellenblättern gelöst!`,
+              fr: `Tu as résolu les ${steps.length} étapes sur ${exercise.sheets.length} feuilles avec succès !`,
+              ja: `${exercise.sheets.length}シート・全${steps.length}ステップを見事に解決しました！`,
+              pt: `Você resolveu os ${steps.length} passos em ${exercise.sheets.length} planilhas com sucesso!`,
+            })}
           </p>
 
           <div className="flex items-center justify-center gap-2 my-4">
@@ -220,7 +233,17 @@ export const MissionModal: React.FC<MissionModalProps> = ({
             <div className="w-px h-5 bg-gv-border" />
             <div className="flex items-center gap-1.5 font-mono font-extrabold text-sm text-gv-bytes">
               <Gem className="w-4 h-4 fill-gv-bytes/30" />
-              <span>+{exercise.earnedBytes} Gemas</span>
+              <span>
+                +{exercise.earnedBytes}{' '}
+                {tr(locale, {
+                  es: 'Gemas',
+                  en: 'Gems',
+                  de: 'Juwelen',
+                  fr: 'Gemmes',
+                  ja: 'ジェム',
+                  pt: 'Gemas',
+                })}
+              </span>
             </div>
           </div>
 
@@ -228,7 +251,14 @@ export const MissionModal: React.FC<MissionModalProps> = ({
             onClick={onClose}
             className="w-full py-3.5 rounded-2xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs uppercase tracking-wider cursor-pointer shadow-lg shadow-gv-primary/25 transition-all"
           >
-            {locale === 'es' ? 'CONTINUAR' : 'CONTINUE'}
+            {tr(locale, {
+              es: 'CONTINUAR',
+              en: 'CONTINUE',
+              de: 'WEITER',
+              fr: 'CONTINUER',
+              ja: '続ける',
+              pt: 'CONTINUAR',
+            })}
           </button>
         </div>
       </div>
@@ -253,9 +283,14 @@ export const MissionModal: React.FC<MissionModalProps> = ({
                 {exercise.badgeEmoji} {exercise.title}
               </span>
               <span className="font-mono text-gv-primary">
-                {locale === 'es'
-                  ? `Paso ${currentStepIndex + 1} de ${steps.length}`
-                  : `Step ${currentStepIndex + 1} of ${steps.length}`}
+                {tr(locale, {
+                  es: `Paso ${currentStepIndex + 1} de ${steps.length}`,
+                  en: `Step ${currentStepIndex + 1} of ${steps.length}`,
+                  de: `Schritt ${currentStepIndex + 1} von ${steps.length}`,
+                  fr: `Étape ${currentStepIndex + 1} sur ${steps.length}`,
+                  ja: `ステップ ${currentStepIndex + 1} / ${steps.length}`,
+                  pt: `Passo ${currentStepIndex + 1} de ${steps.length}`,
+                })}
               </span>
             </div>
             <div className="w-full h-2 rounded-full bg-gv-bg overflow-hidden border border-gv-border/60">
@@ -294,7 +329,15 @@ export const MissionModal: React.FC<MissionModalProps> = ({
                     {currentStep.title}
                   </span>
                   <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-gv-primary/15 text-gv-accent border border-gv-primary/30">
-                    Celda {currentStep.targetCell}
+                    {tr(locale, {
+                      es: 'Celda',
+                      en: 'Cell',
+                      de: 'Zelle',
+                      fr: 'Cellule',
+                      ja: 'セル',
+                      pt: 'Célula',
+                    })}{' '}
+                    {currentStep.targetCell}
                   </span>
                 </div>
                 <p className="text-xs md:text-[13px] font-semibold text-gv-text mt-1 leading-snug">
@@ -318,7 +361,25 @@ export const MissionModal: React.FC<MissionModalProps> = ({
                 }`}
               >
                 <Lightbulb className="w-3.5 h-3.5 text-gv-warning" />
-                <span>{showHint ? 'Ocultar pista' : 'Ver pista pedagógica'}</span>
+                <span>
+                  {showHint
+                    ? tr(locale, {
+                        es: 'Ocultar pista',
+                        en: 'Hide hint',
+                        de: 'Hinweis ausblenden',
+                        fr: 'Masquer l’indice',
+                        ja: 'ヒントを隠す',
+                        pt: 'Ocultar dica',
+                      })
+                    : tr(locale, {
+                        es: 'Ver pista pedagógica',
+                        en: 'View learning hint',
+                        de: 'Lernhinweis anzeigen',
+                        fr: 'Voir l’indice pédagogique',
+                        ja: '学習ヒントを見る',
+                        pt: 'Ver dica pedagógica',
+                      })}
+                </span>
               </button>
 
               {emergencyRevealsLeft > 0 && !isStepCompleted && (
@@ -328,7 +389,16 @@ export const MissionModal: React.FC<MissionModalProps> = ({
                   className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-bold bg-gv-warning/15 hover:bg-gv-warning/25 border border-gv-warning/40 text-gv-warning transition-colors cursor-pointer"
                 >
                   <KeyRound className="w-3.5 h-3.5" />
-                  <span>Revelar fórmula ({emergencyRevealsLeft} restante)</span>
+                  <span>
+                    {tr(locale, {
+                      es: `Revelar fórmula (${emergencyRevealsLeft} restante)`,
+                      en: `Reveal formula (${emergencyRevealsLeft} left)`,
+                      de: `Formel aufdecken (${emergencyRevealsLeft} übrig)`,
+                      fr: `Révéler la formule (${emergencyRevealsLeft} restante)`,
+                      ja: `数式を表示 (残り${emergencyRevealsLeft}回)`,
+                      pt: `Revelar fórmula (${emergencyRevealsLeft} restante)`,
+                    })}
+                  </span>
                 </button>
               )}
             </div>
@@ -366,7 +436,14 @@ export const MissionModal: React.FC<MissionModalProps> = ({
                     {isTargetSheet && (
                       <span
                         className="w-2 h-2 rounded-full bg-gv-primary"
-                        title="Hoja activa de este paso"
+                        title={tr(locale, {
+                          es: 'Hoja activa de este paso',
+                          en: 'Target sheet for this step',
+                          de: 'Aktives Blatt für diesen Schritt',
+                          fr: 'Feuille active pour cette étape',
+                          ja: 'このステップの対象シート',
+                          pt: 'Planilha ativa deste passo',
+                        })}
                       />
                     )}
                   </button>
@@ -408,7 +485,14 @@ export const MissionModal: React.FC<MissionModalProps> = ({
                   if (e.key === 'Enter') handleCheckStep();
                 }}
                 disabled={isStepCompleted}
-                placeholder="=SUMA(B2:F2)"
+                placeholder={tr(locale, {
+                  es: '=SUMA(B2:F2)',
+                  en: '=SUM(B2:F2)',
+                  de: '=SUMME(B2:F2)',
+                  fr: '=SOMME(B2:F2)',
+                  ja: '=SUM(B2:F2)',
+                  pt: '=SOMA(B2:F2)',
+                })}
                 className="flex-1 px-3 py-2 rounded-xl bg-gv-bg border border-gv-border font-mono text-sm font-bold text-gv-accent focus:outline-none focus:border-gv-primary"
               />
               {!isStepCompleted && (
@@ -416,7 +500,14 @@ export const MissionModal: React.FC<MissionModalProps> = ({
                   type="button"
                   onClick={handleBackspace}
                   className="p-2 rounded-xl bg-gv-surface hover:bg-gv-bg border border-gv-border text-gv-muted hover:text-gv-text cursor-pointer"
-                  title="Borrar último carácter"
+                  title={tr(locale, {
+                    es: 'Borrar último carácter',
+                    en: 'Delete last character',
+                    de: 'Letztes Zeichen löschen',
+                    fr: 'Effacer le dernier caractère',
+                    ja: '最後の文字を削除',
+                    pt: 'Apagar último caractere',
+                  })}
                 >
                   <Delete className="w-4 h-4" />
                 </button>
@@ -445,9 +536,14 @@ export const MissionModal: React.FC<MissionModalProps> = ({
             <div className="p-3 rounded-xl bg-gv-error/15 border border-gv-error text-xs font-bold text-gv-error flex items-center gap-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>
-                {locale === 'es'
-                  ? 'La fórmula aún no es exacta. Revisa el rango de celdas o consulta la pista.'
-                  : 'Formula is not exact yet. Check the cell range or view the hint.'}
+                {tr(locale, {
+                  es: 'La fórmula aún no es exacta. Revisa el rango de celdas o consulta la pista.',
+                  en: 'Formula is not exact yet. Check the cell range or view the hint.',
+                  de: 'Die Formel stimmt noch nicht ganz. Prüfe den Zellbereich oder sieh dir den Hinweis an.',
+                  fr: 'La formule n’est pas encore exacte. Vérifie la plage de cellules ou consulte l’indice.',
+                  ja: '数式がまだ正確ではありません。セル範囲を確認するかヒントを見てみましょう。',
+                  pt: 'A fórmula ainda não está exata. Verifique o intervalo de células ou veja a dica.',
+                })}
               </span>
             </div>
           )}
@@ -457,9 +553,14 @@ export const MissionModal: React.FC<MissionModalProps> = ({
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 shrink-0 text-gv-accent" />
                 <span>
-                  {locale === 'es'
-                    ? `¡Correcto! ${currentStep.targetCell} = ${currentStep.resultValue}`
-                    : `Correct! ${currentStep.targetCell} = ${currentStep.resultValue}`}
+                  {tr(locale, {
+                    es: `¡Correcto! ${currentStep.targetCell} = ${currentStep.resultValue}`,
+                    en: `Correct! ${currentStep.targetCell} = ${currentStep.resultValue}`,
+                    de: `Richtig! ${currentStep.targetCell} = ${currentStep.resultValue}`,
+                    fr: `Correct ! ${currentStep.targetCell} = ${currentStep.resultValue}`,
+                    ja: `正解！ ${currentStep.targetCell} = ${currentStep.resultValue}`,
+                    pt: `Correto! ${currentStep.targetCell} = ${currentStep.resultValue}`,
+                  })}
                 </span>
               </div>
             </div>
@@ -474,15 +575,30 @@ export const MissionModal: React.FC<MissionModalProps> = ({
             <span>
               {isStepCompleted
                 ? currentStepIndex < steps.length - 1
-                  ? locale === 'es'
-                    ? 'SIGUIENTE PASO'
-                    : 'NEXT STEP'
-                  : locale === 'es'
-                  ? 'FINALIZAR MISIÓN'
-                  : 'FINISH MISSION'
-                : locale === 'es'
-                ? 'COMPROBAR FÓRMULA'
-                : 'CHECK FORMULA'}
+                  ? tr(locale, {
+                      es: 'SIGUIENTE PASO',
+                      en: 'NEXT STEP',
+                      de: 'NÄCHSTER SCHRITT',
+                      fr: 'ÉTAPE SUIVANTE',
+                      ja: '次のステップへ',
+                      pt: 'PRÓXIMO PASSO',
+                    })
+                  : tr(locale, {
+                      es: 'FINALIZAR MISIÓN',
+                      en: 'FINISH MISSION',
+                      de: 'MISSION ABSCHLIESSEN',
+                      fr: 'TERMINER LA MISSION',
+                      ja: 'ミッションを完了する',
+                      pt: 'FINALIZAR MISSÃO',
+                    })
+                : tr(locale, {
+                    es: 'COMPROBAR FÓRMULA',
+                    en: 'CHECK FORMULA',
+                    de: 'FORMEL PRÜFEN',
+                    fr: 'VÉRIFIER LA FORMULE',
+                    ja: '数式をチェック',
+                    pt: 'VERIFICAR FÓRMULA',
+                  })}
             </span>
             {isStepCompleted && <ArrowRight className="w-4 h-4" />}
           </button>
@@ -494,11 +610,26 @@ export const MissionModal: React.FC<MissionModalProps> = ({
             <div className="w-full max-w-sm bg-gv-surface-high border border-gv-warning/50 rounded-2xl p-5 shadow-2xl flex flex-col gap-3">
               <div className="flex items-center gap-2 text-gv-warning font-black text-sm">
                 <KeyRound className="w-5 h-5" />
-                <span>¿Usar llave de emergencia?</span>
+                <span>
+                  {tr(locale, {
+                    es: '¿Usar llave de emergencia?',
+                    en: 'Use emergency key?',
+                    de: 'Notfallschlüssel verwenden?',
+                    fr: 'Utiliser la clé d’urgence ?',
+                    ja: '緊急キーを使いますか？',
+                    pt: 'Usar chave de emergência?',
+                  })}
+                </span>
               </div>
               <p className="text-xs text-gv-muted leading-relaxed">
-                Solo tienes <strong>1 llave de solución</strong> para toda esta misión de{' '}
-                {steps.length} pasos. Insertará automáticamente la fórmula correcta{' '}
+                {tr(locale, {
+                  es: `Solo tienes 1 llave de solución para toda esta misión de ${steps.length} pasos. Insertará automáticamente la fórmula correcta `,
+                  en: `You only have 1 solution key for this entire ${steps.length}-step mission. It will automatically insert `,
+                  de: `Du hast nur 1 Lösungsschlüssel für diese gesamte ${steps.length}-Schritte-Mission. Er fügt automatisch die richtige Formel ein: `,
+                  fr: `Tu n’as qu’une seule clé de solution pour toute cette mission de ${steps.length} étapes. Elle insérera automatiquement `,
+                  ja: `この${steps.length}ステップのミッション全体で使える解答キーは1回だけです。正しい数式を自動入力します: `,
+                  pt: `Você tem apenas 1 chave de solução para toda esta missão de ${steps.length} passos. Ela inserirá automaticamente `,
+                })}
                 <code className="text-gv-accent font-mono">{currentStep.emergencySolution}</code>.
               </p>
               <div className="flex items-center justify-end gap-2 pt-2">
@@ -507,14 +638,28 @@ export const MissionModal: React.FC<MissionModalProps> = ({
                   onClick={() => setShowRevealConfirm(false)}
                   className="px-3.5 py-2 rounded-xl bg-gv-surface border border-gv-border text-xs font-bold text-gv-muted hover:text-gv-text cursor-pointer"
                 >
-                  Cancelar
+                  {tr(locale, {
+                    es: 'Cancelar',
+                    en: 'Cancel',
+                    de: 'Abbrechen',
+                    fr: 'Annuler',
+                    ja: 'キャンセル',
+                    pt: 'Cancelar',
+                  })}
                 </button>
                 <button
                   type="button"
                   onClick={confirmEmergencyReveal}
                   className="px-4 py-2 rounded-xl bg-gv-warning text-black text-xs font-black cursor-pointer"
                 >
-                  Revelar fórmula
+                  {tr(locale, {
+                    es: 'Revelar fórmula',
+                    en: 'Reveal formula',
+                    de: 'Formel aufdecken',
+                    fr: 'Révéler la formule',
+                    ja: '数式を表示',
+                    pt: 'Revelar fórmula',
+                  })}
                 </button>
               </div>
             </div>

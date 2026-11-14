@@ -4,6 +4,7 @@ import { SupportedLocale, UserStats } from '../../types';
 import { LevelNode } from '../map/LevelNode';
 import { OnboardingChecklist } from '../map/OnboardingChecklist';
 import { CeldiMascot } from '../CeldiMascot';
+import { tr, UI_STRINGS } from '../../lib/i18n';
 
 interface MapTabProps {
   stats: UserStats;
@@ -177,7 +178,7 @@ export const MapTab: React.FC<MapTabProps> = ({
                       className="text-[10px] font-bold uppercase tracking-wider block"
                       style={{ color: region.color }}
                     >
-                      {locale === 'es' ? `Columna ${region.column}` : `Column ${region.column}`}
+                      {tr(locale, UI_STRINGS.map.column)} {region.column}
                     </span>
                     <h2 className="text-sm md:text-base font-black text-gv-text leading-tight truncate">
                       {title}

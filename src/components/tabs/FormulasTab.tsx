@@ -36,6 +36,7 @@ import {
 import { SupportedLocale } from '../../types';
 import { sound } from '../../lib/audio';
 import { CeldiMascot } from '../CeldiMascot';
+import { tr } from '../../lib/i18n';
 
 interface FormulasTabProps {
   locale: SupportedLocale;
@@ -43,21 +44,60 @@ interface FormulasTabProps {
 
 interface CategoryMeta {
   id: FormulaCategoryId;
-  labelEs: string;
-  labelEn: string;
+  labelByLocale: Record<SupportedLocale, string>;
   color: string;
   Icon: React.FC<{ className?: string }>;
 }
 
 const CATEGORIES: CategoryMeta[] = [
-  { id: 'all', labelEs: 'Todas', labelEn: 'All', color: '#38BDF8', Icon: Sparkles },
-  { id: 'basics', labelEs: 'Matemáticas', labelEn: 'Math', color: '#21C26B', Icon: Sigma },
-  { id: 'lookup', labelEs: 'Búsqueda', labelEn: 'Lookup', color: '#38BDF8', Icon: Search },
-  { id: 'logic', labelEs: 'Lógicas', labelEn: 'Logical', color: '#F59E0B', Icon: GitBranch },
-  { id: 'text', labelEs: 'Texto', labelEn: 'Text', color: '#F43F5E', Icon: Type },
-  { id: 'stats', labelEs: 'Estadística', labelEn: 'Stats', color: '#A855F7', Icon: BarChart3 },
-  { id: 'date', labelEs: 'Fecha y Hora', labelEn: 'Date & Time', color: '#06B6D4', Icon: Calendar },
-  { id: 'financial', labelEs: 'Finanzas', labelEn: 'Financial', color: '#10B981', Icon: Wallet },
+  {
+    id: 'all',
+    labelByLocale: { es: 'Todas', en: 'All', de: 'Alle', fr: 'Toutes', ja: 'すべて', pt: 'Todas' },
+    color: '#38BDF8',
+    Icon: Sparkles,
+  },
+  {
+    id: 'basics',
+    labelByLocale: { es: 'Matemáticas', en: 'Math', de: 'Mathematik', fr: 'Maths', ja: '数学', pt: 'Matemática' },
+    color: '#21C26B',
+    Icon: Sigma,
+  },
+  {
+    id: 'lookup',
+    labelByLocale: { es: 'Búsqueda', en: 'Lookup', de: 'Suche', fr: 'Recherche', ja: '検索', pt: 'Pesquisa' },
+    color: '#38BDF8',
+    Icon: Search,
+  },
+  {
+    id: 'logic',
+    labelByLocale: { es: 'Lógicas', en: 'Logical', de: 'Logik', fr: 'Logique', ja: '論理', pt: 'Lógica' },
+    color: '#F59E0B',
+    Icon: GitBranch,
+  },
+  {
+    id: 'text',
+    labelByLocale: { es: 'Texto', en: 'Text', de: 'Text', fr: 'Texte', ja: '文字列', pt: 'Texto' },
+    color: '#F43F5E',
+    Icon: Type,
+  },
+  {
+    id: 'stats',
+    labelByLocale: { es: 'Estadística', en: 'Stats', de: 'Statistik', fr: 'Statistiques', ja: '統計', pt: 'Estatística' },
+    color: '#A855F7',
+    Icon: BarChart3,
+  },
+  {
+    id: 'date',
+    labelByLocale: { es: 'Fecha y Hora', en: 'Date & Time', de: 'Datum & Zeit', fr: 'Date & Heure', ja: '日付と時刻', pt: 'Data e Hora' },
+    color: '#06B6D4',
+    Icon: Calendar,
+  },
+  {
+    id: 'financial',
+    labelByLocale: { es: 'Finanzas', en: 'Financial', de: 'Finanzen', fr: 'Finance', ja: '財務', pt: 'Finanças' },
+    color: '#10B981',
+    Icon: Wallet,
+  },
 ];
 
 function getCategoryMeta(catId: string): CategoryMeta {
@@ -98,6 +138,7 @@ const FormulaActionVisualizer: React.FC<{
     [formula, preferEnglish, langCode]
   );
 
+  const loc = (langCode as SupportedLocale) || 'es';
   const fullFormula = preferEnglish
     ? scenario.formulaEn
     : langCode === 'es'
@@ -170,7 +211,14 @@ const FormulaActionVisualizer: React.FC<{
         {/* Status Pill */}
         {isTyping ? (
           <span className="px-1.5 py-0.5 rounded bg-gv-warning/15 text-gv-warning text-[9px] font-mono font-black shrink-0">
-            ESCRIBIENDO
+            {tr(loc, {
+              es: 'ESCRIBIENDO',
+              en: 'TYPING',
+              de: 'EINGABE',
+              fr: 'SAISIE',
+              ja: '入力中',
+              pt: 'DIGITANDO',
+            })}
           </span>
         ) : isEnter ? (
           <span className="px-1.5 py-0.5 rounded bg-gv-primary text-black text-[9px] font-mono font-black scale-105 transition-transform shrink-0">
@@ -178,7 +226,15 @@ const FormulaActionVisualizer: React.FC<{
           </span>
         ) : (
           <span className="px-1.5 py-0.5 rounded bg-gv-primary/20 border border-gv-primary text-gv-primary text-[9px] font-mono font-black shrink-0">
-            ✓ CALCULADO
+            ✓{' '}
+            {tr(loc, {
+              es: 'CALCULADO',
+              en: 'CALCULATED',
+              de: 'BERECHNET',
+              fr: 'CALCULÉ',
+              ja: '計算完了',
+              pt: 'CALCULADO',
+            })}
           </span>
         )}
       </div>
@@ -284,12 +340,35 @@ const FormulaActionVisualizer: React.FC<{
       >
         <span className={isResult ? 'text-gv-accent' : 'text-gv-muted'}>
           {isTyping
-            ? `Escribiendo fórmula en celda ${scenario.targetCell}...`
+            ? tr(loc, {
+                es: `Escribiendo fórmula en celda ${scenario.targetCell}...`,
+                en: `Typing formula in cell ${scenario.targetCell}...`,
+                de: `Formel wird in Zelle ${scenario.targetCell} eingegeben...`,
+                fr: `Saisie de la formule en ${scenario.targetCell}...`,
+                ja: `セル ${scenario.targetCell} に数式を入力中...`,
+                pt: `Digitando fórmula na célula ${scenario.targetCell}...`,
+              })
             : isEnter
-            ? 'Evaluando referencias...'
+            ? tr(loc, {
+                es: 'Evaluando referencias...',
+                en: 'Evaluating references...',
+                de: 'Referenzen werden ausgewertet...',
+                fr: 'Évaluation des références...',
+                ja: 'セル参照を計算中...',
+                pt: 'Avaliando referências...',
+              })
             : `${targetLabel}: ${scenario.resultValue}`}
         </span>
-        <span className="text-[9px] font-mono text-gv-muted">Clic para repetir ↻</span>
+        <span className="text-[9px] font-mono text-gv-muted">
+          {tr(loc, {
+            es: 'Clic para repetir ↻',
+            en: 'Click to replay ↻',
+            de: 'Klicken zum Wiederholen ↻',
+            fr: 'Cliquer pour rejouer ↻',
+            ja: 'クリックで再生 ↻',
+            pt: 'Clique para repetir ↻',
+          })}
+        </span>
       </div>
     </div>
   );
@@ -322,7 +401,13 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
   const [activeSubTab, setActiveSubTab] = useState<'formulas' | 'shortcuts'>('formulas');
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<FormulaCategoryId>('all');
-  const [preferEnglish, setPreferEnglish] = useState<boolean>(locale === 'en');
+  const [preferEnglish, setPreferEnglish] = useState<boolean>(
+    locale === 'en' || locale === 'ja'
+  );
+  useEffect(() => {
+    setPreferEnglish(locale === 'en' || locale === 'ja');
+    setSelectedShortcutCategory('all');
+  }, [locale]);
   const [preferMac, setPreferMac] = useState<boolean>(() => {
     if (typeof navigator !== 'undefined') {
       return /Mac|iPhone|iPad|iPod/i.test(navigator.platform || navigator.userAgent);
@@ -340,12 +425,20 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
     navigator.clipboard.writeText(text);
     sound.play('tap');
     setCopiedKey(keyId);
-    setToastMessage(`Copiado al portapapeles: ${label}`);
+    const msg = tr(locale, {
+      es: `Copiado al portapapeles: ${label}`,
+      en: `Copied to clipboard: ${label}`,
+      de: `In Zwischenablage kopiert: ${label}`,
+      fr: `Copié dans le presse-papiers : ${label}`,
+      ja: `コピーしました: ${label}`,
+      pt: `Copiado para a área de transferência: ${label}`,
+    });
+    setToastMessage(msg);
     window.setTimeout(() => {
       setCopiedKey((prev) => (prev === keyId ? null : prev));
     }, 1800);
     window.setTimeout(() => {
-      setToastMessage((prev) => (prev === `Copiado al portapapeles: ${label}` ? null : prev));
+      setToastMessage((prev) => (prev === msg ? null : prev));
     }, 2200);
   };
 
@@ -452,7 +545,7 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
         </div>
       )}
 
-      {/* 1. Gamified Header + 3D Language Toggle (ES / EN) */}
+      {/* 1. Gamified Header + 3D Language Toggle */}
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <div className="flex items-center gap-3.5">
           <div className="w-12 h-12 rounded-[15px] bg-gradient-to-br from-gv-primary to-gv-primary-dark border-2 border-gv-accent/60 shadow-[0_3px_0_#148047,0_4px_12px_rgba(33,194,107,0.3)] flex items-center justify-center text-black shrink-0">
@@ -460,30 +553,58 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
           </div>
           <div>
             <h1 className="text-xl sm:text-2xl font-black text-gv-text tracking-tight">
-              Fórmulas y Atajos
+              {tr(locale, {
+                es: 'Fórmulas y Atajos',
+                en: 'Formulas & Shortcuts',
+                de: 'Formeln & Tastenkürzel',
+                fr: 'Formules & Raccourcis',
+                ja: '関数辞典 & ショートカット',
+                pt: 'Fórmulas e Atalhos',
+              })}
             </h1>
             <p className="text-xs font-semibold text-gv-muted">
-              {FORMULAS_DATA.length} fórmulas interactivas de Excel + {EXCEL_SHORTCUTS_DATA.length}{' '}
-              comandos de Windows y Mac/iOS
+              {tr(locale, {
+                es: `${FORMULAS_DATA.length} fórmulas interactivas de Excel + ${EXCEL_SHORTCUTS_DATA.length} comandos de Windows y Mac/iOS`,
+                en: `${FORMULAS_DATA.length} interactive Excel formulas + ${EXCEL_SHORTCUTS_DATA.length} Windows & Mac/iOS shortcuts`,
+                de: `${FORMULAS_DATA.length} interaktive Excel-Formeln + ${EXCEL_SHORTCUTS_DATA.length} Windows & Mac/iOS Kurzbefehle`,
+                fr: `${FORMULAS_DATA.length} formules Excel interactives + ${EXCEL_SHORTCUTS_DATA.length} raccourcis Windows & Mac/iOS`,
+                ja: `${FORMULAS_DATA.length}個のExcel関数 + ${EXCEL_SHORTCUTS_DATA.length}個のWindows / Macショートカット`,
+                pt: `${FORMULAS_DATA.length} fórmulas interativas do Excel + ${EXCEL_SHORTCUTS_DATA.length} atalhos Windows e Mac/iOS`,
+              })}
             </p>
           </div>
         </div>
 
-        {/* 3D Toggle Local Language (ES) vs International English (EN) */}
+        {/* 3D Toggle Local Language vs International English (EN) */}
         <button
           type="button"
           onClick={() => {
             sound.play('tap');
             setPreferEnglish((prev) => !prev);
           }}
-          title="Alternar nombres de fórmulas entre Español (BUSCARX) e Inglés (XLOOKUP)"
           className="px-3.5 py-2 rounded-xl bg-gv-surface-high hover:bg-gv-surface-higher border-2 border-gv-primary/60 shadow-[0_3px_0_rgba(33,194,107,0.35)] active:translate-y-0.5 transition-all flex items-center gap-2 cursor-pointer"
         >
           <span className="text-xs font-mono font-black text-gv-accent">
-            {preferEnglish ? '🇺🇸 EN (XLOOKUP)' : '🇪🇸 ES (BUSCARX)'}
+            {preferEnglish
+              ? '🇺🇸 EN (XLOOKUP)'
+              : tr(locale, {
+                  es: '🇪🇸 ES (BUSCARX)',
+                  en: '🇪🇸 ES (BUSCARX)',
+                  de: '🇩🇪 DE (XVERWEIS)',
+                  fr: '🇫🇷 FR (RECHERCHEX)',
+                  ja: '🇯🇵 JA (XLOOKUP)',
+                  pt: '🇵🇹 PT (PROCX)',
+                })}
           </span>
           <span className="text-[10px] px-1.5 py-0.5 rounded bg-gv-primary/20 text-gv-primary font-bold">
-            Cambiar
+            {tr(locale, {
+              es: 'Cambiar',
+              en: 'Switch',
+              de: 'Wechseln',
+              fr: 'Changer',
+              ja: '切替',
+              pt: 'Alternar',
+            })}
           </span>
         </button>
       </div>
@@ -507,8 +628,22 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
           onChange={(e) => setSearch(e.target.value)}
           placeholder={
             activeSubTab === 'formulas'
-              ? 'Buscar entre las 107 fórmulas (ej. BUSCARX, XLOOKUP, SUMA, SI.ERROR, VA...)'
-              : 'Buscar comando o atajo de Windows / Mac (ej. F4, Autosuma, Ctrl+T, Cmd+T...)'
+              ? tr(locale, {
+                  es: 'Buscar entre las 107 fórmulas (ej. BUSCARX, XLOOKUP, SUMA, SI.ERROR, VA...)',
+                  en: 'Search across 107 formulas (e.g. XLOOKUP, VLOOKUP, SUM, IFERROR, PV...)',
+                  de: 'Unter 107 Formeln suchen (z. B. XVERWEIS, XLOOKUP, SUMME, WENNFEHLER...)',
+                  fr: 'Rechercher parmi 107 formules (ex. RECHERCHEX, XLOOKUP, SOMME, SIERREUR...)',
+                  ja: '107個の関数を検索（例: XLOOKUP, VLOOKUP, SUM, IFERROR...）',
+                  pt: 'Buscar entre as 107 fórmulas (ex. PROCX, XLOOKUP, SOMA, SEERRO...)',
+                })
+              : tr(locale, {
+                  es: 'Buscar comando o atajo de Windows / Mac (ej. F4, Autosuma, Ctrl+T, Cmd+T...)',
+                  en: 'Search Windows / Mac shortcut (e.g. F4, AutoSum, Ctrl+T, Cmd+T...)',
+                  de: 'Windows / Mac Tastenkürzel suchen (z. B. F4, AutoSumme, Strg+T, Cmd+T...)',
+                  fr: 'Rechercher un raccourci Windows / Mac (ex. F4, Somme auto, Ctrl+T, Cmd+T...)',
+                  ja: 'Windows / Mac ショートカットを検索（例: F4, オートSUM, Ctrl+T, Cmd+T...）',
+                  pt: 'Buscar comando ou atalho Windows / Mac (ex. F4, AutoSoma, Ctrl+T, Cmd+T...)',
+                })
           }
           className="w-full pl-11 pr-10 py-3 bg-transparent text-xs sm:text-sm font-semibold text-gv-text placeholder:text-gv-muted/70 focus:outline-none"
         />
@@ -538,7 +673,16 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
           }`}
         >
           <Sigma className="w-4 h-4" />
-          <span>Fórmulas ({FORMULAS_DATA.length})</span>
+          <span>
+            {tr(locale, {
+              es: `Fórmulas (${FORMULAS_DATA.length})`,
+              en: `Formulas (${FORMULAS_DATA.length})`,
+              de: `Formeln (${FORMULAS_DATA.length})`,
+              fr: `Formules (${FORMULAS_DATA.length})`,
+              ja: `関数 (${FORMULAS_DATA.length})`,
+              pt: `Fórmulas (${FORMULAS_DATA.length})`,
+            })}
+          </span>
         </button>
 
         <button
@@ -554,7 +698,16 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
           }`}
         >
           <Command className="w-4 h-4" />
-          <span>Comandos Windows / Mac ({EXCEL_SHORTCUTS_DATA.length})</span>
+          <span>
+            {tr(locale, {
+              es: `Comandos Windows / Mac (${EXCEL_SHORTCUTS_DATA.length})`,
+              en: `Windows / Mac Shortcuts (${EXCEL_SHORTCUTS_DATA.length})`,
+              de: `Windows / Mac Kürzel (${EXCEL_SHORTCUTS_DATA.length})`,
+              fr: `Raccourcis Windows / Mac (${EXCEL_SHORTCUTS_DATA.length})`,
+              ja: `Windows / Mac ショートカット (${EXCEL_SHORTCUTS_DATA.length})`,
+              pt: `Atalhos Windows / Mac (${EXCEL_SHORTCUTS_DATA.length})`,
+            })}
+          </span>
         </button>
       </div>
 
@@ -595,7 +748,7 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                     className="text-xs font-extrabold"
                     style={{ color: isSelected ? cat.color : '#E3F2EA' }}
                   >
-                    {langCode === 'es' ? cat.labelEs : cat.labelEn}
+                    {tr(locale, cat.labelByLocale)}
                   </span>
                   <span
                     className="px-1.5 py-0.2 rounded-md text-[10px] font-mono font-black"
@@ -616,7 +769,14 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
             <div className="bg-gv-surface border border-gv-border rounded-2xl p-10 text-center flex flex-col items-center gap-3">
               <CeldiMascot mood="thinking" size={64} />
               <p className="text-sm font-extrabold text-gv-text">
-                No se encontraron fórmulas con "{search}"
+                {tr(locale, {
+                  es: `No se encontraron fórmulas con "${search}"`,
+                  en: `No formulas found matching "${search}"`,
+                  de: `Keine Formeln gefunden für "${search}"`,
+                  fr: `Aucune formule trouvée pour "${search}"`,
+                  ja: `「${search}」に一致する関数が見つかりません`,
+                  pt: `Nenhuma fórmula encontrada para "${search}"`,
+                })}
               </p>
               <button
                 type="button"
@@ -626,7 +786,14 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                 }}
                 className="px-4 py-2 rounded-xl bg-gv-primary text-black text-xs font-black cursor-pointer"
               >
-                Ver todas las {FORMULAS_DATA.length} fórmulas
+                {tr(locale, {
+                  es: `Ver todas las ${FORMULAS_DATA.length} fórmulas`,
+                  en: `View all ${FORMULAS_DATA.length} formulas`,
+                  de: `Alle ${FORMULAS_DATA.length} Formeln anzeigen`,
+                  fr: `Voir les ${FORMULAS_DATA.length} formules`,
+                  ja: `全 ${FORMULAS_DATA.length} 個の関数を表示`,
+                  pt: `Ver todas as ${FORMULAS_DATA.length} fórmulas`,
+                })}
               </button>
             </div>
           ) : (
@@ -712,7 +879,7 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                             </h3>
                             {secondaryName !== primaryName && (
                               <span className="px-2 py-0.5 rounded-md bg-gv-surface-higher border border-gv-border font-mono text-[11px] font-bold text-gv-muted">
-                                {preferEnglish ? 'ES' : 'EN'}: ={secondaryName}
+                                {preferEnglish ? locale.toUpperCase() : 'EN'}: ={secondaryName}
                               </span>
                             )}
                             <span
@@ -724,7 +891,7 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                               className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md border text-[10px] font-mono font-black uppercase"
                             >
                               <CatIcon className="w-3 h-3" />
-                              {langCode === 'es' ? catMeta.labelEs : catMeta.labelEn}
+                              {tr(locale, catMeta.labelByLocale)}
                             </span>
                           </div>
                           <p className="text-xs sm:text-[13px] text-gv-text/90 mt-1.5 leading-relaxed">
@@ -770,7 +937,14 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                             }}
                             className="px-2 py-0.5 rounded text-[9.5px] font-mono font-black uppercase shrink-0"
                           >
-                            SINTAXIS
+                            {tr(locale, {
+                              es: 'SINTAXIS',
+                              en: 'SYNTAX',
+                              de: 'SYNTAX',
+                              fr: 'SYNTAXE',
+                              ja: '構文',
+                              pt: 'SINTAXE',
+                            })}
                           </span>
                           <code className="text-xs font-mono font-bold text-gv-text overflow-x-auto whitespace-nowrap">
                             {syntax}
@@ -791,12 +965,30 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                           {isSyntaxCopied ? (
                             <>
                               <Check className="w-3.5 h-3.5" />
-                              <span>Copiado</span>
+                              <span>
+                                {tr(locale, {
+                                  es: 'Copiado',
+                                  en: 'Copied',
+                                  de: 'Kopiert',
+                                  fr: 'Copié',
+                                  ja: 'コピー済',
+                                  pt: 'Copiado',
+                                })}
+                              </span>
                             </>
                           ) : (
                             <>
                               <Copy className="w-3.5 h-3.5" />
-                              <span>Copiar</span>
+                              <span>
+                                {tr(locale, {
+                                  es: 'Copiar',
+                                  en: 'Copy',
+                                  de: 'Kopieren',
+                                  fr: 'Copier',
+                                  ja: 'コピー',
+                                  pt: 'Copiar',
+                                })}
+                              </span>
                             </>
                           )}
                         </button>
@@ -810,8 +1002,22 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                       >
                         <span>
                           {isExpanded
-                            ? 'Ocultar asistente de argumentos y ejemplo'
-                            : 'Ver asistente de argumentos, ejemplo práctico y Pro Tip'}
+                            ? tr(locale, {
+                                es: 'Ocultar asistente de argumentos y ejemplo',
+                                en: 'Hide argument helper & example',
+                                de: 'Argument-Assistent und Beispiel ausblenden',
+                                fr: "Masquer l'assistant d'arguments et l'exemple",
+                                ja: '引数ガイドと実践例を閉じる',
+                                pt: 'Ocultar assistente de argumentos e exemplo',
+                              })
+                            : tr(locale, {
+                                es: 'Ver asistente de argumentos, ejemplo práctico y Pro Tip',
+                                en: 'View argument helper, practical example & Pro Tip',
+                                de: 'Argument-Assistent, Praxisbeispiel & Pro-Tipp anzeigen',
+                                fr: "Voir l'assistant d'arguments, l'exemple pratique et le Pro Tip",
+                                ja: '引数ガイド・実践例・プロのコツを表示',
+                                pt: 'Ver assistente de argumentos, exemplo prático e Dica Pro',
+                              })}
                         </span>
                         {isExpanded ? (
                           <ChevronUp className="w-3.5 h-3.5" />
@@ -832,7 +1038,16 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                               style={{ color: catColor }}
                             >
                               <Puzzle className="w-3.5 h-3.5" />
-                              <span>ASISTENTE DE ARGUMENTOS</span>
+                              <span>
+                                {tr(locale, {
+                                  es: 'ASISTENTE DE ARGUMENTOS',
+                                  en: 'ARGUMENT HELPER',
+                                  de: 'ARGUMENT-ASSISTENT',
+                                  fr: "ASSISTANT D'ARGUMENTS",
+                                  ja: '引数ガイド',
+                                  pt: 'ASSISTENTE DE ARGUMENTOS',
+                                })}
+                              </span>
                             </div>
                             <div className="flex items-center gap-2 flex-wrap">
                               {parsedArgs.map((arg, idx) => (
@@ -865,7 +1080,23 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                                       color: arg.isOptional ? '#8FA89B' : catColor,
                                     }}
                                   >
-                                    {arg.isOptional ? 'Opcional' : 'Requerido'}
+                                    {arg.isOptional
+                                      ? tr(locale, {
+                                          es: 'Opcional',
+                                          en: 'Optional',
+                                          de: 'Optional',
+                                          fr: 'Optionnel',
+                                          ja: '任意',
+                                          pt: 'Opcional',
+                                        })
+                                      : tr(locale, {
+                                          es: 'Requerido',
+                                          en: 'Required',
+                                          de: 'Erforderlich',
+                                          fr: 'Requis',
+                                          ja: '必須',
+                                          pt: 'Obrigatório',
+                                        })}
                                   </span>
                                 </div>
                               ))}
@@ -880,7 +1111,16 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                             style={{ color: catColor }}
                           >
                             <Grid className="w-3.5 h-3.5" />
-                            <span>EJEMPLO PRÁCTICO EN EXCEL</span>
+                            <span>
+                              {tr(locale, {
+                                es: 'EJEMPLO PRÁCTICO EN EXCEL',
+                                en: 'PRACTICAL EXCEL EXAMPLE',
+                                de: 'PRAXISBEISPIEL IN EXCEL',
+                                fr: 'EXEMPLE PRATIQUE EXCEL',
+                                ja: 'Excelでの実践例',
+                                pt: 'EXEMPLO PRÁTICO NO EXCEL',
+                              })}
+                            </span>
                           </div>
                           <div className="rounded-xl bg-gv-bg border border-gv-border overflow-hidden">
                             {/* Window Title Bar */}
@@ -889,7 +1129,7 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                               <span className="w-2.5 h-2.5 rounded-full bg-gv-warning inline-block" />
                               <span className="w-2.5 h-2.5 rounded-full bg-gv-primary inline-block" />
                               <span className="text-[11px] font-bold text-gv-text ml-1 truncate">
-                                Contexto: {exampleContext}
+                                {exampleContext}
                               </span>
                             </div>
 
@@ -919,14 +1159,39 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                                   ) : (
                                     <Copy className="w-3 h-3" />
                                   )}
-                                  <span>{isExCopied ? 'Copiado' : 'Copiar'}</span>
+                                  <span>
+                                    {isExCopied
+                                      ? tr(locale, {
+                                          es: 'Copiado',
+                                          en: 'Copied',
+                                          de: 'Kopiert',
+                                          fr: 'Copié',
+                                          ja: 'コピー済',
+                                          pt: 'Copiado',
+                                        })
+                                      : tr(locale, {
+                                          es: 'Copiar',
+                                          en: 'Copy',
+                                          de: 'Kopieren',
+                                          fr: 'Copier',
+                                          ja: 'コピー',
+                                          pt: 'Copiar',
+                                        })}
+                                  </span>
                                 </button>
                               </div>
 
                               <div className="flex items-center gap-2 text-xs">
                                 <CornerDownRight className="w-4 h-4 text-gv-primary shrink-0" />
                                 <span className="text-gv-muted font-bold">
-                                  Resultado:
+                                  {tr(locale, {
+                                    es: 'Resultado:',
+                                    en: 'Result:',
+                                    de: 'Ergebnis:',
+                                    fr: 'Résultat :',
+                                    ja: '結果:',
+                                    pt: 'Resultado:',
+                                  })}
                                 </span>
                                 <span className="px-2.5 py-1 rounded-lg bg-gv-primary/20 border border-gv-primary/60 font-mono font-black text-gv-primary">
                                   {exampleResult}
@@ -943,7 +1208,16 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                             <div className="min-w-0">
                               <div className="flex items-center gap-1 text-[10.5px] font-mono font-black text-gv-streak uppercase">
                                 <Lightbulb className="w-3.5 h-3.5" />
-                                <span>CONSEJO PRO DE CELDI</span>
+                                <span>
+                                  {tr(locale, {
+                                    es: 'CONSEJO PRO DE CELDI',
+                                    en: "CELDI'S PRO TIP",
+                                    de: 'CELDIS PRO-TIPP',
+                                    fr: 'CONSEIL PRO DE CELDI',
+                                    ja: 'CELDIのプロのコツ',
+                                    pt: 'DICA PRO DO CELDI',
+                                  })}
+                                </span>
                               </div>
                               <p className="text-xs text-gv-text mt-1 leading-relaxed">
                                 {proTip}
@@ -968,10 +1242,24 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
           <div className="bg-gv-surface border border-gv-border rounded-2xl p-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div>
               <h2 className="text-sm font-extrabold text-gv-text">
-                Comandos y Atajos de Teclado Aceleradores
+                {tr(locale, {
+                  es: 'Comandos y Atajos de Teclado Aceleradores',
+                  en: 'Accelerator Keyboard Commands & Shortcuts',
+                  de: 'Tastenkürzel & Schnellbefehle',
+                  fr: 'Commandes et raccourcis clavier accélérateurs',
+                  ja: '業務効率を加速するキーボードショートカット',
+                  pt: 'Comandos e Atalhos de Teclado Aceleradores',
+                })}
               </h2>
               <p className="text-xs text-gv-muted">
-                Haz clic en cualquier tarjeta para copiar el comando o alterna entre Windows y Mac/iOS:
+                {tr(locale, {
+                  es: 'Haz clic en cualquier tarjeta para copiar el comando o alterna entre Windows y Mac/iOS:',
+                  en: 'Click any card to copy the shortcut or switch between Windows and Mac/iOS:',
+                  de: 'Klicke auf eine Karte zum Kopieren oder wechsle zwischen Windows und Mac/iOS:',
+                  fr: 'Clique sur une carte pour copier la commande ou bascule entre Windows et Mac/iOS :',
+                  ja: 'カードをクリックしてコピー、またはWindowsとMac/iOSを切り替え:',
+                  pt: 'Clique em qualquer cartão para copiar o comando ou alterne entre Windows e Mac/iOS:',
+                })}
               </p>
             </div>
 
@@ -1011,7 +1299,17 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
           <div className="flex items-center gap-2 overflow-x-auto pb-1">
             {shortcutCategories.map((cat) => {
               const isSelected = selectedShortcutCategory === cat;
-              const label = cat === 'all' ? 'Todos los comandos' : cat;
+              const label =
+                cat === 'all'
+                  ? tr(locale, {
+                      es: 'Todos los comandos',
+                      en: 'All shortcuts',
+                      de: 'Alle Kurzbefehle',
+                      fr: 'Tous les raccourcis',
+                      ja: 'すべてのショートカット',
+                      pt: 'Todos os atalhos',
+                    })
+                  : cat;
               return (
                 <button
                   key={cat}
@@ -1037,7 +1335,14 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
             <div className="bg-gv-surface border border-gv-border rounded-2xl p-10 text-center flex flex-col items-center gap-3">
               <CeldiMascot mood="thinking" size={64} />
               <p className="text-sm font-extrabold text-gv-text">
-                No se encontraron comandos con "{search}"
+                {tr(locale, {
+                  es: `No se encontraron comandos con "${search}"`,
+                  en: `No shortcuts found matching "${search}"`,
+                  de: `Keine Kurzbefehle gefunden für "${search}"`,
+                  fr: `Aucun raccourci trouvé pour "${search}"`,
+                  ja: `「${search}」に一致するショートカットが見つかりません`,
+                  pt: `Nenhum atalho encontrado para "${search}"`,
+                })}
               </p>
               <button
                 type="button"
@@ -1047,7 +1352,14 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                 }}
                 className="px-4 py-2 rounded-xl bg-gv-primary text-black text-xs font-black cursor-pointer"
               >
-                Ver todos los comandos
+                {tr(locale, {
+                  es: 'Ver todos los comandos',
+                  en: 'View all shortcuts',
+                  de: 'Alle Kurzbefehle anzeigen',
+                  fr: 'Voir tous les raccourcis',
+                  ja: 'すべて表示',
+                  pt: 'Ver todos os atalhos',
+                })}
               </button>
             </div>
           ) : (

@@ -17,6 +17,7 @@ import {
 import { UserStats, SupportedLocale } from '../types';
 import { sound } from '../lib/audio';
 import { CeldiMascot } from './CeldiMascot';
+import { tr, UI_STRINGS } from '../lib/i18n';
 
 interface HeaderProps {
   stats: UserStats;
@@ -112,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({
                 )}
               </div>
               <p className="text-[10px] text-gv-muted hidden sm:block">
-                Aprende Excel jugando celda a celda
+                {tr(stats.locale, UI_STRINGS.header.subtitle)}
               </p>
             </div>
           </div>
@@ -243,7 +244,7 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <div className="w-full flex items-center justify-between">
               <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-gv-muted">
-                SISTEMA DE ENERGÍA
+                {tr(stats.locale, UI_STRINGS.header.energySystem)}
               </span>
               <button
                 type="button"
@@ -258,12 +259,14 @@ export const Header: React.FC<HeaderProps> = ({
 
             <div>
               <h3 className="text-xl font-black text-gv-text">
-                {stats.lives <= 0 ? '¡Te quedaste sin vidas!' : 'Vidas del Jugador'}
+                {stats.lives <= 0
+                  ? tr(stats.locale, UI_STRINGS.header.outOfLivesTitle)
+                  : tr(stats.locale, UI_STRINGS.header.playerLivesTitle)}
               </h3>
               <p className="text-xs text-gv-muted mt-1 leading-relaxed">
                 {stats.lives <= 0
-                  ? 'Desbloquea Vidas Infinitas con Gridverse PRO o recarga al instante con tus gemas para seguir practicando sin pausas.'
-                  : `Tienes ${stats.lives} de 5 vidas disponibles. Cada vida se regenera automáticamente cada 20 minutos.`}
+                  ? tr(stats.locale, UI_STRINGS.header.outOfLivesDesc)
+                  : tr(stats.locale, UI_STRINGS.header.playerLivesDesc)}
               </p>
             </div>
 
@@ -288,12 +291,14 @@ export const Header: React.FC<HeaderProps> = ({
             {stats.lives >= 5 ? (
               <div className="w-full py-2.5 px-4 rounded-xl bg-gv-primary-soft border border-gv-primary/40 flex items-center justify-center gap-2 text-xs font-bold text-gv-accent">
                 <CheckCircle2 className="w-4 h-4" />
-                <span>Tus vidas están al máximo (5/5)</span>
+                <span>5/5</span>
               </div>
             ) : (
               <div className="w-full py-3 px-4 rounded-xl bg-gv-surface-high border border-gv-border flex items-center justify-center gap-2 text-xs">
                 <Clock className="w-4 h-4 text-gv-warning" />
-                <span className="text-gv-muted font-semibold">Próxima vida en:</span>
+                <span className="text-gv-muted font-semibold">
+                  {tr(stats.locale, UI_STRINGS.header.nextLifeIn)}
+                </span>
                 <span className="font-mono font-extrabold text-sm text-gv-warning">
                   {nextLifeFormatted || '20:00'}
                 </span>
@@ -303,7 +308,9 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Gem balance */}
             <div className="px-3.5 py-1.5 rounded-xl bg-gv-bytes/10 border border-gv-bytes/25 flex items-center gap-1.5 font-mono text-xs font-bold text-gv-bytes">
               <Gem className="w-4 h-4" />
-              <span>Tus Gemas: {stats.gems}</span>
+              <span>
+                {tr(stats.locale, UI_STRINGS.header.yourGems)} {stats.gems}
+              </span>
             </div>
 
             {/* CTAs */}
@@ -317,7 +324,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className="w-full py-3 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs uppercase tracking-wider cursor-pointer flex items-center justify-center gap-2 shadow-lg shadow-gv-primary/20"
               >
                 <InfinityIcon className="w-4 h-4 stroke-[2.5]" />
-                <span>Desbloquear Vidas Infinitas (PRO)</span>
+                <span>{tr(stats.locale, UI_STRINGS.header.unlockInfiniteLives)}</span>
               </button>
 
               {stats.lives < 5 && (
@@ -329,8 +336,8 @@ export const Header: React.FC<HeaderProps> = ({
                   <Sparkles className="w-4 h-4" />
                   <span>
                     {stats.gems >= 20
-                      ? 'Recargar a 5/5 vidas (-20 Gemas)'
-                      : 'Ir a la Tienda de Gemas'}
+                      ? tr(stats.locale, UI_STRINGS.header.refillLivesBtn)
+                      : tr(stats.locale, UI_STRINGS.header.notEnoughGems)}
                   </span>
                 </button>
               )}

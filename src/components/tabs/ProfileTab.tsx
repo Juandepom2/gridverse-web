@@ -61,6 +61,7 @@ import { CeldiMascot, CeldiMood } from '../CeldiMascot';
 import { sound } from '../../lib/audio';
 import { MOCK_REGIONS } from '../../data/mapData';
 import { resetUserStats, formatLocalDateKey } from '../../lib/storage';
+import { tr } from '../../lib/i18n';
 
 interface ProfileTabProps {
   stats: UserStats;
@@ -96,12 +97,57 @@ const GoogleLogo: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' })
   </svg>
 );
 
-const CELDI_AVATAR_OPTIONS: { key: string; mood: CeldiMood; label: string }[] = [
-  { key: 'celdi:happy', mood: 'happy', label: 'Feliz' },
-  { key: 'celdi:celebrating', mood: 'celebrating', label: 'Celebrando' },
-  { key: 'celdi:thinking', mood: 'thinking', label: 'Pensando' },
-  { key: 'celdi:neutral', mood: 'onFire', label: 'Enfoque' },
-  { key: 'celdi:sad', mood: 'sad', label: 'Desafío' },
+const CELDI_AVATAR_OPTIONS: {
+  key: string;
+  mood: CeldiMood;
+  label: Record<SupportedLocale, string>;
+}[] = [
+  {
+    key: 'celdi:happy',
+    mood: 'happy',
+    label: { es: 'Feliz', en: 'Happy', de: 'Glücklich', fr: 'Heureux', ja: 'ハッピー', pt: 'Feliz' },
+  },
+  {
+    key: 'celdi:celebrating',
+    mood: 'celebrating',
+    label: {
+      es: 'Celebrando',
+      en: 'Celebrating',
+      de: 'Feiernd',
+      fr: 'Fête',
+      ja: 'お祝い',
+      pt: 'Celebrando',
+    },
+  },
+  {
+    key: 'celdi:thinking',
+    mood: 'thinking',
+    label: {
+      es: 'Pensando',
+      en: 'Thinking',
+      de: 'Denkend',
+      fr: 'Réflexion',
+      ja: '考え中',
+      pt: 'Pensando',
+    },
+  },
+  {
+    key: 'celdi:neutral',
+    mood: 'onFire',
+    label: { es: 'Enfoque', en: 'Focus', de: 'Fokus', fr: 'Focus', ja: '集中', pt: 'Foco' },
+  },
+  {
+    key: 'celdi:sad',
+    mood: 'sad',
+    label: {
+      es: 'Desafío',
+      en: 'Challenge',
+      de: 'Herausforderung',
+      fr: 'Défi',
+      ja: 'チャレンジ',
+      pt: 'Desafio',
+    },
+  },
 ];
 
 function resolveCeldiMood(photoUrl?: string): CeldiMood {
@@ -229,7 +275,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
     stats.displayName?.trim() ||
     currentUser?.displayName?.trim() ||
     (currentUser?.email ? currentUser.email.split('@')[0] : '') ||
-    (locale === 'es' ? 'Estudiante Gridverse' : 'Gridverse Student');
+    tr(locale, {
+      es: 'Estudiante Gridverse',
+      en: 'Gridverse Student',
+      de: 'Gridverse-Schüler',
+      fr: 'Étudiant Gridverse',
+      ja: 'Gridverse受講生',
+      pt: 'Estudante Gridverse',
+    });
 
   const activePhotoUrl = stats.photoUrl || currentUser?.photoURL || 'celdi:happy';
 
@@ -263,44 +316,84 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
   }, [stats.completedLevels]);
 
   // Rank & XP progress matching Flutter's `profile_screen.dart`
+  const rIntern = tr(locale, {
+    es: 'Becario',
+    en: 'Intern',
+    de: 'Praktikant',
+    fr: 'Stagiaire',
+    ja: 'インターン',
+    pt: 'Estagiário',
+  });
+  const rAnalyst = tr(locale, {
+    es: 'Analista',
+    en: 'Analyst',
+    de: 'Analyst',
+    fr: 'Analyste',
+    ja: 'アナリスト',
+    pt: 'Analista',
+  });
+  const rNinja = tr(locale, {
+    es: 'Ninja de Fórmulas',
+    en: 'Formula Ninja',
+    de: 'Formel-Ninja',
+    fr: 'Ninja des Formules',
+    ja: '数式ニンジャ',
+    pt: 'Ninja das Fórmulas',
+  });
+  const rMaster = tr(locale, {
+    es: 'Maestro de Datos',
+    en: 'Data Master',
+    de: 'Datenmeister',
+    fr: 'Maître des Données',
+    ja: 'データマスター',
+    pt: 'Mestre de Dados',
+  });
+
   const rankTitle =
     stats.xp >= 5000
-      ? 'Maestro de Datos'
+      ? rMaster
       : stats.xp >= 2500
-      ? 'Ninja de Fórmulas'
+      ? rNinja
       : stats.xp >= 1000
-      ? 'Analista'
-      : 'Becario';
+      ? rAnalyst
+      : rIntern;
 
   const rankProgressData = useMemo(() => {
     const xp = stats.xp;
     if (xp < 1000) {
       return {
-        nextRankText: 'Becario → Analista',
+        nextRankText: `${rIntern} → ${rAnalyst}`,
         targetText: `${xp} / 1,000 XP`,
         progress: Math.max(0, Math.min(1, xp / 1000)),
       };
     }
     if (xp < 2500) {
       return {
-        nextRankText: 'Analista → Ninja de Fórmulas',
+        nextRankText: `${rAnalyst} → ${rNinja}`,
         targetText: `${xp} / 2,500 XP`,
         progress: Math.max(0, Math.min(1, (xp - 1000) / 1500)),
       };
     }
     if (xp < 5000) {
       return {
-        nextRankText: 'Ninja de Fórmulas → Maestro de Datos',
+        nextRankText: `${rNinja} → ${rMaster}`,
         targetText: `${xp} / 5,000 XP`,
         progress: Math.max(0, Math.min(1, (xp - 2500) / 2500)),
       };
     }
     return {
-      nextRankText: 'Rango Máximo Alcanzado',
+      nextRankText: tr(locale, {
+        es: 'Rango Máximo Alcanzado',
+        en: 'Max Rank Reached',
+        de: 'Maximaler Rang erreicht',
+        fr: 'Rang Maximum Atteint',
+        ja: '最高ランク到達',
+        pt: 'Rank Máximo Alcançado',
+      }),
       targetText: `${xp} XP`,
       progress: 1,
     };
-  }, [stats.xp]);
+  }, [stats.xp, rIntern, rAnalyst, rNinja, rMaster, locale]);
 
   // Mastery Learning Dashboard metrics matching `mastery_learning_dashboard.dart`
   const masteryData = useMemo(() => {
@@ -341,40 +434,110 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
     const skills = [
       {
         id: 'basics',
-        title: 'Operaciones Básicas',
-        subtitle: 'Celdas, formatos y aritmética',
+        title: tr(locale, {
+          es: 'Operaciones Básicas',
+          en: 'Basic Operations',
+          de: 'Grundoperationen',
+          fr: 'Opérations de Base',
+          ja: '基本操作と算術',
+          pt: 'Operações Básicas',
+        }),
+        subtitle: tr(locale, {
+          es: 'Celdas, formatos y aritmética',
+          en: 'Cells, formatting & arithmetic',
+          de: 'Zellen, Formate und Arithmetik',
+          fr: 'Cellules, formats et arithmétique',
+          ja: 'セル参照、書式、四則演算',
+          pt: 'Células, formatos e aritmética',
+        }),
         progress: pBasics,
         color: '#10B981',
         Icon: Grid,
       },
       {
         id: 'essentials',
-        title: 'Fórmulas Esenciales',
-        subtitle: 'SUMA, PROMEDIO y referencias $A$1',
+        title: tr(locale, {
+          es: 'Fórmulas Esenciales',
+          en: 'Essential Formulas',
+          de: 'Wichtige Formeln',
+          fr: 'Formules Essentielles',
+          ja: '必須関数と絶対参照',
+          pt: 'Fórmulas Essenciais',
+        }),
+        subtitle: tr(locale, {
+          es: 'SUMA, PROMEDIO y referencias $A$1',
+          en: 'SUM, AVERAGE & $A$1 references',
+          de: 'SUMME, MITTELWERT & $A$1-Referenzen',
+          fr: 'SOMME, MOYENNE et références $A$1',
+          ja: 'SUM、AVERAGE、絶対参照 $A$1',
+          pt: 'SOMA, MÉDIA e referências $A$1',
+        }),
         progress: pEssentials,
         color: '#0EA5E9',
         Icon: Sigma,
       },
       {
         id: 'logic',
-        title: 'Lógica Condicional',
-        subtitle: 'SI, Y, O, SI.ERROR y SI.CONJUNTO',
+        title: tr(locale, {
+          es: 'Lógica Condicional',
+          en: 'Conditional Logic',
+          de: 'Bedingte Logik',
+          fr: 'Logique Conditionnelle',
+          ja: '条件分岐ロジック',
+          pt: 'Lógica Condicional',
+        }),
+        subtitle: tr(locale, {
+          es: 'SI, Y, O, SI.ERROR y SI.CONJUNTO',
+          en: 'IF, AND, OR, IFERROR & IFS',
+          de: 'WENN, UND, ODER, WENNFEHLER & WENNS',
+          fr: 'SI, ET, OU, SIERREUR et SI.CONDITIONS',
+          ja: 'IF、AND、OR、IFERROR、IFS',
+          pt: 'SE, E, OU, SEERRO e SES',
+        }),
         progress: pLogic,
         color: '#F59E0B',
         Icon: GitBranch,
       },
       {
         id: 'tables',
-        title: 'Tablas y Organización',
-        subtitle: 'Ordenar, filtros y tablas oficiales',
+        title: tr(locale, {
+          es: 'Tablas y Organización',
+          en: 'Tables & Organization',
+          de: 'Tabellen & Struktur',
+          fr: 'Tableaux et Organisation',
+          ja: 'テーブルとデータ整理',
+          pt: 'Tabelas e Organização',
+        }),
+        subtitle: tr(locale, {
+          es: 'Ordenar, filtros y tablas oficiales',
+          en: 'Sorting, filters & official tables',
+          de: 'Sortieren, Filter und Tabellen',
+          fr: 'Tri, filtres et tableaux officiels',
+          ja: '並べ替え、フィルター、テーブル機能',
+          pt: 'Ordenar, filtros e tabelas oficiais',
+        }),
         progress: pTables,
         color: '#14B8A6',
         Icon: Table2,
       },
       {
         id: 'lookup',
-        title: 'Búsqueda y Calidad',
-        subtitle: 'BUSCARV, BUSCARX y formato condicional',
+        title: tr(locale, {
+          es: 'Búsqueda y Calidad',
+          en: 'Lookup & Quality',
+          de: 'Verweise & Qualität',
+          fr: 'Recherche et Qualité',
+          ja: 'データ検索と品質管理',
+          pt: 'Pesquisa e Qualidade',
+        }),
+        subtitle: tr(locale, {
+          es: 'BUSCARV, BUSCARX y formato condicional',
+          en: 'VLOOKUP, XLOOKUP & conditional formatting',
+          de: 'SVERWEIS, XVERWEIS & bedingte Formatierung',
+          fr: 'RECHERCHEV, RECHERCHEX et mise en forme',
+          ja: 'VLOOKUP、XLOOKUP、条件付き書式',
+          pt: 'PROCV, PROCX e formatação condicional',
+        }),
         progress: pLookup,
         color: '#8B5CF6',
         Icon: SearchCheck,
@@ -387,7 +550,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
       efficiencyGrade,
       skills,
     };
-  }, [stats.completedLevels, completedTotalNodesCount, completedPlayableCount, totalStars]);
+  }, [stats.completedLevels, completedTotalNodesCount, completedPlayableCount, totalStars, locale]);
 
   // Effective daily activity map (merging `stats.activityHistory` with streak fallback like Flutter)
   const effectiveActivityHistory = useMemo(() => {
@@ -895,14 +1058,28 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               {stats.isPro && (
                 <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gv-primary text-black text-[10px] font-black uppercase tracking-wider shrink-0">
                   <CheckCircle2 className="w-3 h-3 stroke-[2.5]" />
-                  PRO ACTIVO
+                  {tr(locale, {
+                    es: 'PRO ACTIVO',
+                    en: 'PRO ACTIVE',
+                    de: 'PRO AKTIV',
+                    fr: 'PRO ACTIF',
+                    ja: 'PRO 有効',
+                    pt: 'PRO ATIVO',
+                  })}
                 </span>
               )}
             </div>
             <p className="text-xs text-gv-muted truncate mt-0.5">
               {currentUser?.email
                 ? `${currentUser.email} · ${rankTitle}`
-                : `Cuenta local sin sincronizar · ${rankTitle}`}
+                : `${tr(locale, {
+                    es: 'Cuenta local sin sincronizar',
+                    en: 'Unsynced local account',
+                    de: 'Lokales Konto (nicht synchronisiert)',
+                    fr: 'Compte local non synchronisé',
+                    ja: '未同期のローカルアカウント',
+                    pt: 'Conta local sem sincronização',
+                  })} · ${rankTitle}`}
             </p>
             <div className="flex items-center gap-2 mt-2 flex-wrap">
               <span className="text-[10px] font-mono font-extrabold px-2.5 py-0.5 rounded-md bg-gv-primary-soft text-gv-primary border border-gv-primary/35 uppercase">
@@ -926,7 +1103,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
         <button
           type="button"
           onClick={handleShareProfile}
-          title="Compartir mi progreso"
+          title={tr(locale, {
+            es: 'Compartir mi progreso',
+            en: 'Share my progress',
+            de: 'Fortschritt teilen',
+            fr: 'Partager ma progression',
+            ja: '進捗をシェア',
+            pt: 'Compartilhar meu progresso',
+          })}
           className="w-11 h-11 rounded-xl bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border flex items-center justify-center text-gv-text transition-colors shrink-0 cursor-pointer"
         >
           <Share2 className="w-5 h-5" />
@@ -942,10 +1126,24 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             </div>
             <div>
               <h2 className="text-sm font-extrabold text-gv-text">
-                Guarda tu progreso en la nube
+                {tr(locale, {
+                  es: 'Guarda tu progreso en la nube',
+                  en: 'Save your progress in the cloud',
+                  de: 'Speichere deinen Fortschritt in der Cloud',
+                  fr: 'Sauvegarde ta progression dans le cloud',
+                  ja: '進捗をクラウドに保存しよう',
+                  pt: 'Salve seu progresso na nuvem',
+                })}
               </h2>
               <p className="text-xs text-gv-muted">
-                Conecta tu cuenta gratis para respaldar tus niveles, racha, plan PRO y gemas en todos tus dispositivos.
+                {tr(locale, {
+                  es: 'Conecta tu cuenta gratis para respaldar tus niveles, racha, plan PRO y gemas en todos tus dispositivos.',
+                  en: 'Connect your free account to back up your levels, streak, PRO plan, and gems across all devices.',
+                  de: 'Verbinde dein kostenloses Konto, um Level, Serie, PRO-Plan und Edelsteine auf allen Geräten zu sichern.',
+                  fr: 'Connecte ton compte gratuit pour sauvegarder tes niveaux, série, plan PRO et gemmes sur tous tes appareils.',
+                  ja: '無料アカウントを連携して、全デバイス間でレベル・連続記録・PROプラン・ジェムを同期しましょう。',
+                  pt: 'Conecte sua conta grátis para sincronizar seus níveis, ofensiva, plano PRO e gemas em todos os dispositivos.',
+                })}
               </p>
             </div>
           </div>
@@ -957,7 +1155,16 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               className="py-2.5 px-4 rounded-xl bg-white hover:bg-neutral-200 text-black text-xs font-extrabold flex items-center justify-center gap-2 transition-all cursor-pointer shadow"
             >
               <AppleLogo className="w-4 h-4" />
-              <span>Continuar con Apple</span>
+              <span>
+                {tr(locale, {
+                  es: 'Continuar con Apple',
+                  en: 'Continue with Apple',
+                  de: 'Weiter mit Apple',
+                  fr: 'Continuer avec Apple',
+                  ja: 'Appleで続ける',
+                  pt: 'Continuar com a Apple',
+                })}
+              </span>
             </button>
             <button
               type="button"
@@ -966,7 +1173,16 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               className="py-2.5 px-4 rounded-xl bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border text-gv-text text-xs font-extrabold flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <GoogleLogo className="w-4 h-4" />
-              <span>Continuar con Google</span>
+              <span>
+                {tr(locale, {
+                  es: 'Continuar con Google',
+                  en: 'Continue with Google',
+                  de: 'Weiter mit Google',
+                  fr: 'Continuer avec Google',
+                  ja: 'Googleで続ける',
+                  pt: 'Continuar com o Google',
+                })}
+              </span>
             </button>
           </div>
         </div>
@@ -976,7 +1192,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             <div className="flex items-center gap-2.5 text-xs text-gv-muted">
               <Link2 className="w-4 h-4 text-gv-primary shrink-0" />
               <span>
-                Vincula tus cuentas para entrar con el mismo progreso en iOS, Android y Web:
+                {tr(locale, {
+                  es: 'Vincula tus cuentas para entrar con el mismo progreso en iOS, Android y Web:',
+                  en: 'Link your accounts to sign in with the same progress on iOS, Android, and Web:',
+                  de: 'Verknüpfe deine Konten für denselben Fortschritt auf iOS, Android und Web:',
+                  fr: 'Lie tes comptes pour retrouver ta progression sur iOS, Android et Web :',
+                  ja: 'iOS・Android・Webで同じ進捗を利用するためにアカウントを連携:',
+                  pt: 'Vincule suas contas para acessar o mesmo progresso no iOS, Android e Web:',
+                })}
               </span>
             </div>
             <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
@@ -988,7 +1211,16 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                   className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-white hover:bg-neutral-200 text-black text-xs font-extrabold flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow"
                 >
                   <AppleLogo className="w-3.5 h-3.5" />
-                  <span>Vincular con Apple</span>
+                  <span>
+                    {tr(locale, {
+                      es: 'Vincular con Apple',
+                      en: 'Link Apple',
+                      de: 'Mit Apple verknüpfen',
+                      fr: 'Lier Apple',
+                      ja: 'Appleと連携',
+                      pt: 'Vincular Apple',
+                    })}
+                  </span>
                 </button>
               )}
               {!hasGoogleLinked && (
@@ -999,7 +1231,16 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                   className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border text-gv-text text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer"
                 >
                   <GoogleLogo className="w-3.5 h-3.5" />
-                  <span>Vincular con Google</span>
+                  <span>
+                    {tr(locale, {
+                      es: 'Vincular con Google',
+                      en: 'Link Google',
+                      de: 'Mit Google verknüpfen',
+                      fr: 'Lier Google',
+                      ja: 'Googleと連携',
+                      pt: 'Vincular Google',
+                    })}
+                  </span>
                 </button>
               )}
             </div>
@@ -1034,10 +1275,24 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
           <div className="flex items-center justify-between gap-2 flex-wrap">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/50 text-[#F3E5AB] text-[10px] font-black tracking-wider uppercase">
               <Award className="w-3.5 h-3.5 text-[#D4AF37]" />
-              CERTIFICADO OFICIAL GRIDVERSE
+              {tr(locale, {
+                es: 'CERTIFICADO OFICIAL GRIDVERSE',
+                en: 'OFFICIAL GRIDVERSE CERTIFICATE',
+                de: 'OFFIZIELLES GRIDVERSE-ZERTIFIKAT',
+                fr: 'CERTIFICAT OFFICIEL GRIDVERSE',
+                ja: 'GRIDVERSE 公式認定証',
+                pt: 'CERTIFICADO OFICIAL GRIDVERSE',
+              })}
             </span>
             <span className="px-2 py-0.5 rounded-md bg-gv-primary/20 text-gv-primary text-[10px] font-mono font-extrabold">
-              100% COMPLETADO
+              {tr(locale, {
+                es: '100% COMPLETADO',
+                en: '100% COMPLETED',
+                de: '100% ABGESCHLOSSEN',
+                fr: '100% COMPLÉTÉ',
+                ja: '100% 完了',
+                pt: '100% CONCLUÍDO',
+              })}
             </span>
           </div>
           <div className="flex items-center gap-3.5">
@@ -1046,10 +1301,33 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             </div>
             <div>
               <h3 className="text-base font-black text-gv-text">
-                Maestría Oficial en Hojas de Cálculo
+                {tr(locale, {
+                  es: 'Maestría Oficial en Hojas de Cálculo',
+                  en: 'Official Spreadsheet Mastery',
+                  de: 'Offizielle Tabellenkalkulations-Meisterschaft',
+                  fr: 'Maîtrise Officielle des Tableurs',
+                  ja: 'スプレッドシート公式マスター認定',
+                  pt: 'Maestria Oficial em Planilhas',
+                })}
               </h3>
               <p className="text-xs text-gv-muted mt-0.5">
-                Otorgado a <strong className="text-gv-text">{userName}</strong> · ID Verificado
+                {tr(locale, {
+                  es: 'Otorgado a',
+                  en: 'Awarded to',
+                  de: 'Verliehen an',
+                  fr: 'Décerné à',
+                  ja: '授与者:',
+                  pt: 'Concedido a',
+                })}{' '}
+                <strong className="text-gv-text">{userName}</strong> ·{' '}
+                {tr(locale, {
+                  es: 'ID Verificado',
+                  en: 'Verified ID',
+                  de: 'Verifizierte ID',
+                  fr: 'ID Vérifié',
+                  ja: '認証済みID',
+                  pt: 'ID Verificado',
+                })}
               </p>
             </div>
           </div>
@@ -1063,7 +1341,16 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               className="flex-1 py-3 px-4 rounded-xl bg-[#D4AF37] hover:bg-[#e3be42] text-[#090E17] text-xs font-black flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
               <Download className="w-4 h-4" />
-              <span>Descargar Certificado</span>
+              <span>
+                {tr(locale, {
+                  es: 'Descargar Certificado',
+                  en: 'Download Certificate',
+                  de: 'Zertifikat herunterladen',
+                  fr: 'Télécharger le Certificat',
+                  ja: '認定証をダウンロード',
+                  pt: 'Baixar Certificado',
+                })}
+              </span>
             </button>
             <button
               type="button"
@@ -1074,7 +1361,16 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               className="py-3 px-4 rounded-xl border border-[#D4AF37]/60 text-[#F3E5AB] hover:bg-[#D4AF37]/10 text-xs font-extrabold flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <Eye className="w-4 h-4" />
-              <span>Ver</span>
+              <span>
+                {tr(locale, {
+                  es: 'Ver',
+                  en: 'View',
+                  de: 'Ansehen',
+                  fr: 'Voir',
+                  ja: '表示',
+                  pt: 'Ver',
+                })}
+              </span>
             </button>
           </div>
         </div>
@@ -1087,10 +1383,24 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               </div>
               <div className="min-w-0">
                 <h3 className="text-sm font-extrabold text-gv-text truncate">
-                  Certificado Oficial de Maestría
+                  {tr(locale, {
+                    es: 'Certificado Oficial de Maestría',
+                    en: 'Official Mastery Certificate',
+                    de: 'Offizielles Meister-Zertifikat',
+                    fr: 'Certificat Officiel de Maîtrise',
+                    ja: '公式マスター認定証',
+                    pt: 'Certificado Oficial de Maestria',
+                  })}
                 </h3>
                 <p className="text-xs text-[#D4AF37] font-semibold">
-                  Beneficio exclusivo de Gridverse Pro
+                  {tr(locale, {
+                    es: 'Beneficio exclusivo de Gridverse Pro',
+                    en: 'Exclusive Gridverse Pro benefit',
+                    de: 'Exklusiver Vorteil von Gridverse Pro',
+                    fr: 'Avantage exclusif Gridverse Pro',
+                    ja: 'Gridverse Pro限定特典',
+                    pt: 'Benefício exclusivo do Gridverse Pro',
+                  })}
                 </p>
               </div>
             </div>
@@ -1107,7 +1417,16 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 className="px-2.5 py-1 rounded-lg bg-[#D4AF37]/15 hover:bg-[#D4AF37]/25 border border-[#D4AF37]/40 text-[#F3E5AB] text-xs font-bold flex items-center gap-1 transition-colors cursor-pointer"
               >
                 <Eye className="w-3.5 h-3.5" />
-                <span>Vista previa</span>
+                <span>
+                  {tr(locale, {
+                    es: 'Vista previa',
+                    en: 'Preview',
+                    de: 'Vorschau',
+                    fr: 'Aperçu',
+                    ja: 'プレビュー',
+                    pt: 'Prévia',
+                  })}
+                </span>
               </button>
             </div>
           </div>
@@ -1119,10 +1438,25 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
           </div>
           <div className="flex items-center justify-between text-[11px] text-gv-muted">
             <span>
-              {completedPlayableCount} de {totalPlayableLevels} niveles completados
+              {tr(locale, {
+                es: `${completedPlayableCount} de ${totalPlayableLevels} niveles completados`,
+                en: `${completedPlayableCount} of ${totalPlayableLevels} levels completed`,
+                de: `${completedPlayableCount} von ${totalPlayableLevels} Leveln abgeschlossen`,
+                fr: `${completedPlayableCount} sur ${totalPlayableLevels} niveaux terminés`,
+                ja: `${totalPlayableLevels}レベル中${completedPlayableCount}クリア`,
+                pt: `${completedPlayableCount} de ${totalPlayableLevels} níveis concluídos`,
+              })}
             </span>
             <span className="text-gv-text font-semibold">
-              {Math.max(0, totalPlayableLevels - completedPlayableCount)} restantes
+              {Math.max(0, totalPlayableLevels - completedPlayableCount)}{' '}
+              {tr(locale, {
+                es: 'restantes',
+                en: 'remaining',
+                de: 'übrig',
+                fr: 'restants',
+                ja: '残り',
+                pt: 'restantes',
+              })}
             </span>
           </div>
         </div>
@@ -1134,15 +1468,36 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             </div>
             <div>
               <h3 className="text-sm font-black text-gv-text">
-                ¡Mapa Completado! Reclama tu Certificado
+                {tr(locale, {
+                  es: '¡Mapa Completado! Reclama tu Certificado',
+                  en: 'Map Completed! Claim Your Certificate',
+                  de: 'Karte abgeschlossen! Hol dir dein Zertifikat',
+                  fr: 'Carte terminée ! Réclame ton Certificat',
+                  ja: 'マップ制覇！認定証を受け取ろう',
+                  pt: 'Mapa Concluído! Resgate seu Certificado',
+                })}
               </h3>
               <p className="text-xs text-[#F3E5AB]">
-                Desbloquea tu Certificado Oficial con Gridverse Pro
+                {tr(locale, {
+                  es: 'Desbloquea tu Certificado Oficial con Gridverse Pro',
+                  en: 'Unlock your Official Certificate with Gridverse Pro',
+                  de: 'Schalte dein offizielles Zertifikat mit Gridverse Pro frei',
+                  fr: 'Débloque ton Certificat Officiel avec Gridverse Pro',
+                  ja: 'Gridverse Proで公式認定証をアンロック',
+                  pt: 'Desbloqueie seu Certificado Oficial com o Gridverse Pro',
+                })}
               </p>
             </div>
           </div>
           <p className="text-xs text-gv-muted">
-            Has superado todas las regiones de Gridverse. Actualiza a Pro para emitir y descargar tu certificado oficial personalizado con código de verificación único.
+            {tr(locale, {
+              es: 'Has superado todas las regiones de Gridverse. Actualiza a Pro para emitir y descargar tu certificado oficial personalizado con código de verificación único.',
+              en: 'You completed every region in Gridverse. Upgrade to Pro to issue and download your personalized official certificate with a unique verification code.',
+              de: 'Du hast alle Regionen abgeschlossen. Upgrade auf Pro, um dein offizielles Zertifikat mit eindeutigem Verifizierungscode herunterzuladen.',
+              fr: 'Tu as terminé toutes les régions de Gridverse. Passe à Pro pour émettre et télécharger ton certificat officiel personnalisé avec code de vérification.',
+              ja: 'Gridverseの全リージョンをクリアしました。Proにアップグレードして認証コード付きの公式認定証を発行・ダウンロードしましょう。',
+              pt: 'Você superou todas as regiões do Gridverse. Atualize para o Pro para emitir e baixar seu certificado oficial com código de verificação único.',
+            })}
           </p>
           <div className="flex items-center gap-2">
             <button
@@ -1154,7 +1509,16 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               className="flex-1 py-2.5 px-4 rounded-xl bg-[#D4AF37] text-[#090E17] text-xs font-black flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <Sparkles className="w-4 h-4" />
-              <span>Desbloquear Certificado con Pro</span>
+              <span>
+                {tr(locale, {
+                  es: 'Desbloquear Certificado con Pro',
+                  en: 'Unlock Certificate with Pro',
+                  de: 'Mit Pro freischalten',
+                  fr: 'Débloquer avec Pro',
+                  ja: 'Proで認定証をアンロック',
+                  pt: 'Desbloquear Certificado com Pro',
+                })}
+              </span>
             </button>
             <button
               type="button"
@@ -1164,7 +1528,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               }}
               className="py-2.5 px-3.5 rounded-xl border border-[#D4AF37]/50 text-[#F3E5AB] text-xs font-bold cursor-pointer"
             >
-              Ver muestra
+              {tr(locale, {
+                es: 'Ver muestra',
+                en: 'Sample',
+                de: 'Muster',
+                fr: 'Exemple',
+                ja: 'サンプル',
+                pt: 'Ver amostra',
+              })}
             </button>
           </div>
         </div>
@@ -1183,20 +1554,43 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <h3 className="text-xs sm:text-sm font-extrabold text-gv-text">
-                  Certificación Oficial de Excel
+                  {tr(locale, {
+                    es: 'Certificación Oficial de Excel',
+                    en: 'Official Excel Certification',
+                    de: 'Offizielle Excel-Zertifizierung',
+                    fr: 'Certification Officielle Excel',
+                    ja: 'Excel 公式認定証',
+                    pt: 'Certificação Oficial de Excel',
+                  })}
                 </h3>
                 <span className="px-1.5 py-0.5 rounded bg-[#D4AF37]/20 text-[#F3E5AB] text-[9px] font-black tracking-wider">
                   PRO
                 </span>
               </div>
               <p className="text-xs text-gv-muted mt-0.5">
-                Obtén tu certificado con verificación oficial al completar el mapa con Pro.
+                {tr(locale, {
+                  es: 'Obtén tu certificado con verificación oficial al completar el mapa con Pro.',
+                  en: 'Earn your verified certificate upon completing the map with Pro.',
+                  de: 'Erhalte dein offizielles Zertifikat nach Abschluss der Karte mit Pro.',
+                  fr: 'Obtiens ton certificat vérifié en complétant la carte avec Pro.',
+                  ja: 'Proでマップをコンプリートすると公式認定証を取得できます。',
+                  pt: 'Obtenha seu certificado oficial ao concluir o mapa com o Pro.',
+                })}
               </p>
             </div>
           </div>
           <span className="px-2.5 py-1.5 rounded-lg bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#F3E5AB] text-xs font-extrabold flex items-center gap-1 shrink-0">
             <Eye className="w-3.5 h-3.5" />
-            <span>Ver</span>
+            <span>
+              {tr(locale, {
+                es: 'Ver',
+                en: 'View',
+                de: 'Ansehen',
+                fr: 'Voir',
+                ja: '表示',
+                pt: 'Ver',
+              })}
+            </span>
           </span>
         </div>
       )}
@@ -1211,14 +1605,30 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               <Target className="w-4 h-4" />
             </div>
             <span className="px-2 py-0.5 rounded-md bg-[#10B981]/15 text-[#10B981] text-[9px] font-mono font-extrabold">
-              EXCELENTE
+              {tr(locale, {
+                es: 'EXCELENTE',
+                en: 'EXCELLENT',
+                de: 'EXZELLENT',
+                fr: 'EXCELLENT',
+                ja: '優秀',
+                pt: 'EXCELENTE',
+              })}
             </span>
           </div>
           <div>
             <p className="text-lg font-black text-gv-text font-mono leading-tight">
               {masteryData.accuracyPercent}%
             </p>
-            <p className="text-xs text-gv-muted font-medium">Precisión</p>
+            <p className="text-xs text-gv-muted font-medium">
+              {tr(locale, {
+                es: 'Precisión',
+                en: 'Accuracy',
+                de: 'Genauigkeit',
+                fr: 'Précision',
+                ja: '正答率',
+                pt: 'Precisão',
+              })}
+            </p>
           </div>
         </div>
 
@@ -1229,12 +1639,28 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               <Zap className="w-4 h-4" />
             </div>
             <span className="px-2 py-0.5 rounded-md bg-[#0EA5E9]/15 text-[#0EA5E9] text-[9px] font-mono font-extrabold">
-              RITMO PRO
+              {tr(locale, {
+                es: 'RITMO PRO',
+                en: 'PRO PACE',
+                de: 'PRO-TEMPO',
+                fr: 'RYTHME PRO',
+                ja: 'PROペース',
+                pt: 'RITMO PRO',
+              })}
             </span>
           </div>
           <div>
             <p className="text-lg font-black text-gv-text font-mono leading-tight">~15s</p>
-            <p className="text-xs text-gv-muted font-medium">Velocidad</p>
+            <p className="text-xs text-gv-muted font-medium">
+              {tr(locale, {
+                es: 'Velocidad',
+                en: 'Speed',
+                de: 'Tempo',
+                fr: 'Vitesse',
+                ja: '解答速度',
+                pt: 'Velocidade',
+              })}
+            </p>
           </div>
         </div>
 
@@ -1245,14 +1671,30 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               <Sigma className="w-4 h-4" />
             </div>
             <span className="px-2 py-0.5 rounded-md bg-[#F59E0B]/15 text-[#F59E0B] text-[9px] font-mono font-extrabold">
-              CATÁLOGO
+              {tr(locale, {
+                es: 'CATÁLOGO',
+                en: 'CATALOG',
+                de: 'KATALOG',
+                fr: 'CATALOGUE',
+                ja: '習得数',
+                pt: 'CATÁLOGO',
+              })}
             </span>
           </div>
           <div>
             <p className="text-lg font-black text-gv-text font-mono leading-tight">
               {masteryData.unlockedFormulas} / 24
             </p>
-            <p className="text-xs text-gv-muted font-medium">Fórmulas</p>
+            <p className="text-xs text-gv-muted font-medium">
+              {tr(locale, {
+                es: 'Fórmulas',
+                en: 'Formulas',
+                de: 'Formeln',
+                fr: 'Formules',
+                ja: '習得関数',
+                pt: 'Fórmulas',
+              })}
+            </p>
           </div>
         </div>
 
@@ -1268,9 +1710,18 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
           </div>
           <div>
             <p className="text-lg font-black text-gv-text font-mono leading-tight">
-              Grado {masteryData.efficiencyGrade}
+              {masteryData.efficiencyGrade}
             </p>
-            <p className="text-xs text-gv-muted font-medium">Eficiencia</p>
+            <p className="text-xs text-gv-muted font-medium">
+              {tr(locale, {
+                es: 'Eficiencia',
+                en: 'Efficiency',
+                de: 'Effizienz',
+                fr: 'Efficacité',
+                ja: '効率ランク',
+                pt: 'Eficiência',
+              })}
+            </p>
           </div>
         </div>
       </div>
@@ -1279,10 +1730,24 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
       <div className="flex flex-col gap-3">
         <div>
           <h2 className="text-base font-extrabold text-gv-text">
-            Dominio de Hojas de Cálculo
+            {tr(locale, {
+              es: 'Dominio de Hojas de Cálculo',
+              en: 'Spreadsheet Mastery',
+              de: 'Tabellen-Meisterschaft',
+              fr: 'Maîtrise des Tableurs',
+              ja: 'スプレッドシート習熟度',
+              pt: 'Domínio de Planilhas',
+            })}
           </h2>
           <p className="text-xs text-gv-muted">
-            Progreso técnico desglosado por área
+            {tr(locale, {
+              es: 'Progreso técnico desglosado por área',
+              en: 'Technical progress broken down by skill area',
+              de: 'Technischer Fortschritt nach Fachgebiet',
+              fr: 'Progression technique détaillée par domaine',
+              ja: '分野別のテクニカル進捗状況',
+              pt: 'Progresso técnico detalhado por área',
+            })}
           </p>
         </div>
 
@@ -1291,14 +1756,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             const pct = Math.round(skill.progress * 100);
             const levelBadge =
               pct >= 85
-                ? 'Maestro'
+                ? tr(locale, { es: 'Maestro', en: 'Master', de: 'Meister', fr: 'Maître', ja: 'マスター', pt: 'Mestre' })
                 : pct >= 60
-                ? 'Avanzado'
+                ? tr(locale, { es: 'Avanzado', en: 'Advanced', de: 'Fortgeschritten', fr: 'Avancé', ja: '上級', pt: 'Avançado' })
                 : pct >= 35
-                ? 'Intermedio'
+                ? tr(locale, { es: 'Intermedio', en: 'Intermediate', de: 'Mittelstufe', fr: 'Intermédiaire', ja: '中級', pt: 'Intermediário' })
                 : pct > 8
-                ? 'Aprendiendo'
-                : 'Sin iniciar';
+                ? tr(locale, { es: 'Aprendiendo', en: 'Learning', de: 'Lernend', fr: 'En cours', ja: '学習中', pt: 'Aprendendo' })
+                : tr(locale, { es: 'Sin iniciar', en: 'Not started', de: 'Nicht begonnen', fr: 'Non commencé', ja: '未開始', pt: 'Não iniciado' });
             const Icon = skill.Icon;
             return (
               <div key={skill.id} className="flex flex-col gap-1.5">
@@ -1355,10 +1820,24 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
       <div className="flex flex-col gap-3">
         <div>
           <h2 className="text-base font-extrabold text-gv-text">
-            Actividad Semanal
+            {tr(locale, {
+              es: 'Actividad Semanal',
+              en: 'Weekly Activity',
+              de: 'Wochenaktivität',
+              fr: 'Activité Hebdomadaire',
+              ja: '週間アクティビティ',
+              pt: 'Atividade Semanal',
+            })}
           </h2>
           <p className="text-xs text-gv-muted">
-            Celdas y ejercicios resueltos por día
+            {tr(locale, {
+              es: 'Celdas y ejercicios resueltos por día',
+              en: 'Cells and exercises solved per day',
+              de: 'Gelöste Zellen und Übungen pro Tag',
+              fr: 'Cellules et exercices résolus par jour',
+              ja: '日別のクリアセル数',
+              pt: 'Células e exercícios resolvidos por dia',
+            })}
           </p>
         </div>
 
@@ -1366,10 +1845,26 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-1.5 text-xs font-bold text-gv-text">
               <Flame className="w-4 h-4 text-gv-streak" />
-              <span>Racha activa: {stats.streak} días</span>
+              <span>
+                {tr(locale, {
+                  es: `Racha activa: ${stats.streak} días`,
+                  en: `Active streak: ${stats.streak} days`,
+                  de: `Aktive Serie: ${stats.streak} Tage`,
+                  fr: `Série active : ${stats.streak} jours`,
+                  ja: `連続記録: ${stats.streak} 日`,
+                  pt: `Ofensiva ativa: ${stats.streak} dias`,
+                })}
+              </span>
             </div>
             <span className="px-2 py-0.5 rounded-md bg-gv-primary/15 text-gv-primary text-[10px] font-mono font-bold">
-              META DIARIA: 1+ CELDA
+              {tr(locale, {
+                es: 'META DIARIA: 1+ CELDA',
+                en: 'DAILY GOAL: 1+ CELL',
+                de: 'TAGESZIEL: 1+ ZELLE',
+                fr: 'OBJECTIF : 1+ CELLULE',
+                ja: 'デイリー目標: 1+ セル',
+                pt: 'META DIÁRIA: 1+ CÉLULA',
+              })}
             </span>
           </div>
 
@@ -1438,10 +1933,24 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             </div>
             <div>
               <h3 className="text-sm font-extrabold text-gv-text">
-                Historial de Actividad Git
+                {tr(locale, {
+                  es: 'Historial de Actividad Git',
+                  en: 'Git Activity History',
+                  de: 'Git-Aktivitätsverlauf',
+                  fr: 'Historique d’Activité Git',
+                  ja: 'Gitスタイル学習履歴',
+                  pt: 'Histórico de Atividade Git',
+                })}
               </h3>
               <p className="text-[11px] text-gv-muted">
-                Tus celdas completadas día a día
+                {tr(locale, {
+                  es: 'Tus celdas completadas día a día',
+                  en: 'Your completed cells day by day',
+                  de: 'Deine täglich abgeschlossenen Zellen',
+                  fr: 'Tes cellules complétées jour après jour',
+                  ja: '日々のクリアセル記録',
+                  pt: 'Suas células concluídas dia a dia',
+                })}
               </p>
             </div>
           </div>
@@ -1536,15 +2045,15 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
 
         {/* Footer Legend */}
         <div className="flex items-center justify-between text-[11px] text-gv-muted pt-1 border-t border-gv-border/50">
-          <span className="font-mono">{completedPlayableCount} celdas superadas</span>
+          <span className="font-mono">{completedPlayableCount} ✓</span>
           <div className="flex items-center gap-1">
-            <span>Menos</span>
+            <span>{tr(locale, { es: 'Menos', en: 'Less', de: 'Weniger', fr: 'Moins', ja: '少', pt: 'Menos' })}</span>
             <span className="w-2.5 h-2.5 rounded-[2.5px] bg-gv-surface-high border border-gv-border/60 inline-block" />
             <span className="w-2.5 h-2.5 rounded-[2.5px] bg-gv-primary/35 inline-block" />
             <span className="w-2.5 h-2.5 rounded-[2.5px] bg-gv-primary/65 inline-block" />
             <span className="w-2.5 h-2.5 rounded-[2.5px] bg-gv-primary inline-block" />
             <span className="w-2.5 h-2.5 rounded-[2.5px] bg-gv-accent inline-block" />
-            <span>Más</span>
+            <span>{tr(locale, { es: 'Más', en: 'More', de: 'Mehr', fr: 'Plus', ja: '多', pt: 'Mais' })}</span>
           </div>
         </div>
       </div>
@@ -1559,7 +2068,16 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             <p className="text-base font-black text-gv-text font-mono leading-tight">
               {totalStars}
             </p>
-            <p className="text-xs text-gv-muted">Estrellas</p>
+            <p className="text-xs text-gv-muted">
+              {tr(locale, {
+                es: 'Estrellas',
+                en: 'Stars',
+                de: 'Sterne',
+                fr: 'Étoiles',
+                ja: '獲得スター',
+                pt: 'Estrelas',
+              })}
+            </p>
           </div>
         </div>
 
@@ -1571,7 +2089,16 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             <p className="text-base font-black text-gv-text font-mono leading-tight">
               {stats.gems}
             </p>
-            <p className="text-xs text-gv-muted">Gemas acumuladas</p>
+            <p className="text-xs text-gv-muted">
+              {tr(locale, {
+                es: 'Gemas acumuladas',
+                en: 'Collected Gems',
+                de: 'Gesammelte Edelsteine',
+                fr: 'Gemmes accumulées',
+                ja: '所持ジェム',
+                pt: 'Gemas acumuladas',
+              })}
+            </p>
           </div>
         </div>
       </div>
@@ -1590,15 +2117,36 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             </div>
             <div className="min-w-0">
               <h3 className="text-sm font-extrabold text-gv-text">
-                Recomendar Gridverse
+                {tr(locale, {
+                  es: 'Recomendar Gridverse',
+                  en: 'Recommend Gridverse',
+                  de: 'Gridverse weiterempfehlen',
+                  fr: 'Recommander Gridverse',
+                  ja: 'Gridverseを友達に紹介',
+                  pt: 'Recomendar Gridverse',
+                })}
               </h3>
               <p className="text-xs text-gv-muted truncate">
-                Invita a un amigo o colega a dominar Excel
+                {tr(locale, {
+                  es: 'Invita a un amigo o colega a dominar Excel',
+                  en: 'Invite a friend or colleague to master Excel',
+                  de: 'Lade Freunde oder Kollegen ein, Excel zu meistern',
+                  fr: 'Invite un ami ou collègue à maîtriser Excel',
+                  ja: '友人や同僚を招待して一緒にExcelをマスター',
+                  pt: 'Convide um amigo ou colega para dominar o Excel',
+                })}
               </p>
             </div>
           </div>
           <span className="px-3 py-1.5 rounded-full bg-gv-primary text-black text-xs font-extrabold shrink-0">
-            Invitar
+            {tr(locale, {
+              es: 'Invitar',
+              en: 'Invite',
+              de: 'Einladen',
+              fr: 'Inviter',
+              ja: '招待する',
+              pt: 'Convidar',
+            })}
           </span>
         </button>
 
@@ -1617,15 +2165,36 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             </div>
             <div className="min-w-0">
               <h3 className="text-sm font-extrabold text-gv-text">
-                Calificar Gridverse
+                {tr(locale, {
+                  es: 'Calificar Gridverse',
+                  en: 'Rate Gridverse',
+                  de: 'Gridverse bewerten',
+                  fr: 'Évaluer Gridverse',
+                  ja: 'Gridverseを評価する',
+                  pt: 'Avaliar Gridverse',
+                })}
               </h3>
               <p className="text-xs text-gv-muted truncate">
-                ⭐⭐⭐⭐⭐ Apóyanos con tu reseña de 5 estrellas
+                {tr(locale, {
+                  es: '⭐⭐⭐⭐⭐ Apóyanos con tu reseña de 5 estrellas',
+                  en: '⭐⭐⭐⭐⭐ Support us with your 5-star review',
+                  de: '⭐⭐⭐⭐⭐ Unterstütze uns mit 5 Sternen',
+                  fr: '⭐⭐⭐⭐⭐ Soutiens-nous avec un avis 5 étoiles',
+                  ja: '⭐⭐⭐⭐⭐ 5つ星レビューで応援してください',
+                  pt: '⭐⭐⭐⭐⭐ Apoie-nos com sua avaliação 5 estrelas',
+                })}
               </p>
             </div>
           </div>
           <span className="px-3 py-1.5 rounded-full bg-[#F59E0B] text-black text-xs font-extrabold shrink-0">
-            Calificar
+            {tr(locale, {
+              es: 'Calificar',
+              en: 'Rate',
+              de: 'Bewerten',
+              fr: 'Noter',
+              ja: '評価する',
+              pt: 'Avaliar',
+            })}
           </span>
         </button>
       </div>
@@ -1634,7 +2203,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
       <div className="pt-2 flex flex-col gap-5">
         <div className="border-t border-gv-border pt-5">
           <h2 className="text-xs font-mono font-extrabold uppercase tracking-wider text-gv-muted mb-2.5">
-            PREFERENCIAS DE JUEGO
+            {tr(locale, {
+              es: 'PREFERENCIAS DE JUEGO',
+              en: 'GAME PREFERENCES',
+              de: 'SPIELEINSTELLUNGEN',
+              fr: 'PRÉFÉRENCES DE JEU',
+              ja: 'アプリ設定',
+              pt: 'PREFERÊNCIAS DE JOGO',
+            })}
           </h2>
           <div className="bg-gv-surface border border-gv-border rounded-2xl divide-y divide-gv-border overflow-hidden">
             {/* Idioma */}
@@ -1649,9 +2225,25 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               <div className="flex items-center gap-3">
                 <Globe className="w-5 h-5 text-gv-accent" />
                 <div className="text-left">
-                  <p className="text-sm font-semibold text-gv-text">Idioma</p>
+                  <p className="text-sm font-semibold text-gv-text">
+                    {tr(locale, {
+                      es: 'Idioma',
+                      en: 'Language',
+                      de: 'Sprache',
+                      fr: 'Langue',
+                      ja: '言語 (Language)',
+                      pt: 'Idioma',
+                    })}
+                  </p>
                   <p className="text-xs text-gv-muted">
-                    {stats.locale === 'es' ? '🇪🇸 Español' : '🇺🇸 English'}
+                    {tr(stats.locale, {
+                      es: '🇪🇸 Español',
+                      en: '🇺🇸 English',
+                      de: '🇩🇪 Deutsch',
+                      fr: '🇫🇷 Français',
+                      ja: '🇯🇵 日本語',
+                      pt: '🇧🇷 Português',
+                    })}
                   </p>
                 </div>
               </div>
@@ -1664,10 +2256,24 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 <Volume2 className="w-5 h-5 text-gv-accent" />
                 <div>
                   <p className="text-sm font-semibold text-gv-text">
-                    Efectos de sonido (SFX)
+                    {tr(locale, {
+                      es: 'Efectos de sonido (SFX)',
+                      en: 'Sound Effects (SFX)',
+                      de: 'Soundeffekte (SFX)',
+                      fr: 'Effets sonores (SFX)',
+                      ja: '効果音 (SFX)',
+                      pt: 'Efeitos sonoros (SFX)',
+                    })}
                   </p>
                   <p className="text-xs text-gv-muted">
-                    Sonidos al tocar celdas, acertar o fallar
+                    {tr(locale, {
+                      es: 'Sonidos al tocar celdas, acertar o fallar',
+                      en: 'Sounds when tapping cells, solving, or missing',
+                      de: 'Töne beim Antippen, Lösen oder Fehlern',
+                      fr: 'Sons lors du toucher des cellules et validations',
+                      ja: 'セル選択や正解・不正解時のサウンド',
+                      pt: 'Sons ao tocar células, acertar ou errar',
+                    })}
                   </p>
                 </div>
               </div>
@@ -1699,10 +2305,24 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 <Music className="w-5 h-5 text-gv-accent" />
                 <div>
                   <p className="text-sm font-semibold text-gv-text">
-                    Música de fondo (BGM)
+                    {tr(locale, {
+                      es: 'Música de fondo (BGM)',
+                      en: 'Background Music (BGM)',
+                      de: 'Hintergrundmusik (BGM)',
+                      fr: 'Musique de fond (BGM)',
+                      ja: 'BGM（背景音楽）',
+                      pt: 'Música de fundo (BGM)',
+                    })}
                   </p>
                   <p className="text-xs text-gv-muted">
-                    Ambientación musical durante las lecciones
+                    {tr(locale, {
+                      es: 'Ambientación musical durante las lecciones',
+                      en: 'Chill ambient music during lessons',
+                      de: 'Entspannte Musik während der Lektionen',
+                      fr: 'Ambiance musicale pendant les leçons',
+                      ja: 'レッスン中のチルBGM',
+                      pt: 'Ambientação musical durante as lições',
+                    })}
                   </p>
                 </div>
               </div>
@@ -1742,10 +2362,24 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 <Bell className="w-5 h-5 text-gv-streak" />
                 <div>
                   <p className="text-sm font-semibold text-gv-text">
-                    Recordatorio de racha
+                    {tr(locale, {
+                      es: 'Recordatorio de racha',
+                      en: 'Streak Reminder',
+                      de: 'Streak-Erinnerung',
+                      fr: 'Rappel de série',
+                      ja: '連続記録リマインダー',
+                      pt: 'Lembrete de ofensiva',
+                    })}
                   </p>
                   <p className="text-xs text-gv-muted">
-                    Aviso diario para no perder tu cadena
+                    {tr(locale, {
+                      es: 'Aviso diario para no perder tu cadena',
+                      en: 'Daily reminder to keep your streak alive',
+                      de: 'Tägliche Erinnerung für deine Serie',
+                      fr: 'Rappel quotidien pour garder ta série',
+                      ja: '連続記録を途切れさせないための通知',
+                      pt: 'Aviso diário para não perder sua sequência',
+                    })}
                   </p>
                 </div>
               </div>
@@ -1764,8 +2398,22 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                   }
                   showToast(
                     next
-                      ? 'Recordatorio diario de racha activado.'
-                      : 'Recordatorio de racha desactivado.'
+                      ? tr(locale, {
+                          es: 'Recordatorio diario de racha activado.',
+                          en: 'Daily streak reminder enabled.',
+                          de: 'Tägliche Streak-Erinnerung aktiviert.',
+                          fr: 'Rappel quotidien de série activé.',
+                          ja: 'デイリーリマインダーを有効にしました。',
+                          pt: 'Lembrete diário de ofensiva ativado.',
+                        })
+                      : tr(locale, {
+                          es: 'Recordatorio de racha desactivado.',
+                          en: 'Streak reminder disabled.',
+                          de: 'Streak-Erinnerung deaktiviert.',
+                          fr: 'Rappel de série désactivé.',
+                          ja: 'リマインダーを無効にしました。',
+                          pt: 'Lembrete de ofensiva desativado.',
+                        })
                   );
                 }}
                 className={`w-11 h-6 rounded-full transition-colors p-0.5 cursor-pointer ${
@@ -1787,7 +2435,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
         {/* ACCIONES Y GESTIÓN */}
         <div>
           <h2 className="text-xs font-mono font-extrabold uppercase tracking-wider text-gv-muted mb-2.5">
-            ACCIONES Y GESTIÓN
+            {tr(locale, {
+              es: 'ACCIONES Y GESTIÓN',
+              en: 'ACCOUNT & ACTIONS',
+              de: 'KONTO & AKTIONEN',
+              fr: 'ACTIONS ET GESTION',
+              ja: 'アカウント管理',
+              pt: 'AÇÕES E CONTA',
+            })}
           </h2>
           <div className="bg-gv-surface border border-gv-border rounded-2xl divide-y divide-gv-border overflow-hidden">
             <button
@@ -1798,7 +2453,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               <div className="flex items-center gap-3">
                 <Compass className="w-5 h-5 text-gv-accent" />
                 <span className="text-sm font-medium text-gv-text">
-                  Ver primeros pasos de bienvenida
+                  {tr(locale, {
+                    es: 'Ver primeros pasos de bienvenida',
+                    en: 'View welcome checklist',
+                    de: 'Start-Checkliste anzeigen',
+                    fr: 'Voir les premiers pas de bienvenue',
+                    ja: '最初のステップを再表示',
+                    pt: 'Ver primeiros passos de boas-vindas',
+                  })}
                 </span>
               </div>
               <ChevronRight className="w-4 h-4 text-gv-muted" />
@@ -1812,7 +2474,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               <div className="flex items-center gap-3">
                 <Share2 className="w-5 h-5 text-gv-primary" />
                 <span className="text-sm font-medium text-gv-text">
-                  Recomendar Gridverse
+                  {tr(locale, {
+                    es: 'Recomendar Gridverse',
+                    en: 'Recommend Gridverse',
+                    de: 'Gridverse weiterempfehlen',
+                    fr: 'Recommander Gridverse',
+                    ja: 'Gridverseを紹介する',
+                    pt: 'Recomendar Gridverse',
+                  })}
                 </span>
               </div>
               <ChevronRight className="w-4 h-4 text-gv-muted" />
@@ -1829,7 +2498,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               <div className="flex items-center gap-3">
                 <Star className="w-5 h-5 text-[#F59E0B]" />
                 <span className="text-sm font-medium text-gv-text">
-                  Calificar Gridverse
+                  {tr(locale, {
+                    es: 'Calificar Gridverse',
+                    en: 'Rate Gridverse',
+                    de: 'Gridverse bewerten',
+                    fr: 'Évaluer Gridverse',
+                    ja: 'Gridverseを評価する',
+                    pt: 'Avaliar Gridverse',
+                  })}
                 </span>
               </div>
               <ChevronRight className="w-4 h-4 text-gv-muted" />
@@ -1848,7 +2524,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                   <div className="flex items-center gap-3">
                     <LogOut className="w-5 h-5 text-gv-warning" />
                     <span className="text-sm font-medium text-gv-warning">
-                      Cerrar sesión
+                      {tr(locale, {
+                        es: 'Cerrar sesión',
+                        en: 'Sign out',
+                        de: 'Abmelden',
+                        fr: 'Se déconnecter',
+                        ja: 'ログアウト',
+                        pt: 'Sair da conta',
+                      })}
                     </span>
                   </div>
                   <ChevronRight className="w-4 h-4 text-gv-muted" />
@@ -1864,7 +2547,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                   <div className="flex items-center gap-3">
                     <UserX className="w-5 h-5 text-gv-error" />
                     <span className="text-sm font-medium text-gv-error">
-                      Eliminar cuenta
+                      {tr(locale, {
+                        es: 'Eliminar cuenta',
+                        en: 'Delete account',
+                        de: 'Konto löschen',
+                        fr: 'Supprimer le compte',
+                        ja: 'アカウントを削除',
+                        pt: 'Excluir conta',
+                      })}
                     </span>
                   </div>
                   <ChevronRight className="w-4 h-4 text-gv-muted" />
@@ -1882,7 +2572,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 <div className="flex items-center gap-3">
                   <Trash2 className="w-5 h-5 text-gv-error" />
                   <span className="text-sm font-medium text-gv-error">
-                    Borrar datos locales
+                    {tr(locale, {
+                      es: 'Borrar datos locales',
+                      en: 'Reset local data',
+                      de: 'Lokale Daten zurücksetzen',
+                      fr: 'Effacer les données locales',
+                      ja: 'ローカルデータをリセット',
+                      pt: 'Apagar dados locais',
+                    })}
                   </span>
                 </div>
                 <ChevronRight className="w-4 h-4 text-gv-muted" />
@@ -1894,11 +2591,18 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
         {/* LEGAL Y PRIVACIDAD */}
         <div>
           <h2 className="text-xs font-mono font-extrabold uppercase tracking-wider text-gv-muted mb-2.5">
-            LEGAL Y PRIVACIDAD
+            {tr(locale, {
+              es: 'LEGAL Y PRIVACIDAD',
+              en: 'LEGAL & PRIVACY',
+              de: 'RECHTLICHES & DATENSCHUTZ',
+              fr: 'MENTIONS LÉGALES & CONFIDENTIALITÉ',
+              ja: '法的情報とプライバシー',
+              pt: 'LEGAL E PRIVACIDADE',
+            })}
           </h2>
           <div className="bg-gv-surface border border-gv-border rounded-2xl divide-y divide-gv-border overflow-hidden">
             <a
-              href="https://gridverse.app/privacy/"
+              href={`https://gridverse.app/${locale === 'en' ? '' : `${locale}/`}privacy/`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full p-4 flex items-center justify-between hover:bg-gv-surface-high/50 transition-colors"
@@ -1906,14 +2610,21 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               <div className="flex items-center gap-3">
                 <ShieldCheck className="w-5 h-5 text-gv-muted" />
                 <span className="text-sm font-medium text-gv-text">
-                  Política de Privacidad
+                  {tr(locale, {
+                    es: 'Política de Privacidad',
+                    en: 'Privacy Policy',
+                    de: 'Datenschutzerklärung',
+                    fr: 'Politique de Confidentialité',
+                    ja: 'プライバシーポリシー',
+                    pt: 'Política de Privacidade',
+                  })}
                 </span>
               </div>
               <ExternalLink className="w-4 h-4 text-gv-muted" />
             </a>
 
             <a
-              href="https://gridverse.app/terms/"
+              href={`https://gridverse.app/${locale === 'en' ? '' : `${locale}/`}terms/`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full p-4 flex items-center justify-between hover:bg-gv-surface-high/50 transition-colors"
@@ -1921,7 +2632,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               <div className="flex items-center gap-3">
                 <FileText className="w-5 h-5 text-gv-muted" />
                 <span className="text-sm font-medium text-gv-text">
-                  Términos de Uso (EULA)
+                  {tr(locale, {
+                    es: 'Términos de Uso (EULA)',
+                    en: 'Terms of Use (EULA)',
+                    de: 'Nutzungsbedingungen (EULA)',
+                    fr: "Conditions d'Utilisation (EULA)",
+                    ja: '利用規約 (EULA)',
+                    pt: 'Termos de Uso (EULA)',
+                  })}
                 </span>
               </div>
               <ExternalLink className="w-4 h-4 text-gv-muted" />
@@ -1932,7 +2650,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
         {/* INFORMACIÓN */}
         <div>
           <h2 className="text-xs font-mono font-extrabold uppercase tracking-wider text-gv-muted mb-2.5">
-            INFORMACIÓN
+            {tr(locale, {
+              es: 'INFORMACIÓN',
+              en: 'INFORMATION',
+              de: 'INFORMATIONEN',
+              fr: 'INFORMATIONS',
+              ja: 'アプリ情報',
+              pt: 'INFORMAÇÕES',
+            })}
           </h2>
           <div className="bg-gv-surface border border-gv-border rounded-2xl p-4 flex flex-col gap-2">
             <div className="flex items-center justify-between">
@@ -1945,7 +2670,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               <span className="text-xs font-mono text-gv-muted">v1.0.0</span>
             </div>
             <p className="text-xs text-gv-muted">
-              Domina Microsoft Excel celda por celda a través de microlecciones interactivas gamificadas.
+              {tr(locale, {
+                es: 'Domina Microsoft Excel celda por celda a través de microlecciones interactivas gamificadas.',
+                en: 'Master Microsoft Excel cell by cell through gamified interactive micro-lessons.',
+                de: 'Meistere Microsoft Excel Zelle für Zelle mit spielerischen Mikro-Lektionen.',
+                fr: 'Maîtrise Microsoft Excel cellule par cellule grâce à des micro-leçons interactives.',
+                ja: 'ゲーミフィケーション形式のマイクロレッスンで、Excelを1セルずつマスターしよう。',
+                pt: 'Domine o Microsoft Excel célula por célula através de microaulas interativas gamificadas.',
+              })}
             </p>
           </div>
         </div>
@@ -1958,7 +2690,16 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
         <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="w-full max-w-md bg-gv-surface border border-gv-border rounded-3xl p-6 flex flex-col gap-5 shadow-2xl">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-black text-gv-text">Editar Perfil</h3>
+              <h3 className="text-lg font-black text-gv-text">
+                {tr(locale, {
+                  es: 'Editar Perfil',
+                  en: 'Edit Profile',
+                  de: 'Profil bearbeiten',
+                  fr: 'Modifier le profil',
+                  ja: 'プロフィール編集',
+                  pt: 'Editar Perfil',
+                })}
+              </h3>
               <button
                 type="button"
                 onClick={() => setShowEditProfileModal(false)}
@@ -1971,7 +2712,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             <form onSubmit={handleSaveProfile} className="flex flex-col gap-5">
               <div>
                 <p className="text-xs font-bold text-gv-muted mb-2.5">
-                  Elige tu Avatar de Celdi
+                  {tr(locale, {
+                    es: 'Elige tu Avatar de Celdi',
+                    en: 'Choose your Celdi Avatar',
+                    de: 'Wähle deinen Celdi-Avatar',
+                    fr: 'Choisis ton Avatar Celdi',
+                    ja: 'Celdiアバターを選択',
+                    pt: 'Escolha seu Avatar do Celdi',
+                  })}
                 </p>
                 <div className="flex items-center gap-2.5 overflow-x-auto pb-2">
                   {CELDI_AVATAR_OPTIONS.map((opt) => {
@@ -1996,7 +2744,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                             isSelected ? 'text-gv-primary' : 'text-gv-muted'
                           }`}
                         >
-                          {opt.label}
+                          {opt.label[locale] || opt.label.es}
                         </span>
                       </button>
                     );
@@ -2017,7 +2765,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                     >
                       <img
                         src={currentUser.photoURL}
-                        alt="Foto Real"
+                        alt="Photo"
                         className="w-[46px] h-[46px] rounded-xl object-cover"
                       />
                       <span
@@ -2027,7 +2775,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                             : 'text-gv-muted'
                         }`}
                       >
-                        Foto Real
+                        {tr(locale, {
+                          es: 'Foto Real',
+                          en: 'Real Photo',
+                          de: 'Echtes Foto',
+                          fr: 'Photo réelle',
+                          ja: 'プロフィール写真',
+                          pt: 'Foto Real',
+                        })}
                       </span>
                     </button>
                   )}
@@ -2036,14 +2791,28 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
 
               <div>
                 <label className="block text-xs font-bold text-gv-muted mb-1.5">
-                  Nombre o Nickname
+                  {tr(locale, {
+                    es: 'Nombre o Nickname',
+                    en: 'Name or Nickname',
+                    de: 'Name oder Spitzname',
+                    fr: 'Nom ou Pseudo',
+                    ja: '名前またはニックネーム',
+                    pt: 'Nome ou Apelido',
+                  })}
                 </label>
                 <input
                   type="text"
                   maxLength={25}
                   value={editName}
                   onChange={(e) => setEditName(e.target.value)}
-                  placeholder="Tu nombre en Gridverse..."
+                  placeholder={tr(locale, {
+                    es: 'Tu nombre en Gridverse...',
+                    en: 'Your name in Gridverse...',
+                    de: 'Dein Name in Gridverse...',
+                    fr: 'Ton nom sur Gridverse...',
+                    ja: 'Gridverseでの名前...',
+                    pt: 'Seu nome no Gridverse...',
+                  })}
                   className="w-full px-4 py-3 rounded-xl bg-gv-surface-high border border-gv-border focus:border-gv-primary focus:outline-none text-sm font-bold text-gv-text"
                 />
                 <p className="text-[10px] text-gv-muted text-right mt-1 font-mono">
@@ -2056,7 +2825,23 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 disabled={savingProfile || !editName.trim()}
                 className="w-full py-3.5 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-sm transition-colors cursor-pointer disabled:opacity-50"
               >
-                {savingProfile ? 'Guardando...' : 'Guardar Cambios'}
+                {savingProfile
+                  ? tr(locale, {
+                      es: 'Guardando...',
+                      en: 'Saving...',
+                      de: 'Speichern...',
+                      fr: 'Enregistrement...',
+                      ja: '保存中...',
+                      pt: 'Salvando...',
+                    })
+                  : tr(locale, {
+                      es: 'Guardar Cambios',
+                      en: 'Save Changes',
+                      de: 'Änderungen speichern',
+                      fr: 'Enregistrer les modifications',
+                      ja: '変更を保存',
+                      pt: 'Salvar Alterações',
+                    })}
               </button>
             </form>
           </div>
@@ -2071,11 +2856,25 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               <div className="flex items-center gap-2">
                 <Award className="w-5 h-5 text-[#D4AF37]" />
                 <span className="text-sm font-black text-white">
-                  Certificado Oficial Gridverse
+                  {tr(locale, {
+                    es: 'Certificado Oficial Gridverse',
+                    en: 'Official Gridverse Certificate',
+                    de: 'Offizielles Gridverse-Zertifikat',
+                    fr: 'Certificat Officiel Gridverse',
+                    ja: 'Gridverse 公式認定証',
+                    pt: 'Certificado Oficial Gridverse',
+                  })}
                 </span>
                 {(!stats.isPro || !hasCompletedAll) && (
                   <span className="px-2 py-0.5 rounded bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#F3E5AB] text-[10px] font-mono font-bold">
-                    VISTA PREVIA ({certPercent}% COMPLETADO)
+                    {tr(locale, {
+                      es: `VISTA PREVIA (${certPercent}% COMPLETADO)`,
+                      en: `PREVIEW (${certPercent}% COMPLETED)`,
+                      de: `VORSCHAU (${certPercent}% ABGESCHLOSSEN)`,
+                      fr: `APERÇU (${certPercent}% COMPLÉTÉ)`,
+                      ja: `プレビュー (${certPercent}% 完了)`,
+                      pt: `PRÉVIA (${certPercent}% CONCLUÍDO)`,
+                    })}
                   </span>
                 )}
               </div>
@@ -2099,34 +2898,90 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                     <Sparkles className="w-3.5 h-3.5" />
                   </div>
                   <h2 className="text-lg sm:text-2xl font-black text-white tracking-wider uppercase">
-                    CERTIFICADO DE MAESTRÍA EN EXCEL
+                    {tr(locale, {
+                      es: 'CERTIFICADO DE MAESTRÍA EN EXCEL',
+                      en: 'CERTIFICATE OF EXCEL MASTERY',
+                      de: 'ZERTIFIKAT FÜR EXCEL-MEISTERSCHAFT',
+                      fr: "CERTIFICAT DE MAÎTRISE D'EXCEL",
+                      ja: 'EXCEL マスター認定証',
+                      pt: 'CERTIFICADO DE MAESTRIA EM EXCEL',
+                    })}
                   </h2>
                   <div className="px-3 py-0.5 rounded-full bg-gv-primary/15 border border-gv-primary/40 text-gv-accent text-[9px] font-extrabold tracking-widest uppercase">
-                    PROGRAMA OFICIAL DE ESPECIALIZACIÓN Y DOMINIO DE DATOS
+                    {tr(locale, {
+                      es: 'PROGRAMA OFICIAL DE ESPECIALIZACIÓN Y DOMINIO DE DATOS',
+                      en: 'OFFICIAL DATA MASTERY & SPECIALIZATION PROGRAM',
+                      de: 'OFFIZIELLES PROGRAMM FÜR DATEN- & FORMEL-EXZELLENZ',
+                      fr: 'PROGRAMME OFFICIEL DE SPÉCIALISATION ET MAÎTRISE DES DONNÉES',
+                      ja: '公式データ＆スプレッドシート専門プログラム',
+                      pt: 'PROGRAMA OFICIAL DE ESPECIALIZAÇÃO E DOMÍNIO DE DADOS',
+                    })}
                   </div>
                 </div>
 
                 {/* Recipient */}
                 <div className="flex flex-col items-center gap-1.5 my-1">
                   <span className="text-[10px] tracking-[0.18em] text-slate-400 font-semibold uppercase">
-                    SE OTORGA EL PRESENTE RECONOCIMIENTO OFICIAL A:
+                    {tr(locale, {
+                      es: 'SE OTORGA EL PRESENTE RECONOCIMIENTO OFICIAL A:',
+                      en: 'THIS OFFICIAL RECOGNITION IS PROUDLY PRESENTED TO:',
+                      de: 'DIESE OFFIZIELLE AUSZEICHNUNG WIRD VERLIEHEN AN:',
+                      fr: 'CE CERTIFICAT OFFICIEL EST DÉCERNÉ À :',
+                      ja: '本公式認定証を以下の方に授与します:',
+                      pt: 'ESTE RECONHECIMENTO OFICIAL É CONCEDIDO A:',
+                    })}
                   </span>
                   <p className="text-2xl sm:text-3xl font-serif font-black text-[#F3E5AB] tracking-wide uppercase">
                     {userName}
                   </p>
                   <div className="w-56 h-[1.5px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent my-1" />
                   <p className="text-xs text-slate-300 max-w-lg leading-relaxed">
-                    Por haber completado satisfactoriamente las 12 regiones y 90 niveles prácticos de ingeniería en hojas de cálculo: Fórmulas Avanzadas, Lógica Condicional, BUSCARX, Tablas Dinámicas, Finanzas, Macros y Auditoría de Modelos.
+                    {tr(locale, {
+                      es: 'Por haber completado satisfactoriamente las 12 regiones y 90 niveles prácticos de ingeniería en hojas de cálculo: Fórmulas Avanzadas, Lógica Condicional, BUSCARX, Tablas Dinámicas, Finanzas, Macros y Auditoría de Modelos.',
+                      en: 'For successfully completing all 12 regions and 90 hands-on spreadsheet engineering levels: Advanced Formulas, Conditional Logic, XLOOKUP, Pivot Tables, Finance, Macros, and Model Auditing.',
+                      de: 'Für den erfolgreichen Abschluss aller 12 Regionen und 90 praxisnahen Tabellenkalkulations-Level: Fortgeschrittene Formeln, Bedingte Logik, XVERWEIS, Pivot-Tabellen, Finanzen, Makros und Modellprüfung.',
+                      fr: 'Pour avoir complété avec succès les 12 régions et 90 niveaux pratiques de tableur : Formules Avancées, Logique Conditionnelle, RECHERCHEX, Tableaux Croisés Dynamiques, Finance, Macros et Audit de Modèles.',
+                      ja: 'スプレッドシート設計の全12リージョン・90実践レベル（高度な数式、条件論理、XLOOKUP、ピボットテーブル、財務分析、マクロ、モデル監査）を優秀な成績で修了したことを証します。',
+                      pt: 'Por ter concluído com sucesso as 12 regiões e 90 níveis práticos de engenharia em planilhas: Fórmulas Avançadas, Lógica Condicional, PROCX, Tabelas Dinâmicas, Finanças, Macros e Auditoria de Modelos.',
+                    })}
                   </p>
                 </div>
 
                 {/* 4 Skill Chips */}
                 <div className="flex items-center justify-center gap-2 flex-wrap">
                   {[
-                    '12 Módulos Aprobados',
-                    'Fórmulas & Matrices',
-                    'Tablas Dinámicas',
-                    'Auditoría Integral',
+                    tr(locale, {
+                      es: '12 Módulos Aprobados',
+                      en: '12 Modules Passed',
+                      de: '12 Module bestanden',
+                      fr: '12 Modules Validés',
+                      ja: '全12モジュール修了',
+                      pt: '12 Módulos Aprovados',
+                    }),
+                    tr(locale, {
+                      es: 'Fórmulas & Matrices',
+                      en: 'Formulas & Arrays',
+                      de: 'Formeln & Matrizen',
+                      fr: 'Formules & Matrices',
+                      ja: '数式＆配列',
+                      pt: 'Fórmulas & Matrizes',
+                    }),
+                    tr(locale, {
+                      es: 'Tablas Dinámicas',
+                      en: 'Pivot Tables',
+                      de: 'Pivot-Tabellen',
+                      fr: 'Tableaux Croisés',
+                      ja: 'ピボットテーブル',
+                      pt: 'Tabelas Dinâmicas',
+                    }),
+                    tr(locale, {
+                      es: 'Auditoría Integral',
+                      en: 'Full Model Auditing',
+                      de: 'Modellprüfung',
+                      fr: 'Audit Complet',
+                      ja: '総合モデル監査',
+                      pt: 'Auditoria Integral',
+                    }),
                   ].map((chip) => (
                     <span
                       key={chip}
@@ -2142,7 +2997,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 pt-3 border-t border-[#D4AF37]/25">
                   <div className="text-center sm:text-left">
                     <p className="text-[9px] text-slate-400 font-bold tracking-wider uppercase">
-                      FECHA DE EMISIÓN
+                      {tr(locale, {
+                        es: 'FECHA DE EMISIÓN',
+                        en: 'ISSUE DATE',
+                        de: 'AUSSTELLUNGSDATUM',
+                        fr: "DATE D'ÉMISSION",
+                        ja: '発行日',
+                        pt: 'DATA DE EMISSÃO',
+                      })}
                     </p>
                     <p className="text-xs font-extrabold text-white mt-0.5">
                       {certificateMeta.dateStr}
@@ -2164,7 +3026,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
 
                   <div className="text-center sm:text-right">
                     <p className="text-[9px] text-slate-400 font-bold tracking-wider uppercase">
-                      ID DE VERIFICACIÓN
+                      {tr(locale, {
+                        es: 'ID DE VERIFICACIÓN',
+                        en: 'VERIFICATION ID',
+                        de: 'VERIFIZIERUNGS-ID',
+                        fr: 'ID DE VÉRIFICATION',
+                        ja: '認証ID',
+                        pt: 'ID DE VERIFICAÇÃO',
+                      })}
                     </p>
                     <p className="text-xs font-mono font-extrabold text-[#F3E5AB] mt-0.5">
                       {certificateMeta.verificationId}
@@ -2196,12 +3065,30 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 {copiedVerificationId ? (
                   <>
                     <Check className="w-4 h-4 text-gv-primary" />
-                    <span>ID Copiado</span>
+                    <span>
+                      {tr(locale, {
+                        es: 'ID Copiado',
+                        en: 'ID Copied',
+                        de: 'ID kopiert',
+                        fr: 'ID Copié',
+                        ja: 'IDをコピーしました',
+                        pt: 'ID Copiado',
+                      })}
+                    </span>
                   </>
                 ) : (
                   <>
                     <Copy className="w-4 h-4" />
-                    <span>Copiar ID</span>
+                    <span>
+                      {tr(locale, {
+                        es: 'Copiar ID',
+                        en: 'Copy ID',
+                        de: 'ID kopieren',
+                        fr: 'Copier ID',
+                        ja: 'IDをコピー',
+                        pt: 'Copiar ID',
+                      })}
+                    </span>
                   </>
                 )}
               </button>
@@ -2214,7 +3101,16 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 className="px-5 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#e5c148] text-[#090E17] text-xs font-black flex items-center gap-2 cursor-pointer"
               >
                 <Printer className="w-4 h-4" />
-                <span>Imprimir / Guardar PDF</span>
+                <span>
+                  {tr(locale, {
+                    es: 'Imprimir / Guardar PDF',
+                    en: 'Print / Save PDF',
+                    de: 'Drucken / Als PDF speichern',
+                    fr: 'Imprimer / Enregistrer en PDF',
+                    ja: '印刷 / PDF保存',
+                    pt: 'Imprimir / Salvar PDF',
+                  })}
+                </span>
               </button>
             </div>
           </div>
@@ -2228,7 +3124,16 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <MessageSquareHeart className="w-5 h-5 text-[#F59E0B]" />
-                <h3 className="text-lg font-black text-gv-text">Calificar Gridverse</h3>
+                <h3 className="text-lg font-black text-gv-text">
+                  {tr(locale, {
+                    es: 'Calificar Gridverse',
+                    en: 'Rate Gridverse',
+                    de: 'Gridverse bewerten',
+                    fr: 'Évaluer Gridverse',
+                    ja: 'Gridverseを評価する',
+                    pt: 'Avaliar Gridverse',
+                  })}
+                </h3>
               </div>
               <button
                 type="button"
@@ -2241,7 +3146,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
 
             <form onSubmit={handleSubmitRating} className="flex flex-col gap-4">
               <p className="text-xs text-gv-muted">
-                ¿Te está gustando aprender Excel con Celdi? Tu reseña nos ayuda a crear más niveles y desafíos interactivos.
+                {tr(locale, {
+                  es: '¿Te está gustando aprender Excel con Celdi? Tu reseña nos ayuda a crear más niveles y desafíos interactivos.',
+                  en: 'Enjoying learning Excel with Celdi? Your review helps us build more interactive levels and challenges.',
+                  de: 'Gefällt dir das Excel-Lernen mit Celdi? Deine Bewertung hilft uns, weitere interaktive Level zu entwickeln.',
+                  fr: "Tu aimes apprendre Excel avec Celdi ? Ton avis nous aide à créer plus de niveaux et défis interactifs.",
+                  ja: 'Celdiと一緒に楽しくExcelを学べていますか？あなたのレビューが新しいレベル開発の力になります。',
+                  pt: 'Está gostando de aprender Excel com o Celdi? Sua avaliação nos ajuda a criar mais níveis e desafios interativos.',
+                })}
               </p>
 
               <div className="flex items-center justify-center gap-2 py-2">
@@ -2270,7 +3182,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 rows={3}
                 value={rateFeedbackText}
                 onChange={(e) => setRateFeedbackText(e.target.value)}
-                placeholder="Cuéntanos qué es lo que más te gusta o qué te gustaría ver en Gridverse (opcional)..."
+                placeholder={tr(locale, {
+                  es: 'Cuéntanos qué es lo que más te gusta o qué te gustaría ver en Gridverse (opcional)...',
+                  en: 'Tell us what you love most or what you would like to see in Gridverse (optional)...',
+                  de: 'Sag uns, was dir am besten gefällt oder was du dir wünschst (optional)...',
+                  fr: 'Dis-nous ce que tu préfères ou ce que tu aimerais voir dans Gridverse (optionnel)...',
+                  ja: '気に入っている点や追加してほしい機能をお聞かせください（任意）...',
+                  pt: 'Conte-nos o que você mais gosta ou o que gostaria de ver no Gridverse (opcional)...',
+                })}
                 className="w-full p-3.5 rounded-xl bg-gv-surface-high border border-gv-border focus:border-[#F59E0B] focus:outline-none text-xs text-gv-text resize-none"
               />
 
@@ -2279,7 +3198,23 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 disabled={submittingFeedback}
                 className="w-full py-3 rounded-xl bg-[#F59E0B] hover:bg-[#fbbf24] text-black font-black text-xs transition-colors cursor-pointer"
               >
-                {submittingFeedback ? 'Enviando...' : 'Enviar Reseña'}
+                {submittingFeedback
+                  ? tr(locale, {
+                      es: 'Enviando...',
+                      en: 'Sending...',
+                      de: 'Wird gesendet...',
+                      fr: 'Envoi...',
+                      ja: '送信中...',
+                      pt: 'Enviando...',
+                    })
+                  : tr(locale, {
+                      es: 'Enviar Reseña',
+                      en: 'Submit Review',
+                      de: 'Bewertung senden',
+                      fr: 'Envoyer mon avis',
+                      ja: 'レビューを送信',
+                      pt: 'Enviar Avaliação',
+                    })}
               </button>
             </form>
           </div>
@@ -2289,9 +3224,18 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
       {/* Modal 4: Selector de Idioma */}
       {showLanguageModal && (
         <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="w-full max-w-sm bg-gv-surface border border-gv-border rounded-3xl p-5 flex flex-col gap-3 shadow-2xl">
+          <div className="w-full max-w-sm bg-gv-surface border border-gv-border rounded-3xl p-5 flex flex-col gap-2.5 shadow-2xl">
             <div className="flex items-center justify-between pb-1">
-              <h3 className="text-base font-black text-gv-text">Seleccionar Idioma</h3>
+              <h3 className="text-base font-black text-gv-text">
+                {tr(locale, {
+                  es: 'Seleccionar Idioma',
+                  en: 'Select Language',
+                  de: 'Sprache auswählen',
+                  fr: 'Choisir la langue',
+                  ja: '言語を選択',
+                  pt: 'Selecionar Idioma',
+                })}
+              </h3>
               <button
                 type="button"
                 onClick={() => setShowLanguageModal(false)}
@@ -2305,6 +3249,10 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               [
                 { code: 'es', label: '🇪🇸 Español (BUSCARX, SUMA)' },
                 { code: 'en', label: '🇺🇸 English (XLOOKUP, SUM)' },
+                { code: 'de', label: '🇩🇪 Deutsch (XVERWEIS, SUMME)' },
+                { code: 'fr', label: '🇫🇷 Français (RECHERCHEX, SOMME)' },
+                { code: 'ja', label: '🇯🇵 日本語 (XLOOKUP, SUM)' },
+                { code: 'pt', label: '🇧🇷 Português (PROCX, SOMA)' },
               ] as const
             ).map((langOpt) => {
               const isSelected = stats.locale === langOpt.code;
@@ -2338,17 +3286,59 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
           <div className="w-full max-w-sm bg-gv-surface border border-gv-border rounded-3xl p-6 flex flex-col gap-4 shadow-2xl">
             <h3 className="text-base font-black text-gv-text">
               {confirmAction === 'signout'
-                ? '¿Cerrar sesión?'
+                ? tr(locale, {
+                    es: '¿Cerrar sesión?',
+                    en: 'Sign out?',
+                    de: 'Abmelden?',
+                    fr: 'Se déconnecter ?',
+                    ja: 'ログアウトしますか？',
+                    pt: 'Sair da conta?',
+                  })
                 : confirmAction === 'delete_account'
-                ? '¿Eliminar cuenta permanentemente?'
-                : '¿Borrar datos locales?'}
+                ? tr(locale, {
+                    es: '¿Eliminar cuenta permanentemente?',
+                    en: 'Delete account permanently?',
+                    de: 'Konto dauerhaft löschen?',
+                    fr: 'Supprimer le compte définitivement ?',
+                    ja: 'アカウントを完全に削除しますか？',
+                    pt: 'Excluir conta permanentemente?',
+                  })
+                : tr(locale, {
+                    es: '¿Borrar datos locales?',
+                    en: 'Reset local data?',
+                    de: 'Lokale Daten zurücksetzen?',
+                    fr: 'Effacer les données locales ?',
+                    ja: 'ローカルデータをリセットしますか？',
+                    pt: 'Apagar dados locais?',
+                  })}
             </h3>
             <p className="text-xs text-gv-muted leading-relaxed">
               {confirmAction === 'signout'
-                ? 'Tu progreso sincronizado seguirá seguro en la nube cuando vuelvas a iniciar sesión.'
+                ? tr(locale, {
+                    es: 'Tu progreso sincronizado seguirá seguro en la nube cuando vuelvas a iniciar sesión.',
+                    en: 'Your synced progress will remain safe in the cloud when you sign back in.',
+                    de: 'Dein synchronisierter Fortschritt bleibt sicher in der Cloud gespeichert.',
+                    fr: 'Ta progression synchronisée restera en sécurité dans le cloud.',
+                    ja: '同期された進捗はクラウドに安全に保存され、再ログイン時に復元されます。',
+                    pt: 'Seu progresso sincronizado continuará seguro na nuvem quando você entrar novamente.',
+                  })
                 : confirmAction === 'delete_account'
-                ? 'Esta acción es irreversible y eliminará tu cuenta, niveles completados, racha y gemas de la nube.'
-                : 'Se reiniciará tu progreso local en este navegador a la celda A1.'}
+                ? tr(locale, {
+                    es: 'Esta acción es irreversible y eliminará tu cuenta, niveles completados, racha y gemas de la nube.',
+                    en: 'This action is irreversible and will delete your account, completed levels, streak, and gems from the cloud.',
+                    de: 'Diese Aktion kann nicht rückgängig gemacht werden und löscht dein Konto sowie deinen Fortschritt dauerhaft.',
+                    fr: 'Cette action est irréversible et supprimera ton compte, tes niveaux, ta série et tes gemmes.',
+                    ja: 'この操作は取り消せません。アカウント、クリア済みレベル、連続記録、ジェムが完全に削除されます。',
+                    pt: 'Esta ação é irreversível e excluirá sua conta, níveis concluídos, ofensiva e gemas da nuvem.',
+                  })
+                : tr(locale, {
+                    es: 'Se reiniciará tu progreso local en este navegador a la celda A1.',
+                    en: 'Your local progress in this browser will be reset back to cell A1.',
+                    de: 'Dein lokaler Fortschritt in diesem Browser wird auf Zelle A1 zurückgesetzt.',
+                    fr: 'Ta progression locale sur ce navigateur sera réinitialisée à la cellule A1.',
+                    ja: 'このブラウザのローカル進捗がセルA1にリセットされます。',
+                    pt: 'Seu progresso local neste navegador será reiniciado para a célula A1.',
+                  })}
             </p>
             <div className="flex items-center gap-2.5 pt-1">
               <button
@@ -2356,7 +3346,14 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 onClick={() => setConfirmAction(null)}
                 className="flex-1 py-2.5 rounded-xl bg-gv-surface-high border border-gv-border text-gv-text text-xs font-bold cursor-pointer"
               >
-                Cancelar
+                {tr(locale, {
+                  es: 'Cancelar',
+                  en: 'Cancel',
+                  de: 'Abbrechen',
+                  fr: 'Annuler',
+                  ja: 'キャンセル',
+                  pt: 'Cancelar',
+                })}
               </button>
               <button
                 type="button"
@@ -2367,7 +3364,23 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                     : 'bg-gv-error text-white'
                 }`}
               >
-                {confirmAction === 'signout' ? 'Cerrar sesión' : 'Confirmar'}
+                {confirmAction === 'signout'
+                  ? tr(locale, {
+                      es: 'Cerrar sesión',
+                      en: 'Sign out',
+                      de: 'Abmelden',
+                      fr: 'Se déconnecter',
+                      ja: 'ログアウト',
+                      pt: 'Sair',
+                    })
+                  : tr(locale, {
+                      es: 'Confirmar',
+                      en: 'Confirm',
+                      de: 'Bestätigen',
+                      fr: 'Confirmer',
+                      ja: '確認',
+                      pt: 'Confirmar',
+                    })}
               </button>
             </div>
           </div>

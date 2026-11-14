@@ -19,6 +19,7 @@ import { LevelData, Exercise, UserStats, SupportedLocale } from '../types';
 import { CeldiMascot, CeldiMood } from './CeldiMascot';
 import { SpreadsheetGrid, highlightsForFormula } from './SpreadsheetGrid';
 import { sound } from '../lib/audio';
+import { tr } from '../lib/i18n';
 
 interface LessonModalProps {
   levelFile: string;
@@ -474,16 +475,44 @@ export const LessonModal: React.FC<LessonModalProps> = ({
     const p = promptText.toLowerCase();
     const c = correctTarget.toUpperCase();
     if ((p.includes('columna') && p.includes('fila')) || p.includes('coordenadas')) {
-      return 'Recuerda que la letra indica la columna vertical (A, B, C...) y el número indica la fila horizontal (1, 2, 3...).';
+      return tr(locale, {
+        es: 'Recuerda que la letra indica la columna vertical (A, B, C...) y el número indica la fila horizontal (1, 2, 3...).',
+        en: 'Remember that the letter indicates the vertical column (A, B, C...) and the number indicates the horizontal row (1, 2, 3...).',
+        de: 'Der Buchstabe steht für die vertikale Spalte (A, B, C...) und die Zahl für die horizontale Zeile (1, 2, 3...).',
+        fr: 'La lettre indique la colonne verticale (A, B, C...) et le numéro indique la ligne horizontale (1, 2, 3...).',
+        ja: 'アルファベットは列（A, B, C...）、数字は行（1, 2, 3...）を表します。',
+        pt: 'A letra indica a coluna vertical (A, B, C...) e o número indica a linha horizontal (1, 2, 3...).',
+      });
     }
     if (p.includes('rango') || c.includes(':')) {
-      return 'Un rango continuo se selecciona arrastrando desde la primera celda hasta la última (o tocando el encabezado de fila/columna).';
+      return tr(locale, {
+        es: 'Un rango continuo se selecciona arrastrando desde la primera celda hasta la última (o tocando el encabezado de fila/columna).',
+        en: 'A continuous range is selected by dragging from the first cell to the last (or tapping the row/column header).',
+        de: 'Einen zusammenhängenden Bereich wählst du durch Ziehen von der ersten bis zur letzten Zelle (oder per Klick auf den Spalten-/Zeilenkopf).',
+        fr: 'Une plage continue se sélectionne en faisant glisser de la première à la dernière cellule (ou en touchant l’en-tête).',
+        ja: '連続した範囲は最初のセルから最後のセルまでドラッグするか、行・列見出しをタップして選択します。',
+        pt: 'Um intervalo contínuo é selecionado arrastando da primeira até a última célula (ou tocando no cabeçalho).',
+      });
     }
     if (c.startsWith('=')) {
-      return 'Toda fórmula en una hoja de cálculo debe comenzar siempre con el signo igual (=) seguido de la función o referencia.';
+      return tr(locale, {
+        es: 'Toda fórmula en una hoja de cálculo debe comenzar siempre con el signo igual (=) seguido de la función o referencia.',
+        en: 'Every spreadsheet formula must always start with the equals sign (=) followed by the function or cell reference.',
+        de: 'Jede Formel in einer Tabelle beginnt immer mit dem Gleichheitszeichen (=) gefolgt von der Funktion oder Referenz.',
+        fr: 'Toute formule commence toujours par le signe égal (=) suivi de la fonction ou de la référence.',
+        ja: 'スプレッドシートの数式は必ずイコール記号（=）から始めます。',
+        pt: 'Toda fórmula na planilha deve começar sempre com o sinal de igual (=) seguido da função ou referência.',
+      });
     }
-    return 'Observa con atención los encabezados de columna y fila en la hoja de cálculo antes de confirmar.';
-  }, [explanationText, promptText, correctTarget]);
+    return tr(locale, {
+      es: 'Observa con atención los encabezados de columna y fila en la hoja de cálculo antes de confirmar.',
+      en: 'Look closely at the column and row headers on the spreadsheet before confirming.',
+      de: 'Achte genau auf die Spalten- und Zeilenköpfe in der Tabelle, bevor du bestätigst.',
+      fr: 'Observe attentivement les en-têtes de colonnes et de lignes avant de valider.',
+      ja: '確定する前に、シートの列見出しと行番号をよく確認しましょう。',
+      pt: 'Observe com atenção os cabeçalhos de coluna e linha na planilha antes de confirmar.',
+    });
+  }, [explanationText, promptText, correctTarget, locale]);
 
   // WriteFormula token helpers (matching Flutter `_insert`, `_backspace`, `_clearAll`)
   const handleInsertWriteToken = (token: string) => {
@@ -644,7 +673,18 @@ export const LessonModal: React.FC<LessonModalProps> = ({
     return (
       <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
         <div className="bg-gv-surface border border-gv-border rounded-2xl p-6 text-center">
-          <CeldiMascot mood="thinking" size={60} speechText="Cargando lección..." />
+          <CeldiMascot
+            mood="thinking"
+            size={60}
+            speechText={tr(locale, {
+              es: 'Cargando lección...',
+              en: 'Loading lesson...',
+              de: 'Lektion wird geladen...',
+              fr: 'Chargement de la leçon...',
+              ja: 'レッスンを読み込み中...',
+              pt: 'Carregando lição...',
+            })}
+          />
         </div>
       </div>
     );
@@ -728,7 +768,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 {currentQueued.isReview && (
                   <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-gv-info/15 border border-gv-info/40 text-gv-info text-[9px] font-mono font-extrabold uppercase">
                     <RotateCcw className="w-2.5 h-2.5" />
-                    {locale === 'es' ? 'REPASO' : 'REVIEW'}
+                    {tr(locale, {
+                      es: 'REPASO',
+                      en: 'REVIEW',
+                      de: 'WIEDERHOLUNG',
+                      fr: 'RÉVISION',
+                      ja: '復習',
+                      pt: 'REVISÃO',
+                    })}
                   </span>
                 )}
               </div>
@@ -742,7 +789,16 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                   className="flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold bg-gv-warning/15 border border-gv-warning/30 text-gv-warning hover:bg-gv-warning/25 transition-colors cursor-pointer"
                 >
                   <Lightbulb className="w-3.5 h-3.5" />
-                  <span>{locale === 'es' ? 'Pista' : 'Hint'}</span>
+                  <span>
+                    {tr(locale, {
+                      es: 'Pista',
+                      en: 'Hint',
+                      de: 'Tipp',
+                      fr: 'Indice',
+                      ja: 'ヒント',
+                      pt: 'Dica',
+                    })}
+                  </span>
                 </button>
 
                 {combo >= 2 && (
@@ -853,9 +909,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 <div className="flex items-center gap-2 text-xs text-gv-muted px-1">
                   <MousePointerClick className="w-4 h-4 text-gv-muted shrink-0" />
                   <span>
-                    {locale === 'es'
-                      ? 'Toca una celda o arrastra para seleccionar un rango (también puedes tocar encabezados A, B, C o 1, 2, 3).'
-                      : 'Tap a cell or drag to select a range (or tap column/row headers).'}
+                    {tr(locale, {
+                      es: 'Toca una celda o arrastra para seleccionar un rango (también puedes tocar encabezados A, B, C o 1, 2, 3).',
+                      en: 'Tap a cell or drag to select a range (you can also tap column A, B, C or row 1, 2, 3 headers).',
+                      de: 'Tippe auf eine Zelle oder ziehe für einen Bereich (oder tippe auf die Spalten-/Zeilenköpfe A, B, C / 1, 2, 3).',
+                      fr: 'Touche une cellule ou glisse pour sélectionner une plage (ou touche les en-têtes A, B, C / 1, 2, 3).',
+                      ja: 'セルをタップまたはドラッグして範囲を選択（列A, B, Cや行1, 2, 3の見出しタップも可）。',
+                      pt: 'Toque em uma célula ou arraste para selecionar um intervalo (ou toque nos cabeçalhos A, B, C / 1, 2, 3).',
+                    })}
                   </span>
                 </div>
               </div>
@@ -886,9 +947,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 <div className="flex items-center gap-2 text-xs text-gv-boss px-1">
                   <Bug className="w-4 h-4 shrink-0" />
                   <span>
-                    {locale === 'es'
-                      ? 'Inspecciona la hoja y toca la celda que provoca o contiene el error.'
-                      : 'Inspect the sheet and tap the cell causing the error.'}
+                    {tr(locale, {
+                      es: 'Inspecciona la hoja y toca la celda que provoca o contiene el error.',
+                      en: 'Inspect the sheet and tap the cell causing or containing the error.',
+                      de: 'Prüfe das Blatt und tippe auf die Zelle, die den Fehler verursacht oder enthält.',
+                      fr: 'Inspecte la feuille et touche la cellule qui provoque ou contient l’erreur.',
+                      ja: 'シートを確認し、エラーの原因またはエラーを含むセルをタップしてください。',
+                      pt: 'Inspecione a planilha e toque na célula que causa ou contém o erro.',
+                    })}
                   </span>
                 </div>
               </div>
@@ -919,18 +985,28 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                     value={writtenFormula}
                     disabled={isAnswered}
                     onChange={(e) => setWrittenFormula(e.target.value)}
-                    placeholder={locale === 'es' ? '=FÓRMULA(...)' : '=FORMULA(...)'}
+                    placeholder={tr(locale, {
+                      es: '=FÓRMULA(...)',
+                      en: '=FORMULA(...)',
+                      de: '=FORMEL(...)',
+                      fr: '=FORMULE(...)',
+                      ja: '=数式(...)',
+                      pt: '=FÓRMULA(...)',
+                    })}
                     className="flex-1 bg-transparent font-mono font-semibold text-sm sm:text-base text-gv-text outline-none placeholder:text-gv-faint"
                   />
                   {writtenFormula.length > 0 && !isAnswered && (
                     <button
                       onClick={handleBackspaceWriteFormula}
                       onDoubleClick={handleClearWriteFormula}
-                      title={
-                        locale === 'es'
-                          ? 'Borrar ficha (doble clic para limpiar todo)'
-                          : 'Backspace token'
-                      }
+                      title={tr(locale, {
+                        es: 'Borrar ficha (doble clic para limpiar todo)',
+                        en: 'Backspace token (double-click to clear all)',
+                        de: 'Baustein löschen (Doppelklick zum Leeren)',
+                        fr: 'Effacer un jeton (double-clic pour tout effacer)',
+                        ja: '1つ消去（ダブルクリックで全消去）',
+                        pt: 'Apagar bloco (duplo clique para limpar tudo)',
+                      })}
                       className="p-1 text-gv-muted hover:text-gv-text transition-colors cursor-pointer"
                     >
                       <Delete className="w-4 h-4" />
@@ -963,9 +1039,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 <div className="min-h-[68px] p-3 rounded-xl bg-gv-surface border border-gv-border flex flex-wrap items-center gap-1.5">
                   {pickedBlockIndices.length === 0 ? (
                     <div className="w-full text-center text-xs sm:text-sm text-gv-faint py-2">
-                      {locale === 'es'
-                        ? 'Toca las fichas para armar la fórmula'
-                        : 'Tap the tokens below to build the formula'}
+                      {tr(locale, {
+                        es: 'Toca las fichas para armar la fórmula',
+                        en: 'Tap the tokens below to build the formula',
+                        de: 'Tippe auf die Bausteine unten, um die Formel zu bauen',
+                        fr: 'Touche les jetons ci-dessous pour construire la formule',
+                        ja: '下のブロックをタップして数式を組み立てましょう',
+                        pt: 'Toque nas fichas abaixo para montar a fórmula',
+                      })}
                     </div>
                   ) : (
                     pickedBlockIndices.map((blockIdx, orderIdx) => {
@@ -1022,7 +1103,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
             <CeldiMascot mood="celebrating" size={88} showBubble={false} />
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-gv-primary font-mono">
-                {locale === 'es' ? '¡Nivel Completado!' : 'Level Completed!'}
+                {tr(locale, {
+                  es: '¡Nivel Completado!',
+                  en: 'Level Completed!',
+                  de: 'Level abgeschlossen!',
+                  fr: 'Niveau terminé !',
+                  ja: 'レベルクリア！',
+                  pt: 'Nível Concluído!',
+                })}
               </span>
               <h2 className="text-xl sm:text-2xl font-black text-gv-text mt-1">
                 {level.titleByLocale?.[locale] ?? level.title}
@@ -1054,7 +1142,17 @@ export const LessonModal: React.FC<LessonModalProps> = ({
               </div>
               <div className="w-px h-4 bg-gv-border" />
               <div className="flex items-center gap-1.5 font-bold text-gv-bytes font-mono">
-                <span>+5 Gemas 💎</span>
+                <span>
+                  +5{' '}
+                  {tr(locale, {
+                    es: 'Gemas 💎',
+                    en: 'Gems 💎',
+                    de: 'Edelsteine 💎',
+                    fr: 'Gemmes 💎',
+                    ja: 'ジェム 💎',
+                    pt: 'Gemas 💎',
+                  })}
+                </span>
               </div>
             </div>
 
@@ -1062,7 +1160,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
               onClick={onClose}
               className="w-full max-w-xs py-3 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-gv-primary/20 active:scale-98"
             >
-              {locale === 'es' ? 'Continuar al Mapa' : 'Back to Map'}
+              {tr(locale, {
+                es: 'Continuar al Mapa',
+                en: 'Back to Map',
+                de: 'Zurück zur Karte',
+                fr: 'Retour à la carte',
+                ja: 'マップに戻る',
+                pt: 'Voltar ao Mapa',
+              })}
             </button>
           </div>
         )}
@@ -1094,19 +1199,39 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                   >
                     {isCorrect
                       ? combo >= 5
-                        ? locale === 'es'
-                          ? `¡Imparable x${combo}!`
-                          : `Unstoppable x${combo}!`
+                        ? tr(locale, {
+                            es: `¡Imparable x${combo}!`,
+                            en: `Unstoppable x${combo}!`,
+                            de: `Unaufhaltsam x${combo}!`,
+                            fr: `Inarrêtable x${combo} !`,
+                            ja: `アンストッパブル x${combo}！`,
+                            pt: `Imparável x${combo}!`,
+                          })
                         : combo >= 3
-                        ? locale === 'es'
-                          ? `¡Precisión x${combo}!`
-                          : `Precision x${combo}!`
-                        : locale === 'es'
-                        ? '¡Perfecto!'
-                        : 'Perfect!'
-                      : locale === 'es'
-                      ? '¡Error de sintaxis!'
-                      : 'Syntax error!'}
+                        ? tr(locale, {
+                            es: `¡Precisión x${combo}!`,
+                            en: `Precision x${combo}!`,
+                            de: `Präzision x${combo}!`,
+                            fr: `Précision x${combo} !`,
+                            ja: `高精度 x${combo}！`,
+                            pt: `Precisão x${combo}!`,
+                          })
+                        : tr(locale, {
+                            es: '¡Perfecto!',
+                            en: 'Perfect!',
+                            de: 'Perfekt!',
+                            fr: 'Parfait !',
+                            ja: 'パーフェクト！',
+                            pt: 'Perfeito!',
+                          })
+                      : tr(locale, {
+                          es: '¡Error de sintaxis!',
+                          en: 'Syntax error!',
+                          de: 'Syntaxfehler!',
+                          fr: 'Erreur de syntaxe !',
+                          ja: '構文エラー！',
+                          pt: 'Erro de sintaxe!',
+                        })}
                   </p>
 
                   {isCorrect ? (
@@ -1117,7 +1242,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                       {combo >= 2 && (
                         <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gv-primary/15 border border-gv-primary/40 text-gv-primary font-mono font-extrabold text-[11px]">
                           <Zap className="w-3 h-3 fill-gv-primary" />
-                          {locale === 'es' ? `Racha x${combo}` : `Streak x${combo}`}
+                          {tr(locale, {
+                            es: `Racha x${combo}`,
+                            en: `Streak x${combo}`,
+                            de: `Serie x${combo}`,
+                            fr: `Série x${combo}`,
+                            ja: `連続 x${combo}`,
+                            pt: `Sequência x${combo}`,
+                          })}
                         </span>
                       )}
                     </div>
@@ -1125,9 +1257,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                     <div className="flex items-center gap-1.5 mt-1 text-gv-integrity font-bold text-xs">
                       <Heart className="w-3.5 h-3.5 fill-gv-integrity shrink-0" />
                       <span className="truncate">
-                        {locale === 'es'
-                          ? '-1 Integridad • Se repetirá al final'
-                          : '-1 Integrity • Will repeat at the end'}
+                        {tr(locale, {
+                          es: '-1 Integridad • Se repetirá al final',
+                          en: '-1 Integrity • Will repeat at the end',
+                          de: '-1 Leben • Wird am Ende wiederholt',
+                          fr: '-1 Intégrité • Sera répété à la fin',
+                          ja: '-1 ライフ • 最後に再出題されます',
+                          pt: '-1 Integridade • Repetirá no final',
+                        })}
                       </span>
                     </div>
                   )}
@@ -1143,7 +1280,16 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                     className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gv-warning/15 border border-gv-warning/40 text-gv-text font-bold text-xs hover:bg-gv-warning/25 transition-colors cursor-pointer shrink-0"
                   >
                     <Lightbulb className="w-4 h-4 text-gv-warning" />
-                    <span>{locale === 'es' ? 'Pista' : 'Hint'}</span>
+                    <span>
+                      {tr(locale, {
+                        es: 'Pista',
+                        en: 'Hint',
+                        de: 'Tipp',
+                        fr: 'Indice',
+                        ja: 'ヒント',
+                        pt: 'Dica',
+                      })}
+                    </span>
                   </button>
                 )}
               </div>
@@ -1164,12 +1310,22 @@ export const LessonModal: React.FC<LessonModalProps> = ({
             >
               <span>
                 {!isAnswered
-                  ? locale === 'es'
-                    ? 'Comprobar'
-                    : 'Check'
-                  : locale === 'es'
-                  ? 'Continuar'
-                  : 'Continue'}
+                  ? tr(locale, {
+                      es: 'Comprobar',
+                      en: 'Check',
+                      de: 'Prüfen',
+                      fr: 'Vérifier',
+                      ja: '判定する',
+                      pt: 'Verificar',
+                    })
+                  : tr(locale, {
+                      es: 'Continuar',
+                      en: 'Continue',
+                      de: 'Weiter',
+                      fr: 'Continuer',
+                      ja: '次へ',
+                      pt: 'Continuar',
+                    })}
               </span>
             </button>
           </div>
@@ -1191,12 +1347,24 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 <CeldiMascot mood="thinking" size={56} showBubble={false} />
                 <div>
                   <h3 className="text-base sm:text-lg font-extrabold text-gv-text">
-                    {locale === 'es' ? 'Pista de Celdi' : "Celdi's Hint"}
+                    {tr(locale, {
+                      es: 'Pista de Celdi',
+                      en: "Celdi's Hint",
+                      de: 'Celdis Tipp',
+                      fr: 'Indice de Celdi',
+                      ja: 'Celdiのヒント',
+                      pt: 'Dica do Celdi',
+                    })}
                   </h3>
                   <p className="text-xs text-gv-muted">
-                    {locale === 'es'
-                      ? 'Analicemos la lógica paso a paso'
-                      : "Let's analyze the logic step by step"}
+                    {tr(locale, {
+                      es: 'Analicemos la lógica paso a paso',
+                      en: "Let's analyze the logic step by step",
+                      de: 'Schauen wir uns die Logik Schritt für Schritt an',
+                      fr: 'Analysons la logique étape par étape',
+                      ja: 'ステップごとにロジックを確認しましょう',
+                      pt: 'Vamos analisar a lógica passo a passo',
+                    })}
                   </p>
                 </div>
               </div>
@@ -1204,7 +1372,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
               {/* Consigna */}
               <div className="p-3.5 rounded-xl bg-gv-surface-higher border border-gv-border">
                 <span className="block font-mono font-bold text-[10px] uppercase tracking-wider text-gv-muted mb-1">
-                  {locale === 'es' ? 'CONSIGNA' : 'PROMPT'}
+                  {tr(locale, {
+                    es: 'CONSIGNA',
+                    en: 'PROMPT',
+                    de: 'AUFGABE',
+                    fr: 'CONSIGNE',
+                    ja: '問題',
+                    pt: 'INSTRUÇÃO',
+                  })}
                 </span>
                 <p className="text-xs sm:text-sm font-medium text-gv-text">{promptText}</p>
               </div>
@@ -1214,7 +1389,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 <Lightbulb className="w-5 h-5 text-gv-warning shrink-0 mt-0.5" />
                 <div>
                   <span className="block font-mono font-extrabold text-[10px] uppercase tracking-wider text-gv-warning mb-1">
-                    {locale === 'es' ? 'ORIENTACIÓN' : 'GUIDANCE'}
+                    {tr(locale, {
+                      es: 'ORIENTACIÓN',
+                      en: 'GUIDANCE',
+                      de: 'ERKLÄRUNG',
+                      fr: 'EXPLICATION',
+                      ja: '解説',
+                      pt: 'ORIENTAÇÃO',
+                    })}
                   </span>
                   <p className="text-xs sm:text-sm text-gv-text leading-relaxed">
                     {pedagogicalHint}
@@ -1226,7 +1408,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
               {isCurrentRevealed ? (
                 <div className="px-3.5 py-2.5 rounded-lg bg-gv-surface-higher border border-gv-primary/30 flex items-center gap-2 font-mono text-xs">
                   <span className="text-gv-muted">
-                    {locale === 'es' ? 'Solución: ' : 'Solution: '}
+                    {tr(locale, {
+                      es: 'Solución: ',
+                      en: 'Solution: ',
+                      de: 'Lösung: ',
+                      fr: 'Solution : ',
+                      ja: '正解: ',
+                      pt: 'Solução: ',
+                    })}
                   </span>
                   <span className="font-extrabold text-gv-primary">{correctTarget}</span>
                 </div>
@@ -1245,18 +1434,28 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 >
                   <Eye className="w-3.5 h-3.5" />
                   <span>
-                    {locale === 'es'
-                      ? `Revelar respuesta (quedan ${revealsRemaining})`
-                      : `Reveal answer (${revealsRemaining} left)`}
+                    {tr(locale, {
+                      es: `Revelar respuesta (quedan ${revealsRemaining})`,
+                      en: `Reveal answer (${revealsRemaining} left)`,
+                      de: `Lösung anzeigen (noch ${revealsRemaining})`,
+                      fr: `Révéler la réponse (${revealsRemaining} restante(s))`,
+                      ja: `答えを表示（残り${revealsRemaining}回）`,
+                      pt: `Revelar resposta (restam ${revealsRemaining})`,
+                    })}
                   </span>
                 </button>
               ) : (
                 <div className="px-3.5 py-2 rounded-lg bg-gv-surface-higher border border-gv-border flex items-center gap-2 text-xs text-gv-muted">
                   <Lock className="w-3.5 h-3.5 shrink-0" />
                   <span>
-                    {locale === 'es'
-                      ? 'Límite de revelaciones alcanzado en esta lección'
-                      : 'Reveal limit reached for this lesson'}
+                    {tr(locale, {
+                      es: 'Límite de revelaciones alcanzado en esta lección',
+                      en: 'Reveal limit reached for this lesson',
+                      de: 'Limit für Lösungsanzeigen in dieser Lektion erreicht',
+                      fr: 'Limite de révélations atteinte pour cette leçon',
+                      ja: 'このレッスンでの解答表示上限に達しました',
+                      pt: 'Limite de revelações atingido nesta lição',
+                    })}
                   </span>
                 </div>
               )}
@@ -1265,7 +1464,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 onClick={() => setShowHintModal(false)}
                 className="w-full py-3 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer border-b-4 border-b-gv-primary-dark"
               >
-                {locale === 'es' ? '¡Intentarlo!' : 'Try it!'}
+                {tr(locale, {
+                  es: '¡Intentarlo!',
+                  en: 'Try it!',
+                  de: 'Jetzt versuchen!',
+                  fr: 'Essayer !',
+                  ja: '挑戦する！',
+                  pt: 'Tentar agora!',
+                })}
               </button>
             </div>
           </div>
@@ -1282,19 +1488,38 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 <CeldiMascot mood="onFire" size={140} showBubble={false} />
                 <div className="absolute -bottom-3 px-4 py-1 rounded-full bg-gv-primary text-black font-mono text-xs font-black flex items-center gap-1.5 shadow-lg">
                   <Zap className="w-4 h-4 fill-black" />
-                  <span>COMBO x{combo} · SIN ERRORES</span>
+                  <span>
+                    {tr(locale, {
+                      es: `COMBO x${combo} · SIN ERRORES`,
+                      en: `COMBO x${combo} · NO MISTAKES`,
+                      de: `COMBO x${combo} · FEHLERFREI`,
+                      fr: `COMBO x${combo} · SANS FAUTE`,
+                      ja: `コンボ x${combo} · ノーミス`,
+                      pt: `COMBO x${combo} · SEM ERROS`,
+                    })}
+                  </span>
                 </div>
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-black text-gv-primary tracking-tight mt-2">
-                {locale === 'es'
-                  ? `¡${combo} SEGUIDAS SIN EQUIVOCARTE!`
-                  : `${combo} IN A ROW WITHOUT MISTAKES!`}
+                {tr(locale, {
+                  es: `¡${combo} SEGUIDAS SIN EQUIVOCARTE!`,
+                  en: `${combo} IN A ROW WITHOUT MISTAKES!`,
+                  de: `${combo} IN FOLGE OHNE FEHLER!`,
+                  fr: `${combo} DE SUITE SANS ERREUR !`,
+                  ja: `${combo}問連続ノーミス達成！`,
+                  pt: `${combo} SEGUIDAS SEM ERRAR!`,
+                })}
               </h2>
               <p className="text-xs sm:text-sm text-gv-muted mt-2 leading-relaxed">
-                {locale === 'es'
-                  ? `¡Llevas ${combo} respuestas seguidas contestando bien sin ningún error! ¡Precisión perfecta!`
-                  : `You answered ${combo} exercises in a row without a single mistake! Perfect accuracy!`}
+                {tr(locale, {
+                  es: `¡Llevas ${combo} respuestas seguidas contestando bien sin ningún error! ¡Precisión perfecta!`,
+                  en: `You answered ${combo} exercises in a row without a single mistake! Perfect accuracy!`,
+                  de: `Du hast ${combo} Aufgaben hintereinander fehlerfrei gelöst! Perfekte Präzision!`,
+                  fr: `Tu as réussi ${combo} exercices d'affilée sans la moindre erreur ! Précision parfaite !`,
+                  ja: `${combo}問連続でミスなく正解しました！完璧な精度です！`,
+                  pt: `Você acertou ${combo} respostas seguidas sem nenhum erro! Precisão perfeita!`,
+                })}
               </p>
 
               {/* 5 Lightning Bolts Bar */}
@@ -1310,7 +1535,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                   ))}
                 </div>
                 <span className="font-mono text-[11px] font-extrabold text-gv-accent uppercase tracking-wider">
-                  ⚡ PRECISIÓN PERFECTA ACTIVADA
+                  {tr(locale, {
+                    es: '⚡ PRECISIÓN PERFECTA ACTIVADA',
+                    en: '⚡ PERFECT ACCURACY ACTIVATED',
+                    de: '⚡ PERFEKTE PRÄZISION AKTIVIERT',
+                    fr: '⚡ PRÉCISION PARFAITE ACTIVÉE',
+                    ja: '⚡ パーフェクト精度モード発動',
+                    pt: '⚡ PRECISÃO PERFEITA ATIVADA',
+                  })}
                 </span>
               </div>
             </div>
@@ -1332,7 +1564,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
               }}
               className="w-full py-3.5 rounded-2xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs sm:text-sm uppercase tracking-wider cursor-pointer border-b-4 border-b-gv-primary-dark shadow-xl"
             >
-              {locale === 'es' ? 'CONTINUAR RACHA' : 'CONTINUE STREAK'}
+              {tr(locale, {
+                es: 'CONTINUAR RACHA',
+                en: 'CONTINUE STREAK',
+                de: 'SERIE FORTSETZEN',
+                fr: 'CONTINUER LA SÉRIE',
+                ja: '連続記録を続ける',
+                pt: 'CONTINUAR SEQUÊNCIA',
+              })}
             </button>
           </div>
         )}
