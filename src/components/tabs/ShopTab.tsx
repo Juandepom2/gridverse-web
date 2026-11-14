@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Heart,
   Shield,
@@ -8,11 +8,19 @@ import {
   Award,
   Infinity as InfinityIcon,
   RefreshCw,
+  Users,
+  User,
+  Check,
+  X,
+  Mail,
+  ChevronDown,
+  ChevronUp,
+  Star,
 } from 'lucide-react';
 import { UserStats, SupportedLocale } from '../../types';
 import { sound } from '../../lib/audio';
 import { auth, db, verifyAndSyncProAndLegacyProfile } from '../../lib/firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 
 interface ShopTabProps {
   stats: UserStats;
@@ -23,6 +31,84 @@ interface ShopTabProps {
 export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }) => {
   const [restoring, setRestoring] = useState(false);
   const [restoreMessage, setRestoreMessage] = useState<string | null>(null);
+
+  // Plan Comparison & Category Selector (matching Flutter shop_screen.dart)
+  const [isViewingOtherPlans, setIsViewingOtherPlans] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<'individual' | 'duo'>('individual');
+  const [selectedTier, setSelectedTier] = useState<'annual' | 'monthly' | 'lifetime'>('annual');
+
+  // Duo Partner Email management (synced to Firestore users/{uid}.duoPartnerEmail)
+  const [duoEmail, setDuoEmail] = useState('');
+  const [savingDuo, setSavingDuo] = useState(false);
+  const [duoStatusMsg, setDuoStatusMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadDuo = async () => {
+      const user = auth.currentUser;
+      if (!user) return;
+      try {
+        const snap = await getDoc(doc(db, 'users', user.uid));
+        if (snap.exists()) {
+          const d = snap.data();
+          if (typeof d.duoPartnerEmail === 'string') {
+            setDuoEmail(d.duoPartnerEmail);
+          }
+        }
+      } catch {
+        // ignore
+      }
+    };
+    loadDuo();
+  }, []);
+
+  const handleSaveDuoPartner = async () => {
+    const clean = duoEmail.trim().toLowerCase();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(clean)) {
+      setDuoStatusMsg(
+        locale === 'es'
+          ? 'Ingresa un correo electrónico válido para tu compañero Dúo.'
+          : 'Enter a valid email address for your Duo partner.'
+      );
+      return;
+    }
+    const user = auth.currentUser;
+    if (!user) {
+      setDuoStatusMsg(
+        locale === 'es'
+          ? 'Inicia sesión en la pestaña Perfil para vincular a tu compañero Dúo.'
+          : 'Sign in on the Profile tab to link your Duo partner.'
+      );
+      return;
+    }
+
+    setSavingDuo(true);
+    setDuoStatusMsg(null);
+    try {
+      await setDoc(
+        doc(db, 'users', user.uid),
+        {
+          duoPartnerEmail: clean,
+          duoUpdatedAt: serverTimestamp(),
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+      sound.play('coin');
+      setDuoStatusMsg(
+        locale === 'es'
+          ? `¡Compañero Dúo (${clean}) vinculado y sincronizado en la nube!`
+          : `Duo partner (${clean}) linked and synced to the cloud!`
+      );
+    } catch {
+      setDuoStatusMsg(
+        locale === 'es'
+          ? 'No se pudo guardar el correo Dúo. Intenta nuevamente.'
+          : 'Could not save Duo partner email. Try again.'
+      );
+    } finally {
+      setSavingDuo(false);
+    }
+  };
 
   const handleRefillLives = () => {
     if (stats.isPro) return;
@@ -35,6 +121,7 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }
       return;
     }
     sound.play('coin');
+    localStorage.removeItem('gridverse_next_life_at');
     onUpdateStats({
       ...stats,
       lives: stats.maxLives,
@@ -149,8 +236,8 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }
                 ? 'Tienes acceso total sin límites a todas las herramientas, cursos y vidas infinitas.'
                 : 'You have full unlimited access to all tools, courses, and infinite lives.'
               : locale === 'es'
-              ? 'Canjea tus gemas ganadas o sincroniza tu suscripción PRO de la app móvil.'
-              : 'Redeem your earned gems or sync your mobile app PRO subscription.'}
+              ? 'Domina Excel y ahorra +4 horas cada semana con acceso ilimitado.'
+              : 'Master Excel and save 4+ hours every week with unlimited access.'}
           </p>
         </div>
 
@@ -170,8 +257,8 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }
         </div>
       )}
 
-      {/* PRO HUB VIEW (Matching Flutter shop_screen.dart _buildProHubView when stats.isPro is true) */}
-      {stats.isPro ? (
+      {/* PRO HUB VIEW (when stats.isPro is true) */}
+      {stats.isPro && (
         <div className="flex flex-col gap-5">
           {/* 1. VIP Active Status Card */}
           <div className="bg-gradient-to-br from-gv-surface via-gv-surface-high to-gv-primary/15 border-[1.5px] border-gv-primary/50 rounded-2xl p-6 shadow-xl">
@@ -208,88 +295,314 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }
             </div>
           </div>
 
-          {/* 2. Superpoderes Desbloqueados */}
-          <div className="bg-gv-surface border border-gv-border rounded-2xl divide-y divide-gv-border">
-            <div className="p-4 flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-gv-integrity/15 border border-gv-integrity/30 flex items-center justify-center text-gv-integrity shrink-0">
-                <Heart className="w-5 h-5 fill-gv-integrity" />
+          {/* 2. Compañero Dúo Management Card (matching Flutter duoPartnerEmail sync) */}
+          <div className="bg-gv-surface border border-gv-border rounded-2xl p-5 flex flex-col gap-3">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl bg-gv-primary/15 border border-gv-primary/30 flex items-center justify-center text-gv-accent">
+                <Users className="w-5 h-5" />
               </div>
               <div>
                 <h3 className="text-sm font-bold text-gv-text">
-                  {locale === 'es' ? 'Vidas Ilimitadas (∞)' : 'Unlimited Lives (∞)'}
-                </h3>
-                <p className="text-xs text-gv-muted mt-0.5">
                   {locale === 'es'
-                    ? 'Practica sin interrupciones ni esperas de 45 minutos al cometer errores.'
-                    : 'Practice without interruptions or 45-minute waits on mistakes.'}
+                    ? 'Invitado / Compañero Plan Dúo'
+                    : 'Duo Plan Partner License'}
+                </h3>
+                <p className="text-xs text-gv-muted">
+                  {locale === 'es'
+                    ? 'Si tu plan es Dúo, vincula el correo de tu compañero para compartir beneficios PRO.'
+                    : 'If you have a Duo plan, link your partner email to share PRO benefits.'}
                 </p>
               </div>
             </div>
 
-            <div className="p-4 flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-gv-warning/15 border border-gv-warning/30 flex items-center justify-center text-gv-warning shrink-0">
-                <Zap className="w-5 h-5" />
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+              <div className="relative flex-1">
+                <Mail className="w-4 h-4 text-gv-muted absolute left-3 top-1/2 -translate-y-1/2" />
+                <input
+                  type="email"
+                  value={duoEmail}
+                  onChange={(e) => setDuoEmail(e.target.value)}
+                  placeholder="companero@correo.com"
+                  className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-gv-bg border border-gv-border text-xs font-mono text-gv-text focus:outline-none focus:border-gv-primary"
+                />
               </div>
-              <div>
-                <h3 className="text-sm font-bold text-gv-text">
-                  {locale === 'es'
-                    ? 'Acceso Total a Módulos y Fórmulas'
-                    : 'Full Access to Modules & Formulas'}
-                </h3>
-                <p className="text-xs text-gv-muted mt-0.5">
-                  {locale === 'es'
-                    ? 'Las 12 columnas del mapa, misiones reales de práctica y bóveda de fórmulas desbloqueadas.'
-                    : 'All 12 map columns, real-world practice missions, and formula vault unlocked.'}
-                </p>
-              </div>
+              <button
+                type="button"
+                onClick={handleSaveDuoPartner}
+                disabled={savingDuo}
+                className="px-4 py-2.5 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs uppercase tracking-wider cursor-pointer shrink-0"
+              >
+                {savingDuo
+                  ? 'Guardando...'
+                  : locale === 'es'
+                  ? 'Vincular Compañero'
+                  : 'Link Partner'}
+              </button>
             </div>
 
-            <div className="p-4 flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-gv-primary-soft border border-gv-primary/30 flex items-center justify-center text-gv-primary shrink-0">
-                <Award className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="text-sm font-bold text-gv-text">
-                  {locale === 'es' ? 'Certificado Oficial PRO' : 'Official PRO Certificate'}
-                </h3>
-                <p className="text-xs text-gv-muted mt-0.5">
-                  {locale === 'es'
-                    ? 'Acredita tu dominio de hojas de cálculo con tu certificado oficial de Gridverse.'
-                    : 'Verify your spreadsheet mastery with your official Gridverse certificate.'}
-                </p>
-              </div>
-            </div>
+            {duoStatusMsg && (
+              <p className="text-xs font-semibold text-gv-accent">{duoStatusMsg}</p>
+            )}
           </div>
-        </div>
-      ) : (
-        /* Non-Pro Banner */
-        <div className="bg-gradient-to-r from-gv-surface-high via-gv-surface to-gv-surface-high border border-gv-accent/40 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gv-primary/20 border border-gv-accent flex items-center justify-center text-gv-accent shrink-0">
-              <Sparkles className="w-6 h-6" />
-            </div>
-            <div>
-              <h3 className="text-base font-bold text-gv-text flex items-center gap-2">
-                <span>Gridverse PRO</span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-gv-accent text-black font-black uppercase">
-                  Premium
-                </span>
-              </h3>
-              <p className="text-xs text-gv-muted mt-0.5">
-                {locale === 'es'
-                  ? 'Vidas ilimitadas, todos los niveles de fórmulas avanzadas y certificados descargables. Si ya compraste PRO en móvil, inicia sesión con tu cuenta para sincronizarlo automáticamente.'
-                  : 'Unlimited lives, all advanced formula levels, and downloadable certificates. Sign in with your mobile account to sync automatically.'}
-              </p>
-            </div>
-          </div>
-          <a
-            href="https://gridverse.app#download"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2.5 rounded-xl bg-gv-primary hover:bg-gv-accent text-black text-xs font-black uppercase tracking-wider shrink-0 shadow-lg shadow-gv-primary/20 transition-all"
+
+          {/* Toggle to view all plans & comparison table */}
+          <button
+            type="button"
+            onClick={() => {
+              sound.play('tap');
+              setIsViewingOtherPlans((prev) => !prev);
+            }}
+            className="self-center px-4 py-2 rounded-xl bg-gv-surface-high border border-gv-border text-xs font-bold text-gv-muted hover:text-gv-text flex items-center gap-1.5 cursor-pointer"
           >
-            {locale === 'es' ? 'Obtener en la App' : 'Get in App'}
-          </a>
+            <span>
+              {isViewingOtherPlans
+                ? locale === 'es'
+                  ? 'Ocultar comparativa y planes'
+                  : 'Hide comparison & plans'
+                : locale === 'es'
+                ? 'Ver comparativa Gratis vs. PRO y todos los planes'
+                : 'View Free vs. PRO comparison & all plans'}
+            </span>
+            {isViewingOtherPlans ? (
+              <ChevronUp className="w-4 h-4" />
+            ) : (
+              <ChevronDown className="w-4 h-4" />
+            )}
+          </button>
+        </div>
+      )}
+
+      {/* PLANS & COMPARISON TABLE (Shown for Free users or when PRO clicks toggle) */}
+      {(!stats.isPro || isViewingOtherPlans) && (
+        <div className="flex flex-col gap-6">
+          {/* Category Selector: Individual vs Dúo (2 personas) */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-gv-surface border border-gv-border rounded-2xl p-4">
+            <div>
+              <span className="text-[10px] font-mono font-black uppercase tracking-wider text-gv-primary">
+                ELIGE TU MODALIDAD
+              </span>
+              <h2 className="text-base md:text-lg font-black text-gv-text">
+                {selectedCategory === 'individual'
+                  ? 'Plan Individual (1 cuenta)'
+                  : 'Plan Dúo PRO (2 cuentas sincronizadas)'}
+              </h2>
+            </div>
+
+            <div className="inline-flex p-1 rounded-xl bg-gv-bg border border-gv-border">
+              <button
+                type="button"
+                onClick={() => {
+                  sound.play('tap');
+                  setSelectedCategory('individual');
+                }}
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer ${
+                  selectedCategory === 'individual'
+                    ? 'bg-gv-primary text-black shadow'
+                    : 'text-gv-muted hover:text-gv-text'
+                }`}
+              >
+                <User className="w-3.5 h-3.5" />
+                <span>Individual</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  sound.play('tap');
+                  setSelectedCategory('duo');
+                }}
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer ${
+                  selectedCategory === 'duo'
+                    ? 'bg-gv-primary text-black shadow'
+                    : 'text-gv-muted hover:text-gv-text'
+                }`}
+              >
+                <Users className="w-3.5 h-3.5" />
+                <span>Dúo (2 personas)</span>
+              </button>
+            </div>
+          </div>
+
+          {/* 3 Plan Tier Cards (Annual, Monthly, Lifetime) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Plan Anual */}
+            <div
+              onClick={() => {
+                sound.play('tap');
+                setSelectedTier('annual');
+              }}
+              className={`relative p-5 rounded-2xl border-2 cursor-pointer transition-all flex flex-col justify-between gap-4 ${
+                selectedTier === 'annual'
+                  ? 'bg-gv-primary-soft/40 border-gv-primary shadow-xl'
+                  : 'bg-gv-surface border-gv-border hover:border-gv-primary/50'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="px-2.5 py-0.5 rounded-full bg-gv-primary text-black font-mono text-[10px] font-black uppercase">
+                  MÁS POPULAR · 7 DÍAS GRATIS
+                </span>
+                <Sparkles className="w-4 h-4 text-gv-accent" />
+              </div>
+              <div>
+                <h3 className="text-base font-black text-gv-text">
+                  {selectedCategory === 'duo' ? 'Anual Dúo' : 'Anual PRO'}
+                </h3>
+                <div className="text-2xl font-black text-gv-accent font-mono mt-1">
+                  {selectedCategory === 'duo' ? '$54.99' : '$37.99'}
+                  <span className="text-xs text-gv-muted font-normal"> / año</span>
+                </div>
+                <p className="text-[11px] text-gv-muted mt-1">
+                  {selectedCategory === 'duo'
+                    ? 'Solo $0.52/semana por persona · 2 cuentas PRO'
+                    : 'Solo $0.73/semana · Menos que un café al mes'}
+                </p>
+              </div>
+            </div>
+
+            {/* Plan Mensual */}
+            <div
+              onClick={() => {
+                sound.play('tap');
+                setSelectedTier('monthly');
+              }}
+              className={`p-5 rounded-2xl border-2 cursor-pointer transition-all flex flex-col justify-between gap-4 ${
+                selectedTier === 'monthly'
+                  ? 'bg-gv-primary-soft/40 border-gv-primary shadow-xl'
+                  : 'bg-gv-surface border-gv-border hover:border-gv-primary/50'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="px-2.5 py-0.5 rounded-full bg-gv-surface-higher border border-gv-border text-gv-muted font-mono text-[10px] font-bold uppercase">
+                  FLEXIBLE MES A MES
+                </span>
+              </div>
+              <div>
+                <h3 className="text-base font-black text-gv-text">
+                  {selectedCategory === 'duo' ? 'Mensual Dúo' : 'Mensual PRO'}
+                </h3>
+                <div className="text-2xl font-black text-gv-text font-mono mt-1">
+                  {selectedCategory === 'duo' ? '$9.99' : '$6.99'}
+                  <span className="text-xs text-gv-muted font-normal"> / mes</span>
+                </div>
+                <p className="text-[11px] text-gv-muted mt-1">
+                  Sin plazos forzosos · Cancela cuando quieras
+                </p>
+              </div>
+            </div>
+
+            {/* Plan De Por Vida (Lifetime) */}
+            <div
+              onClick={() => {
+                sound.play('tap');
+                setSelectedTier('lifetime');
+              }}
+              className={`p-5 rounded-2xl border-2 cursor-pointer transition-all flex flex-col justify-between gap-4 ${
+                selectedTier === 'lifetime'
+                  ? 'bg-gv-warning/15 border-gv-warning shadow-xl'
+                  : 'bg-gv-surface border-gv-border hover:border-gv-warning/50'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="px-2.5 py-0.5 rounded-full bg-gv-warning text-black font-mono text-[10px] font-black uppercase">
+                  PAGO ÚNICO DE POR VIDA
+                </span>
+                <Award className="w-4 h-4 text-gv-warning" />
+              </div>
+              <div>
+                <h3 className="text-base font-black text-gv-text">
+                  {selectedCategory === 'duo' ? 'De por vida Dúo' : 'De por vida PRO'}
+                </h3>
+                <div className="text-2xl font-black text-gv-warning font-mono mt-1">
+                  {selectedCategory === 'duo' ? '$119.99' : '$79.99'}
+                  <span className="text-xs text-gv-muted font-normal"> pago único</span>
+                </div>
+                <p className="text-[11px] text-gv-muted mt-1">
+                  Acceso permanente para siempre sin renovaciones
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Explicit Comparison Table: Gratis vs PRO (matching Flutter shop_screen.dart) */}
+          <div className="bg-gv-surface border border-gv-border rounded-2xl overflow-hidden shadow-lg">
+            <div className="px-5 py-3.5 bg-gv-surface-high border-b border-gv-border flex items-center justify-between">
+              <span className="text-xs md:text-sm font-black text-gv-text">
+                Comparativa: Plan Gratis vs. Gridverse PRO
+              </span>
+              <div className="flex items-center gap-1 text-gv-warning text-xs font-bold">
+                <Star className="w-3.5 h-3.5 fill-gv-warning" />
+                <span>4.9 Valoración de estudiantes</span>
+              </div>
+            </div>
+
+            <div className="divide-y divide-gv-border text-xs">
+              {[
+                {
+                  feature: 'Energía y Vidas de práctica',
+                  free: '5 vidas (20m espera)',
+                  pro: 'Infinitas (∞)',
+                },
+                {
+                  feature: 'Ruta completa de 12 Columnas (36 niveles)',
+                  free: 'Básico',
+                  pro: 'Desbloqueo Total',
+                },
+                {
+                  feature: 'Libros Multi-Hoja de Negocios Reales',
+                  free: 'Curso 1',
+                  pro: 'Todos los Cursos',
+                },
+                {
+                  feature: 'Bóveda de 107 Fórmulas + 32 Atajos Win/Mac',
+                  free: 'Incluido',
+                  pro: 'Incluido + Retos',
+                },
+                {
+                  feature: 'Certificado Oficial Verificable (PDF / LinkedIn)',
+                  free: null,
+                  pro: 'Incluido con ID único',
+                },
+                {
+                  feature: 'Sincronización Nube Móvil (iOS/Android) + Web',
+                  free: 'Incluido',
+                  pro: 'Prioritaria + Dúo',
+                },
+              ].map((row, idx) => (
+                <div
+                  key={idx}
+                  className="grid grid-cols-12 items-center px-4 md:px-5 py-3 gap-2"
+                >
+                  <div className="col-span-6 font-semibold text-gv-text">{row.feature}</div>
+                  <div className="col-span-3 text-center text-gv-muted font-mono text-[11px]">
+                    {row.free ? (
+                      row.free
+                    ) : (
+                      <X className="w-4 h-4 text-gv-muted/50 mx-auto" />
+                    )}
+                  </div>
+                  <div className="col-span-3 text-center font-mono font-extrabold text-[11px] text-gv-accent flex items-center justify-center gap-1">
+                    <Check className="w-3.5 h-3.5 text-gv-primary shrink-0" />
+                    <span>{row.pro}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {!stats.isPro && (
+              <div className="p-4 bg-gv-surface-high border-t border-gv-border flex flex-col sm:flex-row items-center justify-between gap-3">
+                <p className="text-xs text-gv-muted">
+                  Adquiere tu plan desde la app móvil oficial y se activará automáticamente en Web.
+                </p>
+                <a
+                  href="https://gridverse.app#download"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs uppercase tracking-wider shrink-0 shadow-lg shadow-gv-primary/20"
+                >
+                  Activar en la App &gt;
+                </a>
+              </div>
+            )}
+          </div>
         </div>
       )}
 
@@ -299,79 +612,71 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats }
         <div className="bg-gv-surface border border-gv-border rounded-2xl p-5 flex flex-col justify-between gap-4">
           <div className="flex items-start gap-3.5">
             <div className="w-12 h-12 rounded-xl bg-gv-integrity/15 border border-gv-integrity/30 flex items-center justify-center text-gv-integrity shrink-0">
-              <Heart className="w-6 h-6 fill-gv-integrity text-gv-integrity" />
+              <Heart className="w-6 h-6 fill-gv-integrity" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-gv-text">
-                {locale === 'es' ? 'Recargar Vidas' : 'Refill Lives'}
+              <h3 className="text-sm md:text-base font-bold text-gv-text">
+                {locale === 'es' ? 'Recargar Vidas al Máximo' : 'Refill Max Lives'}
               </h3>
               <p className="text-xs text-gv-muted mt-1 leading-relaxed">
                 {stats.isPro
                   ? locale === 'es'
-                    ? 'Con tu plan Gridverse PRO ya tienes Vidas Ilimitadas (∞) activas para siempre.'
-                    : 'With your Gridverse PRO plan you already have Unlimited Lives (∞) active.'
+                    ? 'Ya cuentas con Vidas Ilimitadas gracias a tu suscripción PRO.'
+                    : 'You already have Unlimited Lives with your PRO subscription.'
                   : locale === 'es'
-                  ? 'Restaura tus 5 vidas completas al instante para seguir aprendiendo sin pausas.'
-                  : 'Instantly restore all 5 lives to keep learning without waiting.'}
+                  ? 'Recupera tus 5 vidas inmediatamente para seguir resolviendo niveles sin esperar.'
+                  : 'Restore all 5 lives immediately to keep solving levels without waiting.'}
               </p>
             </div>
           </div>
 
           <div className="flex items-center justify-between pt-3 border-t border-gv-border">
-            <span className="text-xs font-bold text-gv-bytes flex items-center gap-1">
-              {stats.isPro ? '∞ PRO' : '20 Gemas 💎'}
+            <span className="text-xs font-mono text-gv-muted">
+              {stats.isPro ? 'Estado: ∞ Ilimitadas' : `Actual: ${stats.lives} / ${stats.maxLives}`}
             </span>
             <button
               onClick={handleRefillLives}
               disabled={stats.isPro || stats.lives >= stats.maxLives}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                stats.isPro || stats.lives >= stats.maxLives
-                  ? 'bg-gv-surface-high text-gv-muted border border-gv-border cursor-not-allowed'
-                  : 'bg-gv-primary hover:bg-gv-accent text-black font-black'
-              }`}
+              className="px-4 py-2 rounded-xl bg-gv-bytes/15 hover:bg-gv-bytes/25 disabled:opacity-40 border border-gv-bytes/40 text-gv-bytes font-mono font-bold text-xs transition-all cursor-pointer"
             >
               {stats.isPro
                 ? locale === 'es'
-                  ? 'Ilimitadas ∞'
-                  : 'Unlimited ∞'
+                  ? 'Incluido en PRO'
+                  : 'Included in PRO'
                 : stats.lives >= stats.maxLives
                 ? locale === 'es'
-                  ? 'Lleno'
-                  : 'Full'
-                : locale === 'es'
-                ? 'Comprar'
-                : 'Buy'}
+                  ? 'Vidas llenas'
+                  : 'Full Lives'
+                : '💎 20 Gemas'}
             </button>
           </div>
         </div>
 
-        {/* Escudo de Racha */}
+        {/* Protector de Racha */}
         <div className="bg-gv-surface border border-gv-border rounded-2xl p-5 flex flex-col justify-between gap-4">
           <div className="flex items-start gap-3.5">
-            <div className="w-12 h-12 rounded-xl bg-gv-streak/15 border border-gv-streak/30 flex items-center justify-center text-gv-streak shrink-0">
-              <Shield className="w-6 h-6 text-gv-streak" />
+            <div className="w-12 h-12 rounded-xl bg-gv-info/15 border border-gv-info/30 flex items-center justify-center text-gv-info shrink-0">
+              <Shield className="w-6 h-6" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-gv-text">
-                {locale === 'es' ? 'Congelador de Racha' : 'Streak Freeze'}
+              <h3 className="text-sm md:text-base font-bold text-gv-text">
+                {locale === 'es' ? 'Escudo Protector de Racha' : 'Streak Freeze Shield'}
               </h3>
               <p className="text-xs text-gv-muted mt-1 leading-relaxed">
                 {locale === 'es'
-                  ? 'Protege tu racha de días consecutivos si un día no puedes practicar.'
-                  : 'Protects your consecutive day streak if you miss a day.'}
+                  ? 'Protege tu racha de días consecutivos si olvidas practicar durante 24 horas.'
+                  : 'Protect your daily streak if you miss practicing for 24 hours.'}
               </p>
             </div>
           </div>
 
           <div className="flex items-center justify-between pt-3 border-t border-gv-border">
-            <span className="text-xs font-bold text-gv-bytes flex items-center gap-1">
-              30 Gemas 💎
-            </span>
+            <span className="text-xs font-mono text-gv-muted">Racha: 🔥 {stats.streak}d</span>
             <button
               onClick={handleBuyStreakFreeze}
-              className="px-4 py-2 rounded-xl bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border text-gv-text text-xs font-bold transition-all cursor-pointer"
+              className="px-4 py-2 rounded-xl bg-gv-bytes/15 hover:bg-gv-bytes/25 border border-gv-bytes/40 text-gv-bytes font-mono font-bold text-xs transition-all cursor-pointer"
             >
-              {locale === 'es' ? 'Equipar' : 'Equip'}
+              💎 30 Gemas
             </button>
           </div>
         </div>

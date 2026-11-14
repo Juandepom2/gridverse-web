@@ -21,15 +21,67 @@ import {
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, onSnapshot } from 'firebase/firestore';
 
+const LIFE_REGEN_MS = 20 * 60 * 1000; // 20 minutes per life
+
 export const App: React.FC = () => {
   const [stats, setStats] = useState<UserStats>(loadUserStats);
-  const [activeTab, setActiveTab] = useState<'map' | 'practice' | 'formulas' | 'shop' | 'profile'>('map');
+  const [activeTab, setActiveTab] = useState<'map' | 'practice' | 'formulas' | 'shop' | 'profile'>(
+    'map'
+  );
   const [activeLesson, setActiveLesson] = useState<{ ref: string; file: string } | null>(null);
+  const [showLivesModal, setShowLivesModal] = useState(false);
+  const [nextLifeFormatted, setNextLifeFormatted] = useState<string | null>(null);
   const checkedProForUidRef = useRef<string | null>(null);
 
   useEffect(() => {
     sound.setSfxEnabled(stats.soundEnabled);
   }, [stats.soundEnabled]);
+
+  // Automatic 20-minute life regeneration timer (matching Flutter LivesService)
+  useEffect(() => {
+    if (stats.isPro || stats.lives >= 5) {
+      localStorage.removeItem('gridverse_next_life_at');
+      setNextLifeFormatted(null);
+      return;
+    }
+
+    let nextAt = Number(localStorage.getItem('gridverse_next_life_at') || '0');
+    if (!nextAt || nextAt <= Date.now() - LIFE_REGEN_MS * 5) {
+      nextAt = Date.now() + LIFE_REGEN_MS;
+      localStorage.setItem('gridverse_next_life_at', String(nextAt));
+    }
+
+    const tick = () => {
+      const target = Number(localStorage.getItem('gridverse_next_life_at') || '0');
+      if (!target) return;
+      const diff = target - Date.now();
+      if (diff <= 0) {
+        setStats((prev) => {
+          if (prev.isPro || prev.lives >= 5) return prev;
+          const nextLives = Math.min(5, prev.lives + 1);
+          if (nextLives < 5) {
+            localStorage.setItem('gridverse_next_life_at', String(Date.now() + LIFE_REGEN_MS));
+          } else {
+            localStorage.removeItem('gridverse_next_life_at');
+          }
+          const updated = { ...prev, lives: nextLives };
+          saveUserStats(updated);
+          if (auth.currentUser) {
+            syncStatsToFirestore(auth.currentUser.uid, updated, auth.currentUser);
+          }
+          return updated;
+        });
+      } else {
+        const mins = Math.floor(diff / 60000);
+        const secs = Math.floor((diff % 60000) / 1000);
+        setNextLifeFormatted(`${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`);
+      }
+    };
+
+    tick();
+    const interval = setInterval(tick, 1000);
+    return () => clearInterval(interval);
+  }, [stats.isPro, stats.lives]);
 
   // Real-time Firebase Auth + Firestore `users/{uid}` + RevenueCat PRO synchronization
   useEffect(() => {
@@ -73,7 +125,9 @@ export const App: React.FC = () => {
                   ...base,
                   isPro: proVerification.isPro || base.isPro,
                   subscriptionPlan:
-                    proVerification.planName || base.subscriptionPlan || (proVerification.isPro ? 'lifetime' : undefined),
+                    proVerification.planName ||
+                    base.subscriptionPlan ||
+                    (proVerification.isPro ? 'lifetime' : undefined),
                   lives: proVerification.isPro || base.isPro ? 5 : base.lives,
                 };
                 saveUserStats(updated);
@@ -105,12 +159,8 @@ export const App: React.FC = () => {
 
   const handleSelectLevel = (ref: string, file: string) => {
     if (!stats.isPro && stats.lives <= 0) {
-      alert(
-        stats.locale === 'es'
-          ? '¡Te has quedado sin vidas! Visita la tienda para recargar o espera a que se regeneren.'
-          : 'You are out of lives! Visit the shop to refill or wait for them to regenerate.'
-      );
-      setActiveTab('shop');
+      sound.play('wrong');
+      setShowLivesModal(true);
       return;
     }
     setActiveLesson({ ref, file });
@@ -132,6 +182,9 @@ export const App: React.FC = () => {
     setStats((prev) => {
       if (prev.isPro) return prev;
       const nextLives = Math.max(0, prev.lives - 1);
+      if (prev.lives === 5 && nextLives < 5) {
+        localStorage.setItem('gridverse_next_life_at', String(Date.now() + LIFE_REGEN_MS));
+      }
       const updated = { ...prev, lives: nextLives };
       saveUserStats(updated);
       if (auth.currentUser) {
@@ -141,12 +194,20 @@ export const App: React.FC = () => {
     });
   };
 
-  const handleReward = (xp: number, gems: number) => {
+  const handleReward = (xp: number, gems: number, completedRef?: string) => {
     setStats((prev) => {
-      const updated = {
+      const updatedCompleted = completedRef
+        ? {
+            ...prev.completedLevels,
+            [completedRef]: { stars: 3, completedAt: new Date().toISOString() },
+          }
+        : prev.completedLevels;
+
+      const updated: UserStats = {
         ...prev,
         xp: prev.xp + xp,
         gems: prev.gems + gems,
+        completedLevels: updatedCompleted,
       };
       saveUserStats(updated);
       if (auth.currentUser) {
@@ -174,11 +235,6 @@ export const App: React.FC = () => {
       }
       return updated;
     });
-    alert(
-      stats.locale === 'es'
-        ? `¡Has abierto el cofre ${chestRef} y ganado +${gems} Gemas 💎!`
-        : `You opened chest ${chestRef} and gained +${gems} Gems 💎!`
-    );
   };
 
   const navItems = [
@@ -197,6 +253,9 @@ export const App: React.FC = () => {
         onUpdateStats={handleUpdateStats}
         activeTab={activeTab}
         onChangeTab={(t) => setActiveTab(t as any)}
+        nextLifeFormatted={nextLifeFormatted}
+        showLivesModal={showLivesModal}
+        onToggleLivesModal={setShowLivesModal}
       />
 
       {/* Main Tab Content */}
@@ -215,11 +274,11 @@ export const App: React.FC = () => {
             stats={stats}
             locale={stats.locale}
             onReward={handleReward}
+            onLoseLife={handleLoseLife}
+            onNavigateTab={(t) => setActiveTab(t as any)}
           />
         )}
-        {activeTab === 'formulas' && (
-          <FormulasTab locale={stats.locale} />
-        )}
+        {activeTab === 'formulas' && <FormulasTab locale={stats.locale} />}
         {activeTab === 'shop' && (
           <ShopTab
             stats={stats}

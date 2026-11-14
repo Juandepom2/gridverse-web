@@ -273,6 +273,8 @@ export const LessonModal: React.FC<LessonModalProps> = ({
   const [isCompleted, setIsCompleted] = useState(false);
   const [mistakes, setMistakes] = useState(0);
   const [combo, setCombo] = useState(0);
+  const [showStreakOverlay, setShowStreakOverlay] = useState(false);
+  const [lastCelebratedCombo, setLastCelebratedCombo] = useState(0);
 
   // Hint sheet & solution reveal limit (max 2 per lesson, matching Flutter)
   const [showHintModal, setShowHintModal] = useState(false);
@@ -578,6 +580,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
   const handleNext = () => {
     if (!level) return;
     sound.play('tap');
+
+    // Trigger 5-in-a-row Combo Celebration Overlay (matching StreakCelebrationOverlay in Flutter)
+    if (isCorrect && combo >= 5 && combo % 5 === 0 && combo !== lastCelebratedCombo) {
+      setLastCelebratedCombo(combo);
+      setShowStreakOverlay(true);
+      sound.play('streak');
+      return;
+    }
 
     if (currentIndex + 1 < queue.length) {
       setCurrentIndex((prev) => prev + 1);
@@ -1258,6 +1268,72 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 {locale === 'es' ? '¡Intentarlo!' : 'Try it!'}
               </button>
             </div>
+          </div>
+        )}
+
+        {/* ── 5. 5-Correct-in-a-Row Combo Celebration Overlay (matching Flutter StreakCelebrationOverlay) */}
+        {showStreakOverlay && (
+          <div className="absolute inset-0 z-40 bg-gv-bg/95 backdrop-blur-md flex flex-col items-center justify-between p-6 text-center animate-fade-in spreadsheet-grid-bg">
+            <div />
+
+            <div className="flex flex-col items-center max-w-sm">
+              <div className="relative flex items-center justify-center mb-6">
+                <div className="absolute w-44 h-44 rounded-full bg-gv-primary/25 blur-2xl animate-pulse" />
+                <CeldiMascot mood="onFire" size={140} showBubble={false} />
+                <div className="absolute -bottom-3 px-4 py-1 rounded-full bg-gv-primary text-black font-mono text-xs font-black flex items-center gap-1.5 shadow-lg">
+                  <Zap className="w-4 h-4 fill-black" />
+                  <span>COMBO x{combo} · SIN ERRORES</span>
+                </div>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl font-black text-gv-primary tracking-tight mt-2">
+                {locale === 'es'
+                  ? `¡${combo} SEGUIDAS SIN EQUIVOCARTE!`
+                  : `${combo} IN A ROW WITHOUT MISTAKES!`}
+              </h2>
+              <p className="text-xs sm:text-sm text-gv-muted mt-2 leading-relaxed">
+                {locale === 'es'
+                  ? `¡Llevas ${combo} respuestas seguidas contestando bien sin ningún error! ¡Precisión perfecta!`
+                  : `You answered ${combo} exercises in a row without a single mistake! Perfect accuracy!`}
+              </p>
+
+              {/* 5 Lightning Bolts Bar */}
+              <div className="w-full mt-6 p-4 rounded-2xl bg-gv-surface-high border border-gv-primary/40 flex flex-col items-center gap-3">
+                <div className="flex items-center justify-center gap-3">
+                  {[0, 1, 2, 3, 4].map((idx) => (
+                    <div
+                      key={idx}
+                      className="w-11 h-11 rounded-full bg-gv-primary/20 border-2 border-gv-primary flex items-center justify-center text-gv-accent shadow-md"
+                    >
+                      <Zap className="w-5 h-5 fill-gv-accent" />
+                    </div>
+                  ))}
+                </div>
+                <span className="font-mono text-[11px] font-extrabold text-gv-accent uppercase tracking-wider">
+                  ⚡ PRECISIÓN PERFECTA ACTIVADA
+                </span>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => {
+                sound.play('tap');
+                setShowStreakOverlay(false);
+                if (currentIndex + 1 < queue.length) {
+                  setCurrentIndex((prev) => prev + 1);
+                } else {
+                  setIsCompleted(true);
+                  sound.play('level_win');
+                  const stars = mistakes === 0 ? 3 : mistakes <= 1 ? 2 : 1;
+                  const earnedXp = level.rewardXp ?? 20;
+                  onCompleteLevel(level.ref, stars, earnedXp);
+                }
+              }}
+              className="w-full py-3.5 rounded-2xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs sm:text-sm uppercase tracking-wider cursor-pointer border-b-4 border-b-gv-primary-dark shadow-xl"
+            >
+              {locale === 'es' ? 'CONTINUAR RACHA' : 'CONTINUE STREAK'}
+            </button>
           </div>
         )}
       </div>

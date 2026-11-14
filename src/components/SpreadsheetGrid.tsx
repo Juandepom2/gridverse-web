@@ -122,6 +122,9 @@ interface SpreadsheetGridProps {
   highlightedCells?: string[];
   highlights?: Record<string, string>;
   readOnly?: boolean;
+  columns?: number;
+  rows?: number;
+  compact?: boolean;
 }
 
 export const SpreadsheetGrid: React.FC<SpreadsheetGridProps> = ({
@@ -138,6 +141,8 @@ export const SpreadsheetGrid: React.FC<SpreadsheetGridProps> = ({
   highlightedCells = [],
   highlights = {},
   readOnly = false,
+  columns: customColumns,
+  rows: customRows,
 }) => {
   const [anchor, setAnchor] = useState<string | null>(null);
   const [end, setEnd] = useState<string | null>(null);
@@ -170,10 +175,12 @@ export const SpreadsheetGrid: React.FC<SpreadsheetGridProps> = ({
     };
   }, []);
 
-  const { cols: numCols, rows: numRows } = calcGridDimensions(
+  const autoDims = calcGridDimensions(
     data,
     [extraRef, selectedCell, targetFormula].filter(Boolean).join(' ')
   );
+  const numCols = customColumns ? Math.max(customColumns, autoDims.cols) : autoDims.cols;
+  const numRows = customRows ? Math.max(customRows, autoDims.rows) : autoDims.rows;
 
   const columns = Array.from({ length: numCols }, (_, i) => CellRefUtil.col(i));
   const rows = Array.from({ length: numRows }, (_, i) => i + 1);
