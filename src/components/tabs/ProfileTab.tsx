@@ -211,6 +211,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
   onUpdateStats,
   onNavigateTab,
 }) => {
+  const isLight = stats.theme === 'light';
   const [currentUser, setCurrentUser] = useState<FirebaseUser | null>(() => auth.currentUser);
   const [authNotice, setAuthNotice] = useState<{ type: 'ok' | 'err'; text: string } | null>(null);
   const [loadingAuth, setLoadingAuth] = useState(false);
@@ -1468,10 +1469,22 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
 
       {/* 4. Official Certificate Section (Certificado Oficial de Maestría) */}
       {stats.isPro && hasCompletedAll ? (
-        <div className="rounded-[20px] p-5 bg-gradient-to-br from-[#0F2419] via-[#131D18] to-[#1F1A0E] border-[1.5px] border-[#D4AF37] shadow-[0_8px_24px_rgba(212,175,55,0.18)] flex flex-col gap-4">
+        <div
+          className={`rounded-[20px] p-5 border-[1.5px] flex flex-col gap-4 ${
+            isLight
+              ? 'bg-gradient-to-br from-amber-500/15 via-emerald-500/10 to-gv-surface border-[#D4AF37] shadow-[0_8px_24px_rgba(212,175,55,0.15)]'
+              : 'bg-gradient-to-br from-[#0F2419] via-[#131D18] to-[#1F1A0E] border-[#D4AF37] shadow-[0_8px_24px_rgba(212,175,55,0.18)]'
+          }`}
+        >
           <div className="flex items-center justify-between gap-2 flex-wrap">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/50 text-[#F3E5AB] text-[10px] font-black tracking-wider uppercase">
-              <Award className="w-3.5 h-3.5 text-[#D4AF37]" />
+            <span
+              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[10px] font-black tracking-wider uppercase ${
+                isLight
+                  ? 'bg-amber-500/15 border-amber-600/35 text-amber-900'
+                  : 'bg-[#D4AF37]/15 border-[#D4AF37]/50 text-[#F3E5AB]'
+              }`}
+            >
+              <Award className={`w-3.5 h-3.5 ${isLight ? 'text-amber-700' : 'text-[#D4AF37]'}`} />
               {tr(locale, {
                 es: 'CERTIFICADO OFICIAL GRIDVERSE',
                 en: 'OFFICIAL GRIDVERSE CERTIFICATE',
@@ -1535,7 +1548,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 sound.play('tap');
                 setShowCertificateModal(true);
               }}
-              className="flex-1 py-3 px-4 rounded-xl bg-[#D4AF37] hover:bg-[#e3be42] text-[#090E17] text-xs font-black flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              className="flex-1 py-3 px-4 rounded-xl bg-[#D4AF37] hover:bg-[#e3be42] text-[#090E17] text-xs font-black flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-sm"
             >
               <Download className="w-4 h-4" />
               <span>
@@ -1555,7 +1568,11 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 sound.play('tap');
                 setShowCertificateModal(true);
               }}
-              className="py-3 px-4 rounded-xl border border-[#D4AF37]/60 text-[#F3E5AB] hover:bg-[#D4AF37]/10 text-xs font-extrabold flex items-center gap-1.5 transition-colors cursor-pointer"
+              className={`py-3 px-4 rounded-xl border text-xs font-extrabold flex items-center gap-1.5 transition-colors cursor-pointer ${
+                isLight
+                  ? 'border-amber-600/40 text-amber-900 hover:bg-amber-500/10'
+                  : 'border-[#D4AF37]/60 text-[#F3E5AB] hover:bg-[#D4AF37]/10'
+              }`}
             >
               <Eye className="w-4 h-4" />
               <span>
@@ -1572,10 +1589,22 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
           </div>
         </div>
       ) : stats.isPro && !hasCompletedAll ? (
-        <div className="rounded-[18px] p-4 bg-gv-surface border border-[#D4AF37]/40 flex flex-col gap-3">
+        <div
+          className={`rounded-[18px] p-4 border flex flex-col gap-3 ${
+            isLight
+              ? 'bg-gradient-to-r from-amber-500/12 via-amber-500/5 to-gv-surface border-amber-500/35 shadow-sm'
+              : 'bg-gv-surface border-[#D4AF37]/40'
+          }`}
+        >
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 min-w-0">
-              <div className="w-11 h-11 rounded-xl bg-[#D4AF37]/15 border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] shrink-0">
+              <div
+                className={`w-11 h-11 rounded-xl border flex items-center justify-center shrink-0 ${
+                  isLight
+                    ? 'bg-amber-500/15 border-amber-500/30 text-amber-700'
+                    : 'bg-[#D4AF37]/15 border-[#D4AF37]/40 text-[#D4AF37]'
+                }`}
+              >
                 <Award className="w-5 h-5" />
               </div>
               <div className="min-w-0">
@@ -1589,7 +1618,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                     pt: 'Certificado Oficial de Maestria',
                   })}
                 </h3>
-                <p className="text-xs text-[#D4AF37] font-semibold">
+                <p className={`text-xs font-semibold ${isLight ? 'text-amber-800' : 'text-[#D4AF37]'}`}>
                   {tr(locale, {
                     es: 'Beneficio exclusivo de Gridverse Pro',
                     en: 'Exclusive Gridverse Pro benefit',
@@ -1602,7 +1631,13 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               </div>
             </div>
             <div className="flex items-center gap-2 shrink-0">
-              <span className="px-2.5 py-1 rounded-full bg-[#D4AF37]/15 text-[#F3E5AB] text-xs font-mono font-extrabold">
+              <span
+                className={`px-2.5 py-1 rounded-full text-xs font-mono font-extrabold ${
+                  isLight
+                    ? 'bg-amber-500/15 text-amber-900 border border-amber-500/30'
+                    : 'bg-[#D4AF37]/15 text-[#F3E5AB]'
+                }`}
+              >
                 {certPercent}%
               </span>
               <button
@@ -1611,7 +1646,11 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                   sound.play('tap');
                   setShowCertificateModal(true);
                 }}
-                className="px-2.5 py-1 rounded-lg bg-[#D4AF37]/15 hover:bg-[#D4AF37]/25 border border-[#D4AF37]/40 text-[#F3E5AB] text-xs font-bold flex items-center gap-1 transition-colors cursor-pointer"
+                className={`px-2.5 py-1 rounded-lg text-xs font-bold flex items-center gap-1 transition-colors cursor-pointer ${
+                  isLight
+                    ? 'bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-900'
+                    : 'bg-[#D4AF37]/15 hover:bg-[#D4AF37]/25 border border-[#D4AF37]/40 text-[#F3E5AB]'
+                }`}
               >
                 <Eye className="w-3.5 h-3.5" />
                 <span>
@@ -1658,9 +1697,21 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
           </div>
         </div>
       ) : !stats.isPro && hasCompletedAll ? (
-        <div className="rounded-[20px] p-5 bg-gradient-to-br from-[#1C180D] to-gv-surface border-[1.5px] border-[#D4AF37]/70 flex flex-col gap-3.5">
+        <div
+          className={`rounded-[20px] p-5 border-[1.5px] flex flex-col gap-3.5 ${
+            isLight
+              ? 'bg-gradient-to-br from-amber-500/15 via-amber-500/5 to-gv-surface border-amber-500/50 shadow-sm'
+              : 'bg-gradient-to-br from-[#1C180D] to-gv-surface border-[#D4AF37]/70'
+          }`}
+        >
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/20 flex items-center justify-center text-[#D4AF37] shrink-0">
+            <div
+              className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
+                isLight
+                  ? 'bg-amber-500/15 border border-amber-500/30 text-amber-700'
+                  : 'bg-[#D4AF37]/20 text-[#D4AF37]'
+              }`}
+            >
               <Lock className="w-6 h-6" />
             </div>
             <div>
@@ -1674,7 +1725,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                   pt: 'Mapa Concluído! Resgate seu Certificado',
                 })}
               </h3>
-              <p className="text-xs text-[#F3E5AB]">
+              <p className={`text-xs ${isLight ? 'text-amber-800 font-semibold' : 'text-[#F3E5AB]'}`}>
                 {tr(locale, {
                   es: 'Desbloquea tu Certificado Oficial con Gridverse Pro',
                   en: 'Unlock your Official Certificate with Gridverse Pro',
@@ -1703,7 +1754,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 sound.play('tap');
                 onNavigateTab?.('shop');
               }}
-              className="flex-1 py-2.5 px-4 rounded-xl bg-[#D4AF37] text-[#090E17] text-xs font-black flex items-center justify-center gap-1.5 cursor-pointer"
+              className="flex-1 py-2.5 px-4 rounded-xl bg-[#D4AF37] hover:bg-[#e3be42] text-[#090E17] text-xs font-black flex items-center justify-center gap-1.5 cursor-pointer shadow-sm transition-colors"
             >
               <Sparkles className="w-4 h-4" />
               <span>
@@ -1723,7 +1774,11 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 sound.play('tap');
                 setShowCertificateModal(true);
               }}
-              className="py-2.5 px-3.5 rounded-xl border border-[#D4AF37]/50 text-[#F3E5AB] text-xs font-bold cursor-pointer"
+              className={`py-2.5 px-3.5 rounded-xl border text-xs font-bold cursor-pointer transition-colors ${
+                isLight
+                  ? 'border-amber-600/35 text-amber-900 hover:bg-amber-500/10'
+                  : 'border-[#D4AF37]/50 text-[#F3E5AB] hover:bg-[#D4AF37]/10'
+              }`}
             >
               {tr(locale, {
                 es: 'Ver muestra',
@@ -1740,12 +1795,22 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
         <div
           onClick={() => {
             sound.play('tap');
-            setShowCertificateModal(true);
+            onNavigateTab?.('shop');
           }}
-          className="rounded-2xl p-4 bg-gradient-to-r from-[#1A160B] to-gv-surface border border-[#D4AF37]/45 flex items-center justify-between gap-3 cursor-pointer hover:border-[#D4AF37] transition-colors"
+          className={`rounded-2xl p-4 flex items-center justify-between gap-3 cursor-pointer transition-colors ${
+            isLight
+              ? 'bg-gradient-to-r from-amber-500/12 via-amber-500/5 to-gv-surface border border-amber-500/35 hover:border-amber-600/60 shadow-sm'
+              : 'bg-gradient-to-r from-[#1A160B] to-gv-surface border border-[#D4AF37]/45 hover:border-[#D4AF37]'
+          }`}
         >
           <div className="flex items-center gap-3 min-w-0">
-            <div className="w-11 h-11 rounded-xl bg-[#D4AF37]/15 border border-[#D4AF37]/35 flex items-center justify-center text-[#D4AF37] shrink-0">
+            <div
+              className={`w-11 h-11 rounded-xl border flex items-center justify-center shrink-0 ${
+                isLight
+                  ? 'bg-amber-500/15 border-amber-500/30 text-amber-700'
+                  : 'bg-[#D4AF37]/15 border-[#D4AF37]/35 text-[#D4AF37]'
+              }`}
+            >
               <Award className="w-5 h-5" />
             </div>
             <div className="min-w-0">
@@ -1760,7 +1825,13 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                     pt: 'Certificação Oficial de Excel',
                   })}
                 </h3>
-                <span className="px-1.5 py-0.5 rounded bg-[#D4AF37]/20 text-[#F3E5AB] text-[9px] font-black tracking-wider">
+                <span
+                  className={`px-1.5 py-0.5 rounded text-[9px] font-black tracking-wider ${
+                    isLight
+                      ? 'bg-amber-500/15 text-amber-900 border border-amber-500/30'
+                      : 'bg-[#D4AF37]/20 text-[#F3E5AB]'
+                  }`}
+                >
                   PRO
                 </span>
               </div>
@@ -1776,16 +1847,22 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               </p>
             </div>
           </div>
-          <span className="px-2.5 py-1.5 rounded-lg bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#F3E5AB] text-xs font-extrabold flex items-center gap-1 shrink-0">
-            <Eye className="w-3.5 h-3.5" />
+          <span
+            className={`px-3 py-1.5 rounded-lg border text-xs font-black flex items-center gap-1.5 shrink-0 transition-colors shadow-sm ${
+              isLight
+                ? 'bg-[#D4AF37] border-amber-600/30 text-[#090E17] hover:bg-[#e3be42]'
+                : 'bg-[#D4AF37] border-[#D4AF37] text-[#090E17] hover:bg-[#e3be42]'
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5" />
             <span>
               {tr(locale, {
-                es: 'Ver',
-                en: 'View',
-                de: 'Ansehen',
-                fr: 'Voir',
-                ja: '表示',
-                pt: 'Ver',
+                es: 'Desbloquear',
+                en: 'Unlock',
+                de: 'Freischalten',
+                fr: 'Débloquer',
+                ja: 'アンロック',
+                pt: 'Desbloquear',
               })}
             </span>
           </span>
@@ -3146,7 +3223,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
           <div className="w-full max-w-2xl flex flex-col gap-4 my-auto">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <Award className="w-5 h-5 text-[#D4AF37]" />
                 <span className="text-sm font-black text-white">
                   {tr(locale, {
@@ -3158,15 +3235,37 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                     pt: 'Certificado Oficial Gridverse',
                   })}
                 </span>
-                {(!stats.isPro || !hasCompletedAll) && (
+                {!stats.isPro ? (
+                  <span className="px-2 py-0.5 rounded bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] font-mono font-bold">
+                    {tr(locale, {
+                      es: 'BENEFICIO EXCLUSIVO PRO',
+                      en: 'EXCLUSIVE PRO BENEFIT',
+                      de: 'EXKLUSIVER PRO-VORTEIL',
+                      fr: 'AVANTAGE EXCLUSIF PRO',
+                      ja: 'GRIDVERSE PRO限定特典',
+                      pt: 'BENEFÍCIO EXCLUSIVO PRO',
+                    })}
+                  </span>
+                ) : !hasCompletedAll ? (
                   <span className="px-2 py-0.5 rounded bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#F3E5AB] text-[10px] font-mono font-bold">
                     {tr(locale, {
-                      es: `VISTA PREVIA (${certPercent}% COMPLETADO)`,
-                      en: `PREVIEW (${certPercent}% COMPLETED)`,
-                      de: `VORSCHAU (${certPercent}% ABGESCHLOSSEN)`,
-                      fr: `APERÇU (${certPercent}% COMPLÉTÉ)`,
-                      ja: `プレビュー (${certPercent}% 完了)`,
-                      pt: `PRÉVIA (${certPercent}% CONCLUÍDO)`,
+                      es: `EN PROGRESO (${certPercent}% COMPLETADO)`,
+                      en: `IN PROGRESS (${certPercent}% COMPLETED)`,
+                      de: `IN BEARBEITUNG (${certPercent}% ABGESCHLOSSEN)`,
+                      fr: `EN COURS (${certPercent}% COMPLÉTÉ)`,
+                      ja: `進行中 (${certPercent}% 完了)`,
+                      pt: `EM PROGRESSO (${certPercent}% CONCLUÍDO)`,
+                    })}
+                  </span>
+                ) : (
+                  <span className="px-2 py-0.5 rounded bg-gv-primary/20 border border-gv-primary/40 text-gv-accent text-[10px] font-mono font-bold">
+                    {tr(locale, {
+                      es: 'OFICIAL & VERIFICADO',
+                      en: 'OFFICIAL & VERIFIED',
+                      de: 'OFFIZIELL & VERIFIZIERT',
+                      fr: 'OFFICIEL & VÉRIFIÉ',
+                      ja: '公式・認証済み',
+                      pt: 'OFICIAL & VERIFICADO',
                     })}
                   </span>
                 )}
@@ -3180,231 +3279,310 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               </button>
             </div>
 
-            {/* Ornamental 16:10 Certificate Document matching `certificate_document.dart` */}
-            <div className="relative rounded-2xl bg-gradient-to-br from-[#090E17] via-[#0F1824] to-[#0A131A] border-[2.5px] border-[#D4AF37] p-3 shadow-[0_20px_50px_rgba(0,0,0,0.75)]">
-              <div className="border border-[#D4AF37]/45 rounded-xl p-6 sm:p-8 flex flex-col items-center text-center justify-between gap-5 relative overflow-hidden">
-                {/* Top Header */}
-                <div className="flex flex-col items-center gap-1.5">
-                  <div className="flex items-center gap-2 text-[#D4AF37] text-[10px] font-black tracking-[0.22em] uppercase">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>GRIDVERSE ACADEMY OF SPREADSHEET MASTERY</span>
-                    <Sparkles className="w-3.5 h-3.5" />
-                  </div>
-                  <h2 className="text-lg sm:text-2xl font-black text-white tracking-wider uppercase">
+            {/* Minimalist Executive Certificate Document */}
+            <div className="relative rounded-2xl bg-[#0B0F15] border border-[#D4AF37]/35 p-6 sm:p-10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] overflow-hidden text-center flex flex-col justify-between min-h-[460px] gap-6">
+              {/* Subtle Hairline Inset Border */}
+              <div className="absolute inset-2 sm:inset-3 border border-[#D4AF37]/15 rounded-xl pointer-events-none" />
+
+              {/* Ambient Warm Glow */}
+              <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-48 bg-[#D4AF37]/8 blur-3xl rounded-full pointer-events-none" />
+
+              {/* Watermark for Non-Pro or Incomplete States */}
+              {!stats.isPro && (
+                <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none select-none p-4">
+                  <div className="transform -rotate-12 px-6 py-2 rounded-xl bg-black/80 border border-amber-500/50 backdrop-blur-sm text-amber-300 font-mono text-xs sm:text-sm font-black tracking-[0.25em] uppercase shadow-2xl">
                     {tr(locale, {
-                      es: 'CERTIFICADO DE MAESTRÍA EN EXCEL',
-                      en: 'CERTIFICATE OF EXCEL MASTERY',
-                      de: 'ZERTIFIKAT FÜR EXCEL-MEISTERSCHAFT',
-                      fr: "CERTIFICAT DE MAÎTRISE D'EXCEL",
-                      ja: 'EXCEL マスター認定証',
-                      pt: 'CERTIFICADO DE MAESTRIA EM EXCEL',
-                    })}
-                  </h2>
-                  <div className="px-3 py-0.5 rounded-full bg-gv-primary/15 border border-gv-primary/40 text-gv-accent text-[9px] font-extrabold tracking-widest uppercase">
-                    {tr(locale, {
-                      es: 'PROGRAMA OFICIAL DE ESPECIALIZACIÓN Y DOMINIO DE DATOS',
-                      en: 'OFFICIAL DATA MASTERY & SPECIALIZATION PROGRAM',
-                      de: 'OFFIZIELLES PROGRAMM FÜR DATEN- & FORMEL-EXZELLENZ',
-                      fr: 'PROGRAMME OFFICIEL DE SPÉCIALISATION ET MAÎTRISE DES DONNÉES',
-                      ja: '公式データ＆スプレッドシート専門プログラム',
-                      pt: 'PROGRAMA OFICIAL DE ESPECIALIZAÇÃO E DOMÍNIO DE DADOS',
+                      es: 'MUESTRA · REQUIERE PRO',
+                      en: 'SAMPLE · REQUIRES PRO',
+                      de: 'MUSTER · PRO ERFORDERLICH',
+                      fr: 'EXEMPLE · PRO REQUIS',
+                      ja: 'サンプル · PRO限定',
+                      pt: 'AMOSTRA · REQUER PRO',
                     })}
                   </div>
                 </div>
-
-                {/* Recipient */}
-                <div className="flex flex-col items-center gap-1.5 my-1">
-                  <span className="text-[10px] tracking-[0.18em] text-slate-400 font-semibold uppercase">
+              )}
+              {stats.isPro && !hasCompletedAll && (
+                <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none select-none p-4">
+                  <div className="transform -rotate-12 px-6 py-2 rounded-xl bg-black/80 border border-[#D4AF37]/50 backdrop-blur-sm text-[#F3E5AB] font-mono text-xs sm:text-sm font-black tracking-[0.25em] uppercase shadow-2xl">
                     {tr(locale, {
-                      es: 'SE OTORGA EL PRESENTE RECONOCIMIENTO OFICIAL A:',
-                      en: 'THIS OFFICIAL RECOGNITION IS PROUDLY PRESENTED TO:',
-                      de: 'DIESE OFFIZIELLE AUSZEICHNUNG WIRD VERLIEHEN AN:',
-                      fr: 'CE CERTIFICAT OFFICIEL EST DÉCERNÉ À :',
-                      ja: '本公式認定証を以下の方に授与します:',
-                      pt: 'ESTE RECONHECIMENTO OFICIAL É CONCEDIDO A:',
+                      es: `VISTA PREVIA · ${certPercent}% COMPLETADO`,
+                      en: `PREVIEW · ${certPercent}% COMPLETED`,
+                      de: `VORSCHAU · ${certPercent}% ABGESCHLOSSEN`,
+                      fr: `APERÇU · ${certPercent}% COMPLÉTÉ`,
+                      ja: `プレビュー · ${certPercent}% 完了`,
+                      pt: `PRÉVIA · ${certPercent}% CONCLUÍDO`,
                     })}
+                  </div>
+                </div>
+              )}
+
+              {/* Top Header: Monogram Emblem + Academy + Title */}
+              <div className="relative z-10 flex flex-col items-center gap-1.5">
+                <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/35 flex items-center justify-center text-[#D4AF37] mb-1">
+                  <Award className="w-5 h-5 stroke-[1.8]" />
+                </div>
+                <span className="text-[10px] tracking-[0.3em] text-[#D4AF37] font-bold uppercase">
+                  GRIDVERSE ACADEMY
+                </span>
+                <h2 className="text-xl sm:text-2xl font-light text-white tracking-wide mt-0.5">
+                  {tr(locale, {
+                    es: 'Certificado de Maestría en Excel',
+                    en: 'Certificate of Excel Mastery',
+                    de: 'Zertifikat für Excel-Meisterschaft',
+                    fr: "Certificat de Maîtrise d'Excel",
+                    ja: 'Excel マスター認定証',
+                    pt: 'Certificado de Maestria em Excel',
+                  })}
+                </h2>
+                <span className="text-[10px] tracking-[0.2em] text-slate-400 font-medium uppercase">
+                  {tr(locale, {
+                    es: 'Especialización en Análisis de Datos & Hojas de Cálculo',
+                    en: 'Specialization in Data Analysis & Spreadsheets',
+                    de: 'Spezialisierung auf Datenanalyse & Tabellen',
+                    fr: 'Spécialisation en Analyse de Données & Tableurs',
+                    ja: 'データ分析＆スプレッドシート専門プログラム',
+                    pt: 'Especialização em Análise de Dados & Planilhas',
+                  })}
+                </span>
+              </div>
+
+              {/* Recipient & Citation */}
+              <div className="relative z-10 flex flex-col items-center my-1">
+                <span className="text-[9px] tracking-[0.25em] text-slate-400 font-semibold uppercase">
+                  {tr(locale, {
+                    es: 'OTORGADO CON DISTINCIÓN A',
+                    en: 'PROUDLY PRESENTED TO',
+                    de: 'VERLIEHEN AN',
+                    fr: 'DÉCERNÉ À',
+                    ja: '授与者',
+                    pt: 'CONCEDIDO A',
+                  })}
+                </span>
+                <p className="text-2xl sm:text-3xl font-serif text-[#F3E5AB] tracking-wide my-2 font-normal">
+                  {userName}
+                </p>
+                <div className="w-28 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent mx-auto my-2" />
+                <p className="text-xs text-slate-300 max-w-lg leading-relaxed mx-auto font-light">
+                  {tr(locale, {
+                    es: 'Por haber completado con excelencia el programa de 90 niveles prácticos: Fórmulas Avanzadas, Lógica Condicional, BUSCARX, Tablas Dinámicas y Modelado Financiero.',
+                    en: 'For successfully completing the comprehensive curriculum of 90 hands-on levels: Advanced Formulas, Conditional Logic, XLOOKUP, Pivot Tables, and Financial Modeling.',
+                    de: 'Für den erfolgreichen Abschluss aller 90 praxisnahen Level: Fortgeschrittene Formeln, Bedingte Logik, XVERWEIS, Pivot-Tabellen und Finanzmodellierung.',
+                    fr: 'Pour avoir complété avec succès les 90 niveaux pratiques : Formules Avancées, Logique Conditionnelle, RECHERCHEX, Tableaux Croisés et Modélisation.',
+                    ja: '高度な数式、条件付き論理、XLOOKUP、ピボットテーブル、財務モデリングを含む全90実践レベルの優秀修了を証します。',
+                    pt: 'Por ter concluído com excelência o programa de 90 níveis práticos: Fórmulas Avançadas, Lógica Condicional, PROCX, Tabelas Dinâmicas e Modelagem Financeira.',
+                  })}
+                </p>
+
+                {/* Minimalist Inline Competencies */}
+                <div className="flex items-center justify-center gap-2 text-[10px] text-slate-400 font-mono tracking-wider flex-wrap mt-3.5">
+                  <span>12 Módulos</span>
+                  <span className="text-[#D4AF37]/50">·</span>
+                  <span>Fórmulas & Matrices</span>
+                  <span className="text-[#D4AF37]/50">·</span>
+                  <span>Tablas Dinámicas</span>
+                  <span className="text-[#D4AF37]/50">·</span>
+                  <span>Auditoría de Modelos</span>
+                </div>
+              </div>
+
+              {/* Footer: Issue Date, Minimalist Seal, Verification ID */}
+              <div className="relative z-10 w-full flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[#D4AF37]/20">
+                <div className="text-center sm:text-left">
+                  <p className="text-[9px] text-slate-400 font-bold tracking-wider uppercase">
+                    {tr(locale, {
+                      es: 'FECHA DE EMISIÓN',
+                      en: 'ISSUE DATE',
+                      de: 'AUSSTELLUNGSDATUM',
+                      fr: "DATE D'ÉMISSION",
+                      ja: '発行日',
+                      pt: 'DATA DE EMISSÃO',
+                    })}
+                  </p>
+                  <p className="text-xs font-semibold text-white mt-0.5">
+                    {certificateMeta.dateStr}
+                  </p>
+                  <p className="text-[10px] text-[#D4AF37] font-medium">
+                    Gridverse Pro Certified
+                  </p>
+                </div>
+
+                {/* Minimalist Vector Seal */}
+                <div className="w-12 h-12 rounded-full border border-[#D4AF37]/60 flex flex-col items-center justify-center text-[#D4AF37] relative shrink-0">
+                  <div className="absolute inset-0.5 rounded-full border border-[#D4AF37]/25" />
+                  <Award className="w-4 h-4 stroke-[2]" />
+                  <span className="text-[6px] tracking-widest font-black uppercase text-[#F3E5AB] leading-none mt-0.5">
+                    {stats.isPro && hasCompletedAll ? 'VERIFIED' : 'PREVIEW'}
                   </span>
-                  <p className="text-2xl sm:text-3xl font-serif font-black text-[#F3E5AB] tracking-wide uppercase">
-                    {userName}
-                  </p>
-                  <div className="w-56 h-[1.5px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent my-1" />
-                  <p className="text-xs text-slate-300 max-w-lg leading-relaxed">
+                </div>
+
+                <div className="text-center sm:text-right">
+                  <p className="text-[9px] text-slate-400 font-bold tracking-wider uppercase">
                     {tr(locale, {
-                      es: 'Por haber completado satisfactoriamente las 12 regiones y 90 niveles prácticos de ingeniería en hojas de cálculo: Fórmulas Avanzadas, Lógica Condicional, BUSCARX, Tablas Dinámicas, Finanzas, Macros y Auditoría de Modelos.',
-                      en: 'For successfully completing all 12 regions and 90 hands-on spreadsheet engineering levels: Advanced Formulas, Conditional Logic, XLOOKUP, Pivot Tables, Finance, Macros, and Model Auditing.',
-                      de: 'Für den erfolgreichen Abschluss aller 12 Regionen und 90 praxisnahen Tabellenkalkulations-Level: Fortgeschrittene Formeln, Bedingte Logik, XVERWEIS, Pivot-Tabellen, Finanzen, Makros und Modellprüfung.',
-                      fr: 'Pour avoir complété avec succès les 12 régions et 90 niveaux pratiques de tableur : Formules Avancées, Logique Conditionnelle, RECHERCHEX, Tableaux Croisés Dynamiques, Finance, Macros et Audit de Modèles.',
-                      ja: 'スプレッドシート設計の全12リージョン・90実践レベル（高度な数式、条件論理、XLOOKUP、ピボットテーブル、財務分析、マクロ、モデル監査）を優秀な成績で修了したことを証します。',
-                      pt: 'Por ter concluído com sucesso as 12 regiões e 90 níveis práticos de engenharia em planilhas: Fórmulas Avançadas, Lógica Condicional, PROCX, Tabelas Dinâmicas, Finanças, Macros e Auditoria de Modelos.',
+                      es: 'ID DE VERIFICACIÓN',
+                      en: 'VERIFICATION ID',
+                      de: 'VERIFIZIERUNGS-ID',
+                      fr: 'ID DE VÉRIFICATION',
+                      ja: '認証ID',
+                      pt: 'ID DE VERIFICAÇÃO',
                     })}
                   </p>
-                </div>
-
-                {/* 4 Skill Chips */}
-                <div className="flex items-center justify-center gap-2 flex-wrap">
-                  {[
-                    tr(locale, {
-                      es: '12 Módulos Aprobados',
-                      en: '12 Modules Passed',
-                      de: '12 Module bestanden',
-                      fr: '12 Modules Validés',
-                      ja: '全12モジュール修了',
-                      pt: '12 Módulos Aprovados',
-                    }),
-                    tr(locale, {
-                      es: 'Fórmulas & Matrices',
-                      en: 'Formulas & Arrays',
-                      de: 'Formeln & Matrizen',
-                      fr: 'Formules & Matrices',
-                      ja: '数式＆配列',
-                      pt: 'Fórmulas & Matrizes',
-                    }),
-                    tr(locale, {
-                      es: 'Tablas Dinámicas',
-                      en: 'Pivot Tables',
-                      de: 'Pivot-Tabellen',
-                      fr: 'Tableaux Croisés',
-                      ja: 'ピボットテーブル',
-                      pt: 'Tabelas Dinâmicas',
-                    }),
-                    tr(locale, {
-                      es: 'Auditoría Integral',
-                      en: 'Full Model Auditing',
-                      de: 'Modellprüfung',
-                      fr: 'Audit Complet',
-                      ja: '総合モデル監査',
-                      pt: 'Auditoria Integral',
-                    }),
-                  ].map((chip) => (
-                    <span
-                      key={chip}
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-gv-primary/10 border border-gv-primary/35 text-slate-200 text-[10px] font-bold"
-                    >
-                      <CheckCircle2 className="w-3 h-3 text-gv-primary" />
-                      {chip}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Footer: Issue Date, Gold Seal, Verification ID */}
-                <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 pt-3 border-t border-[#D4AF37]/25">
-                  <div className="text-center sm:text-left">
-                    <p className="text-[9px] text-slate-400 font-bold tracking-wider uppercase">
-                      {tr(locale, {
-                        es: 'FECHA DE EMISIÓN',
-                        en: 'ISSUE DATE',
-                        de: 'AUSSTELLUNGSDATUM',
-                        fr: "DATE D'ÉMISSION",
-                        ja: '発行日',
-                        pt: 'DATA DE EMISSÃO',
-                      })}
-                    </p>
-                    <p className="text-xs font-extrabold text-white mt-0.5">
-                      {certificateMeta.dateStr}
-                    </p>
-                    <p className="text-[10px] text-[#D4AF37] font-semibold">
-                      Gridverse Pro Certified
-                    </p>
-                  </div>
-
-                  {/* Gold Seal */}
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#F3E5AB] via-[#D4AF37] to-[#996515] p-1 shadow-[0_0_20px_rgba(212,175,55,0.45)] flex items-center justify-center shrink-0">
-                    <div className="w-full h-full rounded-full border border-[#090E17] flex flex-col items-center justify-center text-[#090E17]">
-                      <Award className="w-5 h-5 stroke-[2.2]" />
-                      <span className="text-[6px] font-black tracking-tighter leading-none">
-                        VERIFIED
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="text-center sm:text-right">
-                    <p className="text-[9px] text-slate-400 font-bold tracking-wider uppercase">
-                      {tr(locale, {
-                        es: 'ID DE VERIFICACIÓN',
-                        en: 'VERIFICATION ID',
-                        de: 'VERIFIZIERUNGS-ID',
-                        fr: 'ID DE VÉRIFICATION',
-                        ja: '認証ID',
-                        pt: 'ID DE VERIFICAÇÃO',
-                      })}
-                    </p>
-                    <p className="text-xs font-mono font-extrabold text-[#F3E5AB] mt-0.5">
-                      {certificateMeta.verificationId}
-                    </p>
-                    <p className="text-[10px] text-gv-primary font-semibold">
-                      gridverse.app/verify
-                    </p>
-                  </div>
+                  <p className="text-xs font-mono font-extrabold text-[#F3E5AB] mt-0.5">
+                    {stats.isPro && hasCompletedAll ? certificateMeta.verificationId : 'GV-PRO-••••-••••'}
+                  </p>
+                  <p className="text-[10px] text-slate-400 font-medium">
+                    gridverse.app/verify
+                  </p>
                 </div>
               </div>
             </div>
 
             {/* Certificate Modal Action Buttons */}
             <div className="flex items-center justify-end gap-2.5">
-              <button
-                type="button"
-                onClick={async () => {
-                  sound.play('tap');
-                  try {
-                    await navigator.clipboard.writeText(certificateMeta.verificationId);
-                    setCopiedVerificationId(true);
-                    setTimeout(() => setCopiedVerificationId(false), 2500);
-                  } catch {
-                    // ignore
-                  }
-                }}
-                className="px-4 py-2.5 rounded-xl bg-gv-surface border border-gv-border text-gv-text text-xs font-bold flex items-center gap-1.5 hover:bg-gv-surface-high cursor-pointer"
-              >
-                {copiedVerificationId ? (
-                  <>
-                    <Check className="w-4 h-4 text-gv-primary" />
+              {!stats.isPro ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => setShowCertificateModal(false)}
+                    className="px-4 py-2.5 rounded-xl bg-gv-surface border border-gv-border text-gv-muted hover:text-gv-text text-xs font-bold cursor-pointer"
+                  >
+                    {tr(locale, {
+                      es: 'Cerrar',
+                      en: 'Close',
+                      de: 'Schließen',
+                      fr: 'Fermer',
+                      ja: '閉じる',
+                      pt: 'Fechar',
+                    })}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      sound.play('tap');
+                      setShowCertificateModal(false);
+                      onNavigateTab?.('shop');
+                    }}
+                    className="px-5 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#e5c148] text-[#090E17] text-xs font-black flex items-center gap-2 shadow-lg transition-all cursor-pointer"
+                  >
+                    <Sparkles className="w-4 h-4" />
                     <span>
                       {tr(locale, {
-                        es: 'ID Copiado',
-                        en: 'ID Copied',
-                        de: 'ID kopiert',
-                        fr: 'ID Copié',
-                        ja: 'IDをコピーしました',
-                        pt: 'ID Copiado',
+                        es: 'Desbloquear Certificado con Pro',
+                        en: 'Unlock Certificate with Pro',
+                        de: 'Mit Pro freischalten',
+                        fr: 'Débloquer avec Pro',
+                        ja: 'Proで認定証をアンロック',
+                        pt: 'Desbloquear Certificado com Pro',
                       })}
                     </span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-4 h-4" />
+                  </button>
+                </>
+              ) : !hasCompletedAll ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => setShowCertificateModal(false)}
+                    className="px-4 py-2.5 rounded-xl bg-gv-surface border border-gv-border text-gv-muted hover:text-gv-text text-xs font-bold cursor-pointer"
+                  >
+                    {tr(locale, {
+                      es: 'Cerrar',
+                      en: 'Close',
+                      de: 'Schließen',
+                      fr: 'Fermer',
+                      ja: '閉じる',
+                      pt: 'Fechar',
+                    })}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      sound.play('tap');
+                      setShowCertificateModal(false);
+                      onNavigateTab?.('map');
+                    }}
+                    className="px-5 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#e5c148] text-[#090E17] text-xs font-black flex items-center gap-2 shadow-lg transition-all cursor-pointer"
+                  >
+                    <Compass className="w-4 h-4" />
                     <span>
                       {tr(locale, {
-                        es: 'Copiar ID',
-                        en: 'Copy ID',
-                        de: 'ID kopieren',
-                        fr: 'Copier ID',
-                        ja: 'IDをコピー',
-                        pt: 'Copiar ID',
+                        es: `Completar Mapa (${completedPlayableCount}/${totalPlayableLevels})`,
+                        en: `Complete Map (${completedPlayableCount}/${totalPlayableLevels})`,
+                        de: `Karte abschließen (${completedPlayableCount}/${totalPlayableLevels})`,
+                        fr: `Compléter la carte (${completedPlayableCount}/${totalPlayableLevels})`,
+                        ja: `マップをクリア (${completedPlayableCount}/${totalPlayableLevels})`,
+                        pt: `Concluir Mapa (${completedPlayableCount}/${totalPlayableLevels})`,
                       })}
                     </span>
-                  </>
-                )}
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  sound.play('tap');
-                  window.print();
-                }}
-                className="px-5 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#e5c148] text-[#090E17] text-xs font-black flex items-center gap-2 cursor-pointer"
-              >
-                <Printer className="w-4 h-4" />
-                <span>
-                  {tr(locale, {
-                    es: 'Imprimir / Guardar PDF',
-                    en: 'Print / Save PDF',
-                    de: 'Drucken / Als PDF speichern',
-                    fr: 'Imprimer / Enregistrer en PDF',
-                    ja: '印刷 / PDF保存',
-                    pt: 'Imprimir / Salvar PDF',
-                  })}
-                </span>
-              </button>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      sound.play('tap');
+                      try {
+                        await navigator.clipboard.writeText(certificateMeta.verificationId);
+                        setCopiedVerificationId(true);
+                        setTimeout(() => setCopiedVerificationId(false), 2500);
+                      } catch {
+                        // ignore
+                      }
+                    }}
+                    className="px-4 py-2.5 rounded-xl bg-gv-surface border border-gv-border text-gv-text text-xs font-bold flex items-center gap-1.5 hover:bg-gv-surface-high cursor-pointer"
+                  >
+                    {copiedVerificationId ? (
+                      <>
+                        <Check className="w-4 h-4 text-gv-primary" />
+                        <span>
+                          {tr(locale, {
+                            es: 'ID Copiado',
+                            en: 'ID Copied',
+                            de: 'ID kopiert',
+                            fr: 'ID Copié',
+                            ja: 'IDをコピーしました',
+                            pt: 'ID Copiado',
+                          })}
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-4 h-4" />
+                        <span>
+                          {tr(locale, {
+                            es: 'Copiar ID',
+                            en: 'Copy ID',
+                            de: 'ID kopieren',
+                            fr: 'Copier ID',
+                            ja: 'IDをコピー',
+                            pt: 'Copiar ID',
+                          })}
+                        </span>
+                      </>
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      sound.play('tap');
+                      window.print();
+                    }}
+                    className="px-5 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#e5c148] text-[#090E17] text-xs font-black flex items-center gap-2 cursor-pointer shadow-lg"
+                  >
+                    <Printer className="w-4 h-4" />
+                    <span>
+                      {tr(locale, {
+                        es: 'Imprimir / Guardar PDF',
+                        en: 'Print / Save PDF',
+                        de: 'Drucken / Als PDF speichern',
+                        fr: 'Imprimer / Enregistrer en PDF',
+                        ja: '印刷 / PDF保存',
+                        pt: 'Imprimir / Salvar PDF',
+                      })}
+                    </span>
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
