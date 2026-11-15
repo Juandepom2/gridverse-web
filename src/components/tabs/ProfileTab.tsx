@@ -99,6 +99,136 @@ const GoogleLogo: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' })
   </svg>
 );
 
+const DiplomaBadgeIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <path
+      d="M12 2.5L19.5 6.5V12C19.5 16.5 16.2 20.2 12 21.6C7.8 20.2 4.5 16.5 4.5 12V6.5L12 2.5Z"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M9 12L11.2 14.2L15.5 9.8"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const CertificateCrest: React.FC<{ className?: string }> = ({ className = 'w-11 h-11' }) => (
+  <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect
+      x="24"
+      y="5"
+      width="26.87"
+      height="26.87"
+      rx="3"
+      transform="rotate(45 24 5)"
+      stroke="#B8860B"
+      strokeWidth="1.25"
+    />
+    <rect
+      x="24"
+      y="8.5"
+      width="21.92"
+      height="21.92"
+      rx="2"
+      transform="rotate(45 24 8.5)"
+      stroke="#D4AF37"
+      strokeWidth="0.8"
+      strokeDasharray="2 1.5"
+    />
+    <path d="M24 14V34M14 24H34" stroke="#996515" strokeWidth="1.4" strokeLinecap="round" />
+    <path d="M19 19L29 29M29 19L19 29" stroke="#B8860B" strokeWidth="0.9" strokeOpacity="0.7" />
+    <circle cx="24" cy="24" r="3.2" fill="#B8860B" />
+    <circle cx="24" cy="24" r="1.5" fill="#FFFDF8" />
+    <path d="M24 10.5L25.5 12L24 13.5L22.5 12Z" fill="#B8860B" />
+    <path d="M24 34.5L25.5 36L24 37.5L22.5 36Z" fill="#B8860B" />
+    <path d="M10.5 24L12 25.5L13.5 24L12 22.5Z" fill="#B8860B" />
+    <path d="M34.5 24L36 25.5L37.5 24L36 22.5Z" fill="#B8860B" />
+  </svg>
+);
+
+const CertificateSeal: React.FC<{ verified?: boolean; className?: string }> = ({
+  verified = true,
+  className = 'w-16 h-16',
+}) => (
+  <svg
+    className={className}
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id="sealGoldGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stopColor="#DFBA52" />
+        <stop offset="50%" stopColor="#C59B27" />
+        <stop offset="100%" stopColor="#8C5C0F" />
+      </linearGradient>
+      <path id="sealCircularPath" d="M 50,50 m -34,0 a 34,34 0 1,1 68,0 a 34,34 0 1,1 -68,0" />
+    </defs>
+    <circle cx="50" cy="50" r="47" fill="url(#sealGoldGrad)" />
+    <circle cx="50" cy="50" r="43" stroke="#FFFFFF" strokeWidth="1" strokeOpacity="0.85" strokeDasharray="2 1.5" />
+    <circle cx="50" cy="50" r="40" stroke="#684206" strokeWidth="0.75" />
+    <circle cx="50" cy="50" r="28" fill="#FFFDF8" stroke="#C59B27" strokeWidth="1.2" />
+    <text fontSize="6" fontWeight="900" letterSpacing="1.8" fill="#FFFFFF" textAnchor="middle">
+      <textPath href="#sealCircularPath" startOffset="50%">
+        GRIDVERSE • OFFICIAL CERTIFIED •
+      </textPath>
+    </text>
+    <g transform="translate(50, 50)">
+      <rect
+        x="-8"
+        y="-8"
+        width="16"
+        height="16"
+        rx="2"
+        transform="rotate(45)"
+        fill="#C59B27"
+        fillOpacity="0.12"
+        stroke="#996515"
+        strokeWidth="1.1"
+      />
+      {verified ? (
+        <>
+          <path
+            d="M-4 0.5L-1.2 3.5L4 -2"
+            stroke="#7A4F0B"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <text
+            y="13.5"
+            fontSize="4.8"
+            fontWeight="900"
+            letterSpacing="0.8"
+            fill="#7A4F0B"
+            textAnchor="middle"
+          >
+            VERIFIED
+          </text>
+        </>
+      ) : (
+        <>
+          <circle cx="0" cy="0" r="2.5" fill="#7A4F0B" />
+          <text
+            y="13.5"
+            fontSize="4.5"
+            fontWeight="900"
+            letterSpacing="0.8"
+            fill="#7A4F0B"
+            textAnchor="middle"
+          >
+            PREVIEW
+          </text>
+        </>
+      )}
+    </g>
+  </svg>
+);
+
 const CELDI_AVATAR_OPTIONS: {
   key: string;
   mood: CeldiMood;
@@ -1484,7 +1614,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                   : 'bg-[#D4AF37]/15 border-[#D4AF37]/50 text-[#F3E5AB]'
               }`}
             >
-              <Award className={`w-3.5 h-3.5 ${isLight ? 'text-amber-700' : 'text-[#D4AF37]'}`} />
+              <DiplomaBadgeIcon className={`w-3.5 h-3.5 ${isLight ? 'text-amber-700' : 'text-[#D4AF37]'}`} />
               {tr(locale, {
                 es: 'CERTIFICADO OFICIAL GRIDVERSE',
                 en: 'OFFICIAL GRIDVERSE CERTIFICATE',
@@ -1507,7 +1637,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
           </div>
           <div className="flex items-center gap-3.5">
             <div className="w-[54px] h-[54px] rounded-[14px] bg-gradient-to-br from-[#D4AF37] to-[#996515] flex items-center justify-center text-[#090E17] shadow-lg shrink-0">
-              <Award className="w-7 h-7 stroke-[2.2]" />
+              <DiplomaBadgeIcon className="w-7 h-7 stroke-[2.2]" />
             </div>
             <div>
               <h3 className="text-base font-black text-gv-text">
@@ -1605,7 +1735,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                     : 'bg-[#D4AF37]/15 border-[#D4AF37]/40 text-[#D4AF37]'
                 }`}
               >
-                <Award className="w-5 h-5" />
+                <DiplomaBadgeIcon className="w-5 h-5" />
               </div>
               <div className="min-w-0">
                 <h3 className="text-sm font-extrabold text-gv-text truncate">
@@ -1811,7 +1941,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                   : 'bg-[#D4AF37]/15 border-[#D4AF37]/35 text-[#D4AF37]'
               }`}
             >
-              <Award className="w-5 h-5" />
+              <DiplomaBadgeIcon className="w-5 h-5" />
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
@@ -3224,7 +3354,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
           <div className="w-full max-w-2xl flex flex-col gap-4 my-auto">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 flex-wrap">
-                <Award className="w-5 h-5 text-[#D4AF37]" />
+                <DiplomaBadgeIcon className="w-5 h-5 text-[#D4AF37]" />
                 <span className="text-sm font-black text-white">
                   {tr(locale, {
                     es: 'Certificado Oficial Gridverse',
@@ -3279,18 +3409,15 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               </button>
             </div>
 
-            {/* Minimalist Executive Certificate Document */}
-            <div className="relative rounded-2xl bg-[#0B0F15] border border-[#D4AF37]/35 p-6 sm:p-10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] overflow-hidden text-center flex flex-col justify-between min-h-[460px] gap-6">
+            {/* Minimalist Executive Certificate Document - White Parchment Default */}
+            <div className="relative rounded-2xl bg-[#FCFDFD] border-[1.5px] border-[#D4AF37]/70 p-6 sm:p-10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] overflow-hidden text-center flex flex-col justify-between min-h-[460px] gap-6 text-slate-900 select-none">
               {/* Subtle Hairline Inset Border */}
-              <div className="absolute inset-2 sm:inset-3 border border-[#D4AF37]/15 rounded-xl pointer-events-none" />
-
-              {/* Ambient Warm Glow */}
-              <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-48 bg-[#D4AF37]/8 blur-3xl rounded-full pointer-events-none" />
+              <div className="absolute inset-2 sm:inset-3 border border-[#D4AF37]/35 rounded-xl pointer-events-none" />
 
               {/* Watermark for Non-Pro or Incomplete States */}
               {!stats.isPro && (
                 <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none select-none p-4">
-                  <div className="transform -rotate-12 px-6 py-2 rounded-xl bg-black/80 border border-amber-500/50 backdrop-blur-sm text-amber-300 font-mono text-xs sm:text-sm font-black tracking-[0.25em] uppercase shadow-2xl">
+                  <div className="transform -rotate-12 px-6 py-2.5 rounded-xl bg-amber-500/10 border-2 border-dashed border-amber-600/50 backdrop-blur-[1px] text-amber-900 font-mono text-xs sm:text-sm font-black tracking-[0.25em] uppercase shadow-md">
                     {tr(locale, {
                       es: 'MUESTRA · REQUIERE PRO',
                       en: 'SAMPLE · REQUIRES PRO',
@@ -3304,7 +3431,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               )}
               {stats.isPro && !hasCompletedAll && (
                 <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none select-none p-4">
-                  <div className="transform -rotate-12 px-6 py-2 rounded-xl bg-black/80 border border-[#D4AF37]/50 backdrop-blur-sm text-[#F3E5AB] font-mono text-xs sm:text-sm font-black tracking-[0.25em] uppercase shadow-2xl">
+                  <div className="transform -rotate-12 px-6 py-2.5 rounded-xl bg-amber-500/10 border-2 border-dashed border-[#B8860B]/50 backdrop-blur-[1px] text-[#7A4F0B] font-mono text-xs sm:text-sm font-black tracking-[0.25em] uppercase shadow-md">
                     {tr(locale, {
                       es: `VISTA PREVIA · ${certPercent}% COMPLETADO`,
                       en: `PREVIEW · ${certPercent}% COMPLETED`,
@@ -3319,13 +3446,11 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
 
               {/* Top Header: Monogram Emblem + Academy + Title */}
               <div className="relative z-10 flex flex-col items-center gap-1.5">
-                <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/35 flex items-center justify-center text-[#D4AF37] mb-1">
-                  <Award className="w-5 h-5 stroke-[1.8]" />
-                </div>
-                <span className="text-[10px] tracking-[0.3em] text-[#D4AF37] font-bold uppercase">
+                <CertificateCrest className="w-12 h-12 mb-1" />
+                <span className="text-[10px] tracking-[0.3em] text-[#996515] font-bold uppercase">
                   GRIDVERSE ACADEMY
                 </span>
-                <h2 className="text-xl sm:text-2xl font-light text-white tracking-wide mt-0.5">
+                <h2 className="text-xl sm:text-2xl font-light text-slate-900 tracking-wide mt-0.5">
                   {tr(locale, {
                     es: 'Certificado de Maestría en Excel',
                     en: 'Certificate of Excel Mastery',
@@ -3335,7 +3460,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                     pt: 'Certificado de Maestria em Excel',
                   })}
                 </h2>
-                <span className="text-[10px] tracking-[0.2em] text-slate-400 font-medium uppercase">
+                <span className="text-[10px] tracking-[0.2em] text-slate-500 font-medium uppercase">
                   {tr(locale, {
                     es: 'Especialización en Análisis de Datos & Hojas de Cálculo',
                     en: 'Specialization in Data Analysis & Spreadsheets',
@@ -3349,7 +3474,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
 
               {/* Recipient & Citation */}
               <div className="relative z-10 flex flex-col items-center my-1">
-                <span className="text-[9px] tracking-[0.25em] text-slate-400 font-semibold uppercase">
+                <span className="text-[9px] tracking-[0.25em] text-slate-500 font-semibold uppercase">
                   {tr(locale, {
                     es: 'OTORGADO CON DISTINCIÓN A',
                     en: 'PROUDLY PRESENTED TO',
@@ -3359,11 +3484,11 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                     pt: 'CONCEDIDO A',
                   })}
                 </span>
-                <p className="text-2xl sm:text-3xl font-serif text-[#F3E5AB] tracking-wide my-2 font-normal">
+                <p className="text-2xl sm:text-3xl font-serif text-slate-900 tracking-wide my-2 font-normal">
                   {userName}
                 </p>
-                <div className="w-28 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent mx-auto my-2" />
-                <p className="text-xs text-slate-300 max-w-lg leading-relaxed mx-auto font-light">
+                <div className="w-28 h-px bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto my-2" />
+                <p className="text-xs text-slate-600 max-w-lg leading-relaxed mx-auto font-light">
                   {tr(locale, {
                     es: 'Por haber completado con excelencia el programa de 90 niveles prácticos: Fórmulas Avanzadas, Lógica Condicional, BUSCARX, Tablas Dinámicas y Modelado Financiero.',
                     en: 'For successfully completing the comprehensive curriculum of 90 hands-on levels: Advanced Formulas, Conditional Logic, XLOOKUP, Pivot Tables, and Financial Modeling.',
@@ -3375,21 +3500,21 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 </p>
 
                 {/* Minimalist Inline Competencies */}
-                <div className="flex items-center justify-center gap-2 text-[10px] text-slate-400 font-mono tracking-wider flex-wrap mt-3.5">
+                <div className="flex items-center justify-center gap-2 text-[10px] text-slate-500 font-mono tracking-wider flex-wrap mt-3.5">
                   <span>12 Módulos</span>
-                  <span className="text-[#D4AF37]/50">·</span>
+                  <span className="text-[#D4AF37]">·</span>
                   <span>Fórmulas & Matrices</span>
-                  <span className="text-[#D4AF37]/50">·</span>
+                  <span className="text-[#D4AF37]">·</span>
                   <span>Tablas Dinámicas</span>
-                  <span className="text-[#D4AF37]/50">·</span>
+                  <span className="text-[#D4AF37]">·</span>
                   <span>Auditoría de Modelos</span>
                 </div>
               </div>
 
-              {/* Footer: Issue Date, Minimalist Seal, Verification ID */}
-              <div className="relative z-10 w-full flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[#D4AF37]/20">
+              {/* Footer: Issue Date, Bespoke Seal, Verification ID */}
+              <div className="relative z-10 w-full flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[#D4AF37]/30">
                 <div className="text-center sm:text-left">
-                  <p className="text-[9px] text-slate-400 font-bold tracking-wider uppercase">
+                  <p className="text-[9px] text-slate-500 font-bold tracking-wider uppercase">
                     {tr(locale, {
                       es: 'FECHA DE EMISIÓN',
                       en: 'ISSUE DATE',
@@ -3399,25 +3524,22 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                       pt: 'DATA DE EMISSÃO',
                     })}
                   </p>
-                  <p className="text-xs font-semibold text-white mt-0.5">
+                  <p className="text-xs font-semibold text-slate-900 mt-0.5">
                     {certificateMeta.dateStr}
                   </p>
-                  <p className="text-[10px] text-[#D4AF37] font-medium">
+                  <p className="text-[10px] text-[#996515] font-semibold">
                     Gridverse Pro Certified
                   </p>
                 </div>
 
-                {/* Minimalist Vector Seal */}
-                <div className="w-12 h-12 rounded-full border border-[#D4AF37]/60 flex flex-col items-center justify-center text-[#D4AF37] relative shrink-0">
-                  <div className="absolute inset-0.5 rounded-full border border-[#D4AF37]/25" />
-                  <Award className="w-4 h-4 stroke-[2]" />
-                  <span className="text-[6px] tracking-widest font-black uppercase text-[#F3E5AB] leading-none mt-0.5">
-                    {stats.isPro && hasCompletedAll ? 'VERIFIED' : 'PREVIEW'}
-                  </span>
-                </div>
+                {/* Bespoke Vector Seal */}
+                <CertificateSeal
+                  verified={Boolean(stats.isPro && hasCompletedAll)}
+                  className="w-16 h-16 shrink-0 drop-shadow-sm"
+                />
 
                 <div className="text-center sm:text-right">
-                  <p className="text-[9px] text-slate-400 font-bold tracking-wider uppercase">
+                  <p className="text-[9px] text-slate-500 font-bold tracking-wider uppercase">
                     {tr(locale, {
                       es: 'ID DE VERIFICACIÓN',
                       en: 'VERIFICATION ID',
@@ -3427,10 +3549,10 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                       pt: 'ID DE VERIFICAÇÃO',
                     })}
                   </p>
-                  <p className="text-xs font-mono font-extrabold text-[#F3E5AB] mt-0.5">
+                  <p className="text-xs font-mono font-extrabold text-slate-900 mt-0.5">
                     {stats.isPro && hasCompletedAll ? certificateMeta.verificationId : 'GV-PRO-••••-••••'}
                   </p>
-                  <p className="text-[10px] text-slate-400 font-medium">
+                  <p className="text-[10px] text-slate-500 font-medium">
                     gridverse.app/verify
                   </p>
                 </div>
