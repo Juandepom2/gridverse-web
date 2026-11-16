@@ -18,7 +18,9 @@ import {
 import { LevelData, Exercise, UserStats, SupportedLocale } from '../types';
 import { CeldiMascot, CeldiMood } from './CeldiMascot';
 import { SpreadsheetGrid, highlightsForFormula } from './SpreadsheetGrid';
+import { VictoryCeremony } from './VictoryCeremony';
 import { sound } from '../lib/audio';
+import { fetchSingleFirestoreLevel } from '../lib/firebase';
 import { tr } from '../lib/i18n';
 
 interface LessonModalProps {
@@ -29,7 +31,12 @@ interface LessonModalProps {
   onClose: () => void;
   onCompleteLevel: (levelRef: string, stars: number, earnedXp: number) => void;
   onLoseLife: () => void;
+  onClaimBonus?: (bonusGems: number, bonusXp: number) => void;
+  nextLevelFile?: string;
+  onNextLevel?: () => void;
 }
+
+const levelCache = new Map<string, LevelData>();
 
 interface QueuedExercise {
   id: string;
@@ -250,6 +257,9 @@ export const LessonModal: React.FC<LessonModalProps> = ({
   onClose,
   onCompleteLevel,
   onLoseLife,
+  onClaimBonus,
+  nextLevelFile,
+  onNextLevel,
 }) => {
   const [level, setLevel] = useState<LevelData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -287,17 +297,47 @@ export const LessonModal: React.FC<LessonModalProps> = ({
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Load level JSON and shuffle answers
+  // Load level JSON (with in-memory cache + 4s timeout) and shuffle answers
   useEffect(() => {
+    let cancelled = false;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
+
     async function load() {
       try {
-        setLoading(true);
-        const res = await fetch(`/levels/${levelFile}`);
-        if (!res.ok) throw new Error('File not found');
-        const data: LevelData = await res.json();
+        let data = levelCache.get(levelFile);
+        if (!data) {
+          setLoading(true);
+          try {
+            const res = await fetch(`/levels/${levelFile}`, { signal: controller.signal });
+            if (res.ok) {
+              const contentType = res.headers.get('content-type') || '';
+              if (!contentType.includes('text/html')) {
+                const json = (await res.json()) as LevelData;
+                if (json && Array.isArray(json.exercises) && json.exercises.length > 0) {
+                  data = json;
+                }
+              }
+            }
+          } catch (_) {}
+
+          if (!data) {
+            const firestoreData = await fetchSingleFirestoreLevel(levelRef);
+            if (firestoreData) {
+              data = firestoreData;
+            }
+          }
+
+          if (!data) {
+            throw new Error('Level not found locally or in Firestore');
+          }
+          levelCache.set(levelFile, data);
+        }
+
+        if (cancelled) return;
         setLevel(data);
 
-        const initialQueue: QueuedExercise[] = (data.exercises || []).map((ex, idx) => ({
+        const initialQueue: QueuedExercise[] = data.exercises.map((ex, idx) => ({
           id: `ex-${idx}-init`,
           exercise: shuffleExerciseAnswers(ex, locale),
           originalIndex: idx,
@@ -307,7 +347,20 @@ export const LessonModal: React.FC<LessonModalProps> = ({
         setInitialTotal(initialQueue.length);
         setSolvedOriginalIndices(new Set());
         setCurrentIndex(0);
+
+        // Prefetch next level in background for instant transition
+        if (nextLevelFile && !levelCache.has(nextLevelFile)) {
+          fetch(`/levels/${nextLevelFile}`)
+            .then((r) => (r.ok ? r.json() : null))
+            .then((nextData: LevelData | null) => {
+              if (nextData && Array.isArray(nextData.exercises) && nextData.exercises.length > 0) {
+                levelCache.set(nextLevelFile, nextData);
+              }
+            })
+            .catch(() => {});
+        }
       } catch (err) {
+        if (cancelled) return;
         console.warn('Error loading level from public/levels, using fallback', err);
         const fallbackEx: Exercise = {
           type: 'select_range',
@@ -335,11 +388,18 @@ export const LessonModal: React.FC<LessonModalProps> = ({
         setSolvedOriginalIndices(new Set());
         setCurrentIndex(0);
       } finally {
-        setLoading(false);
+        clearTimeout(timeoutId);
+        if (!cancelled) setLoading(false);
       }
     }
     load();
-  }, [levelFile, levelRef, locale]);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timeoutId);
+      controller.abort();
+    };
+  }, [levelFile, levelRef, locale, nextLevelFile]);
 
   const currentQueued: QueuedExercise | undefined = queue[currentIndex];
   const currentExercise: Exercise | undefined = currentQueued?.exercise;
@@ -621,18 +681,8 @@ export const LessonModal: React.FC<LessonModalProps> = ({
     if (currentIndex + 1 < queue.length) {
       setCurrentIndex((prev) => prev + 1);
     } else {
-      // Completed level
+      // Completed level — VictoryCeremony orchestrates Anticipation -> Ceremony -> Afterglow
       setIsCompleted(true);
-      sound.play('level_win');
-      try {
-        confetti({
-          particleCount: 110,
-          spread: 75,
-          origin: { y: 0.6 },
-          colors: ['#21C26B', '#7CFFB2', '#3B82F6', '#F59E0B'],
-        });
-      } catch (_) {}
-
       const stars = mistakes === 0 ? 3 : mistakes <= 1 ? 2 : 1;
       const earnedXp = level.rewardXp ?? 20;
       onCompleteLevel(level.ref, stars, earnedXp);
@@ -1098,78 +1148,17 @@ export const LessonModal: React.FC<LessonModalProps> = ({
             )}
           </div>
         ) : (
-          /* ── Victory Screen */
-          <div className="p-6 sm:p-8 text-center flex flex-col items-center gap-4 my-auto">
-            <CeldiMascot mood="celebrating" size={88} showBubble={false} />
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-gv-primary font-mono">
-                {tr(locale, {
-                  es: '¡Nivel Completado!',
-                  en: 'Level Completed!',
-                  de: 'Level abgeschlossen!',
-                  fr: 'Niveau terminé !',
-                  ja: 'レベルクリア！',
-                  pt: 'Nível Concluído!',
-                })}
-              </span>
-              <h2 className="text-xl sm:text-2xl font-black text-gv-text mt-1">
-                {level.titleByLocale?.[locale] ?? level.title}
-              </h2>
-            </div>
-
-            {/* Stars */}
-            <div className="flex items-center gap-2">
-              {[1, 2, 3].map((star) => {
-                const earned = (mistakes === 0 ? 3 : mistakes === 1 ? 2 : 1) >= star;
-                return (
-                  <Star
-                    key={star}
-                    className={`w-8 h-8 ${
-                      earned
-                        ? 'fill-gv-warning text-gv-warning animate-scale-up'
-                        : 'text-gv-border fill-gv-surface-high'
-                    }`}
-                  />
-                );
-              })}
-            </div>
-
-            {/* XP & Rewards */}
-            <div className="flex items-center gap-4 bg-gv-surface-high border border-gv-border rounded-xl px-5 py-2.5 text-xs sm:text-sm">
-              <div className="flex items-center gap-1.5 font-bold text-gv-accent font-mono">
-                <Award className="w-4 h-4" />
-                <span>+{level.rewardXp ?? 20} XP</span>
-              </div>
-              <div className="w-px h-4 bg-gv-border" />
-              <div className="flex items-center gap-1.5 font-bold text-gv-bytes font-mono">
-                <span>
-                  +5{' '}
-                  {tr(locale, {
-                    es: 'Gemas 💎',
-                    en: 'Gems 💎',
-                    de: 'Edelsteine 💎',
-                    fr: 'Gemmes 💎',
-                    ja: 'ジェム 💎',
-                    pt: 'Gemas 💎',
-                  })}
-                </span>
-              </div>
-            </div>
-
-            <button
-              onClick={onClose}
-              className="w-full max-w-xs py-3 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-gv-primary/20 active:scale-98"
-            >
-              {tr(locale, {
-                es: 'Continuar al Mapa',
-                en: 'Back to Map',
-                de: 'Zurück zur Karte',
-                fr: 'Retour à la carte',
-                ja: 'マップに戻る',
-                pt: 'Voltar ao Mapa',
-              })}
-            </button>
-          </div>
+          /* ── Victory Screen: 3-Stage Gift Protocol (Anticipation -> Ceremony -> Afterglow) */
+          <VictoryCeremony
+            level={level}
+            locale={locale}
+            mistakes={mistakes}
+            totalExercises={initialTotal}
+            stats={stats}
+            onClose={onClose}
+            onClaimBonus={onClaimBonus}
+            onNextLevel={onNextLevel}
+          />
         )}
 
         {/* ── 3. Bottom Panel (100% Parity with Flutter `_BottomPanel`) */}
@@ -1556,7 +1545,6 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                   setCurrentIndex((prev) => prev + 1);
                 } else {
                   setIsCompleted(true);
-                  sound.play('level_win');
                   const stars = mistakes === 0 ? 3 : mistakes <= 1 ? 2 : 1;
                   const earnedXp = level.rewardXp ?? 20;
                   onCompleteLevel(level.ref, stars, earnedXp);

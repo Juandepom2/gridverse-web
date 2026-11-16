@@ -35,11 +35,14 @@ import {
   getStepByStepExercise,
 } from '../../data/coursesData';
 import { MissionModal } from '../practice/MissionModal';
+import { DailyQuestsCard } from '../practice/DailyQuestsCard';
+import { WeeklyLeagueCard } from '../practice/WeeklyLeagueCard';
 
 interface PracticeTabProps {
   stats: UserStats;
   locale: SupportedLocale;
   onReward: (xp: number, gems: number, completedRef?: string) => void;
+  onUpdateStats?: (newStats: UserStats) => void;
   onLoseLife?: () => void;
   onNavigateTab?: (tab: string) => void;
 }
@@ -699,6 +702,7 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
   stats,
   locale,
   onReward,
+  onUpdateStats,
   onLoseLife,
   onNavigateTab,
 }) => {
@@ -772,6 +776,7 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
 
   const isCourseUnlocked = (course: PracticeCourseData): boolean => {
     if (stats.isPro) return true;
+    if (course.isProOnly) return false;
     if (!course.prerequisiteCourseId) return true;
     const prereq = practiceCourses.find((c) => c.id === course.prerequisiteCourseId);
     if (!prereq) return true;
@@ -910,6 +915,24 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
             })}
           </p>
         </div>
+      </div>
+
+      {/* Daily Quests + Weekly League Grid (Habit Loop & Invisible Scoreboard) */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <DailyQuestsCard
+          stats={stats}
+          locale={locale}
+          onReward={(xp, gems) => onReward(xp, gems)}
+          onUpdateStats={onUpdateStats}
+        />
+        <WeeklyLeagueCard
+          stats={stats}
+          locale={locale}
+          onQuickTrain={() => {
+            sound.play('tap');
+            setActiveExercise(getStepByStepExercise('DAILY', locale));
+          }}
+        />
       </div>
 
       {/* 1. Daily Challenge Banner (matching mobile _DailyChallengeCard) */}
@@ -1248,6 +1271,10 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
                         key={mission.ref}
                         onClick={() => {
                           sound.play('tap');
+                          if (course.isProOnly && !stats.isPro) {
+                            onNavigateTab?.('shop');
+                            return;
+                          }
                           setPreviewMission(mission);
                         }}
                         className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-start justify-between gap-3 ${

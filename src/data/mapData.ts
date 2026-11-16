@@ -12,6 +12,7 @@ export interface LevelItem {
   stars?: number;
   bossError?: string;
   bossErrorByLocale?: Record<SupportedLocale, string>;
+  isProOnly?: boolean;
 }
 
 export interface RegionItem {
@@ -21,6 +22,7 @@ export interface RegionItem {
   subtitle: string;
   subtitleByLocale: Record<SupportedLocale, string>;
   color: string;
+  isProOnly?: boolean;
   levels: LevelItem[];
 }
 
@@ -246,7 +248,22 @@ export const MOCK_REGIONS: RegionItem[] = [
       {ref: 'L3', title: 'Errores ocultos (números como texto},', titleByLocale: {'es': 'Errores ocultos (números como texto},', 'en': 'Hidden Errors (Numbers as Text},', 'de': 'Versteckte Fehler (Zahlen als Text},', 'fr': 'Erreurs cachées (Nombres stockés sous forme de texte},', 'ja': '潜むエラー（文字列として保存された数値）', 'pt': 'Erros ocultos (números como texto},'}},
       {ref: 'L4', title: 'Referencias circulares', titleByLocale: {'es': 'Referencias circulares', 'en': 'Circular References', 'de': 'Zirkelbezüge', 'fr': 'Références circulaires', 'ja': '循環参照', 'pt': 'Referências circulares'}},
       {ref: 'L5', title: 'Revisar una hoja ajena', titleByLocale: {'es': 'Revisar una hoja ajena', 'en': 'Reviewing Someone Else\'s Sheet', 'de': 'Fremde Tabellen prüfen', 'fr': 'Auditer une feuille inconnue', 'ja': '他人が作ったシートの検証実践', 'pt': 'Revisar planilha de terceiros'}, type: "practice"},
-      {ref: 'L6', title: 'Jefe Final: La hoja rota', titleByLocale: {'es': 'Jefe Final: La hoja rota', 'en': 'Final Boss: The Broken Workbook', 'de': 'Endboss: Das zerstörte Arbeitsblatt', 'fr': 'Boss Final : La feuille corrompue', 'ja': '最終ボス：崩壊したスプレッドシート', 'pt': 'Chefe Final: A planilha corrompida'}, type: "boss", bossError: '#¡HOJA_ROTA!', bossErrorByLocale: {'es': '#¡HOJA_ROTA!', 'en': '#BROKEN_SHEET!', 'de': '#DEFEKTE_TABELLE!', 'fr': '#FEUILLE_ROMPUE!', 'ja': '#破損シート!', 'pt': '#PLANILHA_QUEBRADA!'}},
+      {ref: 'L6', title: 'Jefe Final: La hoja rota', titleByLocale: {'es': 'Jefe Final: La hoja rota', 'en': 'Final Boss: The Broken Workbook', 'de': 'Endboss: Das zerstörte Arbeitsblatt', 'fr': 'Boss Final : La feuille corrompue', 'ja': '最終ボス：崩壊したスプレッドシート', 'pt': 'Chefe Final: A planilha corrompida'}, type: "boss", bossError: '#¡HOJA_ROTA!', bossErrorByLocale: {'es': '#¡HOJA_ROTA!', 'en': '#BROKEN_SHEET!', 'de': '#DEFEKTE_TABELLE!', 'fr': '#FEUILLE_ROMPUE!', 'ja': '#破損シート!', 'pt': '#PLANILHA_QUEBRADA!'}, isProOnly: true},
+    ],
+  },
+  {
+    column: 'M',
+    title: 'Automatización, VBA e IA (PRO)',
+    titleByLocale: {'es': 'Automatización, VBA e IA (PRO)', 'en': 'Automation, VBA & AI (PRO)', 'de': 'Automatisierung, VBA & KI (PRO)', 'fr': 'Automatisation, VBA & IA (PRO)', 'ja': '自動化・VBA・AI (PRO)', 'pt': 'Automação, VBA e IA (PRO)'},
+    subtitle: 'Power Query, Macros VBA, Python y Dashboard PRO',
+    subtitleByLocale: {'es': 'Power Query, Macros VBA, Python y Dashboard PRO', 'en': 'Power Query, VBA Macros, Python & PRO Dashboard', 'de': 'Power Query, VBA-Makros, Python & PRO-Dashboard', 'fr': 'Power Query, Macros VBA, Python & Tableau PRO', 'ja': 'Power Query・VBA・Python・PROダッシュボード', 'pt': 'Power Query, Macros VBA, Python e Dashboard PRO'},
+    color: "#F59E0B",
+    isProOnly: true,
+    levels: [
+      {ref: 'M1', title: 'Power Query: Limpieza automática', titleByLocale: {'es': 'Power Query: Limpieza automática', 'en': 'Power Query: Auto-Cleaning', 'de': 'Power Query: Automatische Bereinigung', 'fr': 'Power Query : Nettoyage automatique', 'ja': 'Power Query：自動クレンジング', 'pt': 'Power Query: Limpeza automática'}, isProOnly: true},
+      {ref: 'M2', title: 'Macros y Automatización VBA', titleByLocale: {'es': 'Macros y Automatización VBA', 'en': 'Macros & VBA Automation', 'de': 'Makros & VBA-Automatisierung', 'fr': 'Macros et automatisation VBA', 'ja': 'マクロとVBA自動化', 'pt': 'Macros e Automação VBA'}, isProOnly: true},
+      {ref: 'M3', title: 'Python en Excel y LAMBDA Pro', titleByLocale: {'es': 'Python en Excel y LAMBDA Pro', 'en': 'Python in Excel & LAMBDA Pro', 'de': 'Python in Excel & LAMBDA Pro', 'fr': 'Python dans Excel & LAMBDA Pro', 'ja': 'Python in ExcelとLAMBDA Pro', 'pt': 'Python no Excel e LAMBDA Pro'}, isProOnly: true},
+      {ref: 'M4', title: 'Jefe PRO: Dashboard Ejecutivo Total', titleByLocale: {'es': 'Jefe PRO: Dashboard Ejecutivo Total', 'en': 'PRO Boss: Executive Master Dashboard', 'de': 'PRO-Boss: Executive Master-Dashboard', 'fr': 'Boss PRO : Tableau de Bord Exécutif', 'ja': 'PROボス：統合ダッシュボード', 'pt': 'Chefe PRO: Dashboard Executivo Total'}, type: "boss", bossError: '#¡DIV/0!', isProOnly: true},
     ],
   },
 ];

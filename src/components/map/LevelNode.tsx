@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, Star, Bug, Dumbbell, Gift } from 'lucide-react';
+import { Check, Star, Bug, Dumbbell, Gift, Crown } from 'lucide-react';
 import { LevelItem } from '../../data/mapData';
 import { SupportedLocale } from '../../types';
 import { sound } from '../../lib/audio';
@@ -150,6 +150,14 @@ export const LevelNode: React.FC<LevelNodeProps> = ({
           ) : (
             <span className="font-mono text-xl font-black tracking-tight text-white drop-shadow-sm">
               {level.ref}
+            </span>
+          )}
+
+          {/* PRO Exclusive Crown Badge */}
+          {level.isProOnly && (
+            <span className="absolute -top-2 -right-2 px-1.5 py-0.5 rounded-full bg-gv-warning text-black font-mono text-[9px] font-black uppercase tracking-wider flex items-center gap-0.5 shadow-md border border-black/20 z-10">
+              <Crown className="w-2.5 h-2.5 fill-black" />
+              <span>PRO</span>
             </span>
           )}
         </div>

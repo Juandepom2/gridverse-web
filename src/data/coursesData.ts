@@ -58,6 +58,7 @@ export interface PracticeCourseData {
   subtitle: string;
   emoji: string;
   color: string;
+  isProOnly?: boolean;
   prerequisiteCourseId?: string;
   prerequisiteCourseTitle?: string;
   missions: MissionData[];
@@ -284,9 +285,95 @@ export const PRACTICE_COURSES: PracticeCourseData[] = [
       },
     ],
   },
+  {
+    id: 'COURSE_4',
+    order: 4,
+    title: 'Curso 4 · Finanzas CFO & Automatización PRO',
+    subtitle: 'Modelos SaaS, márgenes ejecutivos y blindaje contra errores (Exclusivo PRO)',
+    emoji: '👑',
+    color: '#F59E0B',
+    isProOnly: true,
+    missions: [
+      {
+        ref: 'MISSION_PRO_CFO',
+        courseId: 'COURSE_4',
+        order: 1,
+        emoji: '💎',
+        title: 'Modelo Financiero SaaS',
+        client: 'Apex Ventures CFO',
+        description:
+          'Construye el P&L mensual de una startup SaaS: calcula ingresos recurrentes, margen bruto y blinda los ratios contra división entre cero.',
+        skills: 'SUMA · SI.ERROR · Márgenes CFO',
+        color: '#F59E0B',
+        earnedXp: 90,
+        earnedBytes: 75,
+      },
+    ],
+  },
 ];
 
 export const STEP_BY_STEP_EXERCISES: Record<string, StepByStepExerciseData> = {
+  MISSION_PRO_CFO: {
+    id: 'MISSION_PRO_CFO',
+    title: 'Modelo Financiero SaaS (PRO)',
+    subtitle: 'P&L Ejecutivo & Márgenes',
+    scenario:
+      'El CFO de Apex Ventures necesita cerrar el reporte trimestral. Calcula el total de ingresos, el margen bruto y blinda el ratio de crecimiento.',
+    badgeEmoji: '👑',
+    color: '#F59E0B',
+    earnedXp: 90,
+    earnedBytes: 75,
+    sheets: [
+      {
+        id: 'pnl',
+        name: 'P&L_SaaS',
+        columns: 4,
+        rows: 5,
+        initialData: {
+          A1: 'Métrica',
+          B1: 'Q1',
+          C1: 'Q2',
+          D1: 'Total',
+          A2: 'Ingresos MRR',
+          B2: '12000',
+          C2: '18000',
+          D2: '',
+          A3: 'Costos Cloud',
+          B3: '3000',
+          C3: '4500',
+          D3: '',
+          A4: 'Margen Bruto',
+          B4: '',
+          C4: '',
+          D4: '',
+        },
+      },
+    ],
+    steps: [
+      {
+        sheetId: 'pnl',
+        title: 'Suma total de ingresos',
+        instruction: 'Calcula en D2 la suma de ingresos de Q1 y Q2 (B2:C2).',
+        targetCell: 'D2',
+        acceptedFormulas: ['=SUMA(B2:C2)', '=SUM(B2:C2)', '=B2+C2'],
+        resultValue: '30000',
+        pedagogicalHint: 'Usa =SUMA(B2:C2) para totalizar los ingresos del semestre.',
+        emergencySolution: '=SUMA(B2:C2)',
+        suggestions: ['=', 'SUMA(', 'B2:C2', ')', 'PROMEDIO('],
+      },
+      {
+        sheetId: 'pnl',
+        title: 'Margen Bruto Q1',
+        instruction: 'Calcula en B4 el margen bruto de Q1 restando los costos (B2-B3).',
+        targetCell: 'B4',
+        acceptedFormulas: ['=B2-B3'],
+        resultValue: '9000',
+        pedagogicalHint: 'El margen bruto es Ingresos menos Costos: =B2-B3.',
+        emergencySolution: '=B2-B3',
+        suggestions: ['=', 'B2', '-', 'B3', '+'],
+      },
+    ],
+  },
   // ─────────────────────────────────────────────────────────────────────────
   // 1. PANADERÍA DE DOÑA ROSA (11 PASOS EN 3 HOJAS)
   // ─────────────────────────────────────────────────────────────────────────

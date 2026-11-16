@@ -1,5 +1,5 @@
 import React, { useMemo, useEffect, useRef } from 'react';
-import { MOCK_REGIONS } from '../../data/mapData';
+import { MOCK_REGIONS, RegionItem } from '../../data/mapData';
 import { SupportedLocale, UserStats } from '../../types';
 import { LevelNode } from '../map/LevelNode';
 import { OnboardingChecklist } from '../map/OnboardingChecklist';
@@ -9,17 +9,19 @@ import { tr, UI_STRINGS } from '../../lib/i18n';
 interface MapTabProps {
   stats: UserStats;
   locale: SupportedLocale;
+  regions?: RegionItem[];
   onSelectLevel: (levelRef: string, file: string) => void;
   onNavigateTab: (tab: string) => void;
   onClaimChest: (chestRef: string, gems: number, nextRef: string) => void;
 }
 
-// Zig-zag horizontal offsets replicating Flutter app _zigzag = [0.0, 0.55, 0.85, 0.55, 0.0, -0.55, -0.85, -0.55]
+// Zig-zag horizontal offsets replicating Flutter app _zigzag = [0.0, 0.55, 0.85, 0.55, 0.0, -0.55, -80, -0.55]
 const ZIGZAG_OFFSETS = [0, 48, 80, 48, 0, -48, -80, -48];
 
 export const MapTab: React.FC<MapTabProps> = ({
   stats,
   locale,
+  regions = MOCK_REGIONS,
   onSelectLevel,
   onNavigateTab,
   onClaimChest,
@@ -28,8 +30,8 @@ export const MapTab: React.FC<MapTabProps> = ({
   const lastScrolledRef = useRef<string | null>(null);
 
   const allRefs = useMemo(
-    () => MOCK_REGIONS.flatMap((r) => r.levels.map((l) => l.ref.toUpperCase())),
-    []
+    () => regions.flatMap((r) => r.levels.map((l) => l.ref.toUpperCase())),
+    [regions]
   );
 
   // Normalize completedLevels keys to uppercase
@@ -149,7 +151,7 @@ export const MapTab: React.FC<MapTabProps> = ({
 
       {/* 12 Regions in snake path */}
       <div className="w-full flex flex-col gap-12">
-        {MOCK_REGIONS.map((region) => {
+        {regions.map((region) => {
           const title = region.titleByLocale[locale] || region.title;
           const subtitle = region.subtitleByLocale[locale] || region.subtitle;
           const completedInRegion = region.levels.filter(

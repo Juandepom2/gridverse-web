@@ -172,6 +172,20 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
   };
 
   const handleBuyStreakFreeze = () => {
+    const currentFreezes = stats.streakFreezes ?? 0;
+    if (currentFreezes >= 3) {
+      alert(
+        tr(locale, {
+          es: 'Ya tienes el máximo de 3 Escudos de Racha activos.',
+          en: 'You already have the maximum of 3 active Streak Shields.',
+          de: 'Du hast bereits das Maximum von 3 aktiven Streak-Schilden.',
+          fr: 'Tu as déjà le maximum de 3 boucliers de série actifs.',
+          ja: '連続記録シールドは最大3つまで所持できます。',
+          pt: 'Você já tem o máximo de 3 Escudos de Ofensiva ativos.',
+        })
+      );
+      return;
+    }
     if (stats.gems < 30) {
       alert(
         tr(locale, {
@@ -189,17 +203,8 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
     onUpdateStats({
       ...stats,
       gems: stats.gems - 30,
+      streakFreezes: currentFreezes + 1,
     });
-    alert(
-      tr(locale, {
-        es: '¡Escudo de Racha activado para tu próximo descanso!',
-        en: 'Streak freeze shield active!',
-        de: 'Streak-Schutzschild aktiviert!',
-        fr: 'Bouclier de série activé !',
-        ja: '連続記録フリーズシールドが有効になりました！',
-        pt: 'Escudo de ofensiva ativado!',
-      })
-    );
   };
 
   const handleRestorePurchases = async () => {
@@ -1443,12 +1448,31 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
           </div>
 
           <div className="flex items-center justify-between pt-3 border-t border-gv-border">
-            <span className="text-xs font-mono text-gv-muted">🔥 {stats.streak}d</span>
+            <div className="flex items-center gap-3 text-xs font-mono">
+              <span className="text-gv-muted">🔥 {stats.streak}d</span>
+              <span className="text-gv-bytes font-bold">
+                🛡️ {stats.streakFreezes ?? 0}/3
+              </span>
+            </div>
             <button
               onClick={handleBuyStreakFreeze}
-              className="px-4 py-2 rounded-xl bg-gv-bytes/15 hover:bg-gv-bytes/25 border border-gv-bytes/40 text-gv-bytes font-mono font-bold text-xs transition-all cursor-pointer"
+              disabled={(stats.streakFreezes ?? 0) >= 3}
+              className={`px-4 py-2 rounded-xl font-mono font-bold text-xs transition-all ${
+                (stats.streakFreezes ?? 0) >= 3
+                  ? 'bg-gv-surface-higher border border-gv-border text-gv-muted cursor-not-allowed'
+                  : 'bg-gv-bytes/15 hover:bg-gv-bytes/25 border border-gv-bytes/40 text-gv-bytes cursor-pointer'
+              }`}
             >
-              💎 30
+              {(stats.streakFreezes ?? 0) >= 3
+                ? tr(locale, {
+                    es: 'MÁX (3/3)',
+                    en: 'MAX (3/3)',
+                    de: 'MAX (3/3)',
+                    fr: 'MAX (3/3)',
+                    ja: '上限 (3/3)',
+                    pt: 'MÁX (3/3)',
+                  })
+                : '💎 30'}
             </button>
           </div>
         </div>

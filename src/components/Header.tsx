@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { UserStats, SupportedLocale } from '../types';
 import { sound } from '../lib/audio';
+import { getStreakTier } from '../lib/storage';
 import { CeldiMascot } from './CeldiMascot';
 import { tr, UI_STRINGS } from '../lib/i18n';
 
@@ -129,21 +130,29 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* HUD Game Stats */}
           <div className="flex items-center gap-2 md:gap-4">
-            {/* Streak 🔥 */}
-            <div
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gv-streak/10 border border-gv-streak/25 text-xs md:text-sm font-mono font-bold text-gv-streak cursor-pointer hover:bg-gv-streak/15 transition-colors"
-              title={tr(stats.locale, {
-                es: 'Racha de días consecutivos',
-                en: 'Daily streak',
-                de: 'Tägliche Serie',
-                fr: 'Série quotidienne',
-                ja: '連続学習日数',
-                pt: 'Ofensiva diária',
-              })}
-            >
-              <Flame className="w-4 h-4 fill-gv-streak text-gv-streak animate-pulse-subtle" />
-              <span className="tabular-nums">{stats.streak}</span>
-            </div>
+            {/* Streak 🔥 (Compounding Tier + Active Shields) */}
+            {(() => {
+              const tier = getStreakTier(stats.streak, stats.locale);
+              const freezes = stats.streakFreezes ?? 0;
+              return (
+                <div
+                  onClick={() => {
+                    sound.play('tap');
+                    onChangeTab('shop');
+                  }}
+                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs md:text-sm font-mono font-bold cursor-pointer transition-colors ${tier.badgeBgClass} ${tier.colorClass}`}
+                  title={`${tier.label} · ${stats.streak}d${freezes > 0 ? ` · 🛡️ ${freezes}` : ''}`}
+                >
+                  <Flame className="w-4 h-4 fill-current animate-pulse-subtle" />
+                  <span className="tabular-nums">{stats.streak}</span>
+                  {freezes > 0 && (
+                    <span className="text-[10px] text-gv-bytes font-black ml-0.5">
+                      🛡️{freezes}
+                    </span>
+                  )}
+                </div>
+              );
+            })()}
 
             {/* Gems 💎 */}
             <div

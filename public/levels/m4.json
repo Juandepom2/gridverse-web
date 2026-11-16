@@ -1,0 +1,86 @@
+{
+  "ref": "M4",
+  "title": "Jefe PRO: Dashboard Ejecutivo Total",
+  "titleByLocale": {
+    "es": "Jefe PRO: Dashboard Ejecutivo Total",
+    "en": "PRO Boss: Executive Master Dashboard",
+    "de": "PRO-Boss: Executive Master-Dashboard",
+    "fr": "Boss PRO : Tableau de Bord Exécutif",
+    "ja": "PROボス：エグゼクティブ統合ダッシュボード",
+    "pt": "Chefe PRO: Dashboard Executivo Total"
+  },
+  "version": 1,
+  "rewardXp": 60,
+  "exercises": [
+    {
+      "type": "find_error",
+      "prompt": "¡Desafío Ejecutivo PRO! En la tabla de ingresos, B3 tiene un #¡DIV/0! que rompe el KPI de margen neto. Toca la celda B3 para diagnosticar:",
+      "promptByLocale": {
+        "es": "¡Desafío Ejecutivo PRO! En la tabla de ingresos, B3 tiene un #¡DIV/0! que rompe el KPI de margen neto. Toca la celda B3 para diagnosticar:",
+        "en": "PRO Executive Challenge! In the revenue table, B3 shows #DIV/0!, breaking the net margin KPI. Tap cell B3 to diagnose:",
+        "de": "PRO-Challenge! In der Umsatz-Tabelle zeigt B3 #DIV/0! und zerstört den Margen-KPI. Tippe auf B3:",
+        "fr": "Défi Exécutif PRO ! Dans le tableau, B3 affiche #DIV/0! et casse le KPI de marge. Touchez B3 :",
+        "ja": "PROエグゼクティブ課題！売上表のB3に #DIV/0! が出てKPIが壊れています。B3をタップしてください：",
+        "pt": "Desafio Executivo PRO! Na tabela de receitas, B3 tem #DIV/0! quebrando o KPI de margem. Toque em B3:"
+      },
+      "correct": "B3",
+      "errorCell": "B3",
+      "data": {
+        "A1": "KPI",
+        "B1": "Valor",
+        "A2": "Ingresos",
+        "B2": "45000",
+        "A3": "Margen %",
+        "B3": "#¡DIV/0!"
+      },
+      "explanation": "Cuando el denominador es 0, debemos proteger el KPI con SI.ERROR (IFERROR).",
+      "explanationByLocale": {
+        "es": "Cuando el denominador es 0, debemos proteger el KPI con SI.ERROR.",
+        "en": "When the denominator can be 0, always wrap the KPI formula with IFERROR.",
+        "de": "Wenn der Nenner 0 sein kann, muss die KPI-Formel mit WENNFEHLER geschützt werden.",
+        "fr": "Quand le dénominateur peut être 0, protégez toujours le KPI avec SIERREUR.",
+        "ja": "分母が0になる可能性があるKPIは常にIFERRORで保護する必要があります。",
+        "pt": "Quando o denominador puder ser 0, proteja o KPI com SEERRO."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Blinda el cálculo del margen (=B2/C2) devolviendo 0 si ocurre un error:",
+      "promptByLocale": {
+        "es": "Blinda el cálculo del margen (=B2/C2) devolviendo 0 si ocurre un error:",
+        "en": "Safeguard the margin calculation (=B2/C2) by returning 0 on error:",
+        "de": "Sichere die Margenberechnung (=B2/C2) ab und gib bei Fehlern 0 zurück:",
+        "fr": "Sécurise le calcul de marge (=B2/C2) en renvoyant 0 en cas d'erreur :",
+        "ja": "マージン計算（=B2/C2）をエラー時に0を返すよう保護しよう：",
+        "pt": "Proteja o cálculo da margem (=B2/C2) retornando 0 caso ocorra erro:"
+      },
+      "correct": "=SI.ERROR(B2/C2,0)",
+      "correctByLocale": {
+        "es": "=SI.ERROR(B2/C2,0)",
+        "en": "=IFERROR(B2/C2,0)",
+        "de": "=WENNFEHLER(B2/C2;0)",
+        "fr": "=SIERREUR(B2/C2;0)",
+        "ja": "=IFERROR(B2/C2,0)",
+        "pt": "=SEERRO(B2/C2;0)"
+      },
+      "blocks": ["=", "SI.ERROR(", "B2/C2,", "0", ")", "ESERROR("],
+      "blocksByLocale": {
+        "es": ["=", "SI.ERROR(", "B2/C2,", "0", ")", "ESERROR("],
+        "en": ["=", "IFERROR(", "B2/C2,", "0", ")", "ISERROR("],
+        "de": ["=", "WENNFEHLER(", "B2/C2;", "0", ")", "ISTFEHLER("],
+        "fr": ["=", "SIERREUR(", "B2/C2;", "0", ")", "ESTERREUR("],
+        "ja": ["=", "IFERROR(", "B2/C2,", "0", ")", "ISERROR("],
+        "pt": ["=", "SEERRO(", "B2/C2;", "0", ")", "ÉERRO("]
+      },
+      "explanation": "SI.ERROR(valor, valor_si_error) evita que un #¡DIV/0! arruine todo un dashboard ejecutivo.",
+      "explanationByLocale": {
+        "es": "SI.ERROR(valor, valor_si_error) evita que un #¡DIV/0! arruine todo un dashboard ejecutivo.",
+        "en": "IFERROR(value, value_if_error) keeps #DIV/0! from breaking executive dashboards.",
+        "de": "WENNFEHLER verhindert, dass #DIV/0! ganze Dashboards unbrauchbar macht.",
+        "fr": "SIERREUR empêche #DIV/0! de casser un tableau de bord exécutif.",
+        "ja": "IFERRORを使うことで #DIV/0! がダッシュボード全体を壊すのを防げます。",
+        "pt": "SEERRO evita que um #DIV/0! quebre todo o dashboard executivo."
+      }
+    }
+  ]
+}

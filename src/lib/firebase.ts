@@ -19,11 +19,12 @@ import {
   collection,
   query,
   where,
+  orderBy,
   getDocs,
   limit,
   serverTimestamp,
 } from 'firebase/firestore';
-import { UserStats } from '../types';
+import { UserStats, LevelData } from '../types';
 import { MOCK_REGIONS } from '../data/mapData';
 
 const firebaseConfig = {
@@ -207,6 +208,24 @@ export function parseFirestoreUserToStats(
     lives: isPro ? 5 : Math.max(0, Math.min(5, lives)),
     maxLives: 5,
     streak,
+    streakFreezes:
+      typeof data.streakFreezes === 'number'
+        ? Math.max(0, Math.min(3, Math.floor(data.streakFreezes)))
+        : (prevStats.streakFreezes ?? 0),
+    bestStreak: Math.max(
+      typeof data.bestStreak === 'number' ? data.bestStreak : 1,
+      streak,
+      prevStats.bestStreak ?? 1
+    ),
+    dailyMissions:
+      data.dailyMissions &&
+      typeof data.dailyMissions.date === 'string' &&
+      Array.isArray(data.dailyMissions.claimedIds)
+        ? {
+            date: data.dailyMissions.date,
+            claimedIds: data.dailyMissions.claimedIds.filter((x: any) => typeof x === 'string'),
+          }
+        : prevStats.dailyMissions,
     completedLevels,
     unlockedLevel: effectiveCurrent,
     isPro,
@@ -263,12 +282,113 @@ export async function syncStatsToFirestore(uid: string, stats: UserStats, user?:
     if (stats.lastStreakDate) {
       payload.lastStreakDate = stats.lastStreakDate;
     }
+    if (typeof stats.streakFreezes === 'number') {
+      payload.streakFreezes = Math.max(0, Math.min(3, Math.floor(stats.streakFreezes)));
+    }
+    if (typeof stats.bestStreak === 'number') {
+      payload.bestStreak = Math.max(1, Math.floor(stats.bestStreak));
+    }
+    if (stats.dailyMissions) {
+      payload.dailyMissions = stats.dailyMissions;
+    }
     if (stats.isPro) payload.isPro = true;
     if (stats.subscriptionPlan) payload.subscriptionPlan = stats.subscriptionPlan;
 
     await setDoc(docRef, payload, { merge: true });
   } catch (err) {
     console.warn('[FirestoreSync] Error syncing user stats:', err);
+  }
+}
+
+export interface FirestoreLeagueEntry {
+  uid: string;
+  displayName: string;
+  photoUrl?: string | null;
+  weeklyXp: number;
+  totalXp: number;
+  streakDays: number;
+  tier: string;
+}
+
+/**
+ * Returns ISO week identifier e.g. "2026-W46" for Weekly League divisions.
+ */
+export function getCurrentWeekId(date: Date = new Date()): string {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  const weekNo = Math.ceil((((d.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);
+  return `${d.getUTCFullYear()}-W${String(weekNo).padStart(2, '0')}`;
+}
+
+export function getLeagueTierId(xp: number): string {
+  if (xp >= 1800) return 'master';
+  if (xp >= 900) return 'diamond';
+  if (xp >= 400) return 'gold';
+  if (xp >= 150) return 'silver';
+  return 'bronze';
+}
+
+/**
+ * Upserts the authenticated user's real Weekly League entry in
+ * `weekly_leagues/{weekId}/entries/{uid}`.
+ */
+export async function syncWeeklyLeagueEntry(
+  uid: string,
+  stats: UserStats,
+  deltaXp: number = 0,
+  user?: FirebaseUser | null
+): Promise<void> {
+  try {
+    const weekId = getCurrentWeekId();
+    const entryRef = doc(db, 'weekly_leagues', weekId, 'entries', uid);
+    const snap = await getDoc(entryRef);
+    const prevWeeklyXp = snap.exists() && typeof snap.data()?.weeklyXp === 'number'
+      ? snap.data().weeklyXp
+      : 0;
+    const nextWeeklyXp = Math.max(0, prevWeeklyXp + Math.max(0, deltaXp));
+
+    await setDoc(entryRef, {
+      uid,
+      displayName: (stats.displayName || user?.displayName || 'Analista').slice(0, 100),
+      photoUrl: stats.photoUrl || user?.photoURL || null,
+      weeklyXp: nextWeeklyXp,
+      totalXp: Math.max(0, stats.xp),
+      streakDays: Math.max(0, stats.streak),
+      tier: getLeagueTierId(stats.xp),
+      updatedAt: serverTimestamp(),
+    });
+  } catch (err) {
+    console.warn('[FirestoreLeague] Error syncing weekly league entry:', err);
+  }
+}
+
+/**
+ * Fetches real Weekly League standings for the current week from Firestore.
+ */
+export async function fetchWeeklyLeagueStandings(
+  weekId: string = getCurrentWeekId()
+): Promise<FirestoreLeagueEntry[]> {
+  try {
+    const entriesCol = collection(db, 'weekly_leagues', weekId, 'entries');
+    const q = query(entriesCol, orderBy('weeklyXp', 'desc'), limit(20));
+    const snap = await getDocs(q);
+    return snap.docs.map((d) => {
+      const data = d.data();
+      return {
+        uid: data.uid || d.id,
+        displayName: data.displayName || 'Analista',
+        photoUrl: data.photoUrl || null,
+        weeklyXp: typeof data.weeklyXp === 'number' ? data.weeklyXp : 0,
+        totalXp: typeof data.totalXp === 'number' ? data.totalXp : 0,
+        streakDays: typeof data.streakDays === 'number' ? data.streakDays : 1,
+        tier: data.tier || 'bronze',
+      };
+    });
+  } catch (err) {
+    console.warn('[FirestoreLeague] Error fetching standings:', err);
+    return [];
   }
 }
 
@@ -432,4 +552,51 @@ export async function submitAppFeedback(feedback: string): Promise<void> {
     createdAt: serverTimestamp(),
     platform: 'web',
   });
+}
+
+/**
+ * Fetches dynamic levels published directly to Firestore `levels` collection
+ * so backend-generated levels appear in the map without redeploying the web app.
+ */
+export async function fetchDynamicFirestoreLevels(): Promise<LevelData[]> {
+  try {
+    const snap = await getDocs(collection(db, 'levels'));
+    const list: LevelData[] = [];
+    snap.forEach((docSnap) => {
+      const data = docSnap.data();
+      if (data && typeof data.ref === 'string' && Array.isArray(data.exercises) && data.exercises.length > 0) {
+        list.push({
+          ref: data.ref.toUpperCase(),
+          title: data.title || data.ref,
+          titleByLocale: data.titleByLocale,
+          version: typeof data.version === 'number' ? data.version : 1,
+          rewardXp: typeof data.rewardXp === 'number' ? data.rewardXp : 30,
+          exercises: data.exercises,
+        });
+      }
+    });
+    return list;
+  } catch (err) {
+    console.warn('[FirestoreLevels] Error fetching dynamic levels:', err);
+    return [];
+  }
+}
+
+export async function fetchSingleFirestoreLevel(levelRef: string): Promise<LevelData | null> {
+  try {
+    const snap = await getDoc(doc(db, 'levels', levelRef.toUpperCase()));
+    if (!snap.exists()) return null;
+    const data = snap.data();
+    if (!data || !Array.isArray(data.exercises) || data.exercises.length === 0) return null;
+    return {
+      ref: (data.ref || levelRef).toUpperCase(),
+      title: data.title || levelRef,
+      titleByLocale: data.titleByLocale,
+      version: typeof data.version === 'number' ? data.version : 1,
+      rewardXp: typeof data.rewardXp === 'number' ? data.rewardXp : 30,
+      exercises: data.exercises,
+    };
+  } catch {
+    return null;
+  }
 }

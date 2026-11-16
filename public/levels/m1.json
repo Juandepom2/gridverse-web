@@ -1,0 +1,86 @@
+{
+  "ref": "M1",
+  "title": "Power Query: Limpieza automática",
+  "titleByLocale": {
+    "es": "Power Query: Limpieza automática",
+    "en": "Power Query: Auto-Cleaning",
+    "de": "Power Query: Automatische Bereinigung",
+    "fr": "Power Query : Nettoyage automatique",
+    "ja": "Power Query：自動データクレンジング",
+    "pt": "Power Query: Limpeza automática"
+  },
+  "version": 1,
+  "rewardXp": 35,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "En Power Query, ¿qué paso elimina espacios sobrantes al inicio y al final de cada texto?",
+      "promptByLocale": {
+        "es": "En Power Query, ¿qué paso elimina espacios sobrantes al inicio y al final de cada texto?",
+        "en": "In Power Query, which transformation removes leading and trailing spaces from text?",
+        "de": "Welcher Schritt in Power Query entfernt führende und nachfolgende Leerzeichen?",
+        "fr": "Dans Power Query, quelle étape supprime les espaces superflus au début et à la fin d'un texte ?",
+        "ja": "Power Queryでテキスト前後の余分な空白を削除する変換はどれですか？",
+        "pt": "No Power Query, qual etapa remove espaços extras no início e no fim de cada texto?"
+      },
+      "correct": "Recortar (Trim)",
+      "options": ["Recortar (Trim)", "Anular dinamización", "Combinar consultas", "Transponer"],
+      "optionsByLocale": {
+        "es": ["Recortar (Trim)", "Anular dinamización", "Combinar consultas", "Transponer"],
+        "en": ["Trim", "Unpivot Columns", "Merge Queries", "Transpose"],
+        "de": ["Kürzen (Trim)", "Spalten entpivotieren", "Abfragen zusammenführen", "Transponieren"],
+        "fr": ["Supprimer les espaces (Trim)", "Dépivoter les colonnes", "Fusionner les requêtes", "Transposer"],
+        "ja": ["トリミング (Trim)", "列のピボット解除", "クエリのマージ", "入れ替え"],
+        "pt": ["Cortar (Trim)", "Transformar colunas em linhas", "Mesclar consultas", "Transpor"]
+      },
+      "explanation": "La transformación Recortar (Trim) limpia espacios accidentales antes de cruzar tablas.",
+      "explanationByLocale": {
+        "es": "La transformación Recortar (Trim) limpia espacios accidentales antes de cruzar tablas.",
+        "en": "Trim removes leading/trailing spaces so lookups and merges match cleanly.",
+        "de": "Kürzen (Trim) entfernt überflüssige Leerzeichen für saubere Verknüpfungen.",
+        "fr": "Supprimer les espaces (Trim) nettoie les espaces cachés avant de croiser des tables.",
+        "ja": "トリミング（Trim）を使うと余分な空白が除去され、結合ミスを防げます。",
+        "pt": "Cortar (Trim) remove espaços extras antes de cruzar tabelas."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Mientras tanto en Excel clásico, limpia los espacios de A2 con ESPACIOS (TRIM):",
+      "promptByLocale": {
+        "es": "Mientras tanto en Excel clásico, limpia los espacios de A2 con ESPACIOS:",
+        "en": "Meanwhile in classic Excel, clean extra spaces in A2 using TRIM:",
+        "de": "Bereinige im klassischen Excel Leerzeichen in A2 mit GLÄTTEN:",
+        "fr": "Dans Excel classique, nettoie les espaces de A2 avec SUPPRESPACE :",
+        "ja": "Excel関数でA2の余分な空白を取り除く式を組み立てよう：",
+        "pt": "No Excel clássico, limpe os espaços extras de A2 com ARRUMAR:"
+      },
+      "correct": "=ESPACIOS(A2)",
+      "correctByLocale": {
+        "es": "=ESPACIOS(A2)",
+        "en": "=TRIM(A2)",
+        "de": "=GLÄTTEN(A2)",
+        "fr": "=SUPPRESPACE(A2)",
+        "ja": "=TRIM(A2)",
+        "pt": "=ARRUMAR(A2)"
+      },
+      "blocks": ["=", "ESPACIOS(", "A2", ")", "LIMPIAR("],
+      "blocksByLocale": {
+        "es": ["=", "ESPACIOS(", "A2", ")", "LIMPIAR("],
+        "en": ["=", "TRIM(", "A2", ")", "CLEAN("],
+        "de": ["=", "GLÄTTEN(", "A2", ")", "SÄUBERN("],
+        "fr": ["=", "SUPPRESPACE(", "A2", ")", "EPURAGE("],
+        "ja": ["=", "TRIM(", "A2", ")", "CLEAN("],
+        "pt": ["=", "ARRUMAR(", "A2", ")", "TIRAR("]
+      },
+      "explanation": "ESPACIOS / TRIM elimina espacios iniciales, finales y duplicados entre palabras.",
+      "explanationByLocale": {
+        "es": "ESPACIOS elimina espacios iniciales, finales y duplicados entre palabras.",
+        "en": "TRIM removes leading, trailing, and duplicate spaces between words.",
+        "de": "GLÄTTEN entfernt überflüssige Leerzeichen am Anfang, Ende und zwischen Wörtern.",
+        "fr": "SUPPRESPACE supprime les espaces superflus en début, fin et entre les mots.",
+        "ja": "TRIM関数は前後の空白や単語間の連続する空白を1つに整えます。",
+        "pt": "ARRUMAR remove espaços extras no início, fim e entre palavras."
+      }
+    }
+  ]
+}

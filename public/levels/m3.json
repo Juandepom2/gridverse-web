@@ -1,0 +1,62 @@
+{
+  "ref": "M3",
+  "title": "Fórmulas con Python y LAMBDA Pro",
+  "titleByLocale": {
+    "es": "Fórmulas con Python y LAMBDA Pro",
+    "en": "Python in Excel & LAMBDA Pro",
+    "de": "Python in Excel & LAMBDA Pro",
+    "fr": "Python dans Excel & LAMBDA Pro",
+    "ja": "Python in ExcelとLAMBDA Pro",
+    "pt": "Python no Excel e LAMBDA Pro"
+  },
+  "version": 1,
+  "rewardXp": 45,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "En Excel con Python integrado, ¿qué función inicia una celda de código Python?",
+      "promptByLocale": {
+        "es": "En Excel con Python integrado, ¿qué función inicia una celda de código Python?",
+        "en": "In Python in Excel, which function starts a Python code cell?",
+        "de": "Mit welcher Funktion startet man eine Python-Zelle in Excel?",
+        "fr": "Dans Python pour Excel, quelle fonction démarre une cellule de code Python ?",
+        "ja": "ExcelのPython統合機能でPythonコードセルを開始する関数は？",
+        "pt": "No Python no Excel, qual função inicia uma célula de código Python?"
+      },
+      "correct": "=PY()",
+      "options": ["=PY()", "=PYTHON()", "=SCRIPT()", "=CODE()"],
+      "explanation": "=PY() habilita la ejecución directa de Pandas y Matplotlib dentro de una celda de Excel.",
+      "explanationByLocale": {
+        "es": "=PY() habilita la ejecución directa de Pandas y Matplotlib dentro de una celda de Excel.",
+        "en": "=PY() lets you run Pandas DataFrames and Python libraries directly inside Excel cells.",
+        "de": "=PY() ermöglicht das Ausführen von Pandas und Python direkt in Excel-Zellen.",
+        "fr": "=PY() permet d'exécuter Pandas et Python directement dans les cellules Excel.",
+        "ja": "=PY() を使うとExcelのセル内でPandasなどのPythonライブラリを実行できます。",
+        "pt": "=PY() permite executar Pandas e Python diretamente nas células do Excel."
+      }
+    },
+    {
+      "type": "build_formula",
+      "prompt": "Crea una función reutilizable con LAMBDA que aplique un 16% de IVA a x: =LAMBDA(x, x*1.16)",
+      "promptByLocale": {
+        "es": "Crea una función reutilizable con LAMBDA que aplique un 16% de IVA a x:",
+        "en": "Build a reusable LAMBDA function that adds 16% tax to x:",
+        "de": "Erstelle eine wiederverwendbare LAMBDA-Funktion für 16% Steuer auf x:",
+        "fr": "Crée une fonction LAMBDA réutilisable ajoutant 16% de TVA à x :",
+        "ja": "xに16%の税率を加える再利用可能なLAMBDA関数を組み立てよう：",
+        "pt": "Crie uma função LAMBDA reutilizável que adicione 16% de imposto a x:"
+      },
+      "correct": "=LAMBDA(x,x*1.16)",
+      "blocks": ["=", "LAMBDA(", "x,", "x*1.16", ")", "LET("],
+      "explanation": "LAMBDA(parámetro, cálculo) te permite definir funciones personalizadas sin usar macros.",
+      "explanationByLocale": {
+        "es": "LAMBDA(parámetro, cálculo) te permite definir funciones personalizadas sin usar macros.",
+        "en": "LAMBDA(param, calculation) lets you define custom reusable Excel functions without VBA.",
+        "de": "LAMBDA(Parameter, Berechnung) definiert eigene Excel-Funktionen ohne VBA.",
+        "fr": "LAMBDA(paramètre, calcul) permet de créer des fonctions personnalisées sans VBA.",
+        "ja": "LAMBDA(引数, 計算式) を使えばVBAなしで独自の再利用関数を定義できます。",
+        "pt": "LAMBDA(parâmetro, cálculo) permite definir funções personalizadas sem VBA."
+      }
+    }
+  ]
+}

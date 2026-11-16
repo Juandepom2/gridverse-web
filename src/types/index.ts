@@ -68,5 +68,11 @@ export interface UserStats {
   photoUrl?: string;
   activityHistory?: Record<string, number>;
   lastStreakDate?: string;
+  streakFreezes?: number;
+  bestStreak?: number;
+  dailyMissions?: {
+    date: string;
+    claimedIds: string[];
+  };
   theme?: 'dark' | 'light';
 }

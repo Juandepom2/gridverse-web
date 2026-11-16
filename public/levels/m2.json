@@ -1,0 +1,67 @@
+{
+  "ref": "M2",
+  "title": "Macros y Automatización VBA",
+  "titleByLocale": {
+    "es": "Macros y Automatización VBA",
+    "en": "Macros & VBA Automation",
+    "de": "Makros & VBA-Automatisierung",
+    "fr": "Macros et automatisation VBA",
+    "ja": "マクロとVBA自動化",
+    "pt": "Macros e Automação VBA"
+  },
+  "version": 1,
+  "rewardXp": 40,
+  "exercises": [
+    {
+      "type": "predict",
+      "prompt": "¿En qué formato debes guardar un libro de Excel para conservar sus Macros VBA?",
+      "promptByLocale": {
+        "es": "¿En qué formato debes guardar un libro de Excel para conservar sus Macros VBA?",
+        "en": "Which file format must you use to preserve VBA Macros in Excel?",
+        "de": "In welchem Format muss eine Excel-Datei gespeichert werden, um VBA-Makros zu behalten?",
+        "fr": "Sous quel format enregistrer un classeur Excel pour conserver les macros VBA ?",
+        "ja": "ExcelでVBAマクロを保存するために必要なファイル形式はどれですか？",
+        "pt": "Em qual formato você deve salvar uma pasta do Excel para manter as Macros VBA?"
+      },
+      "correct": ".xlsm",
+      "options": [".xlsm", ".xlsx", ".csv", ".pdf"],
+      "explanation": "El formato .xlsm (Libro habilitado para macros) permite guardar código VBA; .xlsx elimina las macros.",
+      "explanationByLocale": {
+        "es": "El formato .xlsm (Libro habilitado para macros) guarda el código VBA; .xlsx elimina las macros.",
+        "en": ".xlsm (Macro-Enabled Workbook) preserves VBA code, whereas .xlsx strips all macros.",
+        "de": ".xlsm speichert VBA-Makros, während .xlsx alle Makros entfernt.",
+        "fr": "Le format .xlsm conserve le code VBA, contrairement au .xlsx qui supprime les macros.",
+        "ja": ".xlsm（マクロ有効ブック）はVBAコードを保持しますが、.xlsxでは削除されます。",
+        "pt": "O formato .xlsm preserva o código VBA, enquanto .xlsx remove todas as macros."
+      }
+    },
+    {
+      "type": "predict",
+      "prompt": "En VBA, ¿qué instrucción evita que la pantalla parpadee y acelera la macro?",
+      "promptByLocale": {
+        "es": "En VBA, ¿qué instrucción evita que la pantalla parpadee y acelera la macro?",
+        "en": "In VBA, which property prevents screen flickering and speeds up macro execution?",
+        "de": "Welche VBA-Anweisung verhindert Bildschirmflackern und beschleunigt Makros?",
+        "fr": "En VBA, quelle instruction empêche le scintillement de l'écran et accélère la macro ?",
+        "ja": "VBAで画面のちらつきを防ぎ、マクロを高速化する設定はどれですか？",
+        "pt": "No VBA, qual instrução evita que a tela pisque e acelera a macro?"
+      },
+      "correct": "Application.ScreenUpdating = False",
+      "options": [
+        "Application.ScreenUpdating = False",
+        "ActiveSheet.Visible = False",
+        "Range(\"A1\").Clear",
+        "MsgBox \"Fast\""
+      ],
+      "explanation": "Desactivar ScreenUpdating al inicio de la macro y reactivarlo al final multiplica la velocidad.",
+      "explanationByLocale": {
+        "es": "Desactivar ScreenUpdating al inicio de la macro y reactivarlo al final multiplica la velocidad.",
+        "en": "Setting Application.ScreenUpdating = False skips intermediate UI repaints until the macro finishes.",
+        "de": "Application.ScreenUpdating = False überspringt unnötige Bildschirmaktualisierungen.",
+        "fr": "Application.ScreenUpdating = False évite de rafraîchir l'écran à chaque étape.",
+        "ja": "Application.ScreenUpdating = False にすると描画更新が止まり処理が高速化します。",
+        "pt": "Desativar o ScreenUpdating no início e reativar no fim acelera muito a macro."
+      }
+    }
+  ]
+}
