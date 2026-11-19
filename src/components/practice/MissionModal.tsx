@@ -266,10 +266,10 @@ export const MissionModal: React.FC<MissionModalProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-2 md:p-5 overflow-y-auto">
-      <div className="relative w-full max-w-2xl bg-gv-surface border border-gv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden my-auto animate-fade-in">
+    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-1.5 sm:p-3 md:p-5 overflow-y-auto">
+      <div className="relative w-full max-w-2xl bg-gv-surface border border-gv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden max-h-[96dvh] my-auto animate-fade-in">
         {/* Top Bar: Close + Progress + Step Counter + Lives */}
-        <div className="flex items-center gap-3 px-4 py-3 border-b border-gv-border bg-gv-surface-high">
+        <div className="flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2.5 sm:py-3 border-b border-gv-border bg-gv-surface-high shrink-0">
           <button
             onClick={onClose}
             className="p-1.5 rounded-lg text-gv-muted hover:text-gv-text hover:bg-gv-surface transition-colors cursor-pointer"
@@ -316,7 +316,7 @@ export const MissionModal: React.FC<MissionModalProps> = ({
         </div>
 
         {/* Body */}
-        <div className="p-4 md:p-5 flex flex-col gap-3.5 max-h-[85vh] overflow-y-auto">
+        <div className="p-3 sm:p-4 md:p-5 flex flex-col gap-3 sm:gap-3.5 flex-1 overflow-y-auto">
           {/* Step Instruction + Celdi + Hint & Emergency Key */}
           <div className="bg-gv-surface-high/90 border border-gv-border rounded-2xl p-3.5 flex flex-col gap-2.5">
             <div className="flex items-start gap-3">
@@ -466,12 +466,12 @@ export const MissionModal: React.FC<MissionModalProps> = ({
           </div>
 
           {/* Formula Input Bar + Shuffled Suggestion Tokens */}
-          <div className="bg-gv-surface-high border border-gv-border rounded-2xl p-3.5 flex flex-col gap-2.5">
-            <div className="flex items-center gap-2">
-              <span className="px-2 py-1 rounded bg-gv-primary/15 border border-gv-primary/30 font-mono text-xs font-extrabold text-gv-accent">
+          <div className="bg-gv-surface-high border border-gv-border rounded-2xl p-3 sm:p-3.5 flex flex-col gap-2.5">
+            <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+              <span className="px-2 py-1 rounded bg-gv-primary/15 border border-gv-primary/30 font-mono text-xs font-extrabold text-gv-accent shrink-0">
                 {currentStep.targetCell}
               </span>
-              <span className="font-mono italic font-bold text-gv-primary text-sm">fx</span>
+              <span className="font-mono italic font-bold text-gv-primary text-sm shrink-0">fx</span>
               <input
                 type="text"
                 value={userFormula}
@@ -493,7 +493,7 @@ export const MissionModal: React.FC<MissionModalProps> = ({
                   ja: '=SUM(B2:F2)',
                   pt: '=SOMA(B2:F2)',
                 })}
-                className="flex-1 px-3 py-2 rounded-xl bg-gv-bg border border-gv-border font-mono text-sm font-bold text-gv-accent focus:outline-none focus:border-gv-primary"
+                className="flex-1 min-w-0 px-2.5 sm:px-3 py-2 rounded-xl bg-gv-bg border border-gv-border font-mono text-base sm:text-sm font-bold text-gv-accent focus:outline-none focus:border-gv-primary"
               />
               {!isStepCompleted && (
                 <button

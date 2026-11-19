@@ -19,7 +19,14 @@ import {
 } from 'lucide-react';
 import { UserStats, SupportedLocale } from '../../types';
 import { sound } from '../../lib/audio';
-import { auth, db, verifyAndSyncProAndLegacyProfile } from '../../lib/firebase';
+import {
+  auth,
+  db,
+  verifyAndSyncProAndLegacyProfile,
+  signInWithGooglePopup,
+  signInWithApplePopup,
+} from '../../lib/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { tr } from '../../lib/i18n';
 
@@ -49,10 +56,71 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
 
   // Plan Comparison & Category Selector (matching Flutter shop_screen.dart)
   const [isViewingOtherPlans, setIsViewingOtherPlans] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<'individual' | 'duo'>('individual');
-  const [selectedTier, setSelectedTier] = useState<'annual' | 'monthly' | 'lifetime'>('annual');
+  const [selectedCategory, setSelectedCategory] = useState<'individual' | 'duo'>(() => {
+    if (typeof window !== 'undefined') {
+      const cat = new URLSearchParams(window.location.search).get('category');
+      if (cat === 'duo' || cat === 'individual') return cat;
+    }
+    return 'individual';
+  });
+  const [selectedTier, setSelectedTier] = useState<'annual' | 'monthly' | 'lifetime'>(() => {
+    if (typeof window !== 'undefined') {
+      const tier = new URLSearchParams(window.location.search).get('tier');
+      if (tier === 'annual' || tier === 'monthly' || tier === 'lifetime') return tier;
+    }
+    return 'annual';
+  });
   const [isRedirectingCheckout, setIsRedirectingCheckout] = useState(false);
   const [showAuthRequiredModal, setShowAuthRequiredModal] = useState(false);
+  const [authModalLoading, setAuthModalLoading] = useState<'google' | 'apple' | null>(null);
+  const [authModalError, setAuthModalError] = useState<string | null>(null);
+
+  // If user arrives from landing page (?tab=shop&category=...&tier=...) while not signed in, prompt sign-in first
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const cameFromLandingPlan =
+      params.get('tab') === 'shop' && (Boolean(params.get('category')) || Boolean(params.get('tier')));
+    if (!cameFromLandingPlan) return;
+
+    const unsub = onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        setShowAuthRequiredModal(true);
+      } else {
+        setShowAuthRequiredModal(false);
+      }
+    });
+    return () => unsub();
+  }, []);
+
+  const handleQuickSignIn = async (provider: 'google' | 'apple') => {
+    sound.play('tap');
+    setAuthModalLoading(provider);
+    setAuthModalError(null);
+    try {
+      if (provider === 'google') {
+        await signInWithGooglePopup();
+      } else {
+        await signInWithApplePopup();
+      }
+      sound.play('coin');
+      setShowAuthRequiredModal(false);
+    } catch (e: any) {
+      if (e?.code !== 'auth/popup-closed-by-user' && e?.code !== 'auth/cancelled-popup-request') {
+        setAuthModalError(
+          tr(locale, {
+            es: 'No se pudo iniciar sesión. Intenta nuevamente.',
+            en: 'Could not sign in. Please try again.',
+            de: 'Anmeldung fehlgeschlagen. Bitte erneut versuchen.',
+            fr: 'Impossible de se connecter. Réessaie.',
+            ja: 'ログインできませんでした。もう一度お試しください。',
+            pt: 'Não foi possível iniciar sessão. Tente novamente.',
+          })
+        );
+      }
+    } finally {
+      setAuthModalLoading(null);
+    }
+  };
 
   // Duo Partner Email management (synced to Firestore users/{uid}.duoPartnerEmail)
   const [duoEmail, setDuoEmail] = useState('');
@@ -559,7 +627,7 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
                   value={duoEmail}
                   onChange={(e) => setDuoEmail(e.target.value)}
                   placeholder="partner@email.com"
-                  className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-gv-bg border border-gv-border text-xs font-mono text-gv-text focus:outline-none focus:border-gv-primary"
+                  className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-gv-bg border border-gv-border text-base sm:text-xs font-mono text-gv-text focus:outline-none focus:border-gv-primary"
                 />
               </div>
               <button
@@ -1278,17 +1346,19 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
               ].map((row, idx) => (
                 <div
                   key={idx}
-                  className="grid grid-cols-12 items-center px-4 md:px-5 py-3 gap-2"
+                  className="grid grid-cols-12 items-center px-3 sm:px-4 md:px-5 py-3 gap-1.5 sm:gap-2"
                 >
-                  <div className="col-span-6 font-semibold text-gv-text">{row.feature}</div>
-                  <div className="col-span-3 text-center text-gv-muted font-mono text-[11px]">
+                  <div className="col-span-6 font-semibold text-[11px] sm:text-xs text-gv-text leading-snug">
+                    {row.feature}
+                  </div>
+                  <div className="col-span-3 text-center text-gv-muted font-mono text-[10px] sm:text-[11px] leading-tight">
                     {row.free ? (
                       row.free
                     ) : (
                       <X className="w-4 h-4 text-gv-muted/50 mx-auto" />
                     )}
                   </div>
-                  <div className="col-span-3 text-center font-mono font-extrabold text-[11px] text-gv-accent flex items-center justify-center gap-1">
+                  <div className="col-span-3 text-center font-mono font-extrabold text-[10px] sm:text-[11px] text-gv-accent flex items-center justify-center gap-1 leading-tight">
                     <Check className="w-3.5 h-3.5 text-gv-primary shrink-0" />
                     <span>{row.pro}</span>
                   </div>
@@ -1506,7 +1576,51 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
               </p>
             </div>
 
-            <div className="flex flex-col gap-2 pt-2">
+            {authModalError && (
+              <div className="px-3 py-2 rounded-xl bg-gv-integrity/15 border border-gv-integrity/40 text-xs text-gv-integrity text-center font-semibold">
+                {authModalError}
+              </div>
+            )}
+
+            <div className="flex flex-col gap-2.5 pt-2">
+              <button
+                type="button"
+                disabled={authModalLoading !== null}
+                onClick={() => handleQuickSignIn('google')}
+                className="w-full py-3 px-4 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs uppercase tracking-wider cursor-pointer flex items-center justify-center gap-2 disabled:opacity-60"
+              >
+                <span>
+                  {authModalLoading === 'google'
+                    ? '...'
+                    : tr(locale, {
+                        es: 'Continuar con Google',
+                        en: 'Continue with Google',
+                        de: 'Weiter mit Google',
+                        fr: 'Continuer avec Google',
+                        ja: 'Googleで続行',
+                        pt: 'Continuar com Google',
+                      })}
+                </span>
+              </button>
+              <button
+                type="button"
+                disabled={authModalLoading !== null}
+                onClick={() => handleQuickSignIn('apple')}
+                className="w-full py-3 px-4 rounded-xl bg-gv-surface-higher hover:bg-gv-surface-high border border-gv-border text-gv-text font-black text-xs uppercase tracking-wider cursor-pointer flex items-center justify-center gap-2 disabled:opacity-60"
+              >
+                <span>
+                  {authModalLoading === 'apple'
+                    ? '...'
+                    : tr(locale, {
+                        es: 'Continuar con Apple',
+                        en: 'Continue with Apple',
+                        de: 'Weiter mit Apple',
+                        fr: 'Continuer avec Apple',
+                        ja: 'Appleで続行',
+                        pt: 'Continuar com Apple',
+                      })}
+                </span>
+              </button>
               <button
                 type="button"
                 onClick={() => {
@@ -1514,29 +1628,29 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
                   setShowAuthRequiredModal(false);
                   if (onNavigateTab) onNavigateTab('profile');
                 }}
-                className="w-full py-3 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs uppercase tracking-wider cursor-pointer"
+                className="w-full py-2.5 rounded-xl bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border text-xs font-bold text-gv-text cursor-pointer"
               >
                 {tr(locale, {
-                  es: 'Ir al Perfil / Iniciar Sesión',
-                  en: 'Go to Profile / Sign In',
-                  de: 'Zum Profil / Anmelden',
-                  fr: 'Aller au Profil / Se Connecter',
-                  ja: 'プロフィールへ移動してログイン',
-                  pt: 'Ir ao Perfil / Fazer Login',
+                  es: 'Ir al Perfil / Otras opciones',
+                  en: 'Go to Profile / Other options',
+                  de: 'Zum Profil / Weitere Optionen',
+                  fr: 'Aller au Profil / Autres options',
+                  ja: 'プロフィールへ移動',
+                  pt: 'Ir ao Perfil / Outras opções',
                 })}
               </button>
               <button
                 type="button"
                 onClick={() => setShowAuthRequiredModal(false)}
-                className="w-full py-2.5 rounded-xl bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border text-xs font-bold text-gv-muted hover:text-gv-text cursor-pointer"
+                className="w-full py-2 rounded-xl text-xs font-bold text-gv-muted hover:text-gv-text cursor-pointer"
               >
                 {tr(locale, {
-                  es: 'Cancelar',
-                  en: 'Cancel',
-                  de: 'Abbrechen',
-                  fr: 'Annuler',
-                  ja: 'キャンセル',
-                  pt: 'Cancelar',
+                  es: 'Ver planes primero',
+                  en: 'View plans first',
+                  de: 'Pläne zuerst ansehen',
+                  fr: 'Voir les plans d’abord',
+                  ja: 'まずはプランを見る',
+                  pt: 'Ver planos primeiro',
                 })}
               </button>
             </div>

@@ -106,30 +106,30 @@ export const OnboardingChecklist: React.FC<OnboardingChecklistProps> = ({
   };
 
   return (
-    <div className="w-full max-w-lg mx-auto mb-6 bg-gv-surface-high border-[1.5px] border-gv-primary/45 rounded-2xl p-3.5 shadow-xl">
-      <div className="flex items-center justify-between gap-2">
+    <div className="w-full max-w-lg mx-auto mb-6 bg-gv-surface-high border-[1.5px] border-gv-primary/45 rounded-2xl p-3 sm:p-3.5 shadow-xl overflow-hidden">
+      <div className="flex items-center justify-between gap-2 min-w-0">
         <div
-          className="flex items-center gap-2.5 flex-1 cursor-pointer"
+          className="flex items-center gap-2 sm:gap-2.5 flex-1 min-w-0 cursor-pointer"
           onClick={() => setExpanded(!expanded)}
         >
           {/* Checklist icon + Counter pill (no star icon, matching Flutter app) */}
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-gv-primary text-black font-mono font-extrabold text-xs shrink-0">
-            <ListChecks className="w-4 h-4 stroke-[2.5]" />
+          <div className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-lg bg-gv-primary text-black font-mono font-extrabold text-[11px] sm:text-xs shrink-0">
+            <ListChecks className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
             <span>
               {completedCount}/{steps.length}
             </span>
           </div>
-          <div>
-            <h3 className="text-[13.5px] font-extrabold text-gv-text leading-tight">
+          <div className="min-w-0 flex-1">
+            <h3 className="text-xs sm:text-[13.5px] font-extrabold text-gv-text leading-tight truncate">
               {tr(locale, UI_STRINGS.map.onboardingTitle)}
             </h3>
-            <p className="text-[11.5px] text-gv-muted">
+            <p className="text-[11px] sm:text-[11.5px] text-gv-muted truncate">
               {tr(locale, UI_STRINGS.map.onboardingSubtitle)}
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
           <button
             onClick={() => setExpanded(!expanded)}
             className="p-1 rounded-lg text-gv-muted hover:text-gv-text hover:bg-gv-surface transition-colors cursor-pointer"

@@ -57,14 +57,30 @@ html.light,
 }
 
 @layer base {
+  html,
   body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
     background-color: var(--color-gv-bg);
     color: var(--color-gv-text);
     margin: 0;
     padding: 0;
+    max-width: 100vw;
     overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
     transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  /* Safe area utilities for mobile bottom nav & modals */
+  .pb-safe {
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   /* Spreadsheet Grid Pattern */

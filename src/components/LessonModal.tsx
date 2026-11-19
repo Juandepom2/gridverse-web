@@ -749,9 +749,9 @@ export const LessonModal: React.FC<LessonModalProps> = ({
   const isCurrentRevealed = revealedOriginalIndices.has(currentQueued.originalIndex);
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 animate-fade-in">
+    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-1.5 sm:p-4 animate-fade-in">
       <div
-        className={`relative bg-gv-surface border border-gv-border rounded-2xl sm:rounded-3xl max-w-xl w-full shadow-2xl overflow-hidden flex flex-col h-[94vh] sm:h-auto sm:max-h-[90vh] transition-all ${
+        className={`relative bg-gv-surface border border-gv-border rounded-2xl sm:rounded-3xl max-w-xl w-full shadow-2xl overflow-hidden flex flex-col h-[calc(100dvh-0.75rem)] max-h-[96dvh] sm:h-auto sm:max-h-[90vh] transition-all ${
           shakeScreen ? 'animate-shake' : ''
         }`}
       >
@@ -1025,7 +1025,7 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 )}
 
                 {/* Formula Input Bar with Target Cell & Backspace */}
-                <div className="flex items-center bg-gv-surface border-2 border-gv-primary/70 rounded-xl px-3 py-2 gap-2.5 shadow-inner">
+                <div className="flex items-center bg-gv-surface border-2 border-gv-primary/70 rounded-xl px-2.5 sm:px-3 py-2 gap-2 shadow-inner min-w-0">
                   <span className="font-mono font-bold text-xs text-gv-primary shrink-0">
                     {currentExercise.targetCell || 'A1'}
                   </span>
@@ -1043,7 +1043,7 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                       ja: '=数式(...)',
                       pt: '=FÓRMULA(...)',
                     })}
-                    className="flex-1 bg-transparent font-mono font-semibold text-sm sm:text-base text-gv-text outline-none placeholder:text-gv-faint"
+                    className="flex-1 min-w-0 bg-transparent font-mono font-semibold text-base text-gv-text outline-none placeholder:text-gv-faint"
                   />
                   {writtenFormula.length > 0 && !isAnswered && (
                     <button
@@ -1327,7 +1327,7 @@ export const LessonModal: React.FC<LessonModalProps> = ({
             onClick={() => setShowHintModal(false)}
           >
             <div
-              className="w-full bg-gv-surface-high border-t border-gv-border rounded-t-3xl p-5 sm:p-6 space-y-4 animate-pop-up"
+              className="w-full max-h-[85%] overflow-y-auto bg-gv-surface-high border-t border-gv-border rounded-t-3xl p-4 sm:p-6 space-y-3.5 sm:space-y-4 animate-pop-up"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="w-10 h-1 bg-gv-border rounded-full mx-auto" />
@@ -1468,15 +1468,15 @@ export const LessonModal: React.FC<LessonModalProps> = ({
 
         {/* ── 5. 5-Correct-in-a-Row Combo Celebration Overlay (matching Flutter StreakCelebrationOverlay) */}
         {showStreakOverlay && (
-          <div className="absolute inset-0 z-40 bg-gv-bg/95 backdrop-blur-md flex flex-col items-center justify-between p-6 text-center animate-fade-in spreadsheet-grid-bg">
+          <div className="absolute inset-0 z-40 bg-gv-bg/95 backdrop-blur-md flex flex-col items-center justify-between p-4 sm:p-6 text-center animate-fade-in spreadsheet-grid-bg overflow-y-auto">
             <div />
 
-            <div className="flex flex-col items-center max-w-sm">
-              <div className="relative flex items-center justify-center mb-6">
-                <div className="absolute w-44 h-44 rounded-full bg-gv-primary/25 blur-2xl animate-pulse" />
-                <CeldiMascot mood="onFire" size={140} showBubble={false} />
-                <div className="absolute -bottom-3 px-4 py-1 rounded-full bg-gv-primary text-black font-mono text-xs font-black flex items-center gap-1.5 shadow-lg">
-                  <Zap className="w-4 h-4 fill-black" />
+            <div className="flex flex-col items-center max-w-sm my-auto py-2">
+              <div className="relative flex items-center justify-center mb-4 sm:mb-6">
+                <div className="absolute w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gv-primary/25 blur-2xl animate-pulse" />
+                <CeldiMascot mood="onFire" size={116} showBubble={false} />
+                <div className="absolute -bottom-3 px-3 sm:px-4 py-1 rounded-full bg-gv-primary text-black font-mono text-[11px] sm:text-xs font-black flex items-center gap-1.5 shadow-lg">
+                  <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-black" />
                   <span>
                     {tr(locale, {
                       es: `COMBO x${combo} · SIN ERRORES`,
@@ -1490,7 +1490,7 @@ export const LessonModal: React.FC<LessonModalProps> = ({
                 </div>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-black text-gv-primary tracking-tight mt-2">
+              <h2 className="text-xl sm:text-3xl font-black text-gv-primary tracking-tight mt-2">
                 {tr(locale, {
                   es: `¡${combo} SEGUIDAS SIN EQUIVOCARTE!`,
                   en: `${combo} IN A ROW WITHOUT MISTAKES!`,
@@ -1512,14 +1512,14 @@ export const LessonModal: React.FC<LessonModalProps> = ({
               </p>
 
               {/* 5 Lightning Bolts Bar */}
-              <div className="w-full mt-6 p-4 rounded-2xl bg-gv-surface-high border border-gv-primary/40 flex flex-col items-center gap-3">
-                <div className="flex items-center justify-center gap-3">
+              <div className="w-full mt-4 sm:mt-6 p-3 sm:p-4 rounded-2xl bg-gv-surface-high border border-gv-primary/40 flex flex-col items-center gap-2.5 sm:gap-3">
+                <div className="flex items-center justify-center gap-2 sm:gap-3">
                   {[0, 1, 2, 3, 4].map((idx) => (
                     <div
                       key={idx}
-                      className="w-11 h-11 rounded-full bg-gv-primary/20 border-2 border-gv-primary flex items-center justify-center text-gv-accent shadow-md"
+                      className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gv-primary/20 border-2 border-gv-primary flex items-center justify-center text-gv-accent shadow-md"
                     >
-                      <Zap className="w-5 h-5 fill-gv-accent" />
+                      <Zap className="w-4 h-4 sm:w-5 sm:h-5 fill-gv-accent" />
                     </div>
                   ))}
                 </div>

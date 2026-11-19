@@ -490,12 +490,12 @@ export const VictoryCeremony: React.FC<VictoryCeremonyProps> = ({
 
   // ── STAGES 2 & 3: CEREMONY LAYER + AFTERGLOW ───────────────────────────────
   return (
-    <div className="p-6 sm:p-8 text-center flex flex-col items-center gap-4 my-auto animate-fade-in">
-      <div ref={celdiContainerRef} className="relative flex items-center justify-center">
-        <div className="absolute w-28 h-28 rounded-full bg-gv-primary/20 blur-xl" />
+    <div className="p-4 sm:p-8 text-center flex flex-col items-center gap-3 sm:gap-4 my-auto overflow-y-auto max-h-full animate-fade-in">
+      <div ref={celdiContainerRef} className="relative flex items-center justify-center shrink-0">
+        <div className="absolute w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gv-primary/20 blur-xl" />
         <CeldiMascot
           mood={mistakes === 0 ? 'onFire' : 'celebrating'}
-          size={88}
+          size={80}
           showBubble={false}
         />
       </div>

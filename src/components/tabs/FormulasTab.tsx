@@ -240,17 +240,17 @@ const FormulaActionVisualizer: React.FC<{
       </div>
 
       {/* 2. Mini Spreadsheet Grid */}
-      <div className="p-2">
-        <div className="rounded-lg overflow-hidden border border-gv-border/60">
+      <div className="p-2 overflow-x-auto">
+        <div className="rounded-lg overflow-hidden border border-gv-border/60 min-w-[260px]">
           {/* Column Headers */}
           <div className="flex items-center bg-gv-surface-higher border-b border-gv-border/60">
-            <div className="w-6 h-5 flex items-center justify-center border-r border-gv-border/60 text-[9px] font-mono text-gv-muted">
+            <div className="w-6 h-5 flex items-center justify-center border-r border-gv-border/60 text-[9px] font-mono text-gv-muted shrink-0">
               #
             </div>
             {scenario.columns.map((col) => (
               <div
                 key={col}
-                className="flex-1 h-5 flex items-center justify-center border-r last:border-r-0 border-gv-border/60 text-[10px] font-mono font-black text-gv-muted"
+                className="flex-1 min-w-0 h-5 flex items-center justify-center border-r last:border-r-0 border-gv-border/60 text-[10px] font-mono font-black text-gv-muted"
               >
                 {col}
               </div>
@@ -263,7 +263,7 @@ const FormulaActionVisualizer: React.FC<{
               key={rIdx}
               className="flex items-center border-b last:border-b-0 border-gv-border/50"
             >
-              <div className="w-6 h-6 flex items-center justify-center bg-gv-surface-higher border-r border-gv-border/60 text-[10px] font-mono font-bold text-gv-muted">
+              <div className="w-6 h-6 flex items-center justify-center bg-gv-surface-higher border-r border-gv-border/60 text-[10px] font-mono font-bold text-gv-muted shrink-0">
                 {rIdx + 1}
               </div>
               {scenario.columns.map((col, cIdx) => {
@@ -276,13 +276,13 @@ const FormulaActionVisualizer: React.FC<{
                   return (
                     <div
                       key={coord}
-                      className="flex-1 h-6 px-1.5 flex items-center font-mono text-[10.5px] font-black transition-all relative"
+                      className="flex-1 min-w-0 h-6 px-1.5 flex items-center font-mono text-[10.5px] font-black transition-all relative overflow-hidden"
                       style={{
                         backgroundColor: isResult
                           ? 'rgba(33,194,107,0.22)'
                           : isEnter
                           ? `${accentColor}38`
-                          : '#111915',
+                          : 'var(--color-gv-surface)',
                         border: `1.5px solid ${isResult ? '#21C26B' : accentColor}`,
                       }}
                     >
@@ -305,7 +305,7 @@ const FormulaActionVisualizer: React.FC<{
                   return (
                     <div
                       key={coord}
-                      className={`flex-1 h-6 px-1.5 flex items-center border-r last:border-r-0 font-mono text-[10.5px] transition-colors ${
+                      className={`flex-1 min-w-0 h-6 px-1.5 flex items-center border-r last:border-r-0 font-mono text-[10.5px] transition-colors overflow-hidden ${
                         isTyping
                           ? 'bg-gv-bytes/20 border-gv-bytes text-gv-bytes font-black'
                           : 'bg-gv-surface border-gv-border/50 text-gv-text font-semibold'
@@ -319,7 +319,7 @@ const FormulaActionVisualizer: React.FC<{
                 return (
                   <div
                     key={coord}
-                    className="flex-1 h-6 px-1.5 flex items-center border-r last:border-r-0 border-gv-border/50 bg-gv-surface font-mono text-[10.5px] text-gv-muted truncate"
+                    className="flex-1 min-w-0 h-6 px-1.5 flex items-center border-r last:border-r-0 border-gv-border/50 bg-gv-surface font-mono text-[10.5px] text-gv-muted truncate"
                   >
                     {rawVal}
                   </div>
@@ -332,13 +332,13 @@ const FormulaActionVisualizer: React.FC<{
 
       {/* 3. Scenario Footer */}
       <div
-        className="px-3 py-1 border-t flex items-center justify-between text-[10.5px] font-bold"
+        className="px-3 py-1 border-t flex items-center justify-between gap-2 text-[10.5px] font-bold"
         style={{
           backgroundColor: `${accentColor}16`,
           borderColor: `${accentColor}35`,
         }}
       >
-        <span className={isResult ? 'text-gv-accent' : 'text-gv-muted'}>
+        <span className={`truncate ${isResult ? 'text-gv-accent' : 'text-gv-muted'}`}>
           {isTyping
             ? tr(loc, {
                 es: `Escribiendo fórmula en celda ${scenario.targetCell}...`,
@@ -359,7 +359,7 @@ const FormulaActionVisualizer: React.FC<{
               })
             : `${targetLabel}: ${scenario.resultValue}`}
         </span>
-        <span className="text-[9px] font-mono text-gv-muted">
+        <span className="text-[9px] font-mono text-gv-muted shrink-0">
           {tr(loc, {
             es: 'Clic para repetir ↻',
             en: 'Click to replay ↻',
@@ -645,7 +645,7 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                   pt: 'Buscar comando ou atalho Windows / Mac (ex. F4, AutoSoma, Ctrl+T, Cmd+T...)',
                 })
           }
-          className="w-full pl-11 pr-10 py-3 bg-transparent text-xs sm:text-sm font-semibold text-gv-text placeholder:text-gv-muted/70 focus:outline-none"
+          className="w-full pl-11 pr-10 py-3 bg-transparent text-base sm:text-sm font-semibold text-gv-text placeholder:text-gv-muted/70 focus:outline-none"
         />
         {search && (
           <button
@@ -666,14 +666,14 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
             sound.play('tap');
             setActiveSubTab('formulas');
           }}
-          className={`py-2.5 px-3 rounded-[10px] font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer ${
+          className={`py-2.5 px-2 sm:px-3 rounded-[10px] font-extrabold text-[11px] sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 transition-all cursor-pointer min-w-0 ${
             activeSubTab === 'formulas'
               ? 'bg-gradient-to-r from-gv-primary/25 to-gv-bytes/20 border-[1.5px] border-gv-primary text-gv-primary shadow-sm'
               : 'text-gv-muted hover:text-gv-text border-[1.5px] border-transparent'
           }`}
         >
-          <Sigma className="w-4 h-4" />
-          <span>
+          <Sigma className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+          <span className="truncate">
             {tr(locale, {
               es: `Fórmulas (${FORMULAS_DATA.length})`,
               en: `Formulas (${FORMULAS_DATA.length})`,
@@ -691,21 +691,21 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
             sound.play('tap');
             setActiveSubTab('shortcuts');
           }}
-          className={`py-2.5 px-3 rounded-[10px] font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer ${
+          className={`py-2.5 px-2 sm:px-3 rounded-[10px] font-extrabold text-[11px] sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 transition-all cursor-pointer min-w-0 ${
             activeSubTab === 'shortcuts'
               ? 'bg-gradient-to-r from-gv-primary/25 to-gv-bytes/20 border-[1.5px] border-gv-primary text-gv-primary shadow-sm'
               : 'text-gv-muted hover:text-gv-text border-[1.5px] border-transparent'
           }`}
         >
-          <Command className="w-4 h-4" />
-          <span>
+          <Command className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+          <span className="truncate">
             {tr(locale, {
-              es: `Comandos Windows / Mac (${EXCEL_SHORTCUTS_DATA.length})`,
-              en: `Windows / Mac Shortcuts (${EXCEL_SHORTCUTS_DATA.length})`,
-              de: `Windows / Mac Kürzel (${EXCEL_SHORTCUTS_DATA.length})`,
-              fr: `Raccourcis Windows / Mac (${EXCEL_SHORTCUTS_DATA.length})`,
-              ja: `Windows / Mac ショートカット (${EXCEL_SHORTCUTS_DATA.length})`,
-              pt: `Atalhos Windows / Mac (${EXCEL_SHORTCUTS_DATA.length})`,
+              es: `Comandos Win/Mac (${EXCEL_SHORTCUTS_DATA.length})`,
+              en: `Win/Mac Shortcuts (${EXCEL_SHORTCUTS_DATA.length})`,
+              de: `Win/Mac Kürzel (${EXCEL_SHORTCUTS_DATA.length})`,
+              fr: `Raccourcis Win/Mac (${EXCEL_SHORTCUTS_DATA.length})`,
+              ja: `Win/Mac ショートカット (${EXCEL_SHORTCUTS_DATA.length})`,
+              pt: `Atalhos Win/Mac (${EXCEL_SHORTCUTS_DATA.length})`,
             })}
           </span>
         </button>
@@ -733,11 +733,11 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                     setSelectedCategory(cat.id);
                   }}
                   style={{
-                    borderColor: isSelected ? cat.color : '#233229',
-                    backgroundColor: isSelected ? `${cat.color}24` : '#111915',
+                    borderColor: isSelected ? cat.color : 'var(--color-gv-border)',
+                    backgroundColor: isSelected ? `${cat.color}24` : 'var(--color-gv-surface)',
                     boxShadow: isSelected
                       ? `0 3px 0 ${cat.color}66`
-                      : '0 2px 0 rgba(0,0,0,0.35)',
+                      : '0 2px 0 rgba(0,0,0,0.2)',
                   }}
                   className="px-3 py-2 rounded-xl border-[1.6px] flex items-center gap-1.5 shrink-0 transition-all cursor-pointer hover:brightness-110"
                 >
@@ -746,15 +746,15 @@ export const FormulasTab: React.FC<FormulasTabProps> = ({ locale }) => {
                   </span>
                   <span
                     className="text-xs font-extrabold"
-                    style={{ color: isSelected ? cat.color : '#E3F2EA' }}
+                    style={{ color: isSelected ? cat.color : 'var(--color-gv-text)' }}
                   >
                     {tr(locale, cat.labelByLocale)}
                   </span>
                   <span
                     className="px-1.5 py-0.2 rounded-md text-[10px] font-mono font-black"
                     style={{
-                      backgroundColor: isSelected ? `${cat.color}33` : '#19241E',
-                      color: isSelected ? cat.color : '#8FA89B',
+                      backgroundColor: isSelected ? `${cat.color}33` : 'var(--color-gv-surface-high)',
+                      color: isSelected ? cat.color : 'var(--color-gv-muted)',
                     }}
                   >
                     {count}

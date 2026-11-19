@@ -31,7 +31,25 @@ const LIFE_REGEN_MS = 20 * 60 * 1000; // 20 minutes per life
 export const App: React.FC = () => {
   const [stats, setStats] = useState<UserStats>(loadUserStats);
   const [activeTab, setActiveTab] = useState<'map' | 'practice' | 'formulas' | 'shop' | 'profile'>(
-    'map'
+    () => {
+      if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search);
+        const tabParam = params.get('tab');
+        if (
+          tabParam === 'shop' ||
+          tabParam === 'profile' ||
+          tabParam === 'practice' ||
+          tabParam === 'formulas' ||
+          tabParam === 'map'
+        ) {
+          return tabParam;
+        }
+        if (params.get('category') || params.get('tier')) {
+          return 'shop';
+        }
+      }
+      return 'map';
+    }
   );
   const [activeLesson, setActiveLesson] = useState<{ ref: string; file: string } | null>(null);
   const [showLivesModal, setShowLivesModal] = useState(false);
@@ -89,6 +107,10 @@ export const App: React.FC = () => {
   useEffect(() => {
     applyTheme(stats.theme || getInitialTheme());
   }, [stats.theme]);
+
+  useEffect(() => {
+    document.documentElement.lang = stats.locale || 'es';
+  }, [stats.locale]);
 
   // Handle Stripe Checkout return (?checkout_success=true)
   useEffect(() => {
@@ -389,7 +411,7 @@ export const App: React.FC = () => {
       />
 
       {/* Main Tab Content */}
-      <main className="flex-1 pb-20 md:pb-8">
+      <main className="flex-1 pb-24 md:pb-12">
         {activeTab === 'map' && (
           <MapTab
             stats={stats}
@@ -430,7 +452,7 @@ export const App: React.FC = () => {
       </main>
 
       {/* Bottom Navigation for Mobile / Centered Bar for Desktop */}
-      <nav className="fixed bottom-0 left-0 right-0 z-40 bg-gv-surface/95 backdrop-blur-md border-t border-gv-border px-4 py-2">
+      <nav className="fixed bottom-0 left-0 right-0 z-40 bg-gv-surface/95 backdrop-blur-md border-t border-gv-border px-2 sm:px-4 pt-2 pb-safe">
         <div className="max-w-md mx-auto flex items-center justify-around">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -442,14 +464,16 @@ export const App: React.FC = () => {
                   sound.play('tap');
                   setActiveTab(item.id);
                 }}
-                className={`flex flex-col items-center gap-1 py-1 px-3 rounded-xl transition-all cursor-pointer ${
+                className={`flex flex-col items-center gap-1 py-1 px-2 sm:px-3 min-w-0 rounded-xl transition-all cursor-pointer ${
                   isActive
                     ? 'text-gv-accent scale-105 font-bold'
                     : 'text-gv-muted hover:text-gv-text'
                 }`}
               >
-                <Icon className={`w-5 h-5 ${isActive ? 'stroke-[2.5]' : 'stroke-2'}`} />
-                <span className="text-[10px] tracking-tight">{item.label}</span>
+                <Icon className={`w-5 h-5 shrink-0 ${isActive ? 'stroke-[2.5]' : 'stroke-2'}`} />
+                <span className="text-[10px] tracking-tight truncate max-w-[64px] sm:max-w-none">
+                  {item.label}
+                </span>
               </button>
             );
           })}

@@ -162,36 +162,36 @@ export const MapTab: React.FC<MapTabProps> = ({
             <div key={region.column} className="flex flex-col items-center w-full">
               {/* Region Pinned Header Card */}
               <div
-                className="w-full sticky top-14 z-20 rounded-2xl p-4 shadow-xl border flex items-center justify-between gap-3 mb-8 backdrop-blur-md transition-all"
+                className="w-full sticky top-12 sm:top-14 z-20 rounded-2xl p-3 sm:p-4 shadow-xl border flex items-center justify-between gap-2.5 sm:gap-3 mb-8 backdrop-blur-md transition-all overflow-hidden"
                 style={{
                   backgroundColor: `${region.color}18`,
                   borderColor: `${region.color}50`,
                 }}
               >
-                <div className="flex items-center gap-3 flex-1 min-w-0">
+                <div className="flex items-center gap-2.5 sm:gap-3 flex-1 min-w-0">
                   <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center font-mono font-black text-xl text-white shadow-md shrink-0"
+                    className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center font-mono font-black text-base sm:text-xl text-white shadow-md shrink-0"
                     style={{ backgroundColor: region.color }}
                   >
                     {region.column}
                   </div>
                   <div className="flex-1 min-w-0">
                     <span
-                      className="text-[10px] font-bold uppercase tracking-wider block"
+                      className="text-[10px] font-bold uppercase tracking-wider block truncate"
                       style={{ color: region.color }}
                     >
                       {tr(locale, UI_STRINGS.map.column)} {region.column}
                     </span>
-                    <h2 className="text-sm md:text-base font-black text-gv-text leading-tight truncate">
+                    <h2 className="text-xs sm:text-sm md:text-base font-black text-gv-text leading-tight truncate">
                       {title}
                     </h2>
-                    <p className="text-[11px] text-gv-muted mt-0.5 line-clamp-1">{subtitle}</p>
+                    <p className="text-[11px] text-gv-muted mt-0.5 truncate">{subtitle}</p>
                   </div>
                 </div>
 
                 <div className="text-right shrink-0">
                   <span
-                    className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-gv-surface/90 border border-gv-border shadow-xs"
+                    className="text-[11px] sm:text-xs font-mono font-bold px-2 sm:px-2.5 py-1 rounded-lg bg-gv-surface/90 border border-gv-border shadow-xs"
                     style={{ color: region.color }}
                   >
                     {completedInRegion}/{region.levels.length}
@@ -200,12 +200,12 @@ export const MapTab: React.FC<MapTabProps> = ({
               </div>
 
               {/* Vertical Zig-Zag Snake Nodes */}
-              <div className="w-full flex flex-col items-center gap-6 py-2">
+              <div className="w-full flex flex-col items-center gap-6 py-2 overflow-x-clip">
                 {region.levels.map((lvl, lIdx) => {
                   const { status, stars } = getLevelStatusAndStars(lvl.ref, lvl.type);
                   const isCurrent = lvl.ref.toUpperCase() === effectiveCurrent;
                   const xOffset = ZIGZAG_OFFSETS[lIdx % ZIGZAG_OFFSETS.length];
-                  const celdiOffset = xOffset >= 0 ? xOffset - 82 : xOffset + 82;
+                  const celdiOffset = xOffset >= 0 ? xOffset - 78 : xOffset + 78;
                   const file = `${lvl.ref.toLowerCase()}.json`;
 
                   return (
@@ -250,7 +250,7 @@ export const MapTab: React.FC<MapTabProps> = ({
                           className="absolute pointer-events-auto cursor-pointer transition-transform duration-300"
                           onClick={() => onSelectLevel(lvl.ref, file)}
                         >
-                          <CeldiMascot mood="happy" size={64} />
+                          <CeldiMascot mood="happy" size={58} />
                         </div>
                       )}
                     </div>

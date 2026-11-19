@@ -2655,15 +2655,15 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             </button>
 
             {/* Tema de la interfaz (Modo Claro / Oscuro) */}
-            <div className="p-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
+            <div className="p-4 flex items-center justify-between gap-2 flex-wrap">
+              <div className="flex items-center gap-3 min-w-0">
                 {stats.theme === 'light' ? (
-                  <Sun className="w-5 h-5 text-gv-warning" />
+                  <Sun className="w-5 h-5 text-gv-warning shrink-0" />
                 ) : (
-                  <Moon className="w-5 h-5 text-gv-accent" />
+                  <Moon className="w-5 h-5 text-gv-accent shrink-0" />
                 )}
-                <div>
-                  <p className="text-sm font-semibold text-gv-text">
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-gv-text truncate">
                     {tr(locale, {
                       es: 'Tema de la interfaz',
                       en: 'Interface Theme',
@@ -2673,7 +2673,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                       pt: 'Tema da interface',
                     })}
                   </p>
-                  <p className="text-xs text-gv-muted">
+                  <p className="text-xs text-gv-muted truncate">
                     {stats.theme === 'light'
                       ? tr(locale, {
                           es: 'Modo claro activo',
@@ -2694,7 +2694,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-1 bg-gv-surface-high border border-gv-border rounded-xl p-1">
+              <div className="flex items-center gap-1 bg-gv-surface-high border border-gv-border rounded-xl p-1 shrink-0">
                 <button
                   type="button"
                   onClick={() => {
@@ -2703,7 +2703,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                       onUpdateStats?.({ ...stats, theme: 'dark' });
                     }
                   }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  className={`flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     stats.theme !== 'light'
                       ? 'bg-gv-surface text-gv-text shadow-sm border border-gv-border'
                       : 'text-gv-muted hover:text-gv-text'
@@ -2729,7 +2729,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                       onUpdateStats?.({ ...stats, theme: 'light' });
                     }
                   }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  className={`flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     stats.theme === 'light'
                       ? 'bg-gv-surface text-gv-text shadow-sm border border-gv-border'
                       : 'text-gv-muted hover:text-gv-text'
@@ -3313,7 +3313,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                     ja: 'Gridverseでの名前...',
                     pt: 'Seu nome no Gridverse...',
                   })}
-                  className="w-full px-4 py-3 rounded-xl bg-gv-surface-high border border-gv-border focus:border-gv-primary focus:outline-none text-sm font-bold text-gv-text"
+                  className="w-full px-4 py-3 rounded-xl bg-gv-surface-high border border-gv-border focus:border-gv-primary focus:outline-none text-base sm:text-sm font-bold text-gv-text"
                 />
                 <p className="text-[10px] text-gv-muted text-right mt-1 font-mono">
                   {editName.length}/25
@@ -3783,7 +3783,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                   ja: '気に入っている点や追加してほしい機能をお聞かせください（任意）...',
                   pt: 'Conte-nos o que você mais gosta ou o que gostaria de ver no Gridverse (opcional)...',
                 })}
-                className="w-full p-3.5 rounded-xl bg-gv-surface-high border border-gv-border focus:border-[#F59E0B] focus:outline-none text-xs text-gv-text resize-none"
+                className="w-full p-3.5 rounded-xl bg-gv-surface-high border border-gv-border focus:border-[#F59E0B] focus:outline-none text-base sm:text-xs text-gv-text resize-none"
               />
 
               <button
@@ -3855,6 +3855,9 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                   type="button"
                   onClick={() => {
                     sound.play('tap');
+                    try {
+                      localStorage.setItem('gridverse_locale_user_set', 'true');
+                    } catch {}
                     onUpdateStats?.({ ...stats, locale: langOpt.code });
                     setShowLanguageModal(false);
                   }}

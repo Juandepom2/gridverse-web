@@ -78,6 +78,9 @@ export const Header: React.FC<HeaderProps> = ({
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const locale = e.target.value as SupportedLocale;
+    try {
+      localStorage.setItem('gridverse_locale_user_set', 'true');
+    } catch {}
     onUpdateStats({ ...stats, locale });
   };
 
@@ -100,36 +103,39 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-gv-surface/90 backdrop-blur-md border-b border-gv-border px-4 py-2.5">
-        <div className="max-w-6xl mx-auto flex items-center justify-between gap-3">
+      <header className="sticky top-0 z-40 w-full bg-gv-surface/95 backdrop-blur-md border-b border-gv-border px-2 sm:px-4 py-1.5 sm:py-2.5 overflow-x-clip">
+        <div className="max-w-6xl mx-auto flex items-center justify-between gap-1 sm:gap-3 min-w-0">
           {/* Brand / Logo */}
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => onChangeTab('map')}>
-            <div className="w-9 h-9 rounded-xl bg-gv-surface-high border border-gv-border flex items-center justify-center p-1 shadow-inner">
-              <img src="/logo.png" alt="Gridverse" className="w-7 h-7 object-contain" />
+          <div
+            className="flex items-center gap-1.5 sm:gap-2.5 cursor-pointer shrink-0 min-w-0"
+            onClick={() => onChangeTab('map')}
+          >
+            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gv-surface-high border border-gv-border flex items-center justify-center p-1 shadow-inner shrink-0">
+              <img src="/logo.png" alt="Gridverse" className="w-5 h-5 sm:w-7 sm:h-7 object-contain" />
             </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-black tracking-tight text-base md:text-lg text-gv-text">
+            <div className="min-w-0">
+              <div className="flex items-center gap-1 sm:gap-1.5">
+                <span className="font-black tracking-tight text-xs sm:text-base md:text-lg text-gv-text hidden min-[390px]:inline">
                   GRIDVERSE
                 </span>
                 {stats.isPro ? (
-                  <span className="text-[10px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded bg-gv-primary text-black">
+                  <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-wider px-1 sm:px-1.5 py-0.5 rounded bg-gv-primary text-black">
                     PRO
                   </span>
                 ) : (
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-gv-primary-soft text-gv-accent border border-gv-primary/30">
+                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-1 sm:px-1.5 py-0.5 rounded bg-gv-primary-soft text-gv-accent border border-gv-primary/30 hidden md:inline">
                     Web
                   </span>
                 )}
               </div>
-              <p className="text-[10px] text-gv-muted hidden sm:block">
+              <p className="text-[10px] text-gv-muted hidden lg:block truncate">
                 {tr(stats.locale, UI_STRINGS.header.subtitle)}
               </p>
             </div>
           </div>
 
           {/* HUD Game Stats */}
-          <div className="flex items-center gap-2 md:gap-4">
+          <div className="flex items-center gap-1 sm:gap-2 md:gap-3 shrink-0">
             {/* Streak 🔥 (Compounding Tier + Active Shields) */}
             {(() => {
               const tier = getStreakTier(stats.streak, stats.locale);
@@ -140,13 +146,13 @@ export const Header: React.FC<HeaderProps> = ({
                     sound.play('tap');
                     onChangeTab('shop');
                   }}
-                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs md:text-sm font-mono font-bold cursor-pointer transition-colors ${tier.badgeBgClass} ${tier.colorClass}`}
+                  className={`flex items-center gap-0.5 sm:gap-1.5 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full border text-[11px] sm:text-xs md:text-sm font-mono font-bold cursor-pointer transition-colors ${tier.badgeBgClass} ${tier.colorClass}`}
                   title={`${tier.label} · ${stats.streak}d${freezes > 0 ? ` · 🛡️ ${freezes}` : ''}`}
                 >
-                  <Flame className="w-4 h-4 fill-current animate-pulse-subtle" />
+                  <Flame className="w-3 h-3 sm:w-4 sm:h-4 fill-current animate-pulse-subtle shrink-0" />
                   <span className="tabular-nums">{stats.streak}</span>
                   {freezes > 0 && (
-                    <span className="text-[10px] text-gv-bytes font-black ml-0.5">
+                    <span className="text-[9px] sm:text-[10px] text-gv-bytes font-black ml-0.5 hidden sm:inline">
                       🛡️{freezes}
                     </span>
                   )}
@@ -156,7 +162,7 @@ export const Header: React.FC<HeaderProps> = ({
 
             {/* Gems 💎 */}
             <div
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gv-bytes/10 border border-gv-bytes/25 text-xs md:text-sm font-mono font-bold text-gv-bytes cursor-pointer hover:bg-gv-bytes/15 transition-colors"
+              className="flex items-center gap-0.5 sm:gap-1.5 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-gv-bytes/10 border border-gv-bytes/25 text-[11px] sm:text-xs md:text-sm font-mono font-bold text-gv-bytes cursor-pointer hover:bg-gv-bytes/15 transition-colors"
               title={tr(stats.locale, {
                 es: 'Gemas / Puntos ganados',
                 en: 'Gems / Points earned',
@@ -167,14 +173,14 @@ export const Header: React.FC<HeaderProps> = ({
               })}
               onClick={() => onChangeTab('shop')}
             >
-              <Gem className="w-4 h-4 text-gv-bytes fill-gv-bytes/20" />
+              <Gem className="w-3 h-3 sm:w-4 sm:h-4 text-gv-bytes fill-gv-bytes/20 shrink-0" />
               <span className="tabular-nums">{stats.gems}</span>
             </div>
 
             {/* Lives ❤️ or PRO ∞ (matching Flutter StatChip & NoLivesDialog) */}
             {stats.isPro ? (
               <div
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gv-primary-soft border border-gv-primary/40 text-xs md:text-sm font-mono font-extrabold text-gv-accent cursor-pointer hover:bg-gv-primary/20 transition-colors"
+                className="flex items-center gap-0.5 sm:gap-1.5 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-gv-primary-soft border border-gv-primary/40 text-[11px] sm:text-xs md:text-sm font-mono font-extrabold text-gv-accent cursor-pointer hover:bg-gv-primary/20 transition-colors"
                 title={tr(stats.locale, {
                   es: 'Gridverse PRO: Vidas Ilimitadas',
                   en: 'Gridverse PRO: Unlimited Lives',
@@ -185,8 +191,8 @@ export const Header: React.FC<HeaderProps> = ({
                 })}
                 onClick={() => onChangeTab('shop')}
               >
-                <InfinityIcon className="w-4 h-4 text-gv-accent stroke-[2.5]" />
-                <span>PRO</span>
+                <InfinityIcon className="w-3 h-3 sm:w-4 sm:h-4 text-gv-accent stroke-[2.5] shrink-0" />
+                <span className="hidden sm:inline">PRO</span>
               </div>
             ) : (
               <button
@@ -195,7 +201,7 @@ export const Header: React.FC<HeaderProps> = ({
                   sound.play('tap');
                   setLivesModalOpen(true);
                 }}
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gv-integrity/10 border border-gv-integrity/25 text-xs md:text-sm font-mono font-bold text-gv-integrity cursor-pointer hover:bg-gv-integrity/15 transition-colors"
+                className="flex items-center gap-0.5 sm:gap-1.5 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-gv-integrity/10 border border-gv-integrity/25 text-[11px] sm:text-xs md:text-sm font-mono font-bold text-gv-integrity cursor-pointer hover:bg-gv-integrity/15 transition-colors"
                 title={tr(stats.locale, {
                   es: 'Ver estado y regeneración de vidas',
                   en: 'View lives status and refill',
@@ -205,10 +211,10 @@ export const Header: React.FC<HeaderProps> = ({
                   pt: 'Ver status e recarga de vidas',
                 })}
               >
-                <Heart className="w-4 h-4 fill-gv-integrity text-gv-integrity" />
+                <Heart className="w-3 h-3 sm:w-4 sm:h-4 fill-gv-integrity text-gv-integrity shrink-0" />
                 <span className="tabular-nums">{stats.lives}</span>
                 {stats.lives < 5 && nextLifeFormatted && (
-                  <span className="text-[10px] text-gv-warning font-mono pl-0.5 hidden sm:inline">
+                  <span className="text-[10px] text-gv-warning font-mono pl-0.5 hidden md:inline">
                     ({nextLifeFormatted})
                   </span>
                 )}
@@ -217,11 +223,11 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Controls: Audio, Music BGM, Locale & Landing Link */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
             {/* Background Music (BGM) Looping Toggle 🎵 */}
             <button
               onClick={toggleBgm}
-              className={`p-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer ${
+              className={`p-1 sm:p-1.5 rounded-lg border text-xs font-semibold hidden sm:flex items-center gap-1 transition-colors cursor-pointer ${
                 bgmActive
                   ? 'bg-gv-primary-soft border-gv-primary text-gv-accent animate-pulse-subtle'
                   : 'bg-gv-surface-high border-gv-border text-gv-muted hover:text-gv-text'
@@ -246,14 +252,14 @@ export const Header: React.FC<HeaderProps> = ({
                     })
               }
             >
-              <Music className="w-4 h-4" />
+              <Music className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               <span className="text-[10px] hidden lg:inline font-mono">BGM</span>
             </button>
 
             {/* Sound FX Mute Toggle */}
             <button
               onClick={toggleSound}
-              className="p-1.5 rounded-lg bg-gv-surface-high border border-gv-border text-gv-muted hover:text-gv-text hover:bg-gv-surface-higher transition-colors cursor-pointer"
+              className="p-1 sm:p-1.5 rounded-lg bg-gv-surface-high border border-gv-border text-gv-muted hover:text-gv-text hover:bg-gv-surface-higher transition-colors cursor-pointer"
               title={
                 stats.soundEnabled
                   ? tr(stats.locale, {
@@ -275,16 +281,16 @@ export const Header: React.FC<HeaderProps> = ({
               }
             >
               {stats.soundEnabled ? (
-                <Volume2 className="w-4 h-4" />
+                <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               ) : (
-                <VolumeX className="w-4 h-4" />
+                <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               )}
             </button>
 
             {/* Theme Toggle (Modo Claro / Modo Oscuro) ☀️🌙 */}
             <button
               onClick={toggleTheme}
-              className="p-1.5 rounded-lg bg-gv-surface-high border border-gv-border text-gv-muted hover:text-gv-text hover:bg-gv-surface-higher transition-colors cursor-pointer"
+              className="p-1 sm:p-1.5 rounded-lg bg-gv-surface-high border border-gv-border text-gv-muted hover:text-gv-text hover:bg-gv-surface-higher transition-colors cursor-pointer"
               title={
                 currentTheme === 'light'
                   ? tr(stats.locale, {
@@ -325,19 +331,20 @@ export const Header: React.FC<HeaderProps> = ({
               }
             >
               {currentTheme === 'light' ? (
-                <Moon className="w-4 h-4 text-gv-primary" />
+                <Moon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gv-primary" />
               ) : (
-                <Sun className="w-4 h-4 text-gv-warning" />
+                <Sun className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gv-warning" />
               )}
             </button>
 
             {/* Language Selector */}
             <div className="relative flex items-center">
-              <Globe className="w-3.5 h-3.5 text-gv-muted absolute left-2 pointer-events-none" />
+              <Globe className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-gv-muted absolute left-1.5 sm:left-2 pointer-events-none hidden sm:block" />
               <select
                 value={stats.locale}
                 onChange={handleLanguageChange}
-                className="bg-gv-surface-high border border-gv-border text-gv-text text-xs font-semibold rounded-lg pl-7 pr-2 py-1.5 cursor-pointer hover:bg-gv-surface-higher transition-colors focus:outline-none focus:border-gv-primary"
+                aria-label="Language"
+                className="bg-gv-surface-high border border-gv-border text-gv-text text-[10px] sm:text-xs font-bold rounded-lg px-1.5 sm:pl-7 sm:pr-2 py-1 sm:py-1.5 cursor-pointer hover:bg-gv-surface-higher transition-colors focus:outline-none focus:border-gv-primary"
               >
                 <option value="es">ES</option>
                 <option value="en">EN</option>

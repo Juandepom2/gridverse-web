@@ -2,6 +2,34 @@ import { UserStats, SupportedLocale } from '../types';
 import { getInitialTheme } from './theme';
 
 const STORAGE_KEY = 'gridverse_web_user_stats';
+const SUPPORTED_LOCALES: SupportedLocale[] = ['es', 'en', 'de', 'fr', 'ja', 'pt'];
+
+export function detectBrowserLocale(): SupportedLocale {
+  try {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const langParam = urlParams.get('lang')?.toLowerCase().slice(0, 2) as SupportedLocale | undefined;
+      if (langParam && SUPPORTED_LOCALES.includes(langParam)) {
+        return langParam;
+      }
+    }
+    if (typeof navigator !== 'undefined') {
+      const candidates = navigator.languages?.length
+        ? navigator.languages
+        : [navigator.language];
+      for (const raw of candidates) {
+        if (!raw) continue;
+        const code = raw.toLowerCase().split(/[-_]/)[0] as SupportedLocale;
+        if (SUPPORTED_LOCALES.includes(code)) {
+          return code;
+        }
+      }
+    }
+  } catch {
+    // Fallback
+  }
+  return 'es';
+}
 
 const DEFAULT_STATS: UserStats = {
   lives: 5,
@@ -14,17 +42,37 @@ const DEFAULT_STATS: UserStats = {
   completedLevels: {},
   unlockedLevel: 'A1',
   soundEnabled: true,
-  locale: 'es',
+  locale: detectBrowserLocale(),
   theme: getInitialTheme(),
 };
 
 export function loadUserStats(): UserStats {
+  const detectedLocale = detectBrowserLocale();
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return DEFAULT_STATS;
-    return { ...DEFAULT_STATS, ...JSON.parse(raw) };
+    if (!raw) {
+      return { ...DEFAULT_STATS, locale: detectedLocale };
+    }
+    const parsed = JSON.parse(raw);
+    const hasExplicitLocale = localStorage.getItem('gridverse_locale_user_set') === 'true';
+    const urlLang =
+      typeof window !== 'undefined'
+        ? new URLSearchParams(window.location.search).get('lang')?.toLowerCase().slice(0, 2)
+        : null;
+    const resolvedLocale: SupportedLocale =
+      urlLang && SUPPORTED_LOCALES.includes(urlLang as SupportedLocale)
+        ? (urlLang as SupportedLocale)
+        : hasExplicitLocale && SUPPORTED_LOCALES.includes(parsed.locale)
+        ? parsed.locale
+        : detectedLocale;
+
+    return {
+      ...DEFAULT_STATS,
+      ...parsed,
+      locale: resolvedLocale,
+    };
   } catch {
-    return DEFAULT_STATS;
+    return { ...DEFAULT_STATS, locale: detectedLocale };
   }
 }
 
