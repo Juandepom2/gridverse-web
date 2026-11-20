@@ -637,13 +637,22 @@ const CourseCeldiMascot: React.FC<{
         ja: '数式探偵モード起動！',
         pt: 'Ativando modo detetive de fórmulas!',
       });
+    if (courseOrder === 3)
+      return tr(locale, {
+        es: '¡Hora de reparar esas bases de datos!',
+        en: 'Time to repair those databases!',
+        de: 'Zeit, diese Datenbanken zu reparieren!',
+        fr: 'Il est temps de réparer ces bases de données !',
+        ja: 'データベースのエラーを修復しよう！',
+        pt: 'Hora de reparar essas bases de dados!',
+      });
     return tr(locale, {
-      es: '¡Hora de reparar esas bases de datos!',
-      en: 'Time to repair those databases!',
-      de: 'Zeit, diese Datenbanken zu reparieren!',
-      fr: 'Il est temps de réparer ces bases de données !',
-      ja: 'データベースのエラーを修復しよう！',
-      pt: 'Hora de reparar essas bases de dados!',
+      es: '¡Finanzas de alto nivel y modelos SaaS!',
+      en: 'High-level finance and SaaS models!',
+      de: 'Executive-Finanzen und SaaS-Modelle!',
+      fr: 'Finance de haut niveau et modèles SaaS !',
+      ja: '経営財務とSaaSモデルをマスター！',
+      pt: 'Finanças de alto nível e modelos SaaS!',
     });
   };
 

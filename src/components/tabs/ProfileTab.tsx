@@ -40,18 +40,20 @@ import {
   MessageSquareHeart,
   Sun,
   Moon,
+  Mail,
 } from 'lucide-react';
 import { UserStats, SupportedLocale } from '../../types';
 import {
   auth,
   signInWithGooglePopup,
   signInWithApplePopup,
-  linkAccountWithApple,
   linkAccountWithGoogle,
+  linkAccountWithApple,
   updateUserProfileData,
   deleteAccountAndFirestoreData,
   submitAppFeedback,
 } from '../../lib/firebase';
+import { EmailAuthModal } from '../auth/EmailAuthModal';
 import {
   signOut,
   onAuthStateChanged,
@@ -387,6 +389,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
     label: string;
     count: number;
   } | null>(null);
+  const [showEmailModal, setShowEmailModal] = useState(false);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (u) => setCurrentUser(u));
@@ -403,6 +406,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
   const linkedProviders = (currentUser?.providerData || []).map((p) => p.providerId);
   const hasGoogleLinked = linkedProviders.includes('google.com');
   const hasAppleLinked = linkedProviders.includes('apple.com');
+  const hasPasswordLinked = linkedProviders.includes('password');
 
   const userName =
     stats.displayName?.trim() ||
@@ -1418,6 +1422,11 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                   <GoogleLogo className="w-3 h-3" /> Google
                 </span>
               )}
+              {hasPasswordLinked && (
+                <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-md bg-gv-surface-high border border-gv-border text-gv-muted">
+                  <Mail className="w-3 h-3 text-gv-accent" /> {tr(locale, { es: 'Correo', en: 'Email', de: 'E-Mail', fr: 'E-mail', ja: 'メール', pt: 'E-mail' })}
+                </span>
+              )}
               {hasAppleLinked && (
                 <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-md bg-gv-surface-high border border-gv-border text-gv-muted">
                   <AppleLogo className="w-3 h-3" /> Apple
@@ -1478,27 +1487,9 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <button
               type="button"
-              onClick={handleAppleSignIn}
-              disabled={loadingAuth}
-              className="py-2.5 px-4 rounded-xl bg-white hover:bg-neutral-200 text-black text-xs font-extrabold flex items-center justify-center gap-2 transition-all cursor-pointer shadow"
-            >
-              <AppleLogo className="w-4 h-4" />
-              <span>
-                {tr(locale, {
-                  es: 'Continuar con Apple',
-                  en: 'Continue with Apple',
-                  de: 'Weiter mit Apple',
-                  fr: 'Continuer avec Apple',
-                  ja: 'Appleで続ける',
-                  pt: 'Continuar com a Apple',
-                })}
-              </span>
-            </button>
-            <button
-              type="button"
               onClick={handleGoogleSignIn}
               disabled={loadingAuth}
-              className="py-2.5 px-4 rounded-xl bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border text-gv-text text-xs font-extrabold flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="py-2.5 px-4 rounded-xl bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border text-gv-text text-xs font-extrabold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
             >
               <GoogleLogo className="w-4 h-4" />
               <span>
@@ -1512,65 +1503,64 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                 })}
               </span>
             </button>
+            <button
+              type="button"
+              onClick={() => {
+                sound.play('tap');
+                setShowEmailModal(true);
+              }}
+              disabled={loadingAuth}
+              className="py-2.5 px-4 rounded-xl bg-gv-primary hover:bg-gv-accent text-black text-xs font-black flex items-center justify-center gap-2 transition-all cursor-pointer shadow"
+            >
+              <Mail className="w-4 h-4" />
+              <span>
+                {tr(locale, {
+                  es: 'Continuar con Correo',
+                  en: 'Continue with Email',
+                  de: 'Weiter mit E-Mail',
+                  fr: 'Continuer par e-mail',
+                  ja: 'メールで続ける',
+                  pt: 'Continuar com E-mail',
+                })}
+              </span>
+            </button>
           </div>
         </div>
       ) : (
-        (!hasAppleLinked || !hasGoogleLinked) && (
+        !hasGoogleLinked && (
           <div className="rounded-2xl p-4 bg-gv-surface border border-gv-border flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="flex items-center gap-2.5 text-xs text-gv-muted">
               <Link2 className="w-4 h-4 text-gv-primary shrink-0" />
               <span>
                 {tr(locale, {
-                  es: 'Vincula tus cuentas para entrar con el mismo progreso en iOS, Android y Web:',
-                  en: 'Link your accounts to sign in with the same progress on iOS, Android, and Web:',
-                  de: 'Verknüpfe deine Konten für denselben Fortschritt auf iOS, Android und Web:',
-                  fr: 'Lie tes comptes pour retrouver ta progression sur iOS, Android et Web :',
-                  ja: 'iOS・Android・Webで同じ進捗を利用するためにアカウントを連携:',
-                  pt: 'Vincule suas contas para acessar o mesmo progresso no iOS, Android e Web:',
+                  es: 'Vincula tu cuenta de Google para entrar con el mismo progreso en todos tus dispositivos:',
+                  en: 'Link your Google account to access the same progress across all your devices:',
+                  de: 'Verknüpfe dein Google-Konto für denselben Fortschritt auf all deinen Geräten:',
+                  fr: 'Lie ton compte Google pour retrouver ta progression sur tous tes appareils :',
+                  ja: '全デバイスで同じ進捗を利用するためにGoogleアカウントを連携:',
+                  pt: 'Vincule sua conta do Google para acessar o mesmo progresso em todos os seus dispositivos:',
                 })}
               </span>
             </div>
             <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-              {!hasAppleLinked && (
-                <button
-                  type="button"
-                  onClick={handleLinkApple}
-                  disabled={loadingAuth}
-                  className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-white hover:bg-neutral-200 text-black text-xs font-extrabold flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow"
-                >
-                  <AppleLogo className="w-3.5 h-3.5" />
-                  <span>
-                    {tr(locale, {
-                      es: 'Vincular con Apple',
-                      en: 'Link Apple',
-                      de: 'Mit Apple verknüpfen',
-                      fr: 'Lier Apple',
-                      ja: 'Appleと連携',
-                      pt: 'Vincular Apple',
-                    })}
-                  </span>
-                </button>
-              )}
-              {!hasGoogleLinked && (
-                <button
-                  type="button"
-                  onClick={handleLinkGoogle}
-                  disabled={loadingAuth}
-                  className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border text-gv-text text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer"
-                >
-                  <GoogleLogo className="w-3.5 h-3.5" />
-                  <span>
-                    {tr(locale, {
-                      es: 'Vincular con Google',
-                      en: 'Link Google',
-                      de: 'Mit Google verknüpfen',
-                      fr: 'Lier Google',
-                      ja: 'Googleと連携',
-                      pt: 'Vincular Google',
-                    })}
-                  </span>
-                </button>
-              )}
+              <button
+                type="button"
+                onClick={handleLinkGoogle}
+                disabled={loadingAuth}
+                className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-gv-surface-high hover:bg-gv-surface-higher border border-gv-border text-gv-text text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+              >
+                <GoogleLogo className="w-3.5 h-3.5" />
+                <span>
+                  {tr(locale, {
+                    es: 'Vincular con Google',
+                    en: 'Link Google',
+                    de: 'Mit Google verknüpfen',
+                    fr: 'Lier Google',
+                    ja: 'Googleと連携',
+                    pt: 'Vincular Google',
+                  })}
+                </span>
+              </button>
             </div>
           </div>
         )
@@ -3981,6 +3971,26 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             </div>
           </div>
         </div>
+      )}
+      {showEmailModal && (
+        <EmailAuthModal
+          isOpen={showEmailModal}
+          onClose={() => setShowEmailModal(false)}
+          locale={locale}
+          onSuccess={() => {
+            sound.play('correct');
+            showToast(
+              tr(locale, {
+                es: '¡Sesión iniciada exitosamente! Tu progreso se ha respaldado.',
+                en: 'Signed in successfully! Your progress is backed up.',
+                de: 'Erfolgreich angemeldet! Dein Fortschritt ist gesichert.',
+                fr: 'Connexion réussie ! Ta progression est sauvegardée.',
+                ja: 'ログインしました！進捗が同期されました。',
+                pt: 'Sessão iniciada com sucesso! Seu progresso foi salvo.',
+              })
+            );
+          }}
+        />
       )}
     </div>
   );

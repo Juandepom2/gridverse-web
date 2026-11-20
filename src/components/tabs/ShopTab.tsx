@@ -24,8 +24,8 @@ import {
   db,
   verifyAndSyncProAndLegacyProfile,
   signInWithGooglePopup,
-  signInWithApplePopup,
 } from '../../lib/firebase';
+import { EmailAuthModal, GoogleLogo } from '../auth/EmailAuthModal';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { tr } from '../../lib/i18n';
@@ -72,8 +72,9 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
   });
   const [isRedirectingCheckout, setIsRedirectingCheckout] = useState(false);
   const [showAuthRequiredModal, setShowAuthRequiredModal] = useState(false);
-  const [authModalLoading, setAuthModalLoading] = useState<'google' | 'apple' | null>(null);
+  const [authModalLoading, setAuthModalLoading] = useState<'google' | null>(null);
   const [authModalError, setAuthModalError] = useState<string | null>(null);
+  const [showEmailModal, setShowEmailModal] = useState(false);
 
   // If user arrives from landing page (?tab=shop&category=...&tier=...) while not signed in, prompt sign-in first
   useEffect(() => {
@@ -92,30 +93,39 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
     return () => unsub();
   }, []);
 
-  const handleQuickSignIn = async (provider: 'google' | 'apple') => {
+  const handleQuickSignIn = async () => {
     sound.play('tap');
-    setAuthModalLoading(provider);
+    setAuthModalLoading('google');
     setAuthModalError(null);
     try {
-      if (provider === 'google') {
-        await signInWithGooglePopup();
-      } else {
-        await signInWithApplePopup();
-      }
+      await signInWithGooglePopup();
       sound.play('coin');
       setShowAuthRequiredModal(false);
     } catch (e: any) {
       if (e?.code !== 'auth/popup-closed-by-user' && e?.code !== 'auth/cancelled-popup-request') {
-        setAuthModalError(
-          tr(locale, {
-            es: 'No se pudo iniciar sesión. Intenta nuevamente.',
-            en: 'Could not sign in. Please try again.',
-            de: 'Anmeldung fehlgeschlagen. Bitte erneut versuchen.',
-            fr: 'Impossible de se connecter. Réessaie.',
-            ja: 'ログインできませんでした。もう一度お試しください。',
-            pt: 'Não foi possível iniciar sessão. Tente novamente.',
-          })
-        );
+        if (e?.code === 'auth/unauthorized-domain') {
+          setAuthModalError(
+            tr(locale, {
+              es: 'Dominio no autorizado en Firebase Auth. Agrega este dominio en Firebase Console.',
+              en: 'Unauthorized domain in Firebase Auth. Add this domain in Firebase Console.',
+              de: 'Nicht autorisierte Domain in Firebase Auth.',
+              fr: 'Domaine non autorisé dans Firebase Auth.',
+              ja: 'Firebase Authで未承認のドメインです。',
+              pt: 'Domínio não autorizado no Firebase Auth.',
+            })
+          );
+        } else {
+          setAuthModalError(
+            tr(locale, {
+              es: 'No se pudo iniciar sesión. Intenta nuevamente.',
+              en: 'Could not sign in. Please try again.',
+              de: 'Anmeldung fehlgeschlagen. Bitte erneut versuchen.',
+              fr: 'Impossible de se connecter. Réessaie.',
+              ja: 'ログインできませんでした。もう一度お試しください。',
+              pt: 'Não foi possível iniciar sessão. Tente novamente.',
+            })
+          );
+        }
       }
     } finally {
       setAuthModalLoading(null);
@@ -281,12 +291,12 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
     if (!user) {
       setRestoreMessage(
         tr(locale, {
-          es: 'Inicia sesión con tu cuenta de Google o Apple en la pestaña Perfil para restaurar tu plan PRO.',
-          en: 'Sign in with Google or Apple in the Profile tab to restore your PRO plan.',
-          de: 'Melde dich im Tab Profil mit Google oder Apple an, um deinen PRO-Plan wiederherzustellen.',
-          fr: 'Connecte-toi avec Google ou Apple dans l’onglet Profil pour restaurer ton abonnement PRO.',
-          ja: 'PROプランを復元するには、プロフィールタブでGoogleまたはAppleでログインしてください。',
-          pt: 'Faça login com Google ou Apple na aba Perfil para restaurar seu plano PRO.',
+          es: 'Inicia sesión con tu cuenta de Google o correo en la pestaña Perfil para restaurar tu plan PRO.',
+          en: 'Sign in with Google or Email in the Profile tab to restore your PRO plan.',
+          de: 'Melde dich im Tab Profil mit Google oder E-Mail an, um deinen PRO-Plan wiederherzustellen.',
+          fr: 'Connecte-toi avec Google ou e-mail dans l’onglet Profil pour restaurer ton abonnement PRO.',
+          ja: 'PROプランを復元するには、プロフィールタブでGoogleまたはメールでログインしてください。',
+          pt: 'Faça login com Google ou e-mail na aba Perfil para restaurar seu plano PRO.',
         })
       );
       return;
@@ -1566,12 +1576,12 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
               </h3>
               <p className="text-xs text-gv-muted mt-1.5 leading-relaxed">
                 {tr(locale, {
-                  es: 'Para vincular tu membresía PRO a tu cuenta y que esté sincronizada en tu navegador, iPhone y Android, inicia sesión con Google o Apple.',
-                  en: 'To link your PRO membership to your account and sync across browser, iPhone, and Android, please sign in with Google or Apple.',
-                  de: 'Um deine PRO-Mitgliedschaft mit deinem Konto zu verknüpfen und auf Web, iPhone und Android zu synchronisieren, melde dich bitte an.',
-                  fr: 'Pour associer ton abonnement PRO à ton compte et le synchroniser sur le Web, iPhone et Android, connecte-toi avec Google ou Apple.',
-                  ja: 'PROメンバーシップをアカウントに紐づけ、Web・iPhone・Androidで同期するために、GoogleまたはAppleでログインしてください。',
-                  pt: 'Para vincular sua assinatura PRO à sua conta e sincronizar no navegador, iPhone e Android, faça login com Google ou Apple.',
+                  es: 'Para vincular tu membresía PRO a tu cuenta y que esté sincronizada en tu navegador, iPhone y Android, inicia sesión con Google o correo electrónico.',
+                  en: 'To link your PRO membership to your account and sync across browser, iPhone, and Android, please sign in with Google or email.',
+                  de: 'Um deine PRO-Mitgliedschaft mit deinem Konto zu verknüpfen und auf Web, iPhone und Android zu synchronisieren, melde dich bitte mit Google oder E-Mail an.',
+                  fr: 'Pour associer ton abonnement PRO à ton compte et le synchroniser sur le Web, iPhone et Android, connecte-toi avec Google ou e-mail.',
+                  ja: 'PROメンバーシップをアカウントに紐づけ、Web・iPhone・Androidで同期するために、Googleまたはメールでログインしてください。',
+                  pt: 'Para vincular sua assinatura PRO à sua conta e sincronizar no navegador, iPhone e Android, faça login com Google ou e-mail.',
                 })}
               </p>
             </div>
@@ -1586,9 +1596,10 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
               <button
                 type="button"
                 disabled={authModalLoading !== null}
-                onClick={() => handleQuickSignIn('google')}
-                className="w-full py-3 px-4 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs uppercase tracking-wider cursor-pointer flex items-center justify-center gap-2 disabled:opacity-60"
+                onClick={handleQuickSignIn}
+                className="w-full py-3 px-4 rounded-xl bg-gv-primary hover:bg-gv-accent text-black font-black text-xs uppercase tracking-wider cursor-pointer flex items-center justify-center gap-2 disabled:opacity-60 transition-all shadow-md"
               >
+                <GoogleLogo className="w-4 h-4" />
                 <span>
                   {authModalLoading === 'google'
                     ? '...'
@@ -1604,21 +1615,23 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
               </button>
               <button
                 type="button"
-                disabled={authModalLoading !== null}
-                onClick={() => handleQuickSignIn('apple')}
-                className="w-full py-3 px-4 rounded-xl bg-gv-surface-higher hover:bg-gv-surface-high border border-gv-border text-gv-text font-black text-xs uppercase tracking-wider cursor-pointer flex items-center justify-center gap-2 disabled:opacity-60"
+                onClick={() => {
+                  sound.play('tap');
+                  setShowAuthRequiredModal(false);
+                  setShowEmailModal(true);
+                }}
+                className="w-full py-3 px-4 rounded-xl bg-gv-surface-higher hover:bg-gv-surface-high border border-gv-border text-gv-text font-black text-xs uppercase tracking-wider cursor-pointer flex items-center justify-center gap-2 disabled:opacity-60 transition-all shadow-sm"
               >
+                <Mail className="w-4 h-4 text-gv-muted" />
                 <span>
-                  {authModalLoading === 'apple'
-                    ? '...'
-                    : tr(locale, {
-                        es: 'Continuar con Apple',
-                        en: 'Continue with Apple',
-                        de: 'Weiter mit Apple',
-                        fr: 'Continuer avec Apple',
-                        ja: 'Appleで続行',
-                        pt: 'Continuar com Apple',
-                      })}
+                  {tr(locale, {
+                    es: 'Continuar con Correo',
+                    en: 'Continue with Email',
+                    de: 'Weiter mit E-Mail',
+                    fr: 'Continuer par e-mail',
+                    ja: 'メールで続行',
+                    pt: 'Continuar com E-mail',
+                  })}
                 </span>
               </button>
               <button
@@ -1656,6 +1669,29 @@ export const ShopTab: React.FC<ShopTabProps> = ({ stats, locale, onUpdateStats, 
             </div>
           </div>
         </div>
+      )}
+      {showEmailModal && (
+        <EmailAuthModal
+          isOpen={showEmailModal}
+          onClose={() => setShowEmailModal(false)}
+          locale={locale}
+          title={tr(locale, {
+            es: 'Inicia sesión para continuar',
+            en: 'Sign in to continue',
+            de: 'Anmelden, um fortzufahren',
+            fr: 'Connecte-toi pour continuer',
+            ja: 'ログインして続行',
+            pt: 'Faça login para continuar',
+          })}
+          subtitle={tr(locale, {
+            es: 'Vincula tu membresía PRO a tu cuenta para que esté sincronizada en tu navegador, iPhone y Android.',
+            en: 'Link your PRO membership to your account to sync across browser, iPhone, and Android.',
+            de: 'Verknüpfe deine PRO-Mitgliedschaft mit deinem Konto zur Synchronisierung auf Web, iPhone und Android.',
+            fr: 'Associe ton abonnement PRO à ton compte pour le synchroniser sur le Web, iPhone et Android.',
+            ja: 'PROメンバーシップをアカウントに紐づけ、Web・iPhone・Androidで同期。',
+            pt: 'Vincule sua assinatura PRO à sua conta para sincronizar no navegador, iPhone e Android.',
+          })}
+        />
       )}
     </div>
   );

@@ -1523,6 +1523,14 @@ const COURSE_TITLES_I18N: Record<string, Record<SupportedLocale, string>> = {
     ja: 'コース 3 · 検索とエラー修復',
     pt: 'Curso 3 · Busca e Reparo',
   },
+  COURSE_4: {
+    es: 'Curso 4 · Finanzas CFO & Automatización PRO',
+    en: 'Course 4 · CFO Finance & PRO Automation',
+    de: 'Kurs 4 · CFO-Finanzen & PRO-Automatisierung',
+    fr: 'Cours 4 · Finance CFO et Automatisation PRO',
+    ja: 'コース 4 · CFOファイナンス＆PRO自動化',
+    pt: 'Curso 4 · Finanças CFO e Automação PRO',
+  },
 };
 
 const COURSE_SUBTITLES_I18N: Record<string, Record<SupportedLocale, string>> = {
@@ -1549,6 +1557,14 @@ const COURSE_SUBTITLES_I18N: Record<string, Record<SupportedLocale, string>> = {
     fr: 'Croisez des bases de données avec RECHERCHEV et réparez les erreurs #N/A',
     ja: 'VLOOKUPでデータベースを照合し、#N/Aエラーを修復',
     pt: 'Cruze bases de dados com PROCV e repare erros #N/D',
+  },
+  COURSE_4: {
+    es: 'Modelos SaaS, márgenes ejecutivos y blindaje contra errores (Exclusivo PRO)',
+    en: 'SaaS models, executive margins, and error shielding (PRO Exclusive)',
+    de: 'SaaS-Modelle, Executive-Margen und Fehlerschutz (Exklusiv PRO)',
+    fr: 'Modèles SaaS, marges exécutives et protection contre les erreurs (Exclusif PRO)',
+    ja: 'SaaSモデル、経営マージン、エラー防御（PRO限定）',
+    pt: 'Modelos SaaS, margens executivas e proteção contra erros (Exclusivo PRO)',
   },
 };
 
@@ -1593,6 +1609,14 @@ const MISSION_TITLES_I18N: Record<string, Record<SupportedLocale, string>> = {
     ja: 'VLOOKUP商品カタログ',
     pt: 'Catálogo com PROCV',
   },
+  MISSION_PRO_CFO: {
+    es: 'Modelo Financiero SaaS',
+    en: 'SaaS Financial Model',
+    de: 'SaaS-Finanzmodell',
+    fr: 'Modèle Financier SaaS',
+    ja: 'SaaS財務モデル',
+    pt: 'Modelo Financeiro SaaS',
+  },
 };
 
 const MISSION_CLIENTS_I18N: Record<string, Record<SupportedLocale, string>> = {
@@ -1635,6 +1659,14 @@ const MISSION_CLIENTS_I18N: Record<string, Record<SupportedLocale, string>> = {
     fr: 'Logistique Globale',
     ja: 'グローバル・ロジスティクス',
     pt: 'Logística Global',
+  },
+  MISSION_PRO_CFO: {
+    es: 'Apex Ventures CFO',
+    en: 'Apex Ventures CFO',
+    de: 'Apex Ventures CFO',
+    fr: 'Apex Ventures CFO',
+    ja: 'Apex Ventures CFO',
+    pt: 'Apex Ventures CFO',
   },
 };
 
@@ -1679,6 +1711,14 @@ const MISSION_DESCRIPTIONS_I18N: Record<string, Record<SupportedLocale, string>>
     ja: '在庫システムで#N/Aエラーが発生しています。垂直検索の数式を修正し、検索範囲を固定し、IFERRORで保護します。',
     pt: 'O sistema de estoque exibe erros #N/D. Corrija as fórmulas de busca vertical, trave o intervalo da matriz e proteja o relatório com SEERRO.',
   },
+  MISSION_PRO_CFO: {
+    es: 'Construye el P&L mensual de una startup SaaS: calcula ingresos recurrentes, margen bruto y blinda los ratios contra división entre cero.',
+    en: 'Build a monthly P&L for a SaaS startup: calculate recurring revenue, gross margins, and shield ratios against division by zero.',
+    de: 'Erstelle die monatliche GuV eines SaaS-Startups: Berechne wiederkehrende Erlöse, Bruttomargen und sichere Kennzahlen gegen Division durch Null ab.',
+    fr: 'Construisez le P&L mensuel d’une startup SaaS : calculez les revenus récurrents, la marge brute et protégez les ratios contre la division par zéro.',
+    ja: 'SaaSスタートアップの月次P&Lを構築：経常収益、粗利益率を算出し、ゼロ除算から財務比率を防御します。',
+    pt: 'Construa o DRE mensal de uma startup SaaS: calcule receita recorrente, margem bruta e proteja índices contra divisão por zero.',
+  },
 };
 
 const MISSION_SKILLS_I18N: Record<string, Record<SupportedLocale, string>> = {
@@ -1721,6 +1761,14 @@ const MISSION_SKILLS_I18N: Record<string, Record<SupportedLocale, string>> = {
     fr: 'RECHERCHEV · SIERREUR · #N/A',
     ja: 'VLOOKUP · IFERROR · #N/A',
     pt: 'PROCV · SEERRO · #N/D',
+  },
+  MISSION_PRO_CFO: {
+    es: 'SUMA · SI.ERROR · Márgenes CFO',
+    en: 'SUM · IFERROR · CFO Margins',
+    de: 'SUMME · WENNFEHLER · CFO-Margen',
+    fr: 'SOMME · SIERREUR · Marges CFO',
+    ja: 'SUM · IFERROR · CFOマージン',
+    pt: 'SOMA · SEERRO · Margens CFO',
   },
 };
 
@@ -2344,6 +2392,194 @@ function buildBakeryExercise(locale: SupportedLocale): StepByStepExerciseData {
   };
 }
 
+function buildCfoExercise(locale: SupportedLocale): StepByStepExerciseData {
+  if (locale === 'es') {
+    return STEP_BY_STEP_EXERCISES.MISSION_PRO_CFO;
+  }
+
+  const sumFn =
+    locale === 'pt' ? 'SOMA' : locale === 'fr' ? 'SOMME' : locale === 'de' ? 'SUMME' : 'SUM';
+  const avgFn =
+    locale === 'pt' ? 'MÉDIA' : locale === 'fr' ? 'MOYENNE' : locale === 'de' ? 'MITTELWERT' : 'AVERAGE';
+
+  const metricLabel =
+    locale === 'pt'
+      ? 'Métrica'
+      : locale === 'fr'
+      ? 'Métrique'
+      : locale === 'de'
+      ? 'Kennzahl'
+      : locale === 'ja'
+      ? '指標'
+      : 'Metric';
+  const totalLabel =
+    locale === 'de' ? 'Gesamt' : locale === 'ja' ? '合計' : 'Total';
+  const mrrLabel =
+    locale === 'pt'
+      ? 'Receitas MRR'
+      : locale === 'fr'
+      ? 'Revenus MRR'
+      : locale === 'de'
+      ? 'MRR-Erlöse'
+      : locale === 'ja'
+      ? 'MRR収益'
+      : 'MRR Revenue';
+  const costsLabel =
+    locale === 'pt'
+      ? 'Custos Cloud'
+      : locale === 'fr'
+      ? 'Coûts Cloud'
+      : locale === 'de'
+      ? 'Cloud-Kosten'
+      : locale === 'ja'
+      ? 'クラウド原価'
+      : 'Cloud Costs';
+  const marginLabel =
+    locale === 'pt'
+      ? 'Margem Bruta'
+      : locale === 'fr'
+      ? 'Marge Brute'
+      : locale === 'de'
+      ? 'Bruttomarge'
+      : locale === 'ja'
+      ? '粗利益'
+      : 'Gross Margin';
+
+  const subtitle =
+    locale === 'pt'
+      ? 'DRE Executivo e Margens'
+      : locale === 'fr'
+      ? 'P&L Exécutif et Marges'
+      : locale === 'de'
+      ? 'Executive GuV & Margen'
+      : locale === 'ja'
+      ? '経営P&L＆マージン'
+      : 'Executive P&L & Margins';
+
+  const step1Title =
+    locale === 'pt'
+      ? 'Soma total de receitas'
+      : locale === 'fr'
+      ? 'Somme totale des revenus'
+      : locale === 'de'
+      ? 'Gesamtsumme der Erlöse'
+      : locale === 'ja'
+      ? '収益の総合計'
+      : 'Total Revenue Sum';
+  const step1Instruction =
+    locale === 'pt'
+      ? 'Calcule em D2 a soma das receitas de Q1 e Q2 (B2:C2).'
+      : locale === 'fr'
+      ? 'Calcule en D2 la somme des revenus de Q1 et Q2 (B2:C2).'
+      : locale === 'de'
+      ? 'Berechne in D2 die Summe der Erlöse aus Q1 und Q2 (B2:C2).'
+      : locale === 'ja'
+      ? 'D2で、Q1とQ2の収益の合計（B2:C2）を計算してください。'
+      : 'In D2, calculate the sum of Q1 and Q2 revenue (B2:C2).';
+  const step1Hint =
+    locale === 'pt'
+      ? `Use =${sumFn}(B2:C2) para totalizar as receitas do semestre.`
+      : locale === 'fr'
+      ? `Utilise =${sumFn}(B2:C2) pour totaliser les revenus du semestre.`
+      : locale === 'de'
+      ? `Nutze =${sumFn}(B2:C2), um die Erlöse des Halbjahres zu summieren.`
+      : locale === 'ja'
+      ? `=${sumFn}(B2:C2)を使って半期の収益を合計します。`
+      : `Use =${sumFn}(B2:C2) to total the revenue for the half-year.`;
+
+  const step2Title =
+    locale === 'pt'
+      ? 'Margem Bruta Q1'
+      : locale === 'fr'
+      ? 'Marge Brute Q1'
+      : locale === 'de'
+      ? 'Bruttomarge Q1'
+      : locale === 'ja'
+      ? 'Q1粗利益'
+      : 'Q1 Gross Margin';
+  const step2Instruction =
+    locale === 'pt'
+      ? 'Calcule em B4 a margem bruta de Q1 subtraindo os custos (B2-B3).'
+      : locale === 'fr'
+      ? 'Calcule en B4 la marge brute de Q1 en soustrayant les coûts (B2-B3).'
+      : locale === 'de'
+      ? 'Berechne in B4 die Bruttomarge für Q1 durch Abzug der Kosten (B2-B3).'
+      : locale === 'ja'
+      ? 'B4で、原価を引いてQ1の粗利益を計算してください (B2-B3)。'
+      : 'In B4, calculate the Q1 gross margin by subtracting costs (B2-B3).';
+  const step2Hint =
+    locale === 'pt'
+      ? 'A margem bruta é Receita menos Custos: =B2-B3.'
+      : locale === 'fr'
+      ? 'La marge brute est Revenus moins Coûts : =B2-B3.'
+      : locale === 'de'
+      ? 'Die Bruttomarge ist Erlös minus Kosten: =B2-B3.'
+      : locale === 'ja'
+      ? '粗利益は収益から原価を引いた値です: =B2-B3。'
+      : 'Gross margin is Revenue minus Costs: =B2-B3.';
+
+  return {
+    id: 'MISSION_PRO_CFO',
+    title: MISSION_TITLES_I18N.MISSION_PRO_CFO[locale],
+    subtitle,
+    scenario: MISSION_DESCRIPTIONS_I18N.MISSION_PRO_CFO[locale],
+    badgeEmoji: '👑',
+    color: '#F59E0B',
+    earnedXp: 90,
+    earnedBytes: 75,
+    sheets: [
+      {
+        id: 'pnl',
+        name: 'P&L_SaaS',
+        columns: 4,
+        rows: 5,
+        initialData: {
+          A1: metricLabel,
+          B1: 'Q1',
+          C1: 'Q2',
+          D1: totalLabel,
+          A2: mrrLabel,
+          B2: '12000',
+          C2: '18000',
+          D2: '',
+          A3: costsLabel,
+          B3: '3000',
+          C3: '4500',
+          D3: '',
+          A4: marginLabel,
+          B4: '',
+          C4: '',
+          D4: '',
+        },
+      },
+    ],
+    steps: [
+      {
+        sheetId: 'pnl',
+        title: step1Title,
+        instruction: step1Instruction,
+        targetCell: 'D2',
+        acceptedFormulas: [`=${sumFn}(B2:C2)`, '=SUM(B2:C2)', '=SUMA(B2:C2)', '=B2+C2'],
+        resultValue: '30000',
+        pedagogicalHint: step1Hint,
+        emergencySolution: `=${sumFn}(B2:C2)`,
+        suggestions: ['=', `${sumFn}(`, 'B2:C2', ')', `${avgFn}(`],
+      },
+      {
+        sheetId: 'pnl',
+        title: step2Title,
+        instruction: step2Instruction,
+        targetCell: 'B4',
+        acceptedFormulas: ['=B2-B3'],
+        resultValue: '9000',
+        pedagogicalHint: step2Hint,
+        emergencySolution: '=B2-B3',
+        suggestions: ['=', 'B2', '-', 'B3', '+'],
+      },
+    ],
+  };
+}
+
 function localizeFormulaText(text: string, locale: SupportedLocale): string {
   if (locale === 'es') return text;
   const fnMap: Record<SupportedLocale, Record<string, string>> = {
@@ -2465,6 +2701,10 @@ export function getStepByStepExercise(
   const upper = ref.toUpperCase();
   if (upper === 'MISSION_BAKERY') {
     return buildBakeryExercise(locale);
+  }
+
+  if (upper === 'MISSION_PRO_CFO') {
+    return buildCfoExercise(locale);
   }
 
   if (upper === 'MISSION_INVENTORY') {

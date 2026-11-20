@@ -4,6 +4,9 @@ import {
   GoogleAuthProvider,
   OAuthProvider,
   signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
   linkWithPopup,
   updateProfile,
   deleteUser,
@@ -484,6 +487,26 @@ export async function verifyAndSyncProAndLegacyProfile(
 
 export async function signInWithGooglePopup() {
   return signInWithPopup(auth, googleProvider);
+}
+
+export async function signInWithEmail(email: string, pass: string) {
+  return signInWithEmailAndPassword(auth, email.trim(), pass);
+}
+
+export async function signUpWithEmail(email: string, pass: string, displayName?: string) {
+  const cred = await createUserWithEmailAndPassword(auth, email.trim(), pass);
+  if (displayName?.trim() && cred.user) {
+    try {
+      await updateProfile(cred.user, { displayName: displayName.trim().slice(0, 25) });
+    } catch {
+      // ignore
+    }
+  }
+  return cred;
+}
+
+export async function resetPasswordWithEmail(email: string) {
+  return sendPasswordResetEmail(auth, email.trim());
 }
 
 export async function signInWithApplePopup() {
