@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+import { getAnalytics, isSupported, logEvent, Analytics } from 'firebase/analytics';
 import {
   getAuth,
   GoogleAuthProvider,
@@ -37,11 +38,32 @@ const firebaseConfig = {
   storageBucket: 'gridverse-app.firebasestorage.app',
   messagingSenderId: '1008557778901',
   appId: '1:1008557778901:web:c74f74410de3def3143f5c',
+  measurementId: 'G-W0SLFLGW68',
 };
 
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+// Initialize Firebase Analytics with SSR / environment fallback safety
+let analyticsInstance: Analytics | null = null;
+if (typeof window !== 'undefined') {
+  isSupported().then((supported) => {
+    if (supported) {
+      analyticsInstance = getAnalytics(app);
+    }
+  }).catch(() => {});
+}
+
+export const trackAnalyticsEvent = (eventName: string, eventParams?: Record<string, any>) => {
+  try {
+    if (analyticsInstance) {
+      logEvent(analyticsInstance, eventName, eventParams);
+    }
+  } catch (err) {
+    // Graceful fallback if tracking is blocked by adblockers
+  }
+};
 
 export const googleProvider = new GoogleAuthProvider();
 googleProvider.addScope('email');
